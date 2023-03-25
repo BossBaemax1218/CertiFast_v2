@@ -12,7 +12,7 @@
 	<title>Generate Resident Profile</title>
     <style>
         .card-footer{
-            margin-top:30px;
+            margin-top:275px;
             
         }
     </style>

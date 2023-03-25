@@ -31,7 +31,7 @@
             /* this affects the margin in the printer settings */  
         } 
         .card-footer{
-            margin-top:170px;
+            margin-top:275px;
             
         }
     </style>

@@ -67,7 +67,7 @@
 											<h4 class="fw-bold mt-4"><i>Tugbok, Davao City</i></h4>
 										</div>
 										<div class="px-2 pb-2 pb-md-0 text-center">
-											<img src="assets/img/brgy-los-amigos.png" class="img" width="100">
+											<img src="assets/img/brgyLA.png" class="img" width="100">
 										</div>
 									</div>
 								</div>

@@ -30,7 +30,7 @@
             /* this affects the margin in the printer settings */           
         } 
         .card-footer{
-            margin-top:180px;
+            margin-top:275px;
             
         }
     </style>
