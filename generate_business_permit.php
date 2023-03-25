@@ -128,23 +128,23 @@
                                         </div>
                                         <div class="col-md-4" style="margin: -250px 200px 500px 400px;">
                                             <h2 class="fw-bold" style="color:white;"><u>Barangay Kagawad</u></h2>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Aileen C. Natino</h3>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Ruel C. Ceballos</h3>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Angelico T. Santander, Jr.</h3>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Ann Liezl G. Deliquiña</h3>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Raymund P. Pupa</h3>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Adonis J. Satander</h3>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Loudel B. Concon</h3>
+                                            <h3 class="fw-bold" style="color:yellow; margin: auto;">Aileen C. Natino</h3>
+                                            <h3 class="fw-bold" style="color:yellow; margin: auto;">Ruel C. Ceballos</h3>
+                                            <h3 class="fw-bold" style="color:yellow; margin: auto;">Angelico T. Santander, Jr.</h3>
+                                            <h3 class="fw-bold" style="color:yellow; margin: auto;">Ann Liezl G. Deliquiña</h3>
+                                            <h3 class="fw-bold" style="color:yellow; margin: auto;">Raymund P. Pupa</h3>
+                                            <h3 class="fw-bold" style="color:yellow; margin: auto;">Adonis J. Satander</h3>
+                                            <h3 class="fw-bold" style="color:yellow; margin: auto;">Loudel B. Concon</h3>
                                         </div>
                                         <div class="col-md-4" style="margin: -700px 0px 10px 750px;">
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Arlene D. Suaybaguio</h3>
-                                            <h6 class="text" style="color:white; margin: 0px;">IPMR</h6>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Rowen E. Sampadong </h3>
-                                            <h6 class="text" style="color:white; margin: 0px;">SK Chairman</h6>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Abbie Charlotte C. Sarsale</h3>
-                                            <h6 class="text" style="color:white; margin: 0px;">Barangay Secretary</h6>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Melizza Jolie B. Tañac</h3>
-                                            <h6 class="text" style="color:white; margin: 0px;">Barangay Treasurery</h6>
+                                            <h3 class="fw-bold" style="color:yellow; margin: auto;">Arlene D. Suaybaguio</h3>
+                                            <h6 class="fw" style="color:white; margin: auto;">IPMR</h6>
+                                            <h3 class="fw-bold" style="color:yellow; margin: auto;">Rowen E. Sampadong </h3>
+                                            <h6 class="fw" style="color:white; margin: auto;">SK Chairman</h6>
+                                            <h3 class="fw-bold" style="color:yellow; margin: auto;">Abbie Charlotte C. Sarsale</h3>
+                                            <h6 class="fw" style="color:white; margin: auto;">Barangay Secretary</h6>
+                                            <h3 class="fw-bold" style="color:yellow; margin: auto;">Melizza Jolie B. Tañac</h3>
+                                            <h6 class="fw" style="color:white; margin: auto;">Barangay Treasurery</h6>
                                         </div>
 							        </div>
 								</div>
