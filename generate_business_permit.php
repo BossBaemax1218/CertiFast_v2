@@ -103,14 +103,14 @@
                                                 <h1 class="mt-0 fw-bold mb-2" style="font-size:40px;color:dark"><?= empty($permit['owner2']) ? $permit['owner1'] : ucwords($permit['owner1'].' & '.$permit['owner2']) ?></h1>
                                                 <h4 class="mt-0">OWNER'S NAME</h4>
                                             </div>
-                                            <h2 class="mt-5" style="text-indent: 40px;">This clearance is granted in accordance with section 152 of R.A. 7160 of Barangay Tax Ordinance, provided however, that the necessary fees are paid to the Barangay Treasurer.</h2>
+                                            <h2 class="mt-3" style="text-indent: 40px;">This clearance is granted in accordance with section 152 of R.A. 7160 of Barangay Tax Ordinance, provided however, that the necessary fees are paid to the Barangay Treasurer.</h2>
                                             <h2 class="mt-3" style="text-indent: 40px;">This is non-transferable and shall be deemed null and void upon failure by the owner to follow the said rules and regulations set forth by the Local Government Unit of <span style="font-size:22px"><?= ucwords($town) ?>.</h2>
-                                            <h2 class="mt-5">Given this <span class="fw-bold" style="font-size:20px"><?= date('m/d/Y') ?></span> at <span style="font-size:20px"><?= ucwords($brgy.', '.$town) ?></span>.</h2>
+                                            <h2 class="mt-3">Given this <span class="fw-bold" style="font-size:20px"><?= date('m/d/Y') ?></span> at <span style="font-size:20px"><?= ucwords($brgy.', '.$town) ?></span>.</h2>
                                         </div>
                                         <div class="col-md-12" style="color: black;">
-                                            <div class="p-3 text-right mr-6">
+                                            <div class="p-3 text-right mr-8" style="margin: 20px 0px 0px 0px;">
                                                 <h2 class="fw-bold mb-0"><u><?= ucwords($captain['name']) ?></u></h2>
-                                                <p class="text-right" style="margin: 0px 20px 10px 0px;">PUNONG BARANGAY</p>
+                                                <p class="text-right" style="margin: 0px 35px 10px 0px;">PUNONG BARANGAY</p>
                                             </div>
                                         </div>
                                         <div class="col-md-12 mb-4">
@@ -119,12 +119,12 @@
                                             <h4 class="mb-2"><i>Isuued at.</i>: <?= ucwords($brgy.','.$town) ?></h4>
                                             <h4 class="mb-2"><i>OR No.</i>:__________________________</h4>
                                         </div>
-                                        <p class="ml-3"><i>(This permit, while in force, shall be posted in a conspicious place in the business premises.)</i></p>
+                                        <p class="ml-2"><i>(This permit, while in force, shall be posted in a conspicious place in the business premises.)</i></p>
                                     </div>
                                     <div class="card-footer" style="background-color:forestgreen;">
                                         <div class="col-md-12 text-left" style="margin: 90px 0px 100px 20px;">
                                             <h1 class="fw-bold" style="color:white; margin: 0px;"><?= ucwords($captain['name']) ?></h1>
-                                            <h6 class="text" style="color:yellow; margin: 0px;">PUNONG BARANGAY</h6>
+                                            <h6 class="text" style="color:yellow; margin: 900px 0px 10px 0pxpx;">PUNONG BARANGAY</h6>
                                         </div>
                                         <div class="col-md-4" style="margin: -250px 200px 500px 400px;">
                                             <h2 class="fw-bold" style="color:white;"><u>Barangay Kagawad</u></h2>
