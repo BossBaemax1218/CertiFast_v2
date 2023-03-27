@@ -144,7 +144,7 @@ $current_page = PageName();
                             <?php else: ?>
                                 <li class="<?= $current_page=='users.php' ? 'active' : null ?>">
                                     <a href="users.php">
-                                        <span class="sub-item">Users</span>
+                                        <span class="sub-item">Staff</span>
                                     </a>
                                 </li>
                                 <li class="<?= $current_page=='support.php' ? 'active' : null ?>">

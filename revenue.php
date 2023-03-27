@@ -66,6 +66,17 @@
 											<input type="text" class="form-control" placeholder="Enter Date" id="max">
 										</div>
 									</div>
+									<div class="col">
+										<a id="csv" class="dt-button buttons-csv" style="color: black; margin:-39px 60px">
+											<span>Excel</span>
+										</a>
+										<a id="pdf" class="dt-button button-pdf" style="color: black; margin:-39px -55px">
+											<span>Pdf</span>
+										</a>
+										<a id="txt" class="dt-button buttons-text" style="color: black; margin:-39px 60px">
+											<span>Text</span>
+										</a>
+                                    </div>
 									<div class="table-responsive">
 										<table id="revenuetable" class="table">
 											<thead>
@@ -107,11 +118,7 @@
 		
 	</div>
 	<?php include 'templates/footer.php' ?>
-    <script src="assets/js/plugin/datatables/datatables.min.js"></script>
-	<script src="assets/js/plugin/moment/moment.min.js"></script>
-	<script src="assets/js/plugin/dataTables.dateTime.min.js"></script>
-	<script src="assets/js/plugin/datatables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
-	<script src="assets/js/plugin/datatables/Buttons-1.6.1/js/buttons.print.min.js"></script>
+
     <script>
 		var minDate, maxDate;
 
@@ -145,7 +152,8 @@
 				"order": [[ 0, "desc" ]],
 				dom: 'Bfrtip',
 				buttons: [
-					'print'
+					{extend: 'print'}
+					
 				]
 				});
 
@@ -154,6 +162,17 @@
 				table.draw();
 			});
         });
+    </script>
+	<script>
+      $("#csv").on("click", function () {
+        $("#revenuetable").tableHTMLExport({ type: "csv", filename: "Revenue.csv" });
+      });
+      $("#pdf").on("click", function () {
+        $("#revenuetable").tableHTMLExport({ type: "pdf", filename: "Revenue.pdf" });
+      });
+      $("#txt").on("click", function () {
+        $("#revenuetable").tableHTMLExport({ type: "txt", filename: "Revenue.txt" });
+      });
     </script>
 </body>
 </html>

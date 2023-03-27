@@ -18,8 +18,6 @@
 <!-- jQuery Sparkline -->
 <script src="assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
-<!-- Chart Circle -->
-<!-- <script src="assets/js/plugin/chart-circle/circles.min.js"></script> -->
 
 <!-- Datatables -->
 <script src="assets/js/plugin/datatables/datatables.min.js"></script>
@@ -36,10 +34,21 @@
 
 <!-- Atlantis JS -->
 <script src="assets/js/atlantis.min.js"></script>
-
 <script type="text/javascript" src="assets/webcamjs/webcam.min.js"></script>
-
 <script src="assets/js/customFunction.js"></script>
+
+<!--Export All Files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+<script src="https://rawcdn.githack.com/FuriosoJack/TableHTMLExport/v2.0.0/src/tableHTMLExport.js"></script>
+
+
+<script src="assets/js/plugin/datatables/datatables.min.js"></script>
+<script src="assets/js/plugin/moment/moment.min.js"></script>
+<script src="assets/js/plugin/dataTables.dateTime.min.js"></script>
+<script src="assets/js/plugin/datatables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="assets/js/plugin/datatables/Buttons-1.6.1/js/buttons.print.min.js"></script>
+
 
 <script>
     var $window = $(window);

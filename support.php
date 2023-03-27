@@ -13,7 +13,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Feedback</title>
+	<title>Support</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
