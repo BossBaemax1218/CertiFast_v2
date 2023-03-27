@@ -7,7 +7,7 @@
 			$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position ORDER BY `status` ASC ";
 		}
 	}else{
-		$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position WHERE `status`='Active' ";
+		$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position WHERE `status`='Active'";
 	}
 	
 	$res_o = $conn->query($off_q);
@@ -57,12 +57,12 @@
 						
 						<div class="col-md-6">
 							<div class="card">
-								<div class="card-body" style="background-color: #7AA874;">
+								<div class="card-body">
 									<div class="d-flex flex-wrap pb-2 justify-content-between">
 										<div class="px-2 pb-2 pb-md-0 text-center">
 										<img src="assets/img/Davao Seal.png" class="img" width="100">
 										</div>
-										<div class="px-4 pb-6 pb-md-0 text-center" style="color: white;">
+										<div class="px-4 pb-6 pb-md-0 text-center">
 											<h1 class="fw-bold mt-4">Barangay Los Amigos</h1>
 											<h4 class="fw-bold mt-0">Tugbok, Davao City</h4>
 										</div>
