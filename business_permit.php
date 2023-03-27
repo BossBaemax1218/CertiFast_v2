@@ -81,7 +81,7 @@
 													<?php foreach($permit as $row): ?>
 													<tr>
 														<td><?= ucwords($row['name']) ?></td>
-														<td><?= !empty($row['owner2']) ? ucwords($row['owner1'].' & '. $row['owner2']) : $row['owner1'] ?></td>
+														<td><?= !empty($row['owner1']) ? ucwords($row['owner1']) : $row['owner1'] ?></td>
 														<td><?= $row['nature'] ?></td>
 														<td><?= $row['applied'] ?></td>
                                                         <?php if(isset($_SESSION['username'])):?>
@@ -97,8 +97,7 @@
 																<?php endif ?>
 															</div>
 														</td>
-														<?php endif ?>
-														
+														<?php endif ?>														
 													</tr>
 													<?php endforeach ?>
 												<?php endif ?>

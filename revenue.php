@@ -67,13 +67,13 @@
 										</div>
 									</div>
 									<div class="col">
-										<a id="csv" class="dt-button buttons-csv" style="color: black; margin:-39px 60px">
+										<a id="csv" class="dt-button" style="color: black; margin:-39px 60px">
 											<span>Excel</span>
 										</a>
-										<a id="pdf" class="dt-button button-pdf" style="color: black; margin:-39px -55px">
+										<a id="pdf" class="dt-button" style="color: black; margin:-39px -55px">
 											<span>Pdf</span>
 										</a>
-										<a id="txt" class="dt-button buttons-text" style="color: black; margin:-39px 60px">
+										<a id="txt" class="dt-button" style="color: black; margin:-39px 60px">
 											<span>Text</span>
 										</a>
                                     </div>
@@ -85,7 +85,7 @@
 													<th scope="col">Recipient</th>
 													<th scope="col">Details</th>
 													<th scope="col">Amount</th>
-													<th scope="col">Username</th>
+													<th scope="col">Staff</th>
 												</tr>
 											</thead>
 											<tbody>
