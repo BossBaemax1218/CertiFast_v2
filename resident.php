@@ -75,7 +75,7 @@
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table id="residenttable" class="display table table-striped">
+										<table id="residenttable" class="table">
 											<thead>
 												<tr>
 													<th scope="col">Fullname</th>

@@ -221,18 +221,6 @@
                                                     <?php $no++; endforeach ?>
                                                 <?php endif ?>
                                             </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th scope="col">Fullname</th>
-                                                    <th scope="col">Birthdate</th>
-                                                    <th scope="col">Age</th>
-                                                    <th scope="col">Civil Status</th>
-                                                    <th scope="col">Gender</th>
-                                                    <th scope="col">Purok</th>
-                                                    <th scope="col">Voter Status</th>
-                                                    <th scope="col">Identified As</th>
-                                                </tr>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>

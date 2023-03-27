@@ -63,12 +63,10 @@
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table id="residenttable" class="display table table-striped">
+										<table id="residenttable" class="table">
 											<thead>
 												<tr>
 													<th scope="col">Fullname</th>
-													<!--<th scope="col">National ID</th>
-													<th scope="col">Address</th>-->
 													<th scope="col">Birthdate</th>
 													<th scope="col">Age</th>
 													<th scope="col">Civil Status</th>
@@ -76,7 +74,6 @@
 													<th scope="col">Purok</th>
 													<?php if(isset($_SESSION['username'])):?>
 														<?php if($_SESSION['role']=='administrator'):?>
-													<!--<th scope="col">Voter Status</th>-->
 													<?php endif ?>
 													<th scope="col">Action</th>
 													<?php endif ?>
@@ -92,8 +89,6 @@
                                                             </div>
                                                             <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
                                                         </td>
-														<!--<td><?= $row['national_id'] ?></td>
-														<td><?= $row['alias'] ?></td>-->
 														<td><?= $row['birthdate'] ?></td>
 														<td><?= $row['age'] ?></td>
                                                         <td><?= $row['civilstatus'] ?></td>
@@ -101,7 +96,6 @@
                                                         <td><?= $row['purok'] ?></td>
 														<?php if(isset($_SESSION['username'])):?>
 															<?php if($_SESSION['role']=='administrator'):?>
-                                                        <!--<td><?= $row['voterstatus'] ?></td>-->
 														<?php endif ?>
 														<td>
 															<div class="form-button-action">
@@ -116,24 +110,6 @@
 													<?php $no++; endforeach ?>
 												<?php endif ?>
 											</tbody>
-											<tfoot>
-												<tr>
-                                                    <th scope="col">Fullname</th>
-													<!--<th scope="col">National ID</th>
-													<th scope="col">Address</th>-->
-													<th scope="col">Birthdate</th>
-													<th scope="col">Age</th>
-													<th scope="col">Civil Status</th>
-                                                    <th scope="col">Gender</th>
-													<th scope="col">Purok</th>
-													<?php if(isset($_SESSION['username'])):?>
-														<?php if($_SESSION['role']=='administrator'):?>
-													<!--<th scope="col">Voter Status</th>-->
-													<?php endif ?>
-													<th scope="col">Action</th>
-													<?php endif ?>
-												</tr>
-											</tfoot>
 										</table>
 									</div>
 								</div>

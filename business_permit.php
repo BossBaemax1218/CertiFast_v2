@@ -51,7 +51,7 @@
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Resident Certificate Issuance</div>
+										<div class="card-title">Business Permit</div>
 										<?php if(isset($_SESSION['username'])):?>
 											<div class="card-tools">
 												<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
@@ -64,7 +64,7 @@
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table id="residenttable" class="display table table-striped">
+										<table id="residenttable" class="table">
 											<thead>
 												<tr>
 													<th scope="col">Name of Business</th>
@@ -103,17 +103,6 @@
 													<?php endforeach ?>
 												<?php endif ?>
 											</tbody>
-											<tfoot>
-												<tr>
-                                                    <th scope="col">Name of Business</th>
-													<th scope="col">Business Owner</th>
-													<th scope="col">Description</th>
-													<th scope="col">Date Applied</th>
-													<?php if(isset($_SESSION['username'])):?>
-													<th scope="col">Action</th>
-													<?php endif ?>
-												</tr>
-											</tfoot>
 										</table>
 									</div>
 								</div>
@@ -146,11 +135,10 @@
                                 <div class="form-group">
                                     <label>Business Owner</label>
                                     <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="owner1" required>
-									<input type="text" class="form-control" placeholder="Enter Owner Name" name="owner2">
                                 </div>
 								<div class="form-group">
-                                    <label>Business Nature</label>
-                                    <input type="text" class="form-control" placeholder="Sari-Sari Store" name="nature" required>
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" placeholder="Description" name="nature" required>
                                 </div>
 								<div class="form-group">
                                     <label>Date Applied Nature</label>
@@ -159,8 +147,8 @@
                             
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Create</button>
                         </div>
                         </form>
                     </div>

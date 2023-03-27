@@ -61,7 +61,7 @@
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-striped ">
+										<table class="table">
 											<thead>
 												<tr>
 													<th scope="col">No.</th>
@@ -100,15 +100,6 @@
 													</tr>
 												<?php endif ?>
 											</tbody>
-											<tfoot>
-												<tr>
-													<th scope="col">No.</th>
-													<th scope="col">Username</th>
-													<th scope="col">User Type</th>
-													<th scope="col">Created At</th>
-													<th scope="col">Action</th>
-												</tr>
-											</tfoot>
 										</table>
 									</div>
 								</div>

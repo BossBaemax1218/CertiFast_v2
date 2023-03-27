@@ -52,7 +52,7 @@ $current_page = PageName();
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">Menu</h4>
+                    <h4 class="text-section">Certificates</h4>
                 </li>
                 <li class="nav-item <?= $current_page=='resident.php' || $current_page=='generate_resident.php' ? 'active' : null ?>">
                     <a href="resident.php">
@@ -95,7 +95,7 @@ $current_page = PageName();
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>
                         </span>
-                        <h4 class="text-section">System</h4>
+                        <h4 class="text-section">Settings</h4>
                     </li>
                     <li class="nav-item">
                         <a href="#support" data-toggle="modal">
@@ -109,7 +109,7 @@ $current_page = PageName();
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">System</h4>
+                    <h4 class="text-section">Settings</h4>
                 </li>
                 <li class="nav-item <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'active' : null ?>">
                     <a href="#settings" data-toggle="collapse" class="collapsed" aria-expanded="false">
@@ -152,12 +152,11 @@ $current_page = PageName();
                                         <span class="sub-item">Support</span>
                                     </a>
                                 </li>
-                                <li>
+                                <li>                                   
+                                    <a class="fw-bold">System</a>
                                     <a href="backup/backup.php">
                                         <span class="sub-item">Backup</span>
                                     </a>
-                                </li>
-                                <li>
                                     <a href="#restore" data-toggle="modal">
                                         <span class="sub-item">Restore</span>
                                     </a>

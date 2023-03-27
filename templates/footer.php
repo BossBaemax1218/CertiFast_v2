@@ -14,6 +14,7 @@
 <!-- Chart JS -->
 <script src="assets/js/plugin/chart.js/chart.min.js"></script>
 
+
 <!-- jQuery Sparkline -->
 <script src="assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 

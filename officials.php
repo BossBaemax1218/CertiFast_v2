@@ -62,9 +62,9 @@
 										<div class="px-2 pb-2 pb-md-0 text-center">
 										<img src="assets/img/Davao Seal.png" class="img" width="100">
 										</div>
-										<div class="px-4 pb-4 pb-md-0 text-center">
-											<h2 class="fw-bold mt-4">Barangay Los Amigos</h2>
-											<h4 class="fw-bold mt-4"><i>Tugbok, Davao City</i></h4>
+										<div class="px-4 pb-6 pb-md-0 text-center">
+											<h1 class="fw-bold mt-2">Barangay Los Amigos</h1>
+											<h3 class="fw-bold mt-4">Tugbok, Davao City</h3>
 										</div>
 										<div class="px-2 pb-2 pb-md-0 text-center">
 											<img src="assets/img/brgyLA.png" class="img" width="100">
@@ -80,7 +80,7 @@
 											<div class="card-tools">
 												<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
 													<i class="fa fa-plus"></i>
-													Official
+													Add Official
 												</a>
 											</div>
 										<?php endif?>
@@ -88,7 +88,7 @@
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-striped">
+										<table class="table">
 											<thead>
 												<tr>
 													<th scope="col">Fullname</th>
@@ -133,18 +133,6 @@
 													</tr>
 												<?php endif ?>
 											</tbody>
-											<tfoot>
-												<tr>
-													<th scope="col">Fullname</th>
-													<th scope="col">Position</th>
-													<?php if(isset($_SESSION['username'])):?>
-														<?php if($_SESSION['role']=='administrator'):?>
-															<th>Status</th>
-														<?php endif ?>
-														<th>Action</th>
-													<?php endif?>
-												</tr>
-											</tfoot>
 										</table>
 									</div>
 								</div>
@@ -198,8 +186,8 @@
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" id="pos_id" name="id">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Create</button>
                         </div>
                         </form>
                     </div>

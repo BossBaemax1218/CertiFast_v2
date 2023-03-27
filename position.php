@@ -61,7 +61,7 @@
 								</div>
 								<div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-striped">
+                                        <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">No.</th>
@@ -94,13 +94,6 @@
                                                     </tr>
                                                 <?php endif ?>
                                             </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th scope="col">No.</th>
-                                                    <th scope="col">Position</th>
-                                                    <th scope="col">Action</th>
-                                                </tr>
-                                            </tfoot>
                                         </table>
                                     </div>
 								</div>
@@ -129,8 +122,8 @@
                             
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Create</button>
                         </div>
                         </form>
                     </div>

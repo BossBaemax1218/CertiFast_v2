@@ -91,14 +91,6 @@
                                                     </tr>
                                                 <?php endif ?>
                                             </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th scope="col">No.</th>
-                                                    <th scope="col"><?= $state=='purok' ? 'Purok Name' : 'Precint No.' ?></th>
-                                                    <th scope="col">No. of Residents</th>
-                                                    <th scope="col">No. of Households</th>
-                                                </tr>
-                                            </tfoot>
                                         </table>
                                     </div>
 								</div>

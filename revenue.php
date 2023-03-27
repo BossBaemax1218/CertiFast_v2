@@ -40,7 +40,7 @@
 				</div>
 				<div class="page-inner">
 					<div class="row mt--2">
-						<div class="col-md-12">
+						<div class="col-md-8">
 
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
@@ -56,18 +56,18 @@
 									</div>
 								</div>
 								<div class="card-body">
-									<div class="row mb-3 w-50">
+									<div class="row mb-3 w-50" style="center: 100px;">
 										<div class="col">
 											<label>Minimum Date</label>
-											<input type="text" class="form-control" placeholder="Enter date" id="min">
+											<input type="text" class="form-control" placeholder="Enter Date" id="min">
 										</div>
 										<div class="col">
 											<label>Maximum Date</label>
-											<input type="text" class="form-control" placeholder="Enter date" id="max">
+											<input type="text" class="form-control" placeholder="Enter Date" id="max">
 										</div>
 									</div>
 									<div class="table-responsive">
-										<table id="revenuetable" class="display table table-striped">
+										<table id="revenuetable" class="table">
 											<thead>
 												<tr>
 													<th scope="col">Date</th>
@@ -84,21 +84,12 @@
 														<td><?= $row['date'] ?></td>
 														<td><?= $row['name'] ?></td>
 														<td><?= $row['details'] ?></td>
-														<td>P <?= number_format($row['amounts'],2) ?></td>
+														<td> ₱ <?= number_format($row['amounts'],2) ?></td>
 														<td><?= $row['user'] ?></td>
 													</tr>
 													<?php $no++; endforeach ?>
 												<?php endif ?>
 											</tbody>
-											<tfoot>
-												<tr>
-                                                    <th scope="col">Date</th>
-													<th scope="col">Recipient</th>
-													<th scope="col">Details</th>
-													<th scope="col">Amount</th>
-													<th scope="col">Username</th>
-												</tr>
-											</tfoot>
 										</table>
 									</div>
 								</div>
@@ -123,8 +114,7 @@
 	<script src="assets/js/plugin/datatables/Buttons-1.6.1/js/buttons.print.min.js"></script>
     <script>
 		var minDate, maxDate;
- 
-		// Custom filtering function which will search data in column four between two values
+
 		$.fn.dataTable.ext.search.push(
 			function( settings, data, dataIndex ) {
 				var min = minDate.val();
@@ -143,7 +133,7 @@
 			}
 		);
         $(document).ready(function() {
-			 // Create date inputs
+
 			 minDate = new DateTime($('#min'), {
 				format: 'MMMM Do YYYY'
 			});
@@ -159,7 +149,7 @@
 				]
 				});
 
-			// Refilter the table
+
 			$('#min, #max').on('change', function () {
 				table.draw();
 			});

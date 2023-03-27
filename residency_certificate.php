@@ -58,7 +58,7 @@
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Barangay Residency Certificate</div>
+										<div class="card-title">Residency Certificate</div>
 									</div>
 								</div>
 								<div class="card-body">
