@@ -6,7 +6,7 @@
     $resident = $result->fetch_assoc();
 
     $query1 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblposition.position NOT IN ('SK Chairrman','Secretary','Treasurer')
-                AND `status`='Active' ORDER BY `order` ASC";
+                AND `status`='Active'";
     $result1 = $conn->query($query1);
     $officials = array();
 	while($row = $result1->fetch_assoc()){

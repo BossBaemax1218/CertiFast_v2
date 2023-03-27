@@ -8,11 +8,10 @@
     }
 
 	$pos 	= $conn->real_escape_string($_POST['position']);
-	$order 	= $conn->real_escape_string($_POST['order']);
 
-    if(!empty($pos) && !empty($order)){
+    if(!empty($pos)){
 
-        $insert  = "INSERT INTO tblposition (`position`, `order`) VALUES ('$pos', $order)";
+        $insert  = "INSERT INTO tblposition (`position`) VALUES ('$pos')";
         $result  = $conn->query($insert);
 
         if($result === true){

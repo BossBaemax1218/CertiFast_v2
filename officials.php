@@ -2,12 +2,12 @@
 <?php 
 	if(isset($_SESSION['role'])){
 		if($_SESSION['role'] =='staff'){
-			$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position WHERE `status`='Active' ORDER BY tblposition.order ASC ";
+			$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position WHERE `status`='Active' ";
 		}else{
-			$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position ORDER BY tblposition.order ASC, `status` ASC ";
+			$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position ORDER BY `status` ASC ";
 		}
 	}else{
-		$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position WHERE `status`='Active' ORDER BY tblposition.order ASC ";
+		$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position WHERE `status`='Active' ";
 	}
 	
 	$res_o = $conn->query($off_q);
@@ -116,11 +116,11 @@
 																		title="Edit Position" onclick="editOfficial(this)" data-id="<?= $row['id'] ?>" data-name="<?= $row['name'] ?>" 
 																		data-pos="<?= $row['pos_id'] ?>" data-start="<?= $row['termstart'] ?>" 
 																		data-end="<?= $row['termend'] ?>" data-status="<?= $row['status'] ?>" >
-																		<i class="fa fa-edit"></i>
+																		<i class="fas fa-edit"></i>
 																	</a>
 																	<?php if($_SESSION['role']=='administrator'):?>
 																	<a type="button" data-toggle="tooltip" href="model/remove_official.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this official?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																		<i class="fa fa-times"></i>
+																		<i class="fas fa-trash"></i>
 																	</a>
 																	<?php endif ?>
 																</td>

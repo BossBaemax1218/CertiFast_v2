@@ -14,7 +14,7 @@
 		$db_img		= $row['image'];
 	}
 
-	$pos_q = "SELECT * FROM tblposition ORDER BY `order` ASC";
+	$pos_q = "SELECT * FROM tblposition";
     $pos_r = $conn->query($pos_q);
 
     $position = array();

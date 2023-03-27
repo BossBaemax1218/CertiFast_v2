@@ -53,9 +53,9 @@
 									<div class="card-head-row">
 										<div class="card-title">Barangay Purok</div>
 										<div class="card-tools">
-											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
-												<i class="fa fa-plus"></i>
-												Purok
+											<a href="#add" data-toggle="modal" class="btn btn-danger btn-border btn-round btn-sm">
+												<i class="fa fa-plus"> </i>   
+												Add Purok
 											</a>
 										</div>
 									</div>
@@ -84,10 +84,10 @@
                                                             <div class="form-button-action">
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="Edit Purok" onclick="editPurok(this)" 
                                                                     data-name="<?= $row['purok'] ?>" data-total_residents="<?= $row['total_residents'] ?>" data-total_households="<?= $row['total_households'] ?>" data-id="<?= $row['id'] ?>">
-                                                                    <i class="fa fa-edit"></i>
+                                                                    <i class="fas fa-edit"></i>
                                                                 </a>
                                                                 <a type="button" data-toggle="tooltip" href="model/remove_purok.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this purok?');" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                    <i class="fa fa-times"></i>
+                                                                    <i class="fas fa-trash"></i>
                                                                 </a>
                                                             </div>
                                                         </td>
@@ -181,7 +181,7 @@
                         <div class="modal-footer">
                             <input type="hidden" id="purok_id" name="id">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-danger">Update</button>
                         </div>
                         </form>
                     </div>

@@ -106,7 +106,7 @@
 														<td>
 															<div class="form-button-action">
 																<a type="button" data-toggle="tooltip" href="generate_indi_cert.php?id=<?= $row['id'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
-																	<i class="fas fa-file-alt"></i>
+																	<i class="fas fa-print"></i>
 																</a>
 															</div>
 														</td>

@@ -57,7 +57,7 @@
 										<div class="card-tools">
 											<button class="btn btn-info btn-border btn-round btn-sm" onclick="printDiv('printThis')">
 												<i class="fa fa-print"></i>
-												Print Report
+												Print Certificate
 											</button>
 										</div>
 									</div>

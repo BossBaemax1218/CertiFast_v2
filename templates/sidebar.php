@@ -111,13 +111,13 @@ $current_page = PageName();
                     </span>
                     <h4 class="text-section">System</h4>
                 </li>
-                <li class="nav-item <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='chairmanship.php' || $current_page=='precinct.php' ||$current_page=='users.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'active' : null ?>">
                     <a href="#settings" data-toggle="collapse" class="collapsed" aria-expanded="false">
                         <i class="icon-wrench"></i>
                             <p>Settings</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse <?= $current_page=='purok.php' || $current_page=='position.php'  || $current_page=='precinct.php' || $current_page=='chairmanship.php' || $current_page=='users.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'show' : null ?>" id="settings">
+                    <div class="collapse <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'show' : null ?>" id="settings">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="#barangay" data-toggle="modal">
@@ -127,6 +127,11 @@ $current_page = PageName();
                             <li class="<?= $current_page=='purok.php' ? 'active' : null ?>">
                                 <a href="purok.php">
                                     <span class="sub-item">Purok</span>
+                                </a>
+                            </li>
+                            <li class="<?= $current_page=='position.php' ? 'active' : null ?>">
+                                <a href="position.php">
+                                    <span class="sub-item">Position</span>
                                 </a>
                             </li>
                             

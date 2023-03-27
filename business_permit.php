@@ -88,11 +88,11 @@
 														<td>
 															<div class="form-button-action">
 																<a type="button" data-toggle="tooltip" href="generate_business_permit.php?id=<?= $row['id'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Permit">
-																	<i class="fas fa-file-alt"></i>
+																	<i class="fas fa-print"></i>
 																</a>
 																<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'): ?>
 																<a type="button" data-toggle="tooltip" href="model/remove_permit.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this business permit?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																	<i class="fa fa-times"></i>
+																	<i class="fas fa-trash"></i>
 																</a>
 																<?php endif ?>
 															</div>

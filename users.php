@@ -38,7 +38,7 @@
 				</div>
 				<div class="page-inner">
 					<div class="row mt--2">
-						<div class="col-md-12">
+						<div class="col-md-8">
 
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
@@ -87,7 +87,7 @@
 														<td>
 															<div class="form-button-action">
 																<a type="button" data-toggle="tooltip" href="model/remove_user.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this user?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																	<i class="fa fa-times"></i>
+																	<i class="fas fa-trash"></i>
 																</a>
 															</div>
 														</td>

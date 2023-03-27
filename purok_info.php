@@ -105,12 +105,12 @@
 							</div>
 						</div>
                         <div class="col-md-3">
-                            <div class="card card-stats card-round" style="<?= $state=='purok' ? 'background-color:#880a14; color:#fff' : 'background-color:#a349a3; color:#fff' ?>">
+                            <div class="card card-stats card-round" style="<?= $state=='purok' ? 'background-color:#E42654; color:#fff' : 'background-color:#E42654; color:#fff' ?>">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-3">
                                                 <div class="icon-big text-center">
-                                                    <i class="fas fa-fingerprint"></i>
+                                                    <i class="fas fa-route fa-2x"></i>
                                                 </div>
                                             </div>
                                             <div class="col-3 col-stats">

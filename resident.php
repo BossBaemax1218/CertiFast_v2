@@ -124,17 +124,17 @@
                                                                     data-indetity="<?= $row['identified_as'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-address="<?= $row['address'] ?>" 
                                                                     data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-remarks="<?= $row['remarks'] ?>">
                                                                     <?php if(isset($_SESSION['username'])): ?>
-                                                                    <i class="fa fa-edit"></i>
+                                                                        <i class="fas fa-edit"></i>
                                                                     <?php else: ?>
                                                                         <i class="fa fa-eye"></i>
                                                                     <?php endif ?>
                                                                 </a>
                                                                 <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
 																<a type="button" data-toggle="tooltip" href="generate_resident.php?id=<?= $row['id'] ?>" class="btn btn-link btn-info" data-original-title="Generate">
-																	<i class="fa fa-file"></i>
+                                                                    <i class="fas fa-print"></i>
 																</a>
                                                                 <a type="button" data-toggle="tooltip" href="model/remove_resident.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this resident?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																	<i class="fa fa-times"></i>
+																	<i class="fas fa-trash"></i>
 																</a>
                                                                 <?php endif ?>
 															</div>

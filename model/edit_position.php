@@ -8,12 +8,11 @@
 	}
 	
 	$pos 	= $conn->real_escape_string($_POST['position']);
-	$order 	= $conn->real_escape_string($_POST['order']);
     $id 	= $conn->real_escape_string($_POST['id']);
 
 	if(!empty($id)){
 
-		$query 		= "UPDATE tblposition SET `position` = '$pos', `order`=$order WHERE id=$id;";	
+		$query 		= "UPDATE tblposition SET `position` = '$pos', WHERE id=$id;";	
 		$result 	= $conn->query($query);
 
 		if($result === true){

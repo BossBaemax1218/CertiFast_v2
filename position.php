@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php
-    $query = "SELECT * FROM tblposition ORDER BY `order`";
+    $query = "SELECT * FROM tblposition";
     $result = $conn->query($query);
 
     $position = array();
@@ -38,7 +38,7 @@
 				</div>
 				<div class="page-inner">
 					<div class="row mt--2">
-						<div class="col-md-12">
+						<div class="col-md-4">
 
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
@@ -53,8 +53,8 @@
 										<div class="card-title">Barangay Positions</div>
 										<div class="card-tools">
 											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
-												<i class="fa fa-plus"></i>
-												Position
+												<i class="fa fa-plus"></i>   
+												Add Position
 											</a>
 										</div>
 									</div>
@@ -66,7 +66,6 @@
                                                 <tr>
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Position</th>
-                                                    <th scope="col">Purok</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
@@ -76,15 +75,14 @@
                                                     <tr>
                                                         <td><?= $no ?></td>
                                                         <td><?= $row['position'] ?></td>
-                                                        <td><?= $row['order'] ?></td>
                                                         <td>
                                                             <div class="form-button-action">
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" 
-                                                                    title="Edit Position" onclick="editPos(this)" data-pos="<?= $row['position'] ?>" data-order="<?= $row['order'] ?>" data-id="<?= $row['id'] ?>">
-                                                                    <i class="fa fa-edit"></i>
+                                                                    title="Edit Position" onclick="editPos(this)" data-pos="<?= $row['position'] ?>" data-id="<?= $row['id'] ?>">
+                                                                    <i class="fas fa-edit"></i>
                                                                 </a>
                                                                 <a type="button" data-toggle="tooltip" href="model/remove_position.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this position?');" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                    <i class="fa fa-times"></i>
+                                                                    <i class="fas fa-trash"></i>
                                                                 </a>
                                                             </div>
                                                         </td>
@@ -100,7 +98,6 @@
                                                 <tr>
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Position</th>
-                                                    <th scope="col">Order</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </tfoot>
@@ -129,11 +126,6 @@
                                     <label>Position</label>
                                     <input type="text" class="form-control" placeholder="Enter Position" name="position" required>
                                 </div>
-                                <div class="form-group">
-                                    <label >Street</label>
-                                    <input type="number" class="form-control" placeholder="Enter Order" min="1" step="1" name="order" required>
-                                    <small class="form-text text-muted">Example: Barangay Kagawad is assign for Purok 1-A, SK Kagawad is for  Purok 1-A.</small>
-                                </div>
                             
                         </div>
                         <div class="modal-footer">
@@ -160,11 +152,6 @@
                                 <div class="form-group">
                                     <label for="position">Position</label>
                                     <input type="text" class="form-control" id="position" placeholder="Position" name="position" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="order">Purok</label>
-                                    <input type="text" class="form-control" id="order" placeholder="Purok" name="order" required>
-                                    <small class="form-text text-muted">Example: Barangay Kagawad assign for Purok 1-A, SK Kagawad is for Purok 1-A.</small>
                                 </div>
                             
                         </div>
