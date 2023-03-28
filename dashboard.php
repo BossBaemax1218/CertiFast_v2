@@ -212,21 +212,21 @@
 						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
 						<?php endif ?>
 						<div class="row">
-							<div class="col-md-3">
+							<div class="col-md-8">
 								<div class="card card-stats card-round">
 									<div class="card-body">
-										<canvas id="myChart1" style="width:100%;max-width:400px">
+										<canvas id="myChart1" style="width:100%;max-width:400px;">
 											<script>
 												var xValues = ["Total Resident"];
 												var yValues = [100,50];
-												var barColors = [
-												"#D32D41"
-												];
+												var barColors = ["#D32D41"];
 												var options = {
 													pieceLabel: {
-														render: function(d) { return d.label + " (" + d.percentage + "%)" },
+														render: function(d) { 
+															return d.label + " (" + d.percentage + "%)" 
+														},
 														fontColor: '#000',
-														position: 'outside',
+														position: 'inside',
 														segment: true
 													}
 												};
@@ -249,17 +249,11 @@
 												});
 											</script>
 										</canvas>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="card card-stats card-round">
-									<div class="card-body">
-											<canvas id="myChart" style="width:100%;max-width:800px">
+										<canvas id="myChart" style="width:100%;max-width:400%;">
 												<script>
-													var xValues = ["Jan", "Feb", "Mar", "Apr", "May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-													var yValues = [5, 10, 15, 20,25,30,35,40,45,50,55,60];
-													var barColors = ["#D32D41", "#D32D41","#D32D41","#D32D41","#D32D41","#D32D41","#D32D41","#D32D41","#D32D41","#D32D41","#D32D41","#D32D41"];
+													var xValues = ["2018", "2019", "2020", "2021", "2022"];
+													var yValues = [30, 15, 15, 25, 15];
+													var barColors = ["#D32D41", "#D32D41","#D32D41","#D32D41","#D32D41"];
 
 													new Chart("myChart", {
 													type: "bar",
@@ -282,7 +276,14 @@
 											</canvas>
 									</div>
 								</div>
-							</div>			
+							</div>
+							<!--<div class="col-md-6">
+								<div class="card card-stats card-round">
+									<div class="card-body">
+											
+									</div>
+								</div>
+							</div>-->		
 						</div>
 					<!--<div class="row">
 						<div class="col-md-12">

@@ -53,9 +53,9 @@
 							</div>
 						<?php unset($_SESSION['message']); ?>
 						<?php endif ?>
-					<div class="row mt--2">
+					<div class="row mt-2">
 						
-						<div class="col-md-6">
+						<div class="col-md-8">
 							<div class="card">
 								<div class="card-body">
 									<div class="d-flex flex-wrap pb-2 justify-content-between">
@@ -93,6 +93,8 @@
 												<tr>
 													<th scope="col">Fullname</th>
 													<th scope="col">Position</th>
+													<th scope="col">Term-Start</th>
+													<th scope="col">Term-End</th>
 													<?php if(isset($_SESSION['username'])):?>
 														<?php if($_SESSION['role']=='administrator'):?>
 															<th>Status</th>
@@ -107,6 +109,8 @@
 														<tr>
 															<td class="text-uppercase"><?= $row['name'] ?></td>
 															<td><?= $row['position'] ?></td>
+															<td><?= $row['termstart'] ?></td>
+															<td><?= $row['termend'] ?></td>
 															<?php if(isset($_SESSION['username'])):?>
 																<?php if($_SESSION['role']=='administrator'):?>
 																	<td><?= $row['status']=='Active' ? '<span class="badge badge-primary">Active</span>' :'<span class="badge badge-danger">Inactive</span>' ?></td>

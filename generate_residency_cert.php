@@ -17,6 +17,26 @@
     $captain = $conn->query($c)->fetch_assoc();
     $s = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblposition.position='Secretary'";
     $sec = $conn->query($s)->fetch_assoc();
+    $t = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblposition.position='Treasurer'";
+    $treasurer = $conn->query($t)->fetch_assoc();
+    $skc = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblposition.position='SK Chairman'";
+    $skchairman = $conn->query($skc)->fetch_assoc();
+    $k1 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='41'";
+    $kagawad1 = $conn->query($k1)->fetch_assoc();
+    $k2 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='42'";
+    $kagawad2 = $conn->query($k2)->fetch_assoc();
+    $k3 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='43'";
+    $kagawad3 = $conn->query($k3)->fetch_assoc();
+    $k4 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='44'";
+    $kagawad4 = $conn->query($k4)->fetch_assoc();
+    $k5 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='45'";
+    $kagawad5 = $conn->query($k5)->fetch_assoc();
+    $k6 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='46'";
+    $kagawad6 = $conn->query($k6)->fetch_assoc();
+    $k7 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='47'";
+    $kagawad7 = $conn->query($k7)->fetch_assoc();
+    $k8 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='48'";
+    $kagawad8 = $conn->query($k8)->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,7 +113,7 @@
                                                         <h2 class="mb-1">City of <?= ucwords($province) ?></h2>
                                                         <h1 class="fw-bold mb-1"><?= ucwords($brgy) ?></i></h1>
                                                         <h3 class="mb-2"><?= ucwords($town) ?></h3>				
-                                                        <h3><i class="fas fa-phone"> <?= $number ?> &nbsp </i> <i class="fa fa-envelope"> <?= $b_email ?></i></h3>
+                                                        <h3><i class="fas fa-phone" style="color: yellow;"></i> <?= $number ?> &nbsp  <i class="fa fa-envelope" style="color: yellow;"></i> <?= $b_email ?></h3>
                                                     </div>
                                                 <div class="text-center">
                                                     <img src="assets/uploads/<?= $brgy_logo ?>" class="img-fluid" width="150">
@@ -121,32 +141,34 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer" style="background-color:forestgreen;">
-                                        <div class="col-md-12 text-left" style="margin: 90px 0px 100px 20px;">
-                                            <h1 class="fw-bold" style="color:white; margin: 0px;"><?= ucwords($captain['name']) ?></h1>
-                                            <h6 class="text" style="color:yellow; margin: 0px;">PUNONG BARANGAY</h6>
+                                    <div class="d-flex flex-wrap justify-content-around">
+                                        <div class="card-body" style="background-color:forestgreen; margin-top: 210px;">
+                                            <div class="col-md-12 text-left" style="margin: 90px 0px 100px 20px;">
+                                                <h1 class="fw-bold" style="color:white; margin: 0px;"><?= ucwords($captain['name']) ?></h1>
+                                                <h6 class="text" style="color:yellow; margin-left: 0px;">PUNONG BARANGAY</h6>
+                                            </div>
+                                            <div class="col-md-4" style="margin: -250px 200px 510px 400px;">
+                                                <h2 class="fw-bold" style="color:white;"><u>Barangay Kagawad</u></h2>
+                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad1['name']) ?></h3>
+                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad2['name']) ?></h3>
+                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad3['name']) ?></h3>
+                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad4['name']) ?></h3>
+                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad5['name']) ?></h3>
+                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad6['name']) ?></h3>
+                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad7['name']) ?></h3>
+                                            </div>
+                                            <div class="col-md-4" style="margin: -700px 0px 20px 750px;">
+                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad8['name']) ?></h3>
+                                                <h6 class="text" style="color:white; margin: 0px;">IPMR</h6>
+                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($skchairman['name']) ?></h3>
+                                                <h6 class="text" style="color:white; margin: 0px;">SK Chairman</h6>
+                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($sec['name']) ?></h3>
+                                                <h6 class="text" style="color:white; margin: 0px;">Barangay Secretary</h6>
+                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($treasurer['name']) ?></h3>
+                                                <h6 class="text" style="color:white; margin: 0px;">Barangay Treasurery</h6>
+                                            </div>
                                         </div>
-                                        <div class="col-md-4" style="margin: -250px 200px 510px 400px;">
-                                            <h2 class="fw-bold" style="color:white;"><u>Barangay Kagawad</u></h2>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Aileen C. Natino</h3>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Ruel C. Ceballos</h3>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Angelico T. Santander, Jr.</h3>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Ann Liezl G. Deliquiña</h3>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Raymund P. Pupa</h3>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Adonis J. Satander</h3>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Loudel B. Concon</h3>
-                                        </div>
-                                        <div class="col-md-4" style="margin: -700px 0px 20px 750px;">
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Arlene D. Suaybaguio</h3>
-                                            <h6 class="text" style="color:white; margin: 0px;">IPMR</h6>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Rowen E. Sampadong </h3>
-                                            <h6 class="text" style="color:white; margin: 0px;">SK Chairman</h6>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Abbie Charlotte C. Sarsale</h3>
-                                            <h6 class="text" style="color:white; margin: 0px;">Barangay Secretary</h6>
-                                            <h3 class="fw-bold" style="color:yellow; margin: 0px;">Melizza Jolie B. Tañac</h3>
-                                            <h6 class="text" style="color:white; margin: 0px;">Barangay Treasurery</h6>
-                                        </div>
-							        </div>
+                                    </div>
 								</div>
 							</div>
 						</div>
