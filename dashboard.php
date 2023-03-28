@@ -212,18 +212,14 @@
 						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
 						<?php endif ?>
 						<div class="row">
-							<div class="col-md-4">
+							<div class="col-md-3">
 								<div class="card card-stats card-round">
 									<div class="card-body">
 										<canvas id="myChart1" style="width:100%;max-width:400px">
 											<script>
-												var xValues = ["Barangay Clearance", "Business Permit", "Indigency Certificate", "Resident Information"];
-												var yValues = [25, 30, 20, 25];
+												var xValues = ["Total Resident"];
+												var yValues = [100,50];
 												var barColors = [
-												"#488A99",
-												"#B3C100",
-												"#4CB5F5",
-												"#6AB187",
 												"#D32D41"
 												];
 												var options = {
@@ -247,7 +243,7 @@
 												options: {
 													title: {
 													display: true,
-													text: "Overall Requested Certificates"
+													text: "Overall Total Resident"
 													}
 												}
 												});
@@ -256,7 +252,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-8">
+							<div class="col-md-6">
 								<div class="card card-stats card-round">
 									<div class="card-body">
 											<canvas id="myChart" style="width:100%;max-width:800px">
