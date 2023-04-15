@@ -7,8 +7,8 @@
 		}
 	}
 	
-    $id 	= $conn->real_escape_string($_POST['id']);
-	$national_id 		= $conn->real_escape_string($_POST['national']);
+    $id 		= $conn->real_escape_string($_POST['id']);
+	$national_id= $conn->real_escape_string($_POST['national']);
 	$fname 		= $conn->real_escape_string($_POST['fname']);
 	$mname 		= $conn->real_escape_string($_POST['mname']);
     $lname 		= $conn->real_escape_string($_POST['lname']);
@@ -24,8 +24,8 @@
     $email 	    = $conn->real_escape_string($_POST['email']);
 	$number 	= $conn->real_escape_string($_POST['number']);
     $address 	= $conn->real_escape_string($_POST['address']);
-	$occu 	= $conn->real_escape_string($_POST['occupation']);
-    $citi 	= $conn->real_escape_string($_POST['citizenship']);
+	$occu 		= $conn->real_escape_string($_POST['occupation']);
+    $citi 		= $conn->real_escape_string($_POST['citizenship']);
 	$deceased 	= $conn->real_escape_string($_POST['deceased']);
     $remarks 	= $conn->real_escape_string($_POST['remarks']);
 	$profile 	= $conn->real_escape_string($_POST['profileimg']); // base 64 image
