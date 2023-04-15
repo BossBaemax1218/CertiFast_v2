@@ -161,7 +161,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>No. of Residents</label>
-                                    <input type="text" class="form-control" id="total_residents"placeholder="Enter No. of Residents" name="total_residents" required>
+                                    <input type="text" class="form-control" id="total_residents" placeholder="Enter No. of Residents" name="total_residents" required>
                                 </div>
                                 <div class="form-group">
                                     <label>No. of Households</label>

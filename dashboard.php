@@ -212,7 +212,7 @@
 						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
 						<?php endif ?>
 						<div class="row">
-							<div class="col-md-8">
+							<div class="col-md-12">
 								<div class="card card-stats card-round">
 									<div class="card-body">
 										<canvas id="myChart1" style="width:100%;max-width:400px;">
@@ -249,8 +249,8 @@
 												});
 											</script>
 										</canvas>
-										<canvas id="myChart" style="width:100%;max-width:400%;">
-												<script>
+										<canvas id="myChart" style="width:100%;max-width:400%; margin-inline:10px;">
+											<script>
 													var xValues = ["2018", "2019", "2020", "2021", "2022"];
 													var yValues = [30, 15, 15, 25, 15];
 													var barColors = ["#D32D41", "#D32D41","#D32D41","#D32D41","#D32D41"];
@@ -272,8 +272,8 @@
 														}
 													}
 													});
-												</script>
-											</canvas>
+											</script>
+										</canvas>
 									</div>
 								</div>
 							</div>

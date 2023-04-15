@@ -7,10 +7,10 @@
         }
     }
     
-	$purok 	    = $conn->real_escape_string($_POST['purok']);
+	$purok 	            = $conn->real_escape_string($_POST['purok']);
 	$total_residents 	= $conn->real_escape_string($_POST['total_residents']);
     $total_households 	= $conn->real_escape_string($_POST['total_households']);
-    $id 	    = $conn->real_escape_string($_POST['id']);
+    $id 	            = $conn->real_escape_string($_POST['id']);
 
     if(!empty($id)){
 
