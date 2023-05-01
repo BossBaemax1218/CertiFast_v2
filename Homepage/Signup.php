@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Barangay Los Amigos</title>
+        <title>CertiFast</title>
 
         <!-- CSS FILES -->        
         <link href="css/bootstrap.min.css" rel="stylesheet">

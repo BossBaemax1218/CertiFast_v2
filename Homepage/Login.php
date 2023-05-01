@@ -13,16 +13,16 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Barangay Los Amigos</title>
+        <title>CertiFast</title>
 
         <!-- CSS FILES -->        
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
-        <link rel="icon" href="assetsimg/CFLogo2.ico" type="image/x-icon"/>
+        <link rel="icon" href="images/CFLogo2.ico" type="image/x-icon"/>
 
-        <link href="assets/css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
 
-        <link href="assets/css/certifast.css" rel="stylesheet">
+        <link href="css/certifast.css" rel="stylesheet">
 
     </head>
     
@@ -70,7 +70,7 @@
         <nav class="navbar navbar-expand-lg bg-light shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="index.php">
-                    <img src="assets/img/trans-title.png" class="logo img-fluid" style="width: 140px;" alt="Kind Heart Charity">
+                    <img src="images/trans-title.png" class="logo img-fluid" style="width: 140px;" alt="Kind Heart Charity">
                     <span>
                         Barangay Los Amigos
                         
@@ -276,7 +276,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-12 mb-4">
-                        <img src="assets/img/trans-title.png" class="logo img-fluid" style="width: 250px;" alt="">
+                        <img src="images/trans-title.png" class="logo img-fluid" style="width: 250px;" alt="">
                     </div>
 
                     <div class="col-lg-4 col-md-6 col-12 mb-4">

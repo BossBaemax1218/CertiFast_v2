@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Barangay Los Amigos</title>
+        <title>CertiFast</title>
 
         <!-- CSS FILES -->        
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -63,8 +63,8 @@
 
         <nav class="navbar navbar-expand-lg bg-light shadow-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="images/trans-title.png" class="logo img-fluid" style="width: 140px;" alt="Kind Heart Charity">
+                <a class="navbar-brand" href="index.php">
+                    <img src="images/trans-title.png" class="logo img-fluid" style="width: 140px;" alt="Certifast">
                     <span>
                         Barangay Los Amigos
                         
