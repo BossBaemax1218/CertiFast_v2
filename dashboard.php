@@ -212,10 +212,10 @@
 						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
 						<?php endif ?>
 						<div class="row">
-							<div class="col-md-12">
+							<div class="col-md-3">
 								<div class="card card-stats card-round">
 									<div class="card-body">
-										<canvas id="myChart1" style="width:100%;max-width:400px;">
+										<canvas id="myChart1" style="width:50%;max-width:300px;">
 											<script>
 												var xValues = ["Total Resident"];
 												var yValues = [100,50];
@@ -249,27 +249,33 @@
 												});
 											</script>
 										</canvas>
-										<canvas id="myChart" style="width:100%;max-width:400%; margin-inline:10px;">
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="card card-stats card-round">
+									<div class="card-body">
+										<canvas id="myChart" style="width:50%; max-width:100%; margin-inline:0px;">
 											<script>
-													var xValues = ["2018", "2019", "2020", "2021", "2022"];
-													var yValues = [30, 15, 15, 25, 15];
-													var barColors = ["#D32D41", "#D32D41","#D32D41","#D32D41","#D32D41"];
+												var xValues = ["2018", "2019", "2020", "2021", "2022"];
+												var yValues = [30, 15, 15, 25, 15];
+												var barColors = ["#D32D41", "#D32D41","#D32D41","#D32D41","#D32D41"];
 
-													new Chart("myChart", {
-													type: "bar",
-													data: {
-														labels: xValues,
-														datasets: [{
-														backgroundColor: barColors,
-														data: yValues
-														}]
+												new Chart("myChart", {
+												type: "bar",
+												data: {
+													labels: xValues,
+													datasets: [{
+													backgroundColor: barColors,
+													data: yValues
+													}]
 													},
-													options: {
-														legend: {display: false},
-														title: {
-														display: true,
-														text: "All Year's Earning's"
-														}
+												options: {
+													legend: {display: false},
+													title: {
+													display: true,
+													text: "All Year's Earning's"
+													}
 													}
 													});
 											</script>
@@ -277,6 +283,11 @@
 									</div>
 								</div>
 							</div>
+
+
+
+
+
 							<!--<div class="col-md-6">
 								<div class="card card-stats card-round">
 									<div class="card-body">
