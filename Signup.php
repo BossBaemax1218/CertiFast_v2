@@ -10,13 +10,13 @@
         <title>CertiFast</title>
 
         <!-- CSS FILES -->        
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="Homepage/css/bootstrap.min.css" rel="stylesheet">
 
-        <link rel="icon" href="images/CFLogo2.ico" type="image/x-icon"/>
+        <link rel="icon" href="Homepage/images/CFLogo2.ico" type="image/x-icon"/>
 
-        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="Homepage/css/bootstrap-icons.css" rel="stylesheet">
 
-        <link href="css/certifast.css" rel="stylesheet">
+        <link href="Homepage/css/certifast.css" rel="stylesheet">
 
     </head>
     
@@ -64,7 +64,7 @@
         <nav class="navbar navbar-expand-lg bg-light shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="index.php">
-                    <img src="images/trans-title.png" class="logo img-fluid" style="width: 140px;" alt="Kind Heart Charity">
+                    <img src="Homepage/images/trans-title.png" class="logo img-fluid" style="width: 140px;" alt="Kind Heart Charity">
                     <span>
                         Barangay Los Amigos
                         
@@ -105,7 +105,7 @@
                     <div class="row">
 
                         <div class="col-lg-6 col-12 mx-auto">
-                            <form class="custom-form donate-form" action="#" method="get" role="form">
+                            <form class="custom-form donate-form" action="model/signup.php" method="POST" role="form">
                                 <h1 class="mb-4">Sign up</h1>
 
                                 <div class="row">
@@ -115,9 +115,9 @@
 
                                     <div class="col-lg-6 col-6 form-check-group form-check-group-donation-frequency">
                                         <div class="form-check form-check-radio">
-                                            <input class="form-check-input" type="radio" name="DonationFrequency" id="DonationFrequencyOne">
+                                            <input class="form-check-input" type="radio" name="Signin" id="Signin">
                                             
-                                            <label class="form-check-label" for="DonationFrequencyOne">
+                                            <label class="form-check-label" for="Signin">
                                                 <a href="Login.php">Sign in</a>
                                             </label>
                                         </div>
@@ -125,123 +125,42 @@
 
                                     <div class="col-lg-6 col-6 form-check-group form-check-group-donation-frequency">
                                         <div class="form-check form-check-radio">
-                                            <input class="form-check-input" type="radio" name="DonationFrequency" id="DonationFrequencyMonthly" checked>
+                                            <input class="form-check-input" type="radio" name="Signup" id="Signup" checked>
                                             
-                                            <label class="form-check-label" for="DonationFrequencyMonthly">
+                                            <label class="form-check-label" for="Signup">
                                                 Sign up
                                             </label>
                                         </div>
                                     </div>
-
-                                    <!--<div class="col-lg-12 col-12">
-                                        <h5 class="mt-2 mb-3">Select an amount</h5>
-                                    </div>-->
-
-                                    <!--<div class="col-lg-3 col-md-6 col-6 form-check-group">
-                                        <div class="form-check form-check-radio">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                $10
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-6 form-check-group">
-                                        <div class="form-check form-check-radio">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                $15
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-6 form-check-group">
-                                        <div class="form-check form-check-radio">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                $20
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-6 form-check-group">
-                                        <div class="form-check form-check-radio">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
-                                            <label class="form-check-label" for="flexRadioDefault4">
-                                                $30
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-6 form-check-group">
-                                        <div class="form-check form-check-radio">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
-                                            <label class="form-check-label" for="flexRadioDefault5">
-                                                $45
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-6 form-check-group">
-                                        <div class="form-check form-check-radio">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
-                                            <label class="form-check-label" for="flexRadioDefault6">
-                                                $50
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-12 form-check-group">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon1">$</span>
-                                            
-                                            <input type="text" class="form-control" placeholder="Custom amount" aria-label="Username" aria-describedby="basic-addon1">
-                                        </div>
-                                    </div>-->
 
                                     <div class="col-lg-12 col-12">
                                         <h5 class="mt-1">Personal Info</h5>
                                     </div>
 
                                     <div class="col-lg-6 col-12 mt-2">
-                                        <input type="text" name="donation-name" id="donation-name" class="form-control" placeholder="Firstname" required>
+                                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Firstname" required>
                                     </div>
 
                                     <div class="col-lg-6 col-12 mt-2">
-                                        <input type="email" name="donation-email" id="donation-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Lastname" required>
+                                        <input type="text" name="lastname" id="lastname" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Lastname" required>
                                     </div>
-                                    <div class="col-lg-12 col-12 mt-3">
-                                        <input type="text" name="donation-name" id="donation-name" class="form-control" placeholder="Email" required>
+                                    <div class="col-lg-6 col-12 mt-3">
+                                        <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email" required>
                                     </div>
 
                                     <div class="col-lg-6 col-12 mt-3">
-                                        <input type="email" name="donation-email" id="donation-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Username" required>
+                                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" required>
                                     </div>
 
                                     <div class="col-lg-6 col-12 mt-3">
-                                        <input type="email" name="donation-email" id="donation-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Password" required>
+                                        <input type="password" name="password" id="password" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Password" required>
                                     </div>
-
-                                    <!--<div class="col-lg-12 col-12">
-                                        <h5 class="mt-4 pt-1">Choose Payment</h5>
-                                    </div>-->
+                                    
+                                    <div class="col-lg-6 col-12 mt-3">
+                                        <input type="password" name="confirm_password" id="confirm_password" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Confirm Password" required>
+                                    </div>
 
                                     <div class="col-lg-12 col-12 mt-4">
-                                        <!--<div class="form-check">
-                                            <input class="form-check-input" type="radio" name="DonationPayment" id="flexRadioDefault9">
-                                            <label class="form-check-label" for="flexRadioDefault9">
-                                                <i class="bi-credit-card custom-icon ms-1"></i>
-                                                Debit or Credit card
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="DonationPayment" id="flexRadioDefault10">
-                                            <label class="form-check-label" for="flexRadioDefault10">
-                                                <i class="bi-paypal custom-icon ms-1"></i>
-                                                Paypal
-                                            </label>
-                                        </div>-->
                                         <div class="progress mt-2">
                                             <div class="progress-bar w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
@@ -275,7 +194,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-12 mb-4">
-                        <img src="images/trans-title.png" class="logo img-fluid" style="width: 250px;" alt="">
+                        <img src="Homepage/images/trans-title.png" class="logo img-fluid" style="width: 250px;" alt="">
                     </div>
 
                     <div class="col-lg-4 col-md-6 col-12 mb-4">
@@ -362,11 +281,11 @@
         </footer>
 
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.sticky.js"></script>
-        <script src="js/counter.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="Homepage/js/jquery.min.js"></script>
+        <script src="Homepage/js/bootstrap.min.js"></script>
+        <script src="Homepage/js/jquery.sticky.js"></script>
+        <script src="Homepage/js/counter.js"></script>
+        <script src="Homepage/js/custom.js"></script>
 
     </body>
 </html>
