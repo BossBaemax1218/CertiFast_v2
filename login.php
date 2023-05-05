@@ -70,7 +70,7 @@
         <nav class="navbar navbar-expand-lg bg-light shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="index.php">
-                    <img src="Homepage/images/trans-title.png" class="logo img-fluid" style="width: 140px;" alt="Kind Heart Charity">
+                    <img src="Homepage/images/trans-title.png" class="logo img-fluid" style="width: 140px;" alt="CertiFast">
                     <span>
                         Barangay Los Amigos
                         

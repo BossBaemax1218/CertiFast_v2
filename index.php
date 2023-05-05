@@ -202,7 +202,7 @@
                                 <a href="brgyprogram.php" class="d-block">
                                     <img src="Homepage/images/icons/promote.png" class="featured-block-image img-fluid" alt="" style="width: 100px; heigth: 100px;">
 
-                                    <p class="featured-block-text"><strong>Barangay Program</strong></p>
+                                    <p class="featured-block-text"><strong>Barangay Program</strong> </p>
                                 </a>
                             </div>
                         </div>

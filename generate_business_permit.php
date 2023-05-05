@@ -135,7 +135,7 @@
                                                 <p class="text-right" style="margin: 0px 35px 10px 0px;">PUNONG BARANGAY</p>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 mb-4">
+                                        <div class="col-md-12 mb-2">
                                             <h4 class="mb-2"><i>CTC No.</i>:__________________________</h4>
                                             <h4 class="mb-2"><i>Issued On.</i>:__________________________</h4>
                                             <h4 class="mb-2"><i>Isuued at.</i>: <?= ucwords($brgy.','.$town) ?></h4>
@@ -144,10 +144,10 @@
                                         <p class="ml-2"><i>(This permit, while in force, shall be posted in a conspicious place in the business premises.)</i></p>
                                     </div>
                                     <div class="d-flex flex-wrap justify-content-around">  
-                                        <div class="card-footer" style="background-color:forestgreen; margin-top: 210px;">
+                                        <div class="card-footer" style="background-color:forestgreen; margin-top: 20px;">
                                             <div class="col-md-12 text-left" style="margin: 90px 0px 100px 20px;">
                                                 <h1 class="fw-bold" style="color:white; margin: 0px;"><?= ucwords($captain['name']) ?></h1>
-                                                <h6 class="text" style="color:yellow; margin: 900px 0px 10px 0pxpx;">PUNONG BARANGAY</h6>
+                                                <h6 class="text" style="color:yellow; margin: 500px 0px 10px 0pxpx;">PUNONG BARANGAY</h6>
                                             </div>
                                             <div class="col-md-4" style="margin: -250px 200px 500px 400px;">
                                                 <h2 class="fw-bold" style="color:white;"><u>Barangay Kagawad</u></h2>
