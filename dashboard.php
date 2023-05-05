@@ -283,36 +283,31 @@
 									</div>
 								</div>
 							</div>
-
-
-
-
-
 							<!--<div class="col-md-6">
 								<div class="card card-stats card-round">
 									<div class="card-body">
 											
 									</div>
 								</div>
-							</div>-->		
+							</div>-->
 						</div>
-					<!--<div class="row">
+					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title fw-bold">LGU Mission Statement</div>
+										<div class="card-title fw-bold"><h1><strong>Barangay Los Amigos</strong></h1></div>
 									</div>
 								</div>
 								<div class="card-body">
-									<p><?= !empty($db_txt) ? $db_txt : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in ipsum id orci porta dapibus. Donec rutrum congue leo eget malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Quisque velit nisi, pretium ut lacinia in, elementum id enim.' ?></p>
+									<p><?= !empty($db_txt) ? $db_txt : 'Los Amigos is a barangay in Davao City.' ?></p>
 									<div class="text-center">
 										<img class="img-fluid" src="<?= !empty($db_img) ? 'assets/uploads/'.$db_img : 'assets/img/bg-abstract.png' ?>" />
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>-->
+					</div>
 				</div>
 			</div>
 
