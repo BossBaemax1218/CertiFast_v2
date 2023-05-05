@@ -49,7 +49,7 @@
   --custom-btn-bg-color:          #00da33;
   --custom-btn-bg-hover-color:    #E42654;
   --dark-color:                   #000000;
-  --p-color:                      #717275;
+  --p-color:                      #7e818a;
   --border-color:                 #d4d5d6;
 
   --body-font-family:             'Metropolis', sans-serif;
@@ -177,7 +177,7 @@ strong {
 }
 
 .section-overlay {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(221, 109, 109, 0.35);
   position: absolute;
   top: 0;
   left: 0;
@@ -552,8 +552,8 @@ strong {
   HERO & HERO SLIDE         
 -----------------------------------------*/
 .hero-section-full-height {
-  height: 1000px;
-  min-height: 700px;
+  height: 100px;
+  min-height: 100px;
   position: relative;
 }
 
@@ -563,8 +563,8 @@ strong {
 }
 
 #hero-slide .carousel-item {
-  height: 1000px;
-  min-height: 700px;
+  height: 100px;
+  min-height: 100px;
 }
 
 #hero-slide .carousel-caption {
@@ -578,13 +578,13 @@ strong {
   text-align: right;
   min-width: 680px;
   min-height: 680px;
-  padding: 100px 100px 50px 100px;
+  padding: 10px 10px 50px 10px;
 }
 
 .carousel-image {
   display: block;
-  width: 100%;
-  min-height: 100%;
+  width: 50%;
+  min-height: 50%;
 }
 
 #hero-slide .carousel-indicators-wrap {
@@ -610,8 +610,8 @@ strong {
   background-color: var(--secondary-color);
   border-radius: var(--border-radius-large);
   background-size: 70% 70%;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   opacity: 0;
   transition: all 0.5s;
 }
@@ -628,8 +628,8 @@ strong {
 .featured-block {
   text-align: center;
   transition: all 0.5s ease;
-  min-height: 256px;
-  padding: 15px;
+  min-height: 1000px;
+  padding: 100px;
 }
 
 .featured-block:hover {
@@ -645,7 +645,7 @@ strong {
 .featured-block-image {
   display: block;
   margin: auto;
-  transition: all 0.5s;
+  transition: all 0.5s;  
 }
 
 .featured-block:hover .featured-block-text {
@@ -754,7 +754,7 @@ strong {
   LOGIN & SIGNUP              
 -----------------------------------------*/
 .donate-section {
-  background-image: url('../images/brgyHall.jpg');
+  background-image: url('images/brgyHall.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -776,7 +776,7 @@ strong {
   NEWS         
 -----------------------------------------*/
 .news-detail-header-section {
-  background-image: url('../images/news/brgyHall.jpg');
+  background-image: url('../images/slide/1.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1310,6 +1310,7 @@ blockquote::before {
   background: var(--custom-btn-bg-hover-color);
   border-color: transparent;
 }
+
 
 
 /*---------------------------------------

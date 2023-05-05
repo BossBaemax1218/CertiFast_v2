@@ -76,19 +76,19 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#top">Home</a>
+                            <a class="nav-link click-scroll" href="index.php#top">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_2">About</a>
+                            <a class="nav-link click-scroll" href="index.php#section_2">About</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_3">Services</a>
+                            <a class="nav-link click-scroll" href="index.php#section_3">Services</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_6">Contact</a>
+                            <a class="nav-link click-scroll" href="index.php#section_6">Contact</a>
                         </li>
 
                         <li class="nav-item ms-3">
@@ -118,23 +118,96 @@
             <section class="news-section section-padding">
                 <div class="container">
                     <div class="row">
+                    <div class="col-lg-5 col-6">
+                            <div class="news-block">
+                                <div class="news-block-top">
+                                    <a href="news-detail.php">
+                                        <img src="Homepage/images/news/trans.jpg" class="news-image img-fluid" alt="">
+                                    </a>
+                                </div>
 
-                        <div class="col-lg-7 col-12">
+                                <div class="news-block-info">
+                                    <div class="d-flex mt-2">
+                                        <div class="news-block-date">
+                                            <p>
+                                                <i class="bi-calendar4 custom-icon me-1"></i>
+                                                March 21, 2023
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="news-block-title mb-2">
+                                        <h4><a href="news-detail.php" class="news-block-title-link">City Transport and Traffic Management Office</a></h4>
+                                    </div>
+
+                                    <div class="news-block-body">
+                                        <p>Pahibalo sa tanang naay Bicycle and Light Mobility Vehicle nga kinahanglan na kini iparehistro.
+                                            Alang sa detalye sa pagparehistro naa sa pictures nga nakalakip niining post.
+                                            Daghang salamat.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-block">
+                                <div class="news-block-top">
+                                    <a href="news-detail.php">
+                                        <img src="Homepage/images/news/sim.jpg" class="news-image img-fluid" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="news-block-info">
+                                    <div class="d-flex mt-2">
+                                        <div class="news-block-date">
+                                            <p>
+                                                <i class="bi-calendar4 custom-icon me-1"></i>
+                                                April 26, 2023
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="news-block-title mb-2">
+                                        <h4><a href="news-detail.php" class="news-block-title-link">Sim Registrations</a></h4>
+                                    </div>
+
+                                    <div class="news-block-body">
+                                        <p>Pahibalo sa tanan na need nato iparehistro atong sim karun abril. Daghang Salamat! </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-ml-6">
+                            <div class="news-block">
+                                <div class="news-block-top">
+                                    <a href="news-detail.php">
+                                        <img src="Homepage/images/news/Payout.jpg" class="news-image img-fluid" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="news-block-info">
+                                    <div class="d-flex mt-2">
+                                        <div class="news-block-date">
+                                            <p>
+                                                <i class="bi-calendar4 custom-icon me-1"></i>
+                                                April 18, 2023
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="news-block-title mb-2">
+                                        <h4><a href="news-detail.php" class="news-block-title-link">Social Pension Payout</a></h4>
+                                    </div>
+
+                                    <div class="news-block-body">
+                                        <p>SOCIAL PENSION FIRST QUARTER 2023 SCHEDULE OF PAYOUT  APRIL 18, 2023, 8:00 AM to 1:00 PM at LOS AMIGOS BARANGAY GYM.</p>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="news-block">
                                 <div class="news-block-top">
                                     <a href="news-detail.php">
                                         <img src="Homepage/images/news/bloodletting.jpg" class="news-image img-fluid" alt="">
                                     </a>
-
-                                    <div class="news-category-block">
-                                        <a href="#" class="category-block-link">
-                                            Lifestyle,
-                                        </a>
-
-                                        <a href="#" class="category-block-link">
-                                            Clothing Donation
-                                        </a>
-                                    </div>
                                 </div>
 
                                 <div class="news-block-info">
@@ -142,216 +215,24 @@
                                         <div class="news-block-date">
                                             <p>
                                                 <i class="bi-calendar4 custom-icon me-1"></i>
-                                                October 18, 2036
-                                            </p>
-                                        </div>
-
-                                        <div class="news-block-author mx-5">
-                                            <p>
-                                                <i class="bi-person custom-icon me-1"></i>
-                                                By Admin
-                                            </p>
-                                        </div>
-
-                                        <div class="news-block-comment">
-                                            <p>
-                                                <i class="bi-chat-left custom-icon me-1"></i>
-                                                32 Comments
+                                                May 09,2023
                                             </p>
                                         </div>
                                     </div>
 
                                     <div class="news-block-title mb-2">
-                                        <h4><a href="news-detail.php" class="news-block-title-link">Clothing donation to urban area</a></h4>
+                                        <h4><a href="news-detail.php" class="news-block-title-link">Bloodletting Program</a></h4>
                                     </div>
 
                                     <div class="news-block-body">
-                                        <p>This is a Bootstrap 5.2.2 CSS template for charity organization websites. You can feel free to use it. Please tell your friends about TemplateMo website. Thank you.</p>
+                                        <p>Inaanyayahan ang lahat na makilahalok sa bloodletting activity na gaganapin sa Barangay Gymnasium sa MAY 9, 2023, Martes sa 6:30 ng umaga. Ito ay pangnguna ng Department of Health Davao Blood Center Regional Field Office XI kaagapay ang Barangay Los Amigos. </p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="news-block mt-3">
-                                <div class="news-block-top">
-                                    <a href="news-detail.php">
-                                        <img src="Homepage/images/news/bloodletting.jpg" class="news-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="news-category-block">
-                                        <a href="#" class="category-block-link">
-                                            Food,
-                                        </a>
-
-                                        <a href="#" class="category-block-link">
-                                            Donation,
-                                        </a>
-
-                                        <a href="#" class="category-block-link">
-                                            Caring
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="news-block-info">
-                                    <div class="d-flex mt-2">
-                                        <div class="news-block-date">
-                                            <p>
-                                                <i class="bi-calendar4 custom-icon me-1"></i>
-                                                October 12, 2036
-                                            </p>
-                                        </div>
-
-                                        <div class="news-block-author mx-5">
-                                            <p>
-                                                <i class="bi-person custom-icon me-1"></i>
-                                                By Admin
-                                            </p>
-                                        </div>
-
-                                        <div class="news-block-comment">
-                                            <p>
-                                                <i class="bi-chat-left custom-icon me-1"></i>
-                                                35 Comments
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="news-block-title mb-2">
-                                        <h4><a href="news-detail.php" class="news-block-title-link">Food donation area</a></h4>
-                                    </div>
-
-                                    <div class="news-block-body">
-                                        <p>You are not allowed to redistribute this template ZIP file on any other template collection website. Please <a href="https://templatemo.com/contact" target="_blank">contact TemplateMo</a> for more information.</p>
-                                    </div>
-                                </div>
+                            <div class="col-lg-4 col-12 mx-auto">
                             </div>
-                        </div>
-
-                        <div class="col-lg-4 col-12 mx-auto mt-4 mt-lg-0">
-                            <form class="custom-form search-form" action="#" method="post" role="form">
-                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-
-                                <button type="submit" class="form-control">
-                                    <i class="bi-search"></i>
-                                </button>
-                            </form>
-
-                            <h5 class="mt-5 mb-3">Recent news</h5>
-
-                            <div class="news-block news-block-two-col d-flex mt-4">
-                                <div class="news-block-two-col-image-wrap">
-                                    <a href="news-detail.php">
-                                        <img src="Homepage/images/news/africa-humanitarian-aid-doctor.jpg" class="news-image img-fluid" alt="">
-                                    </a>
-                                </div>
-
-                                <div class="news-block-two-col-info">
-                                    <div class="news-block-title mb-2">
-                                        <h6><a href="news-detail.php" class="news-block-title-link">Food donation area</a></h6>
-                                    </div>
-
-                                    <div class="news-block-date">
-                                        <p>
-                                            <i class="bi-calendar4 custom-icon me-1"></i>
-                                            October 16, 2036
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="news-block news-block-two-col d-flex mt-4">
-                                <div class="news-block-two-col-image-wrap">
-                                    <a href="news-detail.php">
-                                        <img src="Homepage/images/news/close-up-happy-people-working-together.jpg" class="news-image img-fluid" alt="">
-                                    </a>
-                                </div>
-
-                                <div class="news-block-two-col-info">
-                                    <div class="news-block-title mb-2">
-                                        <h6><a href="news-detail.php" class="news-block-title-link">Volunteering Clean</a></h6>
-                                    </div>
-
-                                    <div class="news-block-date">
-                                        <p>
-                                            <i class="bi-calendar4 custom-icon me-1"></i>
-                                            October 24, 2036
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="category-block d-flex flex-column">
-                                <h5 class="mb-3">Categories</h5>
-
-                                <a href="#" class="category-block-link">
-                                    Drinking water
-                                    <span class="badge">20</span>
-                                </a>
-
-                                <a href="#" class="category-block-link">
-                                    Food Donation
-                                    <span class="badge">30</span>
-                                </a>
-
-                                <a href="#" class="category-block-link">
-                                    Children Education
-                                    <span class="badge">10</span>
-                                </a>
-
-                                <a href="#" class="category-block-link">
-                                    Poverty Development
-                                    <span class="badge">15</span>
-                                </a>
-
-                                <a href="#" class="category-block-link">
-                                    Clothing Donation
-                                    <span class="badge">20</span>
-                                </a>
-                            </div>
-
-                            <div class="tags-block">
-                                <h5 class="mb-3">Tags</h5>
-
-                                <a href="#" class="tags-block-link">
-                                    Donation
-                                </a>
-
-                                <a href="#" class="tags-block-link">
-                                    Clothing
-                                </a>
-
-                                <a href="#" class="tags-block-link">
-                                    Food
-                                </a>
-
-                                <a href="#" class="tags-block-link">
-                                    Children
-                                </a>
-
-                                <a href="#" class="tags-block-link">
-                                    Education
-                                </a>
-
-                                <a href="#" class="tags-block-link">
-                                    Poverty
-                                </a>
-
-                                <a href="#" class="tags-block-link">
-                                    Clean Water
-                                </a>
-                            </div>
-
-                            <form class="custom-form subscribe-form" action="#" method="post" role="form">
-                                <h5 class="mb-4">Newsletter Form</h5>
-
-                                <input type="email" name="subscribe-email" id="subscribe-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email Address" required>
-
-                                <div class="col-lg-12 col-12">
-                                    <button type="submit" class="form-control">Subscribe</button>
-                                </div>
-                            </form>
-                        </div>
-
+                    </div>
                     </div>
                 </div>
             </section>

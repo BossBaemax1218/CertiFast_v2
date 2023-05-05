@@ -10,13 +10,13 @@
         <title>Certifast - Forgot Password  </title>
 
         <!-- CSS FILES -->        
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="Homepage/css/bootstrap.min.css" rel="stylesheet">
 
-        <link rel="icon" href="images/CFLogo2.ico" type="image/x-icon"/>
+        <link rel="icon" href="Homepage/images/CFLogo2.ico" type="image/x-icon"/>
 
-        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="Homepage/css/bootstrap-icons.css" rel="stylesheet">
 
-        <link href="css/password.css" rel="stylesheet">
+        <link href="Homepage/css/password.css" rel="stylesheet">
 
     </head>
     
@@ -28,7 +28,7 @@
                 <div class="container">
                     <div class="row">                    
                         <div class="col-lg-6 col-12 mx-auto">
-                            <form class="custom-form donate-form" action="login.php" method="get" role="form">
+                            <form class="custom-form donate-form" action="model/verification-code.php" method="POST" role="form">
                                 <h2 class="mb-4">Email Verification</h2>
                                 <div class="row">
                                     <div class="col-lg-12 col-12">
@@ -51,11 +51,11 @@
             </section>
         </main>
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.sticky.js"></script>
-        <script src="js/counter.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="Homepage/js/jquery.min.js"></script>
+        <script src="Homepage/js/bootstrap.min.js"></script>
+        <script src="Homepage/js/jquery.sticky.js"></script>
+        <script src="Homepage/js/counter.js"></script>
+        <script src="Homepage/js/custom.js"></script>
 
     </body>
 </html>

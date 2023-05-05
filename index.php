@@ -169,20 +169,20 @@
 
                         <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                             <div class="featured-block d-flex justify-content-center align-items-center">
-                                <a href="barangayofficials.php" class="d-block">
-                                    <img src="Homepage/images/icons/hands.png" class="featured-block-image img-fluid" alt="">
+                                <a href="homepage/barangay-officials.php" class="d-block">
+                                    <img src="Homepage/images/icons/SealLogo.png" class="featured-block-image img-fluid"  style="width: 100px; heigth: 100px;" alt="">
 
-                                    <p class="featured-block-text">Barangay <strong>Officials</strong></p>
+                                    <p class="featured-block-text"><strong>Barangay Officials</strong></p>
                                 </a>
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
+                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-lg-0">
                             <div class="featured-block d-flex justify-content-center align-items-center">
-                                <a href="sk.php" class="d-block">
-                                    <img src="Homepage/images/icons/heart.png" class="featured-block-image img-fluid" alt="">
+                                <a href="sangguniankabataan.php" class="d-block">
+                                    <img src="Homepage/images/icons/sangguniankabataan.png" class="featured-block-image img-fluid" alt="" style="width: 100px; heigth: 100px;">
 
-                                    <p class="featured-block-text"><strong>Sangguniang</strong> Kabataan</p>
+                                    <p class="featured-block-text"><strong>Sangguniang Kabataan</strong></p>
                                 </a>
                             </div>
                         </div>
@@ -190,9 +190,9 @@
                         <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
                             <div class="featured-block d-flex justify-content-center align-items-center">
                                 <a href="barangayservices.php" class="d-block">
-                                    <img src="Homepage/images/icons/receive.png" class="featured-block-image img-fluid" alt="">
+                                    <img src="Homepage/images/icons/certseal.png" class="featured-block-image img-fluid" alt="" style="width: 100px; heigth: 100px;">
 
-                                    <p class="featured-block-text">Barangay <strong>Services</strong></p>
+                                    <p class="featured-block-text"><strong>Barangay Services</strong></p>
                                 </a>
                             </div>
                         </div>
@@ -200,9 +200,9 @@
                         <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                             <div class="featured-block d-flex justify-content-center align-items-center">
                                 <a href="brgyprogram.php" class="d-block">
-                                    <img src="Homepage/images/icons/scholarship.png" class="featured-block-image img-fluid" alt="">
+                                    <img src="Homepage/images/icons/promote.png" class="featured-block-image img-fluid" alt="" style="width: 100px; heigth: 100px;">
 
-                                    <p class="featured-block-text"><strong>Barangay</strong> Program</p>
+                                    <p class="featured-block-text"><strong>Barangay Program</strong></p>
                                 </a>
                             </div>
                         </div>
