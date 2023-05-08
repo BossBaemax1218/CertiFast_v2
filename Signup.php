@@ -22,96 +22,17 @@
     
     <body>
 
-        <header class="site-header">
-            <div class="container">
-                <div class="row">
-                    
-                    <div class="col-lg-8 col-12 d-flex flex-wrap">
-                        <p class="d-flex me-4 mb-0">
-                            <i class="bi-geo-alt me-2"></i>
-                            Barangay Los Amigos, Tugbok, Davao City, Davao Del Sur. 8000
-                        </p>
-
-                        <p class="d-flex mb-0">
-                            <i class="bi-envelope me-2"></i>
-
-                            <a href="mailto:info@company.com">
-                                losamigosdavaocity.gov@gmail.com
-                            </a>
-                        </p>
-                    </div>
-
-                    <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
-                        <ul class="social-icon">
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link bi-twitter"></a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="https://www.facebook.com/Barangay-Los-Amigos-122021251193091/?ref=page_internal" class="social-icon-link bi-facebook"></a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link bi-instagram"></a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </header>
-
-        <nav class="navbar navbar-expand-lg bg-light shadow-lg">
-            <div class="container">
-                <a class="navbar-brand" href="index.php">
-                    <img src="Homepage/images/trans-title.png" class="logo img-fluid" style="width: 140px;" alt="Kind Heart Charity">
-                    <span>
-                        Barangay Los Amigos
-                        
-                    </span>
-                </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.php#section_1">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.php#section_2">About</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.php">Services</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.php#section_6">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
         <main>
 
-            <section class="donate-section">
-                <div class="section-overlay"></div>
+            <section class="donate">
                 <div class="container">
                     <div class="row">
 
                         <div class="col-lg-6 col-12 mx-auto">
                             <form class="custom-form donate-form" action="model/signup.php" method="POST" role="form">
-                                <h1 class="mb-4">Sign up</h1>
+                                <h2 class="mb-4">My CertiFast Account</h2>
 
                                 <div class="row">
-                                    <div class="col-lg-12 col-12">
-                                        <h6 class="mb-3">The faster you fill up, the faster you sign in.</h6>
-                                    </div>
 
                                     <div class="col-lg-6 col-6 form-check-group form-check-group-donation-frequency">
                                         <div class="form-check form-check-radio">
@@ -134,36 +55,51 @@
                                     </div>
 
                                     <div class="col-lg-12 col-12">
-                                        <h5 class="mt-1">Personal Info</h5>
+                                        <h5 class="mt-2"></h5>
+                                    </div>
+                                    <div class="col-lg-12 col-12">
+                                        <span class="mt-4">Create an account to get started and register.</span>
                                     </div>
 
-                                    <div class="col-lg-6 col-12 mt-2">
-                                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Firstname" required>
+                                    <div class="col-lg-6 col-12 mt-4">
+                                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First name" required>
                                     </div>
 
-                                    <div class="col-lg-6 col-12 mt-2">
-                                        <input type="text" name="lastname" id="lastname" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Lastname" required>
+                                    <div class="col-lg-6 col-12 mt-4">
+                                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last name" required>
                                     </div>
-                                    <div class="col-lg-6 col-12 mt-3">
+                                    <div class="col-lg-12 col-12 mt-2">
                                         <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email" required>
                                     </div>
 
-                                    <div class="col-lg-6 col-12 mt-3">
+                                    <div class="col-lg-12 col-12 mt-2">
                                         <input type="text" name="username" id="username" class="form-control" placeholder="Username" required>
                                     </div>
 
-                                    <div class="col-lg-6 col-12 mt-3">
-                                        <input type="password" name="password" id="password" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Password" required>
+                                    <div class="col-lg-12 col-12 mt-2">
+                                        <input type="password" name="password" id="password-input" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Password" required><span class="toggle-password">Show</span>
+                                        
                                     </div>
                                     
-                                    <div class="col-lg-6 col-12 mt-3">
-                                        <input type="password" name="confirm_password" id="confirm_password" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Confirm Password" required>
+                                    <!--<div class="col-lg-6 col-12 mt-3">
+                                        <label>Confirm Password:</label>
+                                        <input type="password" name="confirm_password" id="confirm_password" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Re-type your confirm Password" required>                                       
+                                    </div>-->
+
+                                    <div class="col-md-12 mt-4">                          
+                                        <span class="term-conditions">By signing up, you are agree to our <a class="terms-conditions" href="">Terms and Conditions</a>, <a href="">Privacy Policy</a> for membership.</span>
                                     </div>
+
+                                    <div class="col-md-12 mt-2">
+                                        <button type="submit" class="form-control mt-1">Sign up</button>
+                                    </div>
+
 
                                     <div class="col-lg-12 col-12 mt-4">
                                         <div class="progress mt-2">
                                             <div class="progress-bar w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
+
                                         <div class="form-check-group mt-4">
                                             <a href="#" class="google-btn ">
                                                 <div class="google-icon-wrapper">
@@ -179,7 +115,7 @@
                                               </a>                                                                                             
                                         </div>
 
-                                        <button type="submit" class="form-control mt-1">Sign up</button>
+                                        
                                     </div>
                                 </div>
                             </form>
@@ -190,64 +126,13 @@
             </section>
         </main>
 
-        <footer class="site-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-12 mb-4">
-                        <img src="Homepage/images/trans-title.png" class="logo img-fluid" style="width: 250px;" alt="">
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-12 mb-4">
-                        <h5 class="site-footer-title mb-3">Barangay Links</h5>
-
-                        <ul class="footer-menu">
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">About</a></li>
-
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Services</a></li>
-
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Contact</a></li>
-
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link"></a></li>
-
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link"></a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-12 mx-auto" >
-                        <h5 class="site-footer-title mb-3">Contact Infomation</h5>
-
-                        <p class="text-white d-flex mb-2">
-                            <i class="bi-telephone me-2"></i>
-
-                            <a href="tel: 120-240-9600" class="site-footer-link">
-                                (082) 228-8984
-                            </a>
-                        </p>
-
-                        <p class="text-white d-flex">
-                            <i class="bi-envelope me-2"></i>
-
-                            <a href="mailto:info@yourgmail.com" class="site-footer-link">
-                                losamigosdavaocity.gov@gmail.com
-                            </a>
-                        </p>
-
-                        <p class="text-white d-flex mt-3">
-                            <i class="bi-geo-alt me-2"></i>
-                            Barangay Los Amigos, Tugbok, Davao City, Davao Del Sur. 8000
-                        </p>
-
-                        <a href="https://www.google.com/maps/place/Barangay+Los+Amigos/@7.1416029,125.4797257,15z/data=!4m6!3m5!1s0x32f913ff9378a1b7:0x626e3b5d2a8b7f6f!8m2!3d7.1416029!4d125.4797257!16s%2Fg%2F11c1vl_d7r" class="custom-btn btn mt-3">Get Direction</a>
-                    </div>
-                </div>
-            </div>
-
+        <!--<footer>
             <div class="site-footer-bottom">
                 <div class="container">
                     <div class="row">
 
                         <div class="col-lg-6 col-md-7 col-12">
-                            <p class="copyright-text mb-0">Copyright © 2023 <a href="#">Barangay Los Amigos</a><br>
+                            <p class="copyright-text mb-0">Copyright © 2023 <a href="index.php">Barangay Los Amigos</a><br>
                         	Created at:<a href="#" target="_blank"> CertiFast</a></p>
                         </div>
                         
@@ -278,7 +163,7 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer>-->
 
         <!-- JAVASCRIPT FILES -->
         <script src="Homepage/js/jquery.min.js"></script>
@@ -286,6 +171,22 @@
         <script src="Homepage/js/jquery.sticky.js"></script>
         <script src="Homepage/js/counter.js"></script>
         <script src="Homepage/js/custom.js"></script>
+    <script>
 
-    </body>
+        const passwordInput = document.getElementById("password-input");
+        const togglePassword = document.querySelector(".toggle-password");
+
+        togglePassword.addEventListener("click", function() {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            togglePassword.classList.remove("show-password");
+            togglePassword.classList.add("hide-password");
+        } else {
+            passwordInput.type = "password";
+            togglePassword.classList.remove("hide-password");
+            togglePassword.classList.add("show-password");
+        }
+        });
+    </script>
+</body>
 </html>

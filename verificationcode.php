@@ -28,7 +28,7 @@
                 <div class="container">
                     <div class="row">                    
                         <div class="col-lg-6 col-12 mx-auto">
-                            <form class="custom-form donate-form" action="model/verification-code.php" method="POST" role="form">
+                            <form class="custom-form donate-form" action="#" method="POST" role="form">
                                 <h2 class="mb-4">Email Verification</h2>
                                 <div class="row">
                                     <div class="col-lg-12 col-12">

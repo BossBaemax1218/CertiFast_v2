@@ -23,20 +23,17 @@
     <body>
 
         <main>
-            <section class="donate-section">
-                <div class="section-overlay"></div>
+            <section class="section">
+                <div class="section"></div>
                 <div class="container">
                     <div class="row">                    
                         <div class="col-lg-6 col-12 mx-auto">
-                            <form class="custom-form donate-form" action="model/forgot-password.php" method="POST" role="form">
-                                <h2 class="mb-4">Forgot Password</h2>
+                            <form class="custom-form donate-form" action="#" method="POST" role="form">
+                                <h2 class="mt-6">Forgot Password</h2>
                                 <div class="row">
                                     <div class="col-lg-12 col-12">
-                                        <p class="mb-3">Please type your email address to create a new password. and wait for <strong>verification code</strong> via email. </p>
+                                        <p class="mb-3">Please type your email address to create a new password and wait for <strong>verification code</strong> via email. </p>
                                     </div>
-                                    <?php if (isset($email_error)) { ?>
-                                    <p><?php echo $email_error; ?></p>
-                                    <?php } ?>
                                     <div class="col-lg-12 col-12">
                                         <h5 class="mt-1">Email</h5>
                                     </div>
@@ -51,7 +48,6 @@
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </section>
