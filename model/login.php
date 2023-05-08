@@ -18,7 +18,7 @@
 				$_SESSION['avatar'] = $row['avatar'];
 			}
 
-			$_SESSION['message'] = 'You have successfull logged in to CertiFast Barangay Management System!';
+			$_SESSION['message'] = 'You have successfull logged in to CertiFast - Barangay Los Amigos!';
 			$_SESSION['success'] = 'success';
 
             header('location: ../dashboard.php');

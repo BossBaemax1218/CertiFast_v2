@@ -41,13 +41,13 @@
   CUSTOM PROPERTIES ( VARIABLES )             
 -----------------------------------------*/
 :root {
-  --white-color:                  #ecebeb;
+  --white-color:                  #ffffff;
   --primary-color:                #267fe4;
-  --secondary-color:              #be8787;
-  --section-bg-color:             #b6b6b6;
+  --secondary-color:              #E42654;
+  --section-bg-color:             #d6d3d3;
   --site-footer-bg-color:         #01a87e;
   --custom-btn-bg-color:          #E42654;
-  --custom-btn-bg-hover-color:    #4d4d4d;
+  --custom-btn-bg-hover-color:    #51b119;
   --dark-color:                   #000000;
   --p-color:                      #050b1d;
   --border-color:                 #ffffff;
@@ -75,7 +75,7 @@
 }
 
 body {
-  background-color: var(--primary-color);
+  background-color: var(--white-color);
   font-family: var(--body-font-family); 
 }
 
@@ -753,18 +753,18 @@ strong {
 /*---------------------------------------
   LOGIN & SIGNUP              
 -----------------------------------------*/
-.donate-section {
+.section {
   background-color: #E42654;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   position: relative;
   padding-top: 150px;
-  padding-bottom: 150px;
+  padding-bottom: 168px;
 }
 
 .donate-form {
-  background: var(--primary-color);
+  background: var(--white-color);
   border-radius: var(--border-radius-medium);
   position: relative;
   overflow: hidden;
@@ -1085,11 +1085,11 @@ blockquote::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #299eec;
+  background-color: #f3543f;
   color: #000000;
   font-size: 16px;
   font-weight: 500;
-  border: 1px solid #dbdbdb;
+  border: 0px solid #dbdbdb;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   padding: 10px 20px;
@@ -1119,7 +1119,7 @@ blockquote::before {
 }
 
 .google-btn:hover {
-  background-color: #bb3c2c;
+  background-color: #d3d3d3;
 }
 
 .facebook-btn {
@@ -1160,7 +1160,7 @@ blockquote::before {
 }
 
 .facebook-btn:hover {
-  background-color: #1b4fdb;
+  background-color: #d3d3d3;
 }
 
 
@@ -1186,15 +1186,25 @@ blockquote::before {
   width: 100%;
   margin-top: 10px;
 }
+/* Signup icon password */
+/* Password input container */
+.password-input {
+  position: relative;
+}
 
+/* Password input field */
+.password-input input[type="password"] {
+  padding-right: 40px;
+  box-sizing: border-box;
+}
 /* Toggle password button */
 .password-input .toggle-password {
-  display: inline-block;
-  text-align: right;
-  width: 100%;
-  margin-top: 10px;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
   cursor: pointer;
-  color: #333;
+  color: #7c7c7c;
 }
 
 /* Password visibility styles */
@@ -1203,6 +1213,36 @@ blockquote::before {
 }
 
 .password-input .hide-password::after {
+  content: "Show";
+}
+
+/* Login password icon */
+/* Password input container */
+.password-input1 {
+  position: relative;
+}
+
+/* Password input field */
+.password-input1 input[type="password"] {
+  padding-right: 40px;
+  box-sizing: border-box;
+}
+/* Toggle password button */
+.password-input1 .toggle-password1 {
+  position: absolute;
+  top: 70%;
+  right: 10%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #7c7c7c;
+}
+
+/* Password visibility styles */
+.password-input1 .show-password::after {
+  content: "Hide";
+}
+
+.password-input1 .hide-password::after {
   content: "Show";
 }
 

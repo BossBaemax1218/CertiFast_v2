@@ -117,7 +117,7 @@ $current_page = PageName();
                             <p>Settings</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'show' : null ?>" id="settings">
+                    <div class="collapse <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='user-resident.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'show' : null ?>" id="settings">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="#barangay" data-toggle="modal">
@@ -141,10 +141,20 @@ $current_page = PageName();
                                         <span class="sub-item">Support</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="#user_resident" data-toggle="modal">
+                                        <span class="sub-item">Resident</span>
+                                    </a>
+                                </li>
                             <?php else: ?>
                                 <li class="<?= $current_page=='users.php' ? 'active' : null ?>">
                                     <a href="users.php">
                                         <span class="sub-item">Staff</span>
+                                    </a>
+                                </li>
+                                <li class="<?= $current_page=='user-resident.php' ? 'active' : null ?>">
+                                    <a href="user-resident.php">
+                                        <span class="sub-item">Resident</span>
                                     </a>
                                 </li>
                                 <li class="<?= $current_page=='support.php' ? 'active' : null ?>">
