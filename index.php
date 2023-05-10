@@ -103,53 +103,12 @@
             <section class="hero-section hero-section-full-height">
                 <div class="container-fluid">
                     <div class="row">
-
                         <div class="col-lg-12 col-12 p-0">
-                            <div id="hero-slide" class="carousel carousel-fade slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="Homepage/images/slide/1.jpg" class="carousel-image img-fluid" alt="...">
-                                        
-                                        <div class="carousel-caption d-flex flex-column justify-content-end">
-                                            <h1>Hapag Kay PBBM</h1>
-                                            
-                                            <p>Halina't magtanim ng prutas at gulay sa Barangay Project</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="carousel-item">
-                                        <img src="Homepage/images/slide/4.jpg" class="carousel-image img-fluid" alt="...">
-                                        
-                                        <div class="carousel-caption d-flex flex-column justify-content-end">
-                                            <h1>BCPC</h1>
-                                            
-                                            <p>Training Program for Barangay Council for the Protection of Children</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="carousel-item">
-                                        <img src="Homepage/images/slide/3.jpg" class="carousel-image img-fluid" alt="...">
-                                        
-                                        <div class="carousel-caption d-flex flex-column justify-content-end">
-                                            <h1>Los Amigos Park</h1>
-                                            
-                                            <p>Visit Los Amigos Park</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <button class="carousel-control-prev" type="button" data-bs-target="#hero-slide" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-
-                                <button class="carousel-control-next" type="button" data-bs-target="#hero-slide" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
+                            <img src="Homepage\images\wave2.svg">
                         </div>
-
+                        <div class="title-name">
+                            <img src="Homepage\images\logoIcon.png">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -643,7 +602,7 @@
                     </div>
 
                     <div class="col-lg-4 col-md-6 col-12 mb-4">
-                        <h5 class="site-footer-title mb-3">Barangay Links</h5>
+                        <h5 class="site-footer-title mb-3" style="color: black;">Barangay Links</h5>
 
                         <ul class="footer-menu">
                             <li class="footer-menu-item"><a href="#" class="footer-menu-link">About</a></li>
@@ -659,7 +618,7 @@
                     </div>
 
                     <div class="col-lg-4 col-md-6 col-12 mx-auto" >
-                        <h5 class="site-footer-title mb-3">Contact Infomation</h5>
+                        <h5 class="site-footer-title mb-3" style="color: black;">Contact Infomation</h5>
 
                         <p class="text-white d-flex mb-2">
                             <i class="bi-telephone me-2"></i>
@@ -692,8 +651,8 @@
                     <div class="row">
 
                         <div class="col-lg-6 col-md-7 col-12">
-                            <p class="copyright-text mb-0">Copyright © 2023 <a href="#">Barangay Los Amigos</a><br>
-                        	Created at:<a href="#" target="_blank"> CertiFast</a></p>
+                            <p class="copyright-text mb-0">Copyright © 2023 <a href="#">CertiFast</a><br>
+                        	Created at:<a href="#" target="_blank"> CertiFast Team</a></p>
                         </div>
                         
                         <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">

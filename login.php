@@ -30,33 +30,32 @@
         <div class="container" id="container">
             <div class="form-container sign-up-container">
                 <form method="POST" action="model/signup.php">
-                    <h1 style="color: white;">CertiFast Account</h1>
+                    <h1 style="color: black;">CertiFast Account</h1>
                   
-                    <span class="mt-4">Create an account to get started and register.</span>
+                    <span class="mt-2">--------------------------------------------------</span>
                     <br>
+                    <input class="form-control input-border-bottom" name="householdno" id="householdno" type="text" placeholder="Household no." required/>
                     <input class="form-control input-border-bottom" name="fullname" id="fullname" type="text" placeholder="Name" required/>
                     <input class="form-control input-border-bottom" name="email" id="email" type="email" placeholder="Email" required/>
                     <input class="form-control input-border-bottom" name="password" id="password" type="password" placeholder="Password" required/>
                     
-                    <button type="submit" class="mt-2">Sign Up</button>
-                    <span class="mt-4">or use your email for sign up</span>
+                    <button type="submit" class="mt-4">Sign Up</button>
+                    <span class="mt-4">----------  or   ----------</span>
                     <div class="social-container">
-                        <a href="#" class="social-fb"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-google"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <span>Sign up with Google</span>
                     </div>
                     
                 </form>
             </div>
             <div class="form-container sign-in-container">
                 <form method="POST" action="model/login.php">
-                    <h1 style="color: white;">Sign in</h1>
+                    <h1 style="color: black;">Sign in</h1>
                     <div class="social-container">
-                        <a href="#" class="social-fb"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-google"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <span>Sign in with Google</span>
                     </div>
-                    <span>or use your account</span>
+                    <span>----------  or   ----------</span>
                     <br>
                     
                     <?php if(isset($_SESSION['message'])): ?>
@@ -78,13 +77,13 @@
                         <img src="assets/img/trans-title.png" alt="certifast-logo">
                         <h1>Welcome Back!</h1>
                         
-                        <p>To keep connected with us, please login with your personal info</p>
+                        <p>If you are already registered and singed up, please click sign in instead.</p>
                         <button class="ghost" id="signIn">Sign In</button>
                     </div>
                     <div class="overlay-panel overlay-right">
                         <img src="assets/img/trans-title.png" alt="certifast-logo">
                         <h1>Welcome!</h1>
-                        <p>Enter your personal details and start journey with us</p>
+                        <p>To keep connected with us, please sign in with your personal info.</p>
                         <button class="ghost" id="signUp">Sign Up</button>
                     </div>
                 </div>
@@ -93,8 +92,7 @@
 
         <footer>
             <p>
-                Created by <a target="_blank" href="index.php">CertiFast Team</a> 2023-2025
-                
+                Created by <a href="index.php">CertiFast Team</a> 2023               
             </p>
         </footer>
 

@@ -40,25 +40,25 @@ p {
 
 span {
 	font-size: 14px;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 a {
-	color: #ffffff;
+	color: #5f5f5f;
 	font-size: 14px;
 	text-decoration: none;
 	margin: 15px 0;
 }
 
 i{
-    color: black;
+    color: linear-gradient(-120deg, #4285f4, #34a853, #fbbc05, #ea4335);;
 }
 
 button {
 	border-radius: 16px;
 	border: 1px solid #FF9A8B;
 	background-color: #FF9A8B;
-	color: #000000;
+	color: #494949;
 	font-size: 12px;
 	font-weight: bold;
 	padding: 12px 45px;
@@ -81,8 +81,7 @@ button.ghost {
 }
 
 form {
-    background-color: #FF9A8B;
-    background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);    
+    background-color: rgb(221, 220, 220);    
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -175,7 +174,7 @@ img {
 }
 
 .overlay {
-	background: #9e9e9e;
+	background: #cecdcd;
 	background: -webkit-linear-gradient(to right, #ffffff, #ffffff);
 	background: linear-gradient(to right, #ffffff, #ffffff);
 	background-repeat: no-repeat;
@@ -230,15 +229,7 @@ img {
 	margin: 20px 0;
 }
 
-.social-container a[class="social-fb"]{
-	background: rgb(244, 245, 245);
-}
-
 .social-container a[class="social-google"]{
-	background: rgb(244, 245, 245);
-}
-
-.social-container a[class="social-linkedin"]{
 	background: rgb(244, 245, 245);
 }
 

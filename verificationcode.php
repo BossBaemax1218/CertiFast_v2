@@ -7,55 +7,37 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Certifast - Forgot Password  </title>
+        <title>Certifast - Verification  </title>
 
         <!-- CSS FILES -->        
-        <link href="Homepage/css/bootstrap.min.css" rel="stylesheet">
 
         <link rel="icon" href="Homepage/images/CFLogo2.ico" type="image/x-icon"/>
 
-        <link href="Homepage/css/bootstrap-icons.css" rel="stylesheet">
+        <link href="Homepage/css/forgot-password.css" rel="stylesheet">
 
-        <link href="Homepage/css/password.css" rel="stylesheet">
+        <link href="Homepage/css/bootstrap.min.css" rel="stylesheet">
+
 
     </head>
     
     <body>
 
         <main>
-            <section class="donate-section">
-                <div class="section-overlay"></div>
-                <div class="container">
-                    <div class="row">                    
-                        <div class="col-lg-6 col-12 mx-auto">
-                            <form class="custom-form donate-form" action="#" method="POST" role="form">
-                                <h2 class="mb-4">Email Verification</h2>
-                                <div class="row">
-                                    <div class="col-lg-12 col-12">
-                                        <p class="mb-3">Please type your <strong>verification code</strong> here. </p>
-                                    </div>
-
-                                    <div class="col-lg-12 col-12 mt-2">
-                                        <input id="email" name="email" type="email" class="form-control" placeholder="Enter your code here" required>
-                                    </div>
-
-                                    <div class="col-lg-12 col-12 mt-4">
-                                        <button type="submit" class="form-control">Confirm</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <span class="mt-2" style="font-size: 16px;">To reset your password, type the sent code here we sent and follow the instructions.</span>
+                            <span class="mt-4" style="font-size: 22px;"><b>Verification Code</b></span>
+                            <input class="verify-code mt-2" type="text" id="verify-code" name="verify-code" placeholder="Enter your code">
+                            <button type="submit" ><a href="resetpassword.php">Confirm</a></button>
+                        </form>
                     </div>
                 </div>
-            </section>
+                <footer>
+                <p>
+                    Created by <a href="index.php">CertiFast Team</a> 2023           
+                </p>
+              </footer>
         </main>
-        <!-- JAVASCRIPT FILES -->
-        <script src="Homepage/js/jquery.min.js"></script>
-        <script src="Homepage/js/bootstrap.min.js"></script>
-        <script src="Homepage/js/jquery.sticky.js"></script>
-        <script src="Homepage/js/counter.js"></script>
-        <script src="Homepage/js/custom.js"></script>
-
     </body>
 </html>
