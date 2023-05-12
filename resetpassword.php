@@ -30,7 +30,7 @@
                     </div>
                     <div class="card-body">
                         <form id="my-form">
-                                <span class="mt-2" style="font-size: 16px;">Create a new password that is at least 6 characters long. A strong password is combination of letters, numbers, and symbols.</span>
+                                <span class="mt-2" style="font-size: 16px;">Create a new password that is at least 8 characters long. A strong password is combination of letters, numbers, and symbols.</span>
                                 <input class="password mt-4" type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="New password" onClick="clearInput()">
                                 <label class="toggle-password" onclick="togglePasswordVisibility()" id="show-hide-password">
                                     <i id="show-hide-icon" class="fa fa-eye-slash"></i>

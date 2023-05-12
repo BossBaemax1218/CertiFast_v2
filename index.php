@@ -100,25 +100,22 @@
 
         <main>
 
-            <section class="hero-section hero-section-full-height">
-                <div class="container-fluid">
+            <section class="title-logo">
                     <div class="row">
-                        <div class="title-bg">
-                            <img src="Homepage\images\wave2.svg" style="width: 1850px; left: 0px;" alt="bg-logo">
+                        <div class="logo-title">
+                            <img src="Homepage\images\wave3.svg" style="position: relative;" alt="bg-logo">
                         </div>
                         <div class="title-name">
-                            <img src="Homepage\images\logoIcon.png" style=" margin-top:5%;">
+                            <img src="Homepage\images\logoIcon.png" style="margin-left: 5%; margin-top: 1%;" alt="bg-name">
                         </div>
                     </div>
-                </div>
             </section>
 
 
-            <section class="section-padding">
+            <section class="section-padding" style="margin-top: 165px;">
                 <div class="container">
                     <div class="row">
-
-                        <div class="col-lg-10 col-12 text-center mx-auto">
+                        <div class="col-lg-12 col-12 text-center mx-auto">
                             <h2 class="mb-5">Welcome to Barangay Los Amigos</h2>
                         </div>
 
@@ -176,9 +173,9 @@
 
                         <div class="col-lg-6 col-12">
                             <div class="custom-text-box">
-                                <h2 class="mb-2">Our Story</h2>
+                                <h2 class="mb-2">Our Barangay</h2>
 
-                                <h5 class="mb-3">Barangay Los Amigos</h5>
+                                <h5 class="mb-3">Los Amigos</h5>
 
                                 <p class="mb-0">Los Amigos is a barangay in Davao City. Its population as determined by the 2020 Census was 11,694. This represented 0.66% of the total population of Davao City.</p>
                             </div>

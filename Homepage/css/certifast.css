@@ -556,16 +556,18 @@ strong {
   margin-left: 0%;
 }
 
-.title-name {
-  width: 300%;
+img [alt="bg-logo"]{
+  background-position: center;
   position: relative;
-  margin-left: 2%;
+
 }
 
-.title-bg {
-  width: 1860px;
+img [alt="bg-name"]{
+  margin-left: 5%; 
+  margin-bottom: 200px; 
   position: relative;
 }
+
 
 .carousel:hover .carousel-control-next-icon, 
 .carousel:hover .carousel-control-prev-icon {
@@ -1346,6 +1348,7 @@ label a:hover {
   .section-padding {
     padding-top: 50px;
     padding-bottom: 50px;
+    margin-top: 120px;
   }
 
   .hero-form {

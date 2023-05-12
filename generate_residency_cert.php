@@ -202,7 +202,7 @@
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" class="form-control" name="name" value="<?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?>">
-                            <button type="button" class="btn btn-secondary" onclick="goBack()">Close</button>
+                            <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                         </form>

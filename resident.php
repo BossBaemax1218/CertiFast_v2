@@ -324,7 +324,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                         </form>
@@ -521,7 +521,7 @@
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" name="id" id="res_id">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             <?php if(isset($_SESSION['username'])): ?>
                             <button type="submit" class="btn btn-primary">Update</button>
                             <?php endif ?>

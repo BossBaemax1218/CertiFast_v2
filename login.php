@@ -74,14 +74,18 @@
             <div class="overlay-container">
                 <div class="overlay">
                     <div class="overlay-panel overlay-left">
-                        <img src="assets/img/trans-title.png" alt="certifast-logo">
+                        <a href="index.php">
+                            <img src="assets/img/trans-title.png" alt="certifast-logo">
+                        </a>
                         <h1>Welcome Back!</h1>
                         
                         <p>If you are already registered and singed up, please click sign in instead.</p>
                         <button class="ghost" id="signIn">Sign In</button>
                     </div>
                     <div class="overlay-panel overlay-right">
-                        <img src="assets/img/trans-title.png" alt="certifast-logo">
+                        <a href="index.php">
+                            <img src="assets/img/trans-title.png" alt="certifast-logo">
+                        </a>
                         <h1>Welcome!</h1>
                         <p>To keep connected with us, please sign in with your personal info.</p>
                         <button class="ghost" id="signUp">Sign Up</button>
