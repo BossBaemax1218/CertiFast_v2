@@ -103,11 +103,11 @@
             <section class="hero-section hero-section-full-height">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12 col-12 p-0">
-                            <img src="Homepage\images\wave2.svg">
+                        <div class="title-bg">
+                            <img src="Homepage\images\wave2.svg" style="width: 1850px; left: 0px;" alt="bg-logo">
                         </div>
                         <div class="title-name">
-                            <img src="Homepage\images\logoIcon.png">
+                            <img src="Homepage\images\logoIcon.png" style=" margin-top:5%;">
                         </div>
                     </div>
                 </div>

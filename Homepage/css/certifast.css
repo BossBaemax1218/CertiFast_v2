@@ -187,7 +187,7 @@ strong {
 }
 
 .section-overlay + .container {
-  position: relative;
+  position: fixed;
 }
 
 
@@ -549,19 +549,22 @@ strong {
 
 
 /*---------------------------------------
-  HERO & HERO SLIDE         
+  TITLE LOGO        
 -----------------------------------------*/
 .hero-section-full-height {
-  width: 150%;
-  min-height: 800px;
   position: relative;
+  margin-left: 0%;
 }
 
 .title-name {
   width: 300%;
-  margin-top:-18%;
   position: relative;
   margin-left: 2%;
+}
+
+.title-bg {
+  width: 1860px;
+  position: relative;
 }
 
 .carousel:hover .carousel-control-next-icon, 
@@ -710,74 +713,6 @@ strong {
   font-weight: var(--font-weight-bold);
   line-height: normal;
 }
-
-
-/*---------------------------------------
-  VOLUNTEER              
------------------------------------------*/
-.volunteer-section {
-  background: var(--secondary-color);
-  position: relative;
-  overflow: hidden;
-}
-
-.volunteer-section::after {
-  content: "";
-  background: var(--primary-color);
-  border-radius: 50%;
-  position: absolute;
-  bottom: -110px;
-  right: -80px;
-  width: 350px;
-  height: 350px;
-}
-
-.volunteer-form {
-  background: var(--white-color);
-  border-radius: var(--border-radius-medium);
-  padding: 50px;
-}
-
-.volunteer-image {
-  border-radius: 100%;
-  display: block;
-  margin: auto;
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-}
-
-.volunteer-section .custom-block-body {
-  max-width: 440px;
-  margin: 0 auto;
-}
-
-.volunteer-section .custom-block-body p {
-  line-height: 1.7;
-}
-
-
-/*---------------------------------------
-  LOGIN & SIGNUP              
------------------------------------------*/
-.section {
-  background-color: #E42654;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-  padding-top: 150px;
-  padding-bottom: 168px;
-}
-
-.donate-form {
-  background: var(--white-color);
-  border-radius: var(--border-radius-medium);
-  position: relative;
-  overflow: hidden;
-  padding: 50px;
-}
-
 
 /*---------------------------------------
   NEWS         
@@ -1085,92 +1020,6 @@ blockquote::before {
   padding-bottom: 30px;
   width: 100%;
 }
-/*---------------------------------------
-  GOOGLE & FACEBOOK BUTTON               
------------------------------------------*/
-.google-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f3543f;
-  color: #000000;
-  font-size: 16px;
-  font-weight: 500;
-  border: 0px solid #dbdbdb;
-  border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  padding: 10px 20px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.google-icon-wrapper {
-  border-radius: 2px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  margin-left: 10px;
-  width: 40px;
-}
-
-.google-icon {
-  display: block;
-  width: 18px;
-  height: 18px;
-}
-
-.google-btn-text {
-  margin-right: 10px;
-  text-align: center;
-}
-
-.google-btn:hover {
-  background-color: #d3d3d3;
-}
-
-.facebook-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #159ffc;
-  color: #080808;
-  font-size: 16px;
-  font-weight: 500;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  padding: 10px 20px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.facebook-icon-wrapper {
-  border-radius: 2px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  margin-left: 10px;
-  width: 40px;
-}
-
-.facebook-icon {
-  display: block;
-  width: 20px;
-  height: 20px;
-}
-
-.facebook-btn-text {
-  margin-right: 10px;
-  text-align: center;
-}
-
-.facebook-btn:hover {
-  background-color: #d3d3d3;
-}
-
-
 
 /*---------------------------------------
   CUSTOM FORM               
@@ -1185,72 +1034,6 @@ blockquote::before {
   padding-top: 13px;
   padding-bottom: 13px;
   outline: none;
-}
-
-.forgot-password-link {
-  display: inline-block;
-  text-align: right;
-  width: 100%;
-  margin-top: 10px;
-}
-/* Signup icon password */
-/* Password input container */
-.password-input {
-  position: relative;
-}
-
-/* Password input field */
-.password-input input[type="password"] {
-  padding-right: 40px;
-  box-sizing: border-box;
-}
-/* Toggle password button */
-.password-input .toggle-password {
-  position: absolute;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #7c7c7c;
-}
-
-/* Password visibility styles */
-.password-input .show-password::after {
-  content: "Hide";
-}
-
-.password-input .hide-password::after {
-  content: "Show";
-}
-
-/* Login password icon */
-/* Password input container */
-.password-input1 {
-  position: relative;
-}
-
-/* Password input field */
-.password-input1 input[type="password"] {
-  padding-right: 40px;
-  box-sizing: border-box;
-}
-/* Toggle password button */
-.password-input1 .toggle-password1 {
-  position: absolute;
-  top: 70%;
-  right: 10%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #7c7c7c;
-}
-
-/* Password visibility styles */
-.password-input1 .show-password::after {
-  content: "Hide";
-}
-
-.password-input1 .hide-password::after {
-  content: "Show";
 }
 
 .custom-form .form-control:hover,
@@ -1407,53 +1190,6 @@ input[type="checkbox"]:checked {
 label a:hover {
   text-decoration: underline;
 }
-
-
-
-/*---------------------------------------
-  CONTACT SEARCH & DONATE & SUBCRIBE FORM              
------------------------------------------*/
-.contact-form .form-control {
-  background: var(--white-color);
-}
-
-.search-form {
-  position: relative;
-}
-
-.search-form .form-control {
-  padding-right: 50px;
-}
-
-.search-form button[type="submit"] {
-  background: transparent;
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: var(--p-color);
-  width: 50px;
-  padding: 12px;
-}
-
-.search-form button[type="submit"]:hover {
-  background: transparent;
-  color: var(--dark-color);
-}
-
-.subscribe-form {
-  background: var(--section-bg-color);
-  border-radius: var(--border-radius-small);
-  padding: 30px;
-}
-
-.subscribe-form .form-control {
-  background: var(--white-color);
-}
-
-.donate-form .form-control {
-  margin-bottom: 0;
-}
-
 
 /*---------------------------------------
   SITE FOOTER              
