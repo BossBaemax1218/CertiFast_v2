@@ -42,9 +42,9 @@
 -----------------------------------------*/
 :root {
   --white-color:                  #ffffff;
-  --primary-color:                #2688e4;
+  --primary-color:                #51b119;
   --secondary-color:              #E42654;
-  --section-bg-color:             #d6d3d3;
+  --section-bg-color:             #e4e4e4;
   --site-footer-bg-color:         #2688e4;
   --custom-btn-bg-color:          #E42654;
   --custom-btn-bg-hover-color:    #51b119;
@@ -551,20 +551,17 @@ strong {
 /*---------------------------------------
   TITLE LOGO        
 -----------------------------------------*/
-.hero-section-full-height {
-  position: relative;
-  margin-left: 0%;
-}
 
 img [alt="bg-logo"]{
   background-position: center;
   position: relative;
+  width: 1865px;
 
 }
 
 img [alt="bg-name"]{
-  margin-left: 5%; 
-  margin-bottom: 200px; 
+  left: 5%;
+  top: 1%; 
   position: relative;
 }
 

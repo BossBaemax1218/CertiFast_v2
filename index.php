@@ -103,16 +103,15 @@
             <section class="title-logo">
                     <div class="row">
                         <div class="logo-title">
-                            <img src="Homepage\images\wave3.svg" style="position: relative;" alt="bg-logo">
+                            <img src="Homepage\images\wave3.svg" alt="bg-logo">
                         </div>
                         <div class="title-name">
-                            <img src="Homepage\images\logoIcon.png" style="margin-left: 5%; margin-top: 1%;" alt="bg-name">
+                            <img src="Homepage\images\logoIcon.png" style="margin-top: -15%; margin-left: 5%;" alt="bg-name">
                         </div>
                     </div>
             </section>
 
-
-            <section class="section-padding" style="margin-top: 165px;">
+            <section class="section-padding" style="margin-top: 10%;">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-12 text-center mx-auto">
@@ -561,7 +560,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-5 col-12 mx-auto">
+                        <div class="col-lg-5 col-6 mx-auto">
                             <form class="custom-form contact-form" action="#" method="post" role="form">
                                 <h2>Contact form</h2>
 
