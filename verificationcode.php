@@ -26,9 +26,9 @@
                 <div class="card">
                     <div class="card-body">
                         <form>
-                            <span class="mt-2" style="font-size: 24px;"><b>Verification Code</b></span>
-                            <span class="mt-3" style="font-size: 18px; text-align: left;">To reset your password, type the code we sent to your email address here.</span>                          
-                            <input class="verify-code mt-3" type="text" id="verify-code" name="verify-code" placeholder="Enter your code">
+                            <span class="mt-1" style="font-size: 24px;"><b>Verification Code</b></span>
+                            <span class="mt-2" style="font-size: 14px; text-align: left;">To reset your password, type the code we sent to your email address here.</span>                          
+                            <input class="verify-code mt-2" type="text" id="verify-code" name="verify-code" placeholder="Enter your code">
                             <button type="submit" ><a href="resetpassword.php">Confirm</a></button>
                         </form>
                     </div>

@@ -26,12 +26,12 @@
                 <div class="card">
                     <div class="card-header">
                         <img class="lock-icon" src="Homepage\images\icons\padlock.png">                  
-                        <h5 class="mt-2">Forgot your password</h5>
+                        <h6 class="mt-2">Forgot your password</h6>
                     </div>
                     <div class="card-body">
                         <form>
-                            <span class="mt-2" style="font-size: 18px; text-align: left;">Please enter your email and we'll send you a verification code.</span>
-                            <input class="mt-4" type="email" id="email" name="email" placeholder="Email address">
+                            <span class="mt-1" style="font-size: 14px; text-align: left;">Please enter your email and we'll send you a verification code.</span>
+                            <input class="mt-2" type="email" id="email" name="email" placeholder="Email address">
                             <button type="submit"><a href="verificationcode.php">Reset Password</a></button>
                             <span class="mt-3">  or create account with  </span>
                             <div class="mt-3 mb-4">

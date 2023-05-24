@@ -26,12 +26,12 @@
                 <div class="card">
                     <div class="card-header">
                         <img class="lock-icon" src="Homepage\images\icons\reset-password.png">                  
-                        <h5 class="mt-2">Create a new password</h5>
+                        <h6 class="mt-1">Create a new password</h6>
                     </div>
                     <div class="card-body">
                         <form id="my-form">
-                                <span class="mt-2" style="font-size: 16px;">Create a new password that is at least 8 characters long. A strong password is combination of letters, numbers, and symbols.</span>
-                                <input class="password mt-4" type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="New password" onClick="clearInput()">
+                                <span class="mt-1" style="font-size: 14px;">Create a new password that is at least 8 characters long. A strong password is combination of letters, numbers, and symbols.</span>
+                                <input class="password mt-2" type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="New password" onClick="clearInput()">
                                 <label class="toggle-password" onclick="togglePasswordVisibility()" id="show-hide-password">
                                     <i id="show-hide-icon" class="fa fa-eye-slash"></i>
                                 </label>
