@@ -64,7 +64,24 @@
 						<?php unset($_SESSION['message']); ?>
 					<?php endif ?>
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-head-row">
+										<div class="card-title fw-bold"><h1><strong>Barangay Los Amigos</strong></h1></div>
+									</div>
+								</div>
+								<div class="card-body">
+									<p><?= !empty($db_txt) ? $db_txt : 'Los Amigos is a barangay in Davao City.' ?></p>
+									<div class="text-center">
+										<img class="img-fluid" src="<?= !empty($db_img) ? 'assets/uploads/'.$db_img : 'assets/img/bg-abstract.png' ?>" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<!--<div class="col-md-4">
 							<div class="card card-stats card card-round">
 								<div class="card-body">
 									<div class="row">
@@ -87,7 +104,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div>-->
 						<!--<div class="col-md-4">
 							<div class="card card-stats card card-round">
 								<div class="card-body">
@@ -161,28 +178,44 @@
 							</div>
 						</div>-->
 						<div class="col-md-4">
-							<div class="card card-stats card card-round" >
-								<div class="card-body">
-									<div class="row">
-										<div class="col-4">
-											<div class="icon-big text-center">
-												<i class="fas fa-chart-bar fa-2x" style="color: gray;"></i>
-											</div>
-										</div>
-										<div class="col-2 col-stats">
-										</div>
-										<div class="col-2 col-stats">
-											<div class="numbers mt-2">
-												<h2 class="text-uppercase" style="font-size: 13px;">Earnings</h2>
-												<h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><span>&#8369;</span><?= number_format($revenue['am'],2)?></h3>
-											</div>
-										</div>
-									</div>
+						<div class="card card-stats card-round">
 									<div class="card-body">
-										<a href="revenue.php?state=revenue" class="card-link text" style="color: gray;">All Earnings </a>
+										<canvas id="myChart1" style="width:50%;max-width:300px;">
+											<script>
+												var xValues = ["Total Resident"];
+												var yValues = [100,50];
+												var barColors = ["#D32D41"];
+												var options = {
+													pieceLabel: {
+														render: function(d) { 
+															return d.label + " (" + d.percentage + "%)" 
+														},
+														fontColor: '#000',
+														position: 'inside',
+														segment: true
+													}
+												};
+
+												new Chart("myChart1", {
+												type: "pie",
+												data: {
+													labels: xValues,
+													datasets: [{
+													backgroundColor: barColors,
+													data: yValues
+													}]
+												},
+												options: {
+													title: {
+													display: true,
+													text: "Overall Total Resident"
+													}
+												}
+												});
+											</script>
+										</canvas>
 									</div>
 								</div>
-							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="card card-stats card-round">
@@ -291,23 +324,6 @@
 								</div>
 							</div>-->
 						</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="card">
-								<div class="card-header">
-									<div class="card-head-row">
-										<div class="card-title fw-bold"><h1><strong>Barangay Los Amigos</strong></h1></div>
-									</div>
-								</div>
-								<div class="card-body">
-									<p><?= !empty($db_txt) ? $db_txt : 'Los Amigos is a barangay in Davao City.' ?></p>
-									<div class="text-center">
-										<img class="img-fluid" src="<?= !empty($db_img) ? 'assets/uploads/'.$db_img : 'assets/img/bg-abstract.png' ?>" />
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 
