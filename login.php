@@ -46,7 +46,7 @@
                     <input id="password" name="password" type="password" placeholder="Password" required>
                 </div>
                 
-                <a href="forgotpassword.php">Forgot your password?</a>
+                <a href="forgot-password.php">Forgot your password?</a>
                 
                 <input type="submit" value="Login" class="btn">
                 <p class="social-text" style="font-size: 18px;">or sign in with</p>

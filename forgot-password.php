@@ -4,18 +4,21 @@
    <head>
       <meta charset="utf-8">
       <title>Forgot Password</title>
-      <link rel="stylesheet" href="Homepage/css/forgot-password.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <link rel="stylesheet" href="Homepage/css/password-styles.css">
+      <link rel="icon" href="Homepage/images/CFLogo2.ico" type="image/x-icon"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>  
    </head>
    <body>
       <div class="content">
+         <img class="lock-icon" src="Homepage\images\icons\padlock.png">
          <header>Forgot Password</header>
          <form action="#">
-            <div class="field">
+         <span class="mt-1">Please enter your email and we'll send you a verification code.</span>
+            <div class="field mt-2">
                <input onkeyup="check()" id="email" type="text" autocomplete="off" placeholder="Enter Email Address">
                <div class="icons">
-                  <span class="icon1 fas fa-exclamation"></span>
-                  <span class="icon2 fas fa-check"></span>
+                  <span class="invalid fas fa-times"></span>
+                  <span class="valid fas fa-check"></span>
                </div>
             </div>
             <div class="error-text">
@@ -24,38 +27,6 @@
             <button>Submit</button>
          </form>
       </div>
-      <script>
-         const email = document.querySelector("#email");
-         const icon1 = document.querySelector(".icon1");
-         const icon2 = document.querySelector(".icon2");
-         const error = document.querySelector(".error-text");
-         const btn = document.querySelector("button");
-         let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-         function check(){
-           if(email.value.match(regExp)){
-             email.style.borderColor = "#27ae60";
-             email.style.background = "#eafaf1";
-             icon1.style.display = "none";
-             icon2.style.display = "block";
-             error.style.display = "none";
-             btn.style.display = "block";
-           }else{
-             email.style.borderColor = "#e74c3c";
-             email.style.background = "#fceae9";
-             icon1.style.display = "block";
-             icon2.style.display = "none";
-             error.style.display = "block";
-             btn.style.display = "none";
-           }
-           if(email.value == ""){
-             email.style.borderColor = "lightgrey";
-             email.style.background = "#fff";
-             icon1.style.display = "none";
-             icon2.style.display = "none";
-             error.style.display = "none";
-             btn.style.display = "none";
-           }
-         }
-      </script>
+      <script src="Homepage/js/forgot-password.js"></script>
    </body>
 </html>
