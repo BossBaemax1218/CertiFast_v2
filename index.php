@@ -1,692 +1,739 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <meta name="description" content="">
-        <meta name="author" content="">
+  <title>CertiFast</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-        <title>CertiFast</title>
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/title-logo.png" rel="title-logo-icon">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-        <!-- CSS FILES -->        
-        <link href="Homepage/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-        <link rel="icon" href="Homepage/images/CFLogo2.ico" type="image/x-icon"/>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
 
-        <link href="Homepage/css/bootstrap-icons.css" rel="stylesheet">
+<body>
 
-        <link href="Homepage/css/certifast.css" rel="stylesheet">
+  <!-- ======= Top Bar ======= -->
+  <section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">losamigosdavaocity.gov@gmail.com</a></i>
+        <i class="bi bi-telephone d-flex align-items-center ms-4"><span>(082) 228-8984</span></i>
+      </div>
+      <div class="social-links d-none d-md-flex align-items-center">
+        <a href="https://www.facebook.com/profile.php?id=100064303345469" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+    </div>
+  </section>
 
-    </head>
-    
-    <body id="section_1">
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
 
-        <header class="site-header">
-            <div class="container">
-                <div class="row">
-                    
-                    <div class="col-lg-8 col-12 d-flex flex-wrap">
-                        <p class="d-flex me-4 mb-0">
-                            <i class="bi-geo-alt me-2"></i>
-                            Barangay Los Amigos, Tugbok, Davao City, Davao Del Sur. 8000
-                        </p>
+      <h1 class="logo"><a href="index.php"><img src="assets/img/title-logo.png" alt="title-logo"></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.php" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
 
-                        <p class="d-flex mb-0">
-                            <i class="bi-envelope me-2"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto " href="#announcement">Announcement</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
-                            <a href="mailto:info@company.com">
-                                losamigosdavaocity.gov@gmail.com
-                            </a>
-                        </p>
-                    </div>
+    </div>
+  </header><!-- End Header -->
 
-                    <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
-                        <ul class="social-icon">
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link bi-twitter"></a>
-                            </li>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container" data-aos="zoom-out" data-aos-delay="100">
+      <h1>Welcome to Barangay Los Amigos <span> CertiFast</span></h1>
+      <h5>With our one-of-a-kind, user-friendly, and effective certificate management system, residents that can submit certificate requests for free and receive them quickly.</h5>
+      <br>
+      <div class="d-flex">
+        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        <!--<a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>-->
+      </div>
+    </div>
+  </section><!-- End Hero -->
 
-                            <li class="social-icon-item">
-                                <a href="https://www.facebook.com/Barangay-Los-Amigos-122021251193091/?ref=page_internal" class="social-icon-link bi-facebook"></a>
-                            </li>
+  <main id="main">
 
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link bi-instagram"></a>
-                            </li>
-                        </ul>
-                    </div>
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services">
+      <div class="container" data-aos="fade-up">
 
-                </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><img src="assets/img/clients/logo-3.png"></div>
+              <h4 class="title"><a href="officials.php">Barangay Officials</a></h4>
+              <p class="description">Barangay officials are elected or appointed individuals who represent and serve the interests of the community.</p>
             </div>
-        </header>
+          </div>
 
-        <nav class="navbar navbar-expand-lg bg-light shadow-lg">
-            <div class="container">
-                <a class="navbar-brand" href="index.php">
-                    <img src="Homepage/images/trans-title.png" class="logo img-fluid" style="width: 140px;" alt="Certifast">
-                </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#top">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_2">About</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_3">Services</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_6">Contact</a>
-                        </li>
-
-                        <li class="nav-item ms-3">
-                            <a class="nav-link custom-btn custom-border-btn btn" href="Login.php">Login</a>
-                        </li>
-                    </ul>
-                </div>
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><img src="assets/img/clients/logo-5.png"></div>
+              <h4 class="title"><a href="sangguniankabataan-officials.php">Sanggunian Kabataan</a></h4>
+              <p class="description">Sanggunian Kabataan is a youth council that promotes youth empowerment and participation in local governance.</p>
             </div>
-        </nav>
-
-        <main>
-
-            <section class="title-logo">
-                    <div class="row">
-                        <div class="logo-title">
-                            <img src="Homepage\images\wave3.svg" alt="bg-logo">
-                        </div>
-                        <div class="title-name">
-                            <img src="Homepage\images\logoIcon.png" style="margin-top: -15%; margin-left: 5%;" alt="bg-name">
-                        </div>
-                    </div>
-            </section>
-
-            <section class="section-padding" style="margin-top: 10%;">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-12 text-center mx-auto">
-                            <h2 class="mb-5">Welcome to Barangay Los Amigos</h2>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-                            <div class="featured-block d-flex justify-content-center align-items-center">
-                                <a href="homepage/barangay-officials.php" class="d-block">
-                                    <img src="Homepage/images/icons/SealLogo.png" class="featured-block-image img-fluid"  style="width: 100px; heigth: 100px;" alt="">
-
-                                    <p class="featured-block-text"><strong>Barangay Officials</strong></p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-lg-0">
-                            <div class="featured-block d-flex justify-content-center align-items-center">
-                                <a href="sangguniankabataan.php" class="d-block">
-                                    <img src="Homepage/images/icons/sangguniankabataan.png" class="featured-block-image img-fluid" alt="" style="width: 100px; heigth: 100px;">
-
-                                    <p class="featured-block-text"><strong>Sangguniang Kabataan</strong></p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
-                            <div class="featured-block d-flex justify-content-center align-items-center">
-                                <a href="barangayservices.php" class="d-block">
-                                    <img src="Homepage/images/icons/certseal.png" class="featured-block-image img-fluid" alt="" style="width: 100px; heigth: 100px;">
-
-                                    <p class="featured-block-text"><strong>Barangay Services</strong></p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-                            <div class="featured-block d-flex justify-content-center align-items-center">
-                                <a href="brgyprogram.php" class="d-block">
-                                    <img src="Homepage/images/icons/promote.png" class="featured-block-image img-fluid" alt="" style="width: 100px; heigth: 100px;">
-
-                                    <p class="featured-block-text"><strong>Barangay Program</strong> </p>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <section class="section-padding section-bg" id="section_2">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-12 mb-5 mb-lg-0">
-                            <img src="Homepage/images/brgyHall.jpg" class="custom-text-box-image img-fluid" alt="">
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <div class="custom-text-box">
-                                <h2 class="mb-2">Our Barangay</h2>
-
-                                <h5 class="mb-3">Los Amigos</h5>
-
-                                <p class="mb-0">Los Amigos is a barangay in Davao City. Its population as determined by the 2020 Census was 11,694. This represented 0.66% of the total population of Davao City.</p>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="custom-text-box mb-lg-0">
-                                        <h5 class="mb-3">Our Vision</h5>
-
-                                        <p>Sed leo nisl, posuere at molestie ac, suscipit auctor quis metus</p>
-
-                                        <ul class="custom-list mt-2">
-                                            <li class="custom-list-item d-flex">
-                                                <i class="bi-check custom-text-box-icon me-2"></i>
-                                                Charity Theme
-                                            </li>
-
-                                            <li class="custom-list-item d-flex">
-                                                <i class="bi-check custom-text-box-icon me-2"></i>
-                                                Semantic HTML
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="custom-text-box mb-lg-0">
-                                        <h5 class="mb-3">Our Mision</h5>
-
-                                        <p>Sed leo nisl, posuere at molestie ac, suscipit auctor quis metus</p>
-
-                                        <ul class="custom-list mt-2">
-                                            <li class="custom-list-item d-flex">
-                                                <i class="bi-check custom-text-box-icon me-2"></i>
-                                                Charity Theme
-                                            </li>
-
-                                            <li class="custom-list-item d-flex">
-                                                <i class="bi-check custom-text-box-icon me-2"></i>
-                                                Semantic HTML
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-
-            <section class="about-section section-padding">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-md-5 col-12">
-                            <img src="Homepage/images/portrait.jpg" class="about-image ms-lg-auto bg-light shadow-lg img-fluid" alt="">
-                        </div>
-
-                        <div class="col-lg-6 col-md-7 col-12">
-                            <div class="custom-text-block">
-                                <h2 class="mb-0">ROBERTO A. BALLARTA</h2>
-
-                                <p class="text-muted mb-lg-4 mb-md-4">Barangay Captain</p>
-
-                                <p>Barangay Captain at Barangay Los Amigos</p>
-
-                                <p>"I am very grateful for the warm support today. I hope we will be filled with many blessings and good health so that we can peacefully rest. In return, THANK YOU very much!"</p>
-
-                                <ul class="social-icon mt-4">
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-twitter"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="https://www.facebook.com/bobong.ballarta" class="social-icon-link bi-facebook"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-instagram"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <section class="section-padding" id="section_3">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-12 col-12 text-center mb-4">
-                            <h2>Our Services</h2>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                            <div class="custom-block-wrap">
-                                <img src="Homepage/images/causes/group-african-kids-paying-attention-class.jpg" class="custom-block-image img-fluid" alt="">
-
-                                <div class="custom-block">
-                                    <div class="custom-block-body">
-                                        <h5 class="mb-3">Barangay Certificate</h5>
-
-                                        <p>A Barangay Clearance is a document issued by the Barangay Secretary and signed by the Barangay Captain stating that you are a living at that specific place and you are of good moral character.</p>
-
-                                        <div class="progress mt-4">
-                                            <div class="progress-bar w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-
-                                    <a href="Login.php" class="custom-btn btn">Click now</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                            <div class="custom-block-wrap">
-                                <img src="Homepage/images/causes/poor-child-landfill-looks-forward-with-hope.jpg" class="custom-block-image img-fluid" alt="">
-
-                                <div class="custom-block">
-                                    <div class="custom-block-body">
-                                        <h5 class="mb-3">Business Permit</h5>
-
-                                        <p>A business permit is a legal document issued by the local government that allows an individual or a company to operate a business in a particular area.</p>
-
-                                        <div class="progress mt-4">
-                                            <div class="progress-bar w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-
-                                    <a href="Login.php" class="custom-btn btn">Click now</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="custom-block-wrap">
-                                <img src="Homepage/images/causes/african-woman-pouring-water-recipient-outdoors.jpg" class="custom-block-image img-fluid" alt="">
-
-                                <div class="custom-block">
-                                    <div class="custom-block-body">
-                                        <h5 class="mb-3">Barangay Residency</h5>
-
-                                        <p>Barangay residency refers to an individual's legal and permanent residency in a particular barangay, which is the smallest administrative division in the Philippines. </p>
-
-                                        <div class="progress mt-4">
-                                            <div class="progress-bar w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-
-                                    <a href="Login.php" class="custom-btn btn">Click now</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <section class="news-section section-padding" id="section_5">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-12 col-12 mb-5">
-                            <h2>Latest Barangay Program</h2>
-                        </div>
-                        
-                        <div class="col-lg-5 col-6">
-                            <div class="news-block">
-                                <div class="news-block-top">
-                                    <a href="news-detail.php">
-                                        <img src="Homepage/images/news/trans.jpg" class="news-image img-fluid" alt="">
-                                    </a>
-                                </div>
-
-                                <div class="news-block-info">
-                                    <div class="d-flex mt-2">
-                                        <div class="news-block-date">
-                                            <p>
-                                                <i class="bi-calendar4 custom-icon me-1"></i>
-                                                March 21, 2023
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="news-block-title mb-2">
-                                        <h4><a href="news-detail.php" class="news-block-title-link">City Transport and Traffic Management Office</a></h4>
-                                    </div>
-
-                                    <div class="news-block-body">
-                                        <p>Pahibalo sa tanang naay Bicycle and Light Mobility Vehicle nga kinahanglan na kini iparehistro.
-                                            Alang sa detalye sa pagparehistro naa sa pictures nga nakalakip niining post.
-                                            Daghang salamat.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="news-block">
-                                <div class="news-block-top">
-                                    <a href="news-detail.php">
-                                        <img src="Homepage/images/news/sim.jpg" class="news-image img-fluid" alt="">
-                                    </a>
-                                </div>
-
-                                <div class="news-block-info">
-                                    <div class="d-flex mt-2">
-                                        <div class="news-block-date">
-                                            <p>
-                                                <i class="bi-calendar4 custom-icon me-1"></i>
-                                                April 26, 2023
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="news-block-title mb-2">
-                                        <h4><a href="news-detail.php" class="news-block-title-link">Sim Registrations</a></h4>
-                                    </div>
-
-                                    <div class="news-block-body">
-                                        <p>Pahibalo sa tanan na need nato iparehistro atong sim karun abril. Daghang Salamat! </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-ml-6">
-                            <div class="news-block">
-                                <div class="news-block-top">
-                                    <a href="news-detail.php">
-                                        <img src="Homepage/images/news/Payout.jpg" class="news-image img-fluid" alt="">
-                                    </a>
-                                </div>
-
-                                <div class="news-block-info">
-                                    <div class="d-flex mt-2">
-                                        <div class="news-block-date">
-                                            <p>
-                                                <i class="bi-calendar4 custom-icon me-1"></i>
-                                                April 18, 2023
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="news-block-title mb-2">
-                                        <h4><a href="news-detail.php" class="news-block-title-link">Social Pension Payout</a></h4>
-                                    </div>
-
-                                    <div class="news-block-body">
-                                        <p>SOCIAL PENSION FIRST QUARTER 2023 SCHEDULE OF PAYOUT  APRIL 18, 2023, 8:00 AM to 1:00 PM at LOS AMIGOS BARANGAY GYM.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="news-block">
-                                <div class="news-block-top">
-                                    <a href="news-detail.php">
-                                        <img src="Homepage/images/news/bloodletting.jpg" class="news-image img-fluid" alt="">
-                                    </a>
-                                </div>
-
-                                <div class="news-block-info">
-                                    <div class="d-flex mt-2">
-                                        <div class="news-block-date">
-                                            <p>
-                                                <i class="bi-calendar4 custom-icon me-1"></i>
-                                                May 09,2023
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="news-block-title mb-2">
-                                        <h4><a href="news-detail.php" class="news-block-title-link">Bloodletting Program</a></h4>
-                                    </div>
-
-                                    <div class="news-block-body">
-                                        <p>Inaanyayahan ang lahat na makilahalok sa bloodletting activity na gaganapin sa Barangay Gymnasium sa MAY 9, 2023, Martes sa 6:30 ng umaga. Ito ay pangnguna ng Department of Health Davao Blood Center Regional Field Office XI kaagapay ang Barangay Los Amigos. </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-12 mx-auto">
-                            </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <section class="testimonial-section section-padding section-bg">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-8 col-12 mx-auto">
-                            <h2 class="mb-lg-4">Motivational Qoutes</h2>
-                            
-                                <div id="testimonial-carousel" class="carousel carousel-fade slide" data-bs-ride="carousel">
-
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                           <div class="carousel-caption">
-                                                <h4 class="carousel-title">Just one small positive thought in the morning can change your whole day.</h4>
-
-                                                
-                                           </div>
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <div class="carousel-caption">
-                                                <h4 class="carousel-title">Opportunities don't happen, you create them.</h4>
-
-                                                
-                                            </div>
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <div class="carousel-caption">
-                                                <h4 class="carousel-title">It's never too late to be what you might've been.</h4>
-
-                                                
-                                            </div>
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <div class="carousel-caption">
-                                                <h4 class="carousel-title">The greatest glory in living lies not in never falling, but in rising every time we fall.</h4>
-
-                                                
-                                           </div>
-                                        </div>
-                                 </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-
-            <section class="contact-section section-padding" id="section_6">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-4 col-12 ms-auto mb-5 mb-lg-0">
-                            <div class="contact-info-wrap">
-                                <h2>Get in touch</h2>
-
-                                <div class="contact-image-wrap d-flex flex-wrap">
-                                    <img src="Homepage/images/avatar/pretty-blonde-woman-wearing-white-t-shirt.jpg" class="img-fluid avatar-image" alt="">
-
-                                    <div class="d-flex flex-column justify-content-center ms-3">
-                                        <p class="mb-0">ABBIE CHARLOTTE CABIG-SARSALE</p>
-                                        <p class="mb-0"><strong>Barangay Secretary</strong></p>
-                                    </div>
-                                </div>
-
-                                <div class="contact-info">
-                                    <h5 class="mb-3">Contact Infomation</h5>
-
-                                    <p class="d-flex mb-2">
-                                        <i class="bi-geo-alt me-2"></i>
-                                        Barangay Los Amigos, Tugbok, Davao City, Davao Del Sur. 8000
-                                    </p>
-
-                                    <p class="d-flex mb-2">
-                                        <i class="bi-telephone me-2"></i>
-
-                                        <a href="tel: 120-240-9600">
-                                            (082) 228-8984
-                                        </a>
-                                    </p>
-
-                                    <p class="d-flex">
-                                        <i class="bi-envelope me-2"></i>
-
-                                        <a href="mailto:info@yourgmail.com">
-                                            losamigosdavaocity.gov@gmail.com
-                                        </a>
-                                    </p>
-
-                                    
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-5 col-6 mx-auto">
-                            <form class="custom-form contact-form" action="#" method="post" role="form">
-                                <h2>Contact form</h2>
-
-                                <p class="mb-4">Send an email:
-                                    <a href="#">losamigosdavaocity.gov@gmail.com</a>
-                                </p>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <input type="text" name="first-name" id="first-name" class="form-control" placeholder="Firstname" required>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <input type="text" name="last-name" id="last-name" class="form-control" placeholder="Lastname" required>
-                                    </div>
-                                </div>
-
-                                <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="username@gmail.com" required>
-
-                                <textarea name="message" rows="5" class="form-control" id="message" placeholder="What can we help you?"></textarea>
-
-                                <button type="submit" class="form-control">Send Message</button>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="site-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-12 mb-4">
-                        <img src="Homepage/images/trans-title.png" class="logo img-fluid" style="width: 250px;" alt="">
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-12 mb-4">
-                        <h5 class="site-footer-title mb-3" style="color: black;">Barangay Links</h5>
-
-                        <ul class="footer-menu">
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">About</a></li>
-
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Services</a></li>
-
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Contact</a></li>
-
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link"></a></li>
-
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link"></a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-12 mx-auto" >
-                        <h5 class="site-footer-title mb-3" style="color: black;">Contact Infomation</h5>
-
-                        <p class="text-white d-flex mb-2">
-                            <i class="bi-telephone me-2"></i>
-
-                            <a href="tel: 120-240-9600" class="site-footer-link">
-                                (082) 228-8984
-                            </a>
-                        </p>
-
-                        <p class="text-white d-flex">
-                            <i class="bi-envelope me-2"></i>
-
-                            <a href="mailto:info@yourgmail.com" class="site-footer-link">
-                                losamigosdavaocity.gov@gmail.com
-                            </a>
-                        </p>
-
-                        <p class="text-white d-flex mt-3">
-                            <i class="bi-geo-alt me-2"></i>
-                            Barangay Los Amigos, Tugbok, Davao City, Davao Del Sur. 8000
-                        </p>
-
-                        <a href="https://www.google.com/maps/place/Barangay+Los+Amigos/@7.1416029,125.4797257,15z/data=!4m6!3m5!1s0x32f913ff9378a1b7:0x626e3b5d2a8b7f6f!8m2!3d7.1416029!4d125.4797257!16s%2Fg%2F11c1vl_d7r" class="custom-btn btn mt-3">Get Direction</a>
-                    </div>
-                </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+              <div class="icon"><img src="assets/img/clients/logo-7.png"></div>
+              <h4 class="title"><a href="">Barangay Health Worker</a></h4>
+              <p class="description">Barangay Health Worker provides healthcare, education, and support to residents.</p>
             </div>
+          </div>
 
-            <div class="site-footer-bottom">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-md-7 col-12">
-                            <p class="copyright-text mb-0">Copyright © 2023 <a href="#">CertiFast</a><br>
-                        	Created at:<a href="#" target="_blank"> CertiFast Team</a></p>
-                        </div>
-                        
-                        <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">
-                            <ul class="social-icon">
-                                <li class="social-icon-item">
-                                    <a href="#" class="social-icon-link bi-twitter"></a>
-                                </li>
-
-                                <li class="social-icon-item">
-                                    <a href="https://www.facebook.com/Barangay-Los-Amigos-122021251193091/?ref=page_internal" class="social-icon-link bi-facebook"></a>
-                                </li>
-
-                                <li class="social-icon-item">
-                                    <a href="#" class="social-icon-link bi-instagram"></a>
-                                </li>
-
-                                <li class="social-icon-item">
-                                    <a href="#" class="social-icon-link bi-linkedin"></a>
-                                </li>
-
-                                <li class="social-icon-item">
-                                    <a href="https://youtube.com/" class="social-icon-link bi-youtube"></a>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                    </div>
-                </div>
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+              <div class="icon"><img src="assets/img/clients/logo-6.png"></div>
+              <h4 class="title"><a href="">Barangay Tanod</a></h4>
+              <p class="description">Barangay Tanod is a community volunteer responsible for maintaining peace, order, and security.</p>
             </div>
-        </footer>
+          </div>
 
-        <!-- JAVASCRIPT FILES -->
-        <script src="Homepage/js/jquery.min.js"></script>
-        <script src="Homepage/js/bootstrap.min.js"></script>
-        <script src="Homepage/js/jquery.sticky.js"></script>
-        <script src="Homepage/js/click-scroll.js"></script>
-        <script src="Homepage/js/counter.js"></script>
-        <script src="Homepage/js/custom.js"></script>
+        </div>
 
-    </body>
+      </div>
+    </section><!-- End Featured Services Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>About</h2>
+          <h3>Find out more <span>About us</span></h3>
+          <p>Barangay Los Amigos is one of the largest Barangays in Davao City.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+            <img src="assets/img/download.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+            <h3>Barangay Los Amigos <i>CertiFast</i> </h3>
+            <p class="fst-italic">
+              The CertiFast provides a user-friendly platform for efficient and secure handling of certificates, revolutionizing the process of issuance and management.
+            </p>
+            <ul>
+              <li>
+                <i class="bx bx-check"></i>
+                <div>
+                  <h5>Our Mission</h5>
+                  <p>Our mission is to create an efficient and secure certificate management system that ensures accuracy, accessibility, and timely delivery while maintaining data privacy and integrity.</p>
+                </div>
+              </li>
+              <li>
+                <i class="bx bx-check"></i>
+                <div>
+                  <h5>Our Vision</h5>
+                  <p>Our vision aims to simplify certificate issuance, tracking, and management, promoting transparency and improving service delivery.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h3><span>Resident Counter</span></h3>
+        </div>
+        <br>
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="count-box">
+              <i class="bi bi-people"></i>
+              <span data-purecounter-start="0" data-purecounter-end="11694" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Population</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+            <div class="count-box">
+              <i class="bi bi-house"></i>
+              <span data-purecounter-start="0" data-purecounter-end="11718" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Household</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="bi bi-signpost"></i>
+              <span data-purecounter-start="0" data-purecounter-end="39" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Purok</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="bi bi-person"></i>
+              <span data-purecounter-start="0" data-purecounter-end="18000" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Individuals</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients section-bg">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="row">
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/logo-1.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/logo-2.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/logo-3.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/logo-4.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/logo-5.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/logo-6.png" class="img-fluid" alt="">
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Services</h2>
+          <h3>Check our <span>Services</span></h3>
+          <p>Barangay Certificate Services provides an extensive variety of certifications that satisfy the community's for particular requirements.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="">Barangay Registration</a></h4>
+              <p>Resident registration is the process of officially documenting individuals as residents of a particular location for administrative and legal purposes.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="">Barangay Residency</a></h4>
+              <p>Barangay residency refers to the official status of being a resident or inhabitant of a specific barangay.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="">Barangay Clearance</a></h4>
+              <p>Barangay clearance is an official document issued by the barangay confirming the good conduct and residency of an individual within the community.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="">Barangay Indingency</a></h4>
+              <p>Barangay indigency refers to the certification granted to individuals who are deemed economically disadvantaged and eligible for certain privileges and social assistance within the barangay.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-envelope"></i></div>
+              <h4><a href="">Business Permit</a></h4>
+              <p>Business permit is a legal document issued by the local government authorizing an individual or entity to operate a business within a specific jurisdiction.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-user"></i></div>
+              <h4><a href="">Barangay ID</a></h4>
+              <p> Identification card issued by the barangay to residents, serving as proof of residency and providing access to local barangay services.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <h3>ROBERTO A. BALLARTA</h3>
+                <h4>Barangay Capitan</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  I am very grateful for the warm support today. I hope we will be filled with many blessings and good health so that we can peacefully rest. In return, THANK YOU very much!
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <h3>ABBIE CHARLOTTE CABIG-SARSALE</h3>
+                <h4>Barangay Secretary</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                <h3>MELLIZA JOIE BASUGA-TAÑAC</h3>
+                <h4>Barangay Treasurer</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                <h3>AILEEN N. ATINO</h3>
+                <h4>Barangay Kagawad</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                <h3>RUEL CEBALLOS</h3>
+                <h4>Barangay Kagawad</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- ======= Announcement Section ======= -->
+    <section id="announcement" class="announcement">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Announcement</h2>
+          <h3>Check our <span>Announcement</span></h3>
+          <p>Residents of Barangay Los Amigos are invited to attend a community meeting to discuss crucial matters and provide updates.</p>
+        </div>
+
+        <!--<div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="announcement-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">Latest</li>
+              <li data-filter=".filter-card">Last Week</li>
+              <li data-filter=".filter-web">Last Month</li>
+            </ul>
+          </div>
+        </div>-->
+
+        <div class="row announcement-container" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-4 col-md-6 announcement-item filter-app">
+            <img src="assets/img/announcement/announcement-1.jpg" class="img-fluid" alt="img-1">
+            <div class="announcement-info">
+              <h4>Bloodletting Program</h4>
+              <p> May 9, 2023</p>
+              <a href="assets/img/announcement/announcement-1.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Bloodletting Program"><i class="bx bx-plus"></i></a>
+              <a href="announcement/announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 announcement-item filter-web">
+            <img src="assets/img/announcement/announcement-2.jpg" class="img-fluid" alt="img-2">
+            <div class="announcement-info">
+              <h4>Social Pension Payout</h4>
+              <p>April 18, 2023</p>
+              <a href="assets/img/announcement/announcement-2.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Social Pension Payout"><i class="bx bx-plus"></i></a>
+              <a href="announcement/announcement-details-1.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 announcement-item filter-app">
+            <img src="assets/img/announcement/announcement-3.jpg" class="img-fluid" alt="img-3">
+            <div class="announcement-info">
+              <h4>Sim Registration</h4>
+              <p>April 26, 2023</p>
+              <a href="assets/img/announcement/announcement-3.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Sim Registration"><i class="bx bx-plus"></i></a>
+              <a href="announcement/announcement-details-3.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 announcement-item filter-card">
+            <img src="assets/img/announcement/announcement-4.jpg" class="img-fluid" alt="img-4">
+            <div class="announcement-info">
+              <h4>Bicycle & Light Vehicle Registration</h4>
+              <p>Open Registration</p>
+              <a href="assets/img/announcement/announcement-4.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Bicycle & Light Vehicle Registration"><i class="bx bx-plus"></i></a>
+              <a href="announcement/announcement-details-2.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 announcement-item filter-web">
+            <img src="assets/img/announcement/announcement-5.jpg" class="img-fluid" alt="img-6">
+            <div class="announcement-info">
+              <h4>Water Interruption</h4>
+              <p>March 17, 2023</p>
+              <a href="assets/img/announcement/announcement-5.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Water Interruption"><i class="bx bx-plus"></i></a>
+              <a href="announcement/announcement-details-4.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <!--<div class="col-lg-4 col-md-6 announcement-item filter-app">
+            <img src="assets/img/announcement/announcement-6.jpg" class="img-fluid" alt="">
+            <div class="announcement-info">
+              <h4>App 3</h4>
+              <p>App</p>
+              <a href="assets/img/announcement/announcement-6.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+              <a href="announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 announcement-item filter-card">
+            <img src="assets/img/announcement/announcement-7.jpg" class="img-fluid" alt="">
+            <div class="announcement-info">
+              <h4>Card 1</h4>
+              <p>Card</p>
+              <a href="assets/img/announcement/announcement-7.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+              <a href="announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 announcement-item filter-card">
+            <img src="assets/img/announcement/announcement-8.jpg" class="img-fluid" alt="">
+            <div class="announcement-info">
+              <h4>Card 3</h4>
+              <p>Card</p>
+              <a href="assets/img/announcement/announcement-8.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+              <a href="announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 announcement-item filter-web">
+            <img src="assets/img/announcement/announcement-9.jpg" class="img-fluid" alt="">
+            <div class="announcement-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <a href="assets/img/announcement/announcement-9.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              <a href="announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>-->
+
+        </div>
+
+      </div>
+    </section><!-- End announcement Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>F.A.Q</h2>
+          <h3>Frequently Asked <span>Questions</span></h3>
+          <p>Frequently asked questions about the Certificate Management System, a digital platform that automates the issuance, tracking, and management of certificates for greater efficiency and convenience.</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-xl-10">
+            <ul class="faq-list">
+
+              <li>
+                <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">What is a CertiFast Certificate Management System? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+                  <p>
+                    A CertiFast is a digital platform that automates and streamlines the process of certificate issuance, tracking, and management.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">How does the CertiFast Certificate Management System work? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+                  <p>
+                    The system allows administrators to create and manage different types of certificates, receive and generate certificates digitally, track their status, and securely certificate records.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">What are the benefits of using a Certifast Certificate Management System? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq3" class="collapse" data-bs-parent=".faq-list">
+                  <p>
+                    Using a CertiFast Certificate Management System brings several advantages, including improved efficiency, reduced paperwork, faster processing times, enhanced accuracy, easier tracking of certificate records, and increased convenience for both administrators and applicants.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Can resident apply for certificates online? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+                  <p>
+                    Yes, the CertiFast Certificate Management System typically offers an online application portal where resident can submit their certificate requests, upload required documents, and track the progress of their application.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">How are certificates issued using the system? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq5" class="collapse" data-bs-parent=".faq-list">
+                  <p>
+                    Certificates are generated digitally within the system, allowing administrators to customize and generate certificates with the necessary details and security features. The digitally signed certificates can then be printed or emailed to the applicants.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Is the CertiFast Certificate Management System secure? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq6" class="collapse" data-bs-parent=".faq-list">
+                  <p>
+                    Yes, the system is designed with security measures to protect the integrity and confidentiality of the certificate data. It often includes user authentication, data encryption, access controls, and regular data backups to ensure the security of the information.
+                  </p>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <h3><span>Contact Us</span></h3>
+          <p>We are dedicated to providing excellent customer service and we are here to help with any inquiries or concerns. Please feel free to reach out to us using the contact details provided below:</p>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Our Address</h3>
+              <p>Purok 1-A Barangay, Tugbok, Davao City, 8000 Davao del Sur</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p>losamigosdavaocity.gov@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>(082) 228 8984</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-6 ">
+            <a href="https://www.google.com/maps/place/Los+Amigos,+Tugbok,+Davao+City,+Davao+del+Sur/@7.1416987,125.46621,15z/data=!3m1!4b1!4m6!3m5!1s0x32f911550de0241f:0xc66d177e2b21e4d5!8m2!3d7.1405399!4d125.4754538!16s%2Fg%2F1ptw2kz3p?entry=ttu"><img class="mb-4 mb-lg-0" src="assets\img\testimonials\testimonials-7.jpg" frameborder="0" style="border:0; width: 100%; height: 384px;" alt="img-6"></a>
+          </div>
+
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>CertiFast</h3>
+            <p>
+              Purok 1-A Barangay, <br>
+              Tugbok, Davao City<br>
+              8000 Davao del Sur <br><br>
+              <strong>Telephone:</strong> (082) 228 8984<br>
+              <strong>Email:</strong> losamigosdavaocity.gov@gmail.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Terms of service</a></li>
+              <li><a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li> <a href="#">Resident Registration</a></li>
+              <li> <a href="#">Residency Certificate</a></li>
+              <li> <a href="#">Barangay Clearance</a></li>
+              <li> <a href="#">Barangay Indingency</a></li>
+              <li> <a href="#">Business Permit</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>For more information, please contact us directly to our social media.</p>
+            <div class="social-links mt-3">
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="google-email"><i class="bx bxl-gmail"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>CertiFast</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
 </html>
