@@ -57,9 +57,10 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#announcement">Announcement</a></li>
+          <li><a class="nav-link scrollto " href="#announcement">News & Events</a></li>
+          <li><a class="nav-link scrollto " href="barangay-officials.php">Officials</a></li>
+          <li><a class="nav-link scrollto " href="sangguniankabataan-officials.php">SK Official</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="click-login" href="login.php">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -71,8 +72,7 @@
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
       <h1>Welcome to Barangay Los Amigos <span> CertiFast</span></h1>
-      <h5>With our one-of-a-kind, user-friendly, and effective certificate management system, residents that can submit certificate requests for free and receive them quickly.</h5>
-      <br>
+      <h6>With our one-of-a-kind, user-friendly, and effective certificate management system, residents that can submit certificate requests for free and receive them quickly.</h6>
       <div class="d-flex">
         <a href="login.php" class="btn-get-started scrollto">Get Started</a>
         <!--<a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>-->
@@ -89,33 +89,33 @@
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><img src="homepage/assets/img/clients/logo-3.png"></div>
-              <h4 class="title"><a href="barangay-officials.php">Barangay Officials</a></h4>
-              <p class="description">Barangay officials are elected or appointed individuals who represent and serve the interests of the community.</p>
+              <div class="icon"><img src="homepage/assets/img/clients/logo-12.svg"></div>
+              <h4 class="title"><a href="login.php">Step 1</a></h4>
+              <p class="description">Go to <strong>CertiFast registration site</strong> or just go to barangay office near you. And make sure you have your identification documents ready.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon"><img src="homepage/assets/img/clients/logo-5.png"></div>
-              <h4 class="title"><a href="sangguniankabataan-officials.php">Sanggunian Kabataan</a></h4>
-              <p class="description">Sanggunian Kabataan is a youth council that promotes youth empowerment and participation in local governance.</p>
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><img src="homepage/assets/img/clients/logo-14.svg"></div>
+              <h4 class="title"><a href="login.php">Step 2</a></h4>
+              <p class="description"><strong>Proceed</strong> to your selected registration and bring an valid copy of your supporting papers to have your personal data checked.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon"><img src="homepage/assets/img/clients/logo-7.png"></div>
-              <h4 class="title"><a href="">Barangay Health Worker</a></h4>
-              <p class="description">Barangay Health Worker provides healthcare, education, and support to residents.</p>
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><img src="homepage/assets/img/clients/logo-10.svg"></div>
+              <h4 class="title"><a href="login.php">Step 3</a></h4>
+              <p class="description"><strong>Wait</strong> for the document to be processed. Due to high demand and limited resources, the processing time for certificates maybe delayed.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon"><img src="homepage/assets/img/clients/logo-6.png"></div>
-              <h4 class="title"><a href="">Barangay Tanod</a></h4>
-              <p class="description">Barangay Tanod is a community volunteer responsible for maintaining peace, order, and security.</p>
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><img src="homepage/assets/img/clients/logo-11.svg"></div>
+              <h4 class="title"><a href="login.php">Step 4</a></h4>
+              <p class="description"><strong>Done</strong> generating the certificate and is available to claim. Make sure you have a valid payment slip to be shown as proof of payment.</p>
             </div>
           </div>
 
@@ -260,7 +260,7 @@
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
+              <div class="icon"><img src="homepage/assets/img/clients/logo-1.svg"></div>
               <h4><a href="login.php">Barangay Registration</a></h4>
               <p>Resident registration is the process of officially documenting individuals as residents of a particular location for administrative and legal purposes.</p>
             </div>
@@ -268,7 +268,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
+              <div class="icon"><img src="homepage/assets/img/clients/logo-2.svg"></div>
               <h4><a href="login.php">Barangay Residency</a></h4>
               <p>Barangay residency refers to the official status of being a resident or inhabitant of a specific barangay.</p>
             </div>
@@ -276,7 +276,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
+              <div class="icon"><img src="homepage/assets/img/clients/logo-3.svg"></div>
               <h4><a href="login.php">Barangay Clearance</a></h4>
               <p>Barangay clearance is an official document issued by the barangay confirming the good conduct and residency of an individual within the community.</p>
             </div>
@@ -284,7 +284,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
+              <div class="icon"><img src="homepage/assets/img/clients/logo-5.svg"></div>
               <h4><a href="login.php">Barangay Indingency</a></h4>
               <p>Barangay indigency refers to the certification granted to individuals who are deemed economically disadvantaged and eligible for certain privileges and social assistance within the barangay.</p>
             </div>
@@ -292,7 +292,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-envelope"></i></div>
+              <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4><a href="login.php">Business Permit</a></h4>
               <p>Business permit is a legal document issued by the local government authorizing an individual or entity to operate a business within a specific jurisdiction.</p>
             </div>
@@ -300,7 +300,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-user"></i></div>
+              <div class="icon"><img src="homepage/assets/img/clients/logo-12.svg"></div>
               <h4><a href="login.php">Barangay ID</a></h4>
               <p> Identification card issued by the barangay to residents, serving as proof of residency and providing access to local barangay services.</p>
             </div>
@@ -338,13 +338,13 @@
                 <h4>Barangay Secretary</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  The greatest glory in living lies not in never falling, but in rising every time we fall.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
             </div><!-- End testimonial item -->
 
-            <div class="swiper-slide">
+            <!--<div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="homepage/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
                 <h3>MELLIZA JOIE BASUGA-TAÑAC</h3>
@@ -355,7 +355,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
 
             <div class="swiper-slide">
               <div class="testimonial-item">
@@ -368,7 +368,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
 
             <div class="swiper-slide">
               <div class="testimonial-item">
@@ -381,7 +381,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div>-->    <!-- End testimonial item -->
 
           </div>
           <div class="swiper-pagination"></div>
@@ -395,8 +395,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Announcement</h2>
-          <h3>Check our <span>Announcement</span></h3>
+          <h2>News & Events</h2>
+          <h3>Check our <span>News & Events</span></h3>
           <p>Residents of Barangay Los Amigos are invited to attend a community meeting to discuss crucial matters and provide updates.</p>
         </div>
 
@@ -423,7 +423,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 announcement-item filter-web">
+          <!--<div class="col-lg-4 col-md-6 announcement-item filter-web">
             <img src="homepage/assets/img/announcement/announcement-2.jpg" class="img-fluid" alt="img-2">
             <div class="announcement-info">
               <h4>Social Pension Payout</h4>
@@ -431,7 +431,7 @@
               <a href="homepage/assets/img/announcement/announcement-2.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Social Pension Payout"><i class="bx bx-plus"></i></a>
               <a href="homepage/announcement/announcement-details-1.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
-          </div>
+          </div>-->
 
           <div class="col-lg-4 col-md-6 announcement-item filter-app">
             <img src="homepage/assets/img/announcement/announcement-3.jpg" class="img-fluid" alt="img-3">
@@ -443,7 +443,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 announcement-item filter-card">
+         <!-- <div class="col-lg-4 col-md-6 announcement-item filter-card">
             <img src="homepage/assets/img/announcement/announcement-4.jpg" class="img-fluid" alt="img-4">
             <div class="announcement-info">
               <h4>Bicycle & Light Vehicle Registration</h4>
@@ -451,7 +451,7 @@
               <a href="homepage/assets/img/announcement/announcement-4.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Bicycle & Light Vehicle Registration"><i class="bx bx-plus"></i></a>
               <a href="homepage/announcement/announcement-details-2.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
-          </div>
+          </div>-->
 
           <div class="col-lg-4 col-md-6 announcement-item filter-web">
             <img src="homepage/assets/img/announcement/announcement-5.jpg" class="img-fluid" alt="img-6">
@@ -677,13 +677,15 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>CertiFast Links</h4>
             <ul>
               <li><a href="#">Home</a></li>
               <li><a href="#">About us</a></li>
               <li><a href="#">Services</a></li>
-              <li><a href="#">Terms of service</a></li>
-              <li><a href="#">Privacy policy</a></li>
+              <li><a href="#">News & Events</a></li>
+              <li><a href="#">Barangay Officials</a></li>
+              <li><a href="#">Sk Officials</a></li>
+              <li><a href="#">Contact</a></li>
             </ul>
           </div>
 

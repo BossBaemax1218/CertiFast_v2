@@ -24,6 +24,7 @@
 	<title>Officials</title>
 </head>
 <body>
+	
 	<?php include 'templates/loading_screen.php' ?>
 
 	<div class="wrapper">
