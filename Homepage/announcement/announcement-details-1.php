@@ -52,11 +52,11 @@
       <h1 class="logo"><a href="../index.php"><img src="../assets/img/title-logo.png" alt="title-logo"></a></h1>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="../index.php">Home</a></li>
-          <li><a class="nav-link scrollto" href="../index.php #about">About</a></li>
-          <li><a class="nav-link scrollto" href="../index.php #services">Services</a></li>
-          <li><a class="nav-link scrollto " href="../index.php #announcement">Announcement</a></li>
-          <li><a class="nav-link scrollto" href="../index.php #contact">Contact</a></li>
+          <li><a class="nav-link scrollto active" href="..\..\index.php">Home</a></li>
+          <li><a class="nav-link scrollto" href="..\..\index.php #about">About</a></li>
+          <li><a class="nav-link scrollto" href="..\..\index.php #services">Services</a></li>
+          <li><a class="nav-link scrollto " href="..\..\index.php #announcement">Announcement</a></li>
+          <li><a class="nav-link scrollto" href="..\..\index.php #contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

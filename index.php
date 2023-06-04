@@ -9,22 +9,22 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/title-logo.png" rel="title-logo-icon">
+  <link href="homepage/assets/img/favicon.png" rel="icon">
+  <link href="homepage/assets/img/title-logo.png" rel="title-logo-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="homepage/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="homepage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="homepage/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="homepage/assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -33,7 +33,7 @@
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">losamigosdavaocity.gov@gmail.com</a></i>
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:losamigosdavaocity.gov@gmail.com">losamigosdavaocity.gov@gmail.com</a></i>
         <i class="bi bi-telephone d-flex align-items-center ms-4"><span>(082) 228-8984</span></i>
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
@@ -48,9 +48,9 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.php"><img src="assets/img/title-logo.png" alt="title-logo"></a></h1>
+      <h1 class="logo"><a href="index.php"><img src="homepage/assets/img/title-logo.png" alt="title-logo"></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.php" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+      <!-- <a href="index.php" class="logo"><img src="homepage/assets/img/logo.png" alt=""></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
@@ -59,6 +59,7 @@
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto " href="#announcement">Announcement</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="click-login" href="login.php">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -73,7 +74,7 @@
       <h5>With our one-of-a-kind, user-friendly, and effective certificate management system, residents that can submit certificate requests for free and receive them quickly.</h5>
       <br>
       <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        <a href="login.php" class="btn-get-started scrollto">Get Started</a>
         <!--<a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>-->
       </div>
     </div>
@@ -88,15 +89,15 @@
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><img src="assets/img/clients/logo-3.png"></div>
-              <h4 class="title"><a href="officials.php">Barangay Officials</a></h4>
+              <div class="icon"><img src="homepage/assets/img/clients/logo-3.png"></div>
+              <h4 class="title"><a href="barangay-officials.php">Barangay Officials</a></h4>
               <p class="description">Barangay officials are elected or appointed individuals who represent and serve the interests of the community.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon"><img src="assets/img/clients/logo-5.png"></div>
+              <div class="icon"><img src="homepage/assets/img/clients/logo-5.png"></div>
               <h4 class="title"><a href="sangguniankabataan-officials.php">Sanggunian Kabataan</a></h4>
               <p class="description">Sanggunian Kabataan is a youth council that promotes youth empowerment and participation in local governance.</p>
             </div>
@@ -104,7 +105,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon"><img src="assets/img/clients/logo-7.png"></div>
+              <div class="icon"><img src="homepage/assets/img/clients/logo-7.png"></div>
               <h4 class="title"><a href="">Barangay Health Worker</a></h4>
               <p class="description">Barangay Health Worker provides healthcare, education, and support to residents.</p>
             </div>
@@ -112,7 +113,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon"><img src="assets/img/clients/logo-6.png"></div>
+              <div class="icon"><img src="homepage/assets/img/clients/logo-6.png"></div>
               <h4 class="title"><a href="">Barangay Tanod</a></h4>
               <p class="description">Barangay Tanod is a community volunteer responsible for maintaining peace, order, and security.</p>
             </div>
@@ -135,7 +136,7 @@
 
         <div class="row">
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-            <img src="assets/img/download.jpg" class="img-fluid" alt="">
+            <img src="homepage/assets/img/download.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <h3>Barangay Los Amigos <i>CertiFast</i> </h3>
@@ -218,27 +219,27 @@
         <div class="row">
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/logo-1.png" class="img-fluid" alt="">
+            <img src="homepage/assets/img/clients/logo-1.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/logo-2.png" class="img-fluid" alt="">
+            <img src="homepage/assets/img/clients/logo-2.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/logo-3.png" class="img-fluid" alt="">
+            <img src="homepage/assets/img/clients/logo-3.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/logo-4.png" class="img-fluid" alt="">
+            <img src="homepage/assets/img/clients/logo-4.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/logo-5.png" class="img-fluid" alt="">
+            <img src="homepage/assets/img/clients/logo-5.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/logo-6.png" class="img-fluid" alt="">
+            <img src="homepage/assets/img/clients/logo-6.png" class="img-fluid" alt="">
           </div>
 
         </div>
@@ -260,7 +261,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Barangay Registration</a></h4>
+              <h4><a href="login.php">Barangay Registration</a></h4>
               <p>Resident registration is the process of officially documenting individuals as residents of a particular location for administrative and legal purposes.</p>
             </div>
           </div>
@@ -268,7 +269,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Barangay Residency</a></h4>
+              <h4><a href="login.php">Barangay Residency</a></h4>
               <p>Barangay residency refers to the official status of being a resident or inhabitant of a specific barangay.</p>
             </div>
           </div>
@@ -276,7 +277,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Barangay Clearance</a></h4>
+              <h4><a href="login.php">Barangay Clearance</a></h4>
               <p>Barangay clearance is an official document issued by the barangay confirming the good conduct and residency of an individual within the community.</p>
             </div>
           </div>
@@ -284,7 +285,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Barangay Indingency</a></h4>
+              <h4><a href="login.php">Barangay Indingency</a></h4>
               <p>Barangay indigency refers to the certification granted to individuals who are deemed economically disadvantaged and eligible for certain privileges and social assistance within the barangay.</p>
             </div>
           </div>
@@ -292,7 +293,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-envelope"></i></div>
-              <h4><a href="">Business Permit</a></h4>
+              <h4><a href="login.php">Business Permit</a></h4>
               <p>Business permit is a legal document issued by the local government authorizing an individual or entity to operate a business within a specific jurisdiction.</p>
             </div>
           </div>
@@ -300,7 +301,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-user"></i></div>
-              <h4><a href="">Barangay ID</a></h4>
+              <h4><a href="login.php">Barangay ID</a></h4>
               <p> Identification card issued by the barangay to residents, serving as proof of residency and providing access to local barangay services.</p>
             </div>
           </div>
@@ -319,7 +320,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <img src="homepage/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
                 <h3>ROBERTO A. BALLARTA</h3>
                 <h4>Barangay Capitan</h4>
                 <p>
@@ -332,7 +333,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <img src="homepage/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                 <h3>ABBIE CHARLOTTE CABIG-SARSALE</h3>
                 <h4>Barangay Secretary</h4>
                 <p>
@@ -345,7 +346,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                <img src="homepage/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
                 <h3>MELLIZA JOIE BASUGA-TAÑAC</h3>
                 <h4>Barangay Treasurer</h4>
                 <p>
@@ -358,7 +359,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                <img src="homepage/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
                 <h3>AILEEN N. ATINO</h3>
                 <h4>Barangay Kagawad</h4>
                 <p>
@@ -371,7 +372,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                <img src="homepage/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
                 <h3>RUEL CEBALLOS</h3>
                 <h4>Barangay Kagawad</h4>
                 <p>
@@ -413,91 +414,91 @@
         <div class="row announcement-container" data-aos="fade-up" data-aos-delay="200">
 
           <div class="col-lg-4 col-md-6 announcement-item filter-app">
-            <img src="assets/img/announcement/announcement-1.jpg" class="img-fluid" alt="img-1">
+            <img src="homepage/assets/img/announcement/announcement-1.jpg" class="img-fluid" alt="img-1">
             <div class="announcement-info">
               <h4>Bloodletting Program</h4>
               <p> May 9, 2023</p>
-              <a href="assets/img/announcement/announcement-1.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Bloodletting Program"><i class="bx bx-plus"></i></a>
-              <a href="announcement/announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="homepage/assets/img/announcement/announcement-1.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Bloodletting Program"><i class="bx bx-plus"></i></a>
+              <a href="homepage/announcement/announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 announcement-item filter-web">
-            <img src="assets/img/announcement/announcement-2.jpg" class="img-fluid" alt="img-2">
+            <img src="homepage/assets/img/announcement/announcement-2.jpg" class="img-fluid" alt="img-2">
             <div class="announcement-info">
               <h4>Social Pension Payout</h4>
               <p>April 18, 2023</p>
-              <a href="assets/img/announcement/announcement-2.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Social Pension Payout"><i class="bx bx-plus"></i></a>
-              <a href="announcement/announcement-details-1.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="homepage/assets/img/announcement/announcement-2.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Social Pension Payout"><i class="bx bx-plus"></i></a>
+              <a href="homepage/announcement/announcement-details-1.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 announcement-item filter-app">
-            <img src="assets/img/announcement/announcement-3.jpg" class="img-fluid" alt="img-3">
+            <img src="homepage/assets/img/announcement/announcement-3.jpg" class="img-fluid" alt="img-3">
             <div class="announcement-info">
               <h4>Sim Registration</h4>
               <p>April 26, 2023</p>
-              <a href="assets/img/announcement/announcement-3.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Sim Registration"><i class="bx bx-plus"></i></a>
-              <a href="announcement/announcement-details-3.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="homepage/assets/img/announcement/announcement-3.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Sim Registration"><i class="bx bx-plus"></i></a>
+              <a href="homepage/announcement/announcement-details-3.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 announcement-item filter-card">
-            <img src="assets/img/announcement/announcement-4.jpg" class="img-fluid" alt="img-4">
+            <img src="homepage/assets/img/announcement/announcement-4.jpg" class="img-fluid" alt="img-4">
             <div class="announcement-info">
               <h4>Bicycle & Light Vehicle Registration</h4>
               <p>Open Registration</p>
-              <a href="assets/img/announcement/announcement-4.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Bicycle & Light Vehicle Registration"><i class="bx bx-plus"></i></a>
-              <a href="announcement/announcement-details-2.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="homepage/assets/img/announcement/announcement-4.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Bicycle & Light Vehicle Registration"><i class="bx bx-plus"></i></a>
+              <a href="homepage/announcement/announcement-details-2.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 announcement-item filter-web">
-            <img src="assets/img/announcement/announcement-5.jpg" class="img-fluid" alt="img-6">
+            <img src="homepage/assets/img/announcement/announcement-5.jpg" class="img-fluid" alt="img-6">
             <div class="announcement-info">
               <h4>Water Interruption</h4>
               <p>March 17, 2023</p>
-              <a href="assets/img/announcement/announcement-5.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Water Interruption"><i class="bx bx-plus"></i></a>
-              <a href="announcement/announcement-details-4.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="homepage/assets/img/announcement/announcement-5.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Water Interruption"><i class="bx bx-plus"></i></a>
+              <a href="homepage/announcement/announcement-details-4.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <!--<div class="col-lg-4 col-md-6 announcement-item filter-app">
-            <img src="assets/img/announcement/announcement-6.jpg" class="img-fluid" alt="">
+            <img src="homepage/assets/img/announcement/announcement-6.jpg" class="img-fluid" alt="">
             <div class="announcement-info">
               <h4>App 3</h4>
               <p>App</p>
-              <a href="assets/img/announcement/announcement-6.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+              <a href="homepage/assets/img/announcement/announcement-6.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
               <a href="announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 announcement-item filter-card">
-            <img src="assets/img/announcement/announcement-7.jpg" class="img-fluid" alt="">
+            <img src="homepage/assets/img/announcement/announcement-7.jpg" class="img-fluid" alt="">
             <div class="announcement-info">
               <h4>Card 1</h4>
               <p>Card</p>
-              <a href="assets/img/announcement/announcement-7.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+              <a href="homepage/assets/img/announcement/announcement-7.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
               <a href="announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 announcement-item filter-card">
-            <img src="assets/img/announcement/announcement-8.jpg" class="img-fluid" alt="">
+            <img src="homepage/assets/img/announcement/announcement-8.jpg" class="img-fluid" alt="">
             <div class="announcement-info">
               <h4>Card 3</h4>
               <p>Card</p>
-              <a href="assets/img/announcement/announcement-8.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+              <a href="homepage/assets/img/announcement/announcement-8.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
               <a href="announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 announcement-item filter-web">
-            <img src="assets/img/announcement/announcement-9.jpg" class="img-fluid" alt="">
+            <img src="homepage/assets/img/announcement/announcement-9.jpg" class="img-fluid" alt="">
             <div class="announcement-info">
               <h4>Web 3</h4>
               <p>Web</p>
-              <a href="assets/img/announcement/announcement-9.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              <a href="homepage/assets/img/announcement/announcement-9.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
               <a href="announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>-->
@@ -514,7 +515,7 @@
         <div class="section-title">
           <h2>F.A.Q</h2>
           <h3>Frequently Asked <span>Questions</span></h3>
-          <p>Frequently asked questions about the Certificate Management System, a digital platform that automates the issuance, tracking, and management of certificates for greater efficiency and convenience.</p>
+          <p>Frequently asked questions about the CertiFast, a digital platform that automates the issuance, tracking, and management of certificates for greater efficiency and convenience.</p>
         </div>
 
         <div class="row justify-content-center">
@@ -622,7 +623,7 @@
         <div class="row" data-aos="fade-up" data-aos-delay="100">
 
           <div class="col-lg-6 ">
-            <a href="https://www.google.com/maps/place/Los+Amigos,+Tugbok,+Davao+City,+Davao+del+Sur/@7.1416987,125.46621,15z/data=!3m1!4b1!4m6!3m5!1s0x32f911550de0241f:0xc66d177e2b21e4d5!8m2!3d7.1405399!4d125.4754538!16s%2Fg%2F1ptw2kz3p?entry=ttu"><img class="mb-4 mb-lg-0" src="assets\img\testimonials\testimonials-7.jpg" frameborder="0" style="border:0; width: 100%; height: 384px;" alt="img-6"></a>
+            <a href="https://www.google.com/maps/place/Los+Amigos,+Tugbok,+Davao+City,+Davao+del+Sur/@7.1416987,125.46621,15z/data=!3m1!4b1!4m6!3m5!1s0x32f911550de0241f:0xc66d177e2b21e4d5!8m2!3d7.1405399!4d125.4754538!16s%2Fg%2F1ptw2kz3p?entry=ttu"><img class="mb-4 mb-lg-0" src="homepage\assets\img\testimonials\testimonials-7.jpg" frameborder="0" style="border:0; width: 100%; height: 384px;" alt="img-6"></a>
           </div>
 
           <div class="col-lg-6">
@@ -701,9 +702,9 @@
             <h4>Our Social Networks</h4>
             <p>For more information, please contact us directly to our social media.</p>
             <div class="social-links mt-3">
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="google-email"><i class="bx bxl-gmail"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=100064303345469" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjI-Ma0x6b_AhWGft4KHc8sDiIQFnoECA8QAQ&url=https%3A%2F%2Fmail.google.com%2F%3F&usg=AOvVaw0UbLmQh5BLuX0lunN8sC9n" class="google-email"><i class="bx bxl-gmail"></i></a>
+              <a href="#" class="contact"><i class="bx bx-phone"></i></a>
             </div>
           </div>
 
@@ -722,17 +723,17 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="homepage/assets/vendor/aos/aos.js"></script>
+  <script src="homepage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="homepage/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="homepage/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="homepage/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="homepage/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="homepage/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="homepage/assets/js/main.js"></script>
 
 </body>
 

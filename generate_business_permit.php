@@ -36,11 +36,65 @@
 	<?php include 'templates/header.php' ?>
 	<title>Business Permit</title>
     <style>
-        @page  
-        { 
-            size: auto;   /* auto is the initial value */ 
-        } 
+    .footer-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: forestgreen;
+        color: white;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;;
+      }
+      .footer-names {
+        display: inline-block;
+      } 
+      .text-left {
+        text-align: right;  
+        margin-right: 2%;
+        margin-top: 10px;     
+      }
 
+      ul, ol {
+        list-style: none;
+      }   
+      .footer-names .fw-bold {
+        margin-top: 10px;
+        margin: 0px;
+        padding: 0px;
+        color: yellow;
+    }
+    /* Media query for laptops and computers */
+    @media (min-width: 992px) {
+        .footer-names {
+            margin-bottom: 0;
+        }
+
+        .personal-info {
+            margin-left: 150px;
+        }
+
+        .family-info {
+            margin-left: 100px;
+        }
+    }
+
+    /* Media query for phones */
+    @media (max-width: 767px) {
+        .footer-content {
+            flex-direction: column;
+        }
+        
+        .footer-names {
+            margin-bottom: 20px;
+        }
+
+        .personal-info,
+        .family-info {
+            margin-left: 0;
+        }
+    }
     </style>
 </head>
 <body>
@@ -108,69 +162,75 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-2" style="color: black; margin: 50px 0px 50px 0px;">
+                                    <div class="row mt-2" style="margin-bottom: 200px;">
                                         <div class="col-md-12">
                                             <div class="text-center mt-5">
-                                                <h1 class="mt-4 fw-bold">OFFICE OF THE PUNONG BARANGAY</h1>
+                                                <h1 class="fw-bold">OFFICE OF THE PUNONG BARANGAY</h1>
                                             </div>
-                                            <div class="text-center">
-                                                <h1 class="mt-4 fw-bold" style="font-size:80px;color:dark">BUSINESS PERMIT</h1>
+                                            <div class="text-center mt-2">
+                                                <h1 class="fw-bold" style="font-size:80px;">BUSINESS PERMIT</h1>
                                             </div>
-                                            <h2 class="mt-5 fw">GRANTED TO:</h2>
+                                            <h2 class="ml-5 text-left">GRANTED TO:</h2>
                                             <div class="text-center pt-0">
-                                                <h1 class="mt-0 fw-bold mb-2" style="font-size:40px;color:dark"><?= ucfirst($permit['name']) ?></h1>                                               
+                                                <h1 class="mt-0 fw-bold mb-2" style="font-size:40px;"><?= ucfirst($permit['name']) ?></h1>                                               
                                                 <h4 class="mt-0">NAME OF BUSINESS OR ESTABLISHMENT</h4>
                                             </div>
                                             <div class="text-center pt-4 mb-5">
-                                                <h1 class="mt-0 fw-bold mb-2" style="font-size:40px;color:dark"><?= empty($permit['owner2']) ? $permit['owner1'] : ucwords($permit['owner1'].' & '.$permit['owner2']) ?></h1>
+                                                <h1 class="mt-0 fw-bold mb-2" style="font-size:40px;"><?= empty($permit['owner2']) ? $permit['owner1'] : ucwords($permit['owner1'].' & '.$permit['owner2']) ?></h1>
                                                 <h4 class="mt-0">OWNER'S NAME</h4>
                                             </div>
-                                            <h2 class="mt-3" style="text-indent: 40px;">This clearance is granted in accordance with section 152 of R.A. 7160 of Barangay Tax Ordinance, provided however, that the necessary fees are paid to the Barangay Treasurer.</h2>
-                                            <h2 class="mt-3" style="text-indent: 40px;">This is non-transferable and shall be deemed null and void upon failure by the owner to follow the said rules and regulations set forth by the Local Government Unit of <span style="font-size:22px"><?= ucwords($town) ?>.</h2>
-                                            <h2 class="mt-3">Given this <span class="fw-bold" style="font-size:20px"><?= date('m/d/Y') ?></span> at <span style="font-size:20px"><?= ucwords($brgy.', '.$town) ?></span>.</h2>
+                                            <div class="ml-5 text-left">
+                                                <h2 class="mt-3" style="text-indent: 40px;">This clearance is granted in accordance with section 152 of R.A. 7160 of Barangay Tax Ordinance, provided however, that the necessary fees are paid to the Barangay Treasurer.</h2>
+                                                <h2 class="mt-3" style="text-indent: 40px;">This is non-transferable and shall be deemed null and void upon failure by the owner to follow the said rules and regulations set forth by the Local Government Unit of <span style="font-size:22px"><?= ucwords($town) ?>.</h2>
+                                                <h2 class="mt-3">Given this <span class="fw-bold" style="font-size:20px"><?= date('m/d/Y') ?></span> at <span style="font-size:20px"><?= ucwords($brgy.', '.$town) ?></span>.</h2>
+                                            </div>
                                         </div>
-                                        <div class="col-md-12" style="color: black;">
-                                            <div class="p-3 text-right mr-8" style="margin: 20px 0px 0px 0px;">
+                                        <div class="col-md-12 text-right">
+                                            <div class="p-3 text-right mr-8">
                                                 <h2 class="fw-bold mb-0"><u><?= ucwords($captain['name']) ?></u></h2>
-                                                <p class="text-right" style="margin: 0px 35px 10px 0px;">PUNONG BARANGAY</p>
+                                                <p class="text mr-5">PUNONG BARANGAY</p>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 mb-2">
-                                            <h4 class="mb-2"><i>CTC No.</i>:__________________________</h4>
-                                            <h4 class="mb-2"><i>Issued On.</i>:__________________________</h4>
-                                            <h4 class="mb-2"><i>Isuued at.</i>: <?= ucwords($brgy.','.$town) ?></h4>
-                                            <h4 class="mb-2"><i>OR No.</i>:__________________________</h4>
+                                        <div class="col-md-12 mb-2 text-left">
+                                            <h4 class="ml-4"><i>CTC No.</i>:__________________________</h4>
+                                            <h4 class="ml-4"><i>Issued On.</i>:__________________________</h4>
+                                            <h4 class="ml-4"><i>Isuued at.</i>: <?= ucwords($brgy.','.$town) ?></h4>
+                                            <h4 class="ml-4"><i>OR No.</i>:__________________________</h4>
                                         </div>
-                                        <p class="ml-2"><i>(This permit, while in force, shall be posted in a conspicious place in the business premises.)</i></p>
+                                        <p class="ml-4"><i>(This permit, while in force, shall be posted in a conspicious place in the business premises.)</i></p>
                                     </div>
-                                    <div class="d-flex flex-wrap justify-content-around">  
-                                        <div class="card-footer" style="background-color:forestgreen; margin-top: 20px;">
-                                            <div class="col-md-12 text-left" style="margin: 90px 0px 100px 20px;">
-                                                <h1 class="fw-bold" style="color:white; margin: 0px;"><?= ucwords($captain['name']) ?></h1>
-                                                <h6 class="text" style="color:yellow; margin: 500px 0px 10px 0pxpx;">PUNONG BARANGAY</h6>
-                                            </div>
-                                            <div class="col-md-4" style="margin: -250px 200px 500px 400px;">
-                                                <h2 class="fw-bold" style="color:white;"><u>Barangay Kagawad</u></h2>
-                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad1['name']) ?></h3>
-                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad2['name']) ?></h3>
-                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad3['name']) ?></h3>
-                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad4['name']) ?></h3>
-                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad5['name']) ?></h3>
-                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad6['name']) ?></h3>
-                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad7['name']) ?></h3>
-                                            </div>
-                                            <div class="col-md-4" style="margin: -700px 0px 10px 750px;">
-                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($kagawad8['name']) ?></h3>
-                                                <h6 class="text" style="color:white; margin: 0px;">IPMR</h6>
-                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($skchairman['name']) ?></h3>
-                                                <h6 class="text" style="color:white; margin: 0px;">SK Chairman</h6>
-                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($sec['name']) ?></h3>
-                                                <h6 class="text" style="color:white; margin: 0px;">Barangay Secretary</h6>
-                                                <h3 class="fw-bold" style="color:yellow; margin: 0px;"><?= ucwords($treasurer['name']) ?></h3>
-                                                <h6 class="text" style="color:white; margin: 0px;">Barangay Treasurery</h6>
-                                            </div>
+                                    <div class="footer-content">
+                                        <div class="footer-names text-left">                                                       
+                                            <ul>
+                                                <li><h1 class="fw-bold" style="margin-top: 90px;"><?= ucwords($captain['name']) ?></h1></li>
+                                                <li><h6 class="text">PUNONG BARANGAY</h6></li>
+                                            </ul>                                                                                                  
                                         </div>
-                                    </div>
+                                        <div class="footer-names text-left">                                                        
+                                            <ul>
+                                                <h2 class="text-bold"><u>Barangay Kagawad</u></h2>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad1['name']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad2['name']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad3['name']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad4['name']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad5['name']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad6['name']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad7['name']) ?></h3></li>
+                                            </ul>                                                       
+                                        </div>
+                                        <div class="footer-names text-left">                                                       
+                                            <ul>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad8['name']) ?></h3></li>
+                                                <li><h6 class="text">IPMR</h6></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($skchairman['name']) ?></h3></li>
+                                                <li><h6 class="text">SK Chairman</h6></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($sec['name']) ?></h3></li>
+                                                <li><h6 class="text">Barangay Secretary</h6></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($treasurer['name']) ?></h3></li>
+                                                <li><h6 class="text">Barangay Treasurery</h6></li>
+                                            </ul>                                                       
+                                        </div>
+                                    </div> 
 								</div>
 							</div>
 						</div>

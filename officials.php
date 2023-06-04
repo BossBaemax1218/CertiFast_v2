@@ -59,15 +59,13 @@
 							<div class="card">
 								<div class="card-body">
 									<div class="d-flex flex-wrap pb-2 justify-content-between">
-										<div class="px-2 pb-2 pb-md-0 text-center">
-										<img src="assets/img/Davao Seal.png" class="img" width="100">
+										<div class="px-2 pb-2 pb-md-0">										
 										</div>
 										<div class="px-4 pb-6 pb-md-0 text-center">
 											<h1 class="fw-bold mt-4">Barangay Los Amigos</h1>
 											<h4 class="fw-bold mt-0">Tugbok, Davao City</h4>
 										</div>
-										<div class="px-2 pb-2 pb-md-0 text-center">
-											<img src="assets/img/brgyLA.png" class="img" width="100">
+										<div class="px-2 pb-2 pb-md-0">											
 										</div>
 									</div>
 								</div>
