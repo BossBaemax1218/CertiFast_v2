@@ -24,6 +24,7 @@
       min-height: 100vh;
       background-image: url("homepage/images/3.svg");
       background-size: cover;
+      background-color: whitesmoke;
     }
 
     span {

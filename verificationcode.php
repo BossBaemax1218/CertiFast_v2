@@ -24,6 +24,7 @@
             background-image: url("homepage/images/3.svg");
             background-size: cover;
             position:relative;
+            background-color: whitesmoke;
           }
 
           span{
