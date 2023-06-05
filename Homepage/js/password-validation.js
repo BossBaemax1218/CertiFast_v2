@@ -1,4 +1,3 @@
-
 const passwordInput = document.getElementById('password');
 const strengthBar = document.getElementById('strength-bar-inner');
 const strengthValue = document.getElementById('strength-value');
@@ -6,7 +5,7 @@ const strengthValue = document.getElementById('strength-value');
 
 passwordInput.addEventListener('input', () => {
   const password = passwordInput.value;
-  const strength = calculatePasswordStrength(password);
+  const strength = calculatestrengthBar(password);
   strengthBar.style.width = `${strength}%`;
   strengthBar.className = '';
   if (strength < 33) {
@@ -24,7 +23,7 @@ passwordInput.addEventListener('input', () => {
   }
 });
 
-function calculatePasswordStrength(password) {
+function calculatestrengthBar(password) {
   let strength = 0;
   if (password.length >= 8) {
     strength += 30;
@@ -43,8 +42,6 @@ function calculatePasswordStrength(password) {
   }
   return strength;
 }
-
-
 
 const eyeIcon = document.querySelector(".pass-field i");
 
