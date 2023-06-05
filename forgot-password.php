@@ -130,7 +130,7 @@
     }
 
     button {
-      margin-top: 20px;
+      margin-top: 30px;
       width: 100%;
       height: 45px;
       border: none;
@@ -143,7 +143,12 @@
       letter-spacing: 1px;
       cursor: pointer;
       transition: 0.3s;
-      display:none;
+      
+    }
+  
+    a{
+      text-decoration:none;
+      color: white;
     }
 
     button:hover {
@@ -210,7 +215,7 @@
       <div class="error-text">
         Please Enter Valid Email Address
       </div>
-      <button type="submit"><a href="verificationcode.php">Submit</a></button>
+      <button><a href="verificationcode.php">Submit</a></button>
     </form>
   </div>
   <script src="homepage/js/forgot-password.js"></script>

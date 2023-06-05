@@ -87,6 +87,12 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: 0.3s;
+            
+          }
+
+          a{
+            text-decoration:none;
+            color: white;
           }
 
           button:hover{
