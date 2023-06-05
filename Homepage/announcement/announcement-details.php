@@ -56,8 +56,12 @@
           <li><a class="nav-link scrollto" href="..\..\index.php #about">About</a></li>
           <li><a class="nav-link scrollto" href="..\..\index.php #services">Services</a></li>
           <li><a class="nav-link scrollto " href="..\..\index.php #announcement">News & Event</a></li>
-          <li><a class="nav-link scrollto " href="..\..\barangay-officials.php">Barangay Officials</a></li>
-          <li><a class="nav-link scrollto " href="..\..\sangguniankabataan-officials.php">SK Officials</a></li>
+          <li class="dropdown"><a href="#"><span>Officials</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto " href="..\..\barangay-officials.php">Barangay Officials</a></li>
+              <li><a class="nav-link scrollto " href="..\..\sangguniankabataan-officials.php">SK Official</a></li>
+            </ul>
+          </li>
           <li><a class="nav-link scrollto" href="..\..\index.php #contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

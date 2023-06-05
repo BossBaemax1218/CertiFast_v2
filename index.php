@@ -51,8 +51,12 @@
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto " href="#announcement">News & Events</a></li>
-          <li><a class="nav-link scrollto " href="barangay-officials.php">Barangay Officials</a></li>
-          <li><a class="nav-link scrollto " href="sangguniankabataan-officials.php">SK Official</a></li>
+          <li class="dropdown"><a href="#"><span>Officials</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto " href="barangay-officials.php">Barangay Officials</a></li>
+              <li><a class="nav-link scrollto " href="sangguniankabataan-officials.php">SK Official</a></li>
+            </ul>
+          </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -68,7 +72,7 @@
       <h6>With our one-of-a-kind, user-friendly, and effective certificate management system, residents that can submit certificate requests for free and receive them quickly.</h6>
       <div class="d-flex">
         <a href="login.php" class="btn-get-started scrollto">Get Started</a>
-        <!--<a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>-->
+        <a href="https://www.youtube.com/watch?v=NroSCViBo1M" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
       </div>
     </div>
   </section><!-- End Hero -->
@@ -82,33 +86,37 @@
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><img src="homepage/assets/img/clients/logo-12.svg"></div>
-              <h4 class="title"><a href="login.php">Step 1</a></h4>
-              <p class="description">Go to <strong>CertiFast registration site</strong> or just go to barangay office near you. And make sure you have your identification documents ready.</p>
+              <div class="icon"><img src="homepage/assets/img/clients/logo-8.svg"></div>
+              <h4 class="title"><a href="#services">Step 1</a></h4>
+              <h6 class="pre-title">Request</h6>
+              <p class="description">Fill out the online application for your choice of certificate.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-14.svg"></div>
-              <h4 class="title"><a href="login.php">Step 2</a></h4>
-              <p class="description"><strong>Proceed</strong> to your selected registration and bring an valid copy of your supporting papers to have your personal data checked.</p>
+              <h4 class="title"><a href="#services">Step 2</a></h4>
+              <h6 class="pre-title">Review</h6>
+              <p class="description">Review your information before you proceed.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-10.svg"></div>
-              <h4 class="title"><a href="login.php">Step 3</a></h4>
-              <p class="description"><strong>Wait</strong> for the document to be processed. Due to high demand and limited resources, the processing time for certificates maybe delayed.</p>
+              <h4 class="title"><a href="#services">Step 3</a></h4>
+              <h6 class="pre-title">Wait</h6>
+              <p class="description">Wait till the certificate has been process.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-11.svg"></div>
-              <h4 class="title"><a href="login.php">Step 4</a></h4>
-              <p class="description"><strong>Done</strong> generating the certificate and is available to claim. Make sure you have a valid payment slip to be shown as proof of payment.</p>
+              <h4 class="title"><a href="#services">Step 4</a></h4>
+              <h6 class="pre-title">Payment</h6>
+              <p class="description">Make sure you have a valid payment slip to be shown as proof of payment.</p>
             </div>
           </div>
 
@@ -247,55 +255,68 @@
         <div class="section-title">
           <h2>Services</h2>
           <h3>Check our <span>Services</span></h3>
-          <p>Barangay Certificate Services provides an extensive variety of certifications that satisfy the community's for particular requirements.</p>
+          <br>
+          <h5>What are the information needed?</h5>
         </div>
 
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-1.svg"></div>
-              <h4><a href="login.php">Barangay Registration</a></h4>
+              <h4>Barangay Registration</h4>
               <p>Resident registration is the process of officially documenting individuals as residents of a particular location for administrative and legal purposes.</p>
+              <br>
+              <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-2.svg"></div>
-              <h4><a href="login.php">Barangay Residency</a></h4>
+              <h4>Barangay Residency</h4>
               <p>Barangay residency refers to the official status of being a resident or inhabitant of a specific barangay.</p>
+              <br>
+              <h5><a href="login.php" class="btn-request-nowtarted">REQUEST NOW</a></h5>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-3.svg"></div>
-              <h4><a href="login.php">Barangay Clearance</a></h4>
+              <h4>Barangay Clearance</h4>
               <p>Barangay clearance is an official document issued by the barangay confirming the good conduct and residency of an individual within the community.</p>
+              <br>
+              <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-5.svg"></div>
-              <h4><a href="login.php">Barangay Indingency</a></h4>
+              <h4>Barangay Indingency</h4>
               <p>Barangay indigency refers to the certification granted to individuals who are deemed economically disadvantaged and eligible for certain privileges and social assistance within the barangay.</p>
+              <br>
+              <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
-              <h4><a href="login.php">Business Permit</a></h4>
+              <h4>Business Permit</h4>
               <p>Business permit is a legal document issued by the local government authorizing an individual or entity to operate a business within a specific jurisdiction.</p>
+              <br>
+              <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-12.svg"></div>
-              <h4><a href="login.php">Barangay ID</a></h4>
+              <h4>Barangay ID</h4>
               <p> Identification card issued by the barangay to residents, serving as proof of residency and providing access to local barangay services.</p>
+              <br>
+              <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
           </div>
 
