@@ -37,6 +37,22 @@ body {
     transition: 1s ease-in-out;
 }
 
+.alert {
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
 .signin-signup {
     position: absolute;
     top: 0;

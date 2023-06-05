@@ -19,7 +19,6 @@
     <link rel="icon" href="homepage/images/CFLogo2.ico" type="image/x-icon"/>
 
     <title>CertiFast Account</title>
-
 </head>
 
 <body>
@@ -28,18 +27,18 @@
             <form method="POST" action="model/login.php" class="sign-in-form">
                 <h2 class="title">Sign in</h2>
                 <?php if(isset($_SESSION['message'])): ?>
-                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                            <?= $_SESSION['message']; ?>
-                        </div>
+                    <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
+                        <?php echo $_SESSION['message']; ?>
+                    </div>
                     <?php unset($_SESSION['message']); ?>
                 <?php endif ?>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input id="username" name="username" type="text" placeholder="Username" required>
+                    <input id="username" name="username" type="text" placeholder="Username">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input id="password" name="password" type="password" placeholder="Password" required>
+                    <input id="password" name="password" type="password" placeholder="Password">
                 </div>
                 <div class="link">
                     <a href="forgot-password.php">Forgot your password?</a>
@@ -57,9 +56,15 @@
             </form>
             <form method="POST" action="model/signup.php" class="sign-up-form">
                 <h2 class="title">Sign up</h2>
+                <?php if(isset($_SESSION['message'])): ?>
+                    <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
+                        <?php echo $_SESSION['message']; ?>
+                    </div>
+                    <?php unset($_SESSION['message']); ?>
+                <?php endif ?>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input id="fullname" name="fullname" type="text" placeholder="Name">
+                    <input id="username" name="username" type="text" placeholder="Username">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>

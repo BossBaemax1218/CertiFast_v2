@@ -1,45 +1,60 @@
-<?php 
-	include('../server/server.php');
+<?php
+session_start();
+include '../server/server.php';
 
-    if(!isset($_SESSION['username'])){
-        if (isset($_SERVER["HTTP_REFERER"])) {
-            header("Location: " . $_SERVER["HTTP_REFERER"]);
-        }
-    }
-    
-	$fullname 	= $conn->real_escape_string($_POST['fullname']);
-    $email 	= $conn->real_escape_string($_POST['email']);
-	$password 	= $conn->real_escape_string($_POST['password']);
+$username = $conn->real_escape_string($_POST['username']);
+$email = $conn->real_escape_string($_POST['email']);
+$password = $conn->real_escape_string($_POST['password']);
 
-    if(!empty($fullname) && !empty($email) && !empty($password)){
+// Validate username
+$usernameRegex = "/^[a-zA-Z0-9_]{3,20}$/"; // Regular expression for username validation
 
-        $insert  = "INSERT INTO tbl_user_resident (`fullname`,`email`, `password`) VALUES ('$fullname', '$email', '$password')";
-        $result  = $conn->query($insert);
-        
+if (!preg_match($usernameRegex, $username)) {
+    $_SESSION['message'] = 'Error: Username must be between 3 and 20 characters long and can only contain letters, numbers, and underscores.';
+    $_SESSION['success'] = 'danger';
+    header('Location: ../login.php');
+    exit();
+}
 
-        if($result->num_rows){
-			while ($row = $result->fetch_assoc()) {
-				$_SESSION['id'] = $row['id'];
-				$_SESSION['fullname'] = $row['fullname'];
-				$_SESSION['email'] = $row['email'];
-				$_SESSION['password'] = $row['password'];
-			}
+// Validate email format
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $_SESSION['message'] = 'Error: Invalid email format.';
+    $_SESSION['success'] = 'danger';
+    header('Location: ../login.php');
+    exit();
+}
 
-			$_SESSION['message'] = 'You have successfull logged in to CertiFast - Barangay Los Amigos!';
-			$_SESSION['success'] = 'success';
+// Validate password strength
+if (strlen($password) < 8 || !preg_match("#[0-9]+#", $password) || !preg_match("#[A-Z]+#", $password)) {
+    $_SESSION['message'] = 'Error: Password must be at least 8 characters long, contain at least one uppercase letter, and at least one number.';
+    $_SESSION['success'] = 'danger';
+    header('Location: ../login.php');
+    exit();
+}
 
-        }else{
-            $_SESSION['message'] = 'Something went wrong!';
-            $_SESSION['success'] = 'danger';
-        }
+if (!empty($username) && !empty($email) && !empty($password)) {
+    // Hash the password using SHA1
+    $hashedPassword = sha1($password);
 
-    }else{
+    $query = "INSERT INTO tbl_user_resident (`username`, `email`, `password`) VALUES ('$username', '$email', '$hashedPassword')";
 
-        $_SESSION['message'] = 'Please fill up the form completely!';
+    if ($conn->query($query)) {
+        $_SESSION['message'] = 'You have successfully signed up!';
+        $_SESSION['success'] = 'success';
+        header('Location: ../login.php');
+        exit();
+    } else {
+        $_SESSION['message'] = 'Error: Unable to sign up. Please try again later.';
         $_SESSION['success'] = 'danger';
-        
+        header('Location: ../login.php');
+        exit();
     }
-    header("Location: ../dashboard.php");
-    
+} else {
+    $_SESSION['message'] = 'Error: Please fill in all the required fields.';
+    $_SESSION['success'] = 'danger';
+    header('Location: ../login.php');
+    exit();
+}
 
-	$conn->close();
+$conn->close();
+?>

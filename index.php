@@ -276,7 +276,7 @@
               <h4>Barangay Residency</h4>
               <p>Barangay residency refers to the official status of being a resident or inhabitant of a specific barangay.</p>
               <br>
-              <h5><a href="login.php" class="btn-request-nowtarted">REQUEST NOW</a></h5>
+              <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
           </div>
 
