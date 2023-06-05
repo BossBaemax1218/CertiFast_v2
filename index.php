@@ -36,11 +36,6 @@
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:losamigosdavaocity.gov@gmail.com">losamigosdavaocity.gov@gmail.com</a></i>
         <i class="bi bi-telephone d-flex align-items-center ms-4"><span>(082) 228-8984</span></i>
       </div>
-      <div class="social-links d-none d-md-flex align-items-center">
-        <a href="https://www.facebook.com/profile.php?id=100064303345469" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
     </div>
   </section>
 
@@ -49,8 +44,6 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <h1 class="logo"><a href="index.php"><img src="homepage/assets/img/title-logo.png" alt="title-logo"></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.php" class="logo"><img src="homepage/assets/img/logo.png" alt=""></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
@@ -58,7 +51,7 @@
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto " href="#announcement">News & Events</a></li>
-          <li><a class="nav-link scrollto " href="barangay-officials.php">Officials</a></li>
+          <li><a class="nav-link scrollto " href="barangay-officials.php">Barangay Officials</a></li>
           <li><a class="nav-link scrollto " href="sangguniankabataan-officials.php">SK Official</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
@@ -71,7 +64,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Welcome to Barangay Los Amigos <span> CertiFast</span></h1>
+      <h1>Welcome to <span> CertiFast</span></h1>
       <h6>With our one-of-a-kind, user-friendly, and effective certificate management system, residents that can submit certificate requests for free and receive them quickly.</h6>
       <div class="d-flex">
         <a href="login.php" class="btn-get-started scrollto">Get Started</a>

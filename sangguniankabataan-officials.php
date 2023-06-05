@@ -37,11 +37,6 @@
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">losamigosdavaocity.gov@gmail.com</a></i>
         <i class="bi bi-telephone d-flex align-items-center ms-4"><span>(082) 228-8984</span></i>
       </div>
-      <div class="social-links d-none d-md-flex align-items-center">
-        <a href="https://www.facebook.com/profile.php?id=100064303345469" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
     </div>
   </section>
 
@@ -56,7 +51,7 @@
           <li><a class="nav-link scrollto" href="index.php #about">About</a></li>
           <li><a class="nav-link scrollto" href="index.php #services">Services</a></li>
           <li><a class="nav-link scrollto " href="index.php #announcement">News & Events</a></li>
-          <li><a class="nav-link scrollto " href="barangay-officials.php">Officials</a></li>
+          <li><a class="nav-link scrollto " href="barangay-officials.php">Barangay Officials</a></li>
           <li><a class="nav-link scrollto " href="sangguniankabataan-officials.php">SK Official</a></li>
           <li><a class="nav-link scrollto" href="index.php #contact">Contact</a></li>
         </ul>

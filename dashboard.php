@@ -56,283 +56,82 @@
 						</div>
 					</div>
 				</div>
-				<div class="page-inner mt--2">
-					<?php if(isset($_SESSION['message'])): ?>
-							<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-								<?php echo $_SESSION['message']; ?>
-							</div>
-						<?php unset($_SESSION['message']); ?>
-					<?php endif ?>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="card">
-								<div class="card-header">
-									<div class="card-head-row">
-										<div class="card-title fw-bold"><h1><strong>Barangay Los Amigos</strong></h1></div>
-									</div>
+					<div class="page-inner mt-2">
+						<?php if(isset($_SESSION['message'])): ?>
+								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+									<?php echo $_SESSION['message']; ?>
 								</div>
-								<div class="card-body">
-									<p><?= !empty($db_txt) ? $db_txt : 'Los Amigos is a barangay in Davao City.' ?></p>
-									<div class="text-center">
-										<img class="img-fluid" src="<?= !empty($db_img) ? 'assets/uploads/'.$db_img : 'assets/img/bg-abstract.png' ?>" />
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<!--<div class="col-md-4">
-							<div class="card card-stats card card-round">
-								<div class="card-body">
-									<div class="row">
-										<div class="col-4">
-											<div class="icon-big text-center">
-												<i class="fas fa-users fa-2x" style="color: gray;"></i>
-											</div>
-										</div>
-										<div class="col-2 col-stats">
-										</div>
-										<div class="col-2 col-stats">
-											<div class="numbers mt-2">
-												<h2 class="text-uppercase" style="font-size: 13px;">Population</h2>
-												<h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($total) ?></h3>
-											</div>
-										</div>
-									</div>
-									<div class="card-body">
-										<a href="resident_info.php?state=all" class="card-link text" style="color: gray;">All Resident </a>
-									</div>
-								</div>
-							</div>
-						</div>-->
-						<!--<div class="col-md-4">
-							<div class="card card-stats card card-round">
-								<div class="card-body">
-									<div class="row">
-										<div class="col-4">
-											<div class="icon-big text-center">
-												<i class="fas fa-user fa-2x" style="color: gray;"></i>
-											</div>
-										</div>
-										<div class="col-2 col-stats">
-										</div>
-										<div class="col-2 col-stats">
-											<div class="numbers mt-2">
-												<h2 class="text-uppercase" style="font-size: 13px;">Employees</h2>
-												<h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($staff) ?></h3>
-											</div>
-										</div>
-									</div>
-									<div class="card-body">
-										<a href="users.php?state=male" class="card-link text" style="color: gray;">All Employees </a>
-									</div>
-								</div>
-							</div>
-						</div>-->
-						<!--<div class="col-md-3">
-							<div class="card card-stats card card-round">
-								<div class="card-body">
-									<div class="row">
-										<div class="col-4">
-											<div class="icon-big text-center">
-												<i class="fas fa-user-check fa-2x" style="color: gray;"></i>
-											</div>
-										</div>
-										<div class="col-2 col-stats">
-										</div>
-										<div class="col-2 col-stats">
-											<div class="numbers mt-2">
-												<h2 class="text-uppercase" style="font-size: 13px;">Voters</h2>
-												<h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #D32D41;"><?= number_format($totalvoters) ?></h3>
-											</div>
-										</div>
-									</div>
-									<div class="card-body">
-										<a href="resident_info.php?state=voters" class="card-link text-" style="color: gray;">Total Voters </a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="card card-stats card card-round">
-								<div class="card-body">
-									<div class="row">
-										<div class="col-4">
-											<div class="icon-big text-center">
-												<i class="fas fa-user-times fa-2x" style="color: gray;"></i>
-											</div>
-										</div>
-										<div class="col-2 col-stats">
-										</div>
-										<div class="col-2 col-stats">
-											<div class="numbers mt-2">
-												<h2 class="text-uppercase" style="font-size: 13px;">NonVoters</h2>
-												<h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #D32D41;"><?= number_format($non) ?></h3>
-											</div>
-										</div>
-									</div>
-									<div class="card-body">
-										<a href="resident_info.php?state=non_voters" class="card-link text" style="color: gray;">Total Non-Voters</a>
-									</div>
-								</div>
-							</div>
-						</div>-->
-						<div class="col-md-4">
-						<div class="card card-stats card-round">
-									<div class="card-body">
-										<canvas id="myChart1" style="width:50%;max-width:300px;">
-											<script>
-												var xValues = ["Total Resident"];
-												var yValues = [100,50];
-												var barColors = ["#D32D41"];
-												var options = {
-													pieceLabel: {
-														render: function(d) { 
-															return d.label + " (" + d.percentage + "%)" 
-														},
-														fontColor: '#000',
-														position: 'inside',
-														segment: true
-													}
-												};
-
-												new Chart("myChart1", {
-												type: "pie",
-												data: {
-													labels: xValues,
-													datasets: [{
-													backgroundColor: barColors,
-													data: yValues
-													}]
-												},
-												options: {
-													title: {
-													display: true,
-													text: "Overall Total Resident"
-													}
-												}
-												});
-											</script>
-										</canvas>
-									</div>
-								</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card card-stats card-round">
-								<div class="card-body">
-									<div class="row">
-										<div class="col-4">
-											<div class="icon-big text-center">
-												<i class="fas fa-route fa-2x" style="color: gray;"></i>
-											</div>
-										</div>
-										<div class="col-2 col-stats">
-										</div>
-										<div class="col-2 col-stats">
-											<div class="numbers mt-2">
-												<h2 class="text-uppercase" style="font-size: 13px;">Purok</h2>
-												<h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($purok) ?></h3>
-											</div>
-										</div>
-									</div>
-									<div class="card-body">
-										<a href="purok_info.php?state=purok" class="card-link text" style="color: gray;">Purok Information</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					 </div>
-						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
+							<?php unset($_SESSION['message']); ?>
 						<?php endif ?>
 						<div class="row">
-							<div class="col-md-3">
-								<div class="card card-stats card-round">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-head-row">
+											<div class="card-title fw-bold"><h1><strong>Barangay Los Amigos</strong></h1></div>
+										</div>
+									</div>
 									<div class="card-body">
-										<canvas id="myChart1" style="width:50%;max-width:300px;">
-											<script>
-												var xValues = ["Total Resident"];
-												var yValues = [100,50];
-												var barColors = ["#D32D41"];
-												var options = {
-													pieceLabel: {
-														render: function(d) { 
-															return d.label + " (" + d.percentage + "%)" 
-														},
-														fontColor: '#000',
-														position: 'inside',
-														segment: true
-													}
-												};
-
-												new Chart("myChart1", {
-												type: "pie",
-												data: {
-													labels: xValues,
-													datasets: [{
-													backgroundColor: barColors,
-													data: yValues
-													}]
-												},
-												options: {
-													title: {
-													display: true,
-													text: "Overall Total Resident"
-													}
-												}
-												});
-											</script>
-										</canvas>
+										<!--<p><?= !empty($db_txt) ? $db_txt : 'Los Amigos is a barangay in Davao City.' ?></p>-->
+										<div class="text-center">
+											<img class="img-fluid" src="<?= !empty($db_img) ? 'assets/uploads/'.$db_img : 'assets/img/bg-abstract.png' ?>" />
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="card card-stats card-round">
-									<div class="card-body">
-										<canvas id="myChart" style="width:50%; max-width:100%; margin-inline:0px;">
-											<script>
-												var xValues = ["2018", "2019", "2020", "2021", "2022"];
-												var yValues = [30, 15, 15, 25, 15];
-												var barColors = ["#D32D41", "#D32D41","#D32D41","#D32D41","#D32D41"];
-
-												new Chart("myChart", {
-												type: "bar",
-												data: {
-													labels: xValues,
-													datasets: [{
-													backgroundColor: barColors,
-													data: yValues
-													}]
-													},
-												options: {
-													legend: {display: false},
-													title: {
-													display: true,
-													text: "All Year's Earning's"
-													}
-													}
-													});
-											</script>
-										</canvas>
-									</div>
-								</div>
-							</div>
-							<!--<div class="col-md-6">
-								<div class="card card-stats card-round">
-									<div class="card-body">
-											
-									</div>
-								</div>
-							</div>-->
 						</div>
+						<div class="row">
+							<div class="col">
+								<div class="col-md-3">
+									<div class="card card-stats card-round">
+										<div class="card-body">
+											<canvas id="myChart2" width="400" height="300">
+											<script src="homepage/js/half-donut-chart.js"></script>
+											</canvas>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-9">
+									<div class="card card-stats card-round">
+										<div class="card-body">
+											<canvas id="myChart3" width="800" max-width="1000">
+												<script src="homepage/js/group-bar-chart.js"></script>
+											</canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="col-md-3">
+									<div class="card card-stats card-round">
+										<div class="card-body">
+											<canvas id="myChart1" width="400" max-width="300">
+												<script src="homepage/js/pie-chart.js"></script>
+											</canvas>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-9">
+									<div class="card card-stats card-round">
+										<div class="card-body">
+											<canvas id="myChart" width="800" max-width="1000">
+												<script src="homepage/js/bar-chart.js"></script>
+											</canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
+						<?php endif ?>
+					</div>
 				</div>
-			</div>
-
-			<!-- Main Footer -->
-			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
-			
+				<!-- Main Footer -->
+				<?php include 'templates/main-footer.php' ?>
+				<!-- End Main Footer -->
 		</div>
-		
 	</div>
 	<?php include 'templates/footer.php' ?>
 </body>
