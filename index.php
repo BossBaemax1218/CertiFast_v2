@@ -8,14 +8,11 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
   <link href="homepage/assets/img/favicon.png" rel="icon">
   <link href="homepage/assets/img/title-logo.png" rel="title-logo-icon">
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
   <link href="homepage/assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="homepage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -23,13 +20,11 @@
   <link href="homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
   <link href="homepage/assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
@@ -39,7 +34,6 @@
     </div>
   </section>
 
-  <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
@@ -60,29 +54,30 @@
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      </nav>
 
     </div>
-  </header><!-- End Header -->
+  </header>
 
-  <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Welcome to <span> CertiFast</span></h1>
-      <h6>With our one-of-a-kind, user-friendly, and effective certificate management system, residents that can submit certificate requests for free and receive them quickly.</h6>
+      <h1>Welcome to</h1>
+      <h1>Barangay Los Amigos <span>CertiFast</span></h1>
+      <br>
       <div class="d-flex">
         <a href="login.php" class="btn-get-started scrollto">Get Started</a>
         <a href="https://www.youtube.com/watch?v=NroSCViBo1M" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
       </div>
     </div>
-  </section><!-- End Hero -->
+  </section>
 
   <main id="main">
-
-    <!-- ======= Featured Services Section ======= -->
     <section id="featured-services" class="featured-services">
       <div class="container" data-aos="fade-up">
-
+      <div class="section-title">
+          <h3>Online Certificate Management System</h3>
+          <p>Here are the steps in setting an registration with CertiFast.</p>
+        </div>
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
@@ -106,8 +101,8 @@
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-10.svg"></div>
               <h4 class="title"><a href="#services">Step 3</a></h4>
-              <h6 class="pre-title">Wait</h6>
-              <p class="description">Wait till the certificate has been process.</p>
+              <h6 class="pre-title">Processing</h6>
+              <p class="description">Wait for the certificate to be processed.</p>
             </div>
           </div>
 
@@ -123,9 +118,8 @@
         </div>
 
       </div>
-    </section><!-- End Featured Services Section -->
+    </section>
 
-    <!-- ======= About Section ======= -->
     <section id="about" class="about section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -164,9 +158,9 @@
         </div>
 
       </div>
-    </section><!-- End About Section -->
+    </section>
 
-    <!-- ======= Counts Section ======= -->
+
     <section id="counts" class="counts">
       <div class="container" data-aos="fade-up">
 
@@ -211,9 +205,9 @@
         </div>
 
       </div>
-    </section><!-- End Counts Section -->
+    </section>
 
-    <!-- ======= Clients Section ======= -->
+
     <section id="clients" class="clients section-bg">
       <div class="container" data-aos="zoom-in">
 
@@ -246,9 +240,8 @@
         </div>
 
       </div>
-    </section><!-- End Clients Section -->
+    </section>
 
-    <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
 
@@ -274,7 +267,7 @@
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-2.svg"></div>
               <h4>Barangay Residency</h4>
-              <p>Barangay residency refers to the official status of being a resident or inhabitant of a specific barangay.</p>
+              <p>Barangay residency refers to the barangay status of being a resident or inhabitant of a specific barangay.</p>
               <br>
               <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
@@ -284,7 +277,7 @@
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-3.svg"></div>
               <h4>Barangay Clearance</h4>
-              <p>Barangay clearance is an official document issued by the barangay confirming the good conduct and residency of an individual within the community.</p>
+              <p>Barangay clearance is an official document issued by the barangay officials confirming the good conduct and residency of an individual within the community.</p>
               <br>
               <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
@@ -323,9 +316,8 @@
         </div>
 
       </div>
-    </section><!-- End Services Section -->
+    </section>
 
-    <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
       <div class="container" data-aos="zoom-in">
 
@@ -343,7 +335,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
 
             <div class="swiper-slide">
               <div class="testimonial-item">
@@ -356,7 +348,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
 
             <!--<div class="swiper-slide">
               <div class="testimonial-item">
@@ -395,16 +387,15 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div>-->    <!-- End testimonial item -->
+            </div>-->   
 
           </div>
           <div class="swiper-pagination"></div>
         </div>
 
       </div>
-    </section><!-- End Testimonials Section -->
+    </section>
 
-    <!-- ======= Announcement Section ======= -->
     <section id="announcement" class="announcement">
       <div class="container" data-aos="fade-up">
 
@@ -520,9 +511,8 @@
         </div>
 
       </div>
-    </section><!-- End announcement Section -->
+    </section>
 
-    <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -595,9 +585,8 @@
         </div>
 
       </div>
-    </section><!-- End Frequently Asked Questions Section -->
+    </section>
 
-    <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
 
@@ -668,11 +657,10 @@
         </div>
 
       </div>
-    </section><!-- End Contact Section -->
+    </section>
 
-  </main><!-- End #main -->
+  </main>
 
-  <!-- ======= Footer ======= -->
   <footer id="footer">
 
     <div class="footer-top">
@@ -733,12 +721,11 @@
         &copy; Copyright <strong><span>CertiFast</span></strong>. All Rights Reserved
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer>
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
   <script src="homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="homepage/assets/vendor/aos/aos.js"></script>
   <script src="homepage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -748,7 +735,6 @@
   <script src="homepage/assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="homepage/assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
   <script src="homepage/assets/js/main.js"></script>
 
 </body>

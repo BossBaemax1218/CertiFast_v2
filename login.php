@@ -6,7 +6,6 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +43,7 @@
                     <a href="forgot-password.php">Forgot your password?</a>
                 </div>    
                 <input type="submit" value="Login" class="btn">
-                <p class="social-text" style="font-size: 18px;">or sign in with</p>
+                <p class="social-text">or sign in with</p>
                 <div class="social-media">
                     <a href="" class="social-icon">
                         <i class="fab fa-google-plus-g"></i>
@@ -105,7 +104,6 @@
             </div>
         </div>
     </div>
-
     <script src="homepage/js/login-register.js"></script>
 </body>
 
