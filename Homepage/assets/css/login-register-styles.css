@@ -53,10 +53,9 @@ body {
     font-size: 14px;
     text-align: center;
   }
-  .header i{
-    font-size: 15px;
-    text-align: center;
-    position: relative;
+  .alert-message {
+    margin-right: 45px;
+    margin-left: 10px; 
   }
 
 .signin-signup {

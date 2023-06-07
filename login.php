@@ -36,7 +36,7 @@
                         echo '<i class="fas fa-check-circle"></i>';
                         }
                     ?>
-                    <?php echo $_SESSION['message']; ?>
+                    <span class="alert-message"><?php echo $_SESSION['message']; ?></span>
                     </div>
                     <?php unset($_SESSION['message']); ?>
                 <?php endif ?>
@@ -67,12 +67,19 @@
                 <a href="index.php"><img src="homepage/images/trans-title.png" alt="" class="image2"></a>
                 <h2 class="title">CertiFast Sign up</h2>
                 <header id="header">
-                    <?php if(isset($_SESSION['message'])): ?>                     
-                        <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">                       
-                            <?php echo $_SESSION['message']; ?>                    
-                        </div>                                               
-                        <?php unset($_SESSION['message']); ?>
-                    <?php endif ?>                  
+                <?php if(isset($_SESSION['message'])): ?>
+                    <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
+                    <?php
+                        if ($_SESSION['success'] == 'danger') {
+                        echo '<i class="fas fa-exclamation-triangle"> </i>';
+                        } elseif ($_SESSION['success'] == 'success') {
+                        echo '<i class="fas fa-check-circle"> </i>';
+                        }
+                    ?>
+                    <?php echo $_SESSION['message']; ?>
+                    </div>
+                    <?php unset($_SESSION['message']); ?>
+                <?php endif ?>
                 </header>
                 <div class="input-field">
                     <i class="fas fa-user"></i>

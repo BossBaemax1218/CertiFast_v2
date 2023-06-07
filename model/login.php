@@ -20,7 +20,7 @@
             $_SESSION['role'] = 'resident';
             $_SESSION['avatar'] = $row['avatar'];
 
-            $_SESSION['message'] = 'You have successfully logged in as a resident!';
+            $_SESSION['message'] = ' You have successfully logged in as a resident!';
             $_SESSION['success'] = 'success';
 
             header('location: ../dashboard.php');
@@ -30,10 +30,10 @@
             $role = $row['user_type'];
 
             if ($role == 'administrator') {
-                $_SESSION['message'] = 'You have successfully logged in as an admin!';
+                $_SESSION['message'] = ' You have successfully logged in as an admin!';
                 $_SESSION['success'] = 'success';
             } elseif ($role == 'staff') {
-                $_SESSION['message'] = 'You have successfully logged in as a staff!';
+                $_SESSION['message'] = ' You have successfully logged in as a staff!';
                 $_SESSION['success'] = 'success';
             }
 
@@ -45,13 +45,13 @@
             header('location: ../dashboard.php');
             exit();
         } else {
-            $_SESSION['message'] = 'Username or password is incorrect!';
+            $_SESSION['message'] = ' Username or password is incorrect!';
             $_SESSION['success'] = 'danger';
             header('location: ../login.php');
             exit();
         }
     } else {
-        $_SESSION['message'] = 'Username or password is empty!';
+        $_SESSION['message'] = ' Username or password is empty!';
         $_SESSION['success'] = 'danger';
         header('location: ../login.php');
         exit();
