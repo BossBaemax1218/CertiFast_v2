@@ -12,25 +12,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-    <!-- CSS FILES -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="homepage/assets/css/login-register-styles.css">
     <link rel="icon" href="homepage/images/CFLogo2.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <title>CertiFast Account</title>
+    <title>Login - CertiFast Portal</title>
 </head>
 
 <body>
     <div class="container">
         <div class="signin-signup">
             <form method="POST" action="model/login.php" class="sign-in-form">
-                <h2 class="title">Sign in</h2>
+                <a href="index.php"><img src="homepage/images/trans-title.png" alt="" class="image2"></a>
+                <h2 class="title">CertiFast Sign in</h2>
+                <header id="header">
                 <?php if(isset($_SESSION['message'])): ?>
                     <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
-                        <?php echo $_SESSION['message']; ?>
+                    <?php
+                        if ($_SESSION['success'] == 'danger') {
+                        echo '<i class="fas fa-exclamation-triangle"></i>';
+                        } elseif ($_SESSION['success'] == 'success') {
+                        echo '<i class="fas fa-check-circle"></i>';
+                        }
+                    ?>
+                    <?php echo $_SESSION['message']; ?>
                     </div>
                     <?php unset($_SESSION['message']); ?>
                 <?php endif ?>
+                </header>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
                     <input id="username" name="username" type="text" placeholder="Username">
@@ -42,7 +52,7 @@
                 <div class="link">
                     <a href="forgot-password.php">Forgot your password?</a>
                 </div>    
-                <input type="submit" value="Login" class="btn">
+                <input type="submit" value="Sign in" class="btn">
                 <p class="social-text" ></p>or sign in with</p>
                 <div class="social-media">
                     <a href="" class="social-icon">
@@ -53,14 +63,17 @@
                     <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
                 </div>
             </form>
-            <form method="POST" action="model/signup.php" class="sign-up-form">
-                <h2 class="title">Sign up</h2>
-                <?php if(isset($_SESSION['message'])): ?>
-                    <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
-                        <?php echo $_SESSION['message']; ?>
-                    </div>
-                    <?php unset($_SESSION['message']); ?>
-                <?php endif ?>
+            <form id="signup" method="POST" action="model/signup.php" class="sign-up-form">
+                <a href="index.php"><img src="homepage/images/trans-title.png" alt="" class="image2"></a>
+                <h2 class="title">CertiFast Sign up</h2>
+                <header id="header">
+                    <?php if(isset($_SESSION['message'])): ?>                     
+                        <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">                       
+                            <?php echo $_SESSION['message']; ?>                    
+                        </div>                                               
+                        <?php unset($_SESSION['message']); ?>
+                    <?php endif ?>                  
+                </header>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
                     <input id="username" name="username" type="text" placeholder="Username">
@@ -73,7 +86,7 @@
                     <i class="fas fa-lock"></i>
                     <input id="password" name="password" type="password" placeholder="Password">
                 </div>
-                <input type="submit" value="Sign up" class="btn">
+                <input type="submit" value="Sign up" class="btn-submit">
                 <p class="social-text">or sign up with</p>
                 <div class="social-media">
                     <a href="" class="social-icon">
@@ -91,7 +104,7 @@
                 <div class="content">
                     <h1>Welcome Back!</h1>
                     <p>If you are already registered and singed up, please click sign in instead.</p>
-                    <button class="btn" id="sign-in-btn">Sign in</button>
+                    <button class="btn-slide" id="sign-in-btn"><i class="fas fa-angle-double-left"></i></button>
                 </div>
             </div>
             <div class="panel right-panel">
@@ -99,7 +112,7 @@
                 <div class="content">
                     <h1>Welcome!</h1>
                     <p>To keep connected with us, please sign up with your personal info.</p>
-                    <button class="btn" id="sign-up-btn">Sign up</button>
+                    <button class="btn-slide" id="sign-up-btn"><i class="	fas fa-angle-double-right"></i></button>
                 </div>
             </div>
         </div>

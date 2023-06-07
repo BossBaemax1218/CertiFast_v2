@@ -29,7 +29,7 @@
             $row = $adminStaffResult->fetch_assoc();
             $role = $row['user_type'];
 
-            if ($role == 'admin') {
+            if ($role == 'administrator') {
                 $_SESSION['message'] = 'You have successfully logged in as an admin!';
                 $_SESSION['success'] = 'success';
             } elseif ($role == 'staff') {
