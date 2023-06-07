@@ -43,7 +43,7 @@
                     <a href="forgot-password.php">Forgot your password?</a>
                 </div>    
                 <input type="submit" value="Login" class="btn">
-                <p class="social-text">or sign in with</p>
+                <p class="social-text" ></p>or sign in with</p>
                 <div class="social-media">
                     <a href="" class="social-icon">
                         <i class="fab fa-google-plus-g"></i>
