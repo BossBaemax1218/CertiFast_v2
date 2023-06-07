@@ -2,7 +2,7 @@ const email = document.querySelector("#email");
 const icon1 = document.querySelector(".invalid");
 const icon2 = document.querySelector(".valid");
 const error = document.querySelector(".error-text");
-const btn = document.querySelector("button");
+const btnSubmit = document.querySelector(".btnsubmit");
 
 let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     function check(){
@@ -12,14 +12,14 @@ let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
              icon1.style.display = "none";
              icon2.style.display = "block";
              error.style.display = "none";
-             btn.style.display = "block";
+             btnSubmit.style.display = "block";
         }else{
              email.style.borderColor = "#e74c3c";
              email.style.background = "#fceae9";
              icon1.style.display = "block";
              icon2.style.display = "none";
              error.style.display = "block";
-             btn.style.display = "none";
+             btnSubmit.style.display = "none";
         }
         if(email.value == ""){
              email.style.borderColor = "lightgrey";
@@ -27,6 +27,6 @@ let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
              icon1.style.display = "none";
              icon2.style.display = "none";
              error.style.display = "none";
-             btn.style.display = "none";
+             btnSubmit.style.display = "none";
         }
     }

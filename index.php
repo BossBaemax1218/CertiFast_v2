@@ -9,9 +9,6 @@
   <meta content="" name="keywords">
 
   <link href="homepage/assets/img/favicon.png" rel="icon">
-  <link href="homepage/assets/img/title-logo.png" rel="title-logo-icon">
-
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <link href="homepage/assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -84,7 +81,7 @@
               <div class="icon"><img src="homepage/assets/img/clients/logo-8.svg"></div>
               <h4 class="title"><a href="#services">Step 1</a></h4>
               <h6 class="pre-title">Request</h6>
-              <p class="description">Fill out the online application for your choice of certificate.</p>
+              <p class="description">Select the type of barangay certificate that you would like to request.</p>
             </div>
           </div>
 
@@ -93,7 +90,7 @@
               <div class="icon"><img src="homepage/assets/img/clients/logo-14.svg"></div>
               <h4 class="title"><a href="#services">Step 2</a></h4>
               <h6 class="pre-title">Review</h6>
-              <p class="description">Review your information before you proceed.</p>
+              <p class="description">Make sure your personal information is true and correct by reviewing it carefully on the screen.</p>
             </div>
           </div>
 
@@ -101,8 +98,8 @@
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-10.svg"></div>
               <h4 class="title"><a href="#services">Step 3</a></h4>
-              <h6 class="pre-title">Processing</h6>
-              <p class="description">Wait for the certificate to be processed.</p>
+              <h6 class="pre-title">Track</h6>
+              <p class="description">A tracking code will be sent to your email. To check the status of the certificate, please copy or snap a screenshot of the code.</p>
             </div>
           </div>
 
@@ -110,8 +107,8 @@
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-11.svg"></div>
               <h4 class="title"><a href="#services">Step 4</a></h4>
-              <h6 class="pre-title">Payment</h6>
-              <p class="description">Make sure you have a valid payment slip to be shown as proof of payment.</p>
+              <h6 class="pre-title">Approved</h6>
+              <p class="description">Go to the barangay to pick up your selected certificate. Make sure you have cash with you to pay for the certificate.</p>
             </div>
           </div>
 
