@@ -54,9 +54,9 @@ $current_page = PageName();
                         <p>Overview</p>
                     </a>
                 </li>
-                <li class="nav-item <?= $current_page=='dashboard.php' || $current_page=='resident_info.php' || $current_page=='purok_info.php' ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page=='#' || $current_page=='resident_info.php' || $current_page=='purok_info.php' ? 'active' : null ?>">
                     <a href="dashboard.php" >
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-chart-bar"></i>
                         <p>Analytics</p>
                     </a>
                 </li>
@@ -104,19 +104,19 @@ $current_page = PageName();
                 </li>
                 <li class="nav-item <?= $current_page=='#' ? 'active' : null ?>">
                     <a href="dashboard.php" >
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-chart-line"></i>
                         <p>Sales Reports</p>
                     </a>
                 </li>
                 <li class="nav-item <?= $current_page=='#' ? 'active' : null ?>">
                     <a href="dashboard.php" >
-                        <i class="fas fa-home"></i>
+                        <i class="far fa-file-alt"></i>
                         <p>Certificates Reports</p>
                     </a>
                 </li>
-                <li class="nav-item <?= $current_page=='#' ? 'active' : null ?>">
-                    <a href="dashboard.php" >
-                        <i class="fas fa-home"></i>
+                <li class="nav-item <?= $current_page=='user-resident.php' ? 'active' : null ?>">
+                    <a href="user-resident.php" >
+                        <i class="far fa-id-card"></i>
                         <p>User Reports</p>
                     </a>
                 </li>

@@ -65,7 +65,7 @@
 											<thead>
 												<tr>
 													<th scope="col">No.</th>
-													<th scope="col">Fullname</th>
+													<th scope="col">Username</th>
 													<th scope="col">Email</th>
 													<th scope="col">Created At</th>
 													<th scope="col">Action</th>
@@ -76,7 +76,7 @@
 													<?php $no=1; foreach($users as $row): ?>
 													<tr>
 														<td><?= $no ?></td>
-														<td><?= $row['fullname'] ?></td>
+														<td><?= $row['username'] ?></td>
                                                         <td><?= $row['email'] ?></td>
 														<td><?= $row['created_at'] ?></td>
 														<td>

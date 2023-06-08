@@ -13,19 +13,19 @@ var barChartData = {
         backgroundColor: "blue"
       },
       {
-        data: [4, 7, 3, 6, 10,7,4,6],
+        data: [4, 7, 3, 6, 100,7,4,6],
         label: "Barangay Residency",
         backgroundColor: "red"
         
       },
       {
-        data: [10,7,4,6,9,7,3,10],
+        data: [100,7,4,6,9,7,3,100],
         label: "Barangay Indengency",
         backgroundColor: "lightgreen"
         
       },
       {
-        data: [6,9,7,3,10,7,4,6],
+        data: [6,9,7,3,100,7,4,6],
         label: "Business Permint",
         backgroundColor: "violet"
         

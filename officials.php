@@ -24,7 +24,6 @@
 	<title>Officials</title>
 </head>
 <body>
-	
 	<?php include 'templates/loading_screen.php' ?>
 
 	<div class="wrapper">
@@ -106,7 +105,12 @@
 												<?php if(!empty($official)): ?>
 													<?php foreach($official as $row): ?>
 														<tr>
-															<td class="text-uppercase"><?= $row['name'] ?></td>
+														<td>
+															<div class="avatar avatar-xs">
+																<img src="<?= preg_match('/data:image/i', $row['photo']) ? $row['photo'] : 'assets/uploads/officials/'.$row['photo'] ?>" alt="Official Profile" class="avatar-img rounded-circle">																
+															</div>
+															<?= ucwords($row['fullname']) ?>
+														</td>
 															<td><?= $row['position'] ?></td>
 															<td><?= $row['termstart'] ?></td>
 															<td><?= $row['termend'] ?></td>
@@ -116,7 +120,7 @@
 																<?php endif ?>
 																<td>
 																	<a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" 
-																		title="Edit Position" onclick="editOfficial(this)" data-id="<?= $row['id'] ?>" data-name="<?= $row['name'] ?>" 
+																		title="Edit Position" onclick="editOfficial(this)" data-id="<?= $row['id'] ?>" data-name="<?= $row['fullname'] ?>" 
 																		data-pos="<?= $row['pos_id'] ?>" data-start="<?= $row['termstart'] ?>" 
 																		data-end="<?= $row['termend'] ?>" data-status="<?= $row['status'] ?>" >
 																		<i class="fas fa-edit"></i>
@@ -132,7 +136,7 @@
 													<?php endforeach ?>
 												<?php else: ?>
 													<tr>
-														<td colspan="5" class="text-center">No Available Data</td>
+														<td colspan="6" class="text-center">No Available Data</td>
 													</tr>
 												<?php endif ?>
 											</tbody>
@@ -157,9 +161,24 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="model/save_official.php" >
+								<div class="text-center">
+									<div id="my_camera" style="height: 250px;" class="text-center">
+										<img src="assets/img/person.png" alt="..." class="img img-fluid" width="250">
+									</div>
+									<div class="form-group d-flex justify-content-center">
+										<button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
+										<button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
+									</div>
+									<div id="profileImage">
+										<input type="hidden" name="profile-image" value="">
+									</div>
+									<div class="form-group">
+										<input type="file" class="form-control" name="img" id="img" accept="image/*">
+									</div>
+								</div>
                                 <div class="form-group">
                                     <label>Fullname</label>
-                                    <input type="text" class="form-control" placeholder="Enter Fullname" name="name" required>
+                                    <input type="text" class="form-control" placeholder="Enter Fullname" name="fullname" required>
                                 </div>
 								<div class="form-group">
                                     <label>Position</label>
@@ -185,13 +204,12 @@
                                         <option value="Inactive">Inactive</option>
                                     </select>
                                 </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <input type="hidden" id="pos_id" name="id">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Create</button>
-                        </div>
+                        	</div>
+							<div class="modal-footer">
+								<input type="hidden" id="pos_id" name="id">
+								<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-danger">Create</button>
+							</div>
                         </form>
                     </div>
                 </div>
@@ -209,9 +227,24 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="model/edit_official.php" >
+								<div class="text-center">
+                                    <div id="my_camera" style="height: 250;" class="text-center">
+                                        <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
+                                    </div>
+                                    <div class="form-group d-flex justify-content-center">
+                                        <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
+                                        <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
+                                    </div>
+                                    <div id="profileImage">
+                                        <input type="hidden" name="profile-image">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="file" class="form-control" name="img" accept="image/*">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label>Fullname</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Fullname" name="name" required>
+                                    <input type="text" class="form-control" id="fullname" placeholder="Enter Fullname" name="fullname" required>
                                 </div>
 								<div class="form-group">
                                     <label>Position</label>
@@ -237,13 +270,12 @@
                                         <option value="Inactive">Inactive</option>
                                     </select>
                                 </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <input type="hidden" id="off_id" name="id">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </div>
+                            </div>
+							<div class="modal-footer">
+								<input type="hidden" id="off_id" name="id">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-primary">Update</button>
+							</div>
                         </form>
                     </div>
                 </div>

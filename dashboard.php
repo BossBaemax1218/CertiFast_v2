@@ -72,11 +72,11 @@
 							</div>
 						</div>-->
 						<div class="row">
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<div class="card">
 									<div class="card-header">
 										<div class="card-head-row">
-											<div class="card-title fw-bold"><h3><strong>Certificate Request</strong></h3></div>
+											<div class="card-title fw-bold"><h3><strong>Current Certificate Request</strong></h3></div>
 										</div>
 									</div>
 									<div class="card-body">
@@ -99,7 +99,7 @@
 								</div>
 							</div>
 							<div class="col">
-								<div class="col-md-13">
+								<div class="col-md-12">
 									<div class="card-header">
 										<div class="card-head-row">
 											<div class="card-title fw-bold"><h3><strong>Yearly Reports Certification Requested</strong></h3></div>
