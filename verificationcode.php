@@ -25,15 +25,28 @@
           </nav>
         </div>
     </header>
+    <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
+        <header id="header1">
+          <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
+            <?php if ($_SESSION['success'] == 'danger'): ?>
+              <i class="fas fa-exclamation-triangle"></i>
+            <?php elseif ($_SESSION['success'] == 'success'): ?>
+              <i class="fas fa-check-circle"></i>
+            <?php endif; ?>
+            <span class="alert-message"><?php echo $_SESSION['message']; ?></span>
+          </div>
+        </header>
+        <?php unset($_SESSION['message']); ?>
+      <?php endif; ?>
           <div class="wrapper">           
               <h2 class="title">Verification Code</h2>
               <span class="description">To reset your password, type the code we sent to your email address.</span>
-              <form action="#">
+              <form method="POST" action="model/forgot-password.php">
                 <div class="pass-field">
-                  <input type="password" class="password" id="password" name="password" placeholder="Enter the code here">
+                  <input type="text" class="password" id="password" name="password" placeholder="Enter the code here">
                 </div>
                 <div class="content">
-                  <button id="btnsubmit" class="btnsubmit"><a href="password-validation.php">Send Verification Code</a></button>
+                  <button id="btnsubmit" class="btnsubmit">Confirm Verification Code</button>
                 </div>
               </form>
             </div>

@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +14,7 @@
   <link href="homepage/assets/css/password-style.css" rel="stylesheet">
   <link rel="icon" href="homepage/images/CFLogo2.ico" type="image/x-icon"/>
   <link href="homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
   <header id="header" class="d-flex align-items-center">
@@ -25,12 +29,25 @@
       </nav>
     </div>
   </header>
+  <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
+        <header id="header1">
+          <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
+            <?php if ($_SESSION['success'] == 'danger'): ?>
+              <i class="fas fa-exclamation-triangle"></i>
+            <?php elseif ($_SESSION['success'] == 'success'): ?>
+              <i class="fas fa-check-circle"></i>
+            <?php endif; ?>
+            <span class="alert-message"><?php echo $_SESSION['message']; ?></span>
+          </div>
+        </header>
+        <?php unset($_SESSION['message']); ?>
+      <?php endif; ?>
     <div class="wrapper">
       <h2 class="title">Forgot Password</h2>
-      <form action="#">
+      <form method="POST" action="model/forgot-password.php">
         <span class="description">Please enter your email address and wait for verification code via email.</span>
         <div class="pass-field">
-          <input onkeyup="check()" id="email" class="email" type="text" autocomplete="off" placeholder="Enter email address">
+          <input onkeyup="check()" id="email" class="email" type="text" name="email" autocomplete="off" placeholder="Enter email address">
           <div class="icons">
               <span class="invalid"></span>
               <span class="valid"></span>
@@ -40,7 +57,7 @@
           Please enter valid email address
         </div>
         <div class="submit-btn">
-          <button id="btnsubmit" class="btnsubmit"><a href="verificationcode.php">Confirm your email</a></button>
+          <button id="btnsubmit" class="btnsubmit">Confirm your email</button>
         </div>
       </form>
   </div>
