@@ -9,7 +9,6 @@ use PHPMailer\PHPMailer\Exception;
 
 // Include server configuration
 include '../server/server.php';
-include '../server/config.php';
 
 // Function to generate a verification code
 function generateVerificationCode() {
