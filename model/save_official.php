@@ -7,23 +7,6 @@ if (!isset($_SESSION['username'])) {
     }
 }
 
-function validateImageFormat($filePath) {
-    // Create a new finfo object
-    $finfo = new finfo(FILEINFO_MIME_TYPE);
-
-    // Get the MIME type of the file
-    $mimeType = $finfo->file($filePath);
-
-    // Check if the MIME type corresponds to an image
-    if (strpos($mimeType, 'image/') === 0) {
-        // Valid image file format
-        return true;
-    } else {
-        // Invalid image file format
-        return false;
-    }
-}
-
 $name = $conn->real_escape_string($_POST['fullname']);
 $pos = $conn->real_escape_string($_POST['position']);
 $start = $conn->real_escape_string($_POST['start']);
@@ -47,76 +30,56 @@ if (!empty($name) && !empty($pos) && !empty($start) && !empty($end) && !empty($s
         $_SESSION['success'] = 'danger';
     } else {
         if (!empty($profile) && !empty($profile2)) {
-            // Check if the base64 image starts with "data:image"
-            if (strpos($profile, 'data:image') === 0) {
-                // Generate a temporary file path
-                $tempFilePath = tempnam(sys_get_temp_dir(), 'image');
+            $insert = "INSERT INTO tblofficials (`fullname`, `position`, `photo`, `termstart`, `termend`, `status`) VALUES ('$name', '$pos', '$profile', '$start', '$end', '$status')";
+            $result = $conn->query($insert);
 
-                // Decode the base64 image and save it to the temporary file
-                file_put_contents($tempFilePath, base64_decode(substr($profile, strpos($profile, ',') + 1)));
-
-                // Validate the image file format
-                if (!validateImageFormat($tempFilePath)) {
-                    $_SESSION['message'] = 'Invalid image file format!';
-                    $_SESSION['success'] = 'danger';
-                    header("Location: ../officials.php");
-                    exit();
-                }
-
-                // Move the temporary file to the target directory
-                $moved = move_uploaded_file($tempFilePath, $target);
+            if ($result == true) {
+                $_SESSION['message'] = 'Official added!';
+                $_SESSION['success'] = 'success';
             } else {
-                $_SESSION['message'] = 'Invalid image file format!';
+                $_SESSION['message'] = 'Something went wrong!';
                 $_SESSION['success'] = 'danger';
-                header("Location: ../officials.php");
-                exit();
             }
-
-            // ...
         } else if (!empty($profile) && empty($profile2)) {
-            // Check if the base64 image starts with "data:image"
-            if (strpos($profile, 'data:image') === 0) {
-                // Generate a temporary file path
-                $tempFilePath = tempnam(sys_get_temp_dir(), 'image');
+            $insert = "INSERT INTO tblofficials (`fullname`, `position`, `photo`, `termstart`, `termend`, `status`) VALUES ('$name', '$pos', '$profile', '$start', '$end', '$status')";
+            $result = $conn->query($insert);
 
-                // Decode the base64 image and save it to the temporary file
-                file_put_contents($tempFilePath, base64_decode(substr($profile, strpos($profile, ',') + 1)));
-
-                // Validate the image file format
-                if (!validateImageFormat($tempFilePath)) {
-                    $_SESSION['message'] = 'Invalid image file format!';
-                    $_SESSION['success'] = 'danger';
-                    header("Location: ../officials.php");
-                    exit();
-                }
-
-                // Move the temporary file to the target directory
-                $moved = move_uploaded_file($tempFilePath, $target);
+            if ($result == true) {
+                $_SESSION['message'] = 'Official added!';
+                $_SESSION['success'] = 'success';
             } else {
-                $_SESSION['message'] = 'Invalid image file format!';
+                $_SESSION['message'] = 'Something went wrong!';
                 $_SESSION['success'] = 'danger';
-                header("Location: ../officials.php");
-                exit();
             }
-
-            // ...
         } else if (empty($profile) && !empty($profile2)) {
-            // Validate the image file format
-            if (!validateImageFormat($_FILES['img']['tmp_name'])) {
-                $_SESSION['message'] = 'Invalid image file format!';
-                $_SESSION['success'] = 'danger';
-                header("Location: ../officials.php");
-                exit();
-            }
-
             $moved = move_uploaded_file($_FILES['img']['tmp_name'], $target);
 
-            // ...
+            if ($moved) {
+                $insert = "INSERT INTO tblofficials (`fullname`, `position`, `photo`, `termstart`, `termend`, `status`) VALUES ('$name', '$pos', '$newName', '$start', '$end', '$status')";
+                $result = $conn->query($insert);
+
+                if ($result == true) {
+                    $_SESSION['message'] = 'Official added!';
+                    $_SESSION['success'] = 'success';
+                } else {
+                    $_SESSION['message'] = 'Something went wrong!';
+                    $_SESSION['success'] = 'danger';
+                }
+            } else {
+                $_SESSION['message'] = 'Failed to move the uploaded file!';
+                $_SESSION['success'] = 'danger';
+            }
         } else {
             $insert = "INSERT INTO tblofficials (`fullname`, `position`, `photo`, `termstart`, `termend`, `status`) VALUES ('$name', '$pos', 'person.png', '$start', '$end', '$status')";
             $result = $conn->query($insert);
 
-            // ...
+            if ($result == true) {
+                $_SESSION['message'] = 'Official added!';
+                $_SESSION['success'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Something went wrong!';
+                $_SESSION['success'] = 'danger';
+            }
         }
     }
 } else {
