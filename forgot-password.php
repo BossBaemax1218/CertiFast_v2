@@ -40,7 +40,7 @@
           Please enter valid email address
         </div>
         <div class="submit-btn">
-          <button id="btnsubmit" class="btnsubmit"><a href="verificationcode.php">Submit</a></button>
+          <button id="btnsubmit" class="btnsubmit"><a href="verificationcode.php">Confirm your email</a></button>
         </div>
       </form>
   </div>

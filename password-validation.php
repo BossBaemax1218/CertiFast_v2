@@ -28,10 +28,10 @@
     </header>
           <div class="wrapper">           
               <h2 class="title">Create a new password</h2>
-              <span class="description">Create a new password that is at least 8 characters long with letters, numbers, and symbols.</span>
+              <span class="description">Create a new password that has a unique characters.</span>
               <form action="#">
                 <div class="pass-field">
-                  <input type="password" class="password" id="password" name="password" onClick="clearInput()" placeholder="Create password">
+                  <input type="password" class="password" id="password" name="password" onClick="clearInput()" placeholder="Enter new password">
                   <i class="fa-solid fa-eye"></i>
                 </div>
                 <div class="content">
