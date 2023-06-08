@@ -2,7 +2,7 @@ var ctx = document.getElementById("myChart2");
 var myChart2 = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ["Barangay REsidency"],
+        labels: ["Barangay Residency"],
         datasets: [{
             label: 'Barangay Residency',
             data: [50,100],

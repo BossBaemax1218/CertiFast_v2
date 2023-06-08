@@ -1,6 +1,5 @@
 <?php include 'server/server.php' ?>
 <?php 
-
 	$query = "SELECT * FROM tblresident WHERE resident_type=1";
     $result = $conn->query($query);
 	$total = $result->num_rows;
@@ -13,20 +12,12 @@
     $result2 = $conn->query($query2);
 	$female = $result2->num_rows;
 
-	$query3 = "SELECT * FROM tblresident WHERE voterstatus='Yes' AND resident_type=1";
-    $result3 = $conn->query($query3);
-	$totalvoters = $result3->num_rows;
-
-	$query4 = "SELECT * FROM tblresident WHERE voterstatus='No' AND resident_type=1";
-	$non = $conn->query($query4)->num_rows;
-
 	$query5 = "SELECT * FROM tblpurok";
 	$purok = $conn->query($query5)->num_rows;
 
 	$query8 = "SELECT SUM(amounts) as am FROM tblpayments";
 	$revenue = $conn->query($query8)->fetch_assoc();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +42,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Dashboard</h2>
+								<h1 class="text-white fw-bold" style="font-size: 300%;">Overview</h1>
 							</div>
 						</div>
 					</div>
@@ -63,7 +54,7 @@
 								</div>
 							<?php unset($_SESSION['message']); ?>
 						<?php endif ?>
-						<div class="row">
+						<!--<div class="row">
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
@@ -72,26 +63,48 @@
 										</div>
 									</div>
 									<div class="card-body">
-										<!--<p><?= !empty($db_txt) ? $db_txt : 'Los Amigos is a barangay in Davao City.' ?></p>-->
+										<p><?= !empty($db_txt) ? $db_txt : 'Los Amigos is a barangay in Davao City.' ?></p>
 										<div class="text-center">
 											<img class="img-fluid" src="<?= !empty($db_img) ? 'assets/uploads/'.$db_img : 'assets/img/bg-abstract.png' ?>" />
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</div>-->
 						<div class="row">
-							<div class="col">
-								<div class="col-md-3">
-									<div class="card card-stats card-round">
-										<div class="card-body">
-											<canvas id="myChart2" width="400" height="300">
-											<script src="homepage/js/half-donut-chart.js"></script>
-											</canvas>
+							<div class="col-md-3">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-head-row">
+											<div class="card-title fw-bold"><h3><strong>Certificate Request</strong></h3></div>
 										</div>
 									</div>
+									<div class="card-body">
+										<canvas id="myChart2" width="400" height="300">
+											<script src="homepage/js/half-donut-chart.js"></script>
+										</canvas>
+									</div>
 								</div>
-								<div class="col-md-9">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-head-row">
+											<div class="card-title fw-bold"><h3><strong>Weekly Requested Certificates</strong></h3></div>
+										</div>
+									</div>
+									<div class="card-body">
+										<canvas id="myChart1" width="400" max-width="300">
+											<script src="homepage/js/pie-chart.js"></script>
+										</canvas>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="col-md-13">
+									<div class="card-header">
+										<div class="card-head-row">
+											<div class="card-title fw-bold"><h3><strong>Yearly Reports Certification Requested</strong></h3></div>
+										</div>
+									</div>
 									<div class="card card-stats card-round">
 										<div class="card-body">
 											<canvas id="myChart3" width="800" max-width="1000">
@@ -99,21 +112,11 @@
 											</canvas>
 										</div>
 									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">
-								<div class="col-md-3">
-									<div class="card card-stats card-round">
-										<div class="card-body">
-											<canvas id="myChart1" width="400" max-width="300">
-												<script src="homepage/js/pie-chart.js"></script>
-											</canvas>
+									<div class="card-header">
+										<div class="card-head-row">
+											<div class="card-title fw-bold"><h3><strong>Most Requested Certificates</strong></h3></div>
 										</div>
 									</div>
-								</div>
-								<div class="col-md-9">
 									<div class="card card-stats card-round">
 										<div class="card-body">
 											<canvas id="myChart" width="800" max-width="1000">
