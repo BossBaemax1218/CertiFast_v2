@@ -1,63 +1,52 @@
 <?php
 session_start();
 
-// Include the configuration file
-require '../server/server.php';
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Retrieve the verification code and new password from the form
+    // Retrieve the verification code from the form
     $verificationCode = $_POST['verification_code'];
-    $newPassword = $_POST['new_password'];
 
-    // Function to check if the verification code is valid
-    function isVerificationCodeValid($code) {
-        // Retrieve the verification code details from the database
-        global $conn;
-        $stmt = $conn->prepare("SELECT * FROM tblverify WHERE verifycode = ? AND expires > NOW()");
+    // Function to verify the email with the provided verification code
+    function verifyEmail($code) {
+        // Include the configuration file
+        require '../server/server.php';
+
+        // Retrieve the email associated with the verification code from the database
+        $stmt = $conn->prepare("SELECT email FROM tblverify WHERE verifycode = ?");
         $stmt->bind_param("s", $code);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // Verification code is valid
+            // Verification code is valid, update the verification status in the database
+            $email = $result->fetch_assoc()['email'];
+            $stmt = $conn->prepare("UPDATE tblverify SET verified = 1 WHERE email = ?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+
             return true;
         }
 
         return false;
     }
 
-    // Function to update the password in the database
-    function updatePassword($verificationCode, $newPassword) {
-        // Update password in tbl_user_resident
-        global $conn;
-        $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE email IN (SELECT email FROM tblverify WHERE verifycode = ?)");
-        $stmt->bind_param("ss", $newPassword, $verificationCode);
-        $stmt->execute();
+    // Verify the email with the provided verification code
+    if (verifyEmail($verificationCode)) {
+        // Email verification is successful
+        $_SESSION['success'] = true;
+        $_SESSION['success'] = 'success';
+        $_SESSION['message'] = "Email verification successful.";
 
-        // Update password in tbl_users
-        $stmt = $conn->prepare("UPDATE tbl_users SET password = ? WHERE email IN (SELECT email FROM tblverify WHERE verifycode = ?)");
-        $stmt->bind_param("ss", $newPassword, $verificationCode);
-        $stmt->execute();
-    }
-
-    // Check if the verification code is valid
-    if (isVerificationCodeValid($verificationCode)) {
-        // Verification code is valid, update the password
-        updatePassword($verificationCode, $newPassword);
-
-        // Set session variables for successful password reset
-        $_SESSION['password_reset_success'] = true;
-
-        // Redirect the user to the password reset success page
+        // Redirect the user to the success page or any other desired location
         header('Location: ../password-validation.php');
         exit();
     } else {
-        // Verification code is invalid or expired
-        $_SESSION['password_reset_success'] = false;
+        // Email verification failed
+        $_SESSION['success'] = false;
+        $_SESSION['success'] = 'danger';
+        $_SESSION['message'] = "Invalid verification code.";
 
         // Redirect the user back to the verification code page
         header('Location: ../verificationcode.php');
         exit();
     }
 }
-?>

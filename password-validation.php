@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!Doctype html>
 <html lang="en">
 <head>
@@ -26,23 +29,29 @@
           </nav>
         </div>
     </header>
+    <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
+        <header id="header1">
+          <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
+            <?php if ($_SESSION['success'] == 'danger'): ?>
+              <i class="fas fa-exclamation-triangle"></i>
+            <?php elseif ($_SESSION['success'] == 'success'): ?>
+              <i class="fas fa-check-circle"></i>
+            <?php endif; ?>
+            <span class="alert-message"><?php echo $_SESSION['message']; ?></span>
+          </div>
+        </header>
+        <?php unset($_SESSION['message']); ?>
+      <?php endif; ?>
           <div class="wrapper">           
               <h2 class="title">Create a new password</h2>
               <span class="description">Create a new password that has a unique characters.</span>
-              <form action="#">
+              <form method="POST" action="model/reset-password.php">
                 <div class="pass-field">
                   <input type="password" class="password" id="password" name="password" onClick="clearInput()" placeholder="Enter new password">
                   <i class="fa-solid fa-eye"></i>
                 </div>
                 <div class="content">
-                  <div id="strength-wrapper">
-                    <div id="strength-text">Password strength: <span id="strength-value"></span></div>
-                      <div id="strength-bar">
-                        <div id="strength-bar-inner"></div>
-                      </div>
-                    </div>
-                  </div>  
-                  <button id="btnsubmit" class="btnsubmit"><a href="forgot-password.php">Reset Password</a></button>
+                  <button id="btnsubmit" class="btnsubmit">Reset Password</button>
                 </div>
               </form>
             </div>

@@ -1,134 +1,98 @@
 <?php
 session_start();
 
-// Check if user is logged in
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
-    header('location: login.php');
-    exit;
-}
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Retrieve the new password from the form
+    $newPassword = $_POST['password'];
 
-require_once "../server/server.php";
+    // Function to update the password in the database
+    function updatePassword($newPassword, $email) {
+        // Include the configuration file
+        require '../server/server.php';
 
-// Initialize variables
-$new_password = $confirm_password = $code = "";
-$new_password_err = $confirm_password_err = $code_err = "";
+        // Hash the new password using SHA1 for security
+        $hashedPassword = sha1($newPassword);
 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+        // Update password in tbl_user_resident
+        $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE email = ?");
+        $stmt->bind_param("ss", $hashedPassword, $email);
+        $stmt->execute();
 
-    // Validate new password
-    if(empty(trim($_POST["new_password"]))){
-        $new_password_err = "Please enter the new password.";     
-    } elseif(strlen(trim($_POST["new_password"])) < 6){
-        $new_password_err = "Password must have at least 6 characters.";
-    } else{
-        $new_password = trim($_POST["new_password"]);
+        // Update password in tbl_users
+        $stmt = $conn->prepare("UPDATE tbl_users SET password = ? WHERE email = ?");
+        $stmt->bind_param("ss", $hashedPassword, $email);
+        $stmt->execute();
+
+        return true;
     }
-    
-    // Validate confirm password
-    if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm the password.";
-    } else{
-        $confirm_password = trim($_POST["confirm_password"]);
-        if(empty($new_password_err) && ($new_password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
+
+    // Validate the new password
+    function validatePassword($password) {
+        // Minimum password length of 8 characters
+        if (strlen($password) < 8) {
+            return false;
         }
+
+        // Check if the password contains at least one uppercase letter, one lowercase letter, and one digit
+        if (!preg_match("/[A-Z]/", $password) || !preg_match("/[a-z]/", $password) || !preg_match("/\d/", $password)) {
+            return false;
+        }
+
+        // Check if the password contains at least one special character
+        if (!preg_match("/[!@#$%^&*()\-_=+{};:,<.>]/", $password)) {
+            return false;
+        }
+
+        return true;
     }
 
-    // Validate verification code
-    if(empty(trim($_POST["code"]))){
-        $code_err = "Please enter the verification code.";
-    } else{
-        $code = trim($_POST["code"]);
-    }
+    // Update the password
+    if (validatePassword($newPassword)) {
+        // Get the verified email from tblverify
+        $verificationCode = $_SESSION['verification_code']; // Assuming you store the verification code in a session variable
 
-    // Check input errors before updating the password
-    if(empty($new_password_err) && empty($confirm_password_err) && empty($code_err)){
+        // Include the configuration file
+        require '../server/server.php';
 
-        // Prepare a SELECT statement to check if the verification code is valid
-        $sql = "SELECT email FROM reset_password WHERE code = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_code);
-            
-            // Set parameters
-            $param_code = $code;
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Store the result
-                mysqli_stmt_store_result($stmt);
-                
-                // Check if the verification code exists and get the user email
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    mysqli_stmt_bind_result($stmt, $email);
-                    mysqli_stmt_fetch($stmt);
+        $stmt = $conn->prepare("SELECT email FROM tblverify WHERE code = ? AND verified = 1");
+        $stmt->bind_param("s", $verificationCode);
+        $stmt->execute();
+        $stmt->store_result();
 
-                    // Prepare an UPDATE statement to reset the user password
-                    $sql = "UPDATE users SET password = ? WHERE email = ?";
-                    
-                    if($stmt = mysqli_prepare($link, $sql)){
-                        // Hash the password
-                        $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-                        
-                        // Bind variables to the prepared statement as parameters
-                        mysqli_stmt_bind_param($stmt, "ss", $hashed_password, $param_email);
-                        
-                        // Set parameters
-                        $param_email = $email;
-                        
-                        // Attempt to execute the prepared statement
-                        if(mysqli_stmt_execute($stmt)){
-                            // Password updated successfully. Destroy the reset_password session and redirect to login page
-                            unset($_SESSION["reset_password"]);
-                            header("location: login.php");
-                            exit();
-                        } else{
-                            echo "Oops! Something went wrong. Please try again later.";
-                        }
+        if ($stmt->num_rows > 0) {
+            $stmt->bind_result($email);
+            $stmt->fetch();
 
-                        // Close statement
-                        mysqli_stmt_close($stmt);
-                    }
-
-                } else{
-                    // Verification code is invalid
-                    $code_err = "The verification code is invalid.";
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
+            if (updatePassword($newPassword, $email)) {
+                // Password update successful
+                $_SESSION['success'] = true;
+                $_SESSION['success'] = 'success';
+                $_SESSION['message'] = "Password updated successfully.";
+                header('Location: ../login.php');
+                exit();
+            } else {
+                // Database error occurred
+                $_SESSION['success'] = false;
+                $_SESSION['success'] = 'danger';
+                $_SESSION['message'] = "An error occurred while updating the password.";
+                header('Location: ../password-validation.php');
+                exit();
             }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-
-    } else {
-        // Verify the verification code
-        $stmt = $pdo->prepare("SELECT * FROM password_reset WHERE email=:email AND code=:code AND expires_at > NOW()");
-        $stmt->execute(array(':email' => $email, ':code' => $verification_code));
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-        // If the verification code is invalid or has expired, show an error message
-        if (!$user) {
-            $code_error = "Invalid or expired verification code.";
         } else {
-            // Update the user's password
-            $password_hash = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $pdo->prepare("UPDATE users SET password=:password_hash WHERE email=:email");
-            $stmt->execute(array(':password_hash' => $password_hash, ':email' => $email));
-    
-            // Delete the password reset request from the database
-            $stmt = $pdo->prepare("DELETE FROM password_reset WHERE email=:email");
-            $stmt->execute(array(':email' => $email));
-    
-            // Redirect the user to the login page with a success message
-            header("Location: login.php?reset=success");
+            // Invalid verification code or email not verified
+            $_SESSION['success'] = false;
+            $_SESSION['success'] = 'danger';
+            $_SESSION['message'] = "Invalid verification code or email not verified.";
+            header('Location: ../password-validation.php');
             exit();
         }
+    } else {
+        // Invalid password
+        $_SESSION['success'] = false;
+        $_SESSION['success'] = 'danger';
+        $_SESSION['message'] = "Invalid password. Please make sure the password meets the requirements.";
+        header('Location: ../password-validation.php');
+        exit();
     }
 }
-    ?>
-    
-    
+?>
