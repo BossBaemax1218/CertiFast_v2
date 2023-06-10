@@ -41,7 +41,7 @@ if ($user_email != '' && $password != '') {
         $_SESSION['success'] = 'success';
         $_SESSION['form'] = 'login';
 
-        header('location: ../resident_request.php');
+        header('location: ../resident_dashboard.php');
         exit();
     }
 
