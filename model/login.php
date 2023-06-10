@@ -2,16 +2,16 @@
 session_start();
 include '../server/server.php';
 
-$username = $conn->real_escape_string($_POST['username']);
+$user_email = $conn->real_escape_string($_POST['user_email']);
 $password = $conn->real_escape_string($_POST['password']);
 
-if ($username != '' && $password != '') {
-    // Check if the user is a resident
-    $residentQuery = "SELECT * FROM tbl_user_resident WHERE username = '$username' AND password = SHA1('$password')";
+if ($user_email != '' && $password != '') {
+    // Check if the user is a verified resident
+    $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = '$user_email' AND password = SHA1('$password') AND verifystatus = 1";
     $residentResult = $conn->query($residentQuery);
 
     // Check if the user is an admin or staff
-    $adminStaffQuery = "SELECT * FROM tbl_user_admin WHERE username = '$username' AND password = SHA1('$password')";
+    $adminStaffQuery = "SELECT * FROM tbl_user_admin WHERE username = '$user_email' AND password = SHA1('$password')";
     $adminStaffResult = $conn->query($adminStaffQuery);
 
     if ($residentResult->num_rows) {

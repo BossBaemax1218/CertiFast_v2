@@ -123,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $_SESSION['message'] = 'Verification code sent successfully.';
                 $_SESSION['success'] = 'success';
                 $_SESSION['form'] = 'signup';
-                header('Location: ../verificationcode.php');
+                header('Location: ../reset-code.php');
                 exit();
             } else {
                 // Email sending failed

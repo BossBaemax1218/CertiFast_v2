@@ -16,7 +16,6 @@ body {
 }
 
 #header {
-  position: relative;
   text-align: center;
   margin-bottom: 2%;
 }
@@ -45,18 +44,6 @@ body {
     transition: 1s ease-in-out;
 }
 
-.alert {
-    width: 512px;
-    padding: 16px;
-    margin: 8px;
-    max-width: 100%;
-    font-size: 14px;
-    text-align: center;
-  }
-  .alert-message {
-    margin-right: 45px;
-    margin-left: 10px; 
-  }
 
 .signin-signup {
     position: relative;
@@ -350,6 +337,9 @@ h1 {
         width: 150vw;
         height: 100vh;
     }
+    .title{
+        display: none;
+    }
     .input-field{
         width: 100%;
     }
@@ -368,6 +358,9 @@ h1 {
 
 @media (max-width: 635px) {
     .container::before {
+        display: none;
+    }
+    .title{
         display: none;
     }
     form {
@@ -409,6 +402,9 @@ h1 {
 @media (max-width: 320px) {
     form {
         width: 100%;
+    }
+    .title{
+        display: none;
     }
     .input-field{
         width: 100%;

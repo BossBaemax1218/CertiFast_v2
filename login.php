@@ -40,11 +40,11 @@
                 <?php endif; ?>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input id="username" name="username" type="text" placeholder="Username">
+                    <input id="username" name="user_email" type="text" placeholder="Enter the name">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input id="password" name="password" type="password" placeholder="Password">
+                    <input id="password" name="password" type="password" placeholder="Enter the password">
                 </div>
                 <div class="link">
                     <a href="forgot-password.php">Forgot your password?</a>
@@ -78,15 +78,15 @@
                 <?php endif; ?>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input id="username" name="username" type="text" placeholder="Username">
+                    <input id="username" name="fullname" type="text" placeholder="Enter the name">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input id="email" name="email" type="text" placeholder="Email">
+                    <input id="email" name="user_email" type="text" placeholder="Enter the email">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input id="password" name="password" type="password" placeholder="Password">
+                    <input id="password" name="password" type="password" placeholder="Enter the password">
                 </div>
                 <input type="submit" value="Sign up" class="btn-submit">
                 <p class="social-text">or sign up with</p>
