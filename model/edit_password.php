@@ -14,12 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $hashedPassword = sha1($newPassword);
 
         // Update password in tbl_user_resident
-        $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE email = ?");
+        $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE user_email = ?");
         $stmt->bind_param("ss", $hashedPassword, $email);
         $stmt->execute();
 
         // Update password in tbl_user_admin
-        $stmt = $conn->prepare("UPDATE tbl_user_admin SET password = ? WHERE email = ?");
+        $stmt = $conn->prepare("UPDATE tbl_user_admin SET password = ? WHERE username = ?");
         $stmt->bind_param("ss", $hashedPassword, $email);
         $stmt->execute();
 
@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $_SESSION['success'] = false;
                 $_SESSION['success'] = 'danger';
                 $_SESSION['message'] = "An error occurred while updating the password.";
-                header('Location: ../password-validation.php');
+                header('Location: ../new_password.php');
                 exit();
             }
         } else {
@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['success'] = false;
             $_SESSION['success'] = 'danger';
             $_SESSION['message'] = "Invalid verification code or email not verified.";
-            header('Location: ../password-validation.php');
+            header('Location: ../new_password.php');
             exit();
         }
     } else {
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['success'] = false;
         $_SESSION['success'] = 'danger';
         $_SESSION['message'] = "Invalid password. Please make sure the password meets the requirements.";
-        header('Location: ../password-validation.php');
+        header('Location: ../new_password.php');
         exit();
     }
 }

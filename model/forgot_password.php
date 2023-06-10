@@ -20,7 +20,7 @@ function generateVerificationCode()
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Retrieve the email address from the form
-    $email = $_POST['email'];
+    $email = $_POST['user_email'];
 
     // Create a new PHPMailer instance
     $mail = new PHPMailer(true);
@@ -34,19 +34,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->Password = 'ipqostilxutxmbxl';
         $mail->Port = 587;
 
-        // Set the email details
+        // Set the user_email details
         $mail->setFrom('no-reply@gmail.com', 'Barangay Los Amigos - CertiFast');
         $mail->addAddress($email);
         $mail->Subject = 'Forgot-Password: Verification Code';
 
-        // Check if the email address is already registered
-        $stmt = $conn->prepare("SELECT * FROM tbl_user_resident WHERE email = ?");
+        // Check if the email address is already registered and verifystatus is 1
+        $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE user_email = ? AND verifystatus = 1");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // Email address exists, generate a verification code and send it
+            // Email address exists and verifystatus is 1, generate a verification code and send it
             $verificationCode = generateVerificationCode();
 
             // Set the email body with HTML and CSS
@@ -117,21 +117,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </html>
             ';
 
-            // Store the verification code in the database
+            // Store the new verification code and codesend in the database
             $verifycode = $verificationCode;
-            $expire = date('Y-m-d H:i:s', strtotime('+5 minutes', strtotime('now')));
-            $stmt = $conn->prepare("INSERT INTO tblverify (verifycode, expires, email) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $verifycode, $expire, $email);
+            $codesend = date('Y-m-d H:i:s', strtotime('now'));
+            $stmt = $conn->prepare("UPDATE tbl_user_resident SET verifycode = ?, codesend = ? WHERE user_email = ?");
+            $stmt->bind_param("sss", $verifycode, $codesend, $email);
             $stmt->execute();
 
             // Send the email
             if ($mail->send()) {
                 // Email sent successfully
                 // Redirect the user to the verification code confirmation page
-                $_SESSION['message'] = 'Verification code sent successfully.';
-                $_SESSION['success'] = 'success';
+                $_SESSION['message'] = 'Verification code sucessfully sent.';
+                $_SESSION['success'] = 'danger';
                 $_SESSION['form'] = 'signup';
-                header('Location: ../edit_pass_code.php');
+
+                header('Location: ../reset-code.php');
                 exit();
             } else {
                 // Email sending failed

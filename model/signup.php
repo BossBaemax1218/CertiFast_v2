@@ -56,7 +56,7 @@ $_SESSION['verification_expiration'] = time() + (5 * 60); // 5 minutes
 $mail = new PHPMailer();
 $mail->setFrom('no-reply@gmail.com', 'Barangay Los Amigos - CertiFast');
 $mail->addAddress($email);
-$mail->Subject = 'Email Verification';
+$mail->Subject = 'Your email verification code has been sent';
 $mail->isHTML(true);
 $mail->Body = '
     <!DOCTYPE html>
@@ -148,6 +148,7 @@ if ($mail->send()) {
         if ($conn->query($query)) {
             $_SESSION['message'] = 'You have registered successfully! We sent a verification code to verify your account, so please check your email.';
             $_SESSION['success'] = 'success';
+            $_SESSION['form'] = 'signup';
 
             header('Location: ../verificationcode.php');
             exit();

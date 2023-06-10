@@ -8,7 +8,7 @@ session_start();
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Password Verification - CertiFast Portal</title>
+        <title>New Password Verification - CertiFast Portal</title>
 
         <link rel="icon" href="homepage/images/CFLogo2.ico" type="image/x-icon"/>
         <link href="homepage/assets/css/password-validation.css" rel="stylesheet">

@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Forgot Password</title>
+  <title>Forgot Password - CertiFast Portal</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/> 
   <link href="homepage/assets/css/password-style.css" rel="stylesheet">
@@ -44,15 +44,10 @@
       <?php endif; ?>
     <div class="wrapper">
       <h2 class="title">Forgot Password</h2>
-      <form method="POST" action="model/forgot-password.php">
+      <form method="POST" action="model/forgot_password.php">
         <span class="description">Please enter your email address and wait for verification code via email.</span>
         <div class="pass-field">
-          <input onkeyup="check()" id="email" class="email" type="text" name="user_email" autocomplete="off" placeholder="Enter the email address">
-          <div class="icons">
-              <span class="invalid"></span>
-              <span class="valid"></span>
-          </div>
-        </div>
+          <input id="email" class="email" type="text" name="user_email" autocomplete="off" placeholder="Enter the email address">
         <div class="error-text">
           Please enter valid email address
         </div>
@@ -61,6 +56,5 @@
         </div>
       </form>
   </div>
-  <script src="homepage/js/forgot-password.js"></script>
 </body>
 </html>

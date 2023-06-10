@@ -104,16 +104,16 @@
             <div class="panel left-panel">
                 <a href="index.php"><img src="homepage/images/trans-title.png" alt="" class="image"></a>
                 <div class="content">
-                    <h1>Welcome Back!</h1>
-                    <p>If you are already registered, please click sign in instead.</p>
+                    <h1>Welcome!</h1>
+                    <p>Please register your personal information if you haven't registered yet.</p>
                     <button class="btn-slide" id="sign-in-btn"><i class="fas fa-angle-double-left"></i></button>
                 </div>
             </div>
             <div class="panel right-panel">
                 <a href="index.php"><img src="homepage/images/trans-title.png" alt="" class="image"></a>
                 <div class="content">
-                    <h1>Welcome!</h1>
-                    <p>To stay connected with us, please sign up with your personal information.</p>
+                    <h1>Welcome Back!</h1>
+                    <p>To stay connected with us, please sign in account.</p>
                     <button class="btn-slide" id="sign-up-btn"><i class="fas fa-angle-double-right"></i></button>
                 </div>
             </div>
