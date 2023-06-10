@@ -44,7 +44,7 @@ session_start();
           <div class="wrapper">           
               <h2 class="title"> Password Verification Code</h2>
               <span class="description">To reset your password, type the code we sent to your email address.</span>
-              <form method="POST" action="model/verification-code.php">
+              <form method="POST" action="model/reset-password-code.php">
                 <div class="pass-field">
                   <input type="text" class="password" id="password" name="verification_code" placeholder="Enter the code here">
                 </div>
