@@ -18,8 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bind_param("ss", $hashedPassword, $email);
         $stmt->execute();
 
-        // Update password in tbl_users
-        $stmt = $conn->prepare("UPDATE tbl_users SET password = ? WHERE email = ?");
+        // Update password in tbl_user_admin
+        $stmt = $conn->prepare("UPDATE tbl_user_admin SET password = ? WHERE email = ?");
         $stmt->bind_param("ss", $hashedPassword, $email);
         $stmt->execute();
 
