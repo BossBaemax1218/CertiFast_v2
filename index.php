@@ -98,8 +98,8 @@
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-10.svg"></div>
               <h4 class="title"><a href="#services">Step 3</a></h4>
-              <h6 class="pre-title">Track</h6>
-              <p class="description">A tracking code will be sent to your email. To check the status of the certificate, please copy or snap a screenshot of the code.</p>
+              <h6 class="pre-title">Interview</h6>
+              <p class="description">Go to the barangay for under-going interview to ensure the security and accuracy of your information before you can receive the certification.</p>
             </div>
           </div>
 
@@ -108,7 +108,7 @@
               <div class="icon"><img src="homepage/assets/img/clients/logo-11.svg"></div>
               <h4 class="title"><a href="#services">Step 4</a></h4>
               <h6 class="pre-title">Approved</h6>
-              <p class="description">Go to the barangay to pick up your selected certificate. Make sure you have cash with you to pay for the certificate.</p>
+              <p class="description">After a brief interview regarding your identity. Reminder to make sure you have cash on your hand, so you can pay for the certificate.</p>
             </div>
           </div>
 
