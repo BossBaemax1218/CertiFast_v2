@@ -1,2 +1,4 @@
-# CertiFast_v1
-On-going project proposal v1
+# CertiFast_v2
+On-going project proposal v2
+
+CertiFast is blah blah black sheeeeep....
