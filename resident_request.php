@@ -18,8 +18,7 @@
 </head>
     <body>
             <form method="POST" action="model/login.php">
-                <h1>WELCOME TO CERTIFAST (REGISTRATION)</h1>
-                <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
+            <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
                     <header id="header">
                         <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
                             <?php if ($_SESSION['success'] == 'danger'): ?>
@@ -32,7 +31,8 @@
                     </header>
                     <?php unset($_SESSION['message']); ?>
                 <?php endif; ?>
-                <a href="login.php"><h3>Back</h3></a>
+                <h1>WELCOME TO CERTIFAST (REGISTRATION)</h1>
+                <a href="login.php"><h3>Logout</h3></a>
             </form>
     </body>
 </html>
