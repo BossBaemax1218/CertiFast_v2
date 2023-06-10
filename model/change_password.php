@@ -10,12 +10,12 @@
 
         if($new_pass==$con_pass){
 
-            $check = "SELECT * FROM tbl_users WHERE username='$username' AND `password`='$cur_pass'";
+            $check = "SELECT * FROM tbl_user_admin WHERE username='$username' AND `password`='$cur_pass'";
             $res = $conn->query($check);
 
             if($res->num_rows){
 
-                $query 		= "UPDATE tbl_users SET `password`='$new_pass' WHERE username='$username'";	
+                $query 		= "UPDATE tbl_user_admin SET `password`='$new_pass' WHERE username='$username'";	
                 $result 	= $conn->query($query);
 
                 if($result === true){

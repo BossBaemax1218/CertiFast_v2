@@ -51,8 +51,8 @@ if ($resultResident->num_rows > 0) {
     exit();
 }
 
-// Check if the username already exists in tbl_users
-$checkQueryUsers = "SELECT * FROM tbl_users WHERE username = '$username'";
+// Check if the username already exists in tbl_user_admin
+$checkQueryUsers = "SELECT * FROM tbl_user_admin WHERE username = '$username'";
 $resultUsers = $conn->query($checkQueryUsers);
 
 if ($resultUsers->num_rows > 0) {

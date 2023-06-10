@@ -11,7 +11,7 @@ if ($username != '' && $password != '') {
     $residentResult = $conn->query($residentQuery);
 
     // Check if the user is an admin or staff
-    $adminStaffQuery = "SELECT * FROM tbl_users WHERE username = '$username' AND password = SHA1('$password')";
+    $adminStaffQuery = "SELECT * FROM tbl_user_admin WHERE username = '$username' AND password = SHA1('$password')";
     $adminStaffResult = $conn->query($adminStaffQuery);
 
     if ($residentResult->num_rows) {

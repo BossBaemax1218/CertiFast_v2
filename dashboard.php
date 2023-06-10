@@ -4,7 +4,7 @@
     $result = $conn->query($query);
 	$total = $result->num_rows;
 
-	$query1 = "SELECT * FROM tbl_users WHERE user_type='staff'";
+	$query1 = "SELECT * FROM tbl_user_admin WHERE user_type='staff'";
     $result1 = $conn->query($query1);
 	$staff = $result1->num_rows;
 

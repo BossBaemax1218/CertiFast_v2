@@ -20,7 +20,7 @@
 
     if(!empty($user) && !empty($pass) && !empty($usertype)){
 
-        $query = "SELECT * FROM tbl_users WHERE username='$user'";
+        $query = "SELECT * FROM tbl_user_admin WHERE username='$user'";
         $res = $conn->query($query);
 
         if($res->num_rows){
@@ -28,7 +28,7 @@
             $_SESSION['success'] = 'danger';
         }else{
             if(!empty($profile) && !empty($profile2)){
-                $insert  = "INSERT INTO tbl_users (`username`, `password`, user_type, avatar) VALUES ('$user', '$pass', '$usertype','$profile')";
+                $insert  = "INSERT INTO tbl_user_admin (`username`, `password`, user_type, avatar) VALUES ('$user', '$pass', '$usertype','$profile')";
                 $result  = $conn->query($insert);
     
                 if($result === true){
@@ -40,7 +40,7 @@
                     $_SESSION['success'] = 'danger';
                 }
             }else if(!empty($profile) && empty($profile2)){
-                $insert  = "INSERT INTO tbl_users (`username`, `password`, user_type, avatar) VALUES ('$user', '$pass', '$usertype','$profile')";
+                $insert  = "INSERT INTO tbl_user_admin (`username`, `password`, user_type, avatar) VALUES ('$user', '$pass', '$usertype','$profile')";
                 $result  = $conn->query($insert);
     
                 if($result === true){
@@ -52,7 +52,7 @@
                     $_SESSION['success'] = 'danger';
                 }
             }else if(empty($profile) && !empty($profile2)){
-                $insert  = "INSERT INTO tbl_users (`username`, `password`, user_type, avatar) VALUES ('$user', '$pass', '$usertype','$newName')";
+                $insert  = "INSERT INTO tbl_user_admin (`username`, `password`, user_type, avatar) VALUES ('$user', '$pass', '$usertype','$newName')";
                 $result  = $conn->query($insert);
 
                 move_uploaded_file($_FILES['img']['tmp_name'], $target);
@@ -66,7 +66,7 @@
                     $_SESSION['success'] = 'danger';
                 }
             }else{
-                $insert  = "INSERT INTO tbl_users (`username`, `password`, user_type) VALUES ('$user', '$pass', '$usertype')";
+                $insert  = "INSERT INTO tbl_user_admin (`username`, `password`, user_type) VALUES ('$user', '$pass', '$usertype')";
                 $result  = $conn->query($insert);
                 
                 if($result === true){
