@@ -48,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($result->num_rows > 0) {
             // Email address exists and verifystatus is 1, generate a verification code and send it
             $verificationCode = generateVerificationCode();
+            $year = date("Y");
 
             // Set the email body with HTML and CSS
             $mail->isHTML(true);
@@ -95,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             </tr>
                                             <tr>
                                                 <td style="text-align:center;">
-                                                    <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;"><?php $year = date("Y"); echo  $year . " &copy; <strong><span>CertiFast Portal</span></strong>" ?> . All Rights Reserved</p>
+                                                    <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;"> '.$year.' &copy; <strong><span>CertiFast Portal</span></strong> . All Rights Reserved</p>
                                                 </td>
                                             </tr>
                                             <tr>

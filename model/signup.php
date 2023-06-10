@@ -51,6 +51,7 @@ $verificationCode = substr(md5(uniqid(rand(), true)), 0, 6);
 // Store verification code and expiration time in session
 $_SESSION['verification_code'] = $verificationCode;
 $_SESSION['verification_expiration'] = time() + (5 * 60); // 5 minutes
+$year = date("Y");
 
 // Send verification code to email
 $mail = new PHPMailer();
@@ -102,7 +103,7 @@ $mail->Body = '
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;"><?php $year = date("Y"); echo  $year . " &copy; <strong><span>CertiFast Portal</span></strong>" ?> . All Rights Reserved</p>
+                                            <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;"> '.$year.' &copy; <strong><span>CertiFast Portal</span></strong> . All Rights Reserved </p>
                                         </td>
                                     </tr>
                                     <tr>
