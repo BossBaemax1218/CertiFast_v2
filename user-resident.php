@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>User Management</title>
+	<title>Resident Management</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
@@ -67,7 +67,8 @@
 													<th scope="col">No.</th>
 													<th scope="col">Name</th>
 													<th scope="col">Email</th>
-													<th scope="col">Created At</th>
+													<th scope="col">Status</th>
+													<th scope="col">Created</th>
 													<th scope="col">Action</th>
 												</tr>
 											</thead>
@@ -78,6 +79,7 @@
 														<td><?= $no ?></td>
 														<td><?= $row['fullname'] ?></td>
                                                         <td><?= $row['user_email'] ?></td>
+														<td><?= $row['verifystatus'] ?></td>
 														<td><?= $row['account_created'] ?></td>
 														<td>
 															<div class="form-button-action">

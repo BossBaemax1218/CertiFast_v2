@@ -170,7 +170,7 @@
 										<button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
 									</div>
 									<div id="profileImage">
-										<input type="hidden" name="profile-image" value="">
+										<input type="hidden" name="photo" value="">
 									</div>
 									<div class="form-group">
 										<input type="file" class="form-control" name="img" id="img" accept="image/*">
@@ -236,7 +236,7 @@
                                         <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
                                     </div>
                                     <div id="profileImage">
-                                        <input type="hidden" name="profile-image">
+                                        <input type="hidden" name="photo">
                                     </div>
                                     <div class="form-group">
                                         <input type="file" class="form-control" name="img" accept="image/*">

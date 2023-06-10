@@ -8,15 +8,16 @@
 	}
 	
     $id 	= $conn->real_escape_string($_POST['id']);
-	$name 	= $conn->real_escape_string($_POST['name']);
+	$name 	= $conn->real_escape_string($_POST['fullname']);
     $pos 	= $conn->real_escape_string($_POST['position']);
+	$photo 	= $conn->real_escape_string($_POST['photo']);
 	$start 	= $conn->real_escape_string($_POST['start']);
     $end 	= $conn->real_escape_string($_POST['end']);
 	$status = $conn->real_escape_string($_POST['status']);
 
 	if(!empty($id)){
 
-		$query 		= "UPDATE tblofficials SET `name`='$name', `position`='$pos', termstart='$start', termend='$end', `status`='$status' WHERE id=$id;";	
+		$query 		= "UPDATE tblofficials SET `fullname`='$name', `position`='$pos', `photo`='$photo', termstart='$start', termend='$end', `status`='$status' WHERE id=$id;";	
 		$result 	= $conn->query($query);
 
 		if($result === true){
