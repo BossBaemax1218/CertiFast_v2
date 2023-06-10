@@ -129,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 // Email sent successfully
                 // Redirect the user to the verification code confirmation page
                 $_SESSION['message'] = 'Verification code sucessfully sent.';
-                $_SESSION['success'] = 'danger';
+                $_SESSION['success'] = 'success';
                 $_SESSION['form'] = 'signup';
 
                 header('Location: ../reset-code.php');

@@ -6,21 +6,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $newPassword = $_POST['password'];
 
     // Function to update the password in the database
-    function updatePassword($newPassword, $email) {
+    function updatePassword($newPassword) {
         // Include the configuration file
         require '../server/server.php';
 
         // Hash the new password using SHA1 for security
         $hashedPassword = sha1($newPassword);
 
-        // Update password in tbl_user_resident
-        $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE user_email = ?");
-        $stmt->bind_param("ss", $hashedPassword, $email);
-        $stmt->execute();
-
-        // Update password in tbl_user_admin
-        $stmt = $conn->prepare("UPDATE tbl_user_admin SET password = ? WHERE username = ?");
-        $stmt->bind_param("ss", $hashedPassword, $email);
+        // Update password in tbl_user_resident where codesend is a new time within the limit of 5 minutes and verifystatus is 1
+        $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE codesend > DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND verifystatus = 1");
+        $stmt->bind_param("s", $hashedPassword);
         $stmt->execute();
 
         return true;
@@ -48,41 +43,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Update the password
     if (validatePassword($newPassword)) {
-        // Get the verified email from tblverify
-        $verificationCode = $_SESSION['verification_code']; // Assuming you store the verification code in a session variable
-
         // Include the configuration file
         require '../server/server.php';
 
-        $stmt = $conn->prepare("SELECT email FROM tblverify WHERE code = ? AND verified = 1");
-        $stmt->bind_param("s", $verificationCode);
-        $stmt->execute();
-        $stmt->store_result();
-
-        if ($stmt->num_rows > 0) {
-            $stmt->bind_result($email);
-            $stmt->fetch();
-
-            if (updatePassword($newPassword, $email)) {
-                // Password update successful
-                $_SESSION['success'] = true;
-                $_SESSION['success'] = 'success';
-                $_SESSION['message'] = "Password updated successfully.";
-                header('Location: ../login.php');
-                exit();
-            } else {
-                // Database error occurred
-                $_SESSION['success'] = false;
-                $_SESSION['success'] = 'danger';
-                $_SESSION['message'] = "An error occurred while updating the password.";
-                header('Location: ../new_password.php');
-                exit();
-            }
+        if (updatePassword($newPassword, $email)) {
+            // Password update successful
+            $_SESSION['success'] = true;
+            $_SESSION['success'] = 'success';
+            $_SESSION['form'] = 'login';
+            $_SESSION['message'] = "New password has been updated successfully.";
+            header('Location: ../login.php');
+            exit();
         } else {
-            // Invalid verification code or email not verified
+            // Database error occurred
             $_SESSION['success'] = false;
             $_SESSION['success'] = 'danger';
-            $_SESSION['message'] = "Invalid verification code or email not verified.";
+            $_SESSION['form'] = 'signup';
+            $_SESSION['message'] = "An error occurred while updating the password.";
             header('Location: ../new_password.php');
             exit();
         }
@@ -90,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Invalid password
         $_SESSION['success'] = false;
         $_SESSION['success'] = 'danger';
+        $_SESSION['form'] = 'signup';
         $_SESSION['message'] = "Invalid password. Please make sure the password meets the requirements.";
         header('Location: ../new_password.php');
         exit();

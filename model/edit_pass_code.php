@@ -34,19 +34,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Email verification is successful
         $_SESSION['success'] = true;
         $_SESSION['success'] = 'success';
-        $_SESSION['message'] = "Email verification successful.";
+        $_SESSION['form'] = 'signup';
+        $_SESSION['message'] = "Verification code for new password has been confirmed.";
 
         // Redirect the user to the password validation page
-        header('Location: ../login.php');
+        header('Location: ../new_password.php');
         exit();
     } else {
         // Email verification failed
         $_SESSION['success'] = false;
         $_SESSION['success'] = 'danger';
+        $_SESSION['form'] = 'signup';
         $_SESSION['message'] = "Invalid verification code.";
 
         // Redirect the user back to the verification code page
-        header('Location: ../reset-password-code.php');
+        header('Location: ../reset-code.php');
         exit();
     }
 }

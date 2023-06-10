@@ -13,6 +13,19 @@ if ($user_email != '' && $password != '') {
     $stmt->execute();
     $residentResult = $stmt->get_result();
 
+    if ($residentResult->num_rows) {
+        $row = $residentResult->fetch_assoc();
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['fullname'] = $row['fullname'];
+        $_SESSION['role'] = 'resident';
+
+        $_SESSION['message'] = 'You have successfully logged in as a resident!';
+        $_SESSION['success'] = 'success';
+
+        header('location: ../resident_request.php');
+        exit();
+    }
+
     // Check if the user is an admin or staff
     $adminStaffQuery = "SELECT * FROM tbl_user_admin WHERE username = ? AND password = SHA1(?)";
     $stmt = $conn->prepare($adminStaffQuery);
@@ -20,19 +33,7 @@ if ($user_email != '' && $password != '') {
     $stmt->execute();
     $adminStaffResult = $stmt->get_result();
 
-    if ($residentResult->num_rows) {
-        $row = $residentResult->fetch_assoc();
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['user_email'] = $row['user_email'];
-        $_SESSION['role'] = 'resident';
-
-        $_SESSION['message'] = 'You have successfully logged in as a resident!';
-        $_SESSION['success'] = 'success';
-
-        header('location: ../dashboard.php');
-        exit();
-
-    } elseif ($adminStaffResult->num_rows) {
+    if ($adminStaffResult->num_rows) {
         $row = $adminStaffResult->fetch_assoc();
         $role = $row['user_type'];
 
@@ -51,16 +52,14 @@ if ($user_email != '' && $password != '') {
 
         header('location: ../dashboard.php');
         exit();
-
-    } else {
-        $_SESSION['message'] = 'Username or password is incorrect!';
-        $_SESSION['success'] = 'danger';
-        $_SESSION['form'] = 'login';
-
-        header('location: ../login.php');
-        exit();
-
     }
+
+    $_SESSION['message'] = 'Username or password is incorrect!';
+    $_SESSION['success'] = 'danger';
+    $_SESSION['form'] = 'login';
+
+    header('location: ../login.php');
+    exit();
 } else {
     $_SESSION['message'] = 'Username or password is empty!';
     $_SESSION['success'] = 'danger';
