@@ -7,23 +7,27 @@ $password = $conn->real_escape_string($_POST['password']);
 
 if ($user_email != '' && $password != '') {
     // Check if the user is a verified resident
-    $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = '$user_email' AND password = SHA1('$password') AND verifystatus = 1";
-    $residentResult = $conn->query($residentQuery);
+    $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = ? AND password = SHA1(?) AND verifystatus = 1";
+    $stmt = $conn->prepare($residentQuery);
+    $stmt->bind_param("ss", $user_email, $password);
+    $stmt->execute();
+    $residentResult = $stmt->get_result();
 
     // Check if the user is an admin or staff
-    $adminStaffQuery = "SELECT * FROM tbl_user_admin WHERE username = '$user_email' AND password = SHA1('$password')";
-    $adminStaffResult = $conn->query($adminStaffQuery);
+    $adminStaffQuery = "SELECT * FROM tbl_user_admin WHERE username = ? AND password = SHA1(?)";
+    $stmt = $conn->prepare($adminStaffQuery);
+    $stmt->bind_param("ss", $user_email, $password);
+    $stmt->execute();
+    $adminStaffResult = $stmt->get_result();
 
     if ($residentResult->num_rows) {
         $row = $residentResult->fetch_assoc();
         $_SESSION['id'] = $row['id'];
-        $_SESSION['username'] = $row['username'];
+        $_SESSION['user_email'] = $row['user_email'];
         $_SESSION['role'] = 'resident';
-        $_SESSION['avatar'] = $row['avatar'];
 
         $_SESSION['message'] = 'You have successfully logged in as a resident!';
         $_SESSION['success'] = 'success';
-        $_SESSION['form'] = 'login';
 
         header('location: ../dashboard.php');
         exit();
@@ -44,7 +48,6 @@ if ($user_email != '' && $password != '') {
         $_SESSION['username'] = $row['username'];
         $_SESSION['role'] = $role;
         $_SESSION['avatar'] = $row['avatar'];
-        $_SESSION['form'] = 'login';
 
         header('location: ../dashboard.php');
         exit();
@@ -61,11 +64,10 @@ if ($user_email != '' && $password != '') {
 } else {
     $_SESSION['message'] = 'Username or password is empty!';
     $_SESSION['success'] = 'danger';
-    $_SESSION['form'] = 'login'; 
+    $_SESSION['form'] = 'login';
 
     header('location: ../login.php');
     exit();
-    
 }
 
 $conn->close();

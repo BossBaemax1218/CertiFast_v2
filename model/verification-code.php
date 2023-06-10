@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Email verification is successful
         $_SESSION['success'] = true;
         $_SESSION['success'] = 'success';
+        $_SESSION['form'] = 'login';
         $_SESSION['message'] = "Email verification successful.";
 
         // Redirect the user to the password validation page

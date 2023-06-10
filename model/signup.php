@@ -17,7 +17,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['message'] = 'Invalid email format.';
     $_SESSION['success'] = 'danger';
     $_SESSION['form'] = 'signup';
-    
+
     header('Location: ../login.php');
     exit();
 }
@@ -78,8 +78,8 @@ $mail->Body = '
                         </tr>
                         <tr>
                             <td>
-                                <table width="95%" border-raduis="0" text-align="center" cellpadding="0" cellspacing="0"
-                                    style="max-width:670px;background:#fff; border-radius:3px; text-align:center;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);">
+                                <table width="100%" border-raduis="0" text-align="center" cellpadding="0" cellspacing="0"
+                                    style=" margin-left: 5%; margin-right: 5%; max-width:700px;background:#fff; border-radius:3px; text-align:center;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);">
                                     <tr>
                                         <td style="height:20px;">&nbsp;</td>
                                     </tr>
@@ -124,30 +124,49 @@ $mail->Body = '
     </html>
 ';
 
-    // SMTP configuration if required
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'barangaylosamigos.certifast@gmail.com';
-    $mail->Password = 'ipqostilxutxmbxl';
-    $mail->Port = 587;
+// SMTP configuration if required
+$mail->isSMTP();
+$mail->Host = 'smtp.gmail.com';
+$mail->SMTPAuth = true;
+$mail->Username = 'barangaylosamigos.certifast@gmail.com';
+$mail->Password = 'ipqostilxutxmbxl';
+$mail->Port = 587;
 
 if ($mail->send()) {
+    // Update verification status in the database
+    $updateQuery = "UPDATE tbl_user_resident SET verifystatus = 1 WHERE user_email = '$email'";
+    $conn->query($updateQuery);
+
     // Register the user
     if (!empty($fullname) && !empty($email) && !empty($password)) {
         // Hash the password using SHA1
         $hashedPassword = sha1($password);
-        $codesend = date('Y-m-d H:i:s', strtotime('+5 minutes', strtotime('now')));
+        $codesend = date('Y-m-d H:i:s', strtotime('now'));
 
-        $query = "INSERT INTO tbl_user_resident (`fullname`, `user_email`, `password`, `verifycode`, `codesend`) VALUES ('$fullname', '$email', '$hashedPassword', '$verificationCode', '$codesend' )";
+        $query = "INSERT INTO tbl_user_resident (`fullname`, `user_email`, `password`, `verifycode`, `codesend`, `verifystatus`) VALUES ('$fullname', '$email', '$hashedPassword', '$verificationCode', '$codesend', 0 )";
 
         if ($conn->query($query)) {
-            $_SESSION['message'] = 'You have successfully signed up! Please check your email for the verification code.';
+            $_SESSION['message'] = 'You have registered successfully! We sent a verification code to verify your account, so please check your email.';
             $_SESSION['success'] = 'success';
 
             header('Location: ../verificationcode.php');
             exit();
+        }
+
+        // Check if the email is already verified
+        $checkQueryVerified = "SELECT * FROM tbl_user_resident WHERE user_email = '$email' AND verifystatus = 1";
+        $resultVerified = $conn->query($checkQueryVerified);
+
+        if ($resultVerified->num_rows > 0) {
+            $_SESSION['message'] = 'You have successfully verified your email.';
+            $_SESSION['success'] = 'success';
+            $_SESSION['form'] = 'login';
+
+            header('Location: ../login.php');
+            exit();
+
         } else {
+
             $_SESSION['message'] = 'Unable to sign up. Please try again later.';
             $_SESSION['success'] = 'danger';
             $_SESSION['form'] = 'signup';

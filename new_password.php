@@ -45,7 +45,7 @@
           <div class="wrapper">           
               <h2 class="title">Create a new password</h2>
               <span class="description">Create a new password that has a unique characters.</span>
-              <form method="POST" action="model/reset-password.php">
+              <form method="POST" action="model/edit_password.php">
                 <div class="pass-field">
                   <input type="password" class="password" id="password" name="password" onClick="clearInput()" placeholder="Enter new password">
                   <i class="fa-solid fa-eye"></i>
