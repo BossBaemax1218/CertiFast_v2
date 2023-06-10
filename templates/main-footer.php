@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="container-fluid">
         <div class="copyright ml-auto">
-            2022-2023 &copy Certifast
+            <?php $year = date("Y"); echo  $year . " &copy CertiFast Portal" ?>
         </div>				
     </div>
 </footer>

@@ -107,7 +107,7 @@
 														<tr>
 														<td>
 															<div class="avatar avatar-xs">
-																<img src="<?= preg_match('/data:image/i', $row['photo']) ? $row['photo'] : 'assets/uploads/officials/'.$row['photo'] ?>" alt="Official Profile" class="avatar-img rounded-circle">																
+																<img src="<?= preg_match('/data:image/i', $row['photo']) ? $row['photo'] : 'assets/uploads/officials/'.$row['photo'] ?>" alt="Profile" class="avatar-img rounded-circle">																
 															</div>
 															<?= ucwords($row['fullname']) ?>
 														</td>
@@ -121,7 +121,7 @@
 																<td>
 																	<a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" 
 																		title="Edit Position" onclick="editOfficial(this)" data-id="<?= $row['id'] ?>" data-name="<?= $row['fullname'] ?>" 
-																		data-pos="<?= $row['pos_id'] ?>" data-start="<?= $row['termstart'] ?>" 
+																		data-pos="<?= $row['pos_id'] ?>" data-photo="<?= $row['photo'] ?>" data-start="<?= $row['termstart'] ?>" 
 																		data-end="<?= $row['termend'] ?>" data-status="<?= $row['status'] ?>" >
 																		<i class="fas fa-edit"></i>
 																	</a>

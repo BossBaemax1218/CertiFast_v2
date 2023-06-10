@@ -102,7 +102,7 @@ $mail->Body = '
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;">&copy; <strong>www.certifastlosamigos.com</strong></p>
+                                            <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;"><?php $year = date("Y"); echo  $year . " &copy; <strong><span>CertiFast Portal</span></strong>" ?> . All Rights Reserved</p>
                                         </td>
                                     </tr>
                                     <tr>

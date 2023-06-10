@@ -652,7 +652,7 @@
 
     <div class="container py-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>CertiFast</span></strong>. All Rights Reserved
+        <?php $year = date("Y"); echo  $year . " &copy; <strong><span>CertiFast Portal</span></strong>" ?> . All Rights Reserved
       </div>
     </div>
   </footer>
