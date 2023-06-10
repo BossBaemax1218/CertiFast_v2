@@ -424,17 +424,6 @@
               <a href="homepage/announcement/announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
-
-          <!--<div class="col-lg-4 col-md-6 announcement-item filter-web">
-            <img src="homepage/assets/img/announcement/announcement-2.jpg" class="img-fluid" alt="img-2">
-            <div class="announcement-info">
-              <h4>Social Pension Payout</h4>
-              <p>April 18, 2023</p>
-              <a href="homepage/assets/img/announcement/announcement-2.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Social Pension Payout"><i class="bx bx-plus"></i></a>
-              <a href="homepage/announcement/announcement-details-1.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>-->
-
           <div class="col-lg-4 col-md-6 announcement-item filter-app">
             <img src="homepage/assets/img/announcement/announcement-3.jpg" class="img-fluid" alt="img-3">
             <div class="announcement-info">
@@ -444,17 +433,6 @@
               <a href="homepage/announcement/announcement-details-3.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
-
-         <!-- <div class="col-lg-4 col-md-6 announcement-item filter-card">
-            <img src="homepage/assets/img/announcement/announcement-4.jpg" class="img-fluid" alt="img-4">
-            <div class="announcement-info">
-              <h4>Bicycle & Light Vehicle Registration</h4>
-              <p>Open Registration</p>
-              <a href="homepage/assets/img/announcement/announcement-4.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Bicycle & Light Vehicle Registration"><i class="bx bx-plus"></i></a>
-              <a href="homepage/announcement/announcement-details-2.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>-->
-
           <div class="col-lg-4 col-md-6 announcement-item filter-web">
             <img src="homepage/assets/img/announcement/announcement-5.jpg" class="img-fluid" alt="img-6">
             <div class="announcement-info">
@@ -463,48 +441,7 @@
               <a href="homepage/assets/img/announcement/announcement-5.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Water Interruption"><i class="bx bx-plus"></i></a>
               <a href="homepage/announcement/announcement-details-4.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
-          </div>
-
-          <!--<div class="col-lg-4 col-md-6 announcement-item filter-app">
-            <img src="homepage/assets/img/announcement/announcement-6.jpg" class="img-fluid" alt="">
-            <div class="announcement-info">
-              <h4>App 3</h4>
-              <p>App</p>
-              <a href="homepage/assets/img/announcement/announcement-6.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-              <a href="announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 announcement-item filter-card">
-            <img src="homepage/assets/img/announcement/announcement-7.jpg" class="img-fluid" alt="">
-            <div class="announcement-info">
-              <h4>Card 1</h4>
-              <p>Card</p>
-              <a href="homepage/assets/img/announcement/announcement-7.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-              <a href="announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 announcement-item filter-card">
-            <img src="homepage/assets/img/announcement/announcement-8.jpg" class="img-fluid" alt="">
-            <div class="announcement-info">
-              <h4>Card 3</h4>
-              <p>Card</p>
-              <a href="homepage/assets/img/announcement/announcement-8.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-              <a href="announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 announcement-item filter-web">
-            <img src="homepage/assets/img/announcement/announcement-9.jpg" class="img-fluid" alt="">
-            <div class="announcement-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <a href="homepage/assets/img/announcement/announcement-9.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>-->
-
+          </div>>
         </div>
 
       </div>
