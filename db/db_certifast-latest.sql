@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2023 at 02:46 PM
+-- Generation Time: Jun 10, 2023 at 06:43 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -54,8 +54,9 @@ INSERT INTO `tblbrgy_info` (`id`, `province`, `town`, `brgy_name`, `number`, `b_
 
 CREATE TABLE `tblofficials` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
+  `fullname` varchar(50) DEFAULT NULL,
   `position` varchar(50) DEFAULT NULL,
+  `photo` text DEFAULT NULL,
   `termstart` date DEFAULT NULL,
   `termend` date DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL
@@ -65,26 +66,8 @@ CREATE TABLE `tblofficials` (
 -- Dumping data for table `tblofficials`
 --
 
-INSERT INTO `tblofficials` (`id`, `name`, `position`, `termstart`, `termend`, `status`) VALUES
-(18, 'Aileen N. Atino', '7', '2018-07-02', '2024-07-02', 'Active'),
-(19, 'Ruel Ceballos', '7', '2018-07-02', '2024-07-02', 'Active'),
-(20, 'Simeon Alejaga, Sr.', '7', '2018-07-02', '2024-07-02', 'Active'),
-(21, 'Angelico Santander, Jr.', '7', '2018-07-02', '2024-07-02', 'Active'),
-(22, 'Ann Liezl Deliquiña', '7', '2018-07-02', '2024-07-02', 'Active'),
-(23, 'Raymundo Pupa', '7', '2018-07-02', '2024-07-02', 'Active'),
-(24, 'Adonis Santander', '7', '2018-07-02', '2024-07-02', 'Active'),
-(25, 'Arlene D. Suaybaguio ', '7', '2018-07-02', '2024-07-02', 'Active'),
-(26, 'Rowen Sampadong', '24', '2018-07-02', '2024-07-10', 'Active'),
-(27, 'Karol Jean Pilongo', '25', '2018-07-02', '2024-07-02', 'Active'),
-(28, 'Alien Rey Basa', '25', '2018-07-02', '2024-07-02', 'Active'),
-(29, 'Gladys Calicdan', '25', '2018-07-02', '2024-07-02', 'Active'),
-(30, 'Kim Sitchon', '25', '2018-07-02', '2024-07-02', 'Active'),
-(31, 'Adrian Bibat', '25', '2018-07-02', '2024-07-02', 'Active'),
-(32, 'Nico Tabaranza', '25', '2018-07-02', '2024-07-02', 'Active'),
-(33, 'Roxanne Joy Marie Gelicame', '25', '2018-07-02', '2024-07-02', 'Active'),
-(34, 'Abbie Charlotte Cabig-Sarsale', '32', '2018-07-02', '2024-07-02', 'Active'),
-(35, 'Melliza Joie Basuga-Tañac', '33', '2018-07-02', '2024-07-02', 'Active'),
-(37, 'ROBERTO A. BALLARTA', '4', '2018-07-02', '2024-07-02', 'Active');
+INSERT INTO `tblofficials` (`id`, `fullname`, `position`, `photo`, `termstart`, `termend`, `status`) VALUES
+(79, 'Wimple Aira Umaoeng', '1', NULL, '2023-06-09', '2023-06-09', 'Active');
 
 -- --------------------------------------------------------
 
@@ -110,7 +93,8 @@ INSERT INTO `tblpayments` (`id`, `details`, `amounts`, `date`, `user`, `name`) V
 (19, 'Barangay Clearance Payment', '20.00', '2023-03-13', 'Staff_Wimple', ' Gretchen S. Sanchez'),
 (20, 'Barangay Clearance Payment', '20.00', '2023-03-16', 'admin', ' Gretchen S. Sanchez'),
 (21, 'Certificate of Indigency Payment', '20.00', '2023-03-16', 'admin', ' Gretchen S. Sanchez'),
-(22, 'Business Permit Payment', '20.00', '2023-03-16', 'admin', ' Bag\'s Store');
+(22, 'Business Permit Payment', '20.00', '2023-03-16', 'admin', ' Bag\'s Store'),
+(24, 'Certificate of Residency Payment', '10.00', '2023-04-15', 'admin', ' Gretchen S. Sanchez');
 
 -- --------------------------------------------------------
 
@@ -151,12 +135,12 @@ CREATE TABLE `tblposition` (
 --
 
 INSERT INTO `tblposition` (`id`, `position`) VALUES
-(4, 'Kapitan'),
-(7, 'Kagawad'),
-(24, 'SK Chairman'),
-(25, 'SK Kagawad'),
-(32, 'Secretary'),
-(33, 'Treasurer');
+(1, 'Kapitan'),
+(2, 'Kagawad'),
+(3, 'Secretary'),
+(4, 'Treasurer'),
+(5, 'SK Chairman'),
+(6, 'SK Kagawad');
 
 -- --------------------------------------------------------
 
@@ -264,8 +248,32 @@ CREATE TABLE `tblresident` (
 --
 
 INSERT INTO `tblresident` (`id`, `national_id`, `citizenship`, `picture`, `firstname`, `middlename`, `lastname`, `alias`, `birthplace`, `birthdate`, `age`, `civilstatus`, `gender`, `purok`, `voterstatus`, `identified_as`, `phone`, `email`, `occupation`, `address`, `resident_type`, `remarks`) VALUES
-(183, '134981930198', 'Davao City', 'person.png', 'Gretchen', 'S.', 'Sanchez', '1-A', 'Tugbok, Davao City', '1991-03-20', 31, 'Married', 'Female', '1-A', 'Yes', 'Positive', '09272938801', '2315123123', 'N/A', 'Purok 1-B', 1, '4ps Requirements'),
-(181, '1231344362362', 'Davao City', '10022023141807bg4.png', 'Ariel', 'A.', 'Suribas', '1-A', 'Davao City', '1972-10-25', 51, 'Married', 'Male', '1-A', 'Yes', 'Positive', '09272938801', '1231231351234', 'N/A', 'Barangay Los Amigos, Purok 1-A, Tugbok Davao City', 1, 'Bank Requirements');
+(183, '134981930198', 'Davao City', '04062023121613officials-2.jpg', 'Gretchen', 'S.', 'Sanchez', '1-A', 'Tugbok, Davao City', '1991-03-20', 31, 'Married', 'Female', '1-A', 'Yes', 'Positive', '09272938801', '2315123123', 'N/A', 'Purok 1-B', 1, '4ps Requirements'),
+(181, '1231344362362', 'Davao City', '10022023141807bg4.png', 'Ariel', 'A.', 'Suribas', '1-A', 'Davao City', '1972-10-25', 51, 'Married', 'Male', '1-A', 'Yes', 'Positive', '09272938801', '1231231351234', 'N/A', 'Barangay Los Amigos, Purok 1-A, Tugbok Davao City', 1, 'Bank Requirements'),
+(189, '1515856231239080', 'Filipino', '080620231709021.png', 'Wimple ', 'G. ', 'Umaoeng', 'Tugbok, Davao City', 'Tugbok, Davao City', '2000-09-18', 22, 'Single', 'Female', '1-B Graceland', 'Yes', 'Positive', '09272938801', '1162547456712', 'N/A', 'TESDA', 1, '4ps Requirements');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblverify`
+--
+
+CREATE TABLE `tblverify` (
+  `id` int(11) NOT NULL,
+  `verifycode` varchar(11) NOT NULL,
+  `expires` time NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `created_at` date NOT NULL DEFAULT current_timestamp(),
+  `verified` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblverify`
+--
+
+INSERT INTO `tblverify` (`id`, `verifycode`, `expires`, `email`, `created_at`, `verified`) VALUES
+(46, '3ba80d', '11:40:36', 'airagorre1218@gmail.com', '2023-06-09', 1),
+(47, 'd9b913', '11:06:07', 'cyberlez12345@gmail.com', '2023-06-10', 1);
 
 -- --------------------------------------------------------
 
@@ -286,10 +294,10 @@ CREATE TABLE `tbl_support` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_users`
+-- Table structure for table `tbl_user_admin`
 --
 
-CREATE TABLE `tbl_users` (
+CREATE TABLE `tbl_user_admin` (
   `id` int(11) NOT NULL,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
@@ -299,12 +307,36 @@ CREATE TABLE `tbl_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_users`
+-- Dumping data for table `tbl_user_admin`
 --
 
-INSERT INTO `tbl_users` (`id`, `username`, `password`, `user_type`, `avatar`, `created_at`) VALUES
+INSERT INTO `tbl_user_admin` (`id`, `username`, `password`, `user_type`, `avatar`, `created_at`) VALUES
 (11, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'administrator', '280120230832181.jfif', '2021-05-03 02:33:03'),
 (12, 'Staff_Wimple', '6ccb4b7c39a6e77f76ecfa935a855c6c46ad5611', 'staff', '28012023073945brgyHall.jpg', '2023-01-28 06:39:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user_resident`
+--
+
+CREATE TABLE `tbl_user_resident` (
+  `id` int(20) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `user_email` varchar(100) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `verifycode` varchar(11) NOT NULL,
+  `codesend` time DEFAULT NULL,
+  `verifystatus` int(11) NOT NULL,
+  `account_created` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_user_resident`
+--
+
+INSERT INTO `tbl_user_resident` (`id`, `fullname`, `user_email`, `password`, `verifycode`, `codesend`, `verifystatus`, `account_created`) VALUES
+(48, 'Wimple Aira Umaoeng', 'iraauy12345@gmail.com', '29eeed416aacea1f58ee82b4f0cc76a1a91e55cc', 'df21d2', '18:25:06', 1, '2023-06-10');
 
 --
 -- Indexes for dumped tables
@@ -359,15 +391,27 @@ ALTER TABLE `tblresident`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tblverify`
+--
+ALTER TABLE `tblverify`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_support`
 --
 ALTER TABLE `tbl_support`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_users`
+-- Indexes for table `tbl_user_admin`
 --
-ALTER TABLE `tbl_users`
+ALTER TABLE `tbl_user_admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_user_resident`
+--
+ALTER TABLE `tbl_user_resident`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -384,13 +428,13 @@ ALTER TABLE `tblbrgy_info`
 -- AUTO_INCREMENT for table `tblofficials`
 --
 ALTER TABLE `tblofficials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `tblpayments`
 --
 ALTER TABLE `tblpayments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tblpermit`
@@ -402,7 +446,7 @@ ALTER TABLE `tblpermit`
 -- AUTO_INCREMENT for table `tblposition`
 --
 ALTER TABLE `tblposition`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tblprecinct`
@@ -420,13 +464,25 @@ ALTER TABLE `tblpurok`
 -- AUTO_INCREMENT for table `tblresident`
 --
 ALTER TABLE `tblresident`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
 
 --
--- AUTO_INCREMENT for table `tbl_users`
+-- AUTO_INCREMENT for table `tblverify`
 --
-ALTER TABLE `tbl_users`
+ALTER TABLE `tblverify`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `tbl_user_admin`
+--
+ALTER TABLE `tbl_user_admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `tbl_user_resident`
+--
+ALTER TABLE `tbl_user_resident`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

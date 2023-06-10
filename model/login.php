@@ -21,6 +21,7 @@ if ($user_email != '' && $password != '') {
 
         $_SESSION['message'] = 'You have successfully logged in as a resident!';
         $_SESSION['success'] = 'success';
+        $_SESSION['form'] = 'login';
 
         header('location: ../resident_request.php');
         exit();

@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Set the user_email details
         $mail->setFrom('no-reply@gmail.com', 'Barangay Los Amigos - CertiFast');
         $mail->addAddress($email);
-        $mail->Subject = 'Forgot-Password: Verification Code';
+        $mail->Subject = 'Your forgot password verification code has been sent';
 
         // Check if the email address is already registered and verifystatus is 1
         $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE user_email = ? AND verifystatus = 1");

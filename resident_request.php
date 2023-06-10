@@ -16,7 +16,7 @@
     <link rel="icon" href="homepage/images/CFLogo2.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> 
 </head>
-<body>
+    <body>
             <form method="POST" action="model/login.php">
                 <h1>WELCOME TO CERTIFAST (REGISTRATION)</h1>
                 <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
@@ -32,6 +32,7 @@
                     </header>
                     <?php unset($_SESSION['message']); ?>
                 <?php endif; ?>
+                <a href="login.php"><h3>Back</h3></a>
             </form>
-</body>
+    </body>
 </html>
