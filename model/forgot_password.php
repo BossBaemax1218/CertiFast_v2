@@ -10,6 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 // Include server configuration
 include '../server/server.php';
 
+
 // Function to generate a verification code
 function generateVerificationCode()
 {
@@ -37,10 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Set the user_email details
         $mail->setFrom('no-reply@gmail.com', 'Barangay Los Amigos - CertiFast');
         $mail->addAddress($email);
-        $mail->Subject = 'Your forgot password verification code has been sent';
+        $mail->Subject = 'Your new password verification code has been sent';
 
         // Check if the email address is already registered and verifystatus is 1
-        $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE user_email = ? AND verifystatus = 1");
+        $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE user_email = ? AND verification_status = 1");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -79,16 +80,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             </tr>
                                             <tr>
                                                 <td style="text-align:center;color:#E42654;font-family:\'Rubik\',sans-serif;">
-                                                    <h1 style="font-size:45px;"><strong>CertiFast</strong></h1><h3 style="color:#1e1e2d; font-size:25px;">Barangay Los Amigos</h3>                                                       
+                                                    <h1 style="font-size:45px;"><strong>CertiFast</strong></h1>
+                                                    <h3 style="color:#1e1e2d;margin-top:5px; font-size:25px;">Barangay Los Amigos</h3>                                                       
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="padding:0 35px;">
-                                                    <h3 style="color:#1e1e2d; font-weight:500; margin:0;font-size:18px;font-family:\'Rubik\',sans-serif;">You have requested to reset your password</h3>
-                                                    <span style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
-                                                    <p style="color:#455056; font-size:16px;line-height:24px; margin:0;"> We cannot simply send you your old password. To reset your password, copy & paste the following code.</p>
-                                                    <a href="javascript:void(0);"
-                                                        style="background:#E42654;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:20px;padding:10px 24px;display:inline-block;border-radius:5px;">'.$verificationCode.'</a>
+                                                    <h3 style="color:#1e1e2d; font-weight:500; margin:0;font-size:16px;font-family:\'Rubik\',sans-serif;">You have requested for new password</h3>
+                                                    <span style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:200px;"></span>
+                                                    <p style="font-size:16px;line-height:24px; margin:0;margin-bottom: 5px;"> We are unable to email you your previous password. Please enter the verification code below to create a new password in order to reset your old one.</p>
+                                                    <a href="javascript:void(0);" style="background:#E42654;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:20px;padding:10px 24px;display:inline-block;border-radius:5px;">'.$verificationCode.'</a>
+                                                    <p style="text-align: center; font-size: 14px; color: #000000; margin-bottom: 5px;"> The verification code will expire in 5 minutes.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 30px 20px 30px 20px;">
+                                                    <p style="font-size: 14px; color: #000000; margin: 0;">If you did not create an account on Barangay Los Amigos - CertiFast Portal, please ignore this email.</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -96,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             </tr>
                                             <tr>
                                                 <td style="text-align:center;">
-                                                    <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;"> '.$year.' &copy; <strong><span>CertiFast Portal</span></strong> . All Rights Reserved</p>
+                                                    <p style="font-size:12px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;"> '.$year.' &copy; <strong><span>Barangay Los Amigos - CertiFast Portal</span></strong> . All Rights Reserved</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -115,13 +122,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </tr>
                 </table>
             </body>
-            </html>
-            ';
+            </html>';
 
             // Store the new verification code and codesend in the database
             $verifycode = $verificationCode;
             $codesend = date('Y-m-d H:i:s', strtotime('now'));
-            $stmt = $conn->prepare("UPDATE tbl_user_resident SET verifycode = ?, codesend = ? WHERE user_email = ?");
+            $stmt = $conn->prepare("UPDATE tbl_user_resident SET verification_code = ?, verification_send = ? WHERE user_email = ?");
             $stmt->bind_param("sss", $verifycode, $codesend, $email);
             $stmt->execute();
 
@@ -145,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         } else {
             // Email address does not exist
-            $_SESSION['message'] = 'Email address does not exist.';
+            $_SESSION['message'] = 'You failed to verify your email address.';
             $_SESSION['success'] = 'danger';
             $_SESSION['form'] = 'signup';
             header('Location: ../forgot-password.php');

@@ -58,7 +58,7 @@
 
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Welcome to</h1>
+      <h2>Welcome to</h2>
       <h1>Barangay Los Amigos <span>CertiFast</span></h1>
       <br>
       <div class="d-flex">
@@ -72,44 +72,45 @@
     <section id="featured-services" class="featured-services">
       <div class="container" data-aos="fade-up">
       <div class="section-title">
-          <h3>Online Certificate Management System</h3>
-          <p>Here are the steps in setting an registration with CertiFast.</p>
+          <h3>Barangay Los Amigos - CertiFast Portal</h3>
+          <br>
+          <h6>Here are the steps in setting an registration request with CertiFast Portal.</h6>
         </div>
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+            <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-8.svg"></div>
-              <h4 class="title"><a href="#services">Step 1</a></h4>
-              <h6 class="pre-title">Request</h6>
-              <p class="description">Select the type of barangay certificate that you would like to request.</p>
-            </div>
+              <h4 class="title" style="color: black;">Step 1</h4>
+              <h6 class="pre-title" style="color: black; font-weight: bold;">Request</h6>
+              <p class="description" style="color: black;">Select the type of barangay certificate that you would like to request in CertiFast Portal.</p>
+            </div></a>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+          <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-14.svg"></div>
-              <h4 class="title"><a href="#services">Step 2</a></h4>
-              <h6 class="pre-title">Review</h6>
-              <p class="description">Make sure your personal information is true and correct by reviewing it carefully on the screen.</p>
-            </div>
+              <h4 class="title" style="color: black;">Step 2</h4>
+              <h6 class="pre-title" style="color: black; font-weight: bold;">Review</h6>
+              <p class="description" style="color: black;">Make sure your personal information is true and correct by reviewing it carefully on the screen.</p>
+            </div></a>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+            <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-10.svg"></div>
-              <h4 class="title"><a href="#services">Step 3</a></h4>
-              <h6 class="pre-title">Interview</h6>
-              <p class="description">Go to the barangay for under-going interview to ensure the security and accuracy of your information before you can receive the certification.</p>
-            </div>
+              <h4 class="title" style="color: black;">Step 3</h4>
+              <h6 class="pre-title" style="color: black; font-weight: bold;">Interview</h6>
+              <p class="description" style="color: black;">Giving a few essential interview at the barangay office to guarantee the authenticity of your information.</p>
+            </div></a>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+            <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-11.svg"></div>
-              <h4 class="title"><a href="#services">Step 4</a></h4>
-              <h6 class="pre-title">Approved</h6>
-              <p class="description">After a brief interview regarding your identity. Reminder to make sure you have cash on your hand, so you can pay for the certificate.</p>
-            </div>
+              <h4 class="title" style="color: black;">Step 4</h4>
+              <h6 class="pre-title" style="color: black; font-weight: bold;">Approval</h6>
+              <p class="description" style="color: black;">Prepare a cash in hand to ensure you can pay for the certificate after a quick interview.</p>
+            </div></a>
           </div>
 
         </div>
@@ -123,7 +124,8 @@
         <div class="section-title">
           <h2>About</h2>
           <h3>Find out more <span>About us</span></h3>
-          <p>Barangay Los Amigos is one of the largest Barangays in Davao City.</p>
+          <br>
+          <h6>Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.</h6>
         </div>
 
         <div class="row">
@@ -131,9 +133,9 @@
             <img src="homepage/assets/img/download.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-            <h3>Barangay Los Amigos <i>CertiFast</i> </h3>
-            <p class="fst-italic">
-              The CertiFast provides a user-friendly platform for efficient and secure handling of certificates, revolutionizing the process of issuance and management.
+            <h3>Barangay Los Amigos - CertiFast Portal</h3>
+            <p>
+              The Certifast Portal provides a user-friendly platform for efficient and secure handling of certificates, revolutionizing the process of issuance and management.
             </p>
             <ul>
               <li>
@@ -246,7 +248,7 @@
           <h2>Services</h2>
           <h3>Check our <span>Services</span></h3>
           <br>
-          <h5>What are the information needed?</h5>
+          <h6>Say goodbye to spreadsheet tracking. Our certificate management system online provides clarity and simplifies compliance.</h6>
         </div>
 
         <div class="row">
@@ -254,7 +256,11 @@
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-1.svg"></div>
               <h4>Barangay Registration</h4>
-              <p>Resident registration is the process of officially documenting individuals as residents of a particular location for administrative and legal purposes.</p>
+              <p>To successfully register in your local barangay, you need to provide certain documents and information these documents include:</p>
+                <ul class="req-list"> 
+                  <li>Birth certificate or any document that shows your birthdate and place of birth.</li>
+                  <li>A valid ID or passport.</li>
+                </ul>
               <br>
               <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
@@ -264,7 +270,13 @@
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-2.svg"></div>
               <h4>Barangay Residency</h4>
-              <p>Barangay residency refers to the barangay status of being a resident or inhabitant of a specific barangay.</p>
+              <p>To register for barangay residency, you'll need to provide the following documents: </p>
+              <ul class="req-list"> 
+                  <li>Barangay certificate from your previous barangay (if any).</li>
+                  <li>A valid ID, passport, birth certificate or marriage certificate.</li>
+                  <li>Photocopy of any Utility Bill or Proof of Billing (such as electric bill, water bill, etc.) </li>
+                  <li>A barangay clearance or certificate of residency.</li>
+              </ul>
               <br>
               <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
@@ -274,7 +286,13 @@
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-3.svg"></div>
               <h4>Barangay Clearance</h4>
-              <p>Barangay clearance is an official document issued by the barangay officials confirming the good conduct and residency of an individual within the community.</p>
+              <p>The following documents are required to obtain a barangay clearance:</p>
+              <ul class="req-list">
+                  <li>Barangay certificate from your previous barangay (if any).</li>
+                  <li>A valid ID, passport, birth certificate or marriage certificate.</li>
+                  <li>Photocopy of any Utility Bill or Proof of Billing (such as electric bill, water bill, etc.) </li>
+                  <li>A barangay clearance or certificate of residency.</li>
+              </ul>
               <br>
               <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
@@ -284,7 +302,13 @@
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-5.svg"></div>
               <h4>Barangay Indingency</h4>
-              <p>Barangay indigency refers to the certification granted to individuals who are deemed economically disadvantaged and eligible for certain privileges and social assistance within the barangay.</p>
+              <p>You need the following requirements in order to apply for a certification of indigency in your barangay:</p>
+              <ul class="req-list">
+                  <li>Barangay certificate of residency.</li>
+                  <li>A valid ID, passport, birth certificate or marriage certificate.</li>
+                  <li>Certificate of Income. </li>
+                  <li>Barangay Clearance.</li>
+              </ul>
               <br>
               <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
@@ -294,7 +318,15 @@
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Business Permit</h4>
-              <p>Business permit is a legal document issued by the local government authorizing an individual or entity to operate a business within a specific jurisdiction.</p>
+              <p>The necessary documents for the submission of a Business Permit commonly include the following:</p>
+              <ul class="req-list">
+                  <li>Barangay Clearance.</li>
+                  <li>DTI Registration or SEC Registration.</li>
+                  <li>BIR Certificate of Registration. </li>
+                  <li>Fire Safety Inspection Certificate.</li>
+                  <li>Sanitary Permit.</li>
+                  <li>Mayor's Permit.</li>
+              </ul>
               <br>
               <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
@@ -304,7 +336,12 @@
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-12.svg"></div>
               <h4>Barangay ID</h4>
-              <p> Identification card issued by the barangay to residents, serving as proof of residency and providing access to local barangay services.</p>
+              <p> To register in your barangay, you need the following requirements:</p>
+              <ul class="req-list">
+                  <li>Barangay Clearance.</li>
+                  <li>A valid ID, passport, birth certificate or marriage certificate.</li>
+                  <li>Photocopy of any Utility Bill or Proof of Billing (such as electric bill, water bill, etc.) </li>
+              </ul>
               <br>
               <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
@@ -399,7 +436,8 @@
         <div class="section-title">
           <h2>News & Events</h2>
           <h3>Check our <span>News & Events</span></h3>
-          <p>Residents of Barangay Los Amigos are invited to attend a community meeting to discuss crucial matters and provide updates.</p>
+          <br>
+          <h6>Residents of Barangay Los Amigos are invited to attend a community meeting to discuss crucial matters and provide updates.</h6>
         </div>
 
         <!--<div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -441,7 +479,7 @@
               <a href="homepage/assets/img/announcement/announcement-5.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Water Interruption"><i class="bx bx-plus"></i></a>
               <a href="homepage/announcement/announcement-details-4.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
-          </div>>
+          </div>
         </div>
 
       </div>
@@ -452,34 +490,35 @@
 
         <div class="section-title">
           <h2>F.A.Q</h2>
-          <h3>Frequently Asked <span>Questions</span></h3>
-          <p>Frequently asked questions about the CertiFast, a digital platform that automates the issuance, tracking, and management of certificates for greater efficiency and convenience.</p>
+          <h3>Barangay Los Amigos - <span>CertiFast Portal</span></h3>
+          <br>
+          <h6>Welcome to the Certifast Portal of Barangay Los Amigos! Here are some frequently asked questions to help you get started:</h6>
         </div>
-
+        <br>
         <div class="row justify-content-center">
           <div class="col-xl-10">
             <ul class="faq-list">
 
               <li>
-                <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">What is a CertiFast Certificate Management System? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">What is Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq1" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                    A CertiFast is a digital platform that automates and streamlines the process of certificate issuance, tracking, and management.
+                    Certifast Portal of Barangay Los Amigos is a certificate management system designed to provide fast and efficient processing of certificates to community members of Barangay Los Amigos.
                   </p>
                 </div>
               </li>
 
               <li>
-                <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">How does the CertiFast Certificate Management System work? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">How does CertiFast Portal works? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq2" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                    The system allows administrators to create and manage different types of certificates, receive and generate certificates digitally, track their status, and securely certificate records.
+                  The system allows community members to request for different certificates online, such as Barangay Registration, Barangay Residency, Barangay Clearances, Barangay Indigency, Business Permit, Barangay ID. Once the certificate is processed and approved, community members may download it online via the portal.
                   </p>
                 </div>
               </li>
 
               <li>
-                <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">What are the benefits of using a Certifast Certificate Management System? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">What certificates are available for request through Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq3" class="collapse" data-bs-parent=".faq-list">
                   <p>
                     Using a CertiFast Certificate Management System brings several advantages, including improved efficiency, reduced paperwork, faster processing times, enhanced accuracy, easier tracking of certificate records, and increased convenience for both administrators and applicants.
@@ -490,26 +529,62 @@
               <li>
                 <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Can resident apply for certificates online? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq4" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Yes, the CertiFast Certificate Management System typically offers an online application portal where resident can submit their certificate requests, upload required documents, and track the progress of their application.
+                  <p>Certifast Portal of Barangay Los Amigos processes different types of certificates including, but not limited to: 
+                    Barangay Registration,
+                    Barangay Residency,
+                    Barangay Clearances,
+                    Barangay Indigency,
+                    Business Permit,
+                    Barangay ID.
                   </p>
                 </div>
               </li>
 
               <li>
-                <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">How are certificates issued using the system? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">How much does it cost to request a certificate through Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq5" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                    Certificates are generated digitally within the system, allowing administrators to customize and generate certificates with the necessary details and security features. The digitally signed certificates can then be printed or emailed to the applicants.
+                    The cost of each certificate varies depending on the type of certificate requested. Please refer to the portal for the updated pricing of certificates.
                   </p>
                 </div>
               </li>
 
               <li>
-                <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Is the CertiFast Certificate Management System secure? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq6" class="collapse" data-bs-parent=".faq-list">
+                <div data-bs-toggle="collapse" href="#faq7" class="collapsed question">Are there any known issues with the system? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq7" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                    Yes, the system is designed with security measures to protect the integrity and confidentiality of the certificate data. It often includes user authentication, data encryption, access controls, and regular data backups to ensure the security of the information.
+                  We strive to provide our users with the best possible experience while using our system. However, like any other system, there may be occasional issues. Please contact our customer support team if you experience any problems while using the system.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div data-bs-toggle="collapse" href="#faq8" class="collapsed question">Are there any compatibility limitations for using Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq8" class="collapse" data-bs-parent=".faq-list">
+                  <p>
+                  The system can be accessed through any device with an internet connection and web browser. However, it is recommended to use the latest version of your preferred web browser for optimal performance.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div data-bs-toggle="collapse" href="#faq9" class="collapsed question">What are the key features and benefits of using Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq9" class="collapse" data-bs-parent=".faq-list">
+                  <p>
+                  The key features and benefits of using Certifast Portal of Barangay Los Amigos include:
+                   Secure and convenient way of requesting certificates,
+                   Fast processing of certificates,
+                   Easy online access to certificates,
+                   User-friendly portal with 24/7 availability.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div data-bs-toggle="collapse" href="#faq10" class="collapsed question">What should I do if I am experiencing a problem while using Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq10" class="collapse" data-bs-parent=".faq-list">
+                  <p>
+                    If you are experiencing a problem while using Certifast Portal of Barangay Los Amigos, you can contact the support team and raise the issue.
                   </p>
                 </div>
               </li>
@@ -527,7 +602,8 @@
         <div class="section-title">
           <h2>Contact</h2>
           <h3><span>Contact Us</span></h3>
-          <p>We are dedicated to providing excellent customer service and we are here to help with any inquiries or concerns. Please feel free to reach out to us using the contact details provided below:</p>
+          <br>
+          <h6>We providing excellent customer service and we are here to help with any inquiries or concerns. Please feel free to reach out to us using the contact details provided below:</h6>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -613,7 +689,7 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>CertiFast Links</h4>
+            <h4>CertiFast</h4>
             <ul>
               <li><a href="#">Home</a></li>
               <li><a href="#">About us</a></li>
@@ -652,7 +728,7 @@
 
     <div class="container py-4">
       <div class="copyright">
-        <?php $year = date("Y"); echo  $year . " &copy; <strong><span>CertiFast Portal</span></strong>" ?> . All Rights Reserved
+        <?php $year = date("Y"); echo  $year . " &copy; <strong><span>Barangay Los Amigos - CertiFast Portal</span></strong>" ?> . All Rights Reserved
       </div>
     </div>
   </footer>

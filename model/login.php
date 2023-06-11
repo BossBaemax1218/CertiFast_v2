@@ -25,7 +25,7 @@ if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] >= 5) {
 
 if ($user_email != '' && $password != '') {
     // Check if the user is a verified resident
-    $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = ? AND password = SHA1(?) AND verifystatus = 1";
+    $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = ? AND password = SHA1(?) AND verification_status = 1";
     $stmt = $conn->prepare($residentQuery);
     $stmt->bind_param("ss", $user_email, $password);
     $stmt->execute();
@@ -84,7 +84,7 @@ if ($user_email != '' && $password != '') {
     header('location: ../login.php');
     exit();
 } else {
-    $_SESSION['message'] = 'Username or password is empty!';
+    $_SESSION['message'] = 'Please fill in all the required fields.';
     $_SESSION['success'] = 'danger';
     $_SESSION['form'] = 'login';
 

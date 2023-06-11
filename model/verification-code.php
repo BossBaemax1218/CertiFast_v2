@@ -6,24 +6,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $verificationCode = $_POST['verification_code'];
 
     // Function to verify the email with the provided verification code
-    function verifyEmail($code) {
+    function verifyEmail($verificationCode) {
         // Include the configuration file
         require '../server/server.php';
 
-        // Retrieve the email associated with the verification code from the database
-        $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE verifycode = ?");
-        $stmt->bind_param("s", $code);
+        // Retrieve the email and expiration time associated with the verification code from the database
+        $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE verification_code = ?");
+        $stmt->bind_param("s", $verificationCode);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // Verification code is valid, update the verification status in the database
-            $email = $result->fetch_assoc()['user_email'];
-            $stmt = $conn->prepare("UPDATE tbl_user_resident SET verifystatus = 1 WHERE user_email = ?");
-            $stmt->bind_param("s", $email);
-            $stmt->execute();
+            $row = $result->fetch_assoc();
+            $email = $row['user_email'];
+            $expires = strtotime($row['verification_send']);
 
-            return $email;
+            // Check if the verification code is still valid (within 5 minutes)
+            if ($expires > time()) {
+                // Verification code is valid, update the verification status in the database
+                $stmt = $conn->prepare("UPDATE tbl_user_resident SET verification_status = 1 WHERE user_email = ?");
+                $stmt->bind_param("s", $email);
+                $stmt->execute();
+
+                return $email;
+            }
         }
 
         return false;
@@ -44,7 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Email verification failed
         $_SESSION['success'] = false;
         $_SESSION['success'] = 'danger';
-        $_SESSION['message'] = "Invalid verification code.";
+        $_SESSION['form'] = 'signup';
+        $_SESSION['message'] = "Invalid or expired verification code.";
 
         // Redirect the user back to the verification code page
         header('Location: ../verificationcode.php');

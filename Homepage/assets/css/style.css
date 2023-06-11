@@ -464,10 +464,10 @@ h6 {
 }
 
 #hero h2 {
-  color: #555555;
+  color: #222121;
   margin: 5px 0 30px 0;
-  font-size: 24px;
-  font-weight: 400;
+  font-size: 30px;
+  font-weight: bold;
 }
 #hero .btn-get-started {
   font-family: "Roboto", sans-serif;
@@ -895,8 +895,15 @@ section {
 
 .services .icon-box p {
   line-height: 24px;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 0;
+}
+
+.services .icon-box .req-list{
+  font-size: 14px; 
+  text-align: left; 
+  margin-top: 10px; 
+  font-weight: bold;
 }
 
 .services .icon-box:hover {

@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $hashedPassword = sha1($newPassword);
 
         // Update password in tbl_user_resident where codesend is a new time within the limit of 5 minutes and verifystatus is 1
-        $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE codesend > DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND verifystatus = 1");
+        $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE verification_send > DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND verification_status = 1");
         $stmt->bind_param("s", $hashedPassword);
         $stmt->execute();
 
