@@ -58,8 +58,7 @@
 
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h2>Welcome to</h2>
-      <h1>Barangay Los Amigos <span>CertiFast</span></h1>
+      <h1>Welcome to <span>Barangay Los Amigos</span></h1>
       <br>
       <div class="d-flex">
         <a href="login.php" class="btn-get-started scrollto">Get Started</a>
@@ -113,8 +112,7 @@
             </div></a>
           </div>
 
-        </div>
-
+        </div> 
       </div>
     </section>
 
@@ -123,7 +121,7 @@
 
         <div class="section-title">
           <h2>About</h2>
-          <h3>Find out more <span>About us</span></h3>
+          <h3><span>About us</span></h3>
           <br>
           <h6>Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.</h6>
         </div>
@@ -246,7 +244,7 @@
 
         <div class="section-title">
           <h2>Services</h2>
-          <h3>Check our <span>Services</span></h3>
+          <h3><span>Our Services</span></h3>
           <br>
           <h6>Say goodbye to spreadsheet tracking. Our certificate management system online provides clarity and simplifies compliance.</h6>
         </div>
@@ -435,7 +433,7 @@
 
         <div class="section-title">
           <h2>News & Events</h2>
-          <h3>Check our <span>News & Events</span></h3>
+          <h3><span>News & Events</span></h3>
           <br>
           <h6>Residents of Barangay Los Amigos are invited to attend a community meeting to discuss crucial matters and provide updates.</h6>
         </div>
@@ -490,7 +488,7 @@
 
         <div class="section-title">
           <h2>F.A.Q</h2>
-          <h3>Barangay Los Amigos - <span>CertiFast Portal</span></h3>
+          <h3><span>Frequently Asked Question</span></h3>
           <br>
           <h6>Welcome to the Certifast Portal of Barangay Los Amigos! Here are some frequently asked questions to help you get started:</h6>
         </div>
