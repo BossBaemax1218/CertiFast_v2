@@ -59,12 +59,13 @@ if ($resultResident->num_rows > 0) {
 // Generate verification code
 $verificationCode = substr(md5(uniqid(rand(), true)), 0, 6);
 $verificationExpire = time() + (5 * 60); // 5 minutes
-$verificationSend = date('Y-m-d H:i:s', strtotime('now'));
+$verificationSend = date('Y-m-d H:i:s', strtotime('+5 minutes'));
+
 $year = date("Y");
 
 // Store verification code and expiration time in session
 $_SESSION['verification_code'] = $verificationCode;
-$_SESSION['verification_expires'] = $verificationExpire;
+$_SESSION['verification_send'] = $verificationSend;
 
 
 // Send verification code to email
@@ -109,12 +110,11 @@ $mail->Body = '
                                         <span style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:200px;"></span>
                                         <p style="font-size:16px;line-height:24px; margin:0;"> Please use the verification code below to verify your email address.</p>
                                         <a href="javascript:void(0);" style="background:#E42654;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:20px;padding:10px 24px;display:inline-block;border-radius:5px;">'.$verificationCode.'</a>
-                                        <p style="text-align: center; font-size: 14px; color: #000000; margin-bottom: 10px;"> The verification code will expire in 5 minutes.</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="padding: 30px 20px 30px 20px;">
-                                        <p style="font-size: 14px; color: #000000; margin: 0;">If you did not create an account on Barangay Los Amigos - CertiFast Portal, please ignore this email.</p>
+                                        <p style="font-size: 12px; color: #000000; margin: 0;">If you did not create an account on Barangay Los Amigos - CertiFast Portal, please ignore this email.</p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -157,7 +157,7 @@ if ($mail->send()) {
         // Hash the password using SHA1
         $hashedPassword = sha1($password);
 
-        $query = "INSERT INTO tbl_user_resident (`fullname`, `user_email`, `password`, `verification_code`, `verification_send`, `verification_expires`, `verification_status`) VALUES ('$fullname', '$email', '$hashedPassword', '$verificationCode', '$verificationSend', '$verificationExpire', 0)";
+        $query = "INSERT INTO tbl_user_resident (`fullname`, `user_email`, `password`, `verification_code`, `verification_send`, `verification_status`) VALUES ('$fullname', '$email', '$hashedPassword', '$verificationCode', '$verificationSend', 0)";
 
         if ($conn->query($query)) {
             $_SESSION['message'] = 'You have registered successfully! We sent a verification code to verify your account, please check your email.';

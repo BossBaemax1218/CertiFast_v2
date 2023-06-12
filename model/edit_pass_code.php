@@ -29,13 +29,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         return false;
     }
 
+    // Check if the verification code is empty
+    if (empty($verificationCode)) {
+        $_SESSION['success'] = false;
+        $_SESSION['success'] = 'danger';
+        $_SESSION['form'] = 'signup';
+        $_SESSION['message'] = "Please enter the verification code.";
+
+        // Redirect the user back to the verification code page
+        header('Location: ../reset-code.php');
+        exit();
+    }
+
     // Verify the email with the provided verification code
     if ($email = verifyEmail($verificationCode)) {
         // Email verification is successful
         $_SESSION['success'] = true;
         $_SESSION['success'] = 'success';
         $_SESSION['form'] = 'signup';
-        $_SESSION['message'] = "Verification code for new password has been confirmed.";
+        $_SESSION['message'] = "Verification code for a new password has been confirmed.";
 
         // Redirect the user to the password validation page
         header('Location: ../new_password.php');

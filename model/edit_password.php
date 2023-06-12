@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Hash the new password using SHA1 for security
         $hashedPassword = sha1($newPassword);
 
-        // Update password in tbl_user_resident where codesend is a new time within the limit of 5 minutes and verifystatus is 1
+        // Update password in tbl_user_resident where verification code send is a new time within the limit of 5 minutes and verifystatus is 1
         $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE verification_send > DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND verification_status = 1");
         $stmt->bind_param("s", $hashedPassword);
         $stmt->execute();
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Validate the new password
-    function validatePassword($password) {
+    function validatePassword($password, $oldPassword) {
         // Minimum password length of 8 characters
         if (strlen($password) < 8) {
             return false;
@@ -37,12 +37,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (!preg_match("/[!@#$%^&*()\-_=+{};:,<.>]/", $password)) {
             return false;
         }
+        
+        // Check if the new password is the same as the old password
+        if ($password === $oldPassword) {
+            return false;
+        }
 
         return true;
     }
 
     // Update the password
-    if (validatePassword($newPassword)) {
+    if (validatePassword($newPassword, $oldPassword)) {
         // Include the configuration file
         require '../server/server.php';
 
@@ -68,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['success'] = false;
         $_SESSION['success'] = 'danger';
         $_SESSION['form'] = 'signup';
-        $_SESSION['message'] = "Invalid password. Please make sure the password meets the requirements.";
+        $_SESSION['message'] = "Invalid password. Please make sure the password meets the requirements and is different from the old password.";
         header('Location: ../new_password.php');
         exit();
     }
