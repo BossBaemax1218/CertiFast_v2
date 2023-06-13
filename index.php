@@ -17,6 +17,7 @@
   <link href="homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+
   <link href="homepage/assets/css/style.css" rel="stylesheet">
 </head>
 
@@ -36,19 +37,19 @@
       <h1 class="logo"><a href="index.php"><img src="homepage/assets/img/title-logo.png" alt="title-logo"></a></h1>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Certificates</a></li>
-          <li><a class="nav-link scrollto " href="#announcement">News & Events</a></li>
-          <li class="dropdown"><a href="#"><span>Officials</span> <i class="bi bi-chevron-down"></i></a>
+            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+            <li><a class="nav-link scrollto" href="#about">About</a></li>
+            <li><a class="nav-link scrollto" href="#services">Certificates</a></li>
+            <li><a class="nav-link scrollto " href="#announcement">News & Events</a></li>
+            <li class="dropdown"><a href="#"><span>Officials</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a class="nav-link scrollto " href="barangay-officials.php">Barangay Officials</a></li>
               <li><a class="nav-link scrollto " href="sangguniankabataan-officials.php">SK Official</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a href="login.php" class="btn-login"> Login</a></li>
         </ul>
-        <a href="login.php"><button id="btn-login" class="btn-login" value="Login">Login</button></a>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
     </div>
@@ -242,7 +243,7 @@
 
         <div class="section-title">
           <h2>Services</h2>
-          <h3><span>Our Services</span></h3>
+          <h3><span>Our Certificates</span></h3>
           <br>
           <h6>Say goodbye to spreadsheet tracking. Our certificate management system online provides clarity and simplifies compliance.</h6>
         </div>

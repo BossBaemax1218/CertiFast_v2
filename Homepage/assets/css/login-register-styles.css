@@ -116,23 +116,6 @@ form.sign-up-form {
     color: #727272;
 }
 
-.btn {
-    width: 90%;
-    height: 45px;
-    outline: none;
-    background: #fa5a5a;
-    color: #fff;
-    margin: 10px 0;
-    cursor: pointer;
-    border-radius: 15px;
-    align-items: center;
-    border: #ffffff;
-}
-
-.btn:hover {
-    background: #ff5858;
-}
-
 .btn-slide {
     width: 80px;
     height: 80px;
@@ -143,7 +126,10 @@ form.sign-up-form {
     cursor: pointer;
     border-radius: 50%;
     align-items: center;
-    border: #ffffff;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
 }
 
 .btn-slide:hover {
@@ -151,8 +137,9 @@ form.sign-up-form {
 }
 
 .btn-slide i {
-    font-size: 40px;
+    font-size: 45px;
 }
+
 .btn-submit {
     width: 90%;
     height: 45px;
@@ -163,10 +150,33 @@ form.sign-up-form {
     cursor: pointer;
     border-radius: 15px;
     align-items: center;
-    border: #ffffff;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
 }
 
 .btn-submit:hover {
+    background: #ff5858;
+}
+
+.btn {
+    width: 90%;
+    height: 45px;
+    outline: none;
+    background: #fa5a5a;
+    color: #fff;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 15px;
+    align-items: center;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+}
+
+.btn:hover {
     background: #ff5858;
 }
 

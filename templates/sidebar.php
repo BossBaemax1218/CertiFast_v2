@@ -215,7 +215,7 @@ $current_page = PageName();
                 <br><br>
                 <li class="nav-item active">
                     <?php if(isset($_SESSION['role'])):?>
-                        <a class="see-all" href="model/logout.php"><i class="icon-logout" style="color:white"></i><p>Sign Out</p></a>
+                        <a class="see-all" href="model/logout.php"><i class="bx bx-log-out icon-logout" style="color:white"></i><p>Sign Out</p></a>
                     <?php else: ?>
                         <a class="see-all" href="login.php"><i class="icon-login" style="color:white"><p>Sign In</p></i> </a>
                     <?php endif ?>
