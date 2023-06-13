@@ -33,9 +33,7 @@
 
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-
       <h1 class="logo"><a href="index.php"><img src="homepage/assets/img/title-logo.png" alt="title-logo"></a></h1>
-
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -50,9 +48,9 @@
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
+        <a href="login.php"><button id="btn-login" class="btn-login" value="Login">Login</button></a>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
-
     </div>
   </header>
 
@@ -61,7 +59,7 @@
       <h1>Welcome to <span>Barangay Los Amigos</span></h1>
       <br>
       <div class="d-flex">
-        <a href="login.php" class="btn-get-started scrollto">Get Started</a>
+        <a href="#main" class="btn-get-started scrollto">Get Started</a>
         <a href="https://www.youtube.com/watch?v=NroSCViBo1M" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
       </div>
     </div>
