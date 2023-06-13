@@ -23,7 +23,30 @@ body {
   #header .logo img {
     max-height: 70px;
   }
-  
+
+  #header-alert {
+    text-align: center;
+    margin-bottom: 2%;
+  }
+
+  #header .btn-logout {
+    margin: 0;
+    left: 0;
+    position: relative;
+    color: #fff;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    background-color: #E42654;
+    display: flex;
+}
+
+  #header .btn-logout:hover {
+    background-color: #E42654;
+    color: #ffffff;
+    justify-content: space-between;
+
+}
+
   @media (max-width: 991px) {
     .mobile-nav-toggle {
       display: block;
@@ -58,6 +81,7 @@ body {
     padding-bottom: 60px !important;
     background-color: #ffffff;
   }
+
   .profile-card .profile-card_image img {
     width: 100px;
     height: 100px;
