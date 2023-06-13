@@ -57,7 +57,7 @@
                     </a>
                 </div>
                 <div class="link">
-                    <p class="account-text">Don't have any account? <a href="#" id="sign-up-btn2">Sign up.</a></p>
+                    <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Signup</a></p>
                 </div>
             </form>
             <form id="sign-up-form" method="POST" action="model/signup.php" class="sign-up-form">

@@ -20,13 +20,6 @@
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
           <h1 class="logo"><a href="index.php"><img src="homepage/assets/img/title-logo.png" alt="title-logo"></a></h1>
-          <nav id="navbar" class="navbar">
-            <ul>
-              <li>
-                <input class="track-input" type="text" placeholder="Enter tracking code"></input>
-              </li>
-            </ul>
-          </nav>
         </div>
     </header>
     <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
