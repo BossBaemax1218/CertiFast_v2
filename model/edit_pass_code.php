@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['success'] = false;
         $_SESSION['success'] = 'danger';
         $_SESSION['form'] = 'signup';
-        $_SESSION['message'] = "Invalid verification code.";
+        $_SESSION['message'] = "Invalid or expire verification code.";
 
         // Redirect the user back to the verification code page
         header('Location: ../reset-code.php');

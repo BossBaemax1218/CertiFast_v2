@@ -243,13 +243,13 @@
 
         <div class="section-title">
           <h2>Services</h2>
-          <h3><span>Our Certificates</span></h3>
+          <h3><span>Our Offered Certificates</span></h3>
           <br>
           <h6>Say goodbye to spreadsheet tracking. Our certificate management system online provides clarity and simplifies compliance.</h6>
         </div>
 
         <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+          <!--<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-1.svg"></div>
               <h4>Barangay Registration</h4>
@@ -261,13 +261,13 @@
               <br>
               <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
-          </div>
+          </div>-->
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-2.svg"></div>
               <h4>Barangay Residency</h4>
-              <p>To register for barangay residency, you'll need to provide the following documents: </p>
+              <p>The necessary documents for the submission of a Barangay Residency commonly include the following: </p>
               <ul class="req-list"> 
                   <li>Barangay certificate from your previous barangay (if any).</li>
                   <li>A valid ID, passport, birth certificate or marriage certificate.</li>
@@ -279,11 +279,11 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-3.svg"></div>
               <h4>Barangay Clearance</h4>
-              <p>The following documents are required to obtain a barangay clearance:</p>
+              <p>The necessary documents for the submission of a Barangay Clearance commonly include the following:</p>
               <ul class="req-list">
                   <li>Barangay certificate from your previous barangay (if any).</li>
                   <li>A valid ID, passport, birth certificate or marriage certificate.</li>
@@ -295,11 +295,11 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-5.svg"></div>
               <h4>Barangay Indingency</h4>
-              <p>You need the following requirements in order to apply for a certification of indigency in your barangay:</p>
+              <p>The necessary documents for the submission of a Barangay Indigency commonly include the following:</p>
               <ul class="req-list">
                   <li>Barangay certificate of residency.</li>
                   <li>A valid ID, passport, birth certificate or marriage certificate.</li>
@@ -311,7 +311,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Business Permit</h4>
@@ -320,8 +320,6 @@
                   <li>Barangay Clearance.</li>
                   <li>DTI Registration or SEC Registration.</li>
                   <li>BIR Certificate of Registration. </li>
-                  <li>Fire Safety Inspection Certificate.</li>
-                  <li>Sanitary Permit.</li>
                   <li>Mayor's Permit.</li>
               </ul>
               <br>
@@ -329,7 +327,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+          <!--<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-12.svg"></div>
               <h4>Barangay ID</h4>
@@ -342,7 +340,7 @@
               <br>
               <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
-          </div>
+          </div>-->
 
         </div>
 

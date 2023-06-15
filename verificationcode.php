@@ -35,7 +35,7 @@ session_start();
         <?php unset($_SESSION['message']); ?>
       <?php endif; ?>
           <div class="wrapper">           
-              <h2 class="title">Email Verification Code</h2>
+              <h2 class="title">Verification Code</h2>
               <span class="description">We sent you a verification code, please type the code we sent to your email address.</span>
               <form method="POST" action="model/verification-code.php">
                 <div class="pass-field">

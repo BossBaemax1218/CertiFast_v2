@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +66,7 @@
 						</div>
 					</div></a>
 				</div>
-				<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+				<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
           			<a href=""><div class="profile-card shadow mb-4 text-center p-4 position-relative h-100">
 						<div class="profile-card_image">
 							<img src="assets/img/icons/indigency.png" alt="User" class="mb-4 shadow">
@@ -78,7 +78,7 @@
 						</div>
 					</div></a>
 				</div>
-				<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+				<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
         			<a href=""><div class="profile-card shadow mb-4 text-center p-4 position-relative h-100">
 						<div class="profile-card_image">
 							<img src="assets/img/icons/permit.png" alt="User" class="mb-4 shadow">
@@ -90,18 +90,6 @@
 						</div>
 					</div></a>
 				</div>
-				<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-        			<a href=""><div class="profile-card shadow mb-4 text-center p-4 position-relative h-100">
-						<div class="profile-card_image">
-							<img src="assets/img/icons/card.png" alt="User" class="mb-4 shadow">
-						</div>
-						<div class="profile-card_details">
-							<h4 class="mb-0">Barangay ID</h4>
-							<p class="text-muted"></p>
-							<p class="text-muted">Sheytttttttttttttttttt</p>
-						</div>
-					</div>
-				</div></a>
 			</div>
 		</div>
 	</section>

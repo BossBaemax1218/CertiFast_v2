@@ -40,11 +40,7 @@
       <form method="POST" action="model/forgot_password.php">
         <span class="description">Please enter your email address and wait for verification code via email.</span>
         <div class="pass-field">
-          <input onkeyup="check()" id="email" class="email" type="text" name="user_email" autocomplete="off" placeholder="Enter the email address">
-          <div class="icons">
-              <span class="invalid"></span>
-              <span class="valid"></span>
-          </div>
+          <input id="email" class="email" type="text" name="user_email" autocomplete="off" placeholder="Enter the email address">
         </div>
         <div class="submit-btn">
           <button id="btnsubmit" class="btnsubmit">Confirm your email</button>

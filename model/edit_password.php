@@ -6,23 +6,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $newPassword = $_POST['password'];
 
     // Function to update the password in the database
-    function updatePassword($newPassword) {
+    function updatePassword($newPassword, $email) {
         // Include the configuration file
         require '../server/server.php';
 
         // Hash the new password using SHA1 for security
         $hashedPassword = sha1($newPassword);
 
-        // Update password in tbl_user_resident where verification code send is a new time within the limit of 5 minutes and verifystatus is 1
-        $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE verification_send > DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND verification_status = 1");
-        $stmt->bind_param("s", $hashedPassword);
+        // Update password in tbl_user_resident for the given email
+        $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE email = ?");
+        $stmt->bind_param("ss", $hashedPassword, $email);
         $stmt->execute();
 
-        return true;
+        if ($stmt->affected_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // Validate the new password
-    function validatePassword($password, $oldPassword) {
+    function validatePassword($password) {
         // Minimum password length of 8 characters
         if (strlen($password) < 8) {
             return false;
@@ -47,9 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Update the password
-    if (validatePassword($newPassword, $oldPassword)) {
+    if (validatePassword($newPassword)) {
         // Include the configuration file
         require '../server/server.php';
+
+        // Retrieve the email associated with the user
+        // Modify this line based on how you retrieve the email from the user session or database
+        $email = $_SESSION['email'];
 
         if (updatePassword($newPassword, $email)) {
             // Password update successful
