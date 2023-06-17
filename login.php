@@ -42,7 +42,7 @@
                         <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>
                         <div class="form-group input-field">
-                            <input id="email" type="email" name="email" placeholder="Email" class="input">
+                            <input id="email" type="text" name="email" placeholder="Email" class="input">
                         </div>
                         <div class="form-group input-field">
                             <input id="password" type="password" name="password" placeholder="Password" class="password">
