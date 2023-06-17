@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT * FROM tbl_user_resident ORDER BY `account_created` DESC";
+	$query = "SELECT * FROM tbl_user_resident ORDER BY `created_at` DESC";
     $result = $conn->query($query);
 
     $users = array();
@@ -50,7 +50,7 @@
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Residents Management</div>
+										<div class="card-title">User Management</div>
 										<div class="card-tools">
 											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
 												<i class="fa fa-plus"></i>
@@ -79,8 +79,8 @@
 														<td><?= $no ?></td>
 														<td><?= $row['fullname'] ?></td>
                                                         <td><?= $row['user_email'] ?></td>
-														<td><?= $row['verifystatus'] ?></td>
-														<td><?= $row['account_created'] ?></td>
+														<td><?= $row['verification_status'] ?></td>
+														<td><?= $row['created_at'] ?></td>
 														<td>
 															<div class="form-button-action">
 																<a type="button" data-toggle="tooltip" href="model/remove_user.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this user?');" class="btn btn-link btn-danger" data-original-title="Remove">
