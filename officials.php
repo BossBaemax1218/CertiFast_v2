@@ -4,7 +4,7 @@
 		if($_SESSION['role'] =='staff'){
 			$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position WHERE `status`='Active' ";
 		}else{
-			$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position ORDER BY 'id' ASC ";
+			$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position ORDER BY 'id' DESC ";
 		}
 	}else{
 		$off_q = "SELECT *,tblofficials.id as id, tblposition.id as pos_id FROM tblofficials JOIN tblposition ON tblposition.id=tblofficials.position WHERE `status`='Active'";
@@ -106,9 +106,6 @@
 													<?php foreach($official as $row): ?>
 														<tr>
 														<td>
-															<div class="avatar avatar-xs">
-																<img src="<?= preg_match('/data:image/i', $row['photo']) ? $row['photo'] : 'assets/uploads/officials/'.$row['photo'] ?>" alt="Profile" class="avatar-img rounded-circle">																
-															</div>
 															<?= ucwords($row['fullname']) ?>
 														</td>
 															<td><?= $row['position'] ?></td>
@@ -121,7 +118,7 @@
 																<td>
 																	<a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" 
 																		title="Edit Position" onclick="editOfficial(this)" data-id="<?= $row['id'] ?>" data-name="<?= $row['fullname'] ?>" 
-																		data-pos="<?= $row['pos_id'] ?>" data-photo="<?= $row['photo'] ?>" data-start="<?= $row['termstart'] ?>" 
+																		data-pos="<?= $row['pos_id'] ?>" data-start="<?= $row['termstart'] ?>" 
 																		data-end="<?= $row['termend'] ?>" data-status="<?= $row['status'] ?>" >
 																		<i class="fas fa-edit"></i>
 																	</a>

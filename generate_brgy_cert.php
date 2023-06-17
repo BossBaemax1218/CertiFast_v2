@@ -21,21 +21,21 @@
     $treasurer = $conn->query($t)->fetch_assoc();
     $skc = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblposition.position='SK Chairman'";
     $skchairman = $conn->query($skc)->fetch_assoc();
-    $k1 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='41'";
+    $k1 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='21'";
     $kagawad1 = $conn->query($k1)->fetch_assoc();
-    $k2 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='42'";
+    $k2 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='22'";
     $kagawad2 = $conn->query($k2)->fetch_assoc();
-    $k3 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='43'";
+    $k3 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='23'";
     $kagawad3 = $conn->query($k3)->fetch_assoc();
-    $k4 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='44'";
+    $k4 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='24'";
     $kagawad4 = $conn->query($k4)->fetch_assoc();
-    $k5 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='45'";
+    $k5 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='25'";
     $kagawad5 = $conn->query($k5)->fetch_assoc();
-    $k6 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='46'";
+    $k6 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='26'";
     $kagawad6 = $conn->query($k6)->fetch_assoc();
-    $k7 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='47'";
+    $k7 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='27'";
     $kagawad7 = $conn->query($k7)->fetch_assoc();
-    $k8 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='48'";
+    $k8 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='28'";
     $kagawad8 = $conn->query($k8)->fetch_assoc();
 ?>
 <!DOCTYPE html>
@@ -186,7 +186,7 @@
                                         </div>
                                         <div class="col-md-12" style="margin-top: 50px;">
                                             <div class="p-3 text-right mt-2" style="margin-bottom: 300px;">
-                                                <h2 class="fw-bold mb-0"><u><?= ucwords($captain['name']) ?></u></h2>
+                                                <h2 class="fw-bold mb-0"><u><?= ucwords($captain['fullname']) ?></u></h2>
                                                 <p class="text-right" style="margin-right: 50px;">PUNONG BARANGAY</p>
                                             </div>
                                         </div>
@@ -194,31 +194,31 @@
                                     <div class="footer-content">
                                         <div class="footer-names text-left">                                                       
                                             <ul>
-                                                <li><h1 class="fw-bold" style="margin-top: 90px;"><?= ucwords($captain['name']) ?></h1></li>
+                                                <li><h1 class="fw-bold" style="margin-top: 90px;"><?= ucwords($captain['fullname']) ?></h1></li>
                                                 <li><h6 class="text">PUNONG BARANGAY</h6></li>
                                             </ul>                                                                                                  
                                         </div>
                                         <div class="footer-names text-left">                                                        
                                             <ul>
                                                 <h2 class="text-bold"><u>Barangay Kagawad</u></h2>
-                                                <li><h3 class="fw-bold"><?= ucwords($kagawad1['name']) ?></h3></li>
-                                                <li><h3 class="fw-bold"><?= ucwords($kagawad2['name']) ?></h3></li>
-                                                <li><h3 class="fw-bold"><?= ucwords($kagawad3['name']) ?></h3></li>
-                                                <li><h3 class="fw-bold"><?= ucwords($kagawad4['name']) ?></h3></li>
-                                                <li><h3 class="fw-bold"><?= ucwords($kagawad5['name']) ?></h3></li>
-                                                <li><h3 class="fw-bold"><?= ucwords($kagawad6['name']) ?></h3></li>
-                                                <li><h3 class="fw-bold"><?= ucwords($kagawad7['name']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad1['fullname']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad2['fullname']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad3['fullname']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad4['fullname']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad5['fullname']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad6['fullname']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad7['fullname']) ?></h3></li>
                                             </ul>                                                       
                                         </div>
                                         <div class="footer-names text-left">                                                       
                                             <ul>
-                                                <li><h3 class="fw-bold"><?= ucwords($kagawad8['name']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad8['fullname']) ?></h3></li>
                                                 <li><h6 class="text">IPMR</h6></li>
-                                                <li><h3 class="fw-bold"><?= ucwords($skchairman['name']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($skchairman['fullname']) ?></h3></li>
                                                 <li><h6 class="text">SK Chairman</h6></li>
-                                                <li><h3 class="fw-bold"><?= ucwords($sec['name']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($sec['fullname']) ?></h3></li>
                                                 <li><h6 class="text">Barangay Secretary</h6></li>
-                                                <li><h3 class="fw-bold"><?= ucwords($treasurer['name']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($treasurer['fullname']) ?></h3></li>
                                                 <li><h6 class="text">Barangay Treasurery</h6></li>
                                             </ul>                                                       
                                         </div>
