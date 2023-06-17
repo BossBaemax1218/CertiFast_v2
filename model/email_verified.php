@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['message'] = "Please enter the verification code.";
 
         // Redirect the user back to the verification code page
-        header('Location: ../verificationcode.php');
+        header('Location: ../email-verify-code.php');
         exit();
     }
 
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['message'] = "Invalid or expired verification code.";
 
         // Redirect the user back to the verification code page
-        header('Location: ../verificationcode.php');
+        header('Location: ../email-verify-code.php');
         exit();
     }
 }

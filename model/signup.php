@@ -8,38 +8,26 @@ require '../PHPMailer/src/SMTP.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-
 $fullname = $conn->real_escape_string($_POST['fullname']);
-$email = $conn->real_escape_string($_POST['user_email']);
+$email = $conn->real_escape_string($_POST['email']);
 $password = $conn->real_escape_string($_POST['password']);
 
-// Check if any of the input fields are empty
+// Validate email, password, and name
 if (empty($fullname) || empty($email) || empty($password)) {
     $_SESSION['message'] = 'Please fill in all the required fields.';
     $_SESSION['success'] = 'danger';
     $_SESSION['form'] = 'signup';
 
-    header('Location: ../login.php');
+    header('Location: ../signup.php');
     exit();
 }
 
-// Validate email format
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['message'] = 'Invalid email address format.';
     $_SESSION['success'] = 'danger';
     $_SESSION['form'] = 'signup';
 
-    header('Location: ../login.php');
-    exit();
-}
-
-// Validate password strength
-if (strlen($password) < 8 || !preg_match("#[0-9]+#", $password) || !preg_match("#[A-Z]+#", $password)) {
-    $_SESSION['message'] = 'Invalid password. It must contain unique characters, uppercase, lowercase, and numbers.';
-    $_SESSION['success'] = 'danger';
-    $_SESSION['form'] = 'signup';
-
-    header('Location: ../login.php');
+    header('Location: ../signup.php');
     exit();
 }
 
@@ -52,7 +40,7 @@ if ($resultResident->num_rows > 0) {
     $_SESSION['success'] = 'danger';
     $_SESSION['form'] = 'signup';
 
-    header('Location: ../login.php');
+    header('Location: ../signup.php');
     exit();
 }
 
@@ -66,7 +54,6 @@ $year = date("Y");
 // Store verification code and expiration time in session
 $_SESSION['verification_code'] = $verificationCode;
 $_SESSION['verification_send'] = $verificationSend;
-
 
 // Send verification code to email
 $mail = new PHPMailer();
@@ -153,43 +140,32 @@ $mail->Port = 587;
 
 if ($mail->send()) {
     // Register the user
-    if (!empty($fullname) && !empty($email) && !empty($password)) {
-        // Hash the password using SHA1
-        $hashedPassword = sha1($password);
+    // Hash the password using SHA1
+    $hashedPassword = sha1($password);
 
-        $query = "INSERT INTO tbl_user_resident (`fullname`, `user_email`, `password`, `verification_code`, `verification_send`, `verification_status`) VALUES ('$fullname', '$email', '$hashedPassword', '$verificationCode', '$verificationSend', 0)";
+    $query = "INSERT INTO tbl_user_resident (`fullname`, `user_email`, `password`, `verification_code`, `verification_send`, `verification_status`) VALUES ('$fullname', '$email', '$hashedPassword', '$verificationCode', '$verificationSend', 0)";
 
-        if ($conn->query($query)) {
-            $_SESSION['message'] = 'You have registered successfully! We sent a verification code to verify your account, please check your email.';
-            $_SESSION['success'] = 'success';
-            $_SESSION['form'] = 'signup';
+    if ($conn->query($query)) {
+        $_SESSION['message'] = 'You have registered successfully! We sent a verification code to verify your account, please check your email.';
+        $_SESSION['success'] = 'success';
+        $_SESSION['form'] = 'signup';
 
-            header('Location: ../verificationcode.php');
-            exit();
-        } else {
-
-            $_SESSION['message'] = 'Unable to sign up. Please try again later.';
-            $_SESSION['success'] = 'danger';
-            $_SESSION['form'] = 'signup';
-
-            header('Location: ../login.php');
-            exit();
-        }
+        header('Location: ../email-verify-code.php');
+        exit();
     } else {
-        $_SESSION['message'] = 'Please fill in all the required fields.';
+        $_SESSION['message'] = 'Unable to sign up. Please try again later.';
         $_SESSION['success'] = 'danger';
         $_SESSION['form'] = 'signup';
 
-        header('Location: ../login.php');
+        header('Location: ../signup.php');
         exit();
     }
-    
-    } else {
+} else {
     $_SESSION['message'] = 'Unable to send email. Please try again later.';
     $_SESSION['success'] = 'danger';
     $_SESSION['form'] = 'signup';
 
-    header('Location: ../login.php');
+    header('Location: ../signup.php');
     exit();
 }
 

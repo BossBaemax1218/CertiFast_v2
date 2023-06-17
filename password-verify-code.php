@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Forgot Password - CertiFast Portal </title>
+        <title> Login - CertiFast Portal  </title>
 
         <link rel="stylesheet" href="vendor-login/css/password-style.css"/>
         <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
@@ -20,10 +20,10 @@
     <body>
         <section class="container forms">
             <div class="form">
-                <div class="form-content">      
-                    <form method="POST" action="model/forgot_password.php">
-                        <h2>Forgot Password</h2>
-                        <p>Please enter your email address for verification code.</p>
+                <div class="form-content">
+                    <form method="POST" action="model/password_verified.php">
+                        <h3>Verification Code</h3>
+                        <p>We sent you a code, please type the code to reset your password.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
                         <header id="header">
                             <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
@@ -37,16 +37,14 @@
                         </header>
                         <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>
+                        <input type="hidden" name="email" value="<?php echo $email; ?>">
                         <div class="field input-field">
-                            <input id="email" type="email" name="email" placeholder="Email" class="input">
+                            <input type="text" name="verification_code" placeholder="Verification Code" class="input">
                         </div>
                         <div class="field button-field">
                             <button type="submit" value="submit">Submit</button>
                         </div>
                     </form>
-                    <div class="form-link">
-                        <span>Back to <a href="login.php" class="login-link">Login</a></span>
-                    </div>
                 </div>
             </div>
         </section>

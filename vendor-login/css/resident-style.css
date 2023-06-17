@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+
+body {
+    font-family: "Roboto", sans-serif;
+    color: #444444;
+    background: #f9f9f9;
+  }
+  
+  @media screen and (max-width: 768px) {
+    [data-aos-delay] {
+      transition-delay: 0 !important;
+    }
+  }
+  
+  #header {
+    background: #fff;
+    transition: all 0.5s;
+    z-index: 997;
+    height: 86px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  #header .logo img {
+    max-height: 70px;
+  }
+
+  #header-alert {
+    text-align: center;
+    margin-bottom: 2%;
+  }
+
+  #header .btn-logout {
+    margin: 0;
+    left: 0;
+    position: relative;
+    color: #fff;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    background-color: #E42654;
+    display: flex;
+}
+
+  #header .btn-logout:hover {
+    background-color: #E42654;
+    color: #ffffff;
+    justify-content: space-between;
+
+}
+
+  @media (max-width: 991px) {
+    .mobile-nav-toggle {
+      display: block;
+    }
+  
+    .navbar ul {
+      display: none;
+    }
+  }
+  
+  .main-content {
+    padding: 30px;
+  }
+
+  .container a{
+    text-decoration: none;
+    color: #444444;
+  }
+
+  .container a:hover{
+    color: #000;
+  }
+  
+  p {
+    font-size: 18px;
+  }
+  .shadow {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .profile-card {
+    padding-bottom: 60px !important;
+    background-color: #ffffff;
+  }
+
+  .profile-card .profile-card_image img {
+    width: 100px;
+    height: 100px;
+    background-color:#fff;
+  }
+  
+  .footer .copyright {
+    padding: 15px 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #444444ec;
+    height: 70px;
+    background-color:#fff;
+  }
+  
+  @media (max-width: 768px) {
+    .footer .copyright{
+      text-align: center;
+      padding: 2px 0;
+    }
+  }
+  

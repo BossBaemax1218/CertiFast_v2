@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Forgot Password - CertiFast Portal </title>
+        <title> Login - CertiFast Portal  </title>
 
         <link rel="stylesheet" href="vendor-login/css/password-style.css"/>
         <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
@@ -20,10 +20,11 @@
     <body>
         <section class="container forms">
             <div class="form">
-                <div class="form-content">      
-                    <form method="POST" action="model/forgot_password.php">
-                        <h2>Forgot Password</h2>
-                        <p>Please enter your email address for verification code.</p>
+                <div class="form-content">
+                    <a href="#"><img src="images/trans-title.png" alt="" class="image"></a>
+                    <form method="POST" action="model/edit_password.php">
+                        <h3>Forgot Password</h3>
+                        <p>Please register your personal information if you haven't registered yet.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
                         <header id="header">
                             <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
@@ -37,18 +38,24 @@
                         </header>
                         <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>
+                        <input type="hidden" name="email" value="<?php echo $email; ?>">
+                        <input type="hidden" name="verification_code" value="<?php echo $verificationCode; ?>">
                         <div class="field input-field">
-                            <input id="email" type="email" name="email" placeholder="Email" class="input">
+                            <input id="new_password" type="password" name="new_password" placeholder="New Password" class="new_password" required>
+                            <i class='bx bx-hide eye-icon first_password'></i>
+                        </div>
+                        <div class="field input-field">
+                            <input id="confirm_password" type="password" name="confirm_password" placeholder="Confirm Password" class="confirm_password" required>
+                            <i class='bx bx-hide eye-icon second_password'></i>
                         </div>
                         <div class="field button-field">
                             <button type="submit" value="submit">Submit</button>
                         </div>
                     </form>
-                    <div class="form-link">
-                        <span>Back to <a href="login.php" class="login-link">Login</a></span>
-                    </div>
                 </div>
             </div>
         </section>
+        <!-- JavaScript -->
+        <script src="vendor-login/js/reset-password.js"></script>
     </body>
 </html>

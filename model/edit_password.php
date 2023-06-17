@@ -2,20 +2,50 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Retrieve the new password from the form
-    $newPassword = $_POST['password'];
+    // Retrieve the email and verification code from the form
+    $email = $_POST['email'];
+    $verificationCode = $_POST['verification_code'];
+
+    // Retrieve the new password and confirm password from the form
+    $newPassword = $_POST['new_password'];
+    $confirmPassword = $_POST['confirm_password'];
+
+    // Validate the new password and confirm password
+    function validatePasswords($newPassword, $confirmPassword) {
+        // Minimum password length of 8 characters
+        if (strlen($newPassword) < 8) {
+            return "Password should be at least 8 characters long.";
+        }
+
+        // Check if the password contains at least one uppercase letter, one lowercase letter, and one digit
+        if (!preg_match("/[A-Z]/", $newPassword) || !preg_match("/[a-z]/", $newPassword) || !preg_match("/\d/", $newPassword)) {
+            return "Password should contain at least one uppercase letter, one lowercase letter, and one digit.";
+        }
+
+        // Check if the password contains at least one special character
+        if (!preg_match("/[!@#$%^&*()\-_=+{};:,<.>]/", $newPassword)) {
+            return "Password should contain at least one special character.";
+        }
+
+        // Check if the new password is the same as the confirm password
+        if ($newPassword !== $confirmPassword) {
+            return "Passwords do not match.";
+        }
+
+        return "";
+    }
 
     // Function to update the password in the database
-    function updatePassword($newPassword, $email) {
-        // Include the configuration file
+    function updatePassword($email, $newPassword) {
+        // Include the configuration file and connect to the database
         require '../server/server.php';
 
         // Hash the new password using SHA1 for security
         $hashedPassword = sha1($newPassword);
 
-        // Update password in tbl_user_resident for the given email
-        $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE email = ?");
-        $stmt->bind_param("ss", $hashedPassword, $email);
+        // Update password in tbl_user_resident for the specific email and verification code
+        $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE email = ? AND verification_code = ?");
+        $stmt->bind_param("sss", $hashedPassword, $email, $verificationCode);
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
@@ -25,46 +55,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
-    // Validate the new password
-    function validatePassword($password) {
-        // Minimum password length of 8 characters
-        if (strlen($password) < 8) {
-            return false;
-        }
-
-        // Check if the password contains at least one uppercase letter, one lowercase letter, and one digit
-        if (!preg_match("/[A-Z]/", $password) || !preg_match("/[a-z]/", $password) || !preg_match("/\d/", $password)) {
-            return false;
-        }
-
-        // Check if the password contains at least one special character
-        if (!preg_match("/[!@#$%^&*()\-_=+{};:,<.>]/", $password)) {
-            return false;
-        }
-        
-        // Check if the new password is the same as the old password
-        if ($password === $oldPassword) {
-            return false;
-        }
-
-        return true;
-    }
-
-    // Update the password
-    if (validatePassword($newPassword)) {
-        // Include the configuration file
-        require '../server/server.php';
-
-        // Retrieve the email associated with the user
-        // Modify this line based on how you retrieve the email from the user session or database
-        $email = $_SESSION['email'];
-
-        if (updatePassword($newPassword, $email)) {
+    // Validate the new password and confirm password
+    $validationMessage = validatePasswords($newPassword, $confirmPassword);
+    if (empty($validationMessage)) {
+        if (updatePassword($email, $newPassword)) {
             // Password update successful
             $_SESSION['success'] = true;
             $_SESSION['success'] = 'success';
             $_SESSION['form'] = 'login';
-            $_SESSION['message'] = "New password has been updated successfully.";
+            $_SESSION['message'] = "New password has been changed successfully.";
+
             header('Location: ../login.php');
             exit();
         } else {
@@ -73,17 +73,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['success'] = 'danger';
             $_SESSION['form'] = 'signup';
             $_SESSION['message'] = "An error occurred while updating the password.";
-            header('Location: ../new_password.php');
+
+            header('Location: ../reset-password.php');
             exit();
         }
     } else {
-        // Invalid password
+        // Invalid password or passwords don't match
         $_SESSION['success'] = false;
         $_SESSION['success'] = 'danger';
         $_SESSION['form'] = 'signup';
-        $_SESSION['message'] = "Invalid password. Please make sure the password meets the requirements and is different from the old password.";
-        header('Location: ../new_password.php');
+        $_SESSION['validationMessage'] = $validationMessage;
+
+        header('Location: ../reset-password.php');
         exit();
     }
+} else {
+    // Redirect to the email form if the request is not a POST request
+    header('Location: ../forgot-password.php');
+    exit();
 }
-?>
+?>  

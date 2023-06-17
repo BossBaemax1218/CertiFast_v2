@@ -3,7 +3,22 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Retrieve the verification code from the form
+    $email = $_POST['email'];
     $verificationCode = $_POST['verification_code'];
+
+    // Retrieve the verification code entered by the user
+    $userVerificationCode = $_POST['verification_code'];
+
+    // Validate the verification code
+    if ($userVerificationCode !== $verificationCode) {
+        // Verification code is invalid
+        $_SESSION['success'] = false;
+        $_SESSION['success'] = 'danger';
+        $_SESSION['form'] = 'signup';
+        $_SESSION['message'] = "Invalid verification code.";
+        header('Location: ../password-verify-code.php');
+        exit();
+    }
 
     // Function to verify the email with the provided verification code
     function verifyEmail($code) {
@@ -37,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['message'] = "Please enter the verification code.";
 
         // Redirect the user back to the verification code page
-        header('Location: ../reset-code.php');
+        header('Location: ../password-verify-code.php');
         exit();
     }
 
@@ -50,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['message'] = "Verification code for a new password has been confirmed.";
 
         // Redirect the user to the password validation page
-        header('Location: ../new_password.php');
+        header('Location: ../reset-password.php');
         exit();
     } else {
         // Email verification failed
@@ -60,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['message'] = "Invalid or expire verification code.";
 
         // Redirect the user back to the verification code page
-        header('Location: ../reset-code.php');
+        header('Location: ../password-verify-code.php');
         exit();
     }
 }

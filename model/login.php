@@ -2,7 +2,7 @@
 session_start();
 include '../server/server.php';
 
-$user_email = $conn->real_escape_string($_POST['user_email']);
+$user_email = $conn->real_escape_string($_POST['email']);
 $password = $conn->real_escape_string($_POST['password']);
 
 // Check if the user has exceeded the maximum login attempts

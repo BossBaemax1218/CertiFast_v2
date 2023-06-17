@@ -21,7 +21,7 @@ function generateVerificationCode()
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Retrieve the email address from the form
-    $email = $_POST['user_email'];
+    $email = $_POST['email'];
 
     // Check if the email address is empty or not valid
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -147,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $_SESSION['success'] = 'success';
                 $_SESSION['form'] = 'signup';
 
-                header('Location: ../reset-code.php');
+                header('Location: ../password-verify-code.php');
                 exit();
             } else {
                 // Email sending failed
