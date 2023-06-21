@@ -39,15 +39,15 @@
                         <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>
                         <div class="form-group input-field">
-                            <input id="fullname" type="text" name="fullname" placeholder="Fullame" class="input">
+                            <input id="fullname" type="text" name="fullname" autocomplete="off" placeholder="Fullame" class="input">
                         </div>
 
                         <div class="form-group input-field">
-                            <input  id="email" type="text" name="email" placeholder="Email" class="input">
+                            <input  id="email" type="text" name="email" autocomplete="off" placeholder="Email" class="input">
                         </div>
 
                         <div class="form-group input-field">
-                            <input id="password" type="password" name="password" placeholder="Password" class="password">
+                            <input id="password" type="password" name="password" autocomplete="off" placeholder="Password" class="password">
                             <i class='bx bx-hide eye-icon'></i>
                         </div>
                         <div class="form-group button-field">
