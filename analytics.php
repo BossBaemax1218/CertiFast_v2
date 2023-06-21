@@ -25,7 +25,7 @@
 	<?php include 'templates/header.php' ?>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-	<title>Analytics - Dashboard</title>
+	<title>Overview - Dashboard</title>
 </head>
 <body>
 	<?php include 'templates/loading_screen.php' ?>
@@ -232,37 +232,70 @@
 									<div class="card">
 										<div class="card-header">
 											<div class="card-head-row">
-												<h4><strong>Weekly Requested Certificates</strong></h4>
+												<div class="card-title fw-bold">
+													<h4><strong>TODO Task</strong></h4>
+												</div>
+												<div class="filter" style="margin-bottom: 1%; margin-left: 1%;">
+													<div class="dropdown">
+														<a class="text link" href="#" role="button" id="todoFilterDropdown" data-toggle="dropdown" aria-expanded="false">
+															<span>Filter <i class='bx bx-filter'></i></span>
+														</a>
+														<ul class="dropdown-menu" aria-labelledby="todoFilterDropdown">
+															<li><a class="dropdown-item" href="#" onclick="applyTodoFilter('complete')">Complete</a></li>
+															<li><a class="dropdown-item" href="#" onclick="applyTodoFilter('need')">Need</a></li>
+															<li><a class="dropdown-item" href="#" onclick="applyTodoFilter('all')">All</a></li>
+														</ul>
+													</div>
+												</div>
 											</div>
 										</div>
 										<div class="card-body">
 											<canvas id="myChart1" style="width:100%; max-width:50%; margin-left: 25%;">
 												<script>
-													var xValues = ["Total Resident"];
-													var yValues = [100,50];
-													var barColors = ["#D32D41"];
+													var xValues = ["Complete Task", "Need Task"];
+													var yValues = [100, 50];
+													var barColors = ["#D32D41", "Lightgrey"];
 													var options = {
-														pieceLabel: {
-														render: function(d) { 
-														return d.label + " (" + d.percentage + "%)" 
-													},
+													pieceLabel: {
+														render: function(d) {
+														return d.label + " (" + d.percentage + "%)";
+														},
 														fontColor: '#000',
 														position: 'inside',
 														segment: true
-														}
+													}
 													};
-													new Chart("myChart1", {
-														type: "pie",
-														data: {
+
+													var chart1 = new Chart("myChart1", {
+													type: "pie",
+													data: {
 														labels: xValues,
 														datasets: [{
 														backgroundColor: barColors,
 														data: yValues
 														}]
 													},
-														options: {
-														}
+													options: options
 													});
+
+													function applyTodoFilter(filterOption) {
+													var newLabels, newValues;
+
+													if (filterOption === "complete") {
+														newLabels = ["Complete Task"];
+														newValues = [100];
+													} else if (filterOption === "need") {
+														newLabels = ["Need Task"];
+														newValues = [50];
+													} else if (filterOption === "all") {
+														newLabels = ["Complete Task", "Need Task"];
+														newValues = [100, 50];
+													}
+
+													chart1.data.labels = newLabels;
+													chart1.data.datasets[0].data = newValues;
+													chart1.update();
+													}
 												</script>
 											</canvas>
 										</div>
