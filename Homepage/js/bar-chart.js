@@ -1,6 +1,6 @@
-var xValues = ["Residency", "Indigency", "Clearance", "Business Permit", "Resident Information"];
-var yValues = [40, 65, 35, 55, 90, 100];
-var barColors = ["#D32D41", "#D32D41", "#D32D41", "#D32D41", "#D32D41"];
+var xValues = ["Residency", "Indigency", "Clearance", "Business Permit"];
+var yValues = [40, 65, 35, 55, 100];
+var barColors = ["#D32D41", "#D32D41", "#D32D41", "#D32D41"];
 
 new Chart("myChart", {
     type: "bar",

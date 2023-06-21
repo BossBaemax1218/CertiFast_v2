@@ -8,24 +8,24 @@ var barChartData = {
     ],
     datasets: [
       {
-        data: [3, 5, 6, 7,3, 5, 6, 7],
+        data: [53, 85, 76, 57,83, 55, 36, 67],
         label: "Barangay Clearance",
         backgroundColor: "blue"
       },
       {
-        data: [4, 7, 3, 6, 100,7,4,6],
+        data: [64, 77, 83, 46, 80,47,84,86],
         label: "Barangay Residency",
         backgroundColor: "red"
         
       },
       {
-        data: [100,7,4,6,9,7,3,100],
+        data: [80,75,64,56,39,77,63,90],
         label: "Barangay Indengency",
         backgroundColor: "lightgreen"
         
       },
       {
-        data: [6,9,7,3,100,7,4,6],
+        data: [62,59,78,39,87,74,42,86],
         label: "Business Permint",
         backgroundColor: "violet"
         

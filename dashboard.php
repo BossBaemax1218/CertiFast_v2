@@ -71,9 +71,9 @@
 								</div>
 							</div>
 						</div>-->
-						<div class="row">
+						<div class="col">
 							<div class="row">
-								<div class="col-md-12">
+								<div class="col-md-4">
 									<div class="card">
 										<div class="card-header">
 											<div class="card-head-row">
@@ -81,13 +81,13 @@
 											</div>
 										</div>
 										<div class="card-body">
-											<div class="row">
-												<canvas id="myChart2" style="width:100%; max-width:600%" >
-													<script src="homepage/js/half-donut-chart.js"></script>
-												</canvas>
-											</div>
+											<canvas id="myChart2" style="width:200%; max-width:400%" >
+												<script src="homepage/js/half-donut-chart.js"></script>
+											</canvas>
 										</div>
 									</div>
+								</div>
+								<div class="col-md-4">
 									<div class="card">
 										<div class="card-header">
 											<div class="card-head-row">
@@ -95,11 +95,13 @@
 											</div>
 										</div>
 										<div class="card-body">
-											<canvas id="myChart1" style="width:100%; max-width:600%">
+											<canvas id="myChart1" style="width:100%; max-width:400%">
 												<script src="homepage/js/pie-chart.js"></script>
 											</canvas>
 										</div>
 									</div>
+								</div>
+								<div class="col-md-4">
 									<div class="card">
 										<div class="card-header">
 											<div class="card-head-row">
@@ -107,14 +109,14 @@
 											</div>
 										</div>
 										<div class="card-body">
-											<canvas id="myChart4" style="width:100%; max-width:600%">
+											<canvas id="myChart4" style="width:100%; max-width:400%">
 												<script src="homepage/js/doughnot-chart.js"></script>
 											</canvas>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col">
+							<div class="row">
 								<div class="col-md-12">
 									<div class="card">
 										<div class="card-header">
@@ -123,11 +125,13 @@
 											</div>
 										</div>
 										<div class="card-body">
-											<canvas id="myChart3" style="width:100%;max-width:6q00%">
+											<canvas id="myChart3" style="width:100%;max-width:600%">
 												<script src="homepage/js/group-bar-chart.js"></script>
 											</canvas>
 										</div>
 									</div>
+								</div>
+								<div class="col-md-12">
 									<div class="card">
 										<div class="card-header">
 											<div class="card-head-row">
