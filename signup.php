@@ -63,7 +63,7 @@
                 <div class="line"></div>
 
                 <div class="media-options">
-                    <a href="#" class="form-group google">
+                    <a href="templates/error.php" class="form-group google">
                         <img src="vendor-login/images/google.png" alt="" class="google-img">
                         <span>Login with Google</span>
                     </a>
