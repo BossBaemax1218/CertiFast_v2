@@ -1,8 +1,6 @@
-var xValues = ["Clearance", "Residency", "Business Permit", "Indigency"];
-var yValues = [55, 49, 44, 24];
+var xValues = ["Complete", "Incomplete"];
+var yValues = [10, 49, 100];
 var barColors = [
-    "#D32D41",
-    "#D32D41",
     "#D32D41",
     "#D32D41",
     "#000"

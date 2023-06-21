@@ -54,8 +54,8 @@ $current_page = PageName();
                         <p>Overview</p>
                     </a>
                 </li>
-                <li class="nav-item <?= $current_page=='#' || $current_page=='resident_info.php' || $current_page=='purok_info.php' ? 'active' : null ?>">
-                    <a href="dashboard.php" >
+                <li class="nav-item <?= $current_page=='analytics.php' || $current_page=='resident_info.php' || $current_page=='purok_info.php' ? 'active' : null ?>">
+                    <a href="analytics.php" >
                         <i class="fas fa-chart-bar"></i>
                         <p>Analytics</p>
                     </a>
