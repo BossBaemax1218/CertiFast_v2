@@ -80,7 +80,7 @@
 										<div class="card-header">
 											<div class="card-head-row">
 												<div class="card-title fw-bold">
-													<h4><strong>Certificate Status</strong></h4>
+													<h4><strong>Certificate Status Reports</strong></h4>
 												</div>
 												<div class="filter" style="margin-bottom: 1%; margin-left: 1%;">
 													<div class="dropdown">
@@ -167,7 +167,7 @@
 										<div class="card-header">
 											<div class="card-head-row">
 												<div class="card-title fw-bold">
-													<h4><strong>Completion Status</strong></h4>
+													<h4><strong>Completion Status Reports</strong></h4>
 												</div>
 												<div class="filter" style="margin-bottom: 1%; margin-left: 1%;">
 													<div class="dropdown">
@@ -233,7 +233,7 @@
 										<div class="card-header">
 											<div class="card-head-row">
 												<div class="card-title fw-bold">
-													<h4><strong>Recent Tasks</strong></h4>
+													<h4><strong>Recent Tasks Reports</strong></h4>
 												</div>
 												<div class="filter" style="margin-bottom: 1%; margin-left: 1%;">
 													<div class="dropdown">
@@ -332,27 +332,27 @@
 													labels: ["2018", "2019", "2020", "2021", "2022"],
 													datasets: [
 														{
-															data: [53, 85, 76, 57, 78],
+															data: [53, 85, 76, 57, 78, 100],
 															label: "Barangay Clearance",
-															backgroundColor: "blue",
+															backgroundColor: "#176B87",
 															hidden: false,
 														},
 														{
-															data: [80, 47, 84, 86, 59],
+															data: [80, 47, 84, 86, 59, 100],
 															label: "Barangay Residency",
-															backgroundColor: "red",
+															backgroundColor: "#001C30",
 															hidden: false,
 														},
 														{
-															data: [80, 77, 63, 89, 80],
+															data: [80, 77, 63, 89, 80, 100],
 															label: "Barangay Indengency",
-															backgroundColor: "lightgreen",
+															backgroundColor: "#64CCC5",
 															hidden: false,
 														},
 														{
-															data: [78, 87, 74, 86, 69],
+															data: [78, 87, 74, 86, 69, 100],
 															label: "Business Permit",
-															backgroundColor: "violet",
+															backgroundColor: "#05BFDB",
 															hidden: false,
 														},
 													],
@@ -436,9 +436,9 @@
 									<div class="card-body">
 										<canvas id="myChart" style="width:100%;max-width:600%"></canvas>
 										<script>
-											var xValues = ["Residency", "Indigency", "Clearance", "Business Permit"];
-											var yValues = [40, 65, 35, 55, 100];
-											var barColors = ["#D32D41", "#D32D41", "#D32D41", "#D32D41"];
+											var xValues = ["Residency", "Indigency", "Clearance", "Business Permit","No Request"];
+											var yValues = [40, 35, 60, 70, 100];
+											var barColors = ["#176B87", "#001C30", "#64CCC5", "#05BFDB", "lightgrey"];
 
 											var chart = new Chart("myChart", {
 												type: "bar",
