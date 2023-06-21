@@ -38,11 +38,11 @@
 
 		<div class="main-panel">
 			<div class="content">
-				<div class="panel-header" style = "background-color: #E42654">
+				<div class="panel-header">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h1 class="text-white fw-bold" style="font-size: 300%;">Overview</h1>
+								<h1 class="text-center fw-bold" style="font-size: 400%;">Overview</h1>
 							</div>
 						</div>
 					</div>
@@ -72,54 +72,70 @@
 							</div>
 						</div>-->
 						<div class="row">
-							<div class="col-md-4">
-								<div class="card">
-									<div class="card-header">
-										<div class="card-head-row">
-											<div class="card-title fw-bold"><h3><strong>Current Certificate Request</strong></h3></div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="card">
+										<div class="card-header">
+											<div class="card-head-row">
+												<div class="card-title fw-bold"><h3><strong>Current Certificate Request</strong></h3></div>
+											</div>
+										</div>
+										<div class="card-body">
+											<div class="row">
+												<canvas id="myChart2" style="width:100%; max-width:600%" >
+													<script src="homepage/js/half-donut-chart.js"></script>
+												</canvas>
+											</div>
 										</div>
 									</div>
-									<div class="card-body">
-										<canvas id="myChart2" width="400" height="300">
-											<script src="homepage/js/half-donut-chart.js"></script>
-										</canvas>
-									</div>
-								</div>
-								<div class="card">
-									<div class="card-header">
-										<div class="card-head-row">
-											<div class="card-title fw-bold"><h3><strong>Weekly Requested Certificates</strong></h3></div>
+									<div class="card">
+										<div class="card-header">
+											<div class="card-head-row">
+												<div class="card-title fw-bold"><h3><strong>Weekly Requested Certificates</strong></h3></div>
+											</div>
+										</div>
+										<div class="card-body">
+											<canvas id="myChart1" style="width:100%; max-width:600%">
+												<script src="homepage/js/pie-chart.js"></script>
+											</canvas>
 										</div>
 									</div>
-									<div class="card-body">
-										<canvas id="myChart1" width="400" max-width="300">
-											<script src="homepage/js/pie-chart.js"></script>
-										</canvas>
+									<div class="card">
+										<div class="card-header">
+											<div class="card-head-row">
+												<div class="card-title fw-bold"><h3><strong>Monhtly Requested Certificates</strong></h3></div>
+											</div>
+										</div>
+										<div class="card-body">
+											<canvas id="myChart4" style="width:100%; max-width:600%">
+												<script src="homepage/js/doughnot-chart.js"></script>
+											</canvas>
+										</div>
 									</div>
 								</div>
 							</div>
 							<div class="col">
 								<div class="col-md-12">
-									<div class="card-header">
-										<div class="card-head-row">
-											<div class="card-title fw-bold"><h3><strong>Yearly Reports Certification Requested</strong></h3></div>
+									<div class="card">
+										<div class="card-header">
+											<div class="card-head-row">
+												<div class="card-title fw-bold"><h3><strong>Yearly Reports Certification Requested</strong></h3></div>
+											</div>
 										</div>
-									</div>
-									<div class="card card-stats card-round">
 										<div class="card-body">
-											<canvas id="myChart3" width="800" max-width="1000">
+											<canvas id="myChart3" style="width:100%;max-width:6q00%">
 												<script src="homepage/js/group-bar-chart.js"></script>
 											</canvas>
 										</div>
 									</div>
-									<div class="card-header">
-										<div class="card-head-row">
-											<div class="card-title fw-bold"><h3><strong>Most Requested Certificates</strong></h3></div>
+									<div class="card">
+										<div class="card-header">
+											<div class="card-head-row">
+												<div class="card-title fw-bold"><h3><strong>Most Requested Certificates</strong></h3></div>
+											</div>
 										</div>
-									</div>
-									<div class="card card-stats card-round">
 										<div class="card-body">
-											<canvas id="myChart" width="800" max-width="1000">
+											<canvas id="myChart" style="width:100%;max-width:600%">
 												<script src="homepage/js/bar-chart.js"></script>
 											</canvas>
 										</div>
