@@ -39,7 +39,7 @@
                         <?php endif; ?>
                         <input type="hidden" name="email" value="<?php echo $email; ?>">
                         <div class="field input-field">
-                            <input type="text" name="verification_code" placeholder="Verification Code" class="input">
+                            <input type="text" name="verification_code" autocomplete="off" placeholder="Verification Code" class="input">
                         </div>
                         <div class="field button-field">
                             <button type="submit" value="submit">Submit</button>

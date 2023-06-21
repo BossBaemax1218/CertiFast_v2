@@ -38,7 +38,7 @@
                         <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>
                         <div class="field input-field">
-                            <input id="email" type="email" name="email" placeholder="Email" class="input">
+                            <input id="email" type="email" autocomplete="off" name="email" placeholder="Email" class="input">
                         </div>
                         <div class="field button-field">
                             <button type="submit" value="submit">Submit</button>

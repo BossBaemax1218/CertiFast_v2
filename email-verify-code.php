@@ -38,7 +38,7 @@
                         <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>
                         <div class="field input-field">
-                            <input type="text" name="verification_code" placeholder="Verification Code" class="input">
+                            <input type="text" name="verification_code" autocomplete="off" placeholder="Verification Code" class="input">
                         </div>
                         <div class="field button-field">
                             <button type="submit">Submit</button>

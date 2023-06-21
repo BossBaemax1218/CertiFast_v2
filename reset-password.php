@@ -41,11 +41,11 @@
                         <input type="hidden" name="email" value="<?php echo $email; ?>">
                         <input type="hidden" name="verification_code" value="<?php echo $verificationCode; ?>">
                         <div class="field input-field">
-                            <input id="new_password" type="password" name="new_password" placeholder="New Password" class="new_password" required>
+                            <input id="new_password" type="password" autocomplete="off" name="new_password" placeholder="New Password" class="new_password" required>
                             <i class='bx bx-hide eye-icon first_password'></i>
                         </div>
                         <div class="field input-field">
-                            <input id="confirm_password" type="password" name="confirm_password" placeholder="Confirm Password" class="confirm_password" required>
+                            <input id="confirm_password" type="password" autocomplete="off" name="confirm_password" placeholder="Confirm Password" class="confirm_password" required>
                             <i class='bx bx-hide eye-icon second_password'></i>
                         </div>
                         <div class="field button-field">
