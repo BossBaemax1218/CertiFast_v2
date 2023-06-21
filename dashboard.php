@@ -44,7 +44,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h1 class="text-center fw-bold" style="font-size: 400%;">Overview</h1>
+								<h3 class="text-center fw-bold" style="font-size: 400%;">Overview</h3>
 							</div>
 						</div>
 					</div>
@@ -98,7 +98,7 @@
 											</div>
 										</div>
 										<div class="card-body">
-												<canvas id="myChart2" style="width:50%; max-width:50%; margin-left: 25%;"></canvas>
+												<canvas id="myChart2" style="width:50%; max-width:55%; margin-left: 25%;"></canvas>
 											<script>
 												var ctx = document.getElementById("myChart2");
 												var myChart2 = new Chart(ctx, {
@@ -184,7 +184,7 @@
 											</div>
 										</div>
 										<div class="card-body">
-											<canvas id="myChart4" style="width:50%; max-width:50%; margin-left: 25%;">
+											<canvas id="myChart4" style="width:50%; max-width:55%; margin-left: 25%;">
 												<script>
 													var xValues = ["Complete", "Incomplete"];
 													var yValues = [14, 100];
@@ -233,7 +233,7 @@
 										<div class="card-header">
 											<div class="card-head-row">
 												<div class="card-title fw-bold">
-													<h4><strong>TODO Task</strong></h4>
+													<h4><strong>Recent Tasks</strong></h4>
 												</div>
 												<div class="filter" style="margin-bottom: 1%; margin-left: 1%;">
 													<div class="dropdown">
@@ -241,20 +241,20 @@
 															<span>Filter <i class='bx bx-filter'></i></span>
 														</a>
 														<ul class="dropdown-menu" aria-labelledby="todoFilterDropdown">
-															<li><a class="dropdown-item" href="#" onclick="applyTodoFilter('complete')">Complete</a></li>
-															<li><a class="dropdown-item" href="#" onclick="applyTodoFilter('need')">Need</a></li>
-															<li><a class="dropdown-item" href="#" onclick="applyTodoFilter('all')">All</a></li>
+															<li><a class="dropdown-item" href="#" onclick="applyTodoFilter('total')">Recent</a></li>
+															<li><a class="dropdown-item" href="#" onclick="applyTodoFilter('complete')">Last Week</a></li>
+															<li><a class="dropdown-item" href="#" onclick="applyTodoFilter('all')">Last Month</a></li>
 														</ul>
 													</div>
 												</div>
 											</div>
 										</div>
 										<div class="card-body">
-											<canvas id="myChart1" style="width:100%; max-width:50%; margin-left: 25%;">
+											<canvas id="myChart1" style="width:100%; max-width:55%; margin-left: 25%;">
 												<script>
-													var xValues = ["Complete Task", "Need Task"];
+													var xValues = ["Total Task", "Completed Task"];
 													var yValues = [100, 50];
-													var barColors = ["#D32D41", "Lightgrey"];
+													var barColors = ["Lightgrey","#D32D41"];
 													var options = {
 													pieceLabel: {
 														render: function(d) {
@@ -281,15 +281,15 @@
 													function applyTodoFilter(filterOption) {
 													var newLabels, newValues;
 
-													if (filterOption === "complete") {
-														newLabels = ["Complete Task"];
-														newValues = [100];
-													} else if (filterOption === "need") {
-														newLabels = ["Need Task"];
+													if (filterOption === "total") {
+														newLabels = ["Total Tasks"];
 														newValues = [50];
+													} else if (filterOption === "complete") {
+														newLabels = ["Completed Tasks"];
+														newValues = [100];
 													} else if (filterOption === "all") {
-														newLabels = ["Complete Task", "Need Task"];
-														newValues = [100, 50];
+														newLabels = ["Total Tasks", "Completed Tasks"];
+														newValues = [50, 100];
 													}
 
 													chart1.data.labels = newLabels;
