@@ -41,7 +41,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Barangay Officials</h2>
+								<h2 class="text-white fw-bold">Barangay Officials & SK Members</h2>
 							</div>
 						</div>
 					</div>

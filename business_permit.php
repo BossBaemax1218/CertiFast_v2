@@ -13,7 +13,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Resident Certificate Issuance</title>
+	<title>Business Permit</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
@@ -32,7 +32,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Barangay Certificate</h2>
+								<h2 class="text-white fw-bold">Business Permit</h2>
 							</div>
 						</div>
 					</div>

@@ -25,7 +25,7 @@
 	<?php include 'templates/header.php' ?>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-	<title>Overview - Dashboard</title>
+	<title>Certificates Reports</title>
 </head>
 <body>
 	<?php include 'templates/loading_screen.php' ?>

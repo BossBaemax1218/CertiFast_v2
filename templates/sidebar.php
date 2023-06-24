@@ -54,23 +54,11 @@ $current_page = PageName();
                         <p>Overview</p>
                     </a>
                 </li>
-                <li class="nav-item <?= $current_page=='analytics.php' || $current_page=='resident_info.php' || $current_page=='purok_info.php' ? 'active' : null ?>">
-                    <a href="analytics.php" >
-                        <i class="fas fa-chart-bar"></i>
-                        <p>Analytics</p>
-                    </a>
-                </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
                     <h4 class="text-section">Documents</h4>
-                </li>
-                <li class="nav-item <?= $current_page=='resident.php' || $current_page=='generate_resident.php' ? 'active' : null ?>">
-                    <a href="resident.php">
-                        <i class="icon-people"></i>
-                        <p>Resident Information</p>
-                    </a>
                 </li>
                 <li class="nav-item <?= $current_page=='residency_certificate.php' || $current_page=='generate_resident_cert.php' ? 'active' : null ?>">
                     <a href="residency_certificate.php">
@@ -105,17 +93,17 @@ $current_page = PageName();
                 <li class="nav-item <?= $current_page=='#' ? 'active' : null ?>">
                     <a href="dashboard.php" >
                         <i class="fas fa-chart-line"></i>
-                        <p>Sales Reports</p>
+                        <p>Transaction Reports</p>
                     </a>
                 </li>
-                <li class="nav-item <?= $current_page=='#' ? 'active' : null ?>">
-                    <a href="dashboard.php" >
+                <li class="nav-item <?= $current_page=='certificates_reports.php' ? 'active' : null ?>">
+                    <a href="certificates_reports.php" >
                         <i class="far fa-file-alt"></i>
                         <p>Certificates Reports</p>
                     </a>
                 </li>
-                <li class="nav-item <?= $current_page=='user-resident.php' ? 'active' : null ?>">
-                    <a href="user-resident.php" >
+                <li class="nav-item <?= $current_page=='resident.php' || $current_page=='generate_resident.php' ? 'active' : null ?>">
+                    <a href="resident.php" >
                         <i class="far fa-id-card"></i>
                         <p>User Reports</p>
                     </a>
@@ -123,7 +111,7 @@ $current_page = PageName();
                 <li class="nav-item <?= $current_page=='officials.php' ? 'active' : null ?>">
                     <a href="officials.php">
                         <i class="fas fa-user-tie"></i>
-                        <p>Officials & Staff Reports</p>
+                        <p>Official's Reports</p>
                     </a>
                 </li>
                 <?php if(isset($_SESSION['username']) && $_SESSION['role']=='staff'): ?>

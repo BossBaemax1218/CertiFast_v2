@@ -20,7 +20,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Barangay Certificate</title>
+	<title>Certificate of Clearance</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
@@ -39,7 +39,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Barangay Certificate</h2>
+								<h2 class="text-white fw-bold">Barangay Clearance</h2>
 							</div>
 						</div>
 					</div>

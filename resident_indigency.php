@@ -39,7 +39,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Certificate of Indigency</h2>
+								<h2 class="text-white fw-bold">Barangay Indigency</h2>
 							</div>
 						</div>
 					</div>

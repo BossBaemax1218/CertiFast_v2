@@ -20,7 +20,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Barangay Residency</title>
+	<title>Certificate of Residency</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
