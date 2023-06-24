@@ -62,25 +62,25 @@ $current_page = PageName();
                 </li>
                 <li class="nav-item <?= $current_page=='residency_certificate.php' || $current_page=='generate_resident_cert.php' ? 'active' : null ?>">
                     <a href="residency_certificate.php">
-                        <i class="icon-home"></i>
+                        <i class="fas fa-home"></i>
                         <p>Barangay Residency</p>
                     </a>
                 </li>
                 <li class="nav-item <?= $current_page=='resident_certification.php' || $current_page=='generate_brgy_cert.php' ? 'active' : null ?>">
                     <a href="resident_certification.php">
-                        <i class="icon-badge"></i>
+                        <i class="fas fa-file-alt"></i>
                         <p>Barangay Clearance</p>
                     </a>
                 </li>
                 <li class="nav-item <?= $current_page=='resident_indigency.php' || $current_page=='generate_indi_cert.php' ? 'active' : null ?>">
                     <a href="resident_indigency.php">
-                        <i class="icon-docs"></i>
+                        <i class="fa fa-users"></i>
                         <p>Barangay Indigency</p>
                     </a>
                 </li>
                 <li class="nav-item <?= $current_page=='business_permit.php' || $current_page=='generate_business_permit.php' ? 'active' : null ?>">
                     <a href="business_permit.php">
-                        <i class="icon-briefcase"></i>
+                        <i class="fas fa-briefcase"></i>
                         <p>Business Permit</p>
                     </a>
                 </li>
@@ -92,7 +92,7 @@ $current_page = PageName();
                 </li>
                 <li class="nav-item <?= $current_page=='#' ? 'active' : null ?>">
                     <a href="dashboard.php" >
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-history"></i>
                         <p>Transaction Reports</p>
                     </a>
                 </li>
@@ -117,7 +117,7 @@ $current_page = PageName();
                 <?php if(isset($_SESSION['username']) && $_SESSION['role']=='staff'): ?>
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
-                            <i class="fa fa-ellipsis-h"></i>
+                            <i class="settings"></i>
                         </span>
                         <h4 class="text-section">Settings</h4>
                     </li>
@@ -131,7 +131,7 @@ $current_page = PageName();
                 <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'): ?>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
-                        <i class="fa fa-ellipsis-h"></i>
+                        <i class="settings"></i>
                     </span>
                     <h4 class="text-section">Settings</h4>
                 </li>
