@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set('Asia/Manila');
+
 $database	= 'db_certifast';
 $username	= 'root';
 $host		= 'localhost';

@@ -1,5 +1,5 @@
 <?php
-include('../server/server.php');
+include '../server/server.php';
 
 if (!isset($_SESSION['username'])) {
     if (isset($_SERVER["HTTP_REFERER"])) {
@@ -7,87 +7,59 @@ if (!isset($_SESSION['username'])) {
     }
 }
 
+$id = $conn->real_escape_string($_POST['id']);
+$brgy_id = $conn->real_escape_string($_POST['barangayid']);
 $name = $conn->real_escape_string($_POST['fullname']);
 $pos = $conn->real_escape_string($_POST['position']);
+$address = $conn->real_escape_string($_POST['address']);
 $start = $conn->real_escape_string($_POST['start']);
 $end = $conn->real_escape_string($_POST['end']);
 $status = $conn->real_escape_string($_POST['status']);
-$profile = $conn->real_escape_string($_POST['profile-image']); // base 64 image
-$profile2 = $_FILES['img']['name'];
+$profile = $conn->real_escape_string($_POST['picture']); // base64 image
+$profile2 = ($_FILES['image']['name'] ?? null);
+
 // change profile2 name
-$newName = date('dmYHis').str_replace(" ", "", $profile2);
+$newName = date('dmYHis') . str_replace(" ", "", $profile2);
 
-// image file directory
-$target = "../assets/uploads/officials/".basename($newName);
+$check = "SELECT id FROM tblofficials WHERE barangay_id='$brgy_id'";
+$result = $conn->query($check);
+$officials = ($result !== false) ? $result->num_rows : 0;
 
-if (!empty($name) && !empty($pos) && !empty($start) && !empty($end) && !empty($status)) {
-
-    $query = "SELECT * FROM tblofficials WHERE fullname='$name'";
-    $res = $conn->query($query);
-
-    if ($res->num_rows) {
-        $_SESSION['message'] = 'Please enter your real name!';
-        $_SESSION['success'] = 'danger';
-    } else {
+if ($officials == 0) {
+    if (!empty($name)) {
         if (!empty($profile) && !empty($profile2)) {
-            $insert = "INSERT INTO tblofficials (`fullname`, `position`, `photo`, `termstart`, `termend`, `status`) VALUES ('$name', '$pos', '$profile', '$start', '$end', '$status')";
-            $result = $conn->query($insert);
-
-            if ($result == true) {
-                $_SESSION['message'] = 'Official added!';
-                $_SESSION['success'] = 'success';
-            } else {
-                $_SESSION['message'] = 'Something went wrong!';
-                $_SESSION['success'] = 'danger';
-            }
+            $query = "INSERT INTO tblofficials (`picture`, `barangay_id`, `fullname`, `position`, `address`, `termstart`, `termend`, `status`) 
+                VALUES ('$profile', '$brgy_id', '$name', '$pos', '$address', '$start', '$end', '$status')";
         } else if (!empty($profile) && empty($profile2)) {
-            $insert = "INSERT INTO tblofficials (`fullname`, `position`, `photo`, `termstart`, `termend`, `status`) VALUES ('$name', '$pos', '$profile', '$start', '$end', '$status')";
-            $result = $conn->query($insert);
-
-            if ($result == true) {
-                $_SESSION['message'] = 'Official added!';
-                $_SESSION['success'] = 'success';
-            } else {
-                $_SESSION['message'] = 'Something went wrong!';
-                $_SESSION['success'] = 'danger';
-            }
+            $query = "INSERT INTO tblofficials (`picture`, `barangay_id`, `fullname`, `position`, `address`, `termstart`, `termend`, `status`) 
+                VALUES ('$profile', '$brgy_id', '$name', '$pos', '$address', '$start', '$end', '$status')";
         } else if (empty($profile) && !empty($profile2)) {
-            $moved = move_uploaded_file($_FILES['img']['tmp_name'], $target);
-
-            if ($moved) {
-                $insert = "INSERT INTO tblofficials (`fullname`, `position`, `photo`, `termstart`, `termend`, `status`) VALUES ('$name', '$pos', '$newName', '$start', '$end', '$status')";
-                $result = $conn->query($insert);
-
-                if ($result == true) {
-                    $_SESSION['message'] = 'Official added!';
-                    $_SESSION['success'] = 'success';
-                } else {
-                    $_SESSION['message'] = 'Something went wrong!';
-                    $_SESSION['success'] = 'danger';
-                }
-            } else {
-                $_SESSION['message'] = 'Failed to move the uploaded file!';
-                $_SESSION['success'] = 'danger';
+            $query = "INSERT INTO tblofficials (`picture`, `barangay_id`, `fullname`, `position`, `address`, `termstart`, `termend`, `status`) 
+                VALUES ('$newName', '$brgy_id', '$name', '$pos', '$address', '$start', '$end', '$status')";
+            if (move_uploaded_file($_FILES['image']['tmp_name'], "../assets/uploads/officials_profile/" . $newName)) {
+                $_SESSION['message'] = 'Barangay Officials has been saved!';
+                $_SESSION['success'] = 'success';
             }
         } else {
-            $insert = "INSERT INTO tblofficials (`fullname`, `position`, `photo`, `termstart`, `termend`, `status`) VALUES ('$name', '$pos', 'person.png', '$start', '$end', '$status')";
-            $result = $conn->query($insert);
-
-            if ($result == true) {
-                $_SESSION['message'] = 'Official added!';
-                $_SESSION['success'] = 'success';
-            } else {
-                $_SESSION['message'] = 'Something went wrong!';
-                $_SESSION['success'] = 'danger';
-            }
+            $query = "INSERT INTO tblofficials (`picture`, `barangay_id`, `fullname`, `position`, `address`, `termstart`, `termend`, `status`) 
+                VALUES ('person.png', '$brgy_id', '$name', '$pos', '$address', '$start', '$end', '$status')";
         }
+
+        if ($conn->query($query) === true) {
+            $_SESSION['message'] = 'Barangay Officials has been saved!';
+            $_SESSION['success'] = 'success';
+        } else {
+            $_SESSION['message'] = 'Error: ' . $conn->error;
+            $_SESSION['success'] = 'danger';
+        }
+    } else {
+        $_SESSION['message'] = 'Please complete the form!';
+        $_SESSION['success'] = 'danger';
     }
 } else {
-    $_SESSION['message'] = 'Please fill up the form completely!';
+    $_SESSION['message'] = 'ID is already taken. Please enter a unique ID!';
     $_SESSION['success'] = 'danger';
 }
 
-header("Location: ../officials.php");
-
 $conn->close();
-?>
+header("Location: ../officials.php");

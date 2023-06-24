@@ -20,7 +20,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Resident Information</title>
+	<title>Barangay Resident</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

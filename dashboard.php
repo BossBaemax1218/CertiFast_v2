@@ -49,7 +49,7 @@
 						</div>
 					</div>
 				</div>
-					<div class="page-inner mt-2">
+					<div class="page-inner mt-1">
 						<?php if(isset($_SESSION['message'])): ?>
 								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
 									<?php echo $_SESSION['message']; ?>

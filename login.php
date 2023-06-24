@@ -55,12 +55,10 @@
                             <button type="submit" value="submit">Submit</button>
                         </div>
                     </form>
-
                     <div class="form-link">
                         <span>Don't have an account? <a href="signup.php" class="signup-link">Signup</a></span>
                     </div>
                 </div>
-
                 <div class="line"></div>
                 <div class="media-options">
                     <a href="templates/error.php" class="form-group google">
@@ -68,7 +66,6 @@
                         <span>Login with Google</span>
                     </a>
                 </div>
-
             </div>
         </section>
         <!-- JavaScript -->
