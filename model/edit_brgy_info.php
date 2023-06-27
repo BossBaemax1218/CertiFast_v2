@@ -10,6 +10,7 @@
 	$province 	= $conn->real_escape_string($_POST['province']);
 	$brgy 		= $conn->real_escape_string($_POST['brgy']);
 	$town 		= $conn->real_escape_string($_POST['town']);
+	$brgy_add 	= $conn->real_escape_string($_POST['brgy_address']);
 	$number 	= $conn->real_escape_string($_POST['number']);
 	$b_email 	= $conn->real_escape_string($_POST['b_email']);
 	$city_logo 	= $_FILES['city_logo']['name'];
@@ -34,7 +35,7 @@
 
 		if(!empty($city_logo) && !empty($brgy_logo) && !empty($db_image)){
 
-			$query = "UPDATE tblbrgy_info SET province='$province', town='$town', brgy_name='$brgy', `number`='$number',`b_email`='$b_email', `image`='$newD', city_logo='$newC', brgy_logo='$newB' WHERE id=1";
+			$query = "UPDATE tblbrgy_info SET province_name='$province', town_name='$town',brgy_address='$brgy_add', brgy_name='$brgy', contact_number='$number',brgy_email='$b_email', dashboardphoto=$newD, city_logo=$newC, brgy_logo=$newB WHERE id=1";
 
 			if($conn->query($query) === true){
 
@@ -61,7 +62,7 @@
 			}
 		}else if(!empty($city_logo) && !empty($brgy_logo) && empty($db_image)){
 
-			$query = "UPDATE tblbrgy_info SET province='$province', town='$town', brgy_name='$brgy', `number`='$number',`b_email`='$b_email', city_logo='$newC', brgy_logo='$newB' WHERE id=1";
+			$query = "UPDATE tblbrgy_info SET province='$province', town='$town',brgy_address='$brgy_add', brgy_name='$brgy', `number`='$number',`b_email`='$b_email', city_logo='$newC', brgy_logo='$newB' WHERE id=1";
 
 			if($conn->query($query) === true){
 
@@ -82,7 +83,7 @@
 
 		}else if(!empty($city_logo) && empty($brgy_logo) && empty($db_image)){
 
-			$query = "UPDATE tblbrgy_info SET province='$province', town='$town', brgy_name='$brgy', `number`='$number',`b_email`='$b_email', city_logo='$newC' WHERE id=1";
+			$query = "UPDATE tblbrgy_info SET province='$province', town='$town', brgy_address='$brgy_add', brgy_name='$brgy', `number`='$number',`b_email`='$b_email', city_logo='$newC' WHERE id=1";
 
 			if($conn->query($query) === true){
 
@@ -98,7 +99,7 @@
 
 		}else if(empty($city_logo) && empty($brgy_logo) && !empty($db_image)){
 
-			$query = "UPDATE tblbrgy_info SET province='$province', town='$town', brgy_name='$brgy', `number`='$number',`b_email`='$b_email', `image`='$newD' WHERE id=1";
+			$query = "UPDATE tblbrgy_info SET province='$province', town='$town',brgy_address='$brgy_add', brgy_name='$brgy', `number`='$number',`b_email`='$b_email', `image`='$newD' WHERE id=1";
 
 			if($conn->query($query) === true){
 
@@ -113,7 +114,7 @@
 			}
 		}else if(empty($city_logo) && !empty($brgy_logo) && !empty($db_image)){
 
-			$query = "UPDATE tblbrgy_info SET province='$province', town='$town', brgy_name='$brgy', `number`='$number',`b_email`='$b_email', `image`='$newD', brgy_logo='$newB' WHERE id=1";
+			$query = "UPDATE tblbrgy_info SET province='$province', town='$town', brgy_address='$brgy_add', brgy_name='$brgy',`number`='$number',`b_email`='$b_email', `image`='$newD', brgy_logo='$newB' WHERE id=1";
 
 			if($conn->query($query) === true){
 
@@ -133,7 +134,7 @@
 			}
 		}else if(empty($city_logo) && !empty($brgy_logo) && empty($db_image)){
 
-			$query = "UPDATE tblbrgy_info SET province='$province', town='$town', brgy_name='$brgy', `number`='$number',`b_email`='$b_email', brgy_logo='$newB' WHERE id=1";
+			$query = "UPDATE tblbrgy_info SET province='$province', town='$town', brgy_address='$brgy_add', brgy_name='$brgy', `number`='$number',`b_email`='$b_email', brgy_logo='$newB' WHERE id=1";
 
 			if($conn->query($query) === true){
 
@@ -147,7 +148,7 @@
 				}
 			}
 		}else{
-			$query = "UPDATE tblbrgy_info SET province='$province', town='$town', brgy_name='$brgy', `number`='$number',`b_email`='$b_email' WHERE id=1";
+			$query = "UPDATE tblbrgy_info SET province='$province', town='$town', brgy_address='$brgy_add', brgy_name='$brgy', `number`='$number',`b_email`='$b_email' WHERE id=1";
 
 			if($conn->query($query) === true){
 

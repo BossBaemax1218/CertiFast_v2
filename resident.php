@@ -15,6 +15,18 @@
 	while($row = $result1->fetch_assoc()){
 		$purok[] = $row; 
 	}
+
+	$query1 = "SELECT * FROM tblresident";
+    $result1 = $conn->query($query1);
+	$totalresident = $result1->num_rows;
+
+	$query2 = "SELECT * FROM tblresident WHERE voterstatus='Yes'";
+    $result2 = $conn->query($query2);
+	$votersyes= $result2->num_rows;
+
+	$query3 = "SELECT * FROM tblresident WHERE voterstatus='No'";
+    $result3 = $conn->query($query3);
+	$votersno= $result3->num_rows;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,11 +51,85 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Residents</h2>
+								<h2 class="text-white fw-bold">Residents Reports</h2>
 							</div>
 						</div>
 					</div>
 				</div>
+                <div class="row mt-5" style="margin-left: 17%;">
+                    <div class="col-md-3 ml-4">
+                        <div class="card card-stats card card-round">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="icon-big text-center">
+                                            <i class="fas fa-user fa-2x" style="color: gray;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-stats">
+                                    </div>
+                                    <div class="col-2 col-stats">
+                                        <div class="numbers mt-2">
+                                            <h2 class="text-uppercase" style="font-size: 13px;">Residents</h2>
+                                            <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #D32D41;"><?= number_format($totalresident) ?></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <a href="resident_info.php?state=voters" class="card-link text-" style="color: gray;">Total Residents </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-stats card card-round">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="icon-big text-center">
+                                            <i class="fas fa-user-check fa-2x" style="color: gray;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-stats">
+                                    </div>
+                                    <div class="col-2 col-stats">
+                                        <div class="numbers mt-2">
+                                            <h2 class="text-uppercase" style="font-size: 13px;">Voters</h2>
+                                            <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($votersyes) ?></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <a href="users.php?state=male" class="card-link text" style="color: gray;">Total Voters</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-stats card card-round">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="icon-big text-center">
+                                            <i class="fas fa-user-times fa-2x" style="color: gray;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-stats">
+                                    </div>
+                                    <div class="col-2 col-stats">
+                                        <div class="numbers mt-2">
+                                            <h2 class="text-uppercase" style="font-size: 13px;">NonVoters</h2>
+                                            <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #D32D41;"><?= number_format($votersno) ?></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <a href="resident_info.php?state=non_voters" class="card-link text" style="color: gray;">Total Non-Voters</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 				<div class="page-inner">
 					<div class="row mt--2">
 						<div class="col-md-12">

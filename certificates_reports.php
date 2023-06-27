@@ -44,7 +44,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h1 class="text-center fw-bold" style="font-size: 400%;">Overview</h1>
+								<h1 class="text-center fw-bold" style="font-size: 400%;">Certificate Reports</h1>
 							</div>
 						</div>
 					</div>

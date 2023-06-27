@@ -1,3 +1,17 @@
+<?php
+    include 'server/db_connection.php';
+
+    $query = "SELECT * FROM tblbrgy_info WHERE id='1'";
+    $result = $conn->query($query)->fetch_assoc();
+
+    $brgyoff = "SELECT tblofficials.fullname, tblofficials.picture, tblposition.position FROM tblofficials JOIN tblposition ON tblofficials.position = tblposition.id WHERE tblposition.position IN ('Kapitan','Secretary','Treasurer','Kagawad') AND `status`='Active'";
+    $brgyofficials = $conn->query($brgyoff);
+
+    $brgyofs = array();
+    while ($brgyof = $brgyofficials->fetch_assoc()) {
+      $brgyofs[] = $brgyof;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,8 +40,9 @@
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:losamigosdavaocity.gov@gmail.com">losamigosdavaocity.gov@gmail.com</a></i>
-        <i class="bi bi-telephone d-flex align-items-center ms-4"><span>(082) 228-8984</span></i>
+        <i class="bi bi-geo-alt-fill d-flex align-items-center ms-4"><span><?= ucwords($result['brgy_address']) ?> </span></i>
+        <i class="bi bi-envelope d-flex align-items-center ms-4"><a href="mailto:losamigosdavaocity.gov@gmail.com"> <?= ucwords($result['brgy_email']) ?></a></i>
+        <i class="bi bi-telephone d-flex align-items-center ms-4"> <span><?= ucwords($result['contact_number']) ?></span></i>
       </div>
     </div>
   </section>
@@ -44,7 +59,7 @@
             <li class="dropdown"><a href="#"><span>Officials</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a class="nav-link scrollto " href="barangay-officials.php">Barangay Officials</a></li>
-              <li><a class="nav-link scrollto " href="sangguniankabataan-officials.php">SK Official</a></li>
+              <li><a class="nav-link scrollto " href="sangguniankabataan-officials.php">SK Officials</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
@@ -61,7 +76,7 @@
       <br>
       <div class="d-flex">
         <a href="#main" class="btn-get-started scrollto">Get Started</a>
-        <a href="https://www.youtube.com/watch?v=NroSCViBo1M" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+        <a href="https://www.youtube.com/watch?v=NroSCViBo1M" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Play Now</span></a>
       </div>
     </div>
   </section>
@@ -377,47 +392,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div>
-
-            <!--<div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="homepage/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>MELLIZA JOIE BASUGA-TAÑAC</h3>
-                <h4>Barangay Treasurer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="homepage/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>AILEEN N. ATINO</h3>
-                <h4>Barangay Kagawad</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="homepage/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>RUEL CEBALLOS</h3>
-                <h4>Barangay Kagawad</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>-->   
-
+            </div> 
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -434,18 +409,6 @@
           <br>
           <h6>Residents of Barangay Los Amigos are invited to attend a community meeting to discuss crucial matters and provide updates.</h6>
         </div>
-
-        <!--<div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="announcement-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">Latest</li>
-              <li data-filter=".filter-card">Last Week</li>
-              <li data-filter=".filter-web">Last Month</li>
-            </ul>
-          </div>
-        </div>-->
-
         <div class="row announcement-container" data-aos="fade-up" data-aos-delay="200">
 
           <div class="col-lg-4 col-md-6 announcement-item filter-app">
@@ -606,7 +569,7 @@
             <div class="info-box mb-4">
               <i class="bx bx-map"></i>
               <h3>Our Address</h3>
-              <p>Purok 1-A Barangay, Tugbok, Davao City, 8000 Davao del Sur</p>
+              <p><?= ucwords($result['brgy_address']) ?></p>
             </div>
           </div>
 
@@ -614,7 +577,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-envelope"></i>
               <h3>Email Us</h3>
-              <p>losamigosdavaocity.gov@gmail.com</p>
+              <p><?= ucwords($result['brgy_email']) ?></p>
             </div>
           </div>
 
@@ -622,7 +585,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-phone-call"></i>
               <h3>Call Us</h3>
-              <p>(082) 228 8984</p>
+              <p><?= ucwords($result['contact_number']) ?></p>
             </div>
           </div>
 
@@ -674,12 +637,9 @@
 
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>CertiFast</h3>
-            <p>
-              Purok 1-A Barangay, <br>
-              Tugbok, Davao City<br>
-              8000 Davao del Sur <br><br>
-              <strong>Telephone:</strong> (082) 228 8984<br>
-              <strong>Email:</strong> losamigosdavaocity.gov@gmail.com<br>
+            <p><?= ucwords($result['brgy_address']) ?> <br> <br>
+              <strong>Telephone:</strong> <?= ucwords($result['contact_number']) ?><br>
+              <strong>Email:</strong> <?= ucwords($result['brgy_email']) ?><br>
             </p>
           </div>
 
@@ -713,7 +673,6 @@
             <div class="social-links mt-3">
               <a href="https://www.facebook.com/profile.php?id=100064303345469" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjI-Ma0x6b_AhWGft4KHc8sDiIQFnoECA8QAQ&url=https%3A%2F%2Fmail.google.com%2F%3F&usg=AOvVaw0UbLmQh5BLuX0lunN8sC9n" class="google-email"><i class="bx bxl-gmail"></i></a>
-              <a href="#" class="contact"><i class="bx bx-phone"></i></a>
             </div>
           </div>
 

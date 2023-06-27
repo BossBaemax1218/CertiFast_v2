@@ -49,7 +49,11 @@
                     </div>
                     <div class="form-group">
                         <label>Barangay Email Address</label>
-                        <input class="form-control" name="b_email" required value="<?= $b_email ?>">
+                        <input class="form-control" placeholder="Enter Barangay Email" name="b_email" required value="<?= $b_email ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Barangay Address</label>
+                        <input type="text" class="form-control" placeholder="Enter Barangay Address" name="brgy_address" required value="<?= $brgy_add ?>">
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -68,8 +72,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Dashboard Image</label><br>
-                        <img src="<?= !empty($db_img) ? 'assets/uploads/'.$db_img : 'assets/img/bg-abstract.png' ?>" class="img-fluid">
+                        <label>Dashboard Photo</label><br>
+                        <img src="<?= !empty($db_img) ? 'assets/uploads/'.$db_img : 'assets/img/LogoIcon.png' ?>" class="img-fluid">
                         <input type="file" class='form-control' name="db_img" accept="image/*">
                     </div>
                     <small class="form-text text-muted">Note: pls upload only image and not more than 20MB.</small>
@@ -78,6 +82,44 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Update</button>
             </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="photo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Photo Info</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="model/edit_brgy_info.php" enctype="multipart/form-data">
+                <input type="hidden" name="size" value="1000000">
+                    <div class="form-group">
+                        <label>Cover Photo</label><br>
+                        <img src="<?= !empty($cp_img) ? 'assets/uploads/'.$cp_img : 'assets/img/LogoIcon.png' ?>" class="img-fluid">
+                        <input type="file" class='form-control' name="cp_img" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label>About Photo</label><br>
+                        <img src="<?= !empty($cp_img) ? 'assets/uploads/'.$cp_img : 'assets/img/LogoIcon.png' ?>" class="img-fluid">
+                        <input type="file" class='form-control' name="cp_img" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label>Qoute Photo</label><br>
+                        <img src="<?= !empty($cp_img) ? 'assets/uploads/'.$cp_img : 'assets/img/LogoIcon.png' ?>" class="img-fluid">
+                        <input type="file" class='form-control' name="cp_img" accept="image/*">
+                    </div>
+                    <small class="form-text text-muted">Note: pls upload only image and not more than 20MB.</small>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
             </form>
         </div>
     </div>

@@ -90,8 +90,8 @@ $current_page = PageName();
                     </span>
                     <h4 class="text-section">Reports</h4>
                 </li>
-                <li class="nav-item <?= $current_page=='#' ? 'active' : null ?>">
-                    <a href="dashboard.php" >
+                <li class="nav-item <?= $current_page=='transaction_reports.php' ? 'active' : null ?>">
+                    <a href="transaction_reports.php" >
                         <i class="fas fa-history"></i>
                         <p>Transaction Reports</p>
                     </a>
@@ -146,6 +146,11 @@ $current_page = PageName();
                             <li>
                                 <a href="#barangay" data-toggle="modal">
                                     <span class="sub-item">Barangay Info</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#photo" data-toggle="modal">
+                                    <span class="sub-item">Photo's Info</span>
                                 </a>
                             </li>
                             <li class="<?= $current_page=='purok.php' ? 'active' : null ?>">
