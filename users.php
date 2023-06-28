@@ -12,19 +12,13 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>User Management</title>
+	<title>Admin & Staff Management</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
-
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
-
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header" style = "background-color: #E42654">
@@ -50,7 +44,7 @@
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Staff Management</div>
+										<div class="card-title">Admin & Staff Management</div>
 										<div class="card-tools">
 											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
 												<i class="fa fa-plus"></i>
@@ -63,7 +57,7 @@
 									<div class="table-responsive">
 										<table class="table">
 											<thead>
-												<tr>
+												<tr class="text-center">
 													<th scope="col">No.</th>
 													<th scope="col">Username</th>
 													<th scope="col">User Type</th>
@@ -74,7 +68,7 @@
 											<tbody>
 												<?php if(!empty($users)): ?>
 													<?php $no=1; foreach($users as $row): ?>
-													<tr>
+													<tr class="text-center">
 														<td><?= $no ?></td>
 														<td>
 															<div class="avatar avatar-xs">

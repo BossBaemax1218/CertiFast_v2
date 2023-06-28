@@ -47,100 +47,100 @@
 
 		<div class="main-panel">
 			<div class="content">
-				<div class="panel-header" style = "background-color: #E42654">
+				<div class="panel-header">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Residents Reports</h2>
+								<h1 class="text-center fw-bold" style="font-size: 400%;">User Reports</h1>
 							</div>
 						</div>
 					</div>
 				</div>
-                <div class="row mt-5" style="margin-left: 17%;">
-                    <div class="col-md-3 ml-4">
-                        <div class="card card-stats card card-round">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="icon-big text-center">
-                                            <i class="fas fa-user fa-2x" style="color: gray;"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-stats">
-                                    </div>
-                                    <div class="col-2 col-stats">
-                                        <div class="numbers mt-2">
-                                            <h2 class="text-uppercase" style="font-size: 13px;">Residents</h2>
-                                            <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #D32D41;"><?= number_format($totalresident) ?></h3>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="page-inner mt-2">
+                    <?php if(isset($_SESSION['message'])): ?>
+								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+									<?php echo $_SESSION['message']; ?>
+								</div>
+							<?php unset($_SESSION['message']); ?>
+						<?php endif ?>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card card-stats card card-round">
                                 <div class="card-body">
-                                    <a href="resident_info.php?state=voters" class="card-link text-" style="color: gray;">Total Residents </a>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="icon-big text-center">
+                                                <i class="fas fa-user fa-2x" style="color: gray;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 col-stats">
+                                        </div>
+                                        <div class="col-2 col-stats">
+                                            <div class="numbers mt-2">
+                                                <h2 class="text-uppercase" style="font-size: 13px;">Residents</h2>
+                                                <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #D32D41;"><?= number_format($totalresident) ?></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="resident_info.php?state=voters" class="card-link text-" style="color: gray;">Total Residents </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card card-stats card card-round">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="icon-big text-center">
-                                            <i class="fas fa-user-check fa-2x" style="color: gray;"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-stats">
-                                    </div>
-                                    <div class="col-2 col-stats">
-                                        <div class="numbers mt-2">
-                                            <h2 class="text-uppercase" style="font-size: 13px;">Voters</h2>
-                                            <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($votersyes) ?></h3>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-md-4">
+                            <div class="card card-stats card card-round">
                                 <div class="card-body">
-                                    <a href="users.php?state=male" class="card-link text" style="color: gray;">Total Voters</a>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="icon-big text-center">
+                                                <i class="fas fa-user-check fa-2x" style="color: gray;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 col-stats">
+                                        </div>
+                                        <div class="col-2 col-stats">
+                                            <div class="numbers mt-2">
+                                                <h2 class="text-uppercase" style="font-size: 13px;">Voters</h2>
+                                                <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($votersyes) ?></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="users.php?state=male" class="card-link text" style="color: gray;">Total Voters</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card card-stats card card-round">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="icon-big text-center">
-                                            <i class="fas fa-user-times fa-2x" style="color: gray;"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-stats">
-                                    </div>
-                                    <div class="col-2 col-stats">
-                                        <div class="numbers mt-2">
-                                            <h2 class="text-uppercase" style="font-size: 13px;">NonVoters</h2>
-                                            <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #D32D41;"><?= number_format($votersno) ?></h3>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-md-4">
+                            <div class="card card-stats card card-round">
                                 <div class="card-body">
-                                    <a href="resident_info.php?state=non_voters" class="card-link text" style="color: gray;">Total Non-Voters</a>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="icon-big text-center">
+                                                <i class="fas fa-user-times fa-2x" style="color: gray;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 col-stats">
+                                        </div>
+                                        <div class="col-2 col-stats">
+                                            <div class="numbers mt-2">
+                                                <h2 class="text-uppercase" style="font-size: 13px;">NonVoters</h2>
+                                                <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #D32D41;"><?= number_format($votersno) ?></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="resident_info.php?state=non_voters" class="card-link text" style="color: gray;">Total Non-Voters</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-				<div class="page-inner">
-					<div class="row mt--2">
+				<div class="page-inner md-2">
+					<div class="row">
 						<div class="col-md-12">
-
-                            <?php if(isset($_SESSION['message'])): ?>
-                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                                    <?php echo $_SESSION['message']; ?>
-                                </div>
-                            <?php unset($_SESSION['message']); ?>
-                            <?php endif ?>
-
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
@@ -163,7 +163,7 @@
 									<div class="table-responsive">
 										<table id="residenttable" class="table">
 											<thead>
-												<tr>
+												<tr class="text-center">
 													<th scope="col">Fullname</th>
                                                     <th scope="col">National ID</th>												
 													<th scope="col">Birthdate</th>
@@ -183,7 +183,7 @@
 												<?php if(!empty($resident)): ?>
 													<?php $no=1; foreach($resident as $row): ?>
 													<tr>
-														<td>
+														<td class="text-center">
                                                             <div class="avatar avatar-xs">
                                                                 <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
                                                             </div>

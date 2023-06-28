@@ -17,14 +17,8 @@
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
-
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
-
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header" style = "background-color: #E42654">
@@ -39,7 +33,6 @@
 				<div class="page-inner">
 					<div class="row mt--2">
 						<div class="col-md-4">
-
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
                                     <?php echo $_SESSION['message']; ?>
@@ -63,7 +56,7 @@
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
-                                                <tr>
+                                                <tr class="text-center">
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Position</th>
                                                     <th scope="col">Action</th>
@@ -72,7 +65,7 @@
                                             <tbody>
                                                 <?php if(!empty($position)): ?>
                                                     <?php $no=1; foreach($position as $row): ?>
-                                                    <tr>
+                                                    <tr class="text-center">
                                                         <td><?= $no ?></td>
                                                         <td><?= $row['position'] ?></td>
                                                         <td>
@@ -103,7 +96,6 @@
 				</div>
 			</div>
 
-            <!-- Modal -->
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -130,7 +122,6 @@
                 </div>
             </div>
 
-            <!-- Modal -->
             <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -157,10 +148,7 @@
                     </div>
                 </div>
             </div>
-
-			<!-- Main Footer -->
 			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
 			
 		</div>
 		

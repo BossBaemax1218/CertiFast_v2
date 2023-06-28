@@ -103,7 +103,7 @@
 									<div class="table-responsive">
 										<table class="table">
 											<thead>
-												<tr>
+												<tr class="text-center">
 													<th scope="col">Barangay ID</th>
 													<th scope="col">Fullname</th>
 													<th scope="col">Position</th>
@@ -121,7 +121,7 @@
 											<tbody>
 												<?php if (!empty($official)): ?>
 													<?php foreach ($official as $row): ?>
-														<tr>
+														<tr class="text-center">
 															<td><?= $row['barangay_id'] ?></td>
 															<td>
 																<div class="avatar avatar-xs mr-2">

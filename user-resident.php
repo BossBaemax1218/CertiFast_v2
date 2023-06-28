@@ -63,7 +63,7 @@
 									<div class="table-responsive">
 										<table class="table">
 											<thead>
-												<tr>
+												<tr class="text-center">
 													<th scope="col">No.</th>
 													<th scope="col">Name</th>
 													<th scope="col">Email</th>
@@ -75,7 +75,7 @@
 											<tbody>
 												<?php if(!empty($users)): ?>
 													<?php $no=1; foreach($users as $row): ?>
-													<tr>
+													<tr class="text-center">
 														<td><?= $no ?></td>
 														<td><?= $row['fullname'] ?></td>
                                                         <td><?= $row['user_email'] ?></td>

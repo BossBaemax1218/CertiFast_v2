@@ -143,16 +143,6 @@ $current_page = PageName();
                     </a>
                     <div class="collapse <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='user-resident.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'show' : null ?>" id="settings">
                         <ul class="nav nav-collapse">
-                            <li>
-                                <a href="#barangay" data-toggle="modal">
-                                    <span class="sub-item">Barangay Info</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#photo" data-toggle="modal">
-                                    <span class="sub-item">Photo's Info</span>
-                                </a>
-                            </li>
                             <li class="<?= $current_page=='purok.php' ? 'active' : null ?>">
                                 <a href="purok.php">
                                     <span class="sub-item">Purok</span>
@@ -163,7 +153,6 @@ $current_page = PageName();
                                     <span class="sub-item">Position</span>
                                 </a>
                             </li>
-                            
                             <?php if($_SESSION['role']=='staff'):?>
                                 <li>
                                     <a href="#support" data-toggle="modal">
@@ -174,6 +163,16 @@ $current_page = PageName();
                                 <li class="<?= $current_page=='users.php' ? 'active' : null ?>">
                                     <a href="users.php">
                                         <span class="sub-item">Staff</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#barangay" data-toggle="modal">
+                                        <span class="sub-item">Barangay Info</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#photo" data-toggle="modal">
+                                        <span class="sub-item">Photo's Info</span>
                                     </a>
                                 </li>
                                 <li class="<?= $current_page=='support.php' ? 'active' : null ?>">

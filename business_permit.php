@@ -66,7 +66,7 @@
 									<div class="table-responsive">
 										<table id="residenttable" class="table">
 											<thead>
-												<tr>
+												<tr class="text-center">
 													<th scope="col">Name of Business</th>
 													<th scope="col">Business Owner</th>
 													<th scope="col">Description</th>
@@ -79,7 +79,7 @@
 											<tbody>
 												<?php if(!empty($permit)): ?>
 													<?php foreach($permit as $row): ?>
-													<tr>
+													<tr class="text-center">
 														<td><?= ucwords($row['name']) ?></td>
 														<td><?= !empty($row['owner1']) ? ucwords($row['owner1']) : $row['owner1'] ?></td>
 														<td><?= $row['nature'] ?></td>

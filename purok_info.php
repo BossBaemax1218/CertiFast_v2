@@ -68,7 +68,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>
-                                                <tr>
+                                                <tr class="text-center">
                                                     <th scope="col">No.</th>
                                                     <th scope="col"><?= $state=='purok' ? 'Purok Name' : 'Precint No.' ?></th>
                                                     <th scope="col">No. of Residents</th>
@@ -78,7 +78,7 @@
                                             <tbody>
                                                 <?php if(!empty($purok)): ?>
                                                     <?php $no=1; foreach($purok as $row): ?>
-                                                    <tr>
+                                                    <tr class="text-center">
                                                         <td><?= $no ?></td>
                                                         <td><?= $state!='purok' ? $row['precinct'] : $row['purok'] ?></td>
                                                         <td><?= $row['total_residents'] ?></td>

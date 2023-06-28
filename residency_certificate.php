@@ -65,7 +65,7 @@
 									<div class="table-responsive">
 										<table id="residenttable" class="display table">
 											<thead>
-												<tr>
+												<tr class="text-center">
 													<th scope="col">Fullname</th>
 													<th scope="col">Birthdate</th>
 													<th scope="col">Age</th>
@@ -82,7 +82,7 @@
 											<tbody>
 												<?php if(!empty($resident)): ?>
 													<?php $no=1; foreach($resident as $row): ?>
-													<tr>
+													<tr class="text-center">
 														<td>
                                                             <div class="avatar avatar-xs">
                                                                 <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">

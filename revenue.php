@@ -14,33 +14,27 @@
 	<?php include 'templates/header.php' ?>
 	<link rel="stylesheet" href="assets/js/plugin/dataTables.dateTime.min.css">
 	<link rel="stylesheet" href="assets/js/plugin/datatables/Buttons-1.6.1/css/buttons.dataTables.min.css">
-	<title>Barangay Revenues</title>
+	<title>Transaction Reports</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
-
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
-
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header" style = "background-color: #E42654">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Barangay Revenues</h2>
+								<h2 class="text-white fw-bold">Transaction Reports</h2>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="page-inner">
 					<div class="row mt--2">
-						<div class="col-md-8">
+						<div class="col-md-12">
 
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
@@ -56,7 +50,7 @@
 									</div>
 								</div>
 								<div class="card-body">
-									<div class="row mb-3 w-50" style="center: 100px;">
+									<div class="row ml-2 w-50" style="center: 100px;">
 										<div class="col">
 											<label>Minimum Date</label>
 											<input type="text" class="form-control" placeholder="Enter Date" id="min">
