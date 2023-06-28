@@ -65,7 +65,7 @@
 									<div class="table-responsive">
 										<table id="residenttable" class="table">
 											<thead>
-												<tr class="text-center">
+												<tr>
 													<th scope="col">Fullname</th>
 													<th scope="col">Birthdate</th>
 													<th scope="col">Age</th>
@@ -75,14 +75,14 @@
 													<?php if(isset($_SESSION['username'])):?>
 														<?php if($_SESSION['role']=='administrator'):?>
 													<?php endif ?>
-													<th scope="col">Action</th>
+													<th class="text-center" scope="col">Action</th>
 													<?php endif ?>
 												</tr>
 											</thead>
 											<tbody>
 												<?php if(!empty($resident)): ?>
 													<?php $no=1; foreach($resident as $row): ?>
-													<tr class="text-center">
+													<tr>
 														<td>
                                                             <div class="avatar avatar-xs">
                                                                 <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
@@ -97,7 +97,7 @@
 														<?php if(isset($_SESSION['username'])):?>
 															<?php if($_SESSION['role']=='administrator'):?>
 														<?php endif ?>
-														<td>
+														<td class="text-center">
 															<div class="form-button-action">
 																<a type="button" data-toggle="tooltip" href="generate_indi_cert.php?id=<?= $row['id'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Certificate">
 																	<i class="fas fa-print"></i>

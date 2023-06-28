@@ -73,7 +73,6 @@
         padding: 0px;
         color: yellow;
     }
-    /* Media query for laptops and computers */
     @media (min-width: 992px) {
         .footer-names {
             margin-bottom: 0;
@@ -87,8 +86,6 @@
             margin-left: 100px;
         }
     }
-
-    /* Media query for phones */
     @media (max-width: 767px) {
         .footer-content {
             flex-direction: column;
@@ -108,14 +105,8 @@
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
-
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
-
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header" style = "background-color: #E42654">

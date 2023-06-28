@@ -63,25 +63,25 @@
 									<div class="table-responsive">
 										<table class="table">
 											<thead>
-												<tr class="text-center">
+												<tr>
 													<th scope="col">No.</th>
 													<th scope="col">Name</th>
 													<th scope="col">Email</th>
 													<th scope="col">Status</th>
 													<th scope="col">Created</th>
-													<th scope="col">Action</th>
+													<th class="text-center" scope="col">Action</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php if(!empty($users)): ?>
 													<?php $no=1; foreach($users as $row): ?>
-													<tr class="text-center">
+													<tr>
 														<td><?= $no ?></td>
 														<td><?= $row['fullname'] ?></td>
                                                         <td><?= $row['user_email'] ?></td>
 														<td><?= $row['verification_status'] ?></td>
 														<td><?= $row['created_at'] ?></td>
-														<td>
+														<td class="text-center">
 															<div class="form-button-action">
 																<a type="button" data-toggle="tooltip" href="model/remove_user.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this user?');" class="btn btn-link btn-danger" data-original-title="Remove">
 																	<i class="fas fa-trash"></i>

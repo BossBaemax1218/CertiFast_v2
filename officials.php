@@ -103,7 +103,7 @@
 									<div class="table-responsive">
 										<table class="table">
 											<thead>
-												<tr class="text-center">
+												<tr>
 													<th scope="col">Barangay ID</th>
 													<th scope="col">Fullname</th>
 													<th scope="col">Position</th>
@@ -114,14 +114,14 @@
 														<?php if($_SESSION['role']=='administrator'):?>
 														<th>Status</th>
 														<?php endif ?>
-														<th>Action</th>
+														<th class="text-center">Action</th>
 													<?php endif?>
 												</tr>
 											</thead>
 											<tbody>
 												<?php if (!empty($official)): ?>
 													<?php foreach ($official as $row): ?>
-														<tr class="text-center">
+														<tr>
 															<td><?= $row['barangay_id'] ?></td>
 															<td>
 																<div class="avatar avatar-xs mr-2">
@@ -137,7 +137,7 @@
 																<?php if ($_SESSION['role'] == 'administrator'): ?>
 																	<td><?= $row['status'] == 'Active' ? '<span class="badge badge-primary">Active</span>' : '<span class="badge badge-danger">Inactive</span>' ?></td>
 																<?php endif ?>
-																<td>
+																<td class="text-center">
 																	<a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary"
 																		title="Edit Position" onclick="editOfficial(this)" data-id="<?= $row['id'] ?>" data-img="<?= $row['picture'] ?>" data-barangayid="<?= $row['barangay_id'] ?>" data-name="<?= $row['fullname'] ?>"
 																		data-pos="<?= $row['pos_id'] ?>" data-address="<?= $row['address'] ?>" data-start="<?= $row['termstart'] ?>"

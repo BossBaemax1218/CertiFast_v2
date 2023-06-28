@@ -2,9 +2,9 @@
 <?php 
     $query = "SELECT SUM(details) as de FROM tblpayments";
     $revenue1 = $conn->query($query)->fetch_assoc();
-    
-    $query1 = "SELECT SUM(name) as na FROM tblpayments";
-    $revenue2 = $conn->query($query1)->fetch_assoc();
+
+    $sql1 = "SELECT COUNT(name) as na FROM tblpayments";
+    $result1 = $conn->query($sql1)->fetch_assoc();
 
 	$query2 = "SELECT SUM(amounts) as am FROM tblpayments ORDER BY `date` DESC";
 	$revenue3 = $conn->query($query2)->fetch_assoc();
@@ -20,7 +20,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?php include 'templates/header.php' ?>                     
+	<?php include 'templates/header.php' ?>     
+      <!-- Include the jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- Include the jQuery UI library -->
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+  
+  <!-- Include the jQuery UI CSS -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  
+  <!-- Include the tableHTMLExport plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/table-html-export"></script>              
 	<title>Transaction Reports</title>
 </head>
 <body>
@@ -53,15 +64,15 @@
                                         <div class="row">
                                             <div class="col-4">
                                                 <div class="icon-big text-center">
-                                                    <i class="fas fa-users fa-2x" style="color: gray;"></i>
+                                                    <i class="fas fa-check fa-2x" style="color: gray;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2 col-stats">
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 13px;">Recipient</h2>
-                                                    <h3 class="fw-bold text-uppercase" style="font-size: 45px; color: #C77C8D;"><?= number_format($revenue2['na']) ?></h3>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Complete</h2>
+                                                    <h3 class="fw-bold text-uppercase" style="font-size: 45px; color: #C77C8D;"><?= number_format($result1['na']) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -84,8 +95,8 @@
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 13px;">Earnings</h2>
-                                                    <h3 class="fw-bold" style="font-size: 45px; color: #C77C8D;"><span>&#8369;</span><?= number_format($revenue3['am'])?></h3>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Total</h2>
+                                                    <h3 class="fw-bold" style="font-size: 45px; color: #C77C8D;"><?= number_format($revenue3['am'],2)?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -101,14 +112,14 @@
                                         <div class="row">
                                             <div class="col-4">
                                                 <div class="icon-big text-center">
-                                                    <i class="fas fa-bell fa-2x" style="color: gray;"></i>
+                                                    <i class="fas fa-clock fa-2x" style="color: gray;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2 col-stats">
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 13px;">Paid</h2>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Pending</h2>
                                                     <h3 class="fw-bold text-uppercase" style="font-size: 45px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h3>
                                                 </div>
                                             </div>
@@ -129,7 +140,7 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="card-head-row">
-                                            <div class="card-title">Revenue Informations</div>
+                                            <div class="card-title">Transaction History</div>
                                             <?php if(isset($_SESSION['username'])):?>
                                             <div class="card-tools">
                                                 <a id="print" class="btn btn-primary btn-border btn-round btn-sm">
@@ -153,49 +164,48 @@
                                             </div>
                                         </div>
                                     <div class="card-body">
-                                        <div class="row w-100">
+                                        <div class="row w-50">
                                             <div class="col ml-3">
-                                                <input type="text" class="form-control" placeholder="Enter Minimum Date" id="min">
+                                                <label>Minimum Date</label>
+                                                <input type="text" class="form-control datepicker" placeholder="Enter Date" id="min">
                                             </div>
                                             <div class="col">
-                                                <input type="text" class="form-control" placeholder="Enter Maximum Date" id="max">
-                                            </div>
-                                            <div class="col" style="margin-left: 50%">
-                                                <input type="text" class="form-control" placeholder="Search" id="search">
+                                                <label>Maximum Date</label>
+                                                <input type="text" class="form-control datepicker" placeholder="Enter Date" id="max">
                                             </div>
                                         </div>
-                                        <div class="table-responsive">
+                                        <div class="table-responsive mt-3">
                                             <table id="revenuetable" class="table">
                                                 <thead>
-                                                    <tr class="text-center">
-                                                        <th scope="col">Date</th>
+                                                    <tr>
+                                                        <th class="text-center" scope="col">Date</th>
                                                         <th scope="col">Recipient</th>
                                                         <th scope="col">Details</th>
                                                         <th scope="col">Amount</th>
-                                                        <th scope="col">Staff</th>
-                                                        <th scope="col">Action</th>
+                                                        <th scope="col">Cashier</th>
+                                                        <th class="text-center" scope="col">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php if(!empty($revenue)): ?>
                                                         <?php $no=1; foreach($revenue as $row): ?>
-                                                        <tr class="text-center">
-                                                            <td><?= $row['date'] ?></td>
+                                                        <tr>
+                                                            <td class="text-center"><?= $row['date'] ?></td>
                                                             <td><?= $row['name'] ?></td>
                                                             <td><?= $row['details'] ?></td>
                                                             <td> <i class="fa-solid fa-peso-sign"></i> <?= number_format($row['amounts'],2) ?></td>
                                                             <td><?= $row['user'] ?></td>
-                                                            <td>
-                                                            <div class="form-button-action">
-                                                                <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
-                                                                <a type="button" data-toggle="tooltip" href="generate_receipt.php?id=<?= $row['id'] ?>" class="btn btn-link btn-info" data-original-title="Generate">
-                                                                    <i class="fas fa-print"></i>
-                                                                </a>
-                                                                <a type="button" data-toggle="tooltip" href="model/remove_payment.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this data?');" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                    <i class="fas fa-trash"></i>
-                                                                </a>
-                                                                <?php endif ?>
-                                                            </div>
+                                                            <td class="text-center">
+                                                                <div class="form-button-action">
+                                                                    <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
+                                                                    <a type="button" data-toggle="tooltip" href="generate_receipt.php?id=<?= $row['id'] ?>" class="btn btn-link btn-info" data-original-title="Generate">
+                                                                        <i class="fas fa-print"></i>
+                                                                    </a>
+                                                                    <a type="button" data-toggle="tooltip" href="model/remove_payment.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this data?');" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                                        <i class="fas fa-trash"></i>
+                                                                    </a>
+                                                                    <?php endif ?>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                         <?php $no++; endforeach ?>
@@ -214,55 +224,61 @@
 	    </div>
 	<?php include 'templates/footer.php' ?>
 <script>
+var minDate, maxDate;
+
+$.fn.dataTable.ext.search.push(
+	function(settings, data, dataIndex) {
+		var min = minDate.val();
+		var max = maxDate.val();
+		var date = new Date(data[0]);
+
+		if (
+			(min === null && max === null) ||
+			(min === null && date <= max) ||
+			(min <= date && max === null) ||
+			(min <= date && date <= max)
+		) {
+			return true;
+		}
+		return false;
+	}
+);
+
 $(document).ready(function() {
-  // Search function
-  $("#search").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
+	minDate = new DateTime($('#min'), {
+		format: 'MMMM Do YYYY'
+	});
+	maxDate = new DateTime($('#max'), {
+		format: 'MMMM Do YYYY'
+	});
 
-    // Loop through each row in the table body
-    $("#revenuetable tbody tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-    });
-  });
+	var table = $('#revenuetable').DataTable({
+		"order": [[0, "desc"]],
+		dom: 'Bfrtip',
+		buttons: []
+	});
 
-  $(".datepicker").datepicker({
-    dateFormat: "yy-mm-dd" // Customize date format if needed
-  });
+	$('#min, #max').on('change', function() {
+		table.draw();
+	});
+});
 
-  // Attach event listener for min and max input changes
-  $("#min, #max").on("change", function() {
-    var minDate = new Date($("#min").val());
-    var maxDate = new Date($("#max").val());
-
-    // Loop through each row in the table body
-    $("#revenuetable tbody tr").each(function() {
-      var rowDate = new Date($(this).find("td:first-child").text());
-
-      // Show/hide rows based on the min and max date
-      if (rowDate >= minDate && rowDate <= maxDate) {
-        $(this).show();
-      } else {
-        $(this).hide();
-      }
-    });
-  });
-
-  $("#csv").on("click", function() {
+  $(document).on("click", "#csv", function() {
     console.log("Exporting revenue table as CSV...");
     $("#revenuetable").tableHTMLExport({ type: "csv", filename: "Revenue.csv" });
   });
 
-  $("#pdf").on("click", function() {
+  $(document).on("click", "#pdf", function() {
     console.log("Exporting revenue table as PDF...");
     $("#revenuetable").tableHTMLExport({ type: "pdf", filename: "Revenue.pdf" });
   });
 
-  $("#txt").on("click", function() {
+  $(document).on("click", "#txt", function() {
     console.log("Exporting revenue table as TXT...");
     $("#revenuetable").tableHTMLExport({ type: "txt", filename: "Revenue.txt" });
   });
 
-  $("#print").on("click", function() {
+  $(document).on("click", "#print", function() {
     console.log("Printing revenue table...");
     var printContents = $(".table-responsive").html();
     var originalContents = document.body.innerHTML;
@@ -270,8 +286,6 @@ $(document).ready(function() {
     window.print();
     document.body.innerHTML = originalContents;
   });
-});
-
 </script>
 </body>
 </html>
