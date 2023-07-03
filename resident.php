@@ -77,8 +77,8 @@
                                         </div>
                                         <div class="col-2 col-stats">
                                             <div class="numbers mt-2">
-                                                <h2 class="text-uppercase" style="font-size: 13px;">Residents</h2>
-                                                <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #D32D41;"><?= number_format($totalresident) ?></h3>
+                                                <h2 class="text-uppercase" style="font-size: 16px;">Residents</h2>
+                                                <h3 class="fw-bold text-uppercase" style="font-size: 40px; color: #C77C8D;"><?= number_format($totalresident) ?></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -101,8 +101,8 @@
                                         </div>
                                         <div class="col-2 col-stats">
                                             <div class="numbers mt-2">
-                                                <h2 class="text-uppercase" style="font-size: 13px;">Voters</h2>
-                                                <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($votersyes) ?></h3>
+                                                <h2 class="text-uppercase" style="font-size: 16px;">Voters</h2>
+                                                <h3 class="fw-bold" style="font-size: 40px; color: #C77C8D;"><?= number_format($votersyes) ?></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -125,8 +125,8 @@
                                         </div>
                                         <div class="col-2 col-stats">
                                             <div class="numbers mt-2">
-                                                <h2 class="text-uppercase" style="font-size: 13px;">NonVoters</h2>
-                                                <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #D32D41;"><?= number_format($votersno) ?></h3>
+                                                <h2 class="text-uppercase" style="font-size: 16px;">NonVoters</h2>
+                                                <h3 class="fw-bold text-uppercase" style="font-size: 40px; color: #C77C8D;"><?= number_format($votersno) ?></h3>
                                             </div>
                                         </div>
                                     </div>

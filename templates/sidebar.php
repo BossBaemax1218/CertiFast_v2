@@ -90,13 +90,13 @@ $current_page = PageName();
                     </span>
                     <h4 class="text-section">Reports</h4>
                 </li>
-                <li class="nav-item <?= $current_page=='transaction_reports.php' ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page=='transaction_reports.php' || $current_page=='revenue.php' || $current_page=='resident_info.php'  ? 'active' : null ?>">
                     <a href="transaction_reports.php" >
                         <i class="fas fa-history"></i>
                         <p>Transaction Reports</p>
                     </a>
                 </li>
-                <li class="nav-item <?= $current_page=='certificates_reports.php' ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page=='certificates_reports.php' || $current_page=='resident_info.php' || $current_page=='purok_info.php'  ? 'active' : null ?>">
                     <a href="certificates_reports.php" >
                         <i class="far fa-file-alt"></i>
                         <p>Certificates Reports</p>
@@ -108,7 +108,7 @@ $current_page = PageName();
                         <p>User Reports</p>
                     </a>
                 </li>
-                <li class="nav-item <?= $current_page=='officials.php' ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page=='officials.php' || $current_page=='resident_info.php' || $current_page=='purok_info.php'  ? 'active' : null ?>">
                     <a href="officials.php">
                         <i class="fas fa-user-tie"></i>
                         <p>Official's Reports</p>
@@ -194,13 +194,9 @@ $current_page = PageName();
                     </div>
                 </li>
                 <?php endif ?>
-                <br><br>
+                <br>
                 <li class="nav-item active">
-                    <?php if(isset($_SESSION['role'])):?>
-                        <a class="see-all" href="model/logout.php"><i class="bx bx-log-out icon-logout" style="color:white"></i><p>Sign Out</p></a>
-                    <?php else: ?>
-                        <a class="see-all" href="login.php"><i class="icon-login" style="color:white"><p>Sign In</p></i> </a>
-                    <?php endif ?>
+                    <a class="see-all" href="model/logout.php"><i class="fas fa-sign-out-alt"></i><p>Logout</p></a>
                 </li>
             </ul>
         </div>

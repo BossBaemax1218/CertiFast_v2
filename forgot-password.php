@@ -41,7 +41,7 @@
                             <input id="email" type="email" autocomplete="off" name="email" placeholder="Email" class="input">
                         </div>
                         <div class="field button-field">
-                            <button type="submit" value="submit">Submit</button>
+                            <button type="submit" value="submit" class="far fa-paper-plane text-center" style='font-size:20px'> Submit</button>
                         </div>
                     </form>
                     <div class="form-link">

@@ -52,7 +52,7 @@
                             <a href="forgot-password.php" class="forgot-pass">Forgot password?</a>
                         </div>
                         <div class="form-group button-field">
-                            <button type="submit" value="submit">Submit</button>
+                            <button type="submit" value="submit" class="fas fa-sign-in-alt text-center" style='font-size:20px'> Submit</button>
                         </div>
                     </form>
                     <div class="form-link">
@@ -68,7 +68,6 @@
                 </div>
             </div>
         </section>
-        <!-- JavaScript -->
         <script src="vendor-login/js/password.js"></script>
     </body>
 </html>
