@@ -49,7 +49,7 @@
                             <i class='bx bx-hide eye-icon second_password'></i>
                         </div>
                         <div class="field button-field">
-                            <button type="submit" value="submit" class="far fa-paper-plane text-center" style='font-size:20px'> Submit</button>
+                            <button type="submit" value="submit" class="far fa-paper-plane text-center" style='font-size:20px'> Send</button>
                         </div>
                     </form>
                 </div>
