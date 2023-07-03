@@ -139,9 +139,7 @@ $mail->Password = 'ipqostilxutxmbxl';
 $mail->Port = 587;
 
 if ($mail->send()) {
-    // Register the user
-    // Hash the password using SHA1
-    $hashedPassword = sha1($password);
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     $query = "INSERT INTO tbl_user_resident (`fullname`, `user_email`, `password`, `verification_code`, `verification_send`, `verification_status`) VALUES ('$fullname', '$email', '$hashedPassword', '$verificationCode', '$verificationSend', 0)";
 
@@ -170,4 +168,5 @@ if ($mail->send()) {
 }
 
 $conn->close();
+
 ?>

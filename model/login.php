@@ -24,53 +24,63 @@ if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] >= 5) {
 }
 
 if ($user_email != '' && $password != '') {
-    // Check if the user is a verified resident
-    $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = ? AND password = SHA1(?) AND verification_status = 1";
-    $stmt = $conn->prepare($residentQuery);
-    $stmt->bind_param("ss", $user_email, $password);
-    $stmt->execute();
-    $residentResult = $stmt->get_result();
-
-    if ($residentResult->num_rows) {
-        $row = $residentResult->fetch_assoc();
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['fullname'] = $row['fullname'];
-        $_SESSION['role'] = 'resident';
-
-        $_SESSION['message'] = 'You have successfully logged in as a resident!';
-        $_SESSION['success'] = 'success';
-        $_SESSION['form'] = 'login';
-
-        header('location: ../resident_dashboard.php');
-        exit();
-    }
-
     // Check if the user is an admin or staff
-    $adminStaffQuery = "SELECT * FROM tbl_user_admin WHERE username = ? AND password = SHA1(?)";
+    $adminStaffQuery = "SELECT * FROM tbl_user_admin WHERE username = ?";
     $stmt = $conn->prepare($adminStaffQuery);
-    $stmt->bind_param("ss", $user_email, $password);
+    $stmt->bind_param("s", $user_email);
     $stmt->execute();
     $adminStaffResult = $stmt->get_result();
 
     if ($adminStaffResult->num_rows) {
         $row = $adminStaffResult->fetch_assoc();
-        $role = $row['user_type'];
+        $hashedPassword = $row['password'];
 
-        if ($role == 'administrator') {
-            $_SESSION['message'] = 'You have successfully logged in as an admin!';
-            $_SESSION['success'] = 'success';
-        } elseif ($role == 'staff') {
-            $_SESSION['message'] = 'You have successfully logged in as a staff!';
-            $_SESSION['success'] = 'success';
+        // Verify the password using password_verify
+        if (password_verify($password, $hashedPassword)) {
+            $role = $row['user_type'];
+
+            if ($role == 'administrator') {
+                $_SESSION['message'] = 'You have successfully logged in as an administrator!';
+                $_SESSION['success'] = 'success';
+            } elseif ($role == 'staff') {
+                $_SESSION['message'] = 'You have successfully logged in as a staff employee!';
+                $_SESSION['success'] = 'success';
+            }
+
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['role'] = $role;
+            $_SESSION['avatar'] = $row['avatar'];
+
+            header('location: ../dashboard.php');
+            exit();
         }
+    }
 
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['username'] = $row['username'];
-        $_SESSION['role'] = $role;
-        $_SESSION['avatar'] = $row['avatar'];
+    // Check if the user is a verified resident
+    $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = ?";
+    $stmt = $conn->prepare($residentQuery);
+    $stmt->bind_param("s", $user_email);
+    $stmt->execute();
+    $residentResult = $stmt->get_result();
 
-        header('location: ../dashboard.php');
-        exit();
+    if ($residentResult->num_rows) {
+        $row = $residentResult->fetch_assoc();
+        $hashedPassword = $row['password'];
+
+        // Verify the password using password_verify
+        if (password_verify($password, $hashedPassword)) {
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['fullname'] = $row['fullname'];
+            $_SESSION['role'] = $row['resident'];
+
+            $_SESSION['message'] = 'You have successfully logged in as a resident!';
+            $_SESSION['success'] = 'success';
+            $_SESSION['form'] = 'login';
+
+            header('location: ../resident_dashboard.php');
+            exit();
+        }
     }
 
     // Increment the login attempts and set the last login attempt time

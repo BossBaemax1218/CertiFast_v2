@@ -46,7 +46,6 @@
                         </div>
                         <div class="form-group input-field">
                             <input id="password" type="password" name="password" autocomplete="off" placeholder="Password" class="password">
-                            <i class='bx bx-hide eye-icon'></i>
                         </div>
                         <div class="form-link">
                             <a href="forgot-password.php" class="forgot-pass">Forgot password?</a>
@@ -68,6 +67,5 @@
                 </div>
             </div>
         </section>
-        <script src="vendor-login/js/password.js"></script>
     </body>
 </html>

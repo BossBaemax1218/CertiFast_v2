@@ -39,13 +39,11 @@
                         <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>
                         <div class="form-group input-field">
-                            <input id="fullname" type="text" name="fullname" autocomplete="off" placeholder="Fullame" class="input">
+                            <input id="fullname" type="text" name="fullname" autocomplete="off" placeholder="Fullname" class="input">
                         </div>
-
                         <div class="form-group input-field">
                             <input  id="email" type="text" name="email" autocomplete="off" placeholder="Email" class="input">
                         </div>
-
                         <div class="form-group input-field">
                             <input id="password" type="password" name="password" autocomplete="off" placeholder="Password" class="password">
                             <i class='bx bx-hide eye-icon'></i>
@@ -54,14 +52,11 @@
                             <button type="submit" value="submit" class="fas fa-sign-in-alt text-center" style='font-size:20px'> Submit</button>
                         </div>
                     </form>
-
                     <div class="form-link">
                         <span>Already have an account? <a href="login.php" class="login-link">Login</a></span>
                     </div>
                 </div>
-
                 <div class="line"></div>
-
                 <div class="media-options">
                     <a href="templates/error.php" class="form-group google">
                         <img src="vendor-login/images/google.png" alt="" class="google-img">
