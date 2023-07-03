@@ -3,7 +3,7 @@
 require("../server/server.php");
 
 // get Users
-$query = "SELECT national_id,firstname,middlename,lastname,alias,birthplace,birthdate,age,civilstatus,gender,purok,voterstatus,identified_as,phone,email,address FROM tblresident";
+$query = "SELECT national_id,firstname,middlename,lastname,address,birthplace,birthdate,age,civilstatus,gender,purok,voterstatus,taxno,phone,email FROM tblresident";
 if (!$result = $conn->query($query)) {
     exit($conn->error);
 }
@@ -18,7 +18,7 @@ if ($result->num_rows > 0) {
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=Residents.csv');
 $output = fopen('php://output', 'w');
-fputcsv($output, array('National ID', 'First Name','Middle Name', 'Last Name', 'Alias', 'Birtplace', 'Birthdate', 'Age', 'Civil Status', 'Gender', 'Purok', 'Voter Status', 'Identified As', 'Contact Number', 'Tax', 'Address'));
+fputcsv($output, array('National ID', 'First Name','Middle Name', 'Last Name', 'Address', 'Birtplace', 'Birthdate', 'Age', 'Civil Status', 'Gender', 'Purok', 'Voter Status', 'Tax no.', 'Contact Number', 'Email'));
 
 if (count($users) > 0) {
     foreach ($users as $row) {

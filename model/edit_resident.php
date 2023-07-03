@@ -12,7 +12,7 @@
 	$fname 		= $conn->real_escape_string($_POST['fname']);
 	$mname 		= $conn->real_escape_string($_POST['mname']);
     $lname 		= $conn->real_escape_string($_POST['lname']);
-	$alias 		= $conn->real_escape_string($_POST['alias']);
+	$address 		= $conn->real_escape_string($_POST['address']);
     $bplace 	= $conn->real_escape_string($_POST['bplace']);
 	$bdate 		= $conn->real_escape_string($_POST['bdate']);
     $age 		= $conn->real_escape_string($_POST['age']);
@@ -20,21 +20,19 @@
 	$gender 	= $conn->real_escape_string($_POST['gender']);
     $purok 		= $conn->real_escape_string($_POST['purok']);
 	$vstatus 	= $conn->real_escape_string($_POST['vstatus']);
-    $indetity 	= $conn->real_escape_string($_POST['indetity']);
+    $taxno		= $conn->real_escape_string($_POST['taxno']);
     $email 	    = $conn->real_escape_string($_POST['email']);
 	$number 	= $conn->real_escape_string($_POST['number']);
-    $address 	= $conn->real_escape_string($_POST['address']);
+    $remarks 	= $conn->real_escape_string($_POST['remarks']);
 	$occu 		= $conn->real_escape_string($_POST['occupation']);
     $citi 		= $conn->real_escape_string($_POST['citizenship']);
 	$deceased 	= $conn->real_escape_string($_POST['deceased']);
-    $remarks 	= $conn->real_escape_string($_POST['remarks']);
-	$profile 	= $conn->real_escape_string($_POST['profileimg']); // base 64 image
+    $purpose 	= $conn->real_escape_string($_POST['purpose']);
+	$profile 	= $conn->real_escape_string($_POST['profileimg']); 
 	$profile2 	= $_FILES['img']['name'];
 
-	// change profile2 name
 	$newName = date('dmYHis').str_replace(" ", "", $profile2);
 
-	  // image file directory
   	$target = "../assets/uploads/resident_profile/".basename($newName);
 	$check = "SELECT id FROM tblresident WHERE national_id='$national_id'";
 	$nat = $conn->query($check)->fetch_assoc();	
@@ -43,9 +41,9 @@
 
 			if(!empty($profile) && !empty($profile2)){
 
-				$query = "UPDATE tblresident SET national_id='$national_id',citizenship='$citi',`picture`='$profile', `firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `alias`='$alias', `birthplace`='$bplace', `birthdate`='$bdate', 
-						age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `identified_as`='$indetity', `phone`='$number', `email`='$email',`occupation`='$occu', `address`='$address',
-						`resident_type`='$deceased', `remarks`='$remarks'
+				$query = "UPDATE tblresident SET national_id='$national_id',citizenship='$citi',`picture`='$profile', `firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
+						age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `taxno`='$taxno', `phone`='$number', `email`='$email',`occupation`='$occu', `remarks`='$remarks',
+						`resident_type`='$deceased', `purpose`='$purpose'
 						WHERE id=$id;";
 
 				if($conn->query($query) === true){
@@ -55,9 +53,9 @@
 				}
 			}else if(!empty($profile) && empty($profile2)){
 
-				$query = "UPDATE tblresident SET national_id='$national_id',citizenship='$citi',`picture`='$profile', `firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `alias`='$alias', `birthplace`='$bplace', `birthdate`='$bdate', 
-						age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `identified_as`='$indetity', `phone`='$number', `email`='$email',`occupation`='$occu', `address`='$address',
-						`resident_type`='$deceased', `remarks`='$remarks'
+				$query = "UPDATE tblresident SET national_id='$national_id',citizenship='$citi',`picture`='$profile', `firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
+						age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `taxno`='$taxno', `phone`='$number', `email`='$email',`occupation`='$occu', `remarks`='$remarks',
+						`resident_type`='$deceased', `purpose`='$purpose'
 						WHERE id=$id;";
 				
 				if($conn->query($query) === true){
@@ -68,9 +66,9 @@
 
 			}else if(empty($profile) && !empty($profile2)){
 
-				$query = "UPDATE tblresident SET national_id='$national_id',citizenship='$citi',`picture`='$newName', `firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `alias`='$alias', `birthplace`='$bplace', `birthdate`='$bdate', 
-							age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `identified_as`='$indetity', `phone`='$number', `email`='$email',`occupation`='$occu', `address`='$address',
-							`resident_type`='$deceased', `remarks`='$remarks'
+				$query = "UPDATE tblresident SET national_id='$national_id',citizenship='$citi',`picture`='$newName', `firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
+							age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `taxno`='$taxno', `phone`='$number', `email`='$email',`occupation`='$occu', `remarks`='$remarks',
+							`resident_type`='$deceased', `purpose`='$purpose'
 							WHERE id=$id;";
 
 				if($conn->query($query) === true){
@@ -86,9 +84,9 @@
 				}
 
 			}else{
-				$query = "UPDATE tblresident SET national_id='$national_id',citizenship='$citi',`firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `alias`='$alias', `birthplace`='$bplace', `birthdate`='$bdate', 
-							age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `identified_as`='$indetity', `phone`='$number', `email`='$email',`occupation`='$occu', `address`='$address',
-							`resident_type`='$deceased', `remarks`='$remarks'
+				$query = "UPDATE tblresident SET national_id='$national_id',citizenship='$citi',`firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
+							age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `taxno`='$taxno', `phone`='$number', `email`='$email',`occupation`='$occu', `remarks`='$remarks',
+							`resident_type`='$deceased', `purpose`='$purpose'
 							WHERE id=$id;";
 				
 				if($conn->query($query) === true){

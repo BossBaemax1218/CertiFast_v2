@@ -50,7 +50,7 @@ $current_page = PageName();
                 </li>
                 <li class="nav-item <?= $current_page=='dashboard.php' || $current_page=='resident_info.php' || $current_page=='purok_info.php'  ? 'active' : null ?>">
                     <a href="dashboard.php" >
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-chart-bar"></i>
                         <p>Overview</p>
                     </a>
                 </li>
@@ -105,7 +105,7 @@ $current_page = PageName();
                 <li class="nav-item <?= $current_page=='resident.php' || $current_page=='generate_resident.php' ? 'active' : null ?>">
                     <a href="resident.php" >
                         <i class="far fa-id-card"></i>
-                        <p>User Reports</p>
+                        <p>Resident Reports</p>
                     </a>
                 </li>
                 <li class="nav-item <?= $current_page=='officials.php' || $current_page=='resident_info.php' || $current_page=='purok_info.php'  ? 'active' : null ?>">
@@ -137,7 +137,7 @@ $current_page = PageName();
                 </li>
                 <li class="nav-item <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'active' : null ?>">
                     <a href="#settings" data-toggle="collapse" class="collapsed" aria-expanded="false">
-                        <i class="icon-wrench"></i>
+                        <i class="fas fa-wrench"></i>
                             <p>Settings</p>
                         <span class="caret"></span>
                     </a>

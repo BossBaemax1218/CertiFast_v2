@@ -7,12 +7,12 @@
 		}
 	}
 
-	$national_id 		= $conn->real_escape_string($_POST['national']);
+	$national_id 	= $conn->real_escape_string($_POST['national']);
 	$citizen 		= $conn->real_escape_string($_POST['citizenship']);
 	$fname 		= $conn->real_escape_string($_POST['fname']);
 	$mname 		= $conn->real_escape_string($_POST['mname']);
     $lname 		= $conn->real_escape_string($_POST['lname']);
-	$alias 		= $conn->real_escape_string($_POST['alias']);
+	$address 	= $conn->real_escape_string($_POST['address']);
     $bplace 	= $conn->real_escape_string($_POST['bplace']);
 	$bdate 		= $conn->real_escape_string($_POST['bdate']);
     $age 		= $conn->real_escape_string($_POST['age']);
@@ -20,11 +20,11 @@
 	$gender 	= $conn->real_escape_string($_POST['gender']);
     $purok 		= $conn->real_escape_string($_POST['purok']);
 	$vstatus 	= $conn->real_escape_string($_POST['vstatus']);
-    $indetity 	= $conn->real_escape_string($_POST['indetity']);
-    $email	    = $conn->real_escape_string($_POST['email']);
+    $email 		= $conn->real_escape_string($_POST['email']);
+    $taxno	    = $conn->real_escape_string($_POST['taxno']);
 	$number 	= $conn->real_escape_string($_POST['number']);
 	$occupation = $conn->real_escape_string($_POST['occupation']);
-    $address 	= $conn->real_escape_string($_POST['address']);
+    $remarks 	= $conn->real_escape_string($_POST['remarks']);
 	$profile 	= $conn->real_escape_string($_POST['profileimg']); // base 64 image
 	$profile2 	= $_FILES['img']['name'];
 
@@ -41,8 +41,8 @@
 
 			if(!empty($profile) && !empty($profile2)){
 
-				$query = "INSERT INTO tblresident (`national_id`,citizenship,`picture`, `firstname`, `middlename`, `lastname`, `alias`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `identified_as`, `phone`, `email`, `occupation`, `address`) 
-							VALUES ('$national_id','$citizen','$profile','$fname','$mname','$lname','$alias','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$indetity','$number','$email','$occupation','$address')";
+				$query = "INSERT INTO tblresident (`national_id`,citizenship,`picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`) 
+							VALUES ('$national_id','$citizen','$profile','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks')";
 
 				if($conn->query($query) === true){
 
@@ -51,8 +51,8 @@
 				}
 			}else if(!empty($profile) && empty($profile2)){
 
-				$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `alias`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `identified_as`, `phone`, `email`,`occupation`, `address`) 
-							VALUES ('$national_id','$citizen','$profile','$fname','$mname','$lname','$alias','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$indetity','$number','$email','$occupation','$address')";
+				$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`,`occupation`, `remarks`) 
+							VALUES ('$national_id','$citizen','$profile','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks')";
 
 				if($conn->query($query) === true){
 
@@ -62,8 +62,8 @@
 
 			}else if(empty($profile) && !empty($profile2)){
 
-				$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `alias`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `identified_as`, `phone`, `email`, `occupation`, `address`) 
-							VALUES ('$national_id','$citizen','$newName','$fname','$mname','$lname','$alias','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$indetity','$number','$email','$occupation','$address')";
+				$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`) 
+							VALUES ('$national_id','$citizen','$newName','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks')";
 
 				if($conn->query($query) === true){
 
@@ -78,8 +78,8 @@
 				}
 
 			}else{
-				$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`,`firstname`, `middlename`, `lastname`, `alias`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `identified_as`, `phone`, `email`, `occupation`, `address`) 
-							VALUES ('$national_id','$citizen','person.png','$fname','$mname','$lname','$alias','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$indetity','$number','$email','$occupation','$address')";
+				$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`,`firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`) 
+							VALUES ('$national_id','$citizen','person.png','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks')";
 
 				if($conn->query($query) === true){
 

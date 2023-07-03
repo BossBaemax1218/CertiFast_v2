@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT * FROM tblresident";
+	$query = "SELECT * FROM `tblresident` ORDER BY `id` DESC";
     $result = $conn->query($query);
 
     $resident = array();
@@ -12,13 +12,19 @@
     $result1 = $conn->query($query1);
 
     $purok = array();
-	while($row = $result1->fetch_assoc()){
-		$purok[] = $row; 
+	while($row2 = $result1->fetch_assoc()){
+		$purok[] = $row2; 
 	}
 
-	$query1 = "SELECT * FROM tblresident";
+    $query1 = "SELECT COUNT(*) AS total_resident FROM tblresident";
     $result1 = $conn->query($query1);
-	$totalresident = $result1->num_rows;
+    
+    if ($result1 && $result1->num_rows > 0) {
+        $row3 = $result1->fetch_assoc();
+        $totalresident = $row3['total_resident'];
+    } else {
+        $totalresident = 0;
+    }
 
 	$query2 = "SELECT * FROM tblresident WHERE voterstatus='Yes'";
     $result2 = $conn->query($query2);
@@ -37,13 +43,8 @@
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
-
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
 
 		<div class="main-panel">
 			<div class="content">
@@ -51,7 +52,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h1 class="text-center fw-bold" style="font-size: 400%;">User Reports</h1>
+								<h1 class="text-center fw-bold" style="font-size: 400%;">Resident Reports</h1>
 							</div>
 						</div>
 					</div>
@@ -164,12 +165,11 @@
 										<table id="residenttable" class="table">
 											<thead>
 												<tr>
-													<th scope="col">Fullname</th>
-                                                    <th scope="col">National ID</th>												
+													<th class="text-center" scope="col">Fullname</th>												
 													<th scope="col">Birthdate</th>
 													<th scope="col">Age</th>													
                                                     <th scope="col">Gender</th>
-                                                    <th scope="col">Tax No.</th>
+                                                    <th scope="col">Email</th>
 													<th scope="col">Purok</th>
                                                     <?php if(isset($_SESSION['username'])):?>
                                                         <?php if($_SESSION['role']=='administrator'):?>
@@ -184,13 +184,11 @@
 													<?php $no=1; foreach($resident as $row): ?>
 													<tr>
 														<td>
-                                                            <div class="avatar avatar-xs">
+                                                            <div class="avatar avatar-xs ml-3">
                                                                 <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
                                                             </div>
                                                             <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
-                                                        </td>
-                                                        <td><?= $row['national_id'] ?></td>
-														
+                                                        </td>														
 														<td><?= $row['birthdate'] ?></td>
 														<td><?= $row['age'] ?></td>                  
                                                         <td><?= $row['gender'] ?></td>
@@ -204,11 +202,9 @@
 														<td class="text-center">
 															<div class="form-button-action">
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
-                                                                    data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>"
-                                                                    data-alias="<?= $row['alias'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
-                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>"
-                                                                    data-indetity="<?= $row['identified_as'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-address="<?= $row['address'] ?>" 
-                                                                    data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-remarks="<?= $row['remarks'] ?>">
+                                                                    data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-add="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
+                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-tax="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
+                                                                    data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-purpose="<?= $row['purpose'] ?>">
                                                                     <?php if(isset($_SESSION['username'])): ?>
                                                                         <i class="fas fa-edit"></i>
                                                                     <?php else: ?>
@@ -302,7 +298,7 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Enter Address" name="alias">
+                                                <input type="text" class="form-control" placeholder="Enter Address" name="address" required>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -371,13 +367,8 @@
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Identified As</label>
-                                                <select class="form-control indetity" name="indetity">
-                                                <option disabled selected>Select Identified As</option>
-                                                    <option value="Positive">Positive</option>
-                                                    <option value="Negative">Negative</option>
-                                                    <option value="Unidentified">Unidentified</option>
-                                                </select>
+                                                <label>Tax no</label>
+                                                <input type="number" class="form-control" placeholder="Enter Tax number" min="6" name="taxno" required>
                                             </div>
                                         </div>
                                     </div>
@@ -385,8 +376,8 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Tax No.</label>
-                                                <input type="text" class="form-control" placeholder="Enter Tax No." name="email" required>
+                                                <label>Email</label>
+                                                <input type="text" class="form-control" placeholder="Enter Email Address" name="email" required>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -404,7 +395,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Remarks</label>
-                                        <textarea class="form-control" name="address" required placeholder="Enter Remarks"></textarea>
+                                        <textarea class="form-control" name="remarks" required placeholder="Enter Remarks"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -461,8 +452,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>National ID No.</label>
-                                        <input type="text" class="form-control" name="national" id="nat_id" placeholder="Enter National ID No." readonly>
+                                        <label>National ID</label>
+                                        <input type="text" class="form-control" name="national" id="nat_id" placeholder="Enter National ID" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label>Citizenship</label>
@@ -494,7 +485,7 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Enter Address" id="alias" name="alias">
+                                                <input type="text" class="form-control" placeholder="Enter Address" id="address" name="address" required>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -530,9 +521,9 @@
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Gender</label>
+                                                <label>Sex</label>
                                                 <select class="form-control" required name="gender" id="gender">
-                                                    <option disabled selected value="">Select Gender</option>
+                                                    <option disabled selected value="">Select Sex</option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
                                                 </select>
@@ -563,13 +554,8 @@
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Identified As</label>
-                                                <select class="form-control indetity" name="indetity" id="indetity">
-                                                    <option disabled selected>Select Identity</option>
-                                                    <option value="Positive">Positive</option>
-                                                    <option value="Negative">Negative</option>
-                                                    <option value="Unidentified">Unidentified</option>
-                                                </select>
+                                                <label>Tax no</label>
+                                                <input type="text" class="form-control" placeholder="Enter Tax No." name="taxno" id="taxno" required>
                                             </div>
                                         </div>
                                     </div>
@@ -577,8 +563,8 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Tax No.</label>
-                                                <input type="text" class="form-control" placeholder="Enter Tax No." name="email" id="email" required>
+                                                <label>Email</label>
+                                                <input type="text" class="form-control" placeholder="Enter Email Address" name="email" id="email" required>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -596,11 +582,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Remarks</label>
-                                        <textarea class="form-control" required name="address" placeholder="Enter Remarks" id="address"></textarea>
+                                        <textarea class="form-control" required name="remarks" placeholder="Enter Remarks" id="remarks" required></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Purpose</label>
-                                        <textarea class="form-control" name="remarks" placeholder="Enter Purpose" id="remarks"></textarea>
+                                        <textarea class="form-control" name="purpose" placeholder="Enter Purpose" id="purpose" required></textarea>
                                     </div>
                                 </div>
                             </div>
