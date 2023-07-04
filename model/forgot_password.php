@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     </tr>
                                     <tr>
                                         <td style="text-align:center;">
-                                            <a href="https://www.example.com" title="logo" target="_blank">
+                                            <a href="../index.php" title="logo" target="_blank">
                                                 <img width="60" src="../assets/img/trans-title.png" title="logo" alt="logo">
                                             </a>
                                         </td>
@@ -102,11 +102,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                 </tr>
                                                 <tr>
                                                     <td style="padding:0 35px;">
-                                                        <h1 style="color:#1e1e2d; font-weight:500;font-size:24px;margin-bottom:20px;">Hi,' . $email . '</h1>
+                                                        <h1 style="color:#1e1e2d; font-weight:500;font-size:24px;margin-bottom:20px;">Hi, ' . $email . '</h1>
                                                         <p style="color:#455056; font-size:15px;line-height:24px; margin-bottom:20px;">
                                                             We have received a request to reset your password. Please use the following verification code to reset your password:
                                                         </p>
-                                                        <p style="font-size:25px; color:#2f9ad4; font-weight:bold;margin-bottom:10px;">' . $verificationCode . '</p>
+                                                        <p style="font-size:35px; color:#2f9ad4; font-weight:bold;margin-bottom:10px;">' . $verificationCode . '</p>
                                                         <p style="color:#455056; font-size:15px;line-height:24px;margin-bottom:20px;">
                                                             Please note that this verification code is valid for 30 minutes only. If you did not request a password reset, please ignore this email.
                                                         </p>
