@@ -18,43 +18,48 @@
                         
     </head>
     <body>
-        <section class="container forms">
-            <div class="form">
-                <div class="form-content">
-                    <a href="#"><img src="images/trans-title.png" alt="" class="image"></a>
-                    <form method="POST" action="model/edit_password.php">
-                        <h3>Forgot Password</h3>
-                        <p>Please register your personal information if you haven't registered yet.</p>
-                        <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
-                        <header id="header">
-                            <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
-                                <?php if ($_SESSION['success'] == 'danger'): ?>
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                <?php elseif ($_SESSION['success'] == 'success'): ?>
-                                    <i class="fas fa-check-circle"></i>
-                                <?php endif; ?>
-                                <span class="alert-message"> <?php echo $_SESSION['message']; ?> </span>
-                            </div>
-                        </header>
-                        <?php unset($_SESSION['message']); ?>
-                        <?php endif; ?>
-                        <input type="hidden" name="email" value="<?php echo $email; ?>">
-                        <input type="hidden" name="verification_code" value="<?php echo $verificationCode; ?>">
-                        <div class="field input-field">
-                            <input id="new_password" type="password" autocomplete="off" name="new_password" placeholder="New Password" class="new_password" required>
-                            <i class='bx bx-hide eye-icon first_password'></i>
+    <section class="container forms">
+        <div class="form">
+            <div class="form-content">
+                <a href="#"><img src="images/trans-title.png" alt="" class="image"></a>
+                <form method="POST" action="model/edit_password.php">
+                    <h3>Forgot Password</h3>
+                    <p>Please register your personal information if you haven't registered yet.</p>
+                    <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
+                    <header id="header">
+                        <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
+                            <?php if ($_SESSION['success'] == 'danger'): ?>
+                                <i class="fas fa-exclamation-triangle"></i>
+                            <?php elseif ($_SESSION['success'] == 'success'): ?>
+                                <i class="fas fa-check-circle"></i>
+                            <?php endif; ?>
+                            <span class="alert-message"> <?php echo $_SESSION['message']; ?> </span>
                         </div>
-                        <div class="field input-field">
-                            <input id="confirm_password" type="password" autocomplete="off" name="confirm_password" placeholder="Confirm Password" class="confirm_password" required>
-                            <i class='bx bx-hide eye-icon second_password'></i>
-                        </div>
-                        <div class="field button-field">
-                            <button type="submit" value="submit" class="far fa-paper-plane text-center" style='font-size:20px'> Send</button>
-                        </div>
-                    </form>
-                </div>
+                    </header>
+                    <?php unset($_SESSION['message']); ?>
+                    <?php endif; ?>
+                    <?php if (isset($errorMessage)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span class="alert-message"><?php echo $errorMessage; ?></span>
+                    </div>
+                    <?php endif; ?>
+                    <input type="hidden" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>" readonly>
+                    <div class="field input-field">
+                        <input id="new_password" type="password" autocomplete="off" name="new_password" placeholder="New Password" class="new_password" required>
+                        <i class='bx bx-hide eye-icon first_password'></i>
+                    </div>
+                    <div class="field input-field">
+                        <input id="confirm_password" type="password" autocomplete="off" name="confirm_password" placeholder="Confirm Password" class="confirm_password" required>
+                        <i class='bx bx-hide eye-icon second_password'></i>
+                    </div>
+                    <div class="field button-field">
+                        <button type="submit" value="submit" class="far fa-paper-plane text-center" style='font-size:20px'> Send</button>
+                    </div>
+                </form>
             </div>
-        </section>
+        </div>
+    </section>
         <!-- JavaScript -->
         <script src="vendor-login/js/reset-password.js"></script>
     </body>

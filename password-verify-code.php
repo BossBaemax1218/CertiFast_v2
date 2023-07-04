@@ -37,7 +37,7 @@
                         </header>
                         <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>
-                        <input type="hidden" name="email" value="<?php echo $email; ?>">
+                        <input type="hidden" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>" class="input" readonly>                                  
                         <div class="field input-field">
                             <input type="text" name="verification_code" autocomplete="off" placeholder="Verification Code" class="input">
                         </div>

@@ -3,7 +3,7 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Retrieve the verification code from the form
-    $email = $_POST['email'];
+    $email = $_SESSION['email'];
     $verificationCode = $_POST['verification_code'];
 
     // Retrieve the verification code entered by the user
