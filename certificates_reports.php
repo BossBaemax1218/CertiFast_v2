@@ -235,7 +235,6 @@ $(document).ready(function() {
 });
 </script>
 <script>
-
   $(document).on("click", "#csv", function() {
     console.log("Exporting revenue table as CSV...");
     $("#revenuetable").tableHTMLExport({ type: "csv", filename: "Revenue.csv" });

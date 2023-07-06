@@ -1,7 +1,8 @@
 <footer class="footer">
     <div class="container-fluid">
         <div class="copyright ml-auto">
-            <?php $year = date("Y"); echo  $year . " &copy CertiFast Portal" ?>
+            <?php  $year = date("Y"); echo  $year . " &copy CertiFast Portal" ?> .
+            <a class="text" href="" >Terms of Service </a> . <a class="text" href="" >Contact Us </a> 
         </div>				
     </div>
 </footer>
