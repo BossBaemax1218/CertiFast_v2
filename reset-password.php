@@ -38,12 +38,6 @@
                     </header>
                     <?php unset($_SESSION['message']); ?>
                     <?php endif; ?>
-                    <?php if (isset($errorMessage)): ?>
-                    <div class="alert alert-danger" role="alert">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <span class="alert-message"><?php echo $errorMessage; ?></span>
-                    </div>
-                    <?php endif; ?>
                     <input type="hidden" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>" readonly>
                     <div class="field input-field">
                         <input id="new_password" type="password" autocomplete="off" name="new_password" placeholder="New Password" class="new_password" required>

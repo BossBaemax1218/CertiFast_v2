@@ -197,7 +197,7 @@
                                                         <h3 class="fw-bold text-left">Address:</h3>
                                                     </div>
                                                     <div class="text-left">
-                                                        <h3 type="text"><?= $resident['alias'] ?></h3>
+                                                        <h3 type="text"><?= $resident['address'] ?></h3>
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -268,84 +268,15 @@
                                                     <h3 type="text"><?= ucwords(trim($resident['occupation'])) ?></h3>
                                                 </div>
                                             </div>
-                                            <div class="col">
+                                            <div class="col" style="margin-bottom: 300px;">
                                                 <div class="row">
-                                                    <h3 class="fw-bold text-left">ID Number:</h3>                                                       
+                                                    <h3 class="fw-bold text-left">National ID #:</h3>                                                       
                                                 </div>                                               
                                                 <div class="text-left">
                                                     <h3 type="text" style="font-size:20px"><?= $resident['national_id'] ?></h3>
                                                 </div>
                                             </div>
                                         </div>                                       
-                                        <h2 class="fw-bold mt-4 ml-5">Family Information</h2>
-                                        <div class="row ml-5">
-                                                <div class="col">
-                                                    <div class="row">
-                                                        <h3 class="fw-bold text-left">Mother's Name:</h3>                                                       
-                                                    </div>                                               
-                                                    <div class="text-left">
-                                                        <h3 type="text" style="font-size:20px"><?= $resident['national_id'] ?></h3>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="row">
-                                                        <h3 class="fw-bold text-left">Occupation:</h3>
-                                                    </div>
-                                                    <div class="text-left">
-                                                        <h3 type="text" style="font-size:20px"> <?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></h3>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class=" row">
-                                                        <h3 class="fw-bold text-left">Father's Name:</h3>
-                                                    </div>
-                                                    <div class="text-left">
-                                                        <h3 type="text"><?= $resident['resident_type']==1 ? 'Alive' : 'Deceased' ?></h3>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="row">
-                                                        <h3 class="fw-bold text-left">Occupation:</h3>
-                                                    </div>
-                                                    <div class="text-left">
-                                                        <h3 type="text"><?= $resident['alias'] ?></h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row ml-5" style="margin: 0px 0px 300px 100px;">
-                                                <div class="col">
-                                                    <div class=" row">
-                                                        <h3 class="fw-bold text-left">Mother's Birthdate:</h3>
-                                                    </div>
-                                                    <div class="text-left">
-                                                        <h3 type="text"><?= date('F d, Y', strtotime($resident['birthdate'])) ?></h3>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class=" row">
-                                                        <h3 class="fw-bold text-left">Mother's Age:</h3>
-                                                    </div>
-                                                    <div class="text-left">
-                                                        <h3 type="text"><?= $resident['age'] ?></h3>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class=" row">
-                                                        <h3 class="fw-bold text-left">Father's Birthdate:</h3>
-                                                    </div>
-                                                    <div class="text-left">
-                                                        <h3 type="text"><?= $resident['civilstatus'] ?></h3>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class=" row">
-                                                        <h3 class="fw-bold text-left">Father's Age:</h3>
-                                                    </div>
-                                                    <div class="text-left">
-                                                        <h3 type="text"><?= $resident['civilstatus'] ?></h3>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         <!--<div class="row">
                                             <div class="col">
                                                 <div class="row">

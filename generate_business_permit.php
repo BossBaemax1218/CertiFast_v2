@@ -188,7 +188,7 @@
                                         <div class="col-md-12 text-right">
                                             <div class="p-3 text-right mr-8">
                                                 <h2 class="fw-bold mb-0"><u><?= ucwords($captain['fullname']) ?></u></h2>
-                                                <p class="text mr-5">PUNONG BARANGAY</p>
+                                                <p class="text mr-4">PUNONG BARANGAY</p>
                                             </div>
                                         </div>
                                         <div class="col-md-12 mb-2 text-left">

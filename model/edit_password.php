@@ -95,9 +95,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         // Invalid password or passwords don't match
         $_SESSION['success'] = false;
-        $_SESSION['success'] = 'danger';
+        $_SESSION['success'] = 'warning';
         $_SESSION['form'] = 'signup';
         $_SESSION['validationMessage'] = $validationMessage;
+        $_SESSION['message'] = "" . $validationMessage;
 
         header('Location: ../reset-password.php');
         exit();

@@ -83,13 +83,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         <td style="height:80px;">&nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td style="text-align:center;">
-                                            <a href="../index.php" title="logo" target="_blank">
-                                                <img width="60" src="../assets/img/trans-title.png" title="logo" alt="logo">
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <td style="height:20px;">&nbsp;</td>
                                     </tr>
                                     <tr>
@@ -101,16 +94,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                     <td style="height:40px;">&nbsp;</td>
                                                 </tr>
                                                 <tr>
+                                                    <td style="text-align:center;color:#E42654;font-family:\'Rubik\',sans-serif;">
+                                                        <h1 style="font-size:45px;"><strong>CertiFast</strong></h1>                                                       
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <td style="padding:0 35px;">
                                                         <h1 style="color:#1e1e2d; font-weight:500;font-size:24px;margin-bottom:20px;">Hi, ' . $email . '</h1>
-                                                        <p style="color:#455056; font-size:15px;line-height:24px; margin-bottom:20px;">
+                                                        <p style="color:#455056; font-size:14px;line-height:24px; margin-bottom:20px;">
                                                             We have received a request to reset your password. Please use the following verification code to reset your password:
                                                         </p>
-                                                        <p style="font-size:35px; color:#2f9ad4; font-weight:bold;margin-bottom:10px;">' . $verificationCode . '</p>
-                                                        <p style="color:#455056; font-size:15px;line-height:24px;margin-bottom:20px;">
-                                                            Please note that this verification code is valid for 30 minutes only. If you did not request a password reset, please ignore this email.
+                                                        <p style="font-size:35px; color:#E42654; font-weight:bold;margin-bottom:10px;">' . $verificationCode . '</p>
+                                                        <p style="color:#455056; font-size:13px;line-height:24px;margin-bottom:20px;">
+                                                            Please note that this verification code is valid for 10 minutes only. <br>
+                                                            If you did not request a password reset, please ignore this email.
                                                         </p>
-                                                        <p style="color:#455056; font-size:15px;line-height:24px;margin-bottom:20px;">
+                                                        <p style="color:#455056; font-size:14px;line-height:24px;margin-bottom:20px;">
                                                             Regards,<br>
                                                             Barangay Los Amigos - CertiFast Team
                                                         </p>

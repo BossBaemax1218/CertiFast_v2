@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../server/server.php';
+require '../password_compat/lib/password.php'; 
 
 $user_email = $conn->real_escape_string($_POST['email']);
 $password = $conn->real_escape_string($_POST['password']);
@@ -35,6 +36,9 @@ if ($user_email != '' && $password != '') {
         $row = $adminStaffResult->fetch_assoc();
         $hashedPassword = $row['password'];
 
+        // Retrieve the password hash
+        echo "Password hash for admin/staff: " . $hashedPassword;
+
         // Verify the password using password_verify
         if (password_verify($password, $hashedPassword)) {
             $role = $row['user_type'];
@@ -54,6 +58,8 @@ if ($user_email != '' && $password != '') {
 
             header('location: ../dashboard.php');
             exit();
+        } else {
+            echo "Password verification failed for admin/staff.";
         }
     }
 
@@ -80,6 +86,8 @@ if ($user_email != '' && $password != '') {
 
             header('location: ../resident_dashboard.php');
             exit();
+        } else {
+            echo "Password verification failed for resident.";
         }
     }
 

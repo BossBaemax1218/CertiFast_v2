@@ -61,8 +61,7 @@ $mail->setFrom('no-reply@gmail.com', 'Barangay Los Amigos - CertiFast');
 $mail->addAddress($email);
 $mail->Subject = 'Your email verification code has been sent';
 $mail->isHTML(true);
-$mail->Body = '
-<!DOCTYPE html>
+$mail->Body = '<!DOCTYPE html>
 <html>
 <head>
     <style type="text/css">
@@ -74,42 +73,42 @@ $mail->Body = '
         style="@import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Open+Sans:300,400,600,700); font-family: \'Open Sans\', sans-serif;">
         <tr>
             <td>
-                <table style="background-color: #f1f6fe; max-width:670px;  margin: 0 auto;" width="100%" border-raduis="0"
-                    text-align="center" cellpadding="0" cellspacing="0">
+                <table style="background-color: #f1f6fe; max-width:670px; margin:0 auto;" width="100%" border="0"
+                    align="center" cellpadding="0" cellspacing="0">
                     <tr>
                         <td style="height:80px;">&nbsp;</td>
                     </tr>
                     <tr>
+                        <td style="height:20px;">&nbsp;</td>
+                    </tr>
+                    <tr>
                         <td>
-                            <table width="100%" border-raduis="0" text-align="center" cellpadding="0" cellspacing="0"
-                                style=" margin-left: 5%; margin-right: 5%; max-width:700px;background:#fff; border-radius:3px; text-align:center;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);">
-                                <tr>
-                                    <td style="height:20px;">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align:center;color:#E42654;font-family:\'Rubik\',sans-serif;">
-                                        <h1 style="font-size:45px;"><strong>CertiFast</strong></h1><h3 style="color:#1e1e2d; font-size:25px;">Barangay Los Amigos</h3>                                                       
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="padding:0 35px;">
-                                        <h3 style="color:#1e1e2d; font-weight:500; margin:0;font-size:16px;font-family:\'Rubik\',sans-serif;">You have requested a verified email address</h3>
-                                        <span style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:200px;"></span>
-                                        <p style="font-size:16px;line-height:24px; margin:0;"> Please use the verification code below to verify your email address.</p>
-                                        <a href="javascript:void(0);" style="background:#E42654;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:20px;padding:10px 24px;display:inline-block;border-radius:5px;">'.$verificationCode.'</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 30px 20px 30px 20px;">
-                                        <p style="font-size: 12px; color: #000000; margin: 0;">If you did not create an account on Barangay Los Amigos - CertiFast Portal, please ignore this email.</p>
-                                    </td>
-                                </tr>
+                            <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0"
+                                style="max-width:670px;background:#fff; border-radius:3px;text-align:center;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);">
+
                                 <tr>
                                     <td style="height:40px;">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align:center;">
-                                        <p style="font-size:12px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;"> '.$year.' &copy; <strong><span>Barangay Los Amigos - CertiFast Portal</span></strong> . All Rights Reserved</p>
+                                    <td style="text-align:center;color:#E42654;font-family:\'Rubik\',sans-serif;">
+                                        <h1 style="font-size:45px;"><strong>CertiFast</strong></h1>                                                       
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:0 35px;">
+                                        <h1 style="color:#1e1e2d; font-weight:500;font-size:24px;margin-bottom:20px;">Hi, ' . $email . '</h1>
+                                        <p style="color:#455056; font-size:14px;line-height:24px; margin-bottom:20px;">
+                                            We have received a request to verified your email address. Please use the following verification code to verified your account:
+                                        </p>
+                                        <p style="font-size:35px; color:#E42654; font-weight:bold;margin-bottom:10px;">' . $verificationCode . '</p>
+                                        <p style="color:#455056; font-size:13px;line-height:24px;margin-bottom:20px;">
+                                            Please note that this verification code is valid for 10 minutes only. <br>
+                                            If you did not request a verification, please ignore this email.
+                                        </p>
+                                        <p style="color:#455056; font-size:14px;line-height:24px;margin-bottom:20px;">
+                                            Regards,<br>
+                                            Barangay Los Amigos - CertiFast Team
+                                        </p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -117,8 +116,14 @@ $mail->Body = '
                                 </tr>
                             </table>
                         </td>
+                    </tr>
                     <tr>
                         <td style="height:20px;">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center;">
+                            <p style="font-size:14px;color:#455056; line-height:18px; margin-bottom:0;">&copy; ' . $year . ' CertiFast. All rights reserved.</p>
+                        </td>
                     </tr>
                     <tr>
                         <td style="height:80px;">&nbsp;</td>

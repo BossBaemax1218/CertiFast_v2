@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php 
-    $query = "SELECT SUM(details) as de FROM tblpayments";
+    $query = "SELECT COUNT(DISTINCT details) as de FROM tblpayments WHERE details IN ('Barangay Clearance Payment', 'Business Permit Payment', 'Certificate of Residency Payment', 'Certificate of Indigency Payment')"; 
     $revenue1 = $conn->query($query)->fetch_assoc();
 
     $sql1 = "SELECT COUNT(name) as na FROM tblpayments";
@@ -57,7 +57,7 @@
                                         <div class="row">
                                             <div class="col-4">
                                                 <div class="icon-big text-center">
-                                                    <i class="fas fa-check fa-2x" style="color: gray;"></i>
+                                                    <i class="fas fa-user-check fa-2x" style="color: gray;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2 col-stats">
@@ -105,14 +105,14 @@
                                         <div class="row">
                                             <div class="col-4">
                                                 <div class="icon-big text-center">
-                                                    <i class="fas fa-clock fa-2x" style="color: gray;"></i>
+                                                    <i class="fas fa-file-alt fa-2x" style="color: gray;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2 col-stats">
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 16px;">Pending</h2>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Certificates</h2>
                                                     <h3 class="fw-bold text-uppercase" style="font-size: 45px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h3>
                                                 </div>
                                             </div>

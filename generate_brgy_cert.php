@@ -169,7 +169,7 @@
                                             <h2 class="mt-5 fw-bold">TO WHOM IT MAY CONCERN:</h2>
                                             <h2 class="mt-3" style="text-indent: 60px;">This is to certify that per records now existing in this office  <span class="fw-bold" style="font: size 23px;px"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
                                             of legal age, and a resident of <span class="fw-text" style="font-size:23px"><?= ucwords($town) ?></span>, Davao City, Philippines with 
-                                            Community Tax Certificate No.<span class="fw-bold" style="font-size:23px"><?= ucwords($resident['email']) ?></span>  issued on <span class="fw-bold" style="font-size:23px"><?= date('F d, Y') ?></span> 
+                                            Community Tax Certificate No.<span class="fw-bold" style="font-size:23px"> <?= ucwords($resident['taxno']) ?></span>  issued on <span class="fw-bold" style="font-size:23px"><?= date('F d, Y') ?></span> 
                                             at Davao City has not been convicted of any Crime, Criminal, Civil nor there is any pending case filed against him/her.</h2> <h2 class="mt-3" style="text-indent: 60px;">This certification is issued upon the request of the 
                                             aforementioned for <span class="fw-bold" style="font-size:23px"><?= ucwords($resident['remarks']) ?></span> or for whatever legal purpose/s that may serve her/him best.</h2>
                                             <h2 class="mt-4" style="text-indent: 60px;"> Done this <span class="fw-bold" style="font-size:23px"><?= date('jS F, Y') ?></span> at <span class="fw-text" style="font-size:23px"><?= ucwords($town) ?>
@@ -178,7 +178,7 @@
                                         <div class="col-md-12" style="margin-top: 50px;">
                                             <div class="p-3 text-right mt-2" style="margin-bottom: 300px;">
                                                 <h2 class="fw-bold mb-0"><u><?= ucwords($captain['fullname']) ?></u></h2>
-                                                <p class="text-right" style="margin-right: 50px;">PUNONG BARANGAY</p>
+                                                <p class="text-right" style="margin-right: 20px;">PUNONG BARANGAY</p>
                                             </div>
                                         </div>
                                     </div>
