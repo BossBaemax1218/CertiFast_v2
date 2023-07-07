@@ -52,7 +52,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h1 class="text-center fw-bold" style="font-size: 400%;">Resident Reports</h1>
+								<h1 class="text-center fw-bold" style="font-size: 300%;">Resident Reports</h1>
 							</div>
 						</div>
 					</div>
@@ -612,10 +612,6 @@
 	</div>
 	<?php include 'templates/footer.php' ?>
     <script src="assets/js/plugin/datatables/datatables.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#residenttable').DataTable();
-        });
-    </script>
+    <script src="assets/js/resident-reports.js"></script>
 </body>
 </html>

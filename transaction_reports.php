@@ -38,7 +38,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h1 class="text-center fw-bold" style="font-size: 400%;">Transaction Reports</h1>
+								<h1 class="text-center fw-bold" style="font-size: 300%;">Transaction Reports</h1>
 							</div>
 						</div>
 					</div>
@@ -216,71 +216,7 @@
 	        </div>
 	    </div>
 	<?php include 'templates/footer.php' ?>
-<script>
-var minDate, maxDate;
-
-$.fn.dataTable.ext.search.push(
-	function(settings, data, dataIndex) {
-		var min = minDate.val();
-		var max = maxDate.val();
-		var date = new Date(data[0]);
-
-		if (
-			(min === null && max === null) ||
-			(min === null && date <= max) ||
-			(min <= date && max === null) ||
-			(min <= date && date <= max)
-		) {
-			return true;
-		}
-		return false;
-	}
-);
-
-$(document).ready(function() {
-	minDate = new DateTime($('#min'), {
-		format: 'MMMM Do YYYY'
-	});
-	maxDate = new DateTime($('#max'), {
-		format: 'MMMM Do YYYY'
-	});
-
-	var table = $('#revenuetable').DataTable({
-		"order": [[0, "desc"]],
-		dom: 'Bfrtip',
-		buttons: []
-	});
-
-	$('#min, #max').on('change', function() {
-		table.draw();
-	});
-});
-</script>
-<script>
-
-  $(document).on("click", "#csv", function() {
-    console.log("Exporting revenue table as CSV...");
-    $("#revenuetable").tableHTMLExport({ type: "csv", filename: "Revenue.csv" });
-  });
-
-  $(document).on("click", "#pdf", function() {
-    console.log("Exporting revenue table as PDF...");
-    $("#revenuetable").tableHTMLExport({ type: "pdf", filename: "Revenue.pdf" });
-  });
-
-  $(document).on("click", "#txt", function() {
-    console.log("Exporting revenue table as TXT...");
-    $("#revenuetable").tableHTMLExport({ type: "txt", filename: "Revenue.txt" });
-  });
-
-  $(document).on("click", "#print", function() {
-    console.log("Printing revenue table...");
-    var printContents = $(".table-responsive").html();
-    var originalContents = document.body.innerHTML;
-    document.body.innerHTML = printContents;
-    window.print();
-    document.body.innerHTML = originalContents;
-  });
-</script>
+    <script src="assets/js/min-max-date.js"></script>
+    <script src="assets/js/export.js"></script>
 </body>
 </html>

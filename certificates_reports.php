@@ -38,7 +38,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h1 class="text-center fw-bold" style="font-size: 400%;">Transaction Reports</h1>
+								<h1 class="text-center fw-bold" style="font-size: 300%;">Certificate Reports</h1>
 							</div>
 						</div>
 					</div>
@@ -133,7 +133,7 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="card-head-row">
-                                            <div class="card-title">Transaction History</div>
+                                            <div class="card-title">Certificate Reports</div>
                                             <?php if(isset($_SESSION['username'])):?>
                                             <div class="card-tools">
                                                 <a id="csv" class="btn btn-primary btn-border btn-round btn-sm">
@@ -194,51 +194,7 @@
 	        </div>
 	    </div>
 	<?php include 'templates/footer.php' ?>
-<script>
-var minDate, maxDate;
-
-$.fn.dataTable.ext.search.push(
-	function(settings, data, dataIndex) {
-		var min = minDate.val();
-		var max = maxDate.val();
-		var date = new Date(data[0]);
-
-		if (
-			(min === null && max === null) ||
-			(min === null && date <= max) ||
-			(min <= date && max === null) ||
-			(min <= date && date <= max)
-		) {
-			return true;
-		}
-		return false;
-	}
-);
-
-$(document).ready(function() {
-	minDate = new DateTime($('#min'), {
-		format: 'MMMM Do YYYY'
-	});
-	maxDate = new DateTime($('#max'), {
-		format: 'MMMM Do YYYY'
-	});
-
-	var table = $('#revenuetable').DataTable({
-		"order": [[0, "desc"]],
-		dom: 'Bfrtip',
-		buttons: []
-	});
-
-	$('#min, #max').on('change', function() {
-		table.draw();
-	});
-});
-</script>
-<script>
-  $(document).on("click", "#csv", function() {
-    console.log("Exporting revenue table as CSV...");
-    $("#revenuetable").tableHTMLExport({ type: "csv", filename: "Revenue.csv" });
-  });
-</script>
+<script src="assets/js/min-max-date.js"></script>
+<script src="assets/js/export.js"></script>
 </body>
 </html>

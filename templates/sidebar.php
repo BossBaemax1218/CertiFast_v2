@@ -145,48 +145,53 @@ $current_page = PageName();
                         <ul class="nav nav-collapse">
                             <li class="<?= $current_page=='purok.php' ? 'active' : null ?>">
                                 <a href="purok.php">
-                                    <span class="sub-item">Purok</span>
+                                    <span class="sub-item">Purok Management</span>
                                 </a>
                             </li>
                             <li class="<?= $current_page=='position.php' ? 'active' : null ?>">
                                 <a href="position.php">
-                                    <span class="sub-item">Position</span>
+                                    <span class="sub-item">Position Management</span>
                                 </a>
                             </li>
                             <?php if($_SESSION['role']=='staff'):?>
                                 <li>
                                     <a href="#support" data-toggle="modal">
-                                        <span class="sub-item">Support</span>
+                                        <span class="sub-item">Support & Feedback</span>
                                     </a>
                                 </li>
                             <?php else: ?>
                                 <li class="<?= $current_page=='users.php' ? 'active' : null ?>">
                                     <a href="users.php">
-                                        <span class="sub-item">Staff</span>
+                                        <span class="sub-item">Staff Management</span>
+                                    </a>
+                                </li>
+                                <li class="<?= $current_page=='user-resident.php' ? 'active' : null ?>">
+                                    <a href="user-resident.php">
+                                        <span class="sub-item">Resident Management</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#barangay" data-toggle="modal">
-                                        <span class="sub-item">Barangay Info</span>
+                                        <span class="sub-item">Brgy Management</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#photo" data-toggle="modal">
-                                        <span class="sub-item">Photo's Info</span>
+                                        <span class="sub-item">Photo Management</span>
                                     </a>
                                 </li>
                                 <li class="<?= $current_page=='support.php' ? 'active' : null ?>">
                                     <a href="support.php">
-                                        <span class="sub-item">Support</span>
+                                        <span class="sub-item">Support & Feedback</span>
                                     </a>
                                 </li>
                                 <li>                                   
                                     <a class="fw-bold">System</a>
                                     <a href="backup/backup.php">
-                                        <span class="sub-item">Backup</span>
+                                        <span class="sub-item">Backup Management</span>
                                     </a>
                                     <a href="#restore" data-toggle="modal">
-                                        <span class="sub-item">Restore</span>
+                                        <span class="sub-item">Restore Management</span>
                                     </a>
                                 </li>
                             <?php endif ?>
