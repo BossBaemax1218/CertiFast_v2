@@ -8,40 +8,48 @@ require '../PHPMailer/src/SMTP.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+function redirectToSignupPage($message, $success)
+{
+    $_SESSION['message'] = $message;
+    $_SESSION['success'] = $success;
+    $_SESSION['form'] = 'signup';
+
+    header('Location: ../signup.php');
+    exit();
+}
+
+function redirectToLoginPage($message, $success)
+{
+    $_SESSION['message'] = $message;
+    $_SESSION['success'] = $success;
+    $_SESSION['form'] = 'login';
+
+    header('Location: ../login.php');
+    exit();
+}
+
 $fullname = $conn->real_escape_string($_POST['fullname']);
 $email = $conn->real_escape_string($_POST['email']);
 $password = $conn->real_escape_string($_POST['password']);
 
 // Validate email, password, and name
 if (empty($fullname) || empty($email) || empty($password)) {
-    $_SESSION['message'] = 'Please fill in all the required fields.';
-    $_SESSION['success'] = 'danger';
-    $_SESSION['form'] = 'signup';
-
-    header('Location: ../signup.php');
-    exit();
+    redirectToSignupPage('Please fill in all the required fields.', 'danger');
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $_SESSION['message'] = 'Invalid email address format.';
-    $_SESSION['success'] = 'danger';
-    $_SESSION['form'] = 'signup';
-
-    header('Location: ../signup.php');
-    exit();
+    redirectToSignupPage('Invalid email address format.', 'danger');
 }
 
 // Check if the email already exists in tbl_user_resident
-$checkQueryResident = "SELECT * FROM tbl_user_resident WHERE user_email = '$email'";
-$resultResident = $conn->query($checkQueryResident);
+$checkQueryResident = "SELECT * FROM tbl_user_resident WHERE user_email = ?";
+$stmt = $conn->prepare($checkQueryResident);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$resultResident = $stmt->get_result();
 
 if ($resultResident->num_rows > 0) {
-    $_SESSION['message'] = 'Email already exists. Please choose a different one.';
-    $_SESSION['success'] = 'danger';
-    $_SESSION['form'] = 'signup';
-
-    header('Location: ../signup.php');
-    exit();
+    redirectToSignupPage('Email already exists. Please choose a different one.', 'danger');
 }
 
 // Generate verification code
@@ -135,41 +143,34 @@ $mail->Body = '<!DOCTYPE html>
 </body>
 </html>';
 
-// SMTP configuration if required
-$mail->isSMTP();
-$mail->Host = 'smtp.gmail.com';
-$mail->SMTPAuth = true;
-$mail->Username = 'barangaylosamigos.certifast@gmail.com';
-$mail->Password = 'ipqostilxutxmbxl';
-$mail->Port = 587;
+    // SMTP configuration if required
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'barangaylosamigos.certifast@gmail.com';
+    $mail->Password = 'ipqostilxutxmbxl';
+    $mail->Port = 587;
 
-if ($mail->send()) {
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    $query = "INSERT INTO tbl_user_resident (`fullname`, `user_email`, `password`, `verification_code`, `verification_send`, `verification_status`) VALUES ('$fullname', '$email', '$hashedPassword', '$verificationCode', '$verificationSend', 0)";
-
-    if ($conn->query($query)) {
-        $_SESSION['message'] = 'You have registered successfully! We sent a verification code to verify your account, please check your email.';
-        $_SESSION['success'] = 'success';
-        $_SESSION['form'] = 'signup';
-
-        header('Location: ../email-verify-code.php');
-        exit();
-    } else {
-        $_SESSION['message'] = 'Unable to sign up. Please try again later.';
-        $_SESSION['success'] = 'danger';
-        $_SESSION['form'] = 'signup';
-
-        header('Location: ../signup.php');
-        exit();
+    if ($mail->send()) {
+        $hashedPassword = md5($password);
+    
+        $insertQuery = "INSERT INTO tbl_user_resident (`fullname`, `user_email`, `password`, `verification_code`, `verification_send`, `verification_status`) VALUES (?, ?, ?, ?, ?, 0)";
+        $stmt = $conn->prepare($insertQuery);
+        $stmt->bind_param("sssss", $fullname, $email, $hashedPassword, $verificationCode, $verificationSend);
+        
+        if ($stmt->execute()) {
+            $_SESSION['message'] = 'You have registered successfully! We sent a verification code to verify your account, please check your email.';
+            $_SESSION['success'] = 'success';
+            $_SESSION['form'] = 'signup';
+    
+            header('Location: ../email-verify-code.php');
+            exit();
+        } else {
+            redirectToSignupPage('Unable to sign up. Please try again later.', 'danger');
+        }
     }
-} else {
-    $_SESSION['message'] = 'Unable to send email. Please try again later.';
-    $_SESSION['success'] = 'danger';
-    $_SESSION['form'] = 'signup';
-
-    header('Location: ../signup.php');
-    exit();
+     else {
+    redirectToSignupPage('Unable to send email. Please try again later.', 'danger');
 }
 
 $conn->close();

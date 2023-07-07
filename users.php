@@ -57,18 +57,18 @@
 									<div class="table-responsive">
 										<table class="table">
 											<thead>
-												<tr class="text-center">
+												<tr>
 													<th scope="col">No.</th>
 													<th scope="col">Username</th>
 													<th scope="col">User Type</th>
 													<th scope="col">Created At</th>
-													<th scope="col">Action</th>
+													<th class="text-center" scope="col">Action</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php if(!empty($users)): ?>
 													<?php $no=1; foreach($users as $row): ?>
-													<tr class="text-center">
+													<tr>
 														<td><?= $no ?></td>
 														<td>
 															<div class="avatar avatar-xs">
@@ -78,7 +78,7 @@
 														</td>
 														<td><?= $row['user_type'] ?></td>
 														<td><?= $row['created_at'] ?></td>
-														<td>
+														<td class="text-center">
 															<div class="form-button-action">
 																<a type="button" data-toggle="tooltip" href="model/remove_user.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this user?');" class="btn btn-link btn-danger" data-original-title="Remove">
 																	<i class="fas fa-trash"></i>

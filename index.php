@@ -30,8 +30,6 @@
   <link href="homepage/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-
   <link href="homepage/assets/css/style.css" rel="stylesheet">
 </head>
 
@@ -40,7 +38,6 @@
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-geo-alt-fill d-flex align-items-center ms-4"><span><?= ucwords($result['brgy_address']) ?> </span></i>
         <i class="bi bi-envelope d-flex align-items-center ms-4"><a href="mailto:losamigosdavaocity.gov@gmail.com"> <?= ucwords($result['brgy_email']) ?></a></i>
         <i class="bi bi-telephone d-flex align-items-center ms-4"> <span><?= ucwords($result['contact_number']) ?></span></i>
       </div>
@@ -358,7 +355,6 @@
           </div>-->
 
         </div>
-
       </div>
     </section>
 
