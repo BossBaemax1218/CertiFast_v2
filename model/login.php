@@ -63,6 +63,33 @@ if ($user_email != '' && $password != '') {
         }
     }
 
+    // Check if the user is a staff
+    $staffQuery = "SELECT * FROM tbl_user_staff WHERE username = ?";
+    $stmt = $conn->prepare($staffQuery);
+    $stmt->bind_param("s", $user_email);
+    $stmt->execute();
+    $staffResult = $stmt->get_result();
+
+    if ($staffResult->num_rows) {
+        $row = $staffResult->fetch_assoc();
+        $hashedPassword = $row['password'];
+
+        // Retrieve the password hash
+        echo "Password hash for staff: " . $hashedPassword;
+
+        // Verify the password using password_verify
+        if (password_verify($password, $hashedPassword)) {
+            $_SESSION['message'] = 'You have successfully logged in as a staff!';
+            $_SESSION['success'] = 'success';
+            $_SESSION['form'] = 'login';
+
+            header('location: ../staff_dashboard.php');
+            exit();
+        } else {
+            echo "Password verification failed for staff.";
+        }
+    }
+
     // Check if the user is a verified resident
     $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = ?";
     $stmt = $conn->prepare($residentQuery);
@@ -74,12 +101,11 @@ if ($user_email != '' && $password != '') {
         $row = $residentResult->fetch_assoc();
         $hashedPassword = $row['password'];
 
+        // Retrieve the password hash
+        echo "Password hash for resident: " . $hashedPassword;
+
         // Verify the password using password_verify
         if (password_verify($password, $hashedPassword)) {
-            $_SESSION['id'] = $row['id'];
-            $_SESSION['fullname'] = $row['fullname'];
-            $_SESSION['role'] = $row['resident'];
-
             $_SESSION['message'] = 'You have successfully logged in as a resident!';
             $_SESSION['success'] = 'success';
             $_SESSION['form'] = 'login';

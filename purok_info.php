@@ -51,7 +51,7 @@
 				</div>
 				<div class="page-inner">
 					<div class="row mt--2">
-						<div class="col-md-9">
+						<div class="col-md-12">
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
                                     <?php echo $_SESSION['message']; ?>

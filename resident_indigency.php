@@ -25,21 +25,16 @@
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
-
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
 
 		<div class="main-panel">
 			<div class="content">
-				<div class="panel-header" style = "background-color: #E42654">
+				<div class="panel-header">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Barangay Indigency</h2>
+								<h2 class="text-black fw-bold" style = "font-size: 300%;">Barangay Indigency</h2>
 							</div>
 						</div>
 					</div>

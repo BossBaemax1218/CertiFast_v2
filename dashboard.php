@@ -45,63 +45,13 @@
 									<?php endif ?>
 									<div class="d-flex align-items-center align-items-md-center flex-row flex-md-row">
 										<h3 class="fw-bold" style="font-size: 300%;">Overview</h3>
-									</div>								
-									<div style="display: inline-flex; flex-wrap: wrap; gap: 3px; justify-content: right;">
-										<div class="dropdown-customize">
+									</div>									
+									<div style="display:flex; flex-wrap: wrap; justify-content: right;">
+										<div class="dropdown-customize ml-5">
 											<button class="d-inline-block btn dropdown-toggle mr-3" type="button" id="filterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 10px 12px; background-color: #FFF; border-radius: 2px; border-bottom: 3px solid #ccc;">
 												<i class="bx bx-edit"> </i> Customization
 											</button>
 											<div class="dropdown-menu" aria-labelledby="filterButton">
-													<a class="dropdown-item">
-														<label class="fw-bold">
-															Data
-														</label>
-													</a>
-												<div class="dropdown-divider"></div>
-												<a class="dropdown-item" href="#">
-													<label class="checkbox-label">
-														<input type="checkbox" class="checkbox-input" onchange="customizeChart('pie')">
-														Individual
-													</label>
-												</a>
-												<a class="dropdown-item" href="#">
-													<label class="checkbox-label">
-														<input type="checkbox" class="checkbox-input" onchange="customizeChart('pie')">
-														Group
-													</label>
-												</a>
-												<div class="dropdown-divider"></div>
-												<a class="dropdown-item">
-													<label class="fw-bold">
-														Charts
-													</label>
-												</a>
-												<div class="dropdown-divider"></div>
-												<a class="dropdown-item" href="#">
-													<label class="checkbox-label">
-														<input type="checkbox" class="checkbox-input" onchange="customizeChart('pie')">
-														Pie
-													</label>
-												</a>
-												<a class="dropdown-item" href="#">
-													<label class="checkbox-label">
-														<input type="checkbox" class="checkbox-input" onchange="customizeChart('bar')">
-														Bar
-													</label>
-												</a>
-												<a class="dropdown-item" href="#">
-													<label class="checkbox-label">
-														<input type="checkbox" class="checkbox-input" onchange="customizeChart('line')">
-														Line
-													</label>
-												</a>
-												<a class="dropdown-item" href="#">
-													<label class="checkbox-label">
-														<input type="checkbox" class="checkbox-input" onchange="customizeChart('doughnut')">
-														Doughnut
-													</label>
-												</a>
-												<div class="dropdown-divider"></div>
 												<a class="dropdown-item">
 													<label class="fw-bold">
 														Reports
@@ -167,46 +117,41 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="card">
-										<div class="card-header">
-											<div class="card-head">
-												<div class="d-flex flex-row flex-md-row filter">
-													<h2>All Reports</h2>
-													<div class="dropdown" style="margin-left: 85%; text-align: right;">
-														<button class="btn dropdown-toggle" type="button" id="filterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 4px 20px; border: 1px solid #ddd; background-color: #FFF; border-radius: 2px; border-bottom: 3px solid #ccc;">
-															<i class="fas fa-filter"></i> Filter
-														</button>
-														<div class="dropdown-menu" aria-labelledby="filterButton">
-															<a class="dropdown-item" href="#">
-																<label class="checkbox-label">
-																	<input type="checkbox" class="checkbox-input" onchange="applyFilter('day')">
-																	Daily
-																</label>
-															</a>
-															<a class="dropdown-item" href="#">
-																<label class="checkbox-label">
-																	<input type="checkbox" class="checkbox-input" onchange="applyFilter('week')">
-																	Weekly
-																</label>
-															</a>
-															<a class="dropdown-item" href="#">
-																<label class="checkbox-label">
-																	<input type="checkbox" class="checkbox-input" onchange="applyFilter('month')">
-																	Monthly
-																</label>
-															</a>
-															<a class="dropdown-item" href="#">
-																<label class="checkbox-label">
-																	<input type="checkbox" class="checkbox-input" onchange="applyFilter('year')">
-																	Yearly
-																</label>
-															</a>
+										<table class="table">
+											<thead>
+												<tr>
+													<th class="text" colspan="4">
+														<div class="btn-group d-inline-block">					
+															<button class="btn d-inline-block" type="button" id="filterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 4px 20px; background-color: #FFF; border:none;">
+																<span class="text" style=" font-size: 150%">All Reports </span><i class="fas fa-filter"></i>
+															</button>
+															<div class="dropdown-menu" aria-labelledby="filterButton">
+																<a class="dropdown-item" href="#">
+																	<label class="checkbox-label">
+																		<input type="checkbox" class="checkbox-input" onchange="applyFilter('day')">
+																		Daily
+																	</label>
+																</a>
+																<a class="dropdown-item" href="#">
+																	<label class="checkbox-label">
+																		<input type="checkbox" class="checkbox-input" onchange="applyFilter('month')">
+																		Monthly
+																	</label>
+																</a>
+																<a class="dropdown-item" href="#">
+																	<label class="checkbox-label">
+																		<input type="checkbox" class="checkbox-input" onchange="applyFilter('year')">
+																		Yearly
+																	</label>
+																</a>
+															</div>
 														</div>
-													</div>
-												</div>
-											</div>
-										</div>
+													</th>
+												</tr>
+											</thead>
+										</table>
 										<div class="card-body">
-											<canvas id="myChart3" style="width:100%; max-width:100%; height: 500px;"></canvas>
+											<canvas id="myChart3" style="width: 100%; max-width: 100%; height: 500px;"></canvas>
 											<script>
 												var barChartData = {
 													labels: ["2018", "2019", "2020", "2021", "2022"],
@@ -225,7 +170,7 @@
 														},
 														{
 															data: [80, 77, 63, 89, 80],
-															label: "Barangay Indengency",
+															label: "Barangay Indigency",
 															backgroundColor: "#64CCC5",
 															hidden: false,
 														},
@@ -262,14 +207,34 @@
 													options: chartOptions,
 												});
 
-												function applyFilter(filterOption) {
-														// Add code to handle filter selection
-														var filteredData = [40, 65, 35, 55, 100]; // Placeholder data for demonstration
+												function changeChart(label) {
+													// Find the corresponding dataset based on the label
+													var datasetIndex = barChartData.datasets.findIndex(function (dataset) {
+														return dataset.label === label;
+													});
 
-														// Update chart data with filtered values
-														chart.data.datasets[0].data = filteredData;
-														chart.update();
+													if (datasetIndex >= 0) {
+														// Hide all datasets
+														barChartData.datasets.forEach(function (dataset) {
+															dataset.hidden = true;
+														});
+
+														// Show the selected dataset
+														barChartData.datasets[datasetIndex].hidden = false;
+
+														// Update the chart
+														myBar.update();
+
+														// Update active button
+														var buttons = document.getElementsByClassName("btn");
+														for (var i = 0; i < buttons.length; i++) {
+															buttons[i].classList.remove("active");
+															if (buttons[i].innerText.trim() === label) {
+																buttons[i].classList.add("active");
+															}
+														}
 													}
+												}
 											</script>
 										</div>
 									</div>

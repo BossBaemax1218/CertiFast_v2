@@ -787,3 +787,104 @@
 															<i class="fas fa-download"></i>
 														</button>
 													</div>
+
+
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item">
+													<label class="fw-bold">
+														Reports
+													</label>
+												</a>
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item" href="#">
+													<label class="checkbox-label">
+														<input type="checkbox" class="checkbox-input" id="userReportsCheckbox" onchange="applyFilter('userreports')">
+														User's Reports
+													</label>
+												</a>
+												<a class="dropdown-item" href="#">
+													<label class="checkbox-label">
+														<input type="checkbox" class="checkbox-input" id="resReportsCheckbox" onchange="applyFilter('resreports')">
+														Residents Reports
+													</label>
+												</a>
+												<a class="dropdown-item" href="#">
+													<label class="checkbox-label">
+														<input type="checkbox" class="checkbox-input" id="certReportsCheckbox" onchange="applyFilter('certreports')">
+														Certificates Reports
+													</label>
+												</a>
+												<a class="dropdown-item" href="#">
+													<label class="checkbox-label">
+														<input type="checkbox" class="checkbox-input" id="transReportsCheckbox" onchange="applyFilter('transreports')">
+														Transaction Reports
+													</label>
+												</a>
+
+
+												<div class="d-flex align-items-center align-items-md-center flex-row flex-md-row mt-5 filter">
+													<h2>All Reports</h2>
+													<div class="dropdown d-flex align-items-center align-items-md-center flex-row flex-md-row ml-3">
+														<button class="btn dropdown-toggle" type="button" id="filterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 4px 20px; border: 1px solid #ddd; background-color: #FFF; border-radius: 2px; border-bottom: 3px solid #ccc;">
+															<i class="fas fa-filter"></i> Filter
+														</button>
+														<div class="dropdown-menu" aria-labelledby="filterButton">
+															<a class="dropdown-item" href="#">
+																<label class="checkbox-label">
+																	<input type="checkbox" class="checkbox-input" onchange="applyFilter('day')">
+																	Daily
+																</label>
+															</a>
+															<a class="dropdown-item" href="#">
+																<label class="checkbox-label">
+																	<input type="checkbox" class="checkbox-input" onchange="applyFilter('week')">
+																	Weekly
+																</label>
+															</a>
+															<a class="dropdown-item" href="#">
+																<label class="checkbox-label">
+																	<input type="checkbox" class="checkbox-input" onchange="applyFilter('month')">
+																	Monthly
+																</label>
+															</a>
+															<a class="dropdown-item" href="#">
+																<label class="checkbox-label">
+																	<input type="checkbox" class="checkbox-input" onchange="applyFilter('year')">
+																	Yearly
+																</label>
+															</a>
+														</div>
+													</div>
+												</div>
+
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item">
+													<label class="fw-bold">
+														Charts
+													</label>
+												</a>
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item" href="#">
+													<label class="checkbox-label">
+														<input type="checkbox" class="checkbox-input" onchange="customizeChart('pie')">
+														Pie
+													</label>
+												</a>
+												<a class="dropdown-item" href="#">
+													<label class="checkbox-label">
+														<input type="checkbox" class="checkbox-input" onchange="customizeChart('bar')">
+														Bar
+													</label>
+												</a>
+												<a class="dropdown-item" href="#">
+													<label class="checkbox-label">
+														<input type="checkbox" class="checkbox-input" onchange="customizeChart('line')">
+														Line
+													</label>
+												</a>
+												<a class="dropdown-item" href="#">
+													<label class="checkbox-label">
+														<input type="checkbox" class="checkbox-input" onchange="customizeChart('doughnut')">
+														Doughnut
+													</label>
+												</a>

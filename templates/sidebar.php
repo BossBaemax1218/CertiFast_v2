@@ -175,11 +175,11 @@ $current_page = PageName();
                                         <span class="sub-item">Brgy Management</span>
                                     </a>
                                 </li>
-                                <li>
+                                <!--<li>
                                     <a href="#photo" data-toggle="modal">
                                         <span class="sub-item">Photo Management</span>
                                     </a>
-                                </li>
+                                </li>-->
                                 <li class="<?= $current_page=='support.php' ? 'active' : null ?>">
                                     <a href="support.php">
                                         <span class="sub-item">Support & Feedback</span>

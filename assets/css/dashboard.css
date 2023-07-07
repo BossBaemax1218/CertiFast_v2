@@ -33,3 +33,19 @@
 .dropdown-menu .dropdown-item.active {
     background-color: #2891fa;
 }
+
+.btn-group .btn {
+    padding: 10px 12px;
+    border-radius: 2px;
+    border-bottom: 3px solid #ccc;
+}
+
+.btn-group .btn:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-group .btn.active {
+    background-color: #4c6ef5;
+    color: #fff;
+    border-color: #4c6ef5;
+}
