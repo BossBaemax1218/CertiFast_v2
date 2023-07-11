@@ -17,12 +17,6 @@ function redirectToLoginPage($message, $success, $form)
     exit();
 }
 
-// Check if the user is already logged in
-if (isset($_SESSION["user_email"]) && $_SESSION["user_email"] === true) {
-    header("Location: resident_dashboard.php");
-    exit;
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_email = $conn->real_escape_string($_POST['email']);
     $password = $_POST['password'];

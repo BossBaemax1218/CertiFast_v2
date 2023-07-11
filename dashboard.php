@@ -20,11 +20,8 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<?php include 'templates/header.php' ?>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 	<title>Overview - Dashboard</title>
 </head>
 <body>
@@ -36,72 +33,46 @@
 					<div class="content">
 						<div class="panel-header">
 							<div class="page-inner">
-								<div class="d-flex align-items-right align-items-md-right flex-column flex-md-column">
-									<?php if(isset($_SESSION['message'])): ?>
-											<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-												<?php echo $_SESSION['message']; ?>
-											</div>
-										<?php unset($_SESSION['message']); ?>
-									<?php endif ?>
+								<?php if(isset($_SESSION['message'])): ?>
+										<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+											<?php echo $_SESSION['message']; ?>
+										</div>
+									<?php unset($_SESSION['message']); ?>
+								<?php endif ?>
+								<div class="d-flex align-items-left align-items-md-left flex-column flex-md-column">
 									<div class="d-flex align-items-center align-items-md-center flex-row flex-md-row">
 										<h3 class="fw-bold" style="font-size: 300%;">Overview</h3>
 									</div>									
-									<div style="display:flex; flex-wrap: wrap; justify-content: right;">
-										<div class="dropdown-customize ml-5">
-											<button class="d-inline-block btn dropdown-toggle mr-3" type="button" id="filterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 10px 12px; background-color: #FFF; border-radius: 2px; border-bottom: 3px solid #ccc;">
-												<i class="bx bx-edit"> </i> Customization
-											</button>
+									<div style="display:flex; flex-wrap: wrap; justify-content: left;">
+										<div class="dropdown-customize ml-3">
+											<button class="d-inline-block btn dropdown-toggle mr-3" type="button" id="filterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 12px 12px; background-color: #FFF; border-radius: 2px; border-bottom: 3px solid #ccc;">
+												<i class="fas fa-filter"> </i> Filter
+											</button>				
 											<div class="dropdown-menu" aria-labelledby="filterButton">
-												<a class="dropdown-item">
-													<label class="fw-bold">
-														Reports
-													</label>
-												</a>
-												<div class="dropdown-divider"></div>
 												<a class="dropdown-item" href="#">
 													<label class="checkbox-label">
-														<input type="checkbox" class="checkbox-input" id="userReportsCheckbox" onchange="applyFilter('userreports')">
-														User's Reports
+														<input type="checkbox" class="checkbox-input" onchange="applyFilter('day')">
+														Daily
 													</label>
 												</a>
 												<a class="dropdown-item" href="#">
 													<label class="checkbox-label">
-														<input type="checkbox" class="checkbox-input" id="resReportsCheckbox" onchange="applyFilter('resreports')">
-														Residents Reports
+														<input type="checkbox" class="checkbox-input" onchange="applyFilter('month')">
+														Monthly
 													</label>
 												</a>
 												<a class="dropdown-item" href="#">
 													<label class="checkbox-label">
-														<input type="checkbox" class="checkbox-input" id="certReportsCheckbox" onchange="applyFilter('certreports')">
-														Certificates Reports
-													</label>
-												</a>
-												<a class="dropdown-item" href="#">
-													<label class="checkbox-label">
-														<input type="checkbox" class="checkbox-input" id="transReportsCheckbox" onchange="applyFilter('transreports')">
-														Transaction Reports
+														<input type="checkbox" class="checkbox-input" onchange="applyFilter('year')">
+														Yearly
 													</label>
 												</a>
 											</div>
 										</div>
-										<div class="dropdown mr-2">
-											<button class="d-inline-block dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline-block; padding: 9px; border: 1px solid #ddd; background-color: #fff; border-radius: 4px; border: none; border-bottom: 3px solid #ccc;">
-												<i class="far fa-calendar-alt" style="padding: 5px;"></i>
-												<input id="startDate" name="startDate" class="date-input" style="width: 75px; background-color: #fff; border: none;" disabled> 
-												<label>-</label>
-												<input id="endDate" name="endDate" class="date-input" style="width: 75px; background-color: #fff; border: none;" disabled>
+										<div class="dropdown mr-2 ">
+											<button class="date-input-container" type="button" style="display: inline-block; padding: 9px; border: 1px solid #ddd; background-color: #fff; border-radius: 4px; border: none; border-bottom: 3px solid #ccc;">
+												<input class="text-center" type="text" id="datetimerange-input" size="20">
 											</button>
-											<div class="dropdown-menu" aria-labelledby="filterDropdown">
-												<a class="dropdown-item" href="#" onclick="applyFilter('day')">Day</a>
-												<a class="dropdown-item" href="#" onclick="applyFilter('yesterday')">Yesterday</a>
-												<a class="dropdown-item" href="#" onclick="applyFilter('last7days')">Last 7 Days</a>
-												<a class="dropdown-item" href="#" onclick="applyFilter('last30days')">Last 30 Days</a>
-												<a class="dropdown-item" href="#" onclick="applyFilter('thismonth')">This Month</a>
-												<a class="dropdown-item" href="#" onclick="applyFilter('lastmonth')">Last Month</a>
-												<a class="dropdown-item" href="#" onclick="applyFilter('thisyear')">This Year</a>
-												<a class="dropdown-item" href="#" onclick="applyFilter('lastyear')">Last Year</a>
-												<a class="dropdown-item" href="#" id="applyRangeButton" onclick="applyDateRangeFilter()">Custom Range</a>
-											</div>
 										</div>
 										<div class="mr-3" style="text-align: right;">
 											<button class="btn btn-danger" type="button" id="pdf" style="padding: 10px 20px; background-color: #fff; border-radius: 2px; border-bottom: 3px solid #111;">
@@ -117,39 +88,6 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="card">
-										<table class="table">
-											<thead>
-												<tr>
-													<th class="text" colspan="4">
-														<div class="btn-group d-inline-block">					
-															<button class="btn d-inline-block" type="button" id="filterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 4px 20px; background-color: #FFF; border:none;">
-																<span class="text" style=" font-size: 150%">All Reports </span><i class="fas fa-filter"></i>
-															</button>
-															<div class="dropdown-menu" aria-labelledby="filterButton">
-																<a class="dropdown-item" href="#">
-																	<label class="checkbox-label">
-																		<input type="checkbox" class="checkbox-input" onchange="applyFilter('day')">
-																		Daily
-																	</label>
-																</a>
-																<a class="dropdown-item" href="#">
-																	<label class="checkbox-label">
-																		<input type="checkbox" class="checkbox-input" onchange="applyFilter('month')">
-																		Monthly
-																	</label>
-																</a>
-																<a class="dropdown-item" href="#">
-																	<label class="checkbox-label">
-																		<input type="checkbox" class="checkbox-input" onchange="applyFilter('year')">
-																		Yearly
-																	</label>
-																</a>
-															</div>
-														</div>
-													</th>
-												</tr>
-											</thead>
-										</table>
 										<div class="card-body">
 											<canvas id="myChart3" style="width: 100%; max-width: 100%; height: 500px;"></canvas>
 											<script>
@@ -249,12 +187,35 @@
 			</div>
 		</div>
 	<?php include 'templates/footer.php' ?>
-	<script src="assets/js/custom-date-range.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/dist/vanilla-datetimerange-picker.js"></script>
 	<script>
 		  $(document).on("click", "#pdf", function() {
 		console.log("Exporting revenue table as PDF...");
 		$("#revenuetable").tableHTMLExport({ type: "pdf", filename: "Revenue.pdf" });
 	});
 	</script>
+	<script>
+	window.addEventListener("load", function (event) {
+		let drp = new DateRangePicker('datetimerange-input',
+			{
+				ranges: {
+					'Today': [moment().startOf('day'), moment().endOf('day')],
+					'Yesterday': [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').endOf('day')],
+					'Last 7 Days': [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')],
+					'This Month': [moment().startOf('month').startOf('day'), moment().endOf('month').endOf('day')],
+				},
+				locale: {
+					format: "YYYY-MM-DD",
+				}
+			},
+			function (start, end) {
+				alert(start.format() + " - " + end.format());
+			})
+		window.addEventListener('apply.daterangepicker', function (ev) {
+			console.log(ev.detail.startDate.format('YYYY-MM-DD'));
+			console.log(ev.detail.endDate.format('YYYY-MM-DD'));
+		});
+	});
+</script>
 </body>
 </html>

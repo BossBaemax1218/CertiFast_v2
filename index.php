@@ -15,24 +15,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+  <?php include 'templates/header.php' ?>
   <title>CertiFast Portal</title>
-
-  <link href="homepage/assets/img/favicon.png" rel="icon">
-
-  <link href="homepage/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="homepage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="homepage/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="homepage/assets/css/style.css" rel="stylesheet">
 </head>
-
 <body>
 
   <section id="topbar" class="d-flex align-items-center">
@@ -60,7 +45,7 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a href="login.php" class="btn-login"> Login</a></li>
+          <li><a href="login.php" class="btn-login" style="text-decoration:none;"> Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -84,44 +69,44 @@
       <div class="section-title">
           <h3>Barangay Los Amigos - CertiFast Portal</h3>
           <br>
-          <h6>Here are the steps in setting an registration request with CertiFast Portal.</h6>
+          <h4>Here are the steps in setting an registration request with CertiFast Portal.</h4>
         </div>
         <div class="row">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+            <a href="#services" style="text-decoration:none;"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-8.svg"></div>
               <h4 class="title" style="color: black;">Step 1</h4>
-              <h6 class="pre-title" style="color: black; font-weight: bold;">Request</h6>
-              <p class="description" style="color: black;">Select the type of barangay certificate that you would like to request in CertiFast Portal.</p>
+              <h5 class="pre-title" style="color: black; font-weight: bold;">Request<h5>
+              <p class="description" style="color: black;">Go to the <strong>Submit Request Form</strong> in your portal account then send us your personal info.</p>
             </div></a>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-          <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+          <a href="#services" style="text-decoration:none;"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-14.svg"></div>
               <h4 class="title" style="color: black;">Step 2</h4>
-              <h6 class="pre-title" style="color: black; font-weight: bold;">Review</h6>
+              <h5 class="pre-title" style="color: black; font-weight: bold;">Review</h5>
               <p class="description" style="color: black;">Make sure your personal information is true and correct by reviewing it carefully on the screen.</p>
             </div></a>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+            <a href="#services" style="text-decoration:none;"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-10.svg"></div>
               <h4 class="title" style="color: black;">Step 3</h4>
-              <h6 class="pre-title" style="color: black; font-weight: bold;">Interview</h6>
-              <p class="description" style="color: black;">Giving a few essential interview at the barangay office to guarantee the authenticity of your information.</p>
+              <h5 class="pre-title" style="color: black; font-weight: bold;">Interview </h5>
+              <p class="description" style="color: black;">Go to Barangay Office for a few essential interview to guarantee the authenticity of your information and also your payment.</p>
             </div></a>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+          <!--<div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+            <a href="#services" style="text-decoration:none;"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="homepage/assets/img/clients/logo-11.svg"></div>
               <h4 class="title" style="color: black;">Step 4</h4>
-              <h6 class="pre-title" style="color: black; font-weight: bold;">Approval</h6>
+              <h5 class="pre-title" style="color: black; font-weight: bold;">Approval</h5>
               <p class="description" style="color: black;">Prepare a cash in hand to ensure you can pay for the certificate after a quick interview.</p>
             </div></a>
-          </div>
+          </div>-->
 
         </div> 
       </div>
@@ -134,7 +119,7 @@
           <h2>About</h2>
           <h3><span>About us</span></h3>
           <br>
-          <h6>Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.</h6>
+          <h4>Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.</h4>
         </div>
 
         <div class="row">
@@ -257,7 +242,7 @@
           <h2>Services</h2>
           <h3><span>Our Offered Certificates</span></h3>
           <br>
-          <h6>Say goodbye to spreadsheet tracking. Our certificate management system online provides clarity and simplifies compliance.</h6>
+          <h4>Say goodbye to spreadsheet tracking. Our certificate management system online provides clarity and simplifies compliance.</h4>
         </div>
 
         <div class="row">
@@ -373,7 +358,7 @@
           <h2>News & Events</h2>
           <h3><span>News & Events</span></h3>
           <br>
-          <h6>Residents of Barangay Los Amigos are invited to attend a community meeting to discuss crucial matters and provide updates.</h6>
+          <h4>Residents of Barangay Los Amigos are invited to attend a community meeting to discuss crucial matters and provide updates.</h4>
         </div>
         <div class="row announcement-container" data-aos="fade-up" data-aos-delay="200">
 
@@ -416,7 +401,7 @@
           <h2>F.A.Q</h2>
           <h3><span>Frequently Asked Question</span></h3>
           <br>
-          <h6>Welcome to the Certifast Portal of Barangay Los Amigos! Here are some frequently asked questions to help you get started:</h6>
+          <h4>Welcome to the Certifast Portal of Barangay Los Amigos! Here are some frequently asked questions to help you get started:</h4>
         </div>
         <br>
         <div class="row justify-content-center">
@@ -527,7 +512,7 @@
           <h2>Contact</h2>
           <h3><span>Contact Us</span></h3>
           <br>
-          <h6>We providing excellent customer service and we are here to help with any inquiries or concerns. Please feel free to reach out to us using the contact details provided below:</h6>
+          <h4>We providing excellent customer service and we are here to help with any inquiries or concerns. Please feel free to reach out to us using the contact details provided below:</h4>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -554,11 +539,8 @@
               <p><?= ucwords($result['contact_number']) ?></p>
             </div>
           </div>
-
         </div>
-
         <div class="row" data-aos="fade-up" data-aos-delay="100">
-
           <div class="col-lg-6 ">
             <a href="https://www.google.com/maps/place/Los+Amigos,+Tugbok,+Davao+City,+Davao+del+Sur/@7.1416987,125.46621,15z/data=!3m1!4b1!4m6!3m5!1s0x32f911550de0241f:0xc66d177e2b21e4d5!8m2!3d7.1405399!4d125.4754538!16s%2Fg%2F1ptw2kz3p?entry=ttu"><img class="mb-4 mb-lg-0" src="homepage\assets\img\testimonials\testimonials-7.jpg" frameborder="0" style="border:0; width: 100%; height: 384px;" alt="img-6"></a>
           </div>
@@ -587,14 +569,10 @@
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
           </div>
-
         </div>
-
       </div>
     </section>
-
   </main>
-
   <footer id="footer">
 
     <div class="footer-top">
@@ -648,7 +626,7 @@
 
     <div class="container py-4">
       <div class="copyright">
-        <?php $year = date("Y"); echo  $year . " &copy; <strong><span>Barangay Los Amigos - CertiFast Portal</span></strong>" ?> . All Rights Reserved . <a class="text" href="#contact" >Term of Us</a> . <a class="text" href="#privacy" >Privacy Policy</a>
+        <?php $year = date("Y"); echo  $year . " &copy; <strong><span>Barangay Los Amigos - CertiFast Portal</span></strong>" ?> . All Rights Reserved . <a class="text-muted" href="#term" data-toggle="modal" style="text-decoration: none;">Term of Service</a> . <a class="text-muted" href="#term"  data-toggle="modal" style="text-decoration: none;">Privacy Policy</a>
       </div>
     </div>
   </footer>
@@ -656,17 +634,61 @@
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <script src="homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="homepage/assets/vendor/aos/aos.js"></script>
-  <script src="homepage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="homepage/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="homepage/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="homepage/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="homepage/assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="homepage/assets/vendor/php-email-form/validate.js"></script>
-
-  <script src="homepage/assets/js/main.js"></script>
-
+  
+<!-- Modal -->
+<div class="modal fade" id="term" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Term of Services</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form method="POST" action="#" enctype="multipart/form-data">
+                    <div class="form-group form-floating-label">
+                        <h3>Welcome to Barangay Los Amigos - Certifast Portal! </h3>
+                        <span>Please read these Terms of Services carefully before accessing or using the online certificate management system.</span>
+                        <ul class="mt-2">
+                            <li>
+                                <label>Acceptance of Terms</label>
+                                <p>By accessing or using the Certifast Portal, you agree to be bound by these Terms of Use. If you do not agree to these terms, please refrain from using the system.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<?php include 'templates/footer.php' ?>
 </body>
 
 </html>

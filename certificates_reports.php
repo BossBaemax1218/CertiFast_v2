@@ -1,13 +1,16 @@
 <?php include 'server/server.php' ?>
 <?php 
-    $query = "SELECT COUNT(DISTINCT details) as de FROM tblpayments WHERE details IN ('Barangay Clearance Payment', 'Business Permit Payment', 'Certificate of Residency Payment', 'Certificate of Indigency Payment')"; 
+    $query = "SELECT COUNT(details) as de FROM tblpayments WHERE details IN ('Barangay Clearance Payment')"; 
     $revenue1 = $conn->query($query)->fetch_assoc();
 
-    $sql1 = "SELECT COUNT(name) as na FROM tblpayments";
+    $sql1 = "SELECT COUNT(details) as na FROM tblpayments WHERE details IN ('Certificate of Residency Payment')";
     $result1 = $conn->query($sql1)->fetch_assoc();
 
-	$query2 = "SELECT SUM(amounts) as am FROM tblpayments ORDER BY `date` DESC";
+	$query2 = "SELECT COUNT(amounts) as am FROM tblpayments WHERE details IN ('Certificate of Indigency Payment')";
 	$revenue3 = $conn->query($query2)->fetch_assoc();
+
+    $query3 = "SELECT COUNT(details) as pe FROM tblpayments WHERE details IN ('Business Permit Payment')"; 
+    $revenue2 = $conn->query($query3)->fetch_assoc();
 
     $sql = "SELECT * FROM tblpayments ORDER BY `date` DESC";
     $result = $conn->query($sql);
@@ -16,6 +19,8 @@
 	while($row = $result->fetch_assoc()){
 		$revenue[] = $row; 
 	}
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,21 +56,19 @@
 							<?php unset($_SESSION['message']); ?>
 						<?php endif ?>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="card card-stats card card-round">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-4">
                                                 <div class="icon-big text-center">
-                                                    <i class="fas fa-user-check fa-2x" style="color: gray;"></i>
+                                                    <i class="fas fa-file-alt fa-2x" style="color: gray;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2 col-stats">
-                                            </div>
-                                            <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 16px;">Complete</h2>
-                                                    <h3 class="fw-bold text-uppercase" style="font-size: 45px; color: #C77C8D;"><?= number_format($result1['na']) ?></h3>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Residency</h2>
+                                                    <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($result1['na']) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -75,21 +78,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="card card-stats card card-round" >
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-4">
                                                 <div class="icon-big text-center">
-                                                    <i class="fa-solid fa-peso-sign fa-2x" style="color: gray;"></i>
+                                                    <i class="fas fa-file-alt fa-2x" style="color: gray;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2 col-stats">
-                                            </div>
-                                            <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 16px;">Total</h2>
-                                                    <h3 class="fw-bold" style="font-size: 45px; color: #C77C8D;"><?= number_format($revenue3['am'],2)?></h3>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Indigency</h2>
+                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue3['am'])?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +100,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="card card-stats card-round">
                                     <div class="card-body">
                                         <div class="row">
@@ -109,11 +110,31 @@
                                                 </div>
                                             </div>
                                             <div class="col-2 col-stats">
+                                                <div class="numbers mt-2">
+                                                    <h3 class="text-uppercase" style="font-size: 16px;">Clearance</h3>
+                                                    <h5 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <a href="purok_info.php?state=purok" class="card-link text" style="color: gray;"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card card-stats card-round">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="icon-big text-center">
+                                                    <i class="fas fa-file-alt fa-2x" style="color: gray;"></i>
+                                                </div>
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 16px;">Certificates</h2>
-                                                    <h3 class="fw-bold text-uppercase" style="font-size: 45px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h3>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Permit</h2>
+                                                    <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue2['pe']) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -152,8 +173,6 @@
                                                         <th class="text-center" scope="col">Date</th>
                                                         <th scope="col">Recipient</th>
                                                         <th scope="col">Details</th>
-                                                        <th scope="col">Amount</th>
-                                                        <th scope="col">Cashier</th>
                                                         <th class="text-center" scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -164,8 +183,6 @@
                                                             <td class="text-center"><?= $row['date'] ?></td>
                                                             <td><?= $row['name'] ?></td>
                                                             <td><?= $row['details'] ?></td>
-                                                            <td> <i class="fa-solid fa-peso-sign"></i> <?= number_format($row['amounts'],2) ?></td>
-                                                            <td><?= $row['user'] ?></td>
                                                             <td class="text-center">
                                                                 <div class="form-button-action">
                                                                     <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>

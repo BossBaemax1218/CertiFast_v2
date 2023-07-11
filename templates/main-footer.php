@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="copyright ml-auto">
             <?php  $year = date("Y"); echo  $year . " &copy CertiFast Portal" ?> .
-            <a class="text" href="#term" >Terms of Service </a> . <a class="text" href="#contact" >Contact Us</a> . <a class="text" href="#privacy" >Privacy Policy</a>
+            <a class="text-muted" href="#term" data-toggle="modal" style="text-decoration: none;">Terms of Service </a> . <a class="text-muted" href="#privacy" style="text-decoration: none;">Privacy Policy</a>
         </div>				
     </div>
 </footer>
@@ -277,8 +277,60 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="term" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Term of Services</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form method="POST" action="model/restore.php" enctype="multipart/form-data">
+                    <div class="form-group form-floating-label">
+                        <h3>Welcome to Barangay Los Amigos - Certifast Portal! </h3>
+                        <span>Please read these Terms of Services carefully before accessing or using the online certificate management system.</span>
+                        <ul class="mt-2">
+                            <li>
+                                <label>Acceptance of Terms</label>
+                                <p>By accessing or using the Certifast Portal, you agree to be bound by these Terms of Use. If you do not agree to these terms, please refrain from using the system.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script>
-    // Disable the browser's back button
     history.pushState(null, null, location.href);
     window.onpopstate = function () {
         history.go(1);

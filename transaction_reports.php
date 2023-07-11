@@ -64,7 +64,7 @@
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 16px;">Complete</h2>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Recipient</h2>
                                                     <h3 class="fw-bold text-uppercase" style="font-size: 45px; color: #C77C8D;"><?= number_format($result1['na']) ?></h3>
                                                 </div>
                                             </div>
@@ -88,7 +88,7 @@
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 16px;">Total</h2>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Payments</h2>
                                                     <h3 class="fw-bold" style="font-size: 45px; color: #C77C8D;"><?= number_format($revenue3['am'],2)?></h3>
                                                 </div>
                                             </div>

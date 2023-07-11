@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 <link rel="stylesheet" href="assets/js/plugin/dataTables.dateTime.min.css">
 <link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="homepage/assets/css/styles.css">
 <link rel="stylesheet" href="assets/js/plugin/datatables/Buttons-1.6.1/css/buttons.dataTables.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -31,6 +32,20 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
   <script src="https://cdn.jsdelivr.net/npm/table-html-export"></script>  
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+	<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/extra/vanilla-datetimerange-picker-dark.css">
+
+    <!-- index -->
+    <link href="homepage/assets/img/favicon.png" rel="icon">
+
+    <link href="homepage/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="homepage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="homepage/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="homepage/assets/css/style.css" rel="stylesheet">
 
 <script src="assets/js/plugin/webfont/webfont.min.js"></script>
 <script>

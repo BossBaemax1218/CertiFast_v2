@@ -12,11 +12,10 @@
 		<?php include 'templates/sidebar-resident.php' ?>
 			<div class="main-panel">
 				<div class="content">
-					<section class="main-content mt-5">
+					<section class="main-content mt-2">
 						<div class="container">
 							<h1 class="text-center">Barangay Los Amigos - <strong>CertiFast Portal</strong></h1>
 							<h3 class="text-center text-muted">Simplifying Certificates for a Connected Community. </h3>
-							<br>
 							<?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
 								<header id="header">
 									<div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
@@ -30,6 +29,7 @@
 								</header>
 								<?php unset($_SESSION['message']); ?>
 							<?php endif; ?>
+							<br>
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
 									<div class="profile-card shadow mb-4 text-center p-4 position-relative h-100">

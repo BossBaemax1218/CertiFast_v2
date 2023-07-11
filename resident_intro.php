@@ -13,50 +13,54 @@
 		    <div class="main-panel">
 			    <div class="content">
                     <div>
-                        <h1 class="text-center fw-bold mt-5" style="font-size: 300%;"></h1>
+                        <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
+                        <h3 class="text-center fw-bold"> Here are the steps in setting an registration request with CertiFast Portal. </h3>
                     </div>
                     <div class="page-inner mt-2">
                         <div class="row">
-                            <div class="modal fade" id="support" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Contact Support</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body" style="background-color: white">
-                                            <form method="POST" action="model/save_support.php">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder="Enter Name" name="name" required >
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" placeholder="Enter Email Address" name="email" required >
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Enter Contact Number(optional)" name="number">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Enter Subject" name="subject" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <textarea type="text" class="form-control" placeholder="Enter Message" name="message" required ></textarea>
-                                                </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Send</button>
-                                        </div>
-                                        </form>
+                            <div class="container" data-aos="fade-up">
+                                <div class="section-title">
+                                    <h3>Barangay Los Amigos - CertiFast Portal</h3>
+                                    <br>
+                                    <h6>Here are the steps in setting an registration request with CertiFast Portal.</h6>
                                     </div>
-                                </div>
+                                    <div class="row">
+                                    <div class="col-md-6 col-lg-3  mb-5 mb-lg-0">
+                                        <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="icon"><img src="homepage/assets/img/clients/logo-8.svg"></div>
+                                        <h4 class="title" style="color: black;">Step 1</h4>
+                                        <h6 class="pre-title" style="color: black; font-weight: bold;">Request</h6>
+                                        <p class="description" style="color: black;">Select the type of barangay certificate that you would like to request in CertiFast Portal.</p>
+                                        </div></a>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-3  mb-5 mb-lg-0">
+                                    <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="icon"><img src="homepage/assets/img/clients/logo-14.svg"></div>
+                                        <h4 class="title" style="color: black;">Step 2</h4>
+                                        <h6 class="pre-title" style="color: black; font-weight: bold;">Review</h6>
+                                        <p class="description" style="color: black;">Make sure your personal information is true and correct by reviewing it carefully on the screen.</p>
+                                        </div></a>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                                        <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="icon"><img src="homepage/assets/img/clients/logo-10.svg"></div>
+                                        <h4 class="title" style="color: black;">Step 3</h4>
+                                        <h6 class="pre-title" style="color: black; font-weight: bold;">Interview</h6>
+                                        <p class="description" style="color: black;">Giving a few essential interview at the barangay office to guarantee the authenticity of your information.</p>
+                                        </div></a>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-3  mb-5 mb-lg-0">
+                                        <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="icon"><img src="homepage/assets/img/clients/logo-11.svg"></div>
+                                        <h4 class="title" style="color: black;">Step 4</h4>
+                                        <h6 class="pre-title" style="color: black; font-weight: bold;">Approval</h6>
+                                        <p class="description" style="color: black;">Prepare a cash in hand to ensure you can pay for the certificate after a quick interview.</p>
+                                        </div></a>
+                                    </div>
+                                </div> 
                             </div>
                         </div>
                     </div>

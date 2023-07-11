@@ -28,7 +28,7 @@ $current_page = PageName();
                 </div>
             </div>
             <ul class="nav nav-danger">
-                <li class="nav-item <?= $current_page=='residenct_support.php' || $current_page=='residenct_support.php' ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page=='resident_intro.php' || $current_page=='resident_intro.php' ? 'active' : null ?>">
                     <a href="resident_intro.php">
                         <i class="far fa-bookmark"></i>
                         <p>Introduction</p>
