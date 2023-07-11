@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="copyright ml-auto">
             <?php  $year = date("Y"); echo  $year . " &copy CertiFast Portal" ?> .
-            <a class="text" href="" >Terms of Service </a> . <a class="text" href="" >Contact Us </a> 
+            <a class="text" href="#term" >Terms of Service </a> . <a class="text" href="#contact" >Contact Us</a> . <a class="text" href="#privacy" >Privacy Policy</a>
         </div>				
     </div>
 </footer>

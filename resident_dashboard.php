@@ -10,26 +10,26 @@
 	<div class="wrapper">
 		<?php include 'templates/main-header-resident.php' ?>
 		<?php include 'templates/sidebar-resident.php' ?>
-		<?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
-			<header id="header">
-				<div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
-					<?php if ($_SESSION['success'] == 'danger'): ?>
-						<i class="fas fa-exclamation-triangle"></i>
-					<?php elseif ($_SESSION['success'] == 'success'): ?>
-						<i class="fas fa-check-circle"></i>
-					<?php endif; ?>
-					<span class="alert-message"> <?php echo $_SESSION['message']; ?> </span>
-				</div>
-			</header>
-			<?php unset($_SESSION['message']); ?>
-			<?php endif; ?>
 			<div class="main-panel">
 				<div class="content">
 					<section class="main-content mt-5">
 						<div class="container">
-							<h1 class="text-center">Online Application for <strong>CertiFast Portal</strong></h1>
-							<p class="text-center text-muted">What certifications must you have, and where can you request them? </p>
+							<h1 class="text-center">Barangay Los Amigos - <strong>CertiFast Portal</strong></h1>
+							<h3 class="text-center text-muted">Simplifying Certificates for a Connected Community. </h3>
 							<br>
+							<?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
+								<header id="header">
+									<div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
+										<?php if ($_SESSION['success'] == 'danger'): ?>
+											<i class="fas fa-exclamation-triangle"></i>
+										<?php elseif ($_SESSION['success'] == 'success'): ?>
+											<i class="fas fa-check-circle"></i>
+										<?php endif; ?>
+										<span class="alert-message"> <?php echo $_SESSION['message']; ?> </span>
+									</div>
+								</header>
+								<?php unset($_SESSION['message']); ?>
+							<?php endif; ?>
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
 									<div class="profile-card shadow mb-4 text-center p-4 position-relative h-100">
@@ -48,7 +48,6 @@
 										</ul>
 									</div>
 									<br>
-										<h5><a href="#" class="btn-request-now">REQUEST NOW</a></h5>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
@@ -68,7 +67,6 @@
 											</ul>
 										</div>
 										<br>
-											<h5><a href="#" class="btn-request-now">REQUEST NOW</a></h5>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
@@ -88,7 +86,6 @@
 											</ul>
 										</div>
 										<br>
-											<h5><a href="#" class="btn-request-now">REQUEST NOW</a></h5>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
@@ -108,7 +105,6 @@
 											</ul>
 										</div>
 										<br>
-											<h5><a href="#" class="btn-request-now">REQUEST NOW</a></h5>
 									</div>
 								</div>
 							</div>

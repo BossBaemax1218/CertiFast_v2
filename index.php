@@ -261,20 +261,6 @@
         </div>
 
         <div class="row">
-          <!--<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><img src="homepage/assets/img/clients/logo-1.svg"></div>
-              <h4>Barangay Registration</h4>
-              <p>To successfully register in your local barangay, you need to provide certain documents and information these documents include:</p>
-                <ul class="req-list"> 
-                  <li>Birth certificate or any document that shows your birthdate and place of birth.</li>
-                  <li>A valid ID or passport.</li>
-                </ul>
-              <br>
-              <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
-            </div>
-          </div>-->
-
           <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-2.svg"></div>
@@ -338,22 +324,6 @@
               <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
             </div>
           </div>
-
-          <!--<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><img src="homepage/assets/img/clients/logo-12.svg"></div>
-              <h4>Barangay ID</h4>
-              <p> To register in your barangay, you need the following requirements:</p>
-              <ul class="req-list">
-                  <li>Barangay Clearance.</li>
-                  <li>A valid ID, passport, birth certificate or marriage certificate.</li>
-                  <li>Photocopy of any Utility Bill or Proof of Billing (such as electric bill, water bill, etc.) </li>
-              </ul>
-              <br>
-              <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
-            </div>
-          </div>-->
-
         </div>
       </div>
     </section>
@@ -678,7 +648,7 @@
 
     <div class="container py-4">
       <div class="copyright">
-        <?php $year = date("Y"); echo  $year . " &copy; <strong><span>Barangay Los Amigos - CertiFast Portal</span></strong>" ?> . All Rights Reserved
+        <?php $year = date("Y"); echo  $year . " &copy; <strong><span>Barangay Los Amigos - CertiFast Portal</span></strong>" ?> . All Rights Reserved . <a class="text" href="#contact" >Term of Us</a> . <a class="text" href="#privacy" >Privacy Policy</a>
       </div>
     </div>
   </footer>

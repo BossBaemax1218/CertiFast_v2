@@ -14,11 +14,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?php include 'templates/header.php' ?>     
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-  <script src="https://cdn.jsdelivr.net/npm/table-html-export"></script>              
+	<?php include 'templates/header.php' ?>                  
 	<title>Announcement</title>
 </head>
 <body>

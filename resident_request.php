@@ -43,29 +43,21 @@ $conn->close();
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header">
-					<div class="page-inner">
-						<div class="d-flex align-items-center align-items-md-center flex-column flex-md-row">
-							<div>
-								<h1 class="text-center fw-bold" style="font-size: 300%;">Resident</h1>
-							</div>
-						</div>
-				    </div>
-                <div class="page-inner mt-2">
-                    <?php if(isset($_SESSION['message'])): ?>
-								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-									<?php echo $_SESSION['message']; ?>
-								</div>
-							<?php unset($_SESSION['message']); ?>
-						<?php endif ?>
-				<div class="page-inner md-2">
+                <div>
+                    <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Resident</h1>
+                    <h5 class="text-center fw-bold"><a href="#add" data-toggle="modal" class="btn-request-now">CREATE</a></h5>
+                </div>
+                <div class="page-inner">
+                <?php if(isset($_SESSION['message'])): ?>
+                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                            <?php echo $_SESSION['message']; ?>
+                        </div>
+                    <?php unset($_SESSION['message']); ?>
+                <?php endif ?>
+				<div class="page-inner">
 					<div class="row">
 						<div class="col-md-12">
                             <div class="card">
-								<div class="card-header">
-									<div class="card-head-row">
-										<div class="card-title">Resident Information</div>
-									</div>
-								</div>
 								<div class="card-body">
                                     <div class="table-responsive">
                                         <table id="residenttable" class="table">

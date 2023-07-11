@@ -72,3 +72,11 @@
     text-decoration: none;
     color: #fff;
   }
+
+  .btn-req{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    margin-left: 100%;
+  }

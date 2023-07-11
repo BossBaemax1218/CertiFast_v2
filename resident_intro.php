@@ -2,12 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php include 'templates/header.php' ?>     
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-  <script src="https://cdn.jsdelivr.net/npm/table-html-export"></script>              
-	<title>Support & Feedback</title>
+<?php include 'templates/header.php' ?>                 
+	<title>Certifast Portal</title>
 </head>
 <body>
 	<?php include 'templates/loading_screen.php' ?>
@@ -17,7 +13,7 @@
 		    <div class="main-panel">
 			    <div class="content">
                     <div>
-                        <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Support & Feedback</h1>
+                        <h1 class="text-center fw-bold mt-5" style="font-size: 300%;"></h1>
                     </div>
                     <div class="page-inner mt-2">
                         <div class="row">

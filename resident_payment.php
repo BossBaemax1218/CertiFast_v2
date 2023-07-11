@@ -7,9 +7,9 @@ if (!isset($_SESSION["fullname"])) {
     exit;
 }
 
-$fullname = $_SESSION["fullname"];
+$fullname = $_SESSION["user_email"];
 
-$sql = "SELECT * FROM tblpayments JOIN tbl_user_resident ON tblpayments.name = tbl_user_resident.fullname WHERE tbl_user_resident.fullname = ? ORDER BY tblpayments.date DESC";
+$sql = "SELECT * FROM tblpayments JOIN tbl_user_resident ON tblpayments.name = tbl_user_resident.fullname WHERE tbl_user_resident.user_email = ? ORDER BY tblpayments.date DESC";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $fullname);
 $stmt->execute();
@@ -38,7 +38,7 @@ while ($row = $result->fetch_assoc()) {
                     <div>
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Payments History</h1>
                     </div>
-					<div class="page-inner mt-2">
+					<div class="page-inner mt-5">
 						<?php if(isset($_SESSION['message'])): ?>
 								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
 									<?php echo $_SESSION['message']; ?>
@@ -47,7 +47,7 @@ while ($row = $result->fetch_assoc()) {
 						<?php endif ?>
 					</div>
                     <div class="page-inner">
-                        <div class="row mt-2">
+                        <div class="row mt-5">
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -62,21 +62,21 @@ while ($row = $result->fetch_assoc()) {
                                                             <th scope="col">Amount</th>
                                                         </tr>
                                                     </thead>
-                                                        <tbody>
-                                                            <?php if (!empty($revenue)): ?>
-                                                                <?php $no = 1; foreach ($revenue as $row): ?>
-                                                                    <tr>
-                                                                        <td><?= $row['date'] ?></td>
-                                                                        <td><?= $row['name'] ?></td>
-                                                                        <td><?= $row['details'] ?></td>
-                                                                        <td><i class="fa-solid fa-peso-sign"></i> <?= number_format($row['amounts'], 2) ?></td>
-                                                                    </tr>
-                                                                <?php $no++; endforeach ?>
-                                                            <?php else: ?>
+                                                    <tbody>
+                                                        <?php if (!empty($revenue)): ?>
+                                                            <?php $no = 1; foreach ($revenue as $row): ?>
                                                                 <tr>
-                                                                    <td colspan="4" class="text-center">No Available Data</td>
+                                                                    <td><?= $row['date'] ?></td>
+                                                                    <td><?= $row['name'] ?></td>
+                                                                    <td><?= $row['details'] ?></td>
+                                                                    <td><i class="fa-solid fa-peso-sign"></i> <?= number_format($row['amounts'], 2) ?></td>
                                                                 </tr>
-                                                            <?php endif ?>
+                                                            <?php $no++; endforeach ?>
+                                                        <?php else: ?>
+                                                            <tr>
+                                                                <td colspan="4" class="text-center">No Available Data</td>
+                                                            </tr>
+                                                        <?php endif ?>
                                                     </tbody>
                                                 </table>
                                             </div>

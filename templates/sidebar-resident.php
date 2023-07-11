@@ -28,6 +28,13 @@ $current_page = PageName();
                 </div>
             </div>
             <ul class="nav nav-danger">
+                <li class="nav-item <?= $current_page=='residenct_support.php' || $current_page=='residenct_support.php' ? 'active' : null ?>">
+                    <a href="resident_intro.php">
+                        <i class="far fa-bookmark"></i>
+                        <p>Introduction</p>
+                    </a>
+                </li>
+                <br>
                 <li class="nav-item <?= $current_page=='resident_dashboard.php' || $current_page=='resident_dashboard.php'  ? 'active' : null ?>">
                     <a href="resident_dashboard.php" >
                         <i class='bx bxs-dashboard'></i>
@@ -36,7 +43,7 @@ $current_page = PageName();
                 </li>
                 <li class="nav-item <?= $current_page=='resident_announcement.php' || $current_page=='resident_announcement.php' ? 'active' : null ?>">
                     <a href="resident_announcement.php" >
-                        <i class='bx bxs-bell' ></i>
+                        <i class='far fa-bell' ></i>
                         <p>Announcement</p>
                     </a>
                 </li>
@@ -60,7 +67,7 @@ $current_page = PageName();
                 </li>
                 <li class="nav-item <?= $current_page=='resident_payment.php' || $current_page=='resident_payment.php' ? 'active' : null ?>">
                     <a href="resident_payment.php">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-history"></i>
                         <p>Payments</p>
                     </a>
                 </li>
@@ -68,11 +75,11 @@ $current_page = PageName();
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">Feedback</h4>
+                    <h4 class="text-section">Settings</h4>
                 </li>
-                <li class="nav-item <?= $current_page=='residenct_support.php' || $current_page=='residenct_support.php' ? 'active' : null ?>">
-                    <a href="resident_support.php">
-                        <i class="fas fa-edit"></i>
+                <li class="nav-item">
+                    <a href="#support" data-toggle="modal">
+                        <i class="fas fa-angle-right"></i>
                         <p>Support & Feedbacks</p>
                     </a>
                 </li>

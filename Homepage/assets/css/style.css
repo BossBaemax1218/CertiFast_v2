@@ -692,7 +692,7 @@ section {
   padding: 10px 28px;
   border-radius: 4px;
   transition: 0.5s;
-  color: #fff;
+  color: #e6e3e3;
   background:  #E42654;
 }
 
@@ -798,7 +798,7 @@ section {
   width: 100%;
   position: relative;
   text-align: center;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(178, 231, 247, 0.651);
 }
 
 .counts .count-box i {
