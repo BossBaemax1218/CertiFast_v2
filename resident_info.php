@@ -49,13 +49,8 @@
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
-
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
 
 		<div class="main-panel">
 			<div class="content">
@@ -289,13 +284,8 @@
                     </div>
 				</div>
 			</div>
-
-			<!-- Main Footer -->
-			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
-			
-		</div>
-		
+			<?php include 'templates/main-footer.php' ?>		
+		</div>		
 	</div>
 	<?php include 'templates/footer.php' ?>
     <script src="assets/js/plugin/datatables/datatables.min.js"></script>

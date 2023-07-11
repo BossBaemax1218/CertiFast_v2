@@ -277,3 +277,10 @@
         </div>
     </div>
 </div>
+<script>
+    // Disable the browser's back button
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+</script>

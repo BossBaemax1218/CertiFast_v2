@@ -36,7 +36,7 @@
 	<?php include 'templates/header.php' ?>
 	<title>Business Permit</title>
     <style>
-    .footer-content {
+        .footer-content {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -100,14 +100,8 @@
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
-
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
-
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header" style = "background-color: #E42654">

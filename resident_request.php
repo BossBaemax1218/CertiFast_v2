@@ -1,62 +1,55 @@
-<?php include 'server/server.php' ?>
-<?php 
-	$query = "SELECT * FROM `tblresident` ORDER BY `id` DESC";
-    $result = $conn->query($query);
+<?php
+include 'server/db_connection.php';
 
-    $resident = array();
-	while($row = $result->fetch_assoc()){
-		$resident[] = $row; 
-	}
+if (!isset($_SESSION["fullname"])) {
+    header("Location: login.php");
+    exit;
+}
 
-    $query1 = "SELECT * FROM tblpurok ORDER BY `purok`";
-    $result1 = $conn->query($query1);
+$fullname = $_SESSION["fullname"];
 
-    $purok = array();
-	while($row2 = $result1->fetch_assoc()){
-		$purok[] = $row2; 
-	}
+$sql = "SELECT * FROM tblresident JOIN tbl_user_resident ON tblresident.email = tbl_user_resident.user_email WHERE tbl_user_resident.fullname = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $fullname);
+$stmt->execute();
+$result = $stmt->get_result();
 
-    $query1 = "SELECT COUNT(*) AS total_resident FROM tblresident";
-    $result1 = $conn->query($query1);
-    
-    if ($result1 && $result1->num_rows > 0) {
-        $row3 = $result1->fetch_assoc();
-        $totalresident = $row3['total_resident'];
-    } else {
-        $totalresident = 0;
-    }
+$resident = array();
+while ($row = $result->fetch_assoc()) {
+    $resident[] = $row;
+}
 
-	$query2 = "SELECT * FROM tblresident WHERE voterstatus='Yes'";
-    $result2 = $conn->query($query2);
-	$votersyes= $result2->num_rows;
+$query1 = "SELECT * FROM tblpurok ORDER BY `purok`";
+$result1 = $conn->query($query1);
 
-	$query3 = "SELECT * FROM tblresident WHERE voterstatus='No'";
-    $result3 = $conn->query($query3);
-	$votersno= $result3->num_rows;
+$purok = array();
+while($row2 = $result1->fetch_assoc()){
+    $purok[] = $row2; 
+}
+
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Resident Reports</title>
+	<title>Submit Request</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<?php include 'templates/main-header.php' ?>
-		<?php include 'templates/sidebar.php' ?>
-
+		<?php include 'templates/main-header-resident.php' ?>
+		<?php include 'templates/sidebar-resident.php' ?>
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header">
 					<div class="page-inner">
-						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+						<div class="d-flex align-items-center align-items-md-center flex-column flex-md-row">
 							<div>
-								<h1 class="text-center fw-bold" style="font-size: 300%;">Resident Reports</h1>
+								<h1 class="text-center fw-bold" style="font-size: 300%;">Resident</h1>
 							</div>
 						</div>
-					</div>
-				</div>
+				    </div>
                 <div class="page-inner mt-2">
                     <?php if(isset($_SESSION['message'])): ?>
 								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
@@ -64,81 +57,6 @@
 								</div>
 							<?php unset($_SESSION['message']); ?>
 						<?php endif ?>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card card-stats card card-round">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="icon-big text-center">
-                                                <i class="fas fa-user fa-2x" style="color: gray;"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-stats">
-                                        </div>
-                                        <div class="col-2 col-stats">
-                                            <div class="numbers mt-2">
-                                                <h2 class="text-uppercase" style="font-size: 16px;">Residents</h2>
-                                                <h3 class="fw-bold text-uppercase" style="font-size: 40px; color: #C77C8D;"><?= number_format($totalresident) ?></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <a href="resident_info.php?state=voters" class="card-link text-" style="color: gray;">Total Residents </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-stats card card-round">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="icon-big text-center">
-                                                <i class="fas fa-user-check fa-2x" style="color: gray;"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-stats">
-                                        </div>
-                                        <div class="col-2 col-stats">
-                                            <div class="numbers mt-2">
-                                                <h2 class="text-uppercase" style="font-size: 16px;">Voters</h2>
-                                                <h3 class="fw-bold" style="font-size: 40px; color: #C77C8D;"><?= number_format($votersyes) ?></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <a href="users.php?state=male" class="card-link text" style="color: gray;">Total Voters</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-stats card card-round">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="icon-big text-center">
-                                                <i class="fas fa-user-times fa-2x" style="color: gray;"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-stats">
-                                        </div>
-                                        <div class="col-2 col-stats">
-                                            <div class="numbers mt-2">
-                                                <h2 class="text-uppercase" style="font-size: 16px;">NonVoters</h2>
-                                                <h3 class="fw-bold text-uppercase" style="font-size: 40px; color: #C77C8D;"><?= number_format($votersno) ?></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <a href="resident_info.php?state=non_voters" class="card-link text" style="color: gray;">Total Non-Voters</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 				<div class="page-inner md-2">
 					<div class="row">
 						<div class="col-md-12">
@@ -146,88 +64,67 @@
 								<div class="card-header">
 									<div class="card-head-row">
 										<div class="card-title">Resident Information</div>
-                                        <?php if(isset($_SESSION['username'])):?>
-										<div class="card-tools">
-											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
-												<i class="fa fa-plus"></i>
-												Resident
-											</a>
-                                            <a href="model/export_resident_csv.php" class="btn btn-danger btn-border btn-round btn-sm">
-												<i class="fa fa-file"></i>
-												Export CSV
-											</a>
-										</div>
-                                        <?php endif ?>
 									</div>
 								</div>
 								<div class="card-body">
-									<div class="table-responsive">
-										<table id="residenttable" class="table">
-											<thead>
-												<tr>
-													<th class="text-center" scope="col">Fullname</th>												
-													<th scope="col">Birthdate</th>
-													<th scope="col">Age</th>													
+                                    <div class="table-responsive">
+                                        <table id="residenttable" class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Fullname</th>
+                                                    <th scope="col">Birthdate</th>
+                                                    <th scope="col">Age</th>
                                                     <th scope="col">Gender</th>
                                                     <th scope="col">Email</th>
-													<th scope="col">Purok</th>
-                                                    <?php if(isset($_SESSION['username'])):?>
-                                                        <?php if($_SESSION['role']=='administrator'):?>
-													
-                                                    <?php endif ?>
-													<th class="text-center" scope="col">Action</th>
-                                                    <?php endif ?>
-												</tr>
-											</thead>
-											<tbody>
-												<?php if(!empty($resident)): ?>
-													<?php $no=1; foreach($resident as $row): ?>
-													<tr>
-														<td>
-                                                            <div class="avatar avatar-xs ml-3">
-                                                                <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
-                                                            </div>
-                                                            <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
-                                                        </td>														
-														<td><?= $row['birthdate'] ?></td>
-														<td><?= $row['age'] ?></td>                  
-                                                        <td><?= $row['gender'] ?></td>
-                                                        <td><?= $row['email'] ?></td>
-                                                        <td><?= $row['purok'] ?></td>
-                                                        <?php if(isset($_SESSION['username'])):?>
-                                                            
-                                                            <?php if($_SESSION['role']=='administrator'):?>
-                                                        
+                                                    <th scope="col">Purok</th>
+                                                    <?php if (isset($_SESSION['fullname'])): ?>
+                                                        <?php if ($_SESSION['role'] == 'resident'): ?>
+                                                            <!-- Additional table headers for resident role -->
                                                         <?php endif ?>
-														<td class="text-center">
-															<div class="form-button-action">
-                                                                <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
-                                                                    data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-add="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
-                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-tax="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
-                                                                    data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-purpose="<?= $row['purpose'] ?>">
-                                                                    <?php if(isset($_SESSION['username'])): ?>
-                                                                        <i class="fas fa-edit"></i>
-                                                                    <?php else: ?>
-                                                                        <i class="fa fa-eye"></i>
-                                                                    <?php endif ?>
-                                                                </a>
-                                                                <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
-																<a type="button" data-toggle="tooltip" href="generate_resident.php?id=<?= $row['id'] ?>" class="btn btn-link btn-info" data-original-title="Generate">
-                                                                    <i class="fas fa-print"></i>
-																</a>
-                                                                <a type="button" data-toggle="tooltip" href="model/remove_resident.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this resident?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																	<i class="fas fa-trash"></i>
-																</a>
+                                                    <?php endif ?>
+                                                    <th class="text-center" scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if (!empty($resident)): ?>
+                                                    <?php $no = 1; foreach ($resident as $row): ?>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="avatar avatar-xs ml-3">
+                                                                    <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
+                                                                </div>
+                                                                <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
+                                                            </td>
+                                                            <td><?= $row['birthdate'] ?></td>
+                                                            <td><?= $row['age'] ?></td>
+                                                            <td><?= $row['gender'] ?></td>
+                                                            <td><?= $row['email'] ?></td>
+                                                            <td><?= $row['purok'] ?></td>
+                                                            <?php if (isset($_SESSION['fullname'])): ?>
+                                                                <?php if ($_SESSION['role'] == 'resident'): ?>
+                                                                    <!-- Additional table columns for resident role -->
                                                                 <?php endif ?>
-															</div>
-														</td>
-                                                        <?php endif ?>														
-													</tr>
-													<?php $no++; endforeach ?>
-												<?php endif ?>
-											</tbody>
-										</table>
-									</div>
+                                                            <?php endif ?>
+                                                            <td class="text-center">
+                                                                <div class="form-button-action">
+                                                                    <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
+                                                                        data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-noaddress="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
+                                                                        data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-notax="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
+                                                                        data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-purpose="<?= $row['purpose'] ?>">
+                                                                        <?php if (isset($_SESSION['fullname'])): ?>
+                                                                            <i class="fas fa-edit"></i>
+                                                                        <?php else: ?>
+                                                                            <i class="fa fa-eye"></i>
+                                                                        <?php endif ?>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                <?php $no++; endforeach ?>
+                                            <?php endif ?>
+                                        </tbody>
+                                    </table>
+                                </div>
 								</div>
 							</div>
 						</div>
@@ -600,11 +497,7 @@
                     </div>
                 </div>
             </div>
-
-			<!-- Main Footer -->
-			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
-			
+			<?php include 'templates/main-footer.php' ?>		
 		</div>
 		
 	</div>

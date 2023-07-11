@@ -103,16 +103,10 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- Main Footer -->
-			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
-			
+			<?php include 'templates/main-footer.php' ?>	
 		</div>
-		
 	</div>
 	<?php include 'templates/footer.php' ?>
-
     <script>
 		var minDate, maxDate;
 

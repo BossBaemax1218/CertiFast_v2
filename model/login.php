@@ -17,6 +17,12 @@ function redirectToLoginPage($message, $success, $form)
     exit();
 }
 
+// Check if the user is already logged in
+if (isset($_SESSION["user_email"]) && $_SESSION["user_email"] === true) {
+    header("Location: resident_dashboard.php");
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_email = $conn->real_escape_string($_POST['email']);
     $password = $_POST['password'];
@@ -82,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Verify the password using MD5 hashing
             if (md5($password) === $hashedPassword) {
-                $_SESSION['id'] = $row['id'];
+                $_SESSION['user_email'] = $row['user_email'];
                 $_SESSION['fullname'] = $row['fullname'];
                 $_SESSION['role'] = $row['resident'];
 

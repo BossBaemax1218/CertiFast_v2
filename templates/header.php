@@ -21,8 +21,12 @@
   <link href="homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <script src="https://cdn.jsdelivr.net/npm/table-html-export"></script> 
 
-<!-- Fonts and icons -->
+
 <script src="assets/js/plugin/webfont/webfont.min.js"></script>
 <script>
     WebFont.load({
@@ -34,7 +38,6 @@
     });
 </script>
 
-<!-- CSS Files -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/atlantis.css">
 <link rel="stylesheet" href="assets/css/custom.css">
@@ -55,6 +58,4 @@
         z-index: 9999;
         text-align: center;
     }
-
-    
 </style>

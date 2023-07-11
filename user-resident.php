@@ -17,14 +17,8 @@
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
-
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
-
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header">
@@ -87,8 +81,7 @@
 																	<i class="fas fa-trash"></i>
 																</a>
 															</div>
-														</td>
-														
+														</td>														
 													</tr>
 													<?php $no++; endforeach ?>
 												<?php else: ?>
