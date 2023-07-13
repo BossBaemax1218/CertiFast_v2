@@ -22,8 +22,8 @@
             <div class="form">
                 <div class="form-content">
                     <form method="POST" action="model/password_verified.php">
-                        <h3>Verification Code</h3>
-                        <p>We sent you a code, please type the code to reset your password.</p>
+                        <h4 class="text-center">Verification Code</h4>
+                        <p class="text-center">We sent you a code, please type the code to reset your password.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
                         <header id="header">
                             <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">

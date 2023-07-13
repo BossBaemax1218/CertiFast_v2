@@ -23,7 +23,7 @@
             <div class="form-content">
                 <a href="#"><img src="images/trans-title.png" alt="" class="image"></a>
                 <form method="POST" action="model/edit_password.php">
-                    <h3>Forgot Password</h3>
+                    <h4>Forgot Password</h4>
                     <p>Please register your personal information if you haven't registered yet.</p>
                     <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
                     <header id="header">

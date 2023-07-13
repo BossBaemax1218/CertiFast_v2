@@ -171,10 +171,10 @@
   </div>
 
   <div class="container py-4">
-    <div class="copyright">
-      &copy; Copyright <strong><span>CertiFast</span></strong>. All Rights Reserved
+      <div class="copyright">
+        <?php $year = date("Y"); echo  $year . " &copy; <strong><span>Barangay Los Amigos - CertiFast Portal</span></strong>" ?> . All Rights Reserved . <a class="text-muted" href="#term" data-toggle="modal" style="text-decoration: none;">Term of Service</a> . <a class="text-muted" href="#term"  data-toggle="modal" style="text-decoration: none;">Privacy Policy</a>
+      </div>
     </div>
-  </div>
 </footer>
 
   <div id="preloader"></div>

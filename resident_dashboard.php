@@ -13,7 +13,7 @@
 			<div class="main-panel">
 				<div class="content">
 					<section class="main-content mt-2">
-						<div class="container">
+						<div class="container mt-5">
 							<h1 class="text-center">Barangay Los Amigos - <strong>CertiFast Portal</strong></h1>
 							<h3 class="text-center text-muted">Simplifying Certificates for a Connected Community. </h3>
 							<?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>

@@ -22,8 +22,8 @@
             <div class="form">
                 <div class="form-content">      
                     <form method="POST" action="model/forgot_password.php">
-                        <h2>Forgot Password</h2>
-                        <p>Please enter your email address for verification code.</p>
+                        <h4 class="text-center">Forgot Password</h4>
+                        <p class="text-center">Please enter your email address for verification code.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
                         <header id="header">
                             <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">

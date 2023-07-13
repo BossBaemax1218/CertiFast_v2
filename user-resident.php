@@ -33,24 +33,16 @@
 				<div class="page-inner">
 					<div class="row mt--2">
 						<div class="col-md-12">
-
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
                                     <?php echo $_SESSION['message']; ?>
                                 </div>
                             <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
-
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
 										<div class="card-title">User Management</div>
-										<div class="card-tools">
-											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
-												<i class="fa fa-plus"></i>
-												User
-											</a>
-										</div>
 									</div>
 								</div>
 								<div class="card-body">
@@ -98,66 +90,7 @@
 					</div>
 				</div>
 			</div>
-
-            <!-- Modal -->
-            <!--<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Create System User</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="POST" action="model/save_user.php" enctype="multipart/form-data">
-							<input type="hidden" name="size" value="1000000">
-								<div class="text-center">
-                                    <div id="my_camera" style="height: 250;" class="text-center">
-                                        <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
-                                    </div>
-                                    <div class="form-group d-flex justify-content-center">
-                                        <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
-                                        <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
-                                    </div>
-                                    <div id="profileImage">
-                                        <input type="hidden" name="profileimg">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="file" class="form-control" name="img" accept="image/*">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Username</label>
-                                    <input type="text" class="form-control" placeholder="Enter Username" name="username" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Enter Password" name="pass" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>User Type</label>
-                                    <select class="form-control" id="pillSelect" required name="user_type">
-                                        <option disabled selected>Select User Type</option>
-                                        <option value="staff">Staff</option>
-                                        <option value="administrator">Administrator</option>
-                                    </select>
-                                </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Create</button>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>-->
-
-			<!-- Main Footer -->
 			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
-			
 		</div>
 		
 	</div>

@@ -7,9 +7,9 @@ if (!isset($_SESSION["fullname"])) {
     exit;
 }
 
-$fullname = $_SESSION["user_email"];
+$fullname = $_SESSION["fullname"];
 
-$sql = "SELECT * FROM tblpayments JOIN tbl_user_resident ON tblpayments.name = tbl_user_resident.fullname WHERE tbl_user_resident.user_email = ? ORDER BY tblpayments.date DESC";
+$sql = "SELECT * FROM tblpayments JOIN tbl_user_resident ON tblpayments.name = tbl_user_resident.fullname WHERE tbl_user_resident.fullname = ? ORDER BY tblpayments.date DESC";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $fullname);
 $stmt->execute();
@@ -19,9 +19,7 @@ $revenue = array();
 while ($row = $result->fetch_assoc()) {
     $revenue[] = $row;
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,16 +36,34 @@ while ($row = $result->fetch_assoc()) {
                     <div>
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Payments History</h1>
                     </div>
-					<div class="page-inner mt-5">
-						<?php if(isset($_SESSION['message'])): ?>
-								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-									<?php echo $_SESSION['message']; ?>
-								</div>
-							<?php unset($_SESSION['message']); ?>
-						<?php endif ?>
-					</div>
+                    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Alert Message</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="#" enctype="multipart/form-data">
+                                        <div class="form-group form-floating-label">
+					                        <div class="page-inner">
+                                                <?php if(isset($_SESSION['message'])): ?>
+                                                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                                            <?php echo $_SESSION['message']; ?>
+                                                        </div>
+                                                    <?php unset($_SESSION['message']); ?>
+                                                <?php endif ?>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="page-inner">
-                        <div class="row mt-5">
+                        <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -67,7 +83,7 @@ while ($row = $result->fetch_assoc()) {
                                                             <?php $no = 1; foreach ($revenue as $row): ?>
                                                                 <tr>
                                                                     <td><?= $row['date'] ?></td>
-                                                                    <td><?= $row['name'] ?></td>
+                                                                    <td><?= $row['fullname'] ?></td>
                                                                     <td><?= $row['details'] ?></td>
                                                                     <td><i class="fa-solid fa-peso-sign"></i> <?= number_format($row['amounts'], 2) ?></td>
                                                                 </tr>
