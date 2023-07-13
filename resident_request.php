@@ -44,8 +44,9 @@ $conn->close();
 			<div class="content">
 				<div class="panel-header">
                 <div>
-                    <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Resident</h1>
-                    <h5 class="text-center fw-bold"><a href="#add" data-toggle="modal" class="btn-request-now">CREATE</a></h5>
+                    <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
+                    <h3 class="text-center fw-bold"> Here are the steps in setting an registration request with CertiFast Portal. </h3>
+                    <br>
                 </div>
                 <div class="page-inner">
                 <?php if(isset($_SESSION['message'])): ?>
@@ -58,12 +59,14 @@ $conn->close();
 					<div class="row">
 						<div class="col-md-12">
                             <div class="card">
+                            <h5 class="text-center fw-bold mt-5"><a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;">CREATE</a></h5>
 								<div class="card-body">
                                     <div class="table-responsive">
                                         <table id="residenttable" class="table">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Fullname</th>
+                                                    <th scope="col">Address</th>
                                                     <th scope="col">Birthdate</th>
                                                     <th scope="col">Age</th>
                                                     <th scope="col">Gender</th>
@@ -71,7 +74,7 @@ $conn->close();
                                                     <th scope="col">Purok</th>
                                                     <?php if (isset($_SESSION['fullname'])): ?>
                                                         <?php if ($_SESSION['role'] == 'resident'): ?>
-                                                            <!-- Additional table headers for resident role -->
+                                                            
                                                         <?php endif ?>
                                                     <?php endif ?>
                                                     <th class="text-center" scope="col">Action</th>
@@ -87,6 +90,7 @@ $conn->close();
                                                                 </div>
                                                                 <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
                                                             </td>
+                                                            <td><?= $row['address'] ?></td>
                                                             <td><?= $row['birthdate'] ?></td>
                                                             <td><?= $row['age'] ?></td>
                                                             <td><?= $row['gender'] ?></td>
@@ -94,20 +98,20 @@ $conn->close();
                                                             <td><?= $row['purok'] ?></td>
                                                             <?php if (isset($_SESSION['fullname'])): ?>
                                                                 <?php if ($_SESSION['role'] == 'resident'): ?>
-                                                                    <!-- Additional table columns for resident role -->
+                                                                    
                                                                 <?php endif ?>
                                                             <?php endif ?>
                                                             <td class="text-center">
                                                                 <div class="form-button-action">
                                                                     <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
-                                                                        data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-noaddress="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
-                                                                        data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-notax="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
-                                                                        data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-purpose="<?= $row['purpose'] ?>">
-                                                                        <?php if (isset($_SESSION['fullname'])): ?>
-                                                                            <i class="fas fa-edit"></i>
-                                                                        <?php else: ?>
-                                                                            <i class="fa fa-eye"></i>
-                                                                        <?php endif ?>
+                                                                    data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-address="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
+                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-taxno="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
+                                                                    data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-purpose="<?= $row['purpose'] ?>">
+                                                                    <?php if (isset($_SESSION['fullname'])): ?>
+                                                                        <i class="fas fa-edit"></i>
+                                                                    <?php else: ?>
+                                                                        <i class="fa fa-eye"></i>
+                                                                    <?php endif ?>
                                                                 </a>
                                                             </div>
                                                         </td>
@@ -123,6 +127,8 @@ $conn->close();
 					</div>
 				</div>
 			</div>
+        </div>
+    </div> 
             <!-- Modal -->
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl" role="document">
@@ -372,7 +378,7 @@ $conn->close();
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Enter Address" id="address" name="address" required>
+                                                <input type="text" class="form-control" name="address" placeholder="Enter Address" id="address" required>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -469,11 +475,7 @@ $conn->close();
                                     </div>
                                     <div class="form-group">
                                         <label>Remarks</label>
-                                        <textarea class="form-control" required name="remarks" placeholder="Enter Remarks" id="remarks" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Purpose</label>
-                                        <textarea class="form-control" name="purpose" placeholder="Enter Purpose" id="purpose" required></textarea>
+                                        <textarea class="form-control" name="remarks" placeholder="Enter Remarks" id="remarks" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -481,9 +483,7 @@ $conn->close();
                         <div class="modal-footer">
                             <input type="hidden" name="id" id="res_id">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <?php if(isset($_SESSION['username'])): ?>
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <?php endif ?>
                         </div>
                         </form>
                     </div>
@@ -491,7 +491,6 @@ $conn->close();
             </div>
 			<?php include 'templates/main-footer.php' ?>		
 		</div>
-		
 	</div>
 	<?php include 'templates/footer.php' ?>
     <script src="assets/js/plugin/datatables/datatables.min.js"></script>

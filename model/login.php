@@ -17,6 +17,13 @@ function redirectToLoginPage($message, $success, $form)
     exit();
 }
 
+function logout()
+{
+    session_destroy(); // Destroy all session data
+    header('location: ../login.php');
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_email = $conn->real_escape_string($_POST['email']);
     $password = $_POST['password'];
@@ -101,6 +108,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         redirectToLoginPage('Please fill in all the required fields.', 'danger', 'login');
     }
+} elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['logout'])) {
+    logout(); // Call logout function if the logout parameter is set in the URL
 } else {
     redirectToLoginPage('Invalid request method.', 'danger', 'login');
 }

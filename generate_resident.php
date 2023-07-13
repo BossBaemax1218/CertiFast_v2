@@ -100,13 +100,9 @@
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
 
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
 
 		<div class="main-panel">
 			<div class="content">
@@ -277,26 +273,6 @@
                                                 </div>
                                             </div>
                                         </div>                                       
-                                        <!--<div class="row">
-                                            <div class="col">
-                                                <div class="row">
-                                                    <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Remarks:</h3>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                    <h3 type="text" class="fw-bold" style="font-size:20px" row="3"><?= ucwords(trim($resident['address'])) ?></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row" style="margin-bottom: 300px;">
-                                            <div class="col">
-                                                <div class="row">
-                                                    <h3 class="mt-5 col-lg-4 col-md-4 col-sm-4 mt-sm-2 text-left">Purpose:</h3>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 text-left">
-                                                <h3 type="text" class="fw-bold" style="font-size:20px" rows="3"><?= ucwords(trim($resident['remarks'])) ?></h3>
-                                                </div>
-                                            </div>
-                                        </div>-->
                                     <div class="footer-content">
                                         <div class="footer-names text-left">                                                       
                                             <ul>
@@ -335,11 +311,8 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- Main Footer -->
 			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
-			
+
 		</div>
 		
 	</div>

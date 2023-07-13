@@ -237,7 +237,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Date Issued</label>
-                                    <input type="date" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
+                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d H:i:s') ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Payment Details(Optional)</label>
@@ -246,6 +246,7 @@
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" name="name" value="<?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?>">
+                            <input type="hidden" name="email" value="<?= ucwords($resident['email']) ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
@@ -254,9 +255,7 @@
                 </div>
             </div>
 
-			<!-- Main Footer -->
 			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
 			<?php if(!isset($_GET['closeModal'])){ ?>
             
                 <script>

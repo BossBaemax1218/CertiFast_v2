@@ -25,23 +25,17 @@
 </head>
 <body>
 	<?php include 'templates/loading_screen.php' ?>
-
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
-
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
  
 		<div class="main-panel">
 			<div class="content">
-				<div class="panel-header" style = "background-color: #E42654">
+				<div class="panel-header">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Barangay Officials & SK Members</h2>
+								<h2 class="text-black fw-bold" style = "font-size: 300%;">Barangay Officials & SK Members</h2>
 							</div>
 						</div>
 					</div>
@@ -53,23 +47,8 @@
 							</div>
 						<?php unset($_SESSION['message']); ?>
 						<?php endif ?>
-					<div class="row mt-2">
-						
+					<div class="row mt-2">						
 						<div class="col-md-12">
-							<!--<div class="card">
-								<div class="card-body">
-									<div class="d-flex flex-wrap pb-2 justify-content-between">
-										<div class="px-2 pb-2 pb-md-0">										
-										</div>
-										<div class="px-4 pb-6 pb-md-0 text-center">
-											<h1 class="fw-bold mt-4">Barangay Los Amigos</h1>
-											<h4 class="fw-bold mt-0">Tugbok, Davao City</h4>
-										</div>
-										<div class="px-2 pb-2 pb-md-0">											
-										</div>
-									</div>
-								</div>
-							</div>-->
 							<div class="row">
 								<div class="col-md-12">
 									<div class="card">
@@ -317,12 +296,8 @@
                     </div>
                 </div>
             </div>
-			<!-- Main Footer -->
 			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
-			
 		</div>
-		
 	</div>
 	<?php include 'templates/footer.php' ?>
 </body>

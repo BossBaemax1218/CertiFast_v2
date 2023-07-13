@@ -249,7 +249,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Date Issued</label>
-                                    <input type="date" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
+                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d H:i:s') ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Payment Details(Optional)</label>
@@ -258,6 +258,7 @@
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" class="form-control" name="name" value="<?= ucfirst($permit['name']) ?>">
+                            <input type="hidden" class="form-control" name="email" value="<?= ucfirst($permit['email']) ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>

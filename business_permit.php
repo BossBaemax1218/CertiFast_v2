@@ -26,22 +26,20 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-black fw-bold" style = "font-size: 300%;"></h2>Business Permit</h2>
+								<h2 class="text-black fw-bold" style ="font-size: 300%;">Business Permit</h2>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="page-inner">
-					<div class="row mt--2">
+					<div class="row mt-2">
 						<div class="col-md-12">
-
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
                                     <?php echo $_SESSION['message']; ?>
                                 </div>
                             <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
-
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
@@ -104,11 +102,7 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- Main Footer -->
 			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
-
 			<!-- Modal -->
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -137,17 +131,15 @@
                                     <label>Date Applied Nature</label>
                                     <input type="date" class="form-control" name="applied" value="<?= date('Y-m-d'); ?>" required>
                                 </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Create</button>
-                        </div>
+                       		</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-danger">Create</button>
+							</div>
                         </form>
                     </div>
                 </div>
             </div>
-
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>

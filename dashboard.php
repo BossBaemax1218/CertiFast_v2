@@ -1,16 +1,8 @@
 <?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT * FROM tblresident WHERE resident_type=1";
-    $result = $conn->query($query);
-	$total = $result->num_rows;
-
 	$query1 = "SELECT * FROM tbl_user_admin WHERE user_type='staff'";
     $result1 = $conn->query($query1);
 	$staff = $result1->num_rows;
-
-	$query2 = "SELECT * FROM tblresident WHERE gender='Female' AND resident_type=1";
-    $result2 = $conn->query($query2);
-	$female = $result2->num_rows;
 
 	$query5 = "SELECT * FROM tblpurok";
 	$purok = $conn->query($query5)->num_rows;
@@ -23,6 +15,7 @@
 <head>
 	<?php include 'templates/header.php' ?>
 	<title>Overview - Dashboard</title>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 	<?php include 'templates/loading_screen.php' ?>
@@ -83,97 +76,14 @@
 								</div>
 							</div>
 						</div>
-					<div class="page-inner mt-1">
-						<div class="col">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="card">
-										<div class="card-body">
-											<canvas id="myChart3" style="width: 100%; max-width: 100%; height: 500px;"></canvas>
-											<script>
-												var barChartData = {
-													labels: ["2018", "2019", "2020", "2021", "2022"],
-													datasets: [
-														{
-															data: [53, 85, 76, 57, 78],
-															label: "Barangay Clearance",
-															backgroundColor: "#176B87",
-															hidden: false,
-														},
-														{
-															data: [80, 47, 84, 86, 59],
-															label: "Barangay Residency",
-															backgroundColor: "#001C30",
-															hidden: false,
-														},
-														{
-															data: [80, 77, 63, 89, 80],
-															label: "Barangay Indigency",
-															backgroundColor: "#64CCC5",
-															hidden: false,
-														},
-														{
-															data: [78, 87, 74, 86, 69],
-															label: "Business Permit",
-															backgroundColor: "#05BFDB",
-															hidden: false,
-														},
-													],
-												};
-
-												var chartOptions = {
-													responsive: true,
-													maintainAspectRatio: false,
-													legend: {
-														position: "top",
-													},
-													scales: {
-														yAxes: [
-															{
-																ticks: {
-																	beginAtZero: true,
-																},
-															},
-														],
-													},
-												};
-
-												var ctx = document.getElementById("myChart3").getContext("2d");
-												var myBar = new Chart(ctx, {
-													type: "bar",
-													data: barChartData,
-													options: chartOptions,
-												});
-
-												function changeChart(label) {
-													// Find the corresponding dataset based on the label
-													var datasetIndex = barChartData.datasets.findIndex(function (dataset) {
-														return dataset.label === label;
-													});
-
-													if (datasetIndex >= 0) {
-														// Hide all datasets
-														barChartData.datasets.forEach(function (dataset) {
-															dataset.hidden = true;
-														});
-
-														// Show the selected dataset
-														barChartData.datasets[datasetIndex].hidden = false;
-
-														// Update the chart
-														myBar.update();
-
-														// Update active button
-														var buttons = document.getElementsByClassName("btn");
-														for (var i = 0; i < buttons.length; i++) {
-															buttons[i].classList.remove("active");
-															if (buttons[i].innerText.trim() === label) {
-																buttons[i].classList.add("active");
-															}
-														}
-													}
-												}
-											</script>
+						<div class="page-inner mt-1">
+							<div class="col">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="card">
+											<div class="card-body">
+												<canvas id="myChart3" style="width: 100%; max-width: 800px; height: 500px;"></canvas>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -182,7 +92,6 @@
 						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
 						<?php endif ?>
 					</div>
-				</div>
 				<?php include 'templates/main-footer.php' ?>
 			</div>
 		</div>
@@ -194,6 +103,93 @@
 		$("#revenuetable").tableHTMLExport({ type: "pdf", filename: "Revenue.pdf" });
 	});
 	</script>
+	<script>
+	<?php
+	// Prepare and execute the SQL query to fetch data from tblpayments
+	$paymentDataQuery = "SELECT * FROM tblpayments";
+	$stmt = $conn->prepare($paymentDataQuery);
+	$stmt->execute();
+	$paymentDataResult = $stmt->get_result();
+
+	var_dump($labels);
+	var_dump($dataset1);
+	var_dump($dataset2);
+	var_dump($dataset3);
+	var_dump($dataset4);
+	
+
+	if ($paymentDataResult->num_rows > 0) {
+		while ($row = $paymentDataResult->fetch_assoc()) {
+			$labels[] = $row['year'];
+			$dataset1[] = $row['value1'];
+			$dataset2[] = $row['value2'];
+			$dataset3[] = $row['value3'];
+			$dataset4[] = $row['value4'];
+		}
+	} else {
+		echo "No data found.";
+	}
+	?>
+	var chartData = {
+		labels: <?php echo json_encode($labels); ?>,
+		datasets: [
+			{
+				label: 'Barangay Clearance',
+				data: <?php echo json_encode($dataset1); ?>,
+				backgroundColor: '#176B87',
+				hidden: false
+			},
+			{
+				label: 'Barangay Residency',
+				data: <?php echo json_encode($dataset2); ?>,
+				backgroundColor: '#001C30',
+				hidden: false
+			},
+			{
+				label: 'Barangay Indigency',
+				data: <?php echo json_encode($dataset3); ?>,
+				backgroundColor: '#64CCC5',
+				hidden: false
+			},
+			{
+				label: 'Business Permit',
+				data: <?php echo json_encode($dataset4); ?>,
+				backgroundColor: '#05BFDB',
+				hidden: false
+			}
+		]
+	};
+	var chartOptions = {
+		responsive: true,
+		maintainAspectRatio: false,
+		plugins: {
+			legend: {
+				position: "top"
+			}
+		},
+		scales: {
+			x: {
+				stacked: true
+			},
+			y: {
+				beginAtZero: true
+			}
+		}
+	};
+
+	document.addEventListener("DOMContentLoaded", function () {
+    var ctx = document.getElementById("myChart3").getContext("2d");
+    try {
+        new Chart(ctx, {
+            type: "bar",
+            data: chartData,
+            options: chartOptions
+        });
+    } catch (error) {
+        console.error(error);
+    }
+});
+</script>
 	<script>
 	window.addEventListener("load", function (event) {
 		let drp = new DateRangePicker('datetimerange-input',

@@ -6,13 +6,19 @@
 			header("Location: " . $_SERVER["HTTP_REFERER"]);
 		}
 	}
+
+	if(!isset($_SESSION['fullname'])){
+		if (isset($_SERVER["HTTP_REFERER"])) {
+			header("Location: " . $_SERVER["HTTP_REFERER"]);
+		}
+	}
 	
     $id 		= $conn->real_escape_string($_POST['id']);
 	$national_id= $conn->real_escape_string($_POST['national']);
 	$fname 		= $conn->real_escape_string($_POST['fname']);
 	$mname 		= $conn->real_escape_string($_POST['mname']);
     $lname 		= $conn->real_escape_string($_POST['lname']);
-	$address 		= $conn->real_escape_string($_POST['address']);
+	$address 	= $conn->real_escape_string($_POST['address']);
     $bplace 	= $conn->real_escape_string($_POST['bplace']);
 	$bdate 		= $conn->real_escape_string($_POST['bdate']);
     $age 		= $conn->real_escape_string($_POST['age']);

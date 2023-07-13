@@ -1,16 +1,4 @@
 <?php include 'server/db_connection.php' ?>
-<?php 
-    $query = "SELECT COUNT(DISTINCT details) as de FROM tblpayments WHERE details IN ('Barangay Clearance Payment', 'Business Permit Payment', 'Certificate of Residency Payment', 'Certificate of Indigency Payment')"; 
-    $revenue1 = $conn->query($query)->fetch_assoc();
-
-    $sql = "SELECT * FROM tblpayments ORDER BY `date` DESC";
-    $result = $conn->query($sql);
-
-    $revenue = array();
-	while($row = $result->fetch_assoc()){
-		$revenue[] = $row; 
-	}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,10 +24,12 @@
 						<?php endif ?>
 					</div>
                     <div class="page-inner">
-                        <div class="row mt-2">
+                        <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header">
+                                        <h4 class="card-title">Announcement</h4>
+                                    </div>
                                     <div class="card-body">
                                         <div class="table-responsive mt-3">
                                             <table id="revenuetable" class="table">
@@ -52,16 +42,39 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php if(!empty($revenue)): ?>
-                                                        <?php $no=1; foreach($revenue as $row): ?>
+                                                    <?php
+                                                    $user_name = $_SESSION['fullname'];
+
+                                                    $paymentHistoryQuery = "SELECT p.date, u.fullname, p.details, p.amounts
+                                                    FROM tblpayments AS p
+                                                    INNER JOIN tbl_user_resident AS u ON p.name = u.fullname
+                                                    WHERE u.fullname = ?
+                                                    ORDER BY p.date DESC;";
+
+                                                    $stmt = $conn->prepare($paymentHistoryQuery);
+                                                    $stmt->bind_param("s", $user_name);
+                                                    $stmt->execute();
+                                                    $paymentHistoryResult = $stmt->get_result();
+
+                                                    if ($paymentHistoryResult->num_rows > 0) {
+                                                        while ($row = $paymentHistoryResult->fetch_assoc()) {
+                                                            ?>
+                                                            <tr>
+                                                                <td><?= $row['date'] ?></td>
+                                                                <td><?= $row['fullname'] ?></td>
+                                                                <td><?= $row['details'] ?></td>
+                                                                <td><i class="fas fa-peso-sign"></i> <?= number_format($row['amounts'], 2) ?></td>
+                                                            </tr>
+                                                            <?php
+                                                        }
+                                                    } else {
+                                                        ?>
                                                         <tr>
-                                                            <td><?= $row['date'] ?></td>
-                                                            <td><?= $row['name'] ?></td>
-                                                            <td><?= $row['details'] ?></td>
-                                                            <td> <i class="fa-solid fa-peso-sign"></i> <?= number_format($row['amounts'],2) ?></td>
+                                                            <td colspan="4" class="text-center">No announcement available</td>
                                                         </tr>
-                                                        <?php $no++; endforeach ?>
-                                                    <?php endif ?>
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -70,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-				</div>
+                </div>
 				<?php include 'templates/main-footer.php' ?>
 	        </div>
 	    </div>

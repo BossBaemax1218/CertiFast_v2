@@ -38,9 +38,6 @@
 <script src="assets/js/plugin/datatables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
 <script src="assets/js/plugin/datatables/Buttons-1.6.1/js/buttons.print.min.js"></script>
 
-
-  <script src="homepage/assets/js/main.js"></script>
-
 <script>
     var $window = $(window);
     $window.on("load",function (){
