@@ -188,9 +188,6 @@
                                                             <td class="text-center">
                                                                 <div class="form-button-action">
                                                                     <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
-                                                                    <a type="button" data-toggle="tooltip" href="generate_receipt.php?id=<?= $row['id'] ?>" class="btn btn-link btn-info" data-original-title="Generate">
-                                                                        <i class="fas fa-print"></i>
-                                                                    </a>
                                                                     <a type="button" data-toggle="tooltip" href="model/remove_payment.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this data?');" class="btn btn-link btn-danger" data-original-title="Remove">
                                                                         <i class="fas fa-trash"></i>
                                                                     </a>
