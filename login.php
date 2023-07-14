@@ -40,9 +40,7 @@
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
                             <div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                        </div>                                       
+                                    <div class="modal-content">                                  
                                         <div class="modal-body">
                                             <?php if ($_SESSION['success'] == 'danger'): ?>
                                                 <h5 class="modal-title text-center w-100">

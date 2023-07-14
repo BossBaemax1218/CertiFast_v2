@@ -39,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Include the configuration file and connect to the database
         require '../server/server.php';
 
-        // Hash the new password using BCRYPT for security
-        $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+        // MD5 encrypt the new password
+        $encryptedPassword = md5($newPassword);
 
         // Update password in tbl_user_resident for the specific email
         $stmt = $conn->prepare("UPDATE tbl_user_resident SET password = ? WHERE user_email = ?");
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit();
         }
 
-        $stmt->bind_param("ss", $hashedPassword, $email);
+        $stmt->bind_param("ss", $encryptedPassword, $email);
         if (!$stmt->execute()) {
             // Handle the error gracefully
             $_SESSION['success'] = false;

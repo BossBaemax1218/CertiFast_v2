@@ -173,6 +173,7 @@
                                                         <th class="text-center" scope="col">Date</th>
                                                         <th scope="col">Recipient</th>
                                                         <th scope="col">Details</th>
+                                                        <th scope="col">Email</th>
                                                         <th class="text-center" scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -183,6 +184,7 @@
                                                             <td class="text-center"><?= $row['date'] ?></td>
                                                             <td><?= $row['name'] ?></td>
                                                             <td><?= $row['details'] ?></td>
+                                                            <td><?= $row['email'] ?></td>
                                                             <td class="text-center">
                                                                 <div class="form-button-action">
                                                                     <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>

@@ -10,16 +10,20 @@ $current_page = PageName();
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <?php if(!empty($_SESSION['avatar'])): ?>
-                        <img src="<?= preg_match('/data:image/i', $_SESSION['avatar']) ? $_SESSION['avatar'] : 'assets/uploads/avatar/'.$_SESSION['avatar'] ?>" alt="..." class="avatar-img rounded-circle">
+                    <?php if (!empty($_SESSION['avatar'])): ?>
+                        <?php if (preg_match('/data:image/i', $_SESSION['avatar'])): ?>
+                            <img src="<?php echo $_SESSION['avatar']; ?>" alt="..." class="avatar-img rounded-circle">
+                        <?php else: ?>
+                            <img src="assets/uploads/avatar/<?php echo $_SESSION['avatar']; ?>" alt="..." class="avatar-img rounded-circle">
+                        <?php endif; ?>
                     <?php else: ?>
                         <img src="assets/img/person.png" alt="..." class="avatar-img rounded-circle">
-                    <?php endif ?>                  
+                    <?php endif; ?>
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="<?= isset($_SESSION['fullname']) && $_SESSION['role']=='resident' ? '#collapseExample' : 'javascript:void(0)' ?>" aria-expanded="true">
                         <span>
-                        <?= isset($_SESSION['fullname']) ? ucfirst($_SESSION['fullname']) : 'Resident' ?>
+                        <?= isset($_SESSION['fullname']) ? ucfirst($_SESSION['fullname']) : 'Guest User' ?>
                             <span class="user-level"><?= isset($_SESSION['role']) ? ucfirst($_SESSION['role']) : 'Resident' ?></span>
                         <?= isset($_SESSION['fullname']) && $_SESSION['role']=='resident' ? '<span class="caret"></span>' : null ?> 
                         </span>

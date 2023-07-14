@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if (isset($_SESSION['username'])) {
+        header('Location: forgot-password.php');
+    }
+    if (isset($_SESSION['fullname'])) {
+        header('Location: forgot-password.php');
+    }
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -21,7 +27,7 @@
         <section class="container forms">
             <div class="form">
                 <div class="form-content">      
-                    <form method="POST" action="model/forgot_password.php">
+                    <form id="myForm" method="POST" action="model/forgot_password.php">
                         <h4 class="text-center">Forgot Password</h4>
                         <p class="text-center">Please enter your email address for verification code.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>

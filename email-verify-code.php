@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if (isset($_SESSION['username'])) {
+        header('Location: email-verify-code.php');
+    }
+    if (isset($_SESSION['fullname'])) {
+        header('Location: email-verify-code.php');
+    }
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -21,7 +27,7 @@
         <section class="container forms">
             <div class="form">
                 <div class="form-content">
-                    <form method="POST" action="model/email_verified.php">
+                    <form id="myForm" method="POST" action="model/email_verified.php">
                         <h4 class="text-center">Verification Code</h4>
                         <p class="text-center">We sent you a code, please type the code to verified your account.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>

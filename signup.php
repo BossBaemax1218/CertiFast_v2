@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if (isset($_SESSION['username'])) {
+        header('Location: signup.php');
+    }
+    if (isset($_SESSION['fullname'])) {
+        header('Location: signup.php');
+    }
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -29,14 +35,12 @@
             <div class="form">
                 <div class="form-content">
                     <a class="text-center" href="index.php"><img src="vendor-login/images/trans-title.png" alt="" class="image"></a>
-                    <form method="POST" action="model/signup.php">
+                    <form id="myForm" method="POST" action="model/signup.php">
                         <p class="text-center">To stay connected with us, please sign up your personal information.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
                             <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header"></div>
-                                        </div>
                                         <div class="modal-body">
                                             <?php if ($_SESSION['success'] == 'danger'): ?>
                                                 <h5 class="modal-title text-center w-100">

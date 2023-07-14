@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if (isset($_SESSION['username'])) {
+        header('Location: reset-password.php');
+    }
+    if (isset($_SESSION['fullname'])) {
+        header('Location: reset-password.php');
+    }
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -22,7 +28,7 @@
         <div class="form">
             <div class="form-content">
                 <a href="#"><img src="images/trans-title.png" alt="" class="image"></a>
-                <form method="POST" action="model/edit_password.php">
+                <form id="myForm" method="POST" action="model/edit_password.php">
                     <h4>Forgot Password</h4>
                     <p>Please register your personal information if you haven't registered yet.</p>
                     <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
@@ -90,6 +96,6 @@
             modal.style.display = 'block';
         });
     </script>
-        <script src="vendor-login/js/reset-password.js"></script>
+    <script src="vendor-login/js/reset-password.js"></script>
     </body>
 </html>
