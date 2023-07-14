@@ -226,18 +226,18 @@
                     </div>
                     <div class="form-group form-floating-label">
                         <label>Current Password</label>
-                        <input type="password" id="cur_pass" class="form-control" placeholder="Enter Current Password" name="cur_pass" required >
-                        <span toggle="#cur_pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        <input type="password" id="cur_user_pass" class="form-control" placeholder="Enter Current Password" name="cur_pass" required >
+                        <span toggle="#cur_user_pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                     <div class="form-group form-floating-label">
                         <label>New Password</label>
-                        <input type="password" id="new_pass" class="form-control" placeholder="Enter New Password" name="new_pass" required >
-                        <span toggle="#new_pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        <input type="password" id="new_user_pass" class="form-control" placeholder="Enter New Password" name="new_pass" required >
+                        <span toggle="#new_user_pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                     <div class="form-group form-floating-label">
                         <label>Confirm Password</label>
-                        <input type="password" id="con_pass" class="form-control" placeholder="Confirm Password" name="con_pass" required >
-                        <span toggle="#con_pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        <input type="password" id="con_user_pass" class="form-control" placeholder="Confirm Password" name="con_pass" required >
+                        <span toggle="#con_user_pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
             </div>
             <div class="modal-footer">

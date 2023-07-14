@@ -101,15 +101,34 @@ $conn->close();
                                                                 <?php endif ?>
                                                             <?php endif ?>
                                                             <td class="text-center">
-                                                                <div class="form-button-action">
-                                                                    <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
-                                                                    data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-address="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
-                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-taxno="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
-                                                                    data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-purpose="<?= $row['purpose'] ?>">
+                                                            <div class="form-button-action">
+                                                                <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
+                                                                    data-id="<?= $row['id'] ?>" 
+                                                                    data-national="<?= $row['national_id'] ?>" 
+                                                                    data-fname="<?= $row['firstname'] ?>" 
+                                                                    data-mname="<?= $row['middlename'] ?>" 
+                                                                    data-lname="<?= $row['lastname'] ?>" 
+                                                                    data-address="<?= $row['address'] ?>" 
+                                                                    data-bplace="<?= $row['birthplace'] ?>" 
+                                                                    data-bdate="<?= $row['birthdate'] ?>" 
+                                                                    data-age="<?= $row['age'] ?>"
+                                                                    data-cstatus="<?= $row['civilstatus'] ?>" 
+                                                                    data-gender="<?= $row['gender'] ?>"
+                                                                    data-purok="<?= $row['purok'] ?>" 
+                                                                    data-vstatus="<?= $row['voterstatus'] ?>" 
+                                                                    data-taxno="<?= $row['taxno'] ?>" 
+                                                                    data-number="<?= $row['phone'] ?>" 
+                                                                    data-email="<?= $row['email'] ?>" 
+                                                                    data-occu="<?= $row['occupation'] ?>" 
+                                                                    data-remarks="<?= $row['remarks'] ?>" 
+                                                                    data-img="<?= $row['picture'] ?>" 
+                                                                    data-citi="<?= $row['citizenship'];?>" 
+                                                                    data-dead="<?= $row['resident_type'];?>" 
+                                                                    data-purpose="<?= $row['purpose'] ?>">
                                                                     <?php if (isset($_SESSION['fullname'])): ?>
-                                                                        <i class="fas fa-edit"></i>
+                                                                    <i class="fas fa-edit"></i>
                                                                     <?php else: ?>
-                                                                        <i class="fa fa-eye"></i>
+                                                                    <i class="fa fa-eye"></i>
                                                                     <?php endif ?>
                                                                 </a>
                                                             </div>
@@ -127,7 +146,7 @@ $conn->close();
 				</div>
 			</div>
         </div>
-    </div> 
+
             <!-- Modal -->
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl" role="document">
@@ -498,7 +517,66 @@ $conn->close();
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>
-    <script src="assets/js/plugin/datatables/datatables.min.js"></script>
-    <script src="assets/js/resident-reports.js"></script>
+    <script>
+        function editResident(that) {
+    var id = $(that).attr('data-id');
+    var pic = $(that).attr('data-img');
+    var nat_id = $(that).attr('data-national');
+    var fname = $(that).attr('data-fname');
+    var mname = $(that).attr('data-mname');
+    var lname = $(that).attr('data-lname');
+    var address = $(that).attr('data-address');
+    var bplace = $(that).attr('data-bplace');
+    var bdate = $(that).attr('data-bdate');
+    var age = $(that).attr('data-age');
+    var cstatus = $(that).attr('data-cstatus');
+    var gender = $(that).attr('data-gender');
+    var purok = $(that).attr('data-purok');
+    var vstatus = $(that).attr('data-vstatus');
+    var email = $(that).attr('data-email');
+    var number = $(that).attr('data-number');
+    var taxno = $(that).attr('data-taxno');
+    var citi = $(that).attr('data-citi');
+    var occu = $(that).attr('data-occu');
+    var dead = $(that).attr('data-dead');
+    var remarks = $(that).attr('data-remarks');
+    var purpose = $(that).attr('data-purpose');
+
+    $('#res_id').val(id);
+    $('#nat_id').val(nat_id);
+    $('#fname').val(fname);
+    $('#mname').val(mname);
+    $('#lname').val(lname);
+    $('#address').val(address);
+    $('#bplace').val(bplace);
+    $('#bdate').val(bdate);
+    $('#age').val(age);
+    $('#cstatus').val(cstatus);
+    $('#gender').val(gender);
+    $('#purok').val(purok);
+    $('#vstatus').val(vstatus);
+    $('#taxno').val(taxno);
+    $('#email').val(email);
+    $('#number').val(number);
+    $('#occupation').val(occu);
+    $('#citizenship').val(citi);
+    $('#remarks').val(remarks);
+    $('#purpose').val(purpose);
+
+    if (dead == 1) {
+        $("#alive").prop("checked", true);
+    } else {
+        $("#dead").prop("checked", true);
+    }
+
+    var str = pic;
+    var n = str.includes("data:image");
+    if (!n) {
+        pic = 'assets/uploads/resident_profile/' + pic;
+    }
+    $('#image').attr('src', pic);
+}
+
+    </script>
 </body>
 </html>

@@ -35,8 +35,7 @@
                             <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header">
-                                            <p class="text-left" style="font-size: 18px;">Message</p>
+                                        <div class="modal-header"></div>
                                         </div>
                                         <div class="modal-body">
                                             <?php if ($_SESSION['success'] == 'danger'): ?>

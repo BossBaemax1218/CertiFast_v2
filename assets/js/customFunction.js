@@ -69,9 +69,9 @@ function editResident(that){
 	gender 	    = $(that).attr('data-gender');
     purok 		= $(that).attr('data-purok');
 	vstatus 	= $(that).attr('data-vstatus');
-    taxno 	    = $(that).attr('data-taxno');
     email 	    = $(that).attr('data-email');
 	number 	    = $(that).attr('data-number');
+    taxno 	    = $(that).attr('data-taxno');
     citi 	    = $(that).attr('data-citi');
     occu 	    = $(that).attr('data-occu');
     dead 	    = $(that).attr('data-dead');
@@ -148,13 +148,13 @@ $('.vstatus').change(function(){
 });
 
 $(".toggle-password").click(function() {
-    $(this).toggleClass("fa-eye fa-eye-slash");
-    var input = $($(this).attr("toggle"));
-    if (input.attr("type") == "password") {
-      input.attr("type", "text");
-    } else {
-      input.attr("type", "password");
-    }
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") === "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+  $(this).toggleClass("fa-eye fa-eye-slash");
 });
 
 

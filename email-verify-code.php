@@ -25,17 +25,31 @@
                         <h4 class="text-center">Verification Code</h4>
                         <p class="text-center">We sent you a code, please type the code to verified your account.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
-                        <header id="header">
-                            <div class="alert alert-<?php echo $_SESSION['success']; ?>" role="alert">
-                                <?php if ($_SESSION['success'] == 'danger'): ?>
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                <?php elseif ($_SESSION['success'] == 'success'): ?>
-                                    <i class="fas fa-check-circle"></i>
-                                <?php endif; ?>
-                                <span class="alert-message"><?php echo $_SESSION['message']; ?></span>
+                            <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        </div>
+                                        <div class="modal-body">
+                                            <?php if ($_SESSION['success'] == 'danger'): ?>
+                                                <h5 class="modal-title text-center w-100">
+                                                    <i class="fas fa-exclamation-triangle fa-3x d-block mx-auto" style="color: #d64242"></i>
+                                                </h5>
+                                            <?php elseif ($_SESSION['success'] == 'success'): ?>
+                                                <h5 class="modal-title text-center w-100">
+                                                    <i class="fas fa-check-circle fa-3x d-block mx-auto" style="color: #34c240"></i>
+                                                </h5>
+                                            <?php endif; ?>
+                                            <br>
+                                            <p class="text-center" style="font-size: 24px; font-weight: bold;"><?php echo $_SESSION['message']; ?></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" id="closeModalButton">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </header>
-                        <?php unset($_SESSION['message']); ?>
+                            <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>
                         <div class="field input-field">
                             <input type="text" name="verification_code" autocomplete="off" placeholder="Verification Code" class="input">
@@ -45,7 +59,29 @@
                         </div>
                     </form>
                 </div>
+                <footer class="footer mt-3">
+                    <div class="container-fluid">
+                        <div class="copyright ml-auto text-center" style="font-size: 14px;">
+                            <?php  $year = date("Y"); echo  $year . " &copy Barangay Los Amigos - CertiFast Portal" ?>
+                        </div>				
+                    </div>
+                </footer>
             </div>
         </section>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var closeModalButton = document.getElementById('closeModalButton');
+            closeModalButton.addEventListener('click', function() {
+                var modal = document.getElementById('signupModal');
+                modal.classList.remove('show');
+                modal.setAttribute('aria-hidden', 'true');
+                modal.style.display = 'none';
+            });
+            var modal = document.getElementById('signupModal');
+            modal.classList.add('show');
+            modal.setAttribute('aria-hidden', 'false');
+            modal.style.display = 'block';
+        });
+    </script>
     </body>
 </html>

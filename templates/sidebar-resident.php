@@ -79,17 +79,30 @@ $current_page = PageName();
                 </li>
                 <li class="nav-item">
                     <a href="#support" data-toggle="modal">
-                        <i class="fas fa-angle-right"></i>
-                        <p>Support & Feedbacks</p>
+                        <i class="fas fa-edit"></i>
+                        <p>Submit a Feedback</p>
                     </a>
                 </li>
-                <li class="nav-item <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'active' : null ?>">
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Services</h4>
+                </li>
+                <li class="nav-item">
+                    <a href="index.php">
+                        <i class="far fa-lightbulb"></i>
+                        <p>Barangay Los Amigos</p>
+                    </a>
+                </li>
+                <br>
+                <li class="nav-item <?= $current_page=='purok.php' || $current_page=='position.php' ? 'active' : null ?>">
                     <a href="#settings" data-toggle="collapse" class="collapsed" aria-expanded="false">
                         <i class="fas fa-wrench"></i>
                             <p>Settings</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='user-resident.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'show' : null ?>" id="settings">
+                    <div class="collapse <?= $current_page=='purok.php' ? 'show' : null ?>" id="settings">
                         <ul class="nav nav-collapse">
                             <li class="nav-section">
                                 <span class="sidebar-mini-icon">
@@ -103,6 +116,9 @@ $current_page = PageName();
                                 </a>
                                 <a href="#user_changepass" data-toggle="modal">
                                     <span class="link-collapse">Change Password</span>
+                                </a>
+                                <a type="button" data-toggle="tooltip" href="model/remove_resident.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete your account?');" class="btn btn-link btn-danger" data-original-title="Delete" style="text-decoration:none;">
+                                    <span class="link-collapse">Delete Account</span>
                                 </a>
                             </li>
                         </ul>
