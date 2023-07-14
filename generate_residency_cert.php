@@ -170,10 +170,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-4">
+                                    <div class="row mt-4" style="margin: 50px 10px 50px 50px;">
                                         <div class="col-md-12 text-left">
                                             <div class="text-center">
-                                                <h1 class="mt-4 fw-bold mb-5" style="font-size:90px;">CERTIFICATE OF RESIDENCY</h1>
+                                                <h1 class="mt-4 fw-bold mb-5" style="font-size:100px;">CERTIFICATE OF RESIDENCY</h1>
                                             </div>
                                             <div class="text-left"></div>
                                             <h2 class="ml-3 text">To Whom It May Concern:</h2>

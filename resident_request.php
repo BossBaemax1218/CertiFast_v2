@@ -125,11 +125,7 @@ $conn->close();
                                                                     data-citi="<?= $row['citizenship'];?>" 
                                                                     data-dead="<?= $row['resident_type'];?>" 
                                                                     data-purpose="<?= $row['purpose'] ?>">
-                                                                    <?php if (isset($_SESSION['fullname'])): ?>
-                                                                    <i class="fas fa-edit"></i>
-                                                                    <?php else: ?>
                                                                     <i class="fa fa-eye"></i>
-                                                                    <?php endif ?>
                                                                 </a>
                                                             </div>
                                                         </td>
@@ -343,10 +339,10 @@ $conn->close();
                                         <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo1()">Capture</button>   
                                     </div>
                                     <div id="profileImage1">
-                                        <input type="hidden" name="profileimg">
+                                        <input type="hidden" name="profileimg" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <input type="file" class="form-control" name="img" accept="image/*">
+                                        <input type="file" class="form-control" name="img" accept="image/*" disabled>
                                     </div>
                                     <div class="form-group">
                                         <div class="selectgroup selectgroup-secondary selectgroup-pills">
@@ -362,11 +358,11 @@ $conn->close();
                                     </div>
                                     <div class="form-group">
                                         <label>National ID</label>
-                                        <input type="text" class="form-control" name="national" id="nat_id" placeholder="Enter National ID" readonly>
+                                        <input type="text" class="form-control" name="national" id="nat_id" placeholder="Enter National ID" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label>Citizenship</label>
-                                        <input type="text" class="form-control" name="citizenship" id="citizenship" placeholder="Enter citizenship" required>
+                                        <input type="text" class="form-control" name="citizenship" id="citizenship" placeholder="Enter citizenship" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -374,19 +370,19 @@ $conn->close();
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Firstname</label>
-                                                <input type="text" class="form-control" placeholder="Enter Firstname" name="fname" id="fname" required>
+                                                <input type="text" class="form-control" placeholder="Enter Firstname" name="fname" id="fname" disabled>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Middlename</label>
-                                                <input type="text" class="form-control" placeholder="Enter Middlename" name="mname" id="mname" required>
+                                                <input type="text" class="form-control" placeholder="Enter Middlename" name="mname" id="mname" disabled>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Lastname</label>
-                                                <input type="text" class="form-control" placeholder="Enter Lastname" name="lname" id="lname" required>
+                                                <input type="text" class="form-control" placeholder="Enter Lastname" name="lname" id="lname" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -394,19 +390,19 @@ $conn->close();
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control" name="address" placeholder="Enter Address" id="address" required>
+                                                <input type="text" class="form-control" name="address" placeholder="Enter Address" id="address" disabled>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Place of Birth</label>
-                                                <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" id="bplace" required>
+                                                <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" id="bplace" disabled>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Birthdate</label>
-                                                <input type="date" class="form-control" placeholder="Enter Birthdate" name="bdate" id="bdate" required>
+                                                <input type="date" class="form-control" placeholder="Enter Birthdate" name="bdate" id="bdate" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -414,13 +410,13 @@ $conn->close();
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Age</label>
-                                                <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" id="age" required>
+                                                <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" id="age" disabled>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                 <label>Civil Status</label>
-                                                <select class="form-control" required name="cstatus" id="cstatus">
+                                                <select class="form-control" disabled name="cstatus" id="cstatus">
                                                     <option disabled selected>Select Civil Status</option>
                                                     <option value="Single">Single</option>
                                                     <option value="Married">Married</option>
@@ -431,7 +427,7 @@ $conn->close();
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Sex</label>
-                                                <select class="form-control" required name="gender" id="gender">
+                                                <select class="form-control" disabled name="gender" id="gender">
                                                     <option disabled selected value="">Select Sex</option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
@@ -443,7 +439,7 @@ $conn->close();
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Purok</label>
-                                                <select class="form-control" required name="purok" id="purok">
+                                                <select class="form-control" disabled name="purok" id="purok">
                                                     <option disabled selected>Select Purok Name</option>
                                                     <?php foreach($purok as $row):?>
                                                         <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
@@ -454,7 +450,7 @@ $conn->close();
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Voters Status</label>
-                                                <select class="form-control vstatus" required name="vstatus" id="vstatus">
+                                                <select class="form-control vstatus" disabled name="vstatus" id="vstatus">
                                                     <option disabled selected>Select Voters Status</option>
                                                     <option value="Yes">Yes</option>
                                                     <option value="No">No</option>
@@ -464,7 +460,7 @@ $conn->close();
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Tax no.</label>
-                                                <input type="text" class="form-control" placeholder="Enter Tax No." name="taxno" id="taxno" required>
+                                                <input type="text" class="form-control" placeholder="Enter Tax No." name="taxno" id="taxno" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -473,29 +469,29 @@ $conn->close();
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input type="text" class="form-control" placeholder="Enter Email Address" name="email" id="email" required>
+                                                <input type="text" class="form-control" placeholder="Enter Email Address" name="email" id="email" disabled>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Contact Number</label>
-                                                <input type="text" class="form-control" placeholder="Enter Contact Number" name="number" id="number" required>
+                                                <input type="text" class="form-control" placeholder="Enter Contact Number" name="number" id="number" disabled>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Occupation</label>
-                                                <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" id="occupation" required>
+                                                <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" id="occupation" disabled>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Remarks</label>
-                                        <textarea class="form-control" name="remarks" placeholder="Enter Remarks" id="remarks" required></textarea>
+                                        <textarea class="form-control" name="remarks" placeholder="Enter Remarks" id="remarks" disabled></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Puporse</label>
-                                        <textarea class="form-control" name="purpose" placeholder="Enter Purpose" id="purpose" required></textarea>
+                                        <textarea class="form-control" name="purpose" placeholder="Enter Purpose" id="purpose" disabled></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -503,8 +499,6 @@ $conn->close();
                         <div class="modal-footer">
                             <input type="hidden" name="id" id="res_id">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <input type="hidden" value="<?= $_SESSION['fullname']; ?>" name="fullname">
-                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                         </form>
                     </div>

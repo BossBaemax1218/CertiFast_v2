@@ -128,7 +128,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-4" style="color: black; margin-bottom: 300px;">
+                                    <div class="row mt-4" style="margin-bottom: 300px;">
                                         <table class="body-wrap">
                                                 <tbody>
                                                     <tr>

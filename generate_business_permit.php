@@ -185,7 +185,7 @@
                                                 <p class="text mr-4">PUNONG BARANGAY</p>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 mb-2 text-left">
+                                        <div class="col-md-12 mb-2 text-left"  style="margin-bottom: 1200px;">
                                             <h4 class="ml-4"><i>CTC No.</i>:__________________________</h4>
                                             <h4 class="ml-4"><i>Issued On.</i>:__________________________</h4>
                                             <h4 class="ml-4"><i>Isuued at.</i>: <?= ucwords($brgy.','.$town) ?></h4>

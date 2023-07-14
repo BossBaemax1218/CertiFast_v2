@@ -161,10 +161,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-4" style="color: black; margin: 50px 10px 50px 50px;">
+                                    <div class="row mt-4" style="margin: 50px 10px 50px 50px;">
                                         <div class="col-md-12">
                                             <div class="text-center">
-                                                <h1 class="mt-4 fw-bold mb-5" style="font-size:60px;"> CERTIFICATE OF CLEARANCE </h1>
+                                                <h1 class="mt-4 fw-bold mb-5" style="font-size:100px;"> CERTIFICATE OF CLEARANCE </h1>
                                             </div>
                                             <h2 class="mt-5 fw-bold">TO WHOM IT MAY CONCERN:</h2>
                                             <h2 class="mt-3" style="text-indent: 60px;">This is to certify that per records now existing in this office  <span class="fw-bold" style="font: size 23px;px"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 

@@ -167,10 +167,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-4" style="color: black; margin: 50px 10px 50px 50px;">
+                                    <div class="row mt-4" style="margin: 50px 10px 50px 50px;">
                                         <div class="col-md-12">
                                             <div class="text-center">
-                                                <h1 class="mt-4 fw-bold mb-5" style="font-size:60px;">BARANGAY CERTIFICATION</h1>
+                                                <h1 class="mt-4 fw-bold mb-5" style="font-size:100px;">BARANGAY CERTIFICATION</h1>
                                             </div>
                                             <h2 class="mt-5 fw-bold">TO WHOM IT MAY CONCERN:</h2>
                                             <h2 class="mt-3" style="text-indent: 40px;">This is to certify that <span class="fw-bold" style="font-size:25px"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
