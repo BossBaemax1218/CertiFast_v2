@@ -45,7 +45,6 @@
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
-
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header">
@@ -84,7 +83,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <a href="resident_info.php?state=voters" class="card-link text-" style="color: gray;">Total Residents </a>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +107,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <a href="users.php?state=male" class="card-link text" style="color: gray;">Total Voters</a>
+                                        <!--<a href="users.php?state=male" class="card-link text" style="color: gray;">Total Voters</a>-->
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +131,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <a href="resident_info.php?state=non_voters" class="card-link text" style="color: gray;">Total Non-Voters</a>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -202,29 +201,10 @@
 														<td class="text-center">
 															<div class="form-button-action">
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
-                                                                    data-id="<?= $row['id'] ?>" 
-                                                                    data-national="<?= $row['national_id'] ?>" 
-                                                                    data-fname="<?= $row['firstname'] ?>" 
-                                                                    data-mname="<?= $row['middlename'] ?>" 
-                                                                    data-lname="<?= $row['lastname'] ?>" 
-                                                                    data-address="<?= $row['address'] ?>" 
-                                                                    data-bplace="<?= $row['birthplace'] ?>" 
-                                                                    data-bdate="<?= $row['birthdate'] ?>" 
-                                                                    data-age="<?= $row['age'] ?>"
-                                                                    data-cstatus="<?= $row['civilstatus'] ?>" 
-                                                                    data-gender="<?= $row['gender'] ?>"
-                                                                    data-purok="<?= $row['purok'] ?>" 
-                                                                    data-vstatus="<?= $row['voterstatus'] ?>" 
-                                                                    data-taxno="<?= $row['taxno'] ?>" 
-                                                                    data-number="<?= $row['phone'] ?>" 
-                                                                    data-email="<?= $row['email'] ?>" 
-                                                                    data-occu="<?= $row['occupation'] ?>" 
-                                                                    data-remarks="<?= $row['remarks'] ?>" 
-                                                                    data-img="<?= $row['picture'] ?>" 
-                                                                    data-citi="<?= $row['citizenship'] ?>" 
-                                                                    data-dead="<?= $row['resident_type'] ?>" 
-                                                                    data-purpose="<?= $row['purpose'] ?>">
-                                                                    <?php if (isset($_SESSION['username'])): ?>
+                                                                    data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-address="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
+                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-taxno="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
+                                                                    data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-purpose="<?= $row['purpose'] ?>">
+                                                                    <?php if(isset($_SESSION['username'])): ?>
                                                                         <i class="fas fa-edit"></i>
                                                                     <?php else: ?>
                                                                         <i class="fa fa-eye"></i>
@@ -619,7 +599,7 @@
                     </div>
                 </div>
             </div>
-			<?php include 'templates/main-footer.php' ?>
+			<?php include 'templates/main-footer.php' ?>	
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>

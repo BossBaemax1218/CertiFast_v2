@@ -39,7 +39,7 @@
 <script src="assets/js/plugin/datatables/Buttons-1.6.1/js/buttons.print.min.js"></script>
 
 <script src="assets/js/plugin/datatables/datatables.min.js"></script>
-    <script src="assets/js/resident-reports.js"></script>
+<script src="assets/js/resident-reports.js"></script>
 <script>
     var $window = $(window);
     $window.on("load",function (){

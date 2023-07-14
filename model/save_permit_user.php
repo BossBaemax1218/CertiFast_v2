@@ -1,7 +1,7 @@
 <?php 
 	include('../server/server.php');
 
-    if(!isset($_SESSION['username'])){
+    if(!isset($_SESSION['fullname'])){
         if (isset($_SERVER["HTTP_REFERER"])) {
             header("Location: " . $_SERVER["HTTP_REFERER"]);
         }
@@ -33,6 +33,6 @@
         $_SESSION['success'] = 'danger';
     }
 
-    header("Location: ../business_permit.php");
+    header("Location: ../resident_bpermit.php");
 
 	$conn->close();

@@ -63,6 +63,12 @@ $current_page = PageName();
                         <p>Submit Request Form</p>
                     </a>
                 </li>
+                <li class="nav-item <?= $current_page=='resident_bpermit.php' || $current_page=='resident_bpermit.php' ? 'active' : null ?>">
+                    <a href="resident_bpermit.php">
+                        <i class="far fa-paper-plane"></i>
+                        <p>Apply Business Permit</p>
+                    </a>
+                </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
@@ -94,7 +100,7 @@ $current_page = PageName();
                     <h4 class="text-section">Services</h4>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php">
+                    <a href="index.php#services">
                         <i class="far fa-lightbulb"></i>
                         <p>Barangay Los Amigos</p>
                     </a>

@@ -33,10 +33,10 @@
   <script src="https://cdn.jsdelivr.net/npm/table-html-export"></script>  
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-	<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/extra/vanilla-datetimerange-picker-dark.css">
-
-<script src="assets/js/plugin/webfont/webfont.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/extra/vanilla-datetimerange-picker-dark.css">
+    <script src="assets/js/plugin/webfont/webfont.min.js"></script>
+    
 <script>
     WebFont.load({
         google: {"families":["Lato:300,400,700,900"]},

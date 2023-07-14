@@ -1,34 +1,44 @@
-<?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT * FROM tblpermit";
-    $result = $conn->query($query);
+include 'server/db_connection.php';
 
-    $permit = array();
-	while($row = $result->fetch_assoc()){
-		$permit[] = $row; 
-	}
+if (!isset($_SESSION["fullname"])) {
+    header("Location: login.php");
+    exit;
+}
+
+$fullname = $_SESSION["user_email"];
+
+$sql = "SELECT * FROM tblpermit JOIN tbl_user_resident ON tblpermit.email = tbl_user_resident.user_email WHERE tbl_user_resident.user_email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $fullname);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$permit = array();
+while ($row = $result->fetch_assoc()) { 
+    $permit[] = $row;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Business Permit</title>
+	<title>Resident Reports</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<?php include 'templates/main-header.php' ?>
-		<?php include 'templates/sidebar.php' ?>
+		<?php include 'templates/main-header-resident.php' ?>
+		<?php include 'templates/sidebar-resident.php' ?>
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header">
-					<div class="page-inner">
-						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-							<div>
-								<h2 class="text-black fw-bold" style ="font-size: 300%;">Business Permit</h2>
-							</div>
-						</div>
-					</div>
+                    <div>
+                        <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
+                        <h3 class="text-center fw-bold"> Apply business permit with CertiFast Portal. </h3>
+                        <br>
+                    </div>
 				</div>
 				<div class="page-inner">
 					<div class="row mt-2">
@@ -40,19 +50,7 @@
                             <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
                             <div class="card">
-								<div class="card-header">
-									<div class="card-head-row">
-										<div class="card-title">Business Permit</div>
-										<?php if(isset($_SESSION['username'])):?>
-											<div class="card-tools">
-												<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
-													<i class="fa fa-plus"></i>
-													Business Permit
-												</a>
-											</div>
-										<?php endif?>
-									</div>
-								</div>
+                                <h5 class="text-center fw-bold mt-5"><a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;">APPLY</a></h5>
 								<div class="card-body">
 									<div class="table-responsive">
 										<table id="residenttable" class="table">
@@ -60,11 +58,9 @@
 												<tr class="text-center">
 													<th scope="col">Name of Business</th>
 													<th scope="col">Business Owner</th>
+                                                    <th scope="col">Business Email</th>
 													<th scope="col">Description</th>
 													<th scope="col">Date Applied</th>
-													<?php if(isset($_SESSION['username'])):?>
-													<th scope="col">Action</th>
-													<?php endif ?>
 												</tr>
 											</thead>
 											<tbody>
@@ -73,22 +69,9 @@
 													<tr class="text-center">
 														<td><?= ucwords($row['name']) ?></td>
 														<td><?= !empty($row['owner1']) ? ucwords($row['owner1']) : $row['owner1'] ?></td>
+                                                        <td><?= ucwords($row['email']) ?></td>
 														<td><?= $row['nature'] ?></td>
-														<td><?= $row['applied'] ?></td>
-                                                        <?php if(isset($_SESSION['username'])):?>
-														<td>
-															<div class="form-button-action">
-																<a type="button" data-toggle="tooltip" href="generate_business_permit.php?id=<?= $row['id'] ?>" class="btn btn-link btn-primary" data-original-title="Generate Permit">
-																	<i class="fas fa-print"></i>
-																</a>
-																<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'): ?>
-																<a type="button" data-toggle="tooltip" href="model/remove_permit.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this business permit?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																	<i class="fas fa-trash"></i>
-																</a>
-																<?php endif ?>
-															</div>
-														</td>
-														<?php endif ?>														
+														<td><?= $row['applied'] ?></td>													
 													</tr>
 													<?php endforeach ?>
 												<?php endif ?>
@@ -113,7 +96,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="model/save_permit.php" >
+                            <form method="POST" action="model/save_permit_user.php" >
                                 <div class="form-group">
                                     <label>Business Name</label>
                                     <input type="text" class="form-control" placeholder="Enter Business Name" name="name" required>
@@ -122,7 +105,7 @@
                                     <label>Business Owner</label>
                                     <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="owner1" required>
                                 </div>
-								<div class="form-group">
+                                <div class="form-group">
                                     <label>Business Email</label>
                                     <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="email" required>
                                 </div>

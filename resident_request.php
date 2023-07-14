@@ -58,7 +58,7 @@ $conn->close();
                                 <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
                             <div class="card">
-                            <h5 class="text-center fw-bold mt-5"><a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;">CREATE</a></h5>
+                            <h5 class="text-center fw-bold mt-5"><a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;">SUBMIT</a></h5>
 								<div class="card-body">
                                     <div class="table-responsive">
                                         <table id="residenttable" class="table">
@@ -338,7 +338,6 @@ $conn->close();
                                     <div id="my_camera1" style="width: 370px; height: 250;" class="text-center">
                                         <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" id="image">
                                     </div>
-                                    <?php if(isset($_SESSION['fullname'])):?>
                                     <div class="form-group d-flex justify-content-center">
                                         <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam1">Open Camera</button>
                                         <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo1()">Capture</button>   
@@ -349,7 +348,6 @@ $conn->close();
                                     <div class="form-group">
                                         <input type="file" class="form-control" name="img" accept="image/*">
                                     </div>
-                                    <?php endif ?>
                                     <div class="form-group">
                                         <div class="selectgroup selectgroup-secondary selectgroup-pills">
                                             <label class="selectgroup-item">
@@ -505,9 +503,8 @@ $conn->close();
                         <div class="modal-footer">
                             <input type="hidden" name="id" id="res_id">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <?php if(isset($_SESSION['fullname'])):?>
+                            <input type="hidden" value="<?= $_SESSION['fullname']; ?>" name="fullname">
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <?php endif ?>
                         </div>
                         </form>
                     </div>
@@ -517,8 +514,8 @@ $conn->close();
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>
-    <script>
-        function editResident(that) {
+<script>
+function editResident(that) {
     var id = $(that).attr('data-id');
     var pic = $(that).attr('data-img');
     var nat_id = $(that).attr('data-national');
@@ -576,7 +573,6 @@ $conn->close();
     }
     $('#image').attr('src', pic);
 }
-
     </script>
 </body>
 </html>
