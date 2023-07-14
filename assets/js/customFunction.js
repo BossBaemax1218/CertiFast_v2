@@ -61,7 +61,7 @@ function editResident(that){
     fname 		= $(that).attr('data-fname');
 	mname 		= $(that).attr('data-mname');
     lname 		= $(that).attr('data-lname');
-	alias 		= $(that).attr('data-alias');
+	address 	= $(that).attr('data-address');
     bplace 	    = $(that).attr('data-bplace');
 	bdate 		= $(that).attr('data-bdate');
     age 		= $(that).attr('data-age');
@@ -69,23 +69,21 @@ function editResident(that){
 	gender 	    = $(that).attr('data-gender');
     purok 		= $(that).attr('data-purok');
 	vstatus 	= $(that).attr('data-vstatus');
-    indetity 	= $(that).attr('data-indetity');
+    taxno 	    = $(that).attr('data-taxno');
     email 	    = $(that).attr('data-email');
 	number 	    = $(that).attr('data-number');
-    address 	= $(that).attr('data-address');
     citi 	    = $(that).attr('data-citi');
-    occu 	= $(that).attr('data-occu');
+    occu 	    = $(that).attr('data-occu');
     dead 	    = $(that).attr('data-dead');
     remarks 	= $(that).attr('data-remarks');
-
-    $('#indetity').prop('disabled', false);
+    purpose 	= $(that).attr('data-purpose');
 
     $('#res_id').val(id);
     $('#nat_id').val(nat_id);
     $('#fname').val(fname);
     $('#mname').val(mname);
     $('#lname').val(lname);
-    $('#alias').val(alias);
+    $('#address').val(address);
     $('#bplace').val(bplace);
     $('#bdate').val(bdate);
     $('#age').val(age);
@@ -93,18 +91,13 @@ function editResident(that){
     $('#gender').val(gender);
     $('#purok').val(purok);
     $('#vstatus').val(vstatus);
-    if(indetity===''){
-        $('#indetity').prop('disabled', 'disabled');
-    }else{
-        $('#indetity').val(indetity);
-        
-    }
+    $('#taxno').val(taxno);
     $('#email').val(email);
     $('#number').val(number);
-    $('#address').text(address);
     $('#occupation').val(occu);
     $('#citizenship').val(citi);
     $('#remarks').val(remarks);
+    $('#purpose').val(purpose);
 
     if(dead==1){
         $("#alive").prop("checked", true);

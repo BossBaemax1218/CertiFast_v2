@@ -1,7 +1,7 @@
 <?php 
 	include '../server/server.php';
 
-	if(!isset($_SESSION['username'])){
+	if(!isset($_SESSION['fullname'])){
 		if (isset($_SERVER["HTTP_REFERER"])) {
 			header("Location: " . $_SERVER["HTTP_REFERER"]);
 		}
@@ -105,6 +105,6 @@
 		$_SESSION['message'] = 'National ID is already taken. Please enter a unique national ID!';
 		$_SESSION['success'] = 'danger';
 	}
-    header("Location: ../resident.php");
+    header("Location: ../resident_request.php");
 
 	$conn->close();

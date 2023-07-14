@@ -75,13 +75,38 @@ $current_page = PageName();
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">Settings</h4>
+                    <h4 class="text-section">Support</h4>
                 </li>
                 <li class="nav-item">
                     <a href="#support" data-toggle="modal">
                         <i class="fas fa-angle-right"></i>
                         <p>Support & Feedbacks</p>
                     </a>
+                </li>
+                <li class="nav-item <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'active' : null ?>">
+                    <a href="#settings" data-toggle="collapse" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-wrench"></i>
+                            <p>Settings</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='user-resident.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'show' : null ?>" id="settings">
+                        <ul class="nav nav-collapse">
+                            <li class="nav-section">
+                                <span class="sidebar-mini-icon">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </span>
+                                <h4 class="text-section">Account Settings</h4>
+                            </li>
+                            <li>
+                                <a href="#edit_user_profile" data-toggle="modal">
+                                    <span class="link-collapse">Edit Profile</span>
+                                </a>
+                                <a href="#user_changepass" data-toggle="modal">
+                                    <span class="link-collapse">Change Password</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 <br>
                 <li class="nav-item active">

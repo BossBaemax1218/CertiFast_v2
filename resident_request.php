@@ -48,16 +48,15 @@ $conn->close();
                     <h3 class="text-center fw-bold"> Here are the steps in setting an registration request with CertiFast Portal. </h3>
                     <br>
                 </div>
-                <div class="page-inner">
-                <?php if(isset($_SESSION['message'])): ?>
-                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                            <?php echo $_SESSION['message']; ?>
-                        </div>
-                    <?php unset($_SESSION['message']); ?>
-                <?php endif ?>
 				<div class="page-inner">
 					<div class="row">
 						<div class="col-md-12">
+                            <?php if(isset($_SESSION['message'])): ?>
+                                    <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                        <?php echo $_SESSION['message']; ?>
+                                    </div>
+                                <?php unset($_SESSION['message']); ?>
+                            <?php endif ?>
                             <div class="card">
                             <h5 class="text-center fw-bold mt-5"><a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;">CREATE</a></h5>
 								<div class="card-body">
@@ -140,7 +139,7 @@ $conn->close();
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="model/save_resident.php" enctype="multipart/form-data">
+                            <form method="POST" action="model/save_resident_user.php" enctype="multipart/form-data">
                             <input type="hidden" name="size" value="1000000">
                             <div class="row">
                                 <div class="col-md-4">
@@ -313,14 +312,14 @@ $conn->close();
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="model/edit_resident.php" enctype="multipart/form-data">
+                            <form method="POST" action="model/edit_resident_user.php" enctype="multipart/form-data">
                             <input type="hidden" name="size" value="1000000">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div id="my_camera1" style="width: 370px; height: 250;" class="text-center">
                                         <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" id="image">
                                     </div>
-                                    <?php if(isset($_SESSION['username'])):?>
+                                    <?php if(isset($_SESSION['fullname'])):?>
                                     <div class="form-group d-flex justify-content-center">
                                         <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam1">Open Camera</button>
                                         <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo1()">Capture</button>   
@@ -477,13 +476,19 @@ $conn->close();
                                         <label>Remarks</label>
                                         <textarea class="form-control" name="remarks" placeholder="Enter Remarks" id="remarks" required></textarea>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Puporse</label>
+                                        <textarea class="form-control" name="purpose" placeholder="Enter Purpose" id="purpose" required></textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" name="id" id="res_id">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <?php if(isset($_SESSION['fullname'])): ?>
                             <button type="submit" class="btn btn-primary">Update</button>
+                            <?php endif ?>
                         </div>
                         </form>
                     </div>
