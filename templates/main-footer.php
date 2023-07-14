@@ -156,7 +156,49 @@
                         <input type="text" class="form-control" placeholder="Enter Subject" name="subject" required>
                     </div>
                     <div class="form-group">
-                        <textarea type="text" class="form-control" placeholder="Enter Message" name="message" required ></textarea>
+                        <textarea type="text" class="form-control" rows="5" placeholder="Enter Message" name="message" required ></textarea>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="announcement" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Send Announcement</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="background-color: white">
+                <form method="POST" action="model/save_announcement.php">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Enter Name" name="name" required >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Enter Email Address" name="email" required >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter Contact Number(optional)" name="number">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter Subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea type="text" class="form-control" rows="5" placeholder="Enter Message" name="message" required ></textarea>
                     </div>
             </div>
             <div class="modal-footer">
@@ -376,37 +418,67 @@
                         <span>Please read these Terms of Services carefully before accessing or using the online certificate management system.</span>
                         <ul class="mt-2">
                             <li>
-                                <label>Acceptance of Terms</label>
-                                <p>By accessing or using the Certifast Portal, you agree to be bound by these Terms of Use. If you do not agree to these terms, please refrain from using the system.</p>
+                                <label>Account Registration</label>
+                                <p>1.1 You must create an account to access and use the CertiFast Portal. You agree to provide accurate and complete information during the registration process and keep your account credentials confidential.</p>
+                                <p>1.2 You are responsible for all activities that occur under your account, and you must immediately notify Barangay Los Amigos of any unauthorized use or security breach of your account.</p>
+                            </li>
+                            <li>
+                                <label>Use of the CertiFast Portal</label>
+                                <p>2.1 The CertiFast Portal allows registered users to request, manage, and access various certificates and related documents issued by Barangay Los Amigos.</p>
+                                <p>2.2 You agree to use the CertiFast Portal only for lawful purposes and in compliance with all applicable laws and regulations.</p>
+                                <p>2.3 You are solely responsible for the accuracy and legality of the information you provide when using the CertiFast Portal.</p>
+                                <p>2.4 You must not use the CertiFast Portal to:</p>
+                                <p>a) Transmit any viruses, malware, or other malicious code.</p>
+                                <p>b) Interfere with or disrupt the operation of the CertiFast Portal or its underlying infrastructure.</p>
+                                <p>c) Collect or store personal information of other users without their consent.</p>
+                                <p>d) Engage in any activity that could harm or damage the reputation of Barangay Los Amigos or its officials.</p>
+                            </li>
+                            <li>
+                                <label>Certificate Requests and Processing</label>
+                                <p>3.1 The CertiFast Portal allows you to submit requests for certificates electronically.</p>
+                                <p>3.2 While Barangay Los Amigos aims to process certificate requests promptly, it does not guarantee the issuance or processing timeframes.</p>
+                                <p>3.3 Barangay Los Amigos reserves the right to reject or cancel any certificate request if it determines, in its sole discretion, that the request violates applicable laws, regulations, or these ToS.</p>
+                                <p>3.4 You understand that the issuance of certificates is subject to the verification of the provided information, and any false or misleading information may result in the rejection or revocation of the certificate.</p>
+                            </li>
+                            <li>
+                                <label>Intellectual Property</label>
+                                <p>4.1 The CertiFast Portal, including its content and any intellectual property rights therein, is owned by Barangay Los Amigos.
+                                <p>4.2 You agree not to reproduce, modify, distribute, or create derivative works based on the CertiFast Portal or any of its content without the prior written consent of Barangay Los Amigos.</p>
                             </li>
                             <li>
                                 <label>Use of the Certifast Portal</label>
                                 <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
                             </li>
                             <li>
-                                <label>Use of the Certifast Portal</label>
-                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                                <label>Limitation of Liability</label>
+                                <p>5.1 Barangay Los Amigos shall not be liable for any direct, indirect, incidental, consequential, or exemplary damages arising out of or in connection with your use of the CertiFast Portal.</p>
+                                <p>5.2 You agree to indemnify and hold Barangay Los Amigos and its officials harmless from any claims, losses, damages, liabilities, costs, and expenses arising from your use of the CertiFast Portal.</p>
                             </li>
                             <li>
-                                <label>Use of the Certifast Portal</label>
-                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                                <label>Modification and Termination</label>
+                                <p>6.1 Barangay Los Amigos may modify, suspend, or terminate the CertiFast Portal or your access to it at any time, without prior notice and for any reason.</p>
+                                <p>6.2 These ToS will remain in effect even after your access to the CertiFast Portal is terminated.</p>
                             </li>
                             <li>
-                                <label>Use of the Certifast Portal</label>
-                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                                <label>Governing Law and Jurisdiction</label>
+                                <p>7.1 These ToS shall be governed by and construed in accordance with the laws of the Philippines</p>
+                                <p>7.2 Any disputes arising out of or in connection with these ToS shall be subject to the exclusive jurisdiction of the courts of the Philippines.</p>
+                                <p><b>These are just a few key legal considerations related to online certificate management systems in the Philippines.</b></p>
+                                <p>In the Philippines, the primary legislation governing data privacy and protection is the Data Privacy Act of 2012 (Republic Act No. 10173) and its implementing rules and regulations. It sets out the rights of individuals regarding the collection, use, processing, and disclosure of personal information. If your online certificate management system collects and processes personal data, it is important to comply with the requirements of the Data Privacy Act, including obtaining proper consent, implementing security measures, and ensuring the rights of data subjects.</p>
+                                <p>The Electronic Commerce Act of 2000 (Republic Act No. 8792) governs electronic transactions and electronic signatures in the Philippines. It provides a legal framework for the recognition and validity of electronic documents, contracts, and signatures. If your online certificate management system involves electronic transactions, it's important to ensure compliance with the Electronic Commerce Act.</p>
+                                <p>The Cybercrime Prevention Act of 2012 (Republic Act No. 10175) addresses cybersecurity concerns and criminalizes various forms of cybercrime, such as hacking, identity theft, and unauthorized access to computer systems. Implementing appropriate security measures to protect the integrity and confidentiality of the online certificate management system's data is crucial.</p>
+                                <p>Intellectual property rights may apply to the content, software, or design of your online certificate management system. It's important to ensure that you have the necessary licenses or permissions for any copyrighted material used, and to respect the intellectual property rights of others.</p>
                             </li>
                             <li>
-                                <label>Use of the Certifast Portal</label>
-                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
-                            </li>
-                            <li>
-                                <label>Use of the Certifast Portal</label>
-                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                                <label>Modification and Termination</label>
+                                <p>6.1 Barangay Los Amigos may modify, suspend, or terminate the CertiFast Portal or your access to it at any time, without prior notice and for any reason.</p>
+                                <p>6.2 These ToS will remain in effect even after your access to the CertiFast Portal is terminated.</p>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="closeModalButton">Close</button>
                 </div>
             </form>
         </div>
@@ -480,6 +552,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="closeModalButton">Close</button>
                 </div>
             </form>
         </div>

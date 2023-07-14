@@ -58,7 +58,6 @@
             <li><a class="nav-link scrollto active" href="index.php#hero">Home</a></li>
             <li><a class="nav-link scrollto" href="index.php#about">About</a></li>
             <li><a class="nav-link scrollto" href="index.php#services">Certificates</a></li>
-            <li><a class="nav-link scrollto " href="index.php#announcement">News & Events</a></li>
             <li class="dropdown"><a href="#"><span>Officials</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a class="nav-link scrollto " href="barangay-officials.php">Barangay Officials</a></li>
@@ -118,7 +117,6 @@
               <li><a href="#">Home</a></li>
               <li><a href="#">About us</a></li>
               <li><a href="#">Services</a></li>
-              <li><a href="#">News & Events</a></li>
               <li><a href="#">Barangay Officials</a></li>
               <li><a href="#">Sk Officials</a></li>
               <li><a href="#">Contact</a></li>

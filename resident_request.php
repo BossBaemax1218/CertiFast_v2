@@ -45,7 +45,7 @@ $conn->close();
 				<div class="panel-header">
                 <div>
                     <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
-                    <h3 class="text-center fw-bold"> Here are the steps in setting an registration request with CertiFast Portal. </h3>
+                    <h3 class="text-center fw-bold"> Here are the online registration request with CertiFast Portal. </h3>
                     <br>
                 </div>
 				<div class="page-inner">
@@ -278,7 +278,7 @@ $conn->close();
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Tax no</label>
+                                                <label>Tax no.</label>
                                                 <input type="number" class="form-control" placeholder="Enter Tax number" min="6" name="taxno" required>
                                             </div>
                                         </div>
@@ -465,7 +465,7 @@ $conn->close();
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Tax no</label>
+                                                <label>Tax no.</label>
                                                 <input type="text" class="form-control" placeholder="Enter Tax No." name="taxno" id="taxno" required>
                                             </div>
                                         </div>
@@ -505,7 +505,7 @@ $conn->close();
                         <div class="modal-footer">
                             <input type="hidden" name="id" id="res_id">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <?php if(isset($_SESSION['fullname'])): ?>
+                            <?php if(isset($_SESSION['fullname'])):?>
                             <button type="submit" class="btn btn-primary">Update</button>
                             <?php endif ?>
                         </div>

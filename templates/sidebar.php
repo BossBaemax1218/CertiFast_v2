@@ -185,6 +185,11 @@ $current_page = PageName();
                                         <span class="sub-item">Support & Feedback</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="#announcement" data-toggle="modal">
+                                        <span class="sub-item">Send Announcement</span>
+                                    </a>
+                                </li>
                                 <li>                                   
                                     <a class="fw-bold">System</a>
                                     <a href="backup/backup.php">

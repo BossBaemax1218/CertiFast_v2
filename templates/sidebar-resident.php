@@ -12,7 +12,7 @@ $current_page = PageName();
                 <div class="avatar-sm float-left mr-2">
                     <?php if (!empty($_SESSION['avatar'])): ?>
                         <?php if (preg_match('/data:image/i', $_SESSION['avatar'])): ?>
-                            <img src="<?php echo $_SESSION['avatar']; ?>" alt="..." class="avatar-img rounded-circle">
+                            <img src="<?= preg_match('/data:image/i', $row['avatar']) ? $row['avatar'] : 'assets/uploads/resident_profile/'.$row['avatar'] ?>" alt="Profile" class="avatar-img rounded-circle">
                         <?php else: ?>
                             <img src="assets/uploads/avatar/<?php echo $_SESSION['avatar']; ?>" alt="..." class="avatar-img rounded-circle">
                         <?php endif; ?>
@@ -84,7 +84,7 @@ $current_page = PageName();
                 <li class="nav-item">
                     <a href="#support" data-toggle="modal">
                         <i class="fas fa-edit"></i>
-                        <p>Submit a Feedback</p>
+                        <p>Submit a Support</p>
                     </a>
                 </li>
                 <li class="nav-section">

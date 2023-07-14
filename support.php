@@ -90,18 +90,6 @@
                                                     </tr>
                                                 <?php endif ?>
                                             </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th scope="col">No.</th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Number</th>
-                                                    <th scope="col">Subject</th>
-                                                    <th scope="col">Message</th>
-                                                    <th scope="col">Date</th>
-                                                    <th scope="col">Action</th>
-                                                </tr>
-                                            </tfoot>
                                         </table>
                                     </div>
 								</div>

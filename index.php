@@ -28,6 +28,12 @@
     <link href="homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="homepage/assets/css/style.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
 </head>
 <body>
 
@@ -48,7 +54,6 @@
             <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
             <li><a class="nav-link scrollto" href="#about">About</a></li>
             <li><a class="nav-link scrollto" href="#services">Certificates</a></li>
-            <li><a class="nav-link scrollto " href="#announcement">News & Events</a></li>
             <li class="dropdown"><a href="#"><span>Officials</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a class="nav-link scrollto " href="barangay-officials.php">Barangay Officials</a></li>
@@ -362,49 +367,6 @@
       </div>
     </section>
 
-    <section id="announcement" class="announcement">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>News & Events</h2>
-          <h3><span>News & Events</span></h3>
-          <br>
-          <h6>Residents of Barangay Los Amigos are invited to attend a community meeting to discuss crucial matters and provide updates.</h6>
-        </div>
-        <div class="row announcement-container" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="col-lg-4 col-md-6 announcement-item filter-app">
-            <img src="homepage/assets/img/announcement/announcement-1.jpg" class="img-fluid" alt="img-1">
-            <div class="announcement-info">
-              <h4>Bloodletting Program</h4>
-              <p> May 9, 2023</p>
-              <a href="homepage/assets/img/announcement/announcement-1.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Bloodletting Program"><i class="bx bx-plus"></i></a>
-              <a href="homepage/announcement/announcement-details.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 announcement-item filter-app">
-            <img src="homepage/assets/img/announcement/announcement-3.jpg" class="img-fluid" alt="img-3">
-            <div class="announcement-info">
-              <h4>Sim Registration</h4>
-              <p>April 26, 2023</p>
-              <a href="homepage/assets/img/announcement/announcement-3.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Sim Registration"><i class="bx bx-plus"></i></a>
-              <a href="homepage/announcement/announcement-details-3.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 announcement-item filter-web">
-            <img src="homepage/assets/img/announcement/announcement-5.jpg" class="img-fluid" alt="img-6">
-            <div class="announcement-info">
-              <h4>Water Interruption</h4>
-              <p>March 17, 2023</p>
-              <a href="homepage/assets/img/announcement/announcement-5.jpg" data-gallery="announcementGallery" class="announcement-lightbox preview-link" title="Water Interruption"><i class="bx bx-plus"></i></a>
-              <a href="homepage/announcement/announcement-details-4.php" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
     <section id="faq" class="faq section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -515,74 +477,6 @@
 
       </div>
     </section>
-
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <h3><span>Contact Us</span></h3>
-          <br>
-          <h6>We providing excellent customer service and we are here to help with any inquiries or concerns. Please feel free to reach out to us using the contact details provided below:</h6>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-6">
-            <div class="info-box mb-4">
-              <i class="bx bx-map"></i>
-              <h3>Our Address</h3>
-              <p><?= ucwords($result['brgy_address']) ?></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-envelope"></i>
-              <h3>Email Us</h3>
-              <p><?= ucwords($result['brgy_email']) ?></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-phone-call"></i>
-              <h3>Call Us</h3>
-              <p><?= ucwords($result['contact_number']) ?></p>
-            </div>
-          </div>
-        </div>
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-6 ">
-            <a href="https://www.google.com/maps/place/Los+Amigos,+Tugbok,+Davao+City,+Davao+del+Sur/@7.1416987,125.46621,15z/data=!3m1!4b1!4m6!3m5!1s0x32f911550de0241f:0xc66d177e2b21e4d5!8m2!3d7.1405399!4d125.4754538!16s%2Fg%2F1ptw2kz3p?entry=ttu"><img class="mb-4 mb-lg-0" src="homepage\assets\img\testimonials\testimonials-7.jpg" frameborder="0" style="border:0; width: 100%; height: 384px;" alt="img-6"></a>
-          </div>
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
   <footer id="footer">
 
@@ -604,7 +498,6 @@
               <li><a href="#">Home</a></li>
               <li><a href="#">About us</a></li>
               <li><a href="#">Services</a></li>
-              <li><a href="#">News & Events</a></li>
               <li><a href="#">Barangay Officials</a></li>
               <li><a href="#">Sk Officials</a></li>
               <li><a href="#">Contact</a></li>
@@ -637,14 +530,170 @@
 
     <div class="container py-4">
       <div class="copyright">
-        <?php $year = date("Y"); echo  $year . " &copy; <strong><span>Barangay Los Amigos - CertiFast Portal</span></strong>" ?> . All Rights Reserved . <a class="text-muted" href="#term" data-toggle="modal" style="text-decoration: none;">Term of Service</a> . <a class="text-muted" href="#term"  data-toggle="modal" style="text-decoration: none;">Privacy Policy</a>
+        <?php $year = date("Y"); echo  $year . " &copy; <strong><span>Barangay Los Amigos - CertiFast Portal</span></strong>" ?> . All Rights Reserved . <a class="text-muted" href="#term" data-toggle="modal" style="text-decoration: none;">Term of Service</a> . <a class="text-muted" href="#policy"  data-toggle="modal" style="text-decoration: none;">Privacy Policy</a>
       </div>
     </div>
   </footer>
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  
+<!-- Modal -->
+<div class="modal fade" id="term" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Term of Services</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form method="POST" action="#" enctype="multipart/form-data">
+                    <div class="form-group form-floating-label">
+                        <h3>Barangay Los Amigos - Certifast Portal! </h3>
+                        <span>Please read these Terms of Services carefully before accessing or using the online certificate management system.</span>
+                        <ul class="mt-2">
+                            <li>
+                                <label>Account Registration</label>
+                                <p>1.1 You must create an account to access and use the CertiFast Portal. You agree to provide accurate and complete information during the registration process and keep your account credentials confidential.</p>
+                                <p>1.2 You are responsible for all activities that occur under your account, and you must immediately notify Barangay Los Amigos of any unauthorized use or security breach of your account.</p>
+                            </li>
+                            <li>
+                                <label>Use of the CertiFast Portal</label>
+                                <p>2.1 The CertiFast Portal allows registered users to request, manage, and access various certificates and related documents issued by Barangay Los Amigos.</p>
+                                <p>2.2 You agree to use the CertiFast Portal only for lawful purposes and in compliance with all applicable laws and regulations.</p>
+                                <p>2.3 You are solely responsible for the accuracy and legality of the information you provide when using the CertiFast Portal.</p>
+                                <p>2.4 You must not use the CertiFast Portal to:</p>
+                                <p>a) Transmit any viruses, malware, or other malicious code.</p>
+                                <p>b) Interfere with or disrupt the operation of the CertiFast Portal or its underlying infrastructure.</p>
+                                <p>c) Collect or store personal information of other users without their consent.</p>
+                                <p>d) Engage in any activity that could harm or damage the reputation of Barangay Los Amigos or its officials.</p>
+                            </li>
+                            <li>
+                                <label>Certificate Requests and Processing</label>
+                                <p>3.1 The CertiFast Portal allows you to submit requests for certificates electronically.</p>
+                                <p>3.2 While Barangay Los Amigos aims to process certificate requests promptly, it does not guarantee the issuance or processing timeframes.</p>
+                                <p>3.3 Barangay Los Amigos reserves the right to reject or cancel any certificate request if it determines, in its sole discretion, that the request violates applicable laws, regulations, or these ToS.</p>
+                                <p>3.4 You understand that the issuance of certificates is subject to the verification of the provided information, and any false or misleading information may result in the rejection or revocation of the certificate.</p>
+                            </li>
+                            <li>
+                                <label>Intellectual Property</label>
+                                <p>4.1 The CertiFast Portal, including its content and any intellectual property rights therein, is owned by Barangay Los Amigos.
+                                <p>4.2 You agree not to reproduce, modify, distribute, or create derivative works based on the CertiFast Portal or any of its content without the prior written consent of Barangay Los Amigos.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>The Certifast Portal is provided to facilitate the management and issuance of certificates by the Barangay Los Amigos authorities. You may use the system to apply for, track, and obtain various certificates as required by the barangay.</p>
+                            </li>
+                            <li>
+                                <label>Limitation of Liability</label>
+                                <p>5.1 Barangay Los Amigos shall not be liable for any direct, indirect, incidental, consequential, or exemplary damages arising out of or in connection with your use of the CertiFast Portal.</p>
+                                <p>5.2 You agree to indemnify and hold Barangay Los Amigos and its officials harmless from any claims, losses, damages, liabilities, costs, and expenses arising from your use of the CertiFast Portal.</p>
+                            </li>
+                            <li>
+                                <label>Modification and Termination</label>
+                                <p>6.1 Barangay Los Amigos may modify, suspend, or terminate the CertiFast Portal or your access to it at any time, without prior notice and for any reason.</p>
+                                <p>6.2 These ToS will remain in effect even after your access to the CertiFast Portal is terminated.</p>
+                            </li>
+                            <li>
+                                <label>Governing Law and Jurisdiction</label>
+                                <p>7.1 These ToS shall be governed by and construed in accordance with the laws of the Philippines</p>
+                                <p>7.2 Any disputes arising out of or in connection with these ToS shall be subject to the exclusive jurisdiction of the courts of the Philippines.</p>
+                                <p><b>These are just a few key legal considerations related to online certificate management systems in the Philippines.</b></p>
+                                <p>In the Philippines, the primary legislation governing data privacy and protection is the Data Privacy Act of 2012 (Republic Act No. 10173) and its implementing rules and regulations. It sets out the rights of individuals regarding the collection, use, processing, and disclosure of personal information. If your online certificate management system collects and processes personal data, it is important to comply with the requirements of the Data Privacy Act, including obtaining proper consent, implementing security measures, and ensuring the rights of data subjects.</p>
+                                <p>The Electronic Commerce Act of 2000 (Republic Act No. 8792) governs electronic transactions and electronic signatures in the Philippines. It provides a legal framework for the recognition and validity of electronic documents, contracts, and signatures. If your online certificate management system involves electronic transactions, it's important to ensure compliance with the Electronic Commerce Act.</p>
+                                <p>The Cybercrime Prevention Act of 2012 (Republic Act No. 10175) addresses cybersecurity concerns and criminalizes various forms of cybercrime, such as hacking, identity theft, and unauthorized access to computer systems. Implementing appropriate security measures to protect the integrity and confidentiality of the online certificate management system's data is crucial.</p>
+                                <p>Intellectual property rights may apply to the content, software, or design of your online certificate management system. It's important to ensure that you have the necessary licenses or permissions for any copyrighted material used, and to respect the intellectual property rights of others.</p>
+                            </li>
+                            <li>
+                                <label>Modification and Termination</label>
+                                <p>6.1 Barangay Los Amigos may modify, suspend, or terminate the CertiFast Portal or your access to it at any time, without prior notice and for any reason.</p>
+                                <p>6.2 These ToS will remain in effect even after your access to the CertiFast Portal is terminated.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="closeModalButton">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="policy" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">PRIVACY POLICY</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="#" enctype="multipart/form-data">
+                    <div class="form-group form-floating-label">
+                        <h3>Barangay Los Amigos - Certifast Portal! </h3>
+                        <span>Thank you for using the Barangay Los Amigos - CertiFast Portal. This Privacy Policy explains how we collect, use, and disclose your personal information when you access and use our online certificate management system. By using the CertiFast Portal, you consent to the practices described in this Privacy Policy.</span>
+                        <ul class="mt-2">
+                            <li>
+                                <label>Information We Collect</label>
+                                <p>By accessing or using the Certifast Portal, you agree to be bound by these Terms of Use. If you do not agree to these terms, please refrain from using the system.</p>
+                            </li>
+                            <li>
+                                <label>Use of the Certifast Portal</label>
+                                <p>1.1 Personal Information: When you create an account on the CertiFast Portal, we collect certain personal information such as your name, email address, contact number, and other relevant details necessary for the issuance and management of certificates.</p>
+                                <p>1.2  Usage Information: We may collect information about your use of the CertiFast Portal, including your IP address, browser type, operating system, and pages visited, to improve our services and user experience.</p>
+                                <p>1.3 Cookies: We may use cookies and similar technologies to collect information and enhance your user experience. You can manage your cookie preferences through your browser settings.</p>
+                            </li>
+                            <li>
+                                <label>Use of Information</label>
+                                <p>2.1 We use the collected information to:</p>
+                                <p>a. Provide and maintain the CertiFast Portal and its services.</p>
+                                <p>b. Process and manage certificate requests and related documents.</p>
+                                <p>c. Communicate with you regarding your account, updates, and notifications.</p>
+                                <p>d.  Improve and personalize the CertiFast Portal and user experience.</p>
+                                <p>2.2 We may also use the information in an aggregated and de-identified form for statistical analysis and research purposes.</p>
+                            </li>
+                            <li>
+                                <label>Information Sharing and Disclosure</label>
+                                <p>3.1 We may share your personal information with:</p>
+                                <p>a. Barangay Los Amigos officials and personnel involved in the issuance and management of certificates.</p>
+                                <p>b. Service providers and contractors who assist us in operating the CertiFast Portal and providing related services.</p>
+                                <p>3.2 We may disclose your personal information if required by law, regulation, or legal process, or to protect our rights, property, or safety, or that of others.</p>
+                            </li>
+                            <li>
+                                <label>Data Security</label>
+                                <p>4.1 We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, loss, or alteration.</p>
+                                <p>4.2 However, please note that no data transmission or storage system is entirely secure. We cannot guarantee the absolute security of your information.</p>
+                            </li>
+                            <li>
+                                <label>Data Retention</label>
+                                <p>5.1 We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law.</p>
+                            </li>
+                            <li>
+                                <label>Your Rights</label>
+                                <p>6.1 You have the right to access, update, and correct your personal information stored in the CertiFast Portal. You may also request the deletion of your account and personal data, subject to applicable laws.</p>
+                                <p>6.2 For inquiries or requests related to your personal information, please contact us using the contact details provided at the end of this Privacy Policy.</p>
+                            </li>
+                            <li>
+                                <label>Changes to this Privacy Policy</label>
+                                <p>7.1 We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the updated Privacy Policy on the CertiFast Portal or by other means of communication.</p>
+                            </li>
+                            <li>
+                                <label>Contact Us</label>
+                                <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please contact us at losamigosdavaocity.gov@gmail.com and (082) 228-8984.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="closeModalButton">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
   <script src="homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="homepage/assets/vendor/aos/aos.js"></script>
   <script src="homepage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -655,5 +704,4 @@
   <script src="homepage/assets/vendor/php-email-form/validate.js"></script>
   <script src="homepage/assets/js/main.js"></script>
 </body>
-
 </html>

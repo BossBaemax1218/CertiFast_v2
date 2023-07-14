@@ -202,10 +202,29 @@
 														<td class="text-center">
 															<div class="form-button-action">
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
-                                                                    data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-add="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
-                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-tax="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
-                                                                    data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-purpose="<?= $row['purpose'] ?>">
-                                                                    <?php if(isset($_SESSION['username'])): ?>
+                                                                    data-id="<?= $row['id'] ?>" 
+                                                                    data-national="<?= $row['national_id'] ?>" 
+                                                                    data-fname="<?= $row['firstname'] ?>" 
+                                                                    data-mname="<?= $row['middlename'] ?>" 
+                                                                    data-lname="<?= $row['lastname'] ?>" 
+                                                                    data-address="<?= $row['address'] ?>" 
+                                                                    data-bplace="<?= $row['birthplace'] ?>" 
+                                                                    data-bdate="<?= $row['birthdate'] ?>" 
+                                                                    data-age="<?= $row['age'] ?>"
+                                                                    data-cstatus="<?= $row['civilstatus'] ?>" 
+                                                                    data-gender="<?= $row['gender'] ?>"
+                                                                    data-purok="<?= $row['purok'] ?>" 
+                                                                    data-vstatus="<?= $row['voterstatus'] ?>" 
+                                                                    data-taxno="<?= $row['taxno'] ?>" 
+                                                                    data-number="<?= $row['phone'] ?>" 
+                                                                    data-email="<?= $row['email'] ?>" 
+                                                                    data-occu="<?= $row['occupation'] ?>" 
+                                                                    data-remarks="<?= $row['remarks'] ?>" 
+                                                                    data-img="<?= $row['picture'] ?>" 
+                                                                    data-citi="<?= $row['citizenship'] ?>" 
+                                                                    data-dead="<?= $row['resident_type'] ?>" 
+                                                                    data-purpose="<?= $row['purpose'] ?>">
+                                                                    <?php if (isset($_SESSION['username'])): ?>
                                                                         <i class="fas fa-edit"></i>
                                                                     <?php else: ?>
                                                                         <i class="fa fa-eye"></i>
@@ -604,66 +623,5 @@
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>
-    <script>
-        function editResident(that) {
-            var id = $(that).attr('data-id');
-            var pic = $(that).attr('data-img');
-            var nat_id = $(that).attr('data-national');
-            var fname = $(that).attr('data-fname');
-            var mname = $(that).attr('data-mname');
-            var lname = $(that).attr('data-lname');
-            var address = $(that).attr('data-address');
-            var bplace = $(that).attr('data-bplace');
-            var bdate = $(that).attr('data-bdate');
-            var age = $(that).attr('data-age');
-            var cstatus = $(that).attr('data-cstatus');
-            var gender = $(that).attr('data-gender');
-            var purok = $(that).attr('data-purok');
-            var vstatus = $(that).attr('data-vstatus');
-            var email = $(that).attr('data-email');
-            var number = $(that).attr('data-number');
-            var taxno = $(that).attr('data-taxno');
-            var citi = $(that).attr('data-citi');
-            var occu = $(that).attr('data-occu');
-            var dead = $(that).attr('data-dead');
-            var remarks = $(that).attr('data-remarks');
-            var purpose = $(that).attr('data-purpose');
-
-            $('#res_id').val(id);
-            $('#nat_id').val(nat_id);
-            $('#fname').val(fname);
-            $('#mname').val(mname);
-            $('#lname').val(lname);
-            $('#address').val(address);
-            $('#bplace').val(bplace);
-            $('#bdate').val(bdate);
-            $('#age').val(age);
-            $('#cstatus').val(cstatus);
-            $('#gender').val(gender);
-            $('#purok').val(purok);
-            $('#vstatus').val(vstatus);
-            $('#taxno').val(taxno);
-            $('#email').val(email);
-            $('#number').val(number);
-            $('#occupation').val(occu);
-            $('#citizenship').val(citi);
-            $('#remarks').val(remarks);
-            $('#purpose').val(purpose);
-
-            if (dead == 1) {
-                $("#alive").prop("checked", true);
-            } else {
-                $("#dead").prop("checked", true);
-            }
-
-            var str = pic;
-            var n = str.includes("data:image");
-            if (!n) {
-                pic = 'assets/uploads/resident_profile/' + pic;
-            }
-            $('#image').attr('src', pic);
-        }
-    </script>
-    <script src="assets/js/customFunction.js"></script>
 </body>
 </html>

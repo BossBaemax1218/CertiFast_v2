@@ -64,7 +64,7 @@
 										</div>
 										<div class="dropdown mr-2 ">
 											<button class="date-input-container" type="button" style="display: inline-block; padding: 9px; border: 1px solid #ddd; background-color: #fff; border-radius: 4px; border: none; border-bottom: 3px solid #ccc;">
-												<input class="text-center" type="text" id="datetimerange-input" size="20">
+												<input class="text-center" type="text" id="datetimerange-input" size="20" readonly>
 											</button>
 										</div>
 										<div class="mr-3" style="text-align: right;">
