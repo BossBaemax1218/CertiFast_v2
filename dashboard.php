@@ -16,6 +16,71 @@
 	<?php include 'templates/header.php' ?>
 	<title>Overview - Dashboard</title>
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	<style>
+        .chart-container {
+            display: flex;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .chart {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            width: 100%;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            position: sticky;
+            top: 0;
+            background-color: transparent;
+            z-index: 1;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        /* Custom scrollbar styles */
+        .chart-container::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        .chart-container::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        .chart-container::-webkit-scrollbar-thumb {
+            background-color: transparent;
+        }
+
+        .chart-container::-webkit-scrollbar-thumb:hover {
+            background-color: transparent;
+        }
+
+        .chart-container::-webkit-scrollbar-button {
+            background-color: #aaa;
+        }
+
+        .chart-container::-webkit-scrollbar-button:hover {
+            background-color: #888;
+        }
+    </style>
 </head>
 <body>
 	<?php include 'templates/loading_screen.php' ?>
@@ -51,19 +116,51 @@
 						</div>
 						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
 						<?php endif ?>
-						<?php include 'model/weeklybar_chart.php' ?>
+						<div class="button-container">
+							<button class="button" onclick="scrollToPrevChart()">Previous</button>
+							<button class="button" onclick="scrollToNextChart()">Next</button>
+						</div>
+
+						<div class="chart-container" id="chartContainer">
+							<div class="chart">
+								<?php include 'model/weeklybar_chart.php' ?>
+							</div>
+							<div class="chart">
+								<?php include 'model/monthlybar_chart.php' ?>
+							</div>
+							<div class="chart">
+								<?php include 'model/yearlybar_chart.php' ?>
+							</div>
+							<div class="chart">
+								<?php include 'model/dailybar_chart.php' ?>
+							</div>
+							<div class="chart">
+								<?php include 'model/mostcertbar_chart.php' ?>
+							</div>
+						</div>
+
 					</div>
 				<?php include 'templates/main-footer.php' ?>
 			</div>
 		</div>
 	<?php include 'templates/footer.php' ?>
 	<script>
+        function scrollToNextChart() {
+            const container = document.getElementById('chartContainer');
+            container.scrollBy({ left: container.offsetWidth, behavior: 'smooth' });
+        }
+
+        function scrollToPrevChart() {
+            const container = document.getElementById('chartContainer');
+            container.scrollBy({ left: -container.offsetWidth, behavior: 'smooth' });
+        }
+    </script>
+	<script>
 		  $(document).on("click", "#pdf", function() {
 		console.log("Exporting revenue table as PDF...");
 		$("#revenuetable").tableHTMLExport({ type: "pdf", filename: "Revenue.pdf" });
 	});
 	</script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>

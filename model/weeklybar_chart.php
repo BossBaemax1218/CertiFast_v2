@@ -1,5 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <?php
-// Prepare and execute the SQL query to fetch data from tblpayments
 $dataQuery = "SELECT DATE_FORMAT(date, '%W') AS week_name, details, COUNT(*) AS total_payments FROM tblpayments GROUP BY WEEK(date), details";
 $stmt = $conn->prepare($dataQuery);
 $stmt->execute();
@@ -26,24 +26,19 @@ if ($dataResult->num_rows > 0) {
     }
 }
 ?>
-
-<!-- Add the following HTML code to display the chart -->
 <div class="page-inner">
     <div class="col">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <canvas id="myChart1" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
+                        <canvas id="myChart2" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Include Chart.js library -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         renderChart(<?php echo json_encode($chartLabels); ?>, <?php echo json_encode($chartDatasets); ?>);
@@ -73,7 +68,7 @@ if ($dataResult->num_rows > 0) {
             }
         };
 
-        var ctx = document.getElementById("myChart1").getContext("2d");
+        var ctx = document.getElementById("myChart2").getContext("2d");
         new Chart(ctx, {
             type: "bar",
             data: chartData,
@@ -81,7 +76,6 @@ if ($dataResult->num_rows > 0) {
         });
     }
 
-    // Function to generate random colors
     function getRandomColor() {
         var letters = "0123456789abcdef";
         var color = "#";

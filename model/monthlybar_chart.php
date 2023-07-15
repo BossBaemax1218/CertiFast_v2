@@ -1,5 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <?php
-// Prepare and execute the SQL query to fetch data from tblpayments
 $dataQuery = "SELECT DATE_FORMAT(date, '%M') AS month_name, details, COUNT(*) AS total_payments FROM tblpayments GROUP BY MONTH(date), details";
 $stmt = $conn->prepare($dataQuery);
 $stmt->execute();
@@ -26,7 +26,6 @@ if ($dataResult->num_rows > 0) {
     }
 ?>
 
-<!-- Add the following HTML code to display the chart -->
 <div class="page-inner">
     <div class="col">
         <div class="row">
@@ -81,8 +80,6 @@ if ($dataResult->num_rows > 0) {
             console.error(error);
         }
     });
-
-    // Function to generate random colors
     function getRandomColor() {
         var letters = "0123456789abcdef";
         var color = "#";

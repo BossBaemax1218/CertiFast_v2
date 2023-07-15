@@ -1,6 +1,6 @@
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 						<?php
-							// Prepare and execute the SQL query to fetch data from tblpayments
 							$paymentDataQuery = "SELECT YEAR(date) AS year_only, details, COUNT(*) AS total_payments FROM tblpayments GROUP BY YEAR(date), details";
 							$stmt = $conn->prepare($paymentDataQuery);
 							$stmt->execute();
@@ -10,7 +10,7 @@
 							$datasets = [];
 
 							if ($paymentDataResult->num_rows > 0) {
-								$barangays = []; // To store unique barangay names
+								$barangays = [];
 								while ($row = $paymentDataResult->fetch_assoc()) {
 									$year = $row['year_only'];
 									$barangay = $row['details'];
@@ -30,7 +30,6 @@
 									}
 								}
 
-								// Sort the labels in ascending order
 								sort($labels);
 								?>
 								<div class="page-inner">
@@ -69,7 +68,7 @@
 									var chartOptions = {
 										responsive: true,
 										maintainAspectRatio: false,
-										aspectRatio: 1.5, // Adjust the value as needed
+										aspectRatio: 1.5,
 										plugins: {
 											legend: {
 												position: "top"
@@ -81,8 +80,6 @@
 											}
 										}
 									};
-
-									// Function to generate random colors
 									function getRandomColor() {
 										var letters = "0123456789ABCDEF";
 										var color = "#";
