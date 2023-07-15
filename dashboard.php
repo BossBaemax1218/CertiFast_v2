@@ -32,7 +32,7 @@
 
         .button-container {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
             margin-top: 10px;
         }
@@ -116,7 +116,7 @@
 						</div>
 						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
 						<?php endif ?>
-						<div class="button-container">
+						<div class="button-container mr-5">
 							<button class="button" onclick="scrollToPrevChart()"><i class="fas fa-arrow-left"></i> <label class="text-white ml-2">Previous</label></button>
 							<button class="button" onclick="scrollToNextChart()"><label class="text-white mr-2">Next</label><i class="fas fa-arrow-right"></i></button>
 						</div>
