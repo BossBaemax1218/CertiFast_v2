@@ -1,12 +1,12 @@
 <?php include 
 'server/db_connection.php';
 
-$query1 = "SELECT * FROM tbl_announcement ORDER BY `date` DESC";
-$result1 = $conn->query($query1);
+$query = "SELECT * FROM tbl_announcement ORDER BY `date_posted` DESC";
+$result = $conn->query($query);
 
 $purok = array();
-while ($row2 = $result1->fetch_assoc()) {
-    $postedTime = strtotime($row2['date']);
+while ($row = $result->fetch_assoc()) {
+    $postedTime = strtotime($row['date_posted']);
     $currentTimestamp = time();
     $timeDiff = $currentTimestamp - $postedTime;
 
@@ -24,8 +24,8 @@ while ($row2 = $result1->fetch_assoc()) {
         $timeDisplay = round($timeDiff / 31536000) . ' years ago';
     }
 
-    $row2['time_display'] = $timeDisplay;
-    $purok[] = $row2;
+    $row['time_display'] = $timeDisplay;
+    $purok[] = $row;
 }
 ?>
 <!DOCTYPE html>
@@ -56,21 +56,19 @@ while ($row2 = $result1->fetch_assoc()) {
                                 <div class="card">
                                     <section class=" text-center two-column-list mb-sm-5 pr-lg-3 container-fluid" id="two-column-list">
                                         <div class="announcement-slider border-r-xs-0 border-r position-relative">
-                                            <div>
-                                            <?php foreach($purok as $row):?>
+                                            <?php foreach($purok as $row): ?>
                                                 <ul class="nolist list-unstyled position-relative mb-0 px-lg-5 pt-lg-5">
-                                                <span class="text md-5" style="font-size: 18px; font-weight: bold;"><?= ($timeDisplay); ?></span>
+                                                    <i class="text md-5" style="font-size: 18px; color: green;"><?= $row['time_display']; ?></i>
                                                     <li class="border-bottom pb-3 mt-4">                                                       
-                                                        <span class="meta text-uppercase mt-3" style="font-size: 22px; font-weight: bold;"><?= date('F d, Y', strtotime($row['date'])); ?></span>
-                                                        <h3 class="text-uppercase font-weight-bold mt-2">
-                                                            <a style="font-size: 30px; color: red"><?= $row['subject'] ?></a>
+                                                        <span class="meta text-uppercase md-3" style="font-size: 20px; font-weight: bold;"><?= date('F d, Y', strtotime($row['date_posted'])); ?></span>
+                                                        <h3 class="text-uppercase font-weight-bold mt-3">
+                                                            <a href="https://www.facebook.com/profile.php?id=100064303345469" style="font-size: 30px; color: red"><?= $row['subject'] ?></a>
                                                         </h3>
                                                         <p class="mt-2 post_intro" style="font-size: 23px;"><?= $row['message'] ?></p>
                                                         <i class=" text-left mt-5 post_intro" style="font-size: 15px;">- Barangay Los Amigos Officials</i>
                                                     </li>                                                
                                                 </ul>
-                                            <?php endforeach ?>
-                                            </div>                                                      
+                                            <?php endforeach; ?>                                                     
                                         </div>
                                     </section>
                                 </div>

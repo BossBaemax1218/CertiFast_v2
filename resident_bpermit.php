@@ -99,15 +99,15 @@ while ($row = $result->fetch_assoc()) {
                             <form method="POST" action="model/save_permit_user.php" >
                                 <div class="form-group">
                                     <label>Business Name</label>
-                                    <input type="text" class="form-control" placeholder="Enter Business Name" name="name" required>
+                                    <input type="text" class="form-control" placeholder="Enter Business Name" name="name"  required>
                                 </div>
                                 <div class="form-group">
                                     <label>Business Owner</label>
-                                    <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="owner1" required>
+                                    <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="owner1" value="<?= $_SESSION['fullname'] ?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>Business Email</label>
-                                    <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="email" required>
+                                    <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="email" value="<?= $_SESSION['user_email'] ?>" readonly>
                                 </div>
 								<div class="form-group">
                                     <label>Description</label>

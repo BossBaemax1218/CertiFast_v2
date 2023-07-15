@@ -172,8 +172,8 @@ $conn->close();
                                         <input type="file" class="form-control" name="img" accept="image/*">
                                     </div>
                                     <div class="form-group">
-                                        <label>National ID No.</label>
-                                        <input type="text" class="form-control" name="national" placeholder="Enter National ID No." required>
+                                        <label>ID No.</label>
+                                        <input type="text" class="form-control" name="national" placeholder="Enter ID No." required>
                                     </div>
                                     <div class="form-group">
                                         <label>Citizenship</label>

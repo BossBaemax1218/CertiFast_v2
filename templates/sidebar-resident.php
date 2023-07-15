@@ -5,6 +5,25 @@ function PageName() {
 
 $current_page = PageName();
 ?>
+<?php
+include 'server/db_connection.php';
+
+$query1 = "SELECT COUNT(*) AS total_announcements FROM tbl_announcement";
+$result1 = $conn->query($query1);
+$row1 = $result1->fetch_assoc();
+$totalAnnouncements = $row1['total_announcements'];
+?>
+<style>
+    .notification-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+</style>
 <div class="sidebar sidebar-style-2">			
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
@@ -45,10 +64,13 @@ $current_page = PageName();
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item <?= $current_page=='resident_announcement.php' || $current_page=='resident_announcement.php' ? 'active' : null ?>">
-                    <a href="resident_announcement.php" >
-                        <i class='far fa-bell' ></i>
+                <li id="announcementbtn" class="nav-item <?= $current_page == 'resident_announcement.php' ? 'active' : null ?>">
+                    <a href="resident_announcement.php" class="notification">
+                        <i class='far fa-bell'></i>
                         <p>Announcement</p>
+                        <?php if ($totalAnnouncements > 0): ?>
+                            <span id="notification-badge" class="notification-badge"><?= $totalAnnouncements ?></span>
+                        <?php endif; ?>
                     </a>
                 </li>
                 <li class="nav-section">
@@ -142,3 +164,4 @@ $current_page = PageName();
         </div>
     </div>
 </div>
+

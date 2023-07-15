@@ -43,7 +43,6 @@
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-geo-alt-fill d-flex align-items-center ms-4"><span><?= ucwords($result1['brgy_address']) ?> </span></i>
         <i class="bi bi-envelope d-flex align-items-center ms-4"><a href="mailto:losamigosdavaocity.gov@gmail.com"> <?= ucwords($result1['brgy_email']) ?></a></i>
         <i class="bi bi-telephone d-flex align-items-center ms-4"> <span><?= ucwords($result1['contact_number']) ?></span></i>
       </div>
