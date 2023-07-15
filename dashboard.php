@@ -121,12 +121,13 @@
 							<button class="button" onclick="scrollToNextChart()"><label class="text-white mr-2">Next</label><i class="fas fa-arrow-right"></i></button>
 						</div>
 						<div class="chart-container" id="chartContainer">
+						<div class="chart">
+								<?php include 'model/dailybar_chart.php' ?>
+							</div>
 							<div class="chart">
 								<?php include 'model/weeklybar_chart.php' ?>
 							</div>
-							<div class="chart">
-								<?php include 'model/dailybar_chart.php' ?>
-							</div>
+
 							<div class="chart">
 								<?php include 'model/monthlybar_chart.php' ?>
 							</div>

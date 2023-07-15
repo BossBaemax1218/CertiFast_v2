@@ -31,8 +31,11 @@ if ($dataResult->num_rows > 0) {
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <div class="card-header">
+                        <strong>MONTHLY REPORTS</strong>
+                    </div>
                     <div class="card-body">
-                        <canvas id="myChart1" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
+                        <canvas id="myChart2" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
                     </div>
                 </div>
             </div>
@@ -69,7 +72,7 @@ if ($dataResult->num_rows > 0) {
     };
 
     document.addEventListener("DOMContentLoaded", function () {
-        var ctx = document.getElementById("myChart1").getContext("2d");
+        var ctx = document.getElementById("myChart2").getContext("2d");
         try {
             new Chart(ctx, {
                 type: "bar",

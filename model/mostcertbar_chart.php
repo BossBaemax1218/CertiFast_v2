@@ -23,6 +23,9 @@ if ($dataResult->num_rows > 0) {
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <div class="card-header">
+                        <strong>MOST REQUESTED CERTIFICATE</strong>
+                    </div>
                     <div class="card-body">
                         <canvas id="myChart4" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
                     </div>
