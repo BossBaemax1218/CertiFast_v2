@@ -120,7 +120,6 @@
 							<button class="button" onclick="scrollToPrevChart()">Previous</button>
 							<button class="button" onclick="scrollToNextChart()">Next</button>
 						</div>
-
 						<div class="chart-container" id="chartContainer">
 							<div class="chart">
 								<?php include 'model/weeklybar_chart.php' ?>
@@ -138,7 +137,6 @@
 								<?php include 'model/mostcertbar_chart.php' ?>
 							</div>
 						</div>
-
 					</div>
 				<?php include 'templates/main-footer.php' ?>
 			</div>
