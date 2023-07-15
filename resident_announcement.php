@@ -1,4 +1,33 @@
-<?php include 'server/db_connection.php' ?>
+<?php include 
+'server/db_connection.php';
+
+$query1 = "SELECT * FROM tbl_announcement ORDER BY `date` DESC";
+$result1 = $conn->query($query1);
+
+$purok = array();
+while ($row2 = $result1->fetch_assoc()) {
+    $postedTime = strtotime($row2['date']);
+    $currentTimestamp = time();
+    $timeDiff = $currentTimestamp - $postedTime;
+
+    if ($timeDiff < 60) {
+        $timeDisplay = $timeDiff . ' seconds ago';
+    } elseif ($timeDiff < 3600) {
+        $timeDisplay = round($timeDiff / 60) . ' minutes ago';
+    } elseif ($timeDiff < 86400) {
+        $timeDisplay = round($timeDiff / 3600) . ' hours ago';
+    } elseif ($timeDiff < 2592000) {
+        $timeDisplay = round($timeDiff / 86400) . ' days ago';
+    } elseif ($timeDiff < 31536000) {
+        $timeDisplay = round($timeDiff / 2592000) . ' months ago';
+    } else {
+        $timeDisplay = round($timeDiff / 31536000) . ' years ago';
+    }
+
+    $row2['time_display'] = $timeDisplay;
+    $purok[] = $row2;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,72 +42,37 @@
 		<div class="main-panel">
 			<div class="content">
                     <div>
-                        <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Announcement</h1>
+                        <h1 class="text-center fw-bold mt-5" style="font-size: 400%;">Announcement</h1>
                     </div>
-					<div class="page-inner mt-2">
 						<?php if(isset($_SESSION['message'])): ?>
 								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
 									<?php echo $_SESSION['message']; ?>
 								</div>
 							<?php unset($_SESSION['message']); ?>
 						<?php endif ?>
-					</div>
                     <div class="page-inner">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Announcement</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive mt-3">
-                                            <table id="revenuetable" class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Date</th>
-                                                        <th scope="col">Recipient</th>
-                                                        <th scope="col">Details</th>
-                                                        <th scope="col">Amount</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $user_name = $_SESSION['fullname'];
-
-                                                    $paymentHistoryQuery = "SELECT p.date, u.fullname, p.details, p.amounts
-                                                    FROM tblpayments AS p
-                                                    INNER JOIN tbl_user_resident AS u ON p.name = u.fullname
-                                                    WHERE u.fullname = ?
-                                                    ORDER BY p.date DESC;";
-
-                                                    $stmt = $conn->prepare($paymentHistoryQuery);
-                                                    $stmt->bind_param("s", $user_name);
-                                                    $stmt->execute();
-                                                    $paymentHistoryResult = $stmt->get_result();
-
-                                                    if ($paymentHistoryResult->num_rows > 0) {
-                                                        while ($row = $paymentHistoryResult->fetch_assoc()) {
-                                                            ?>
-                                                            <tr>
-                                                                <td><?= $row['date'] ?></td>
-                                                                <td><?= $row['fullname'] ?></td>
-                                                                <td><?= $row['details'] ?></td>
-                                                                <td><i class="fas fa-peso-sign"></i> <?= number_format($row['amounts'], 2) ?></td>
-                                                            </tr>
-                                                            <?php
-                                                        }
-                                                    } else {
-                                                        ?>
-                                                        <tr>
-                                                            <td colspan="4" class="text-center">No announcement available</td>
-                                                        </tr>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </tbody>
-                                            </table>
+                                    <section class=" text-center two-column-list mb-sm-5 pr-lg-3 container-fluid" id="two-column-list">
+                                        <div class="announcement-slider border-r-xs-0 border-r position-relative">
+                                            <div>
+                                            <?php foreach($purok as $row):?>
+                                                <ul class="nolist list-unstyled position-relative mb-0 px-lg-5 pt-lg-5">
+                                                <span class="text md-5" style="font-size: 18px; font-weight: bold;"><?= ($timeDisplay); ?></span>
+                                                    <li class="border-bottom pb-3 mt-4">                                                       
+                                                        <span class="meta text-uppercase mt-3" style="font-size: 22px; font-weight: bold;"><?= date('F d, Y', strtotime($row['date'])); ?></span>
+                                                        <h3 class="text-uppercase font-weight-bold mt-2">
+                                                            <a style="font-size: 30px; color: red"><?= $row['subject'] ?></a>
+                                                        </h3>
+                                                        <p class="mt-2 post_intro" style="font-size: 23px;"><?= $row['message'] ?></p>
+                                                        <i class=" text-left mt-5 post_intro" style="font-size: 15px;">- Barangay Los Amigos Officials</i>
+                                                    </li>                                                
+                                                </ul>
+                                            <?php endforeach ?>
+                                            </div>                                                      
                                         </div>
-                                    </div>
+                                    </section>
                                 </div>
                             </div>
                         </div>

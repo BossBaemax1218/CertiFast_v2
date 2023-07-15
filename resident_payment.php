@@ -15,7 +15,7 @@ include 'server/db_connection.php';
 		<div class="main-panel">
 			<div class="content">
                     <div>
-                        <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Payments History</h1>
+                        <h1 class="text-center fw-bold mt-5" style="font-size: 400%;">Payments History</h1>
                     </div>
                     <div class="page-inner">
                         <?php if(isset($_SESSION['message'])): ?>

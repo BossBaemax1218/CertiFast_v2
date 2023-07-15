@@ -27,7 +27,6 @@
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
-
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header">
@@ -113,13 +112,8 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- Main Footer -->
 			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
-			
 		</div>
-		
 	</div>
 	<?php include 'templates/footer.php' ?>
     <script src="assets/js/plugin/datatables/datatables.min.js"></script>

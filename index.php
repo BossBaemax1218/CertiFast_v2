@@ -60,7 +60,6 @@
               <li><a class="nav-link scrollto " href="sangguniankabataan-officials.php">SK Officials</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><a href="login.php" class="btn-login" style="text-decoration:none;"> Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

@@ -180,14 +180,14 @@ $current_page = PageName();
                                         <span class="sub-item">Photo Management</span>
                                     </a>
                                 </li>-->
+                                <li>
+                                    <a href="#announcement" data-toggle="modal">
+                                        <span class="sub-item">Post Announcement</span>
+                                    </a>
+                                </li>
                                 <li class="<?= $current_page=='support.php' ? 'active' : null ?>">
                                     <a href="support.php">
                                         <span class="sub-item">Support & Feedback</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#announcement" data-toggle="modal">
-                                        <span class="sub-item">Send Announcement</span>
                                     </a>
                                 </li>
                                 <li>                                   

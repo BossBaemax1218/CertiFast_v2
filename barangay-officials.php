@@ -63,7 +63,6 @@
               <li><a class="nav-link scrollto " href="sangguniankabataan-officials.php">SK Officials</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="index.php#contact">Contact</a></li>
           <li><a href="login.php" class="btn-login"> Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -117,7 +116,6 @@
               <li><a href="#">Services</a></li>
               <li><a href="#">Barangay Officials</a></li>
               <li><a href="#">Sk Officials</a></li>
-              <li><a href="#">Contact</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 footer-links">

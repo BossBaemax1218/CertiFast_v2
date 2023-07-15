@@ -159,10 +159,10 @@
                         <textarea type="text" class="form-control" rows="5" placeholder="Enter Message" name="message" required ></textarea>
                     </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Send</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
             </form>
         </div>
     </div>
@@ -172,7 +172,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Send Announcement</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Post Announcement</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -182,23 +182,20 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter Name" name="name" required >
+                                <input type="text" class="form-control" placeholder="Enter Name" name="username" value="<?= $_SESSION['username'] ?>" readonly >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Enter Email Address" name="email" required >
+                                <input type="date" class="form-control" name="date" required>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Enter Contact Number(optional)" name="number">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Enter Subject" name="subject" required>
                     </div>
                     <div class="form-group">
-                        <textarea type="text" class="form-control" rows="5" placeholder="Enter Message" name="message" required ></textarea>
+                        <textarea type="text" class="form-control" rows="6" placeholder="Enter Message" name="message" required ></textarea>
                     </div>
             </div>
             <div class="modal-footer">
