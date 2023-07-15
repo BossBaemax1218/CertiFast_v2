@@ -33,15 +33,15 @@
         .button-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 10px;
-            position: sticky;
-            top: 0;
-            background-color: transparent;
-            z-index: 1;
+            align-items: center;
+            margin-top: 10px;
         }
 
         .button {
-            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
             margin: 0 5px;
             border: none;
             border-radius: 5px;
@@ -117,21 +117,21 @@
 						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
 						<?php endif ?>
 						<div class="button-container">
-							<button class="button" onclick="scrollToPrevChart()">Previous</button>
-							<button class="button" onclick="scrollToNextChart()">Next</button>
+							<button class="button" onclick="scrollToPrevChart()"><i class="fas fa-arrow-left"></i> <label class="text-white ml-2">Previous</label></button>
+							<button class="button" onclick="scrollToNextChart()"><label class="text-white mr-2">Next</label><i class="fas fa-arrow-right"></i></button>
 						</div>
 						<div class="chart-container" id="chartContainer">
 							<div class="chart">
 								<?php include 'model/weeklybar_chart.php' ?>
 							</div>
 							<div class="chart">
+								<?php include 'model/dailybar_chart.php' ?>
+							</div>
+							<div class="chart">
 								<?php include 'model/monthlybar_chart.php' ?>
 							</div>
 							<div class="chart">
 								<?php include 'model/yearlybar_chart.php' ?>
-							</div>
-							<div class="chart">
-								<?php include 'model/dailybar_chart.php' ?>
 							</div>
 							<div class="chart">
 								<?php include 'model/mostcertbar_chart.php' ?>
