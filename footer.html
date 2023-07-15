@@ -1007,3 +1007,27 @@
                         <span>Login with Google</span>
                     </a>
                 </div>
+
+				<button class="d-inline-block btn dropdown-toggle mr-3" type="button" id="filterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 12px 12px; background-color: #FFF; border-radius: 2px; border-bottom: 3px solid #ccc;">
+												<i class="fas fa-filter"> </i> Filter
+											</button>				
+											<div class="dropdown-menu" aria-labelledby="filterButton">
+												<a class="dropdown-item" href="#">
+													<label class="checkbox-label">
+														<input type="checkbox" class="checkbox-input" onchange="applyFilter('day')">
+														Daily
+													</label>
+												</a>
+												<a class="dropdown-item" href="#">
+													<label class="checkbox-label">
+														<input type="checkbox" class="checkbox-input" onchange="applyFilter('month')">
+														Monthly
+													</label>
+												</a>
+												<a class="dropdown-item" href="#">
+													<label class="checkbox-label">
+														<input type="checkbox" class="checkbox-input" onchange="applyFilter('year')">
+														Yearly
+													</label>
+												</a>
+											</div>
