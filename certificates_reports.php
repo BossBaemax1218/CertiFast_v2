@@ -1,15 +1,17 @@
 <?php include 'server/server.php' ?>
 <?php 
-    $query = "SELECT COUNT(details) as de FROM tblpayments WHERE details IN ('Barangay Clearance Payment')"; 
+    $query = "SELECT COUNT(details) as clearance FROM tblpayments WHERE details = 'Barangay Clearance Payment'"; 
     $revenue1 = $conn->query($query)->fetch_assoc();
 
-    $sql1 = "SELECT COUNT(details) as na FROM tblpayments WHERE details IN ('Certificate of Residency Payment')";
-    $result1 = $conn->query($sql1)->fetch_assoc();
+    $sql1 = "SELECT COUNT(details) as residency FROM tblpayments WHERE details = 'Certificate of Residency Payment'";
+    $result1 = $conn->query($sql1);
+    $row1 = $result1->fetch_assoc();
+    $residencyCount = $row1['residency'];
 
-	$query2 = "SELECT COUNT(amounts) as am FROM tblpayments WHERE details IN ('Certificate of Indigency Payment')";
+	$query2 = "SELECT COUNT(details) as indigency FROM tblpayments WHERE details = 'Certificate of Indigency Payment'";
 	$revenue3 = $conn->query($query2)->fetch_assoc();
 
-    $query3 = "SELECT COUNT(details) as pe FROM tblpayments WHERE details IN ('Business Permit Payment')"; 
+    $query3 = "SELECT COUNT(details) as permit FROM tblpayments WHERE details = 'Business Permit Payment'"; 
     $revenue2 = $conn->query($query3)->fetch_assoc();
 
     $sql = "SELECT * FROM tblpayments ORDER BY `date` DESC";
@@ -33,7 +35,7 @@
 	<title>Certificate Reports</title>
 </head>
 <body>
-	<?php include 'templates/loading_screen.php' ?>
+<?php include 'templates/header.php' ?>
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
@@ -68,7 +70,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Residency</h2>
-                                                    <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($result1['na']) ?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($residencyCount)?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -90,7 +92,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Indigency</h2>
-                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue3['am'])?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue3['indigency'])?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -112,7 +114,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h3 class="text-uppercase" style="font-size: 16px;">Clearance</h3>
-                                                    <h5 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h5>
+                                                    <h5 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue1['clearance']) ?></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -134,7 +136,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Permit</h2>
-                                                    <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue2['pe']) ?></h3>
+                                                    <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue2['permit']) ?></h3>
                                                 </div>
                                             </div>
                                         </div>

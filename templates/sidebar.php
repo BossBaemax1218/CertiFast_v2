@@ -68,7 +68,6 @@ $totalAnnouncements = $row1['total_announcements'];
                     </a>
                 </li>
             <?php endif ?>
-            <br>
             <?php if(isset($_SESSION['username']) && ($_SESSION['role'] == 'purok leader')): ?>
                 <li class="nav-item <?= $current_page=='purok_dashboard.php' || $current_page=='purok_dashboard.php' || $current_page=='purok_dashboard.php'  ? 'active' : null ?>">
                     <a href="purok_dashboard.php" >

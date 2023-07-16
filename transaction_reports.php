@@ -3,8 +3,10 @@
     $query = "SELECT COUNT(DISTINCT details) as de FROM tblpayments WHERE details IN ('Barangay Clearance Payment', 'Business Permit Payment', 'Certificate of Residency Payment', 'Certificate of Indigency Payment')"; 
     $revenue1 = $conn->query($query)->fetch_assoc();
 
-    $sql1 = "SELECT COUNT(name) as na FROM tblpayments";
-    $result1 = $conn->query($sql1)->fetch_assoc();
+    $sql1 = "SELECT COUNT(name) as receipt FROM tblpayments";
+    $result1 = $conn->query($sql1);
+    $row1 = $result1->fetch_assoc();
+    $receiptCount = $row1['receipt'];
 
 	$query2 = "SELECT SUM(amounts) as am FROM tblpayments ORDER BY `date` DESC";
 	$revenue3 = $conn->query($query2)->fetch_assoc();
@@ -28,7 +30,7 @@
 	<title>Transaction Reports</title>
 </head>
 <body>
-	<?php include 'templates/loading_screen.php' ?>
+<?php include 'templates/header.php' ?>
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
@@ -65,7 +67,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Recipient</h2>
-                                                    <h3 class="fw-bold text-uppercase" style="font-size: 45px; color: #C77C8D;"><?= number_format($result1['na']) ?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($receiptCount) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
