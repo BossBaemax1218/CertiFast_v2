@@ -143,6 +143,15 @@
                                     <label>Fullname</label>
                                     <input type="text" class="form-control" placeholder="Enter Name" name="fullname" required>
                                 </div>
+								<div class="form-group">
+                                    <label>Purok</label>
+									<select class="form-control input" required name="purok" id="purok">
+										<option disabled selected>Select Purok Name</option>
+										<?php foreach($purok as $row):?>
+											<option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
+										<?php endforeach ?>
+									</select>
+                                </div>
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input type="password" class="form-control" placeholder="Enter Password" name="pass" required>

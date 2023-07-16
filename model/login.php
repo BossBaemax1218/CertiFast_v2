@@ -42,38 +42,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if ($user_email != '' && $password != '') {
-        // Check if the user is an admin or staff
+        // Check if the user is an admin, staff, or purok leader
         $adminStaffQuery = "SELECT * FROM tbl_user_admin WHERE username = ?";
         $stmt = $conn->prepare($adminStaffQuery);
         $stmt->bind_param("s", $user_email);
         $stmt->execute();
         $adminStaffResult = $stmt->get_result();
-
+    
         if ($adminStaffResult->num_rows) {
             $row = $adminStaffResult->fetch_assoc();
             $hashedPassword = $row['password'];
-
+            $role = $row['user_type'];
+    
             // Verify the password using password_verify
             if (password_verify($password, $hashedPassword)) {
-                $role = $row['user_type'];
-
                 if ($role == 'administrator') {
                     $_SESSION['message'] = 'You have successfully logged in as an administrator!';
                     $_SESSION['success'] = 'success';
+                    $_SESSION['role'] = $role;
+                    $_SESSION['id'] = $row['id'];
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['avatar'] = $row['avatar'];
+    
+                    header('location: ../dashboard.php');
+                    exit();
                 } elseif ($role == 'staff') {
                     $_SESSION['message'] = 'You have successfully logged in as a staff employee!';
                     $_SESSION['success'] = 'success';
+                    $_SESSION['role'] = $role;
+                    $_SESSION['id'] = $row['id'];
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['avatar'] = $row['avatar'];
+    
+                    header('location: ../dashboard.php');
+                    exit();
+                } elseif ($role == 'purok leader') {
+                    $_SESSION['message'] = 'You have successfully logged in as a Purok Leader!';
+                    $_SESSION['success'] = 'success';
+                    $_SESSION['role'] = $role;
+                    $_SESSION['id'] = $row['id'];
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['avatar'] = $row['avatar'];
+    
+                    header('location: ../purok_dashboard.php');
+                    exit();
                 }
-
-                $_SESSION['id'] = $row['id'];
-                $_SESSION['username'] = $row['username'];
-                $_SESSION['role'] = $role;
-                $_SESSION['avatar'] = $row['avatar'];
-
-                header('location: ../dashboard.php');
-                exit();
             } else {
-                echo "Password verification failed for admin/staff.";
+                echo "Password verification failed for admin/staff/purok leader.";
             }
         }
 

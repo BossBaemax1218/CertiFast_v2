@@ -1,5 +1,5 @@
 <?php 
-include 'server/db_connection.php' 
+include 'server/server.php' 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +15,8 @@ include 'server/db_connection.php'
   <body>
   <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<?php include 'templates/main-header-resident.php' ?>
-		<?php include 'templates/sidebar-resident.php' ?>
+		<?php include 'templates/main-header.php' ?>
+		<?php include 'templates/sidebar.php' ?>
 			<div class="main-panel">
 				<div class="content">
 					<section class="main-content mt-2">

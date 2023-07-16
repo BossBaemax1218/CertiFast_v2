@@ -102,16 +102,16 @@
 										<h3 class="fw-bold" style="font-size: 300%;">Overview</h3>
 									</div>									
 								</div>
-								<div class="card-header" style="text-align: left; border: none; padding: none; background: none;">
+								<!--<div class="card-header" style="text-align: left; border: none; padding: none; background: none;">
 									<div class="md-0">
 										<button class="btn btn-danger" type="button" id="pdf" style="padding: 10px 20px; background-color: #fff; border-radius: 2px; border-bottom: 3px solid #111;">
 											<i class="fas fa-download"></i>  Export PDF
 										</button>
-										<!--<button class="btn btn-primary" type="button" placeholder="Pick date rage" id="kt_daterangepicker_3" data-toggle="modal" style="padding: 10px 20px; background-color: #fff; border-radius: 2px; border-bottom: 3px solid;">
+										<button class="btn btn-primary" type="button" placeholder="Pick date rage" id="kt_daterangepicker_3" data-toggle="modal" style="padding: 10px 20px; background-color: #fff; border-radius: 2px; border-bottom: 3px solid;">
 											<i class="far fa-calendar-alt"></i>  DATE
-										</button>-->										
+										</button>										
 									</div>
-								</div>
+								</div>-->
 							</div>
 						</div>
 						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
@@ -121,13 +121,12 @@
 							<button class="button" onclick="scrollToNextChart()"><label class="text-white mr-2">Next</label><i class="fas fa-arrow-right"></i></button>
 						</div>
 						<div class="chart-container" id="chartContainer">
-						<div class="chart">
+							<div class="chart">
 								<?php include 'model/dailybar_chart.php' ?>
 							</div>
 							<div class="chart">
 								<?php include 'model/weeklybar_chart.php' ?>
 							</div>
-
 							<div class="chart">
 								<?php include 'model/monthlybar_chart.php' ?>
 							</div>

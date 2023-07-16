@@ -1,10 +1,10 @@
 <?php
     session_start();
     if (isset($_SESSION['username'])) {
-        header('Location: login.php');
+        header('Location: email-verify-code.php');
     }
     if (isset($_SESSION['fullname'])) {
-        header('Location: login.php');
+        header('Location: email-verify-code.php');
     }
 ?>
 <!DOCTYPE html>
@@ -18,17 +18,10 @@
         <link rel="stylesheet" href="vendor-login/css/password-style.css"/>
         <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-        <link href="vendor-login/css/bootstrap.min.css" rel="stylesheet"> 
+        <link href="vendor-login/css/bootstrap.min.css" rel="stylesheet">
                 
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-        <!-- Bootstrap JS -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>                  
+                        
     </head>
     <body>
         <section class="container forms">
@@ -38,7 +31,7 @@
                         <h4 class="text-center">Verification Code</h4>
                         <p class="text-center">We sent you a code, please type the code to verified your account.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
-                            <div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+                            <div class="modal" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">

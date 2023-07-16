@@ -29,15 +29,11 @@ $totalAnnouncements = $row1['total_announcements'];
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <?php if (!empty($_SESSION['avatar'])): ?>
-                        <?php if (preg_match('/data:image/i', $_SESSION['avatar'])): ?>
-                            <img src="<?= preg_match('/data:image/i', $row['avatar']) ? $row['avatar'] : 'assets/uploads/resident_profile/'.$row['avatar'] ?>" alt="Profile" class="avatar-img rounded-circle">
-                        <?php else: ?>
-                            <img src="assets/uploads/avatar/<?php echo $_SESSION['avatar']; ?>" alt="..." class="avatar-img rounded-circle">
-                        <?php endif; ?>
+                    <?php if(!empty($_SESSION['avatar'])): ?>
+                        <img src="<?= preg_match('/data:image/i', $_SESSION['avatar']) ? $_SESSION['avatar'] : 'assets/uploads/avatar/'.$_SESSION['avatar'] ?>" alt="..." class="avatar-img rounded-circle">
                     <?php else: ?>
                         <img src="assets/img/person.png" alt="..." class="avatar-img rounded-circle">
-                    <?php endif; ?>
+                    <?php endif ?>                  
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="<?= isset($_SESSION['fullname']) && $_SESSION['role']=='resident' ? '#collapseExample' : 'javascript:void(0)' ?>" aria-expanded="true">
@@ -48,6 +44,18 @@ $totalAnnouncements = $row1['total_announcements'];
                         </span>
                     </a>
                     <div class="clearfix"></div>
+                    <div class="collapse in" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="#edit_profile" data-toggle="modal">
+                                    <span class="link-collapse">Edit Profile</span>
+                                </a>
+                                <a href="#changepass" data-toggle="modal">
+                                    <span class="link-collapse">Change Password</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <ul class="nav nav-danger">
