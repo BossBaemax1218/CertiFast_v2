@@ -162,7 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("sssssss", $purok, $fullname, $email, $address, $hashedPassword, $verificationCode, $verificationSend);
 
         if ($stmt->execute()) {
-            $_SESSION['message'] = 'You have registered successfully! We sent a verification code to verify your account, please check your email.';
+            $_SESSION['message'] = 'You have succesfully registered! <br> Please check your email for a verification code to verify your account.';
             $_SESSION['success'] = 'success';
             $_SESSION['form'] = 'signup';
 

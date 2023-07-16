@@ -34,10 +34,7 @@
                             <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close"  id="closeModalButton" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                                    <div class="modal-header">
                                         </div>
                                         <div class="modal-body">
                                             <?php if ($_SESSION['success'] == 'danger'): ?>
@@ -51,6 +48,9 @@
                                             <?php endif; ?>
                                             <br>
                                             <p class="text-center" style="font-size: 24px; font-weight: bold;"><?php echo $_SESSION['message']; ?></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" id="closeModalButton">Close</button>
                                         </div>
                                     </div>
                                 </div>

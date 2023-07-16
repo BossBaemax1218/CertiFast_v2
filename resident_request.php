@@ -489,10 +489,6 @@ $conn->close();
                                         <label>Remarks</label>
                                         <textarea class="form-control" name="remarks" placeholder="Enter Remarks" id="remarks" disabled></textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Puporse</label>
-                                        <textarea class="form-control" name="purpose" placeholder="Enter Purpose" id="purpose" disabled></textarea>
-                                    </div>
                                 </div>
                             </div>
                         </div>

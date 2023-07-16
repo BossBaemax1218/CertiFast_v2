@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Verify the password using MD5 hashing
             if (md5($password) === $hashedPassword) {
-                if ($row['residency_status'] === 'verified') {
+                if ($row['account_status'] === 'verified') {
                     $_SESSION['user_email'] = $row['user_email'];
                     $_SESSION['fullname'] = $row['fullname'];
                     $_SESSION['role'] = $row['resident'];
@@ -102,9 +102,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header('location: ../resident_dashboard.php');
                     exit();
                 } else {
-                    echo "Your residency status is not verified by the purok leader.";
-                    incrementLoginAttempts();
-                    redirectToLoginPage('Your residency status is not verified by the purok leader.', 'danger', 'login');
+                    $_SESSION['message'] = 'Your account has not yet been verified. Please check your email for the verification code.';
+                    $_SESSION['success'] = 'danger';
+                    $_SESSION['form'] = 'login';
+
+                    header('location: ../email-verify-code.php');
+                    exit();
                 }
             } else {
                 echo "Password verification failed for resident.";

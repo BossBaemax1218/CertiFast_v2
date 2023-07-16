@@ -1,10 +1,10 @@
 <?php
     session_start();
     if (isset($_SESSION['username'])) {
-        header('Location: email-verify-code.php');
+        header('Location: login.php');
     }
     if (isset($_SESSION['fullname'])) {
-        header('Location: email-verify-code.php');
+        header('Location: login.php');
     }
 ?>
 <!DOCTYPE html>
@@ -21,6 +21,14 @@
         <link href="vendor-login/css/bootstrap.min.css" rel="stylesheet"> 
                 
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
                         
     </head>
     <body>
@@ -31,14 +39,11 @@
                         <h4 class="text-center">Verification Code</h4>
                         <p class="text-center">We sent you a code, please type the code to verified your account.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
-                            <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+                            <div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="close"  id="closeModalButton" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
+                                        </div>                                  
                                         <div class="modal-body">
                                             <?php if ($_SESSION['success'] == 'danger'): ?>
                                                 <h5 class="modal-title text-center w-100">
