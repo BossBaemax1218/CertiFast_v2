@@ -21,15 +21,13 @@
         } else {
             $_SESSION['message'] = 'Failed to update Residency Status.';
             $_SESSION['success'] = 'danger';
+            echo $stmt->error; // Output the error message for debugging purposes
         }
+        
+        // Close the prepared statement
+        $stmt->close();
     } else {
         $_SESSION['message'] = 'Please provide the resident ID!';
-        $_SESSION['success'] = 'danger';
-    }
-
-    // Check for errors or exceptions during the execution of the query
-    if ($stmt->error) {
-        $_SESSION['message'] .= ' Error: ' . $stmt->error;
         $_SESSION['success'] = 'danger';
     }
 

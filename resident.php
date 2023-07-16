@@ -1,12 +1,21 @@
 <?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT * FROM `tblresident` WHERE residency_status='verified' ORDER BY `id` DESC";
+	$query = "SELECT * FROM `tblresident` WHERE residency_status='approved' ORDER BY `id` DESC";
     $result = $conn->query($query);
 
     $resident = array();
-	while($row = $result->fetch_assoc()){
-		$resident[] = $row; 
-	}
+    while ($row = $result->fetch_assoc()) {
+        $status = $row['residency_status'];
+        $statusBadge = '';
+        if ($status == 'on hold') {
+            $statusBadge = '<span class="badge badge-warning">On Hold</span>';
+        } elseif ($status == 'approved') {
+            $statusBadge = '<span class="badge badge-primary">Approved</span>';
+        }
+    
+        $row['residency_badge'] = $statusBadge;
+        $resident[] = $row;
+    }
 
     $query1 = "SELECT * FROM tblpurok ORDER BY `purok`";
     $result1 = $conn->query($query1);
@@ -170,6 +179,7 @@
                                                     <th scope="col">Gender</th>
                                                     <th scope="col">Email</th>
 													<th scope="col">Purok</th>
+                                                    <th class="text-center" scope="col">Status</th>
                                                     <?php if(isset($_SESSION['username'])):?>
                                                         <?php if($_SESSION['role']=='administrator'):?>
 													
@@ -193,6 +203,7 @@
                                                         <td><?= $row['gender'] ?></td>
                                                         <td><?= $row['email'] ?></td>
                                                         <td><?= $row['purok'] ?></td>
+                                                        <td class="text-center"><?= $row['residency_badge'] ?></td>
                                                         <?php if(isset($_SESSION['username'])):?>
                                                             
                                                             <?php if($_SESSION['role']=='administrator'):?>

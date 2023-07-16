@@ -132,7 +132,7 @@ $totalAnnouncements = $row1['total_announcements'];
                 <li class="nav-item">
                     <a href="index.php#services">
                         <i class="far fa-lightbulb"></i>
-                        <p>Barangay Los Amigos</p>
+                        <p>Services</p>
                     </a>
                 </li>
                 <br>

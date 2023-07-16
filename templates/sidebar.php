@@ -5,6 +5,25 @@ function PageName() {
 
 $current_page = PageName();
 ?>
+<?php
+include 'server/server.php';
+
+$query1 = "SELECT COUNT(*) AS total_announcements FROM tbl_announcement";
+$result1 = $conn->query($query1);
+$row1 = $result1->fetch_assoc();
+$totalAnnouncements = $row1['total_announcements'];
+?>
+<style>
+    .notification-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+</style>
 <?php include 'model/fetch_brgy_info.php' ?>
 <div class="sidebar sidebar-style-2">			
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
@@ -55,6 +74,15 @@ $current_page = PageName();
                     <a href="purok_dashboard.php" >
                         <i class="bx bxs-dashboard"></i>
                         <p>Dashboard</p>
+                    </a>
+                </li>
+                <li id="announcementbtn" class="nav-item <?= $current_page == 'purok_announcement.php' ? 'active' : null ?>">
+                    <a href="purok_announcement.php" class="notification">
+                        <i class='far fa-bell'></i>
+                        <p>Announcement</p>
+                        <?php if ($totalAnnouncements > 0): ?>
+                            <span id="notification-badge" class="notification-badge"><?= $totalAnnouncements ?></span>
+                        <?php endif; ?>
                     </a>
                 </li>
                 <li class="nav-section">
@@ -159,10 +187,16 @@ $current_page = PageName();
                     </li>
                     <li class="nav-item">
                         <a href="#support" data-toggle="modal">
-                            <i class="fas fa-flag"></i>
+                            <i class="fas fa-edit"></i>
                             <p>Support</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                    <a href="index.php#services">
+                        <i class="far fa-lightbulb"></i>
+                        <p>Services</p>
+                    </a>
+                </li>
                 <?php endif ?>
                 <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'): ?>
                         <li class="nav-section">

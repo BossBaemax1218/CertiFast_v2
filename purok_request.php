@@ -6,11 +6,21 @@ if (!isset($_SESSION["username"])) {
     exit;
 }
 
-$username = $_SESSION["username"];
+if (isset($_SESSION["username"])) {
+    if ($_SESSION['role'] == 'purok leader') {
+        $off_q = "SELECT * FROM tblresident JOIN tbl_user_admin ON tblresident.purok = tbl_user_admin.purok WHERE tbl_user_admin.username = ? AND tblresident.residency_status = 'on hold'";
+        $stmt = $conn->prepare($off_q);
+        $stmt->bind_param("s", $_SESSION["username"]);
+    } else {
+        $off_q = "SELECT * FROM tblresident ON tblresident.purok = tbl_user_admin.purok WHERE tbl_user_admin.username = ? AND tblresident.residency_status = 'on hold'";
+        $stmt = $conn->prepare($off_q);
+    }
+} else {
+    $off_q = "SELECT * FROM tblresident JOIN tbl_user_admin ON tblresident.purok = tbl_user_admin.purok WHERE tbl_user_admin.username = ? AND tblresident.residency_status = 'on hold'";
+    $stmt = $conn->prepare($off_q);
+    $stmt->bind_param("s", $_SESSION["username"]);
+}
 
-$sql = "SELECT * FROM tblresident JOIN tbl_user_admin ON tblresident.purok = tbl_user_admin.purok WHERE tbl_user_admin.username = ? AND tblresident.residency_status = 'on hold'";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $username);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -28,9 +38,7 @@ while ($row = $result->fetch_assoc()) {
     $resident[] = $row;
 }
 
-if (!empty($resident)) {
-    $_SESSION['purok'] = $resident[0]['purok'];
-}
+$stmt->close();
 
 $query1 = "SELECT * FROM tblpurok ORDER BY `purok`";
 $result1 = $conn->query($query1);
