@@ -76,8 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Password verification failed for admin/staff.";
             }
         }
+
         // Check if the user is a verified resident
-        $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = ? AND account_status = '1'";
+        $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = ?";
         $stmt = $conn->prepare($residentQuery);
         $stmt->bind_param("s", $user_email);
         $stmt->execute();
@@ -89,22 +90,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Verify the password using MD5 hashing
             if (md5($password) === $hashedPassword) {
-                $_SESSION['user_email'] = $row['user_email'];
-                $_SESSION['fullname'] = $row['fullname'];
-                $_SESSION['role'] = $row['resident'];
+                if ($row['residency_status'] === 'verified') {
+                    $_SESSION['user_email'] = $row['user_email'];
+                    $_SESSION['fullname'] = $row['fullname'];
+                    $_SESSION['role'] = $row['resident'];
 
-                $_SESSION['message'] = 'You have successfully logged in as a resident!';
-                $_SESSION['success'] = 'success';
-                $_SESSION['form'] = 'login';
+                    $_SESSION['message'] = 'You have successfully logged in as a resident!';
+                    $_SESSION['success'] = 'success';
+                    $_SESSION['form'] = 'login';
 
-                header('location: ../resident_dashboard.php');
-                exit();
+                    header('location: ../resident_dashboard.php');
+                    exit();
+                } else {
+                    echo "Your residency status is not verified by the purok leader.";
+                    incrementLoginAttempts();
+                    redirectToLoginPage('Your residency status is not verified by the purok leader.', 'danger', 'login');
+                }
             } else {
                 echo "Password verification failed for resident.";
             }
+        } else {
+            echo "Username or password is incorrect!";
+            incrementLoginAttempts();
+            redirectToLoginPage('Username or password is incorrect!', 'danger', 'login');
         }
-        incrementLoginAttempts();
-        redirectToLoginPage('Username or password is incorrect!', 'danger', 'login');
     } else {
         redirectToLoginPage('Please fill in all the required fields.', 'danger', 'login');
     }

@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT * FROM tbl_user_admin WHERE user_type='staff' ORDER BY `created_at` DESC";
+	$query = "SELECT * FROM tbl_user_admin ORDER BY `created_at` DESC";
     $result = $conn->query($query);
 
     $users = array();
@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Admin & Staff Management</title>
+	<title>CertiFast Portal</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
@@ -44,7 +44,7 @@
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Admin & Staff Management</div>
+										<div class="card-title">Official User's Management</div>
 										<div class="card-tools">
 											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
 												<i class="fa fa-plus"></i>
@@ -59,6 +59,7 @@
 											<thead>
 												<tr>
 													<th scope="col">No.</th>
+													<th scope="col">Fullname</th>
 													<th scope="col">Username</th>
 													<th scope="col">User Type</th>
 													<th scope="col">Created At</th>
@@ -74,6 +75,9 @@
 															<div class="avatar avatar-xs">
                                                                 <img src="<?= preg_match('/data:image/i', $row['avatar']) ? $row['avatar'] : 'assets/uploads/avatar/'.$row['avatar'] ?>" alt="User Profile" class="avatar-img rounded-circle">
                                                             </div>
+                                                            <?= ucwords($row['fullname']) ?>
+														</td>														
+														<td>
                                                             <?= ucwords($row['username']) ?>
 														</td>
 														<td><?= $row['user_type'] ?></td>
@@ -125,15 +129,19 @@
                                         <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
                                     </div>
                                     <div id="profileImage">
-                                        <input type="hidden" name="profileimg">
+                                        <input type="hidden" name="profileimg" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="file" class="form-control" name="img" accept="image/*">
+                                        <input type="file" class="form-control" name="img" accept="image/*" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input type="text" class="form-control" placeholder="Enter Username" name="username" required>
+                                </div>
+								<div class="form-group">
+                                    <label>Fullname</label>
+                                    <input type="text" class="form-control" placeholder="Enter Name" name="fullname" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
@@ -145,6 +153,7 @@
                                         <option disabled selected>Select User Type</option>
                                         <option value="staff">Staff</option>
                                         <option value="administrator">Administrator</option>
+										<option value="purok leader">Purok Leader</option>
                                     </select>
                                 </div>
                             
@@ -157,12 +166,7 @@
                     </div>
                 </div>
             </div>
-			
-
-			<!-- Main Footer -->
-			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
-			
+			<?php include 'templates/main-footer.php' ?>			
 		</div>
 		
 	</div>

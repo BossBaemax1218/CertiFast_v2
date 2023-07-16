@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Dashboard Photo</label><br>
+                        <label>Cover Photo</label><br>
                         <img src="<?= !empty($db_img) ? 'assets/uploads/'.$db_img : 'assets/img/LogoIcon.png' ?>" class="img-fluid">
                         <input type="file" class='form-control' name="db_img" accept="image/*">
                     </div>

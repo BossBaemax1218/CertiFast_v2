@@ -29,12 +29,17 @@
             <div class="form-content">
                 <a href="#"><img src="images/trans-title.png" alt="" class="image"></a>
                 <form id="myForm" method="POST" action="model/edit_password.php">
-                    <h4>Forgot Password</h4>
-                    <p>Please register your personal information if you haven't registered yet.</p>
+                    <h4 class="text-center">Reset Password</h4>
+                    <p class="text-center">Please register your personal information if you haven't registered yet.</p>
                     <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
                             <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"  id="closeModalButton" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
                                         <div class="modal-header">
                                         </div>
                                         <div class="modal-body">
@@ -49,9 +54,6 @@
                                             <?php endif; ?>
                                             <br>
                                             <p class="text-center" style="font-size: 24px; font-weight: bold;"><?php echo $_SESSION['message']; ?></p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" id="closeModalButton">Close</button>
                                         </div>
                                     </div>
                                 </div>
@@ -72,7 +74,7 @@
                     </div>
                 </form>
             </div>
-            <footer class="footer mt-3">
+            <footer class="footer mt-4">
                     <div class="container-fluid">
                         <div class="copyright ml-auto text-center" style="font-size: 14px;">
                             <?php  $year = date("Y"); echo  $year . " &copy Barangay Los Amigos - CertiFast Portal" ?>

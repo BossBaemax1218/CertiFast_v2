@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require '../server/server.php';
 
         // Retrieve the email associated with the verification code from the database
-        $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE verification_code = ? AND account_status = 0");
+        $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE verification_code = ? AND account_status = 'unverified'");
         $stmt->bind_param("s", $verificationCode);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $email = $row['user_email'];
 
             // Update the verification status in the database
-            $stmt = $conn->prepare("UPDATE tbl_user_resident SET account_status = 1 WHERE user_email = ? AND verification_code = ?");
+            $stmt = $conn->prepare("UPDATE tbl_user_resident SET account_status = 'verified' WHERE user_email = ? AND verification_code = ?");
             $stmt->bind_param("ss", $email, $verificationCode);
             $stmt->execute();
 

@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                             </p>
                                             <p style="font-size:35px; color:#E42654; font-weight:bold;margin-bottom:10px;">' . $verificationCode . '</p>
                                             <p style="color:#455056; font-size:13px;line-height:24px;margin-bottom:20px;">
-                                                Please note that this verification code is valid for 10 minutes only. <br>
+                                                Please note that this verification code is valid one time only. <br>
                                                 If you did not request a verification, please ignore this email.
                                             </p>
                                             <p style="color:#455056; font-size:14px;line-height:24px;margin-bottom:20px;">
@@ -157,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($mail->send()) {
         $hashedPassword = md5($password);
 
-        $insertQuery = "INSERT INTO tbl_user_resident (`purok`, `fullname`, `user_email`, `address`, `password`, `verification_code`, `verification_send`, `account_status`) VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
+        $insertQuery = "INSERT INTO tbl_user_resident (`purok`, `fullname`, `user_email`, `address`, `password`, `verification_code`, `verification_send`, `account_status`, `residency_status`) VALUES (?, ?, ?, ?, ?, ?, ?, 'unverified', 'unverified')";
         $stmt = $conn->prepare($insertQuery);
         $stmt->bind_param("sssssss", $purok, $fullname, $email, $address, $hashedPassword, $verificationCode, $verificationSend);
 

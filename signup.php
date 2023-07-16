@@ -42,6 +42,11 @@
                             <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"  id="closeModalButton" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
                                         <div class="modal-body">
                                             <?php if ($_SESSION['success'] == 'danger'): ?>
                                                 <h5 class="modal-title text-center w-100">
@@ -55,16 +60,13 @@
                                             <br>
                                             <p class="text-center" style="font-size: 24px; font-weight: bold;"><?php echo $_SESSION['message']; ?></p>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" id="closeModalButton">Close</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>
-                        <div class="form-group input-field">
-                            <select class="form-control input-field" required name="purok" id="purok">
+                        <div class="form-group input-field mt-5">
+                            <select class="form-control input" required name="purok" id="purok">
                                 <option disabled selected>Select Purok Name</option>
                                 <?php foreach($purok as $row):?>
                                     <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
@@ -84,8 +86,8 @@
                             <input id="password" type="password" name="password" autocomplete="off" placeholder="Password" class="password">
                            <!--<i class='bx bx-hide eye-icon'></i>-->
                         </div>
-                        <div class="form-link">
-                            <p style="font-size: 13px;">Do you agree to our <a href="#term" style="font-size: 13px;" data-toggle="modal">Term of Services</a> and <a href="#policy" style="font-size: 13px;" data-toggle="modal">Privacy Policy</a></p>
+                        <div class="form-link mt-2">
+                            <p style="font-size: 12px;">Do you agree to our <a href="#term" style="font-size: 13px;" data-toggle="modal">Term of Services</a> and <a href="#policy" style="font-size: 13px;" data-toggle="modal">Privacy Policy</a></p>
                         </div>
                         <div class="form-group button-field">
                             <button type="submit" value="submit" class="fas fa-sign-in-alt text-center" style='font-size:20px'> Submit</button>

@@ -28,6 +28,6 @@
 		$_SESSION['success'] = 'danger';
 	}
 
-	header("Location: ../users.php");
+	header("Location: ../user-resident.php");
 	$conn->close();
 

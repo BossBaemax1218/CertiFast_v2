@@ -40,7 +40,12 @@
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
                             <div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">                                  
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"  id="closeModalButton" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>                                  
                                         <div class="modal-body">
                                             <?php if ($_SESSION['success'] == 'danger'): ?>
                                                 <h5 class="modal-title text-center w-100">
@@ -54,9 +59,6 @@
                                             <br>
                                             <p class="text-center" style="font-size: 24px; font-weight: bold;"><?php echo $_SESSION['message']; ?></p>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" id="closeModalButton">Close</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +71,7 @@
                             <input id="password" type="password" name="password" autocomplete="off" placeholder="Password" class="password">
                         </div>
                         <div class="form-link">
-                            <p style="font-size: 13px;">Do you agree to our <a href="#term" style="font-size: 13px;" data-toggle="modal">Term of Services</a> and <a href="#policy" style="font-size: 13px;" data-toggle="modal">Privacy Policy</a></p>
+                            <p style="font-size: 12px;">Do you agree to our <a href="#term" style="font-size: 13px;" data-toggle="modal">Term of Services</a> and <a href="#policy" style="font-size: 13px;" data-toggle="modal">Privacy Policy</a></p>
                         </div>
                         <div class="form-link">
                             <a href="forgot-password.php" class="forgot-pass">Forgot password?</a>

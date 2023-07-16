@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->Subject = 'Your new password verification code has been sent';
 
         // Check if the email address is already registered and account_status is 1
-        $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE user_email = ? AND account_status = 1");
+        $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE user_email = ? AND account_status = 'verified'");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                         </p>
                                                         <p style="font-size:35px; color:#E42654; font-weight:bold;margin-bottom:10px;">' . $verificationCode . '</p>
                                                         <p style="color:#455056; font-size:13px;line-height:24px;margin-bottom:20px;">
-                                                            Please note that this verification code is valid for 10 minutes only. <br>
+                                                            Please note that this verification code is valid one time only. <br>
                                                             If you did not request a password reset, please ignore this email.
                                                         </p>
                                                         <p style="color:#455056; font-size:14px;line-height:24px;margin-bottom:20px;">

@@ -1,12 +1,24 @@
 <?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT * FROM tbl_user_resident ORDER BY `created_at` DESC";
-    $result = $conn->query($query);
+if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] == 'staff') {
+        $off_q = "SELECT * FROM tbl_user_resident WHERE `account_status`='verified' AND `residency_status`='verified'";
+    } else {
+        $off_q = "SELECT * FROM tbl_user_resident ORDER BY `created_at` DESC";
+    }
+} else {
+    $off_q = "SELECT * FROM tbl_user_resident WHERE `account_status`='verified' AND `residency_status`='verified'";
+}
 
-    $users = array();
-	while($row = $result->fetch_assoc()){
-		$users[] = $row; 
-	}
+$result = $conn->query($off_q);
+
+$users = array();
+while ($row = $result->fetch_assoc()) {
+    $row['account_badge'] = $row['account_status'] == 'verified' ? '<span class="badge badge-primary">verified</span>' : '<span class="badge badge-danger">unverified</span>';
+    $row['residency_badge'] = $row['residency_status'] == 'verified' ? '<span class="badge badge-success">verified</span>' : '<span class="badge badge-danger">unverified</span>';
+    $users[] = $row;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,32 +65,42 @@
 													<th scope="col">No.</th>
 													<th scope="col">Name</th>
 													<th scope="col">Email</th>
-													<th scope="col">Status</th>
+													<?php if(isset($_SESSION['username'])):?>
+														<?php if($_SESSION['role']=='administrator'):?>
+														<th class="text-center" scope="col">Account Status</th>
+														<?php endif ?>
+													<?php endif?>
+													<th class="text-center" scope="col">Residency Status</th>
 													<th scope="col">Created</th>
-													<th class="text-center" scope="col">Action</th>
+													<?php if(isset($_SESSION['username'])):?>
+														<?php if($_SESSION['role']=='administrator'):?>
+														<?php endif ?>
+														<th class="text-center">Action</th>
+													<?php endif?>
 												</tr>
 											</thead>
 											<tbody>
 												<?php if(!empty($users)): ?>
 													<?php $no=1; foreach($users as $row): ?>
-													<tr>
-														<td><?= $no ?></td>
-														<td><?= $row['fullname'] ?></td>
-                                                        <td><?= $row['user_email'] ?></td>
-														<td><?= $row['verification_status'] ?></td>
-														<td><?= $row['created_at'] ?></td>
-														<td class="text-center">
-															<div class="form-button-action">
-																<a type="button" data-toggle="tooltip" href="model/remove_user.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this user?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																	<i class="fas fa-trash"></i>
-																</a>
-															</div>
-														</td>														
-													</tr>
+														<tr>
+															<td><?= $no ?></td>
+															<td><?= $row['fullname'] ?></td>
+															<td><?= $row['user_email'] ?></td>
+															<td class="text-center"><?= $row['account_badge'] ?></td>
+															<td class="text-center"><?= $row['residency_badge'] ?></td>
+															<td><?= $row['created_at'] ?></td>
+															<td class="text-center">
+																<div class="form-button-action">
+																	<a type="button" data-toggle="tooltip" href="model/remove_user_resident.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this user?');" class="btn btn-link btn-danger" data-original-title="Remove">
+																		<i class="fas fa-trash"></i>
+																	</a>
+																</div>
+															</td>													
+														</tr>
 													<?php $no++; endforeach ?>
 												<?php else: ?>
 													<tr>
-														<td colspan="5" class="text-center">No Available Data</td>
+														<td colspan="8" class="text-center">No Available Data</td>
 													</tr>
 												<?php endif ?>
 											</tbody>
