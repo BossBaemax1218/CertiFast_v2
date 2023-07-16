@@ -70,7 +70,6 @@ while ($row = $result->fetch_assoc()) {
 														<th class="text-center" scope="col">Account Status</th>
 														<?php endif ?>
 													<?php endif?>
-													<th class="text-center" scope="col">Residency Status</th>
 													<th scope="col">Created</th>
 													<?php if(isset($_SESSION['username'])):?>
 														<?php if($_SESSION['role']=='administrator'):?>
@@ -86,8 +85,7 @@ while ($row = $result->fetch_assoc()) {
 															<td><?= $no ?></td>
 															<td><?= $row['fullname'] ?></td>
 															<td><?= $row['user_email'] ?></td>
-															<td class="text-center"><?= $row['account_badge'] ?></td>
-															<td class="text-center"><?= $row['residency_badge'] ?></td>
+															<td class="text-center"><?= $row['account_badge'] ?></td>															
 															<td><?= $row['created_at'] ?></td>
 															<td class="text-center">
 																<div class="form-button-action">

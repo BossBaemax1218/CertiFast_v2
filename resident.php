@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT * FROM `tblresident` ORDER BY `id` DESC";
+	$query = "SELECT * FROM `tblresident` WHERE residency_status='verified' ORDER BY `id` DESC";
     $result = $conn->query($query);
 
     $resident = array();

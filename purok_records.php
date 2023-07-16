@@ -40,7 +40,7 @@ if (!empty($resident)) {
 				<div class="panel-header">
                 <div>
                     <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
-                    <h2 class="text-center fw-bold">Here are the Purok <?php echo isset($_SESSION['purok']) ? ucwords($_SESSION['purok']) : ''; ?> records with CertiFast Portal:</h2>
+                    <h2 class="text-center fw-bold" style="font-size: 200%;">Here are the Purok <?php echo isset($_SESSION['purok']) ? ucwords($_SESSION['purok']) : ''; ?> records with CertiFast Portal:</h2>
                     <br>
                 </div>
 				<div class="page-inner">

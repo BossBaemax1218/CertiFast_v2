@@ -7,6 +7,14 @@
 	while($row = $result->fetch_assoc()){
 		$users[] = $row; 
 	}
+
+	$sql = "SELECT * FROM tblpurok";
+    $res = $conn->query($sql);
+
+    $purok = array();
+	while($row = $res->fetch_assoc()){
+		$purok[] = $row; 
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -146,7 +154,7 @@
 								<div class="form-group">
                                     <label>Purok</label>
 									<select class="form-control input" required name="purok" id="purok">
-										<option disabled selected>Select Purok Name</option>
+										<option disabled selected>Select Purok</option>
 										<?php foreach($purok as $row):?>
 											<option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
 										<?php endforeach ?>
