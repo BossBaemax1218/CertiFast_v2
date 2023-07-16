@@ -118,8 +118,8 @@
 																<?php endif ?>
 																<td class="text-center">
 																	<a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary"
-																		title="Edit Position" onclick="editOfficial(this)" data-id="<?= $row['id'] ?>" data-img="<?= $row['picture'] ?>" data-barangayid="<?= $row['barangay_id'] ?>" data-name="<?= $row['fullname'] ?>"
-																		data-pos="<?= $row['pos_id'] ?>" data-address="<?= $row['address'] ?>" data-start="<?= $row['termstart'] ?>"
+																		title="Edit Position" onclick="editOfficial(this)" data-id="<?= $row['id'] ?>" data-img="<?= $row['picture'] ?>" data-brgyid="<?= $row['barangay_id'] ?>" data-name="<?= $row['fullname'] ?>"
+																		data-pos="<?= $row['pos_id'] ?>" data-add="<?= $row['address'] ?>" data-start="<?= $row['termstart'] ?>"
 																		data-end="<?= $row['termend'] ?>" data-status="<?= $row['status'] ?>">
 																		<i class="fas fa-edit"></i>
 																	</a>
@@ -252,11 +252,11 @@
                                 </div>
 								<div class="form-group">
 									<label>Barangay ID</label>
-									<input type="text" class="form-control" name="barangayid" placeholder="Enter Barangay ID No.">
+									<input type="text" class="form-control" name="barangay_id" id="barangay_id" placeholder="Enter Barangay ID No.">
 								</div>
                                 <div class="form-group">
                                     <label>Fullname</label>
-                                    <input type="text" class="form-control" placeholder="Enter Fullname" name="fullname" required>
+                                    <input type="text" class="form-control" placeholder="Enter Fullname" name="fullname"  id="name" required>
                                 </div>
 								<div class="form-group">
                                     <label>Position</label>
@@ -269,7 +269,7 @@
                                 </div>
 								<div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" class="form-control" placeholder="Enter Address" name="address" required>
+                                    <input type="text" class="form-control" placeholder="Enter Address" name="address" id="address" required>
                                 </div>
 								<div class="form-group">
                                     <label>Term Start</label>

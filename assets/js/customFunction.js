@@ -18,11 +18,13 @@ function editChair(that){
 
 function editPurok(that){
     purok = $(that).attr('data-name');
-    details = $(that).attr('data-details');
+    total_residents = $(that).attr('data-res');
+    total_households = $(that).attr('data-hh');
     id = $(that).attr('data-id');
 
     $('#purok').val(purok);
-    $('#details').val(details);
+    $('#residents').val(total_residents);
+    $('#households').val(total_households);
     $('#purok_id').val(id);
 }
 
@@ -37,18 +39,20 @@ function editPrecinct(that){
 }
 
 function editOfficial(that){
+    brgyid = $(that).attr('data-brgyid');
     id = $(that).attr('data-id');
-    na = $(that).attr('data-name');
-    chair = $(that).attr('data-chair');
+    name = $(that).attr('data-name');
     pos = $(that).attr('data-pos');
+    address = $(that).attr('data-add');
     start = $(that).attr('data-start');
     end = $(that).attr('data-end');
     status = $(that).attr('data-status');
     
+    $('#barangay_id').val(brgyid);
     $('#off_id').val(id);
-    $('#name').val(na);
-    $('#chair').val(chair);
+    $('#name').val(name);
     $('#position').val(pos);
+    $('#address').val(address);
     $('#start').val(start);
     $('#end').val(end);
     $('#status').val(status);

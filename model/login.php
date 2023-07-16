@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
         // Check if the user is a verified resident
-        $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = ? AND verification_status = '1'";
+        $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = ? AND account_status = '1'";
         $stmt = $conn->prepare($residentQuery);
         $stmt->bind_param("s", $user_email);
         $stmt->execute();

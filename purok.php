@@ -66,6 +66,7 @@
                                                 <tr class="text-center">
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Purok</th>
+                                                    <th scope="col">Purok Leader</th>
                                                     <th scope="col">No. of Residents</th>
                                                     <th scope="col">No. of Households</th>
                                                     <th scope="col">Action</th>
@@ -77,12 +78,13 @@
                                                     <tr class="text-center">
                                                         <td><?= $no ?></td>
                                                         <td><?= $row['purok'] ?></td>
+                                                        <td><?= $row['total_households'] ?></td>
                                                         <td><?= $row['total_residents'] ?></td>
                                                         <td><?= $row['total_households'] ?></td>
                                                         <td>
                                                             <div class="form-button-action">
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="Edit Purok" onclick="editPurok(this)" 
-                                                                    data-name="<?= $row['purok'] ?>" data-total_residents="<?= $row['total_residents'] ?>" data-total_households="<?= $row['total_households'] ?>" data-id="<?= $row['id'] ?>">
+                                                                    data-name="<?= $row['purok'] ?>" data-res="<?= $row['total_residents'] ?>" data-hh="<?= $row['total_households'] ?>" data-id="<?= $row['id'] ?>">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
                                                                 <a type="button" data-toggle="tooltip" href="model/remove_purok.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this purok?');" class="btn btn-link btn-danger" data-original-title="Remove">
@@ -160,11 +162,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>No. of Residents</label>
-                                    <input type="text" class="form-control" id="total_residents" placeholder="Enter No. of Residents" name="total_residents" required>
+                                    <input type="text" class="form-control" id="residents" placeholder="Enter No. of Residents" name="residents" required>
                                 </div>
                                 <div class="form-group">
                                     <label>No. of Households</label>
-                                    <input type="text" class="form-control" id="total_households" placeholder="Enter No. of Households" name="total_households" required>
+                                    <input type="text" class="form-control" id="households" placeholder="Enter No. of Households" name="households" required>
                                 </div>
                             
                         </div>

@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($result->num_rows > 0) {
             // Verification code is valid, update the verification status in the database
-            $stmt = $conn->prepare("UPDATE tbl_user_resident SET verification_status = 1 WHERE user_email = ?");
+            $stmt = $conn->prepare("UPDATE tbl_user_resident SET account_status = 1 WHERE user_email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
 

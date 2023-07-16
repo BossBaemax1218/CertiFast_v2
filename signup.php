@@ -1,11 +1,12 @@
+<?php include 'server/dbconnect.php' ?>
 <?php
-    session_start();
-    if (isset($_SESSION['username'])) {
-        header('Location: signup.php');
-    }
-    if (isset($_SESSION['fullname'])) {
-        header('Location: signup.php');
-    }
+    $query1 = "SELECT * FROM tblpurok ORDER BY `purok`";
+    $result1 = $conn->query($query1);
+
+    $purok = array();
+	while($row2 = $result1->fetch_assoc()){
+		$purok[] = $row2; 
+	}
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -63,14 +64,25 @@
                             <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>
                         <div class="form-group input-field">
-                            <input id="fullname" type="text" name="fullname" autocomplete="off" placeholder="Fullname" class="input">
+                            <select class="form-control input-field" required name="purok" id="purok">
+                                <option disabled selected>Select Purok Name</option>
+                                <?php foreach($purok as $row):?>
+                                    <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
+                                <?php endforeach ?>
+                            </select>
                         </div>
                         <div class="form-group input-field">
-                            <input  id="email" type="text" name="email" autocomplete="off" placeholder="Email" class="input">
+                            <input id="fullname" type="text" name="fullname" autocomplete="off" placeholder="Name" class="input">
+                        </div>
+                        <div class="form-group input-field">
+                            <input  id="email" type="text" name="email" autocomplete="off" placeholder="sample@email.com" class="input">
+                        </div>
+                        <div class="form-group input-field">
+                            <input id="address" type="text" name="address" autocomplete="off" placeholder="Block/Lot/Street/Purok" class="input">
                         </div>
                         <div class="form-group input-field">
                             <input id="password" type="password" name="password" autocomplete="off" placeholder="Password" class="password">
-                            <i class='bx bx-hide eye-icon'></i>
+                           <!--<i class='bx bx-hide eye-icon'></i>-->
                         </div>
                         <div class="form-link">
                             <p style="font-size: 13px;">Do you agree to our <a href="#term" style="font-size: 13px;" data-toggle="modal">Term of Services</a> and <a href="#policy" style="font-size: 13px;" data-toggle="modal">Privacy Policy</a></p>

@@ -51,14 +51,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->addAddress($email);
         $mail->Subject = 'Your new password verification code has been sent';
 
-        // Check if the email address is already registered and verification_status is 1
-        $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE user_email = ? AND verification_status = 1");
+        // Check if the email address is already registered and account_status is 1
+        $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE user_email = ? AND account_status = 1");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // Email address exists and verification_status is 1, generate a verification code and send it
+            // Email address exists and account_status is 1, generate a verification code and send it
             $verificationCode = generateVerificationCode();
             $year = date("Y");
 
@@ -165,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 exit();
             }
         } else {
-            // Email address does not exist or verification_status is not 1
+            // Email address does not exist or account_status is not 1
             $_SESSION['message'] = 'Your failed to verify your email address.';
             $_SESSION['success'] = 'danger';
             $_SESSION['form'] = 'signup';
