@@ -16,71 +16,6 @@
 	<?php include 'templates/header.php' ?>
 	<title>Overview - Dashboard</title>
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-	<style>
-        .chart-container {
-            display: flex;
-            overflow-x: scroll;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .chart {
-            flex: 0 0 100%;
-            scroll-snap-align: start;
-            width: 100%;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        .button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            margin: 0 5px;
-            border: none;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .button:hover {
-            background-color: #45a049;
-        }
-
-        /* Custom scrollbar styles */
-        .chart-container::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        .chart-container::-webkit-scrollbar-track {
-            background-color: transparent;
-        }
-
-        .chart-container::-webkit-scrollbar-thumb {
-            background-color: transparent;
-        }
-
-        .chart-container::-webkit-scrollbar-thumb:hover {
-            background-color: transparent;
-        }
-
-        .chart-container::-webkit-scrollbar-button {
-            background-color: #aaa;
-        }
-
-        .chart-container::-webkit-scrollbar-button:hover {
-            background-color: #888;
-        }
-    </style>
 </head>
 <body>
 	<?php include 'templates/loading_screen.php' ?>
@@ -116,25 +51,66 @@
 						</div>
 						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
 						<?php endif ?>
-						<div class="button-container mr-5">
-							<button class="button" onclick="scrollToPrevChart()"><i class="fas fa-arrow-left"></i> <label class="text-white ml-2">Previous</label></button>
-							<button class="button" onclick="scrollToNextChart()"><label class="text-white mr-2">Next</label><i class="fas fa-arrow-right"></i></button>
-						</div>
 						<div class="chart-container" id="chartContainer">
 							<div class="chart">
-								<?php include 'model/dailybar_chart.php' ?>
+								<div class="page-inner">
+								<div class="col">
+									<div class="row">
+									<div class="col-md-12">
+										<div class="card">
+										<div class="card-header">
+											<strong>WEEKLY REPORTS</strong>
+										</div>
+										<div class="card-body">
+											<canvas id="myChart1" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
+										</div>
+										</div>
+									</div>
+									</div>
+								</div>
+								</div>
 							</div>
-							<div class="chart">
-								<?php include 'model/weeklybar_chart.php' ?>
+						</div>
+						<div class="col">
+							<div class="chart-container" id="chartContainer">
+								<div class="chart">
+									<div class="page-inner">
+									<div class="col">
+										<div class="row">
+										<div class="col-md-12">
+											<div class="card">
+											<div class="card-header">
+												<strong>MONTHLY REPORTS</strong>
+											</div>
+											<div class="card-body">
+												<canvas id="monthlyChart" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
+											</div>
+											</div>
+										</div>
+										</div>
+									</div>
+									</div>
+								</div>
 							</div>
-							<div class="chart">
-								<?php include 'model/monthlybar_chart.php' ?>
-							</div>
-							<div class="chart">
-								<?php include 'model/yearlybar_chart.php' ?>
-							</div>
-							<div class="chart">
-								<?php include 'model/mostcertbar_chart.php' ?>
+							<div class="chart-container" id="chartContainer">
+								<div class="chart">
+									<div class="page-inner">
+									<div class="col">
+										<div class="row">
+										<div class="col-md-12">
+											<div class="card">
+											<div class="card-header">
+												<strong>YEARLY REPORTS</strong>
+											</div>
+											<div class="card-body">
+												<canvas id="myChart3" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
+											</div>
+											</div>
+										</div>
+										</div>
+									</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -142,37 +118,268 @@
 			</div>
 		</div>
 	<?php include 'templates/footer.php' ?>
-	<script>
-        function scrollToNextChart() {
-            const container = document.getElementById('chartContainer');
-            container.scrollBy({ left: container.offsetWidth, behavior: 'smooth' });
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$monthlyDataQuery = "SELECT DATE_FORMAT(date, '%M') AS month_name, details, COUNT(*) AS total_payments FROM tblpayments GROUP BY MONTH(date), details";
+$stmt = $conn->prepare($monthlyDataQuery);
+$stmt->execute();
+$monthlyDataResult = $stmt->get_result();
+
+$monthlyChartLabels = [];
+$monthlyChartDatasets = [];
+
+if ($monthlyDataResult->num_rows > 0) {
+    while ($row = $monthlyDataResult->fetch_assoc()) {
+        $month = $row['month_name'];
+        $detailsValue = $row['details'];
+        $totalPayments = $row['total_payments'];
+
+        if (!isset($monthlyChartDatasets[$detailsValue])) {
+            $monthlyChartDatasets[$detailsValue] = [];
         }
 
-        function scrollToPrevChart() {
-            const container = document.getElementById('chartContainer');
-            container.scrollBy({ left: -container.offsetWidth, behavior: 'smooth' });
+        $monthlyChartDatasets[$detailsValue][] = $totalPayments;
+
+        if (!in_array($month, $monthlyChartLabels)) {
+            $monthlyChartLabels[] = $month;
         }
-    </script>
+    }
+}
+?>
+<script>
+  var monthlyChartDataLabels = <?php echo json_encode($monthlyChartLabels); ?>;
+  var monthlyChartDatasets = [];
+
+  <?php foreach ($monthlyChartDatasets as $detailsValue => $data) { ?>
+    monthlyChartDatasets.push({
+      label: '<?php echo $detailsValue; ?>',
+      data: <?php echo json_encode($data); ?>,
+      backgroundColor: getRandomColor(),
+      borderColor: '#ffffff',
+      borderWidth: 1
+    });
+  <?php } ?>
+
+  var monthlyChartData = {
+    labels: monthlyChartDataLabels,
+    datasets: monthlyChartDatasets
+  };
+
+  var monthlyChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "top"
+      }
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var ctx = document.getElementById("monthlyChart").getContext("2d");
+    try {
+      new Chart(ctx, {
+        type: "bar",
+        data: monthlyChartData,
+        options: monthlyChartOptions
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
+  function getRandomColor() {
+    var letters = "0123456789abcdef";
+    var color = "#";
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+</script>
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$dataQuery = "SELECT DATE_FORMAT(date, '%W') AS week_name, details, COUNT(*) AS total_payments FROM tblpayments GROUP BY WEEK(date), details";
+$stmt = $conn->prepare($dataQuery);
+$stmt->execute();
+$dataResult = $stmt->get_result();
+
+$chartLabels = [];
+$chartDatasets = [];
+
+if ($dataResult->num_rows > 0) {
+    while ($row = $dataResult->fetch_assoc()) {
+        $week = $row['week_name'];
+        $detailsValue = $row['details'];
+        $totalPayments = $row['total_payments'];
+
+        if (!isset($chartDatasets[$detailsValue])) {
+            $chartDatasets[$detailsValue] = [];
+        }
+
+        $chartDatasets[$detailsValue][] = $totalPayments;
+
+        if (!in_array($week, $chartLabels)) {
+            $chartLabels[] = $week;
+        }
+    }
+}
+?>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderChart(<?php echo json_encode($chartLabels); ?>, <?php echo json_encode($chartDatasets); ?>);
+  });
+
+  function renderChart(labels, datasets) {
+    var chartData = {
+      labels: labels,
+      datasets: Object.keys(datasets).map(function (detailsValue) {
+        return {
+          label: detailsValue,
+          data: datasets[detailsValue],
+          backgroundColor: getRandomColor(),
+          borderColor: '#ffffff',
+          borderWidth: 1
+        };
+      })
+    };
+
+    var chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: "top"
+        }
+      }
+    };
+
+    var ctx = document.getElementById("myChart1").getContext("2d");
+    new Chart(ctx, {
+      type: "bar",
+      data: chartData,
+      options: chartOptions
+    });
+  }
+
+  function getRandomColor() {
+    var letters = "0123456789abcdef";
+    var color = "#";
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+</script>
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+	$paymentDataQuery = "SELECT YEAR(date) AS year_only, details, COUNT(*) AS total_payments FROM tblpayments GROUP BY YEAR(date), details";
+	$stmt = $conn->prepare($paymentDataQuery);
+	$stmt->execute();
+	$paymentDataResult = $stmt->get_result();
+
+	$labels = [];
+	$datasets = [];
+
+	if ($paymentDataResult->num_rows > 0) {
+		$barangays = [];
+		while ($row = $paymentDataResult->fetch_assoc()) {
+			$year = $row['year_only'];
+			$barangay = $row['details'];
+
+			if (!in_array($barangay, $barangays)) {
+				$barangays[] = $barangay;
+			}
+
+			if (!isset($datasets[$barangay])) {
+				$datasets[$barangay] = [];
+			}
+
+			$datasets[$barangay][$year] = $row['total_payments'];
+
+			if (!in_array($year, $labels)) {
+				$labels[] = $year;
+			}
+		}
+
+		sort($labels);
+		?>
+		<script>
+			var chartData = {
+				labels: <?php echo json_encode($labels); ?>,
+				datasets: [
+					<?php foreach ($barangays as $barangay) { ?>
+						{
+							label: '<?php echo $barangay; ?>',
+							data: [
+								<?php foreach ($labels as $year) { ?>
+									<?php echo isset($datasets[$barangay][$year]) ? $datasets[$barangay][$year] : 0; ?>,
+								<?php } ?>
+							],
+							backgroundColor: getRandomColor(),
+							borderColor: getRandomColor(),
+							borderWidth: 1
+						},
+					<?php } ?>
+				]
+			};
+
+			var chartOptions = {
+				responsive: true,
+				maintainAspectRatio: false,
+				aspectRatio: 1.5,
+				plugins: {
+					legend: {
+						position: "top"
+					}
+				},
+				scales: {
+					y: {
+						beginAtZero: true
+					}
+				}
+			};
+			function getRandomColor() {
+				var letters = "0123456789ABCDEF";
+				var color = "#";
+				for (var i = 0; i < 6; i++) {
+					color += letters[Math.floor(Math.random() * 16)];
+				}
+				return color;
+			}
+
+			document.addEventListener("DOMContentLoaded", function () {
+				var ctx = document.getElementById("myChart3").getContext("2d");
+				try {
+					new Chart(ctx, {
+						type: "bar",
+						data: chartData,
+						options: chartOptions
+					});
+				} catch (error) {
+					console.error(error);
+				}
+			});
+		</script>
+		<?php
+	} else {
+		echo "No data found.";
+	}
+?>
 	<script>
 		  $(document).on("click", "#pdf", function() {
 		console.log("Exporting revenue table as PDF...");
 		$("#revenuetable").tableHTMLExport({ type: "pdf", filename: "Revenue.pdf" });
 	});
-	</script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-	<script>
-		$("#kt_daterangepicker_3").daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true,
-        minYear: 1901,
-				maxYear: parseInt(moment().format("YYYY"),12)
-			}, function(start, end, label) {
-				var years = moment().diff(start, "years");
-				alert("You are " + years + " years old!");
-			}
-		);
 	</script>
 </body>
 </html>

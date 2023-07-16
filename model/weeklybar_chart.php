@@ -1,6 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <?php
-$dataQuery = "SELECT DATE_FORMAT(date, '%W') AS week_name, details, COUNT(*) AS total_payments FROM tblpayments GROUP BY WEEK(date), details";
+$dataQuery = "SELECT DATE_FORMAT(date, '%W') AS week_name, details, COUNT(*) AS total_payments, MIN(date) AS week_start_date FROM tblpayments GROUP BY WEEK(date), details ORDER BY week_start_date ASC";
 $stmt = $conn->prepare($dataQuery);
 $stmt->execute();
 $dataResult = $stmt->get_result();

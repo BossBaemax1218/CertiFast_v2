@@ -1,55 +1,40 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <?php
-$dataQuery = "SELECT details, COUNT(*) AS count FROM tblpayments GROUP BY details";
-$stmt = $conn->prepare($dataQuery);
+$certificatesDataQuery = "SELECT details, COUNT(*) AS count FROM tblpayments GROUP BY details";
+$stmt = $conn->prepare($certificatesDataQuery);
 $stmt->execute();
-$dataResult = $stmt->get_result();
+$certificatesDataResult = $stmt->get_result();
 
-$chartLabels = [];
-$chartData = [];
+$certificatesChartLabels = [];
+$certificatesChartData = [];
 
-if ($dataResult->num_rows > 0) {
-    while ($row = $dataResult->fetch_assoc()) {
+if ($certificatesDataResult->num_rows > 0) {
+    while ($row = $certificatesDataResult->fetch_assoc()) {
         $detailsValue = $row['details'];
         $count = $row['count'];
 
-        $chartLabels[] = $detailsValue;
-        $chartData[] = $count;
+        $certificatesChartLabels[] = $detailsValue;
+        $certificatesChartData[] = $count;
     }
 }
 ?>
-<div class="page-inner">
-    <div class="col">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <strong>MOST REQUESTED CERTIFICATE</strong>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="myChart4" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        renderChart(<?php echo json_encode($chartLabels); ?>, <?php echo json_encode($chartData); ?>);
+        renderChart(<?php echo json_encode($certificatesChartLabels); ?>, <?php echo json_encode($certificatesChartData); ?>);
     });
 
     function renderChart(labels, data) {
-    var chartData = {
-        labels: labels,
-        datasets: [{
-            label: 'Most Requested Certificates',
-            data: data,
-            backgroundColor: getRandomColor(),
-            borderColor: '#ffffff',
-            borderWidth: 1
-        }]
-    };
+        var chartData = {
+            labels: labels,
+            datasets: [{
+                label: 'Most Requested Certificates',
+                data: data,
+                backgroundColor: getRandomColor(),
+                borderColor: '#ffffff',
+                borderWidth: 1
+            }]
+        };
 
         var chartOptions = {
             responsive: true,
@@ -61,7 +46,7 @@ if ($dataResult->num_rows > 0) {
             }
         };
 
-        var ctx = document.getElementById("myChart4").getContext("2d");
+        var ctx = document.getElementById("certificatesChart").getContext("2d");
         new Chart(ctx, {
             type: "bar",
             data: chartData,
