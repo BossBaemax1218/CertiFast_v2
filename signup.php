@@ -11,16 +11,12 @@
 <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> Register - CertiFast Portal  </title>
 
         <link rel="stylesheet" href="vendor-login/css/login-style.css">
         <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-        <link href="vendor-login/css/bootstrap.min.css" rel="stylesheet">    
-        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
  
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -32,80 +28,82 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
     </head>
     <body>
-        <section class="container forms">
-            <div class="form">
-                <div class="form-content">
-                    <a class="text-center" href="index.php"><img src="vendor-login/images/trans-title.png" alt="" class="image"></a>
-                    <form id="myForm" method="POST" action="model/signup.php">
-                        <p class="text-center">To stay connected with us, please sign up your personal information.</p>
-                        <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
-                            <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close"  id="closeModalButton" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <?php if ($_SESSION['success'] == 'danger'): ?>
-                                                <h5 class="modal-title text-center w-100">
-                                                    <i class="fas fa-exclamation-triangle fa-3x d-block mx-auto" style="color: #d64242"></i>
-                                                </h5>
-                                            <?php elseif ($_SESSION['success'] == 'success'): ?>
-                                                <h5 class="modal-title text-center w-100">
-                                                    <i class="fas fa-check-circle fa-3x d-block mx-auto" style="color: #34c240"></i>
-                                                </h5>
-                                            <?php endif; ?>
-                                            <br>
-                                            <p class="text-center" style="font-size: 24px; font-weight: bold;"><?php echo $_SESSION['message']; ?></p>
-                                        </div>
+    <section class="container forms">
+        <div class="form">
+            <div class="form-content">
+                <a class="text-center" href="index.php"><img src="vendor-login/images/trans-title.png" alt="" class="image"></a>
+                <form id="myForm" method="POST" action="model/signup.php">
+                    <p class="text-center">To stay connected with us, please sign up with your personal information.</p>
+                    <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
+                        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close"  id="closeModalButton" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <?php if ($_SESSION['success'] == 'danger'): ?>
+                                            <h5 class="modal-title text-center w-100">
+                                                <i class="fas fa-exclamation-triangle fa-3x d-block mx-auto" style="color: #d64242"></i>
+                                            </h5>
+                                        <?php elseif ($_SESSION['success'] == 'success'): ?>
+                                            <h5 class="modal-title text-center w-100">
+                                                <i class="fas fa-check-circle fa-3x d-block mx-auto" style="color: #34c240"></i>
+                                            </h5>
+                                        <?php endif; ?>
+                                        <br>
+                                        <p class="text-center" style="font-size: 24px; font-weight: bold;"><?php echo $_SESSION['message']; ?></p>
                                     </div>
                                 </div>
                             </div>
-                            <?php unset($_SESSION['message']); ?>
-                        <?php endif; ?>
-                        <div class="form-group input-field mt-5">
-                            <select class="form-control input" required name="purok" id="purok">
-                                <option disabled selected>Select Purok Name</option>
-                                <?php foreach($purok as $row):?>
-                                    <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                <?php endforeach ?>
-                            </select>
                         </div>
-                        <div class="form-group input-field">
-                            <input id="fullname" type="text" name="fullname" autocomplete="off" placeholder="Name" class="input">
-                        </div>
-                        <div class="form-group input-field">
-                            <input  id="email" type="text" name="email" autocomplete="off" placeholder="sample@email.com" class="input">
-                        </div>
-                        <div class="form-group input-field">
-                            <input id="address" type="text" name="address" autocomplete="off" placeholder="Block/Lot/Street/Purok" class="input">
-                        </div>
-                        <div class="form-group input-field">
-                            <input id="password" type="password" name="password" autocomplete="off" placeholder="Password" class="password">
-                           <!--<i class='bx bx-hide eye-icon'></i>-->
-                        </div>
-                        <div class="form-link mt-2">
-                            <p style="font-size: 12px;">Do you agree to our <a href="#term" style="font-size: 13px;" data-toggle="modal">Term of Services</a> and <a href="#policy" style="font-size: 13px;" data-toggle="modal">Privacy Policy</a></p>
-                        </div>
-                        <div class="form-group button-field">
-                            <button type="submit" value="submit" class="fas fa-sign-in-alt text-center" style='font-size:20px'> Submit</button>
-                        </div>
-                    </form>
-                    <div class="form-link">
-                        <span>Already have an account? <a href="login.php" class="login-link">Login</a></span>
+                        <?php unset($_SESSION['message']); ?>
+                    <?php endif; ?>
+                    <div class="form-group input-field mt-3">
+                        <select class="form-control input" required name="purok" id="purok">
+                            <option disabled selected>Select Purok Name</option>
+                            <?php foreach($purok as $row):?>
+                                <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                    <div class="form-group input-field">
+                        <input id="fullname" type="text" name="fullname" autocomplete="off" placeholder="Name" class="input">
+                    </div>
+                    <div class="form-group input-field">
+                        <input id="email" type="text" name="email" autocomplete="off" placeholder="Email" class="input">
+                    </div>
+                    <div class="form-group input-field">
+                        <input id="address" type="text" name="address" autocomplete="off" placeholder="Address" class="input">
+                    </div>
+                    <div class="form-group input-field">
+                        <input id="password" type="password" name="password" autocomplete="off" placeholder="Password" class="password">
+                    </div>
+                    <div class="form-link mt-2">
+                        <p style="font-size: 13px;">Do you agree to our <a href="#term" style="font-size: 13px;" data-toggle="modal">Term of Services</a> and <a href="#policy" style="font-size: 13px;" data-toggle="modal">Privacy Policy</a>?</p>
+                    </div>
+                    <div class="form-group button-field">
+                        <button type="submit" value="submit" class="submit-button">Submit</button>
+                    </div>
+                </form>
+                <div class="form-link">
+                    <span>Already have an account? <a href="login.php" class="login-link">Login</a></span>
+                </div>
+            </div>
+            <footer class="footer mt-3">
+                <div class="container-fluid">
+                    <div class="copyright">
+                        <?php
+                            $year = date("Y");
+                            echo $year . " &copy; Barangay Los Amigos - CertiFast Portal";
+                        ?>
                     </div>
                 </div>
-                <footer class="footer mt-3">
-                    <div class="container-fluid">
-                        <div class="copyright ml-auto text-center" style="font-size: 14px;">
-                            <?php  $year = date("Y"); echo  $year . " &copy Barangay Los Amigos - CertiFast Portal" ?>
-                        </div>				
-                    </div>
-                </footer>
-            </div>
-        </section>
+            </footer>
+        </div>
+    </section>
         <script>
         document.addEventListener('DOMContentLoaded', function() {
             var closeModalButton = document.getElementById('closeModalButton');
