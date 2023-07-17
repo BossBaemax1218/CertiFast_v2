@@ -122,7 +122,7 @@
                             </ul>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" onclick="goBack()">OK</button>
+                            <button type="submit" class="btn btn-primary" data-dismiss="modal" id="closeModalButton">OK</button>
                         </div>
                     </form>
                 </div>
@@ -148,12 +148,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             var closeModalButton = document.getElementById('closeModalButton');
             closeModalButton.addEventListener('click', function() {
-                var modal = document.getElementById('loginModal');
+                var modal = document.getElementById('myLargeModal');
                 modal.classList.remove('show');
                 modal.setAttribute('aria-hidden', 'true');
                 modal.style.display = 'none';
             });
-            var modal = document.getElementById('loginModal');
+            var modal = document.getElementById('myLargeModal');
             modal.classList.add('show');
             modal.setAttribute('aria-hidden', 'false');
             modal.style.display = 'block';

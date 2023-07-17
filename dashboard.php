@@ -13,15 +13,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<?php include 'templates/header.php' ?>
 	<title>Overview - Dashboard</title>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 <body>
 	<?php include 'templates/loading_screen.php' ?>
-		<div class="wrapper">
-			<?php include 'templates/main-header.php' ?>
-			<?php include 'templates/sidebar.php' ?>
+			<div class="wrapper">
+				<?php include 'templates/main-header.php' ?>
+				<?php include 'templates/sidebar.php' ?>
 				<div class="main-panel">
 					<div class="content">
 						<div class="panel-header">
@@ -35,33 +36,26 @@
 								<div class="d-flex align-items-left align-items-md-left flex-column flex-md-column">
 									<div class="d-flex align-items-center align-items-md-center flex-row flex-md-row">
 										<h3 class="fw-bold" style="font-size: 300%;">Overview</h3>
-									</div>									
-								</div>
-							</div>
-						</div>
-						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
-						<?php endif ?>					
-							<div class="col">
-								<div class="chart-container" id="chartContainer">
-									<div class="chart-wrapper col-md-12">
+									</div>	
+									<div class="col-md-12">
 										<?php include 'model/weeklybar_chart.php' ?>
 									</div>
-									<div class="chart-wrapper col-md-12">
+									<div class="col-md-12">
 										<?php include 'model/monthlybar_chart.php' ?>
 									</div>
-									<div class="chart-wrapper col-md-12">
+									<div class="col-md-12">
 										<?php include 'model/yearlybar_chart.php' ?>
 									</div>
-									<div class="chart-wrapper col-md-12">
+									<div class="col-md-12">
 										<?php include 'model/mostcertbar_chart.php' ?>
-									</div>
+									</div>								
 								</div>
-							</div>
+							</div>				
 						</div>
 					</div>
-				<?php include 'templates/main-footer.php' ?>
+					<?php include 'templates/main-footer.php' ?>
+				</div>
 			</div>
-		</div>
 	<?php include 'templates/footer.php' ?>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script>
