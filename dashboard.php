@@ -41,22 +41,21 @@
 						</div>
 						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
 						<?php endif ?>					
-						<div class="col">
-							<div class="chart-container" id="chartContainer">
-								<?php
-								$files = [
-									'model/weeklybar_chart.php',
-									'model/monthlybar_chart.php',
-									'model/yearlybar_chart.php',
-									'model/mostcertbar_chart.php'
-								];
-
-								foreach ($files as $file) {
-									echo '<div class="chart">';
-									include $file;
-									echo '</div>';
-								}
-								?>
+							<div class="col">
+								<div class="chart-container" id="chartContainer">
+									<div class="chart-wrapper col-md-12">
+										<?php include 'model/weeklybar_chart.php' ?>
+									</div>
+									<div class="chart-wrapper col-md-12">
+										<?php include 'model/monthlybar_chart.php' ?>
+									</div>
+									<div class="chart-wrapper col-md-12">
+										<?php include 'model/yearlybar_chart.php' ?>
+									</div>
+									<div class="chart-wrapper col-md-12">
+										<?php include 'model/mostcertbar_chart.php' ?>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

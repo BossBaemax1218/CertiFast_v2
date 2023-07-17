@@ -8,6 +8,7 @@
         <div class="card">
         <div class="card-header">
           <strong>MONTHLY REPORTS</strong>
+          <span class="datetime" style="float: right;"><?php echo date('Y-m-d H:i:s'); ?></span>
         </div>
         <div class="card-body">
           <canvas id="monthlyChart" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
@@ -23,7 +24,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$monthlyDataQuery = "SELECT DATE_FORMAT(date, '%M') AS month_name, details, COUNT(*) AS monthly_payments FROM tblpayments GROUP BY MONTH(date), details";
+$monthlyDataQuery = "SELECT DATE_FORMAT(date, '%M') AS month_name, details, COUNT(*) AS monthly_payments FROM tblpayments WHERE YEAR(date) = YEAR(CURDATE()) GROUP BY MONTH(date), details;";
 $stmt = $conn->prepare($monthlyDataQuery);
 $stmt->execute();
 $monthlyDataResult = $stmt->get_result();

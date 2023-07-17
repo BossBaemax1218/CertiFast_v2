@@ -9,6 +9,7 @@
 				<div class="card">
 				<div class="card-header">
 					<strong>YEARLY REPORTS</strong>
+					<span class="datetime" style="float: right;"><?php echo date('Y-m-d'); ?></span>
 				</div>
 				<div class="card-body">
 					<canvas id="myChart3" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>

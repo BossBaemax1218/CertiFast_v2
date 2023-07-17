@@ -8,6 +8,7 @@
                 <div class="card">
                 <div class="card-header">
                     <strong>WEEKLY REPORTS</strong>
+                    <span class="datetime" style="float: right;"><?php echo date('Y-m-d H:i:s'); ?></span>
                 </div>
                 <div class="card-body">
                     <canvas id="weekly_charts" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
@@ -23,7 +24,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$dataQuery = "SELECT DATE_FORMAT(date, '%W') AS week_name, details, COUNT(*) AS weekly_payments FROM tblpayments GROUP BY WEEK(date), details";
+$dataQuery = "SELECT DATE_FORMAT(date, '%W') AS week_name, details, COUNT(*) AS weekly_payments FROM tblpayments WHERE YEAR(date) = YEAR(CURDATE()) AND MONTH(date) = MONTH(CURDATE()) GROUP BY WEEK(date), details ORDER BY FIELD(DAYNAME(date), 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')";
 $stmt = $conn->prepare($dataQuery);
 $stmt->execute();
 $dataResult = $stmt->get_result();

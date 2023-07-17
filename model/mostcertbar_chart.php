@@ -8,6 +8,7 @@
                     <div class="card">
                     <div class="card-header">
                         <strong>MOST REQUESTED CERTIFICATES REPORTS</strong>
+                        <span class="datetime" style="float: right;"><?php echo date('Y-m-d H:i:s'); ?></span>
                     </div>
                     <div class="card-body">
                         <canvas id="certificatesChart" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
@@ -19,11 +20,12 @@
         </div>
     </div>
 </div>
+
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$certificatesDataQuery = "SELECT details, COUNT(*) AS most_certreq FROM tblpayments GROUP BY details";
+$certificatesDataQuery = "SELECT details, COUNT(*) AS most_certreq FROM tblpayments WHERE YEAR(date) = YEAR(CURDATE()) AND MONTH(date) = MONTH(CURDATE()) GROUP BY details";
 $stmt = $conn->prepare($certificatesDataQuery);
 $stmt->execute();
 $certificatesDataResult = $stmt->get_result();

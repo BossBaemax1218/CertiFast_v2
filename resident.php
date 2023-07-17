@@ -600,7 +600,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" name="id" id="res_id">
+                            <input type="text" name="id" id="res_id">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             <?php if(isset($_SESSION['username'])): ?>
                             <button type="submit" class="btn btn-primary">Update</button>
@@ -614,5 +614,65 @@
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>
+    <script>
+function editResident(that){
+    id          = $(that).attr('data-id');
+    pic         = $(that).attr('data-img');
+    nat_id 		= $(that).attr('data-national');
+    fname 		= $(that).attr('data-fname');
+	mname 		= $(that).attr('data-mname');
+    lname 		= $(that).attr('data-lname');
+	address 	= $(that).attr('data-address');
+    bplace 	    = $(that).attr('data-bplace');
+	bdate 		= $(that).attr('data-bdate');
+    age 		= $(that).attr('data-age');
+    cstatus 	= $(that).attr('data-cstatus');
+	gender 	    = $(that).attr('data-gender');
+    purok 		= $(that).attr('data-purok');
+	vstatus 	= $(that).attr('data-vstatus');
+    email 	    = $(that).attr('data-email');
+	number 	    = $(that).attr('data-number');
+    taxno 	    = $(that).attr('data-taxno');
+    citi 	    = $(that).attr('data-citi');
+    occu 	    = $(that).attr('data-occu');
+    dead 	    = $(that).attr('data-dead');
+    remarks 	= $(that).attr('data-remarks');
+    purpose 	= $(that).attr('data-purpose');
+
+    $('#res_id').val(id);
+    $('#nat_id').val(nat_id);
+    $('#fname').val(fname);
+    $('#mname').val(mname);
+    $('#lname').val(lname);
+    $('#address').val(address);
+    $('#bplace').val(bplace);
+    $('#bdate').val(bdate);
+    $('#age').val(age);
+    $('#cstatus').val(cstatus);
+    $('#gender').val(gender);
+    $('#purok').val(purok);
+    $('#vstatus').val(vstatus);
+    $('#taxno').val(taxno);
+    $('#email').val(email);
+    $('#number').val(number);
+    $('#occupation').val(occu);
+    $('#citizenship').val(citi);
+    $('#remarks').val(remarks);
+    $('#purpose').val(purpose);
+
+    if(dead==1){
+        $("#alive").prop("checked", true);
+    }else{
+        $("#dead").prop("checked", true);
+    }
+
+    var str = pic;
+    var n = str.includes("data:image");
+    if(!n){
+        pic = 'assets/uploads/resident_profile/'+pic;
+    }
+    $('#image').attr('src', pic);
+}
+    </script>
 </body>
 </html>
