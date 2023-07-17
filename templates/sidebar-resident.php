@@ -65,7 +65,6 @@ $totalAnnouncements = $row1['total_announcements'];
                         <p>Introduction</p>
                     </a>
                 </li>
-                <br>
                 <li class="nav-item <?= $current_page=='resident_dashboard.php' || $current_page=='resident_dashboard.php'  ? 'active' : null ?>">
                     <a href="resident_dashboard.php" >
                         <i class='bx bxs-dashboard'></i>
@@ -139,17 +138,11 @@ $totalAnnouncements = $row1['total_announcements'];
                 <li class="nav-item <?= $current_page=='purok.php' || $current_page=='position.php' ? 'active' : null ?>">
                     <a href="#settings" data-toggle="collapse" class="collapsed" aria-expanded="false">
                         <i class="fas fa-wrench"></i>
-                            <p>Settings</p>
+                            <p> Account Settings</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse <?= $current_page=='purok.php' ? 'show' : null ?>" id="settings">
                         <ul class="nav nav-collapse">
-                            <li class="nav-section">
-                                <span class="sidebar-mini-icon">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                </span>
-                                <h4 class="text-section">Account Settings</h4>
-                            </li>
                             <li>
                                 <a href="#edit_user_profile" data-toggle="modal">
                                     <span class="link-collapse">Edit Profile</span>

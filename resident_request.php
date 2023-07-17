@@ -58,7 +58,7 @@ $conn->close();
                                 <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
                             <div class="card">
-                            <h5 class="text-center fw-bold mt-5"><a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;">SUBMIT</a></h5>
+                            <h5 class="text-center fw-bold mt-5"><a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;">REQUEST</a></h5>
 								<div class="card-body">
                                     <div class="table-responsive">
                                         <table id="residenttable" class="table">

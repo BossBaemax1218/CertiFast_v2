@@ -91,7 +91,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Payments</h2>
-                                                    <h3 class="fw-bold" style="font-size: 45px; color: #C77C8D;"><?= number_format($revenue3['am'],2)?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue3['am'],2)?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -115,7 +115,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Certificates</h2>
-                                                    <h3 class="fw-bold text-uppercase" style="font-size: 45px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h3>
+                                                    <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h3>
                                                 </div>
                                             </div>
                                         </div>

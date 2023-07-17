@@ -17,14 +17,12 @@ include 'server/db_connection.php';
                     <div>
                         <h1 class="text-center fw-bold mt-5" style="font-size: 400%;">Payments History</h1>
                     </div>
-                    <div class="page-inner">
-                        <?php if(isset($_SESSION['message'])): ?>
-                                <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                                    <?php echo $_SESSION['message']; ?>
-                                </div>
-                            <?php unset($_SESSION['message']); ?>
-                        <?php endif ?>
-                    </div>
+                    <?php if(isset($_SESSION['message'])): ?>
+                            <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                <?php echo $_SESSION['message']; ?>
+                            </div>
+                        <?php unset($_SESSION['message']); ?>
+                    <?php endif ?>
                     <div class="page-inner">
                         <div class="row">
                             <div class="col-md-12">

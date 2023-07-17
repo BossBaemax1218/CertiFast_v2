@@ -37,18 +37,18 @@ while($row = $result->fetch_assoc()){
 		<?php include 'templates/sidebar.php' ?>
 		<div class="main-panel">
 			<div class="content">
-					<div class="md-5">
+					<div class="form">
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
                         <h5 class="text-center fw-bold"> Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.  </h5>
                     </div>
-					<div class="page-inner mt-2">
+					<div class="page-inner">
 						<?php if(isset($_SESSION['message'])): ?>
 								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
 									<?php echo $_SESSION['message']; ?>
 								</div>
 							<?php unset($_SESSION['message']); ?>
-						<?php endif ?>
-                        <div class="row mt-5">
+						<?php endif ?>							
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="card card-stats card card-round">
                                     <div class="card-body">
@@ -63,7 +63,7 @@ while($row = $result->fetch_assoc()){
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Request</h2>
-                                                    <h3 class="fw-bold" style="font-size: 45px; color: #C77C8D;"><?= number_format($receiptCount) ?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($receiptCount) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -87,7 +87,7 @@ while($row = $result->fetch_assoc()){
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">On Hold</h2>
-                                                    <h3 class="fw-bold" style="font-size: 45px; color: #C77C8D;"><?= number_format($revenue3['am'],2)?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue3['am'],2)?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -111,7 +111,7 @@ while($row = $result->fetch_assoc()){
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Approved</h2>
-                                                    <h3 class="fw-bold text-uppercase" style="font-size: 45px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h3>
+                                                    <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,19 +121,8 @@ while($row = $result->fetch_assoc()){
                                     </div>
                                 </div>
                             </div>
-							<section class="main-content">
-						<div class="container">
-							<div>
-								<h5 class="text-center fw-bold"> Here are the steps in setting an registration request with CertiFast Portal.</h5>
-							</div>
-							<?php if(isset($_SESSION['message'])): ?>
-									<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-										<?php echo $_SESSION['message']; ?>
-									</div>
-								<?php unset($_SESSION['message']); ?>
-							<?php endif ?>
-							<br>
-							<section id="featured-services" class="featured-services">
+					    </div>
+                        <section id="featured-services" class="featured-services">
 								<div class="container" data-aos="fade-up">
 									<div class="row">
 										<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
@@ -149,7 +138,7 @@ while($row = $result->fetch_assoc()){
 												<div class="icon"><img src="homepage/assets/img/clients/logo-14.svg"></div>
 												<h4 class="title" style="color: black;">Step 2</h4>
 												<h6 class="pre-title" style="color: black; font-weight: bold;">Review</h6>
-												<p class="description" style="color: black;">Make sure your personal information is true and correct by <b>reviewing it carefully</b> on the screen.</p>
+												<p class="description" style="color: black;">Make sure your personal information is true and correct by <b>reviewing it carefully</b> on the screen. Don't submit it abortly.</p>
 											</div></a>
 										</div>
 										<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
@@ -171,16 +160,12 @@ while($row = $result->fetch_assoc()){
 									</div>
 								</div> 
                     		</section>
-						</div>
-					</section>
-					    </div>
-						<?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
-						<?php endif ?>
-					</div>
-				</div>
+                        </div>
+                    </div>
 				<?php include 'templates/main-footer.php' ?>
-	        </div>
-	    </div>
+            </div>
+        </div>
+    </div>
 		  <?php include 'templates/footer.php' ?>
 		  <script src="homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="homepage/assets/vendor/aos/aos.js"></script>

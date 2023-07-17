@@ -2,12 +2,12 @@
 <?php 
 if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] == 'staff') {
-        $off_q = "SELECT * FROM tbl_user_resident WHERE `account_status`='verified' AND `residency_status`='verified'";
+        $off_q = "SELECT * FROM tbl_user_resident WHERE `account_status`='verified'";
     } else {
         $off_q = "SELECT * FROM tbl_user_resident ORDER BY `created_at` DESC";
     }
 } else {
-    $off_q = "SELECT * FROM tbl_user_resident WHERE `account_status`='verified' AND `residency_status`='verified'";
+    $off_q = "SELECT * FROM tbl_user_resident WHERE `account_status`='verified'";
 }
 
 $result = $conn->query($off_q);
@@ -15,7 +15,6 @@ $result = $conn->query($off_q);
 $users = array();
 while ($row = $result->fetch_assoc()) {
     $row['account_badge'] = $row['account_status'] == 'verified' ? '<span class="badge badge-primary">verified</span>' : '<span class="badge badge-danger">unverified</span>';
-    $row['residency_badge'] = $row['residency_status'] == 'verified' ? '<span class="badge badge-success">verified</span>' : '<span class="badge badge-danger">unverified</span>';
     $users[] = $row;
 }
 

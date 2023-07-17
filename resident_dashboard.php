@@ -19,19 +19,18 @@ include 'server/db_connection.php'
 		<?php include 'templates/sidebar-resident.php' ?>
 			<div class="main-panel">
 				<div class="content">
-					<section class="main-content mt-2">
-						<div class="container mt-5">
-							<div>
-								<h1 class="text-center">Barangay Los Amigos - <strong>CertiFast Portal</strong></h1>
-								<h5 class="text-center fw-bold"> Here are the steps in setting an registration request with CertiFast Portal.</h5>
-							</div>
-							<?php if(isset($_SESSION['message'])): ?>
+					<section class="main-content mt-5">
+						<div class="container mt-2">
+						<?php if(isset($_SESSION['message'])): ?>
 									<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
 										<?php echo $_SESSION['message']; ?>
 									</div>
 								<?php unset($_SESSION['message']); ?>
 							<?php endif ?>
-							<br>
+							<div>
+								<h1 class="text-center">Barangay Los Amigos - <strong>CertiFast Portal</strong></h1>
+								<h5 class="text-center fw-bold"> Here are the steps in setting an registration request with CertiFast Portal.</h5>
+							</div>
 							<section id="featured-services" class="featured-services">
 								<div class="container" data-aos="fade-up">
 									<div class="row">
@@ -48,7 +47,7 @@ include 'server/db_connection.php'
 												<div class="icon"><img src="homepage/assets/img/clients/logo-14.svg"></div>
 												<h4 class="title" style="color: black;">Step 2</h4>
 												<h6 class="pre-title" style="color: black; font-weight: bold;">Review</h6>
-												<p class="description" style="color: black;">Make sure your personal information is true and correct by <b>reviewing it carefully</b> on the screen.</p>
+												<p class="description" style="color: black;">Make sure your personal information is true and correct by <b>reviewing it carefully</b> on the screen. And don't submit it abortly.</p>
 											</div></a>
 										</div>
 										<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">

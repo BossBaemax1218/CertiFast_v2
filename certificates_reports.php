@@ -70,7 +70,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Residency</h2>
-                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($residencyCount)?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 25px; color: #C77C8D;"><?= number_format($residencyCount)?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -92,7 +92,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Indigency</h2>
-                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue3['indigency'])?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 25px; color: #C77C8D;"><?= number_format($revenue3['indigency'])?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h3 class="text-uppercase" style="font-size: 16px;">Clearance</h3>
-                                                    <h5 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue1['clearance']) ?></h5>
+                                                    <h5 class="fw-bold text-uppercase" style="font-size: 25px; color: #C77C8D;"><?= number_format($revenue1['clearance']) ?></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -136,7 +136,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Permit</h2>
-                                                    <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue2['permit']) ?></h3>
+                                                    <h3 class="fw-bold text-uppercase" style="font-size: 25px; color: #C77C8D;"><?= number_format($revenue2['permit']) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
