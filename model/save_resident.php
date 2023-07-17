@@ -94,7 +94,7 @@
 			$_SESSION['success'] = 'danger';
 		}
 	}else{
-		$_SESSION['message'] = 'National ID is already taken. Please enter a unique national ID!';
+		$_SESSION['message'] = 'ID is already taken. Please enter a unique ID!';
 		$_SESSION['success'] = 'danger';
 	}
      header("Location: ../resident.php");

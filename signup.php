@@ -81,9 +81,6 @@
                     <div class="form-group input-field">
                         <input id="password" type="password" name="password" autocomplete="off" placeholder="Password" class="password">
                     </div>
-                    <div class="form-link mt-2">
-                        <p style="font-size: 13px;">Do you agree to our <a href="#term" style="font-size: 13px;" data-toggle="modal">Term of Services</a> and <a href="#policy" style="font-size: 13px;" data-toggle="modal">Privacy Policy</a>?</p>
-                    </div>
                     <div class="form-group button-field">
                         <button type="submit" value="submit" class="submit-button">Submit</button>
                     </div>
@@ -100,6 +97,7 @@
                             echo $year . " &copy; Barangay Los Amigos - CertiFast Portal";
                         ?>
                     </div>
+                    <p style="font-size: 13px;"><a href="#term" style="font-size: 13px;" data-toggle="modal">Term of Services</a> and <a href="#policy" style="font-size: 13px;" data-toggle="modal">Privacy Policy</a></p>
                 </div>
             </footer>
         </div>

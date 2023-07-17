@@ -8,7 +8,7 @@ if (!isset($_SESSION["fullname"])) {
 
 $fullname = $_SESSION["fullname"];
 
-$sql = "SELECT * FROM tblresident JOIN tbl_user_resident ON tblresident.email = tbl_user_resident.user_email WHERE tbl_user_resident.fullname = ?";
+$sql = "SELECT *, tblresident.id, tblresident.purok FROM tblresident JOIN tbl_user_resident ON tblresident.email = tbl_user_resident.user_email WHERE tbl_user_resident.fullname = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $fullname);
 $stmt->execute();
@@ -19,12 +19,12 @@ while ($row = $result->fetch_assoc()) {
     $resident[] = $row;
 }
 
-$query1 = "SELECT * FROM tblpurok ORDER BY `purok`";
+$query1 = "SELECT * FROM tblpurok";
 $result1 = $conn->query($query1);
 
 $purok = array();
-while($row2 = $result1->fetch_assoc()){
-    $purok[] = $row2; 
+while($row = $result1->fetch_assoc()){
+    $purok[] = $row; 
 }
 
 $conn->close();
@@ -58,7 +58,11 @@ $conn->close();
                                 <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
                             <div class="card">
-                            <h5 class="text-center fw-bold mt-5"><a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;">REQUEST</a></h5>
+                                <h5 class="text-center fw-bold mt-5">
+                                    <a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;" <?php echo isset($_SESSION['success']) || $nat > 0 ? 'disabled' : ''; ?>>
+                                        REQUEST
+                                    </a>
+                                </h5>
 								<div class="card-body">
                                     <div class="table-responsive">
                                         <table id="residenttable" class="table">
@@ -67,15 +71,9 @@ $conn->close();
                                                     <th scope="col">Fullname</th>
                                                     <th scope="col">Address</th>
                                                     <th scope="col">Birthdate</th>
-                                                    <th scope="col">Age</th>
                                                     <th scope="col">Gender</th>
                                                     <th scope="col">Email</th>
                                                     <th scope="col">Purok</th>
-                                                    <?php if (isset($_SESSION['fullname'])): ?>
-                                                        <?php if ($_SESSION['role'] == 'resident'): ?>
-                                                            
-                                                        <?php endif ?>
-                                                    <?php endif ?>
                                                     <th class="text-center" scope="col">Action</th>
                                                 </tr>
                                             </thead>
@@ -91,15 +89,9 @@ $conn->close();
                                                             </td>
                                                             <td><?= $row['address'] ?></td>
                                                             <td><?= $row['birthdate'] ?></td>
-                                                            <td><?= $row['age'] ?></td>
                                                             <td><?= $row['gender'] ?></td>
                                                             <td><?= $row['email'] ?></td>
                                                             <td><?= $row['purok'] ?></td>
-                                                            <?php if (isset($_SESSION['fullname'])): ?>
-                                                                <?php if ($_SESSION['role'] == 'resident'): ?>
-                                                                    
-                                                                <?php endif ?>
-                                                            <?php endif ?>
                                                             <td class="text-center">
                                                             <div class="form-button-action">
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
@@ -357,7 +349,7 @@ $conn->close();
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>National ID</label>
+                                        <label>ID No.</label>
                                         <input type="text" class="form-control" name="national" id="nat_id" placeholder="Enter National ID" disabled>
                                     </div>
                                     <div class="form-group">

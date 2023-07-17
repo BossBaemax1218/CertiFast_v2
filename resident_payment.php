@@ -8,7 +8,7 @@ include 'server/db_connection.php';
 	<title>History</title>
 </head>
 <body>
-
+<?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
     <?php include 'templates/main-header-resident.php' ?>
 		<?php include 'templates/sidebar-resident.php' ?>

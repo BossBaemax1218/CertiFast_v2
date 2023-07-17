@@ -31,7 +31,7 @@
 	// change profile2 name
 	$newName = date('dmYHis').str_replace(" ", "", $profile2);
 
-	  // image file directory
+	// image file directory
   	$target = "../assets/uploads/resident_profile/".basename($newName);
 	$check = "SELECT id FROM tblresident WHERE national_id='$national_id'";
 	$nat = $conn->query($check)->num_rows;	
@@ -41,7 +41,7 @@
 
 			if(!empty($profile) && !empty($profile2)){
 
-				$query = "INSERT INTO tblresident (`national_id`,citizenship,`picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`, `residency_status`) 
+				$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`, `residency_status`) 
 							VALUES ('$national_id','$citizen','$profile','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks','on hold')";
 
 				if($conn->query($query) === true){
@@ -94,10 +94,14 @@
 			$_SESSION['success'] = 'danger';
 		}
 	}else{
-		$_SESSION['message'] = 'National ID is already taken. Please enter a unique national ID!';
+		$_SESSION['message'] = 'ID is already taken. Please enter a unique ID!';
 		$_SESSION['success'] = 'danger';
 	}
-     header("Location: ../resident_request.php");
+
+	// Add an alert message to notify the user that no more information can be added
+	if($nat > 0){
+		echo "<script>alert('You cannot add more information.');</script>";
+	}
 
 	$conn->close();
-
+?>

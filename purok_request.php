@@ -62,7 +62,7 @@ while($row2 = $result1->fetch_assoc()){
                     <div class="panel-header">
                     <div>
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
-                        <h2 class="text-center fw-bold" style="font-size: 200%;">Here are the purok records requester with CertiFast Portal:</h2>
+                        <h3 class="text-center fw-bold" style="font-size: 150%;">Here are the Purok <?php echo ucwords($_SESSION['purok']); ?> records requester with CertiFast Portal:</h3>
                         <br>
                     </div>
                     <div class="page-inner">
