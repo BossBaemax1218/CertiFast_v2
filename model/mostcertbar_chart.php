@@ -1,6 +1,29 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div class="chart-container" id="chartContainer">
+    <div class="chart">
+        <div class="page-inner">
+            <div class="col">
+                <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                    <div class="card-header">
+                        <strong>MOST REQUESTED CERTIFICATES REPORTS</strong>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="certificatesChart" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
-$certificatesDataQuery = "SELECT details, COUNT(*) AS count FROM tblpayments GROUP BY details";
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$certificatesDataQuery = "SELECT details, COUNT(*) AS most_certreq FROM tblpayments GROUP BY details";
 $stmt = $conn->prepare($certificatesDataQuery);
 $stmt->execute();
 $certificatesDataResult = $stmt->get_result();
@@ -10,26 +33,30 @@ $certificatesChartData = [];
 
 if ($certificatesDataResult->num_rows > 0) {
     while ($row = $certificatesDataResult->fetch_assoc()) {
-        $detailsValue = $row['details'];
-        $count = $row['count'];
+        $detailsResult = $row['details'];
+        $most_certreq = $row['most_certreq'];
 
-        $certificatesChartLabels[] = $detailsValue;
-        $certificatesChartData[] = $count;
+        $certificatesChartLabels[] = $detailsResult;
+        $certificatesChartData[] = $most_certreq;
     }
 }
 ?>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        renderChart(<?php echo json_encode($certificatesChartLabels); ?>, <?php echo json_encode($certificatesChartData); ?>);
+        <?php if (!empty($certificatesChartLabels) && !empty($certificatesChartData)) { ?>
+            renderCertificatesChart(<?php echo json_encode($certificatesChartLabels); ?>, <?php echo json_encode($certificatesChartData); ?>);
+        <?php } else { ?>
+            showChartMessage("No data found.");
+        <?php } ?>
     });
 
-    function renderChart(labels, data) {
+    function renderCertificatesChart(certificatesChartLabels, certificatesChartData) {
         var chartData = {
-            labels: labels,
+            labels: certificatesChartLabels,
             datasets: [{
                 label: 'Most Requested Certificates',
-                data: data,
+                data: certificatesChartData,
                 backgroundColor: getRandomColor(),
                 borderColor: '#ffffff',
                 borderWidth: 1
@@ -61,5 +88,11 @@ if ($certificatesDataResult->num_rows > 0) {
             color += letters[Math.floor(Math.random() * 16)];
         }
         return color;
+    }
+
+    function showChartMessage(message) {
+        var chartMessage = document.getElementById("chartMessage");
+        chartMessage.textContent = message;
+        chartMessage.style.display = "block";
     }
 </script>

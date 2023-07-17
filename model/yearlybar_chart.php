@@ -1,6 +1,29 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div class="chart-container" id="chartContainer">
+	<div class="chart">
+		<div class="page-inner">
+		<div class="col">
+			<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+				<div class="card-header">
+					<strong>YEARLY REPORTS</strong>
+				</div>
+				<div class="card-body">
+					<canvas id="myChart3" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
+				</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 	$paymentDataQuery = "SELECT YEAR(date) AS year_only, details, COUNT(*) AS total_payments FROM tblpayments GROUP BY YEAR(date), details";
 	$stmt = $conn->prepare($paymentDataQuery);
 	$stmt->execute();
@@ -32,22 +55,6 @@
 
 		sort($labels);
 		?>
-		<div class="page-inner">
-			<div class="col">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="card">
-							<div class="card-header">
-								<strong>YEARLY REPORTS</strong>
-							</div>
-							<div class="card-body">
-								<canvas id="myChart3" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<script>
 			var chartData = {
 				labels: <?php echo json_encode($labels); ?>,
