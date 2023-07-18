@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT * FROM tbl_user_admin ORDER BY `created_at` DESC";
+	$query = "SELECT * FROM tbl_user_admin WHERE user_type IN ('staff','purok leader')";
     $result = $conn->query($query);
 
     $users = array();

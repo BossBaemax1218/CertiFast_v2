@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php
-    $query = "SELECT * FROM tblpurok ORDER BY `purok`";
+    $query = "SELECT * FROM tblpurok";
     $result = $conn->query($query);
 
     $purok = array();
@@ -66,7 +66,7 @@
                                                 <tr class="text-center">
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Purok</th>
-                                                    <th scope="col">Purok Leader</th>
+                                                    <!--<th scope="col">Purok Leader</th>-->
                                                     <th scope="col">No. of Residents</th>
                                                     <th scope="col">No. of Households</th>
                                                     <th scope="col">Action</th>
@@ -78,7 +78,7 @@
                                                     <tr class="text-center">
                                                         <td><?= $no ?></td>
                                                         <td><?= $row['purok'] ?></td>
-                                                        <td><?= $row['total_households'] ?></td>
+                                                        <!--<td><?= $row['total_households'] ?></td>-->
                                                         <td><?= $row['total_residents'] ?></td>
                                                         <td><?= $row['total_households'] ?></td>
                                                         <td>
