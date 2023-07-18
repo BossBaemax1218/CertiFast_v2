@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Handle the case when the verification code is not provided
         $_SESSION['success'] = false;
         $_SESSION['success'] = 'danger';
-        $_SESSION['form'] = 'signup';
+        $_SESSION['form'] = 'login';
         $_SESSION['message'] = "Please enter the verification code.";
 
         // Redirect the user back to the verification code page
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         return false;
     }
 
-    // Verify the email with the provided verification code
+
     if ($email = verifyEmail($verificationCode)) {
         // Email verification is successful
         $_SESSION['success'] = true;
@@ -52,17 +52,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['form'] = 'login';
         $_SESSION['message'] = "Your email has been verified.";
 
-        // Redirect the user to the password validation page
         header('Location: ../login.php');
         exit();
     } else {
-        // Email verification failed
         $_SESSION['success'] = false;
         $_SESSION['success'] = 'danger';
-        $_SESSION['form'] = 'signup';
+        $_SESSION['form'] = 'login';
         $_SESSION['message'] = "Invalid or expired verification code.";
 
-        // Redirect the user back to the verification code page
         header('Location: ../email-verify-code.php');
         exit();
     }

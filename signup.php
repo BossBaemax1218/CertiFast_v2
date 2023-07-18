@@ -1,11 +1,11 @@
 <?php include 'server/dbconnect.php' ?>
 <?php
-    $query1 = "SELECT * FROM tblpurok ORDER BY `purok`";
+    $query1 = "SELECT * FROM tblpurok";
     $result1 = $conn->query($query1);
 
     $purok = array();
-	while($row2 = $result1->fetch_assoc()){
-		$purok[] = $row2; 
+	while($row = $result1->fetch_assoc()){
+		$purok[] = $row; 
 	}
 ?>
 <!DOCTYPE html>
@@ -137,7 +137,7 @@
             </div>
         </div>
     </div>
-    <script>
+    <!--<script>
         function openModal(){
             $('#termprivacy').modal('show');
         }
@@ -151,17 +151,17 @@
 
             document.body.innerHTML = originalContents;
         }
-    </script>
+    </script>-->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var closeModalButton = document.getElementById('closeModalButton');
             closeModalButton.addEventListener('click', function() {
-                var modal = document.getElementById('myLargeModal');
+                var modal = document.getElementById('signupModal');
                 modal.classList.remove('show');
                 modal.setAttribute('aria-hidden', 'true');
                 modal.style.display = 'none';
             });
-            var modal = document.getElementById('myLargeModal');
+            var modal = document.getElementById('signupModal');
             modal.classList.add('show');
             modal.setAttribute('aria-hidden', 'false');
             modal.style.display = 'block';

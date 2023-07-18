@@ -11,7 +11,7 @@
                         <span class="datetime" style="float: right;"><?php echo date('Y-m-d H:i:s'); ?></span>
                     </div>
                     <div class="card-body">
-                        <canvas id="certificatesChart" style="width: 100%; max-width: 1450px; height: 550px;"></canvas>
+                        <canvas id="certificatesChart" style="width: 300%; max-width: 1450px; height: 400px;"></canvas>
                     </div>
                     </div>
                 </div>

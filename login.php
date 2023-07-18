@@ -129,7 +129,7 @@
             </div>
         </div>
     </div>
-    <script>
+   <!-- <script>
         function openModal(){
             $('#termprivacy').modal('show');
         }
@@ -143,17 +143,17 @@
 
             document.body.innerHTML = originalContents;
         }
-    </script>
+    </script>-->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var closeModalButton = document.getElementById('closeModalButton');
             closeModalButton.addEventListener('click', function() {
-                var modal = document.getElementById('myLargeModal');
+                var modal = document.getElementById('loginModal');
                 modal.classList.remove('show');
                 modal.setAttribute('aria-hidden', 'true');
                 modal.style.display = 'none';
             });
-            var modal = document.getElementById('myLargeModal');
+            var modal = document.getElementById('loginModal');
             modal.classList.add('show');
             modal.setAttribute('aria-hidden', 'false');
             modal.style.display = 'block';

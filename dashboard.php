@@ -1,20 +1,7 @@
 <?php include 'server/server.php' ?>
-<?php 
-	$query1 = "SELECT * FROM tbl_user_admin WHERE user_type='staff'";
-    $result1 = $conn->query($query1);
-	$staff = $result1->num_rows;
-
-	$query5 = "SELECT * FROM tblpurok";
-	$purok = $conn->query($query5)->num_rows;
-
-	$query8 = "SELECT SUM(amounts) as am FROM tblpayments";
-	$revenue = $conn->query($query8)->fetch_assoc();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<?php include 'templates/header.php' ?>
 	<title>Overview - Dashboard</title>
 </head>
@@ -37,16 +24,16 @@
 									<div class="d-flex align-items-center align-items-md-center flex-row flex-md-row">
 										<h3 class="fw-bold" style="font-size: 300%;">Overview</h3>
 									</div>	
-									<div class="col-md-12">
+									<div class="col-md-7">
 										<?php include 'model/weeklybar_chart.php' ?>
 									</div>
-									<div class="col-md-12">
+									<div class="col-md-7">
 										<?php include 'model/monthlybar_chart.php' ?>
 									</div>
-									<div class="col-md-12">
+									<div class="col-md-7">
 										<?php include 'model/yearlybar_chart.php' ?>
 									</div>
-									<div class="col-md-12">
+									<div class="col-md-7">
 										<?php include 'model/mostcertbar_chart.php' ?>
 									</div>								
 								</div>
@@ -58,11 +45,5 @@
 			</div>
 	<?php include 'templates/footer.php' ?>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script>
-		  $(document).on("click", "#pdf", function() {
-		console.log("Exporting revenue table as PDF...");
-		$("#revenuetable").tableHTMLExport({ type: "pdf", filename: "Revenue.pdf" });
-	});
-	</script>
 </body>
 </html>

@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header('location: ../dashboard.php');
                     exit();
                 } elseif ($role == 'purok leader') {
-                    $_SESSION['message'] = 'You have successfully logged in as a Purok Leader!';
+                    $_SESSION['message'] = 'You have successfully logged in as a purok leader!';
                     $_SESSION['success'] = 'success';
                     $_SESSION['role'] = $role;
                     $_SESSION['id'] = $row['id'];
@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header('location: ../resident_dashboard.php');
                     exit();
                 } else {
-                    $_SESSION['message'] = 'Your account has not yet been verified. Please check your email for the verification code.';
+                    $_SESSION['message'] = 'Your account has not yet been verified. Please check your email for last verification code.';
                     $_SESSION['success'] = 'danger';
                     $_SESSION['form'] = 'login';
 
