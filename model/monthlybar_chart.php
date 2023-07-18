@@ -1,5 +1,5 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <div class="card">
+    <div class="card mr-3">
       <div class="card-header">
           <strong>MONTHLY REPORTS</strong>
           <span class="datetime" style="float: right;"><?php echo date('Y-m-d H:i:s'); ?></span>
