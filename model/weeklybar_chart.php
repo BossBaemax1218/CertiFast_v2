@@ -12,7 +12,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$dataQuery = "SELECT DATE_FORMAT(date, '%W') AS week_name, details, COUNT(*) AS weekly_payments FROM tblpayments WHERE WEEK(date) = WEEK(CURDATE()) GROUP BY WEEK(date), details ORDER BY FIELD(DAYNAME(date), 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')";
+$dataQuery = "SELECT DATE_FORMAT(date, '%W') AS week_name, details, COUNT(*) AS weekly_payments FROM tblpayments WHERE MONTH(date) = MONTH(CURDATE()) AND DAY(date) = DAY(CURDATE()) GROUP BY WEEK(date), details ORDER BY FIELD(DAYNAME(date), 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')";
 $stmt = $conn->prepare($dataQuery);
 $stmt->execute();
 $dataResult = $stmt->get_result();

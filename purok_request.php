@@ -164,7 +164,7 @@ while($row2 = $result1->fetch_assoc()){
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <input type="text" name="id" id="res_id">
+                                <input type="hidden" name="id" id="res_id">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 <?php if(isset($_SESSION['username'])): ?>
                                 <button type="submit" class="btn btn-primary">Update</button>

@@ -11,19 +11,19 @@
 				<?php include 'templates/main-header.php' ?>
 				<?php include 'templates/sidebar.php' ?>
 				<div class="main-panel">
-					<div class="content">
-						<div class="panel-header">
+					<div class="content d-flex flex-column">
+						<div class="panel-header d-flex flex-column mt-1">
 								<?php if(isset($_SESSION['message'])): ?>
 										<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
 											<?php echo $_SESSION['message']; ?>
 										</div>
 									<?php unset($_SESSION['message']); ?>
 								<?php endif ?>
-								<div class="d-flex flex-column">
-									<div class="d-flex">
-										<h3 class="fw-bold ml-1" style="font-size: 300%;">Overview</h3>
+								<div class="d-flex flex-column mt-3">
+									<div class="d-flex md-5">
+										<h3 class="fw-bold ml-5" style="font-size: 400%;">Overview</h3>
 									</div>
-									<div class="row">
+									<div class="row ml-2">
 										<div class="col-md-6">
 											<div class="chart-wrapper">
 												<?php include 'model/weeklybar_chart.php' ?>
@@ -35,7 +35,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="row ">
+									<div class="row ml-2">
 										<div class="col-md-6">
 											<div class="chart-wrapper">
 												<?php include 'model/yearlybar_chart.php' ?>

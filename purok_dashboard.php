@@ -48,7 +48,7 @@ while($row = $result->fetch_assoc()){
 								</div>
 							<?php unset($_SESSION['message']); ?>
 						<?php endif ?>							
-                        <div class="row">
+                        <!--<div class="row">
                             <div class="col-md-4">
                                 <div class="card card-stats card card-round">
                                     <div class="card-body">
@@ -121,7 +121,7 @@ while($row = $result->fetch_assoc()){
                                     </div>
                                 </div>
                             </div>
-					    </div>
+					    </div>-->
                         <section id="featured-services" class="featured-services">
 								<div class="container" data-aos="fade-up">
 									<div class="row">
