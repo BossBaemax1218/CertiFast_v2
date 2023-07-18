@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             $_SESSION['message'] = 'You have succesfully registered! <br> Please check your email for a verification code to verify your account.';
             $_SESSION['success'] = 'success';
-            $_SESSION['form'] = 'signup';
+            $_SESSION['form'] = 'login';
 
             header('Location: ../email-verify-code.php');
             exit();

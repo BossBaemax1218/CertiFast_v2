@@ -13,31 +13,41 @@
 				<div class="main-panel">
 					<div class="content">
 						<div class="panel-header">
-							<div class="page-inner">
 								<?php if(isset($_SESSION['message'])): ?>
 										<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
 											<?php echo $_SESSION['message']; ?>
 										</div>
 									<?php unset($_SESSION['message']); ?>
 								<?php endif ?>
-								<div class="d-flex align-items-left align-items-md-left flex-column flex-md-column">
-									<div class="d-flex align-items-center align-items-md-center flex-row flex-md-row">
-										<h3 class="fw-bold" style="font-size: 300%;">Overview</h3>
-									</div>	
-									<div class="col-md-7">
-										<?php include 'model/weeklybar_chart.php' ?>
+								<div class="d-flex flex-column">
+									<div class="d-flex">
+										<h3 class="fw-bold ml-1" style="font-size: 300%;">Overview</h3>
 									</div>
-									<div class="col-md-7">
-										<?php include 'model/monthlybar_chart.php' ?>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="chart-wrapper">
+												<?php include 'model/weeklybar_chart.php' ?>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="chart-wrapper">
+												<?php include 'model/monthlybar_chart.php' ?>
+											</div>
+										</div>
 									</div>
-									<div class="col-md-7">
-										<?php include 'model/yearlybar_chart.php' ?>
+									<div class="row ">
+										<div class="col-md-6">
+											<div class="chart-wrapper">
+												<?php include 'model/yearlybar_chart.php' ?>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="chart-wrapper">
+												<?php include 'model/mostcertbar_chart.php' ?>
+											</div>
+										</div>
 									</div>
-									<div class="col-md-7">
-										<?php include 'model/mostcertbar_chart.php' ?>
-									</div>								
-								</div>
-							</div>				
+								</div>			
 						</div>
 					</div>
 					<?php include 'templates/main-footer.php' ?>

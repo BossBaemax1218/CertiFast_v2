@@ -1,25 +1,13 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<div class="chart-container" id="chartContainer">
-    <div class="chart">
-        <div class="page-inner">
-            <div class="col">
-                <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                    <div class="card-header">
-                        <strong>MOST REQUESTED CERTIFICATES REPORTS</strong>
-                        <span class="datetime" style="float: right;"><?php echo date('Y-m-d H:i:s'); ?></span>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="certificatesChart" style="width: 300%; max-width: 1450px; height: 400px;"></canvas>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
+    <div class="card">
+        <div class="card-header">
+            <strong>MOST REQUESTED CERTIFICATES REPORTS</strong>
+            <!--<span class="datetime" style="float: right;"><?php echo date('Y-m-d H:i:s'); ?></span>-->
+        </div>
+        <div class="card-body">
+            <canvas id="certificatesChart" style="width: 100%; max-width: 1450px; height: 350px;"></canvas>
         </div>
     </div>
-</div>
 
 <?php
 error_reporting(E_ALL);
