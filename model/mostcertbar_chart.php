@@ -1,4 +1,4 @@
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <div class="card mr-3">
         <div class="card-header">
             <strong>MOST REQUESTED CERTIFICATES REPORTS</strong>

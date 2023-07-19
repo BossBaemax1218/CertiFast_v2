@@ -1,108 +1,154 @@
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <div class="card">
-		<div class="card-header">
-			<strong>YEARLY REPORTS</strong>
-			<span class="datetime" style="float: right;"><?php echo date('Y-m-d'); ?></span>
-		</div>
-		<div class="card-body">
-			<canvas id="myChart3" style="width: 100%; max-width: 1450px; height: 350px;"></canvas>
-		</div>
-    </div>
+<div class="card mr-4 mt-3">
+  <div class="card-header">
+    <strong>REPORTS</strong>
+  </div>
+  <div class="card-footer">
+    <p class="description" style="font-size: 14px;" id="description"></p>
+  </div>
+  <div class="card-body">
+    <canvas id="myChart3" style="width: 100%; max-width: 1450px; height: 440px;"></canvas>
+  </div>
+</div>
+
 <?php
+include 'server/db_connect.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-	$paymentDataQuery = "SELECT YEAR(date) AS year_only, details, COUNT(*) AS total_payments FROM tblpayments GROUP BY YEAR(date), details";
-	$stmt = $conn->prepare($paymentDataQuery);
-	$stmt->execute();
-	$paymentDataResult = $stmt->get_result();
+  $fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : date('Y-m-d', strtotime('last monday'));
+  $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : date('Y-m-d', strtotime('next sunday'));
+  $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
 
-	$labels = [];
-	$datasets = [];
 
-	if ($paymentDataResult->num_rows > 0) {
-		$barangays = [];
-		while ($row = $paymentDataResult->fetch_assoc()) {
-			$year = $row['year_only'];
-			$barangay = $row['details'];
+$query = "SELECT DATE_FORMAT(date, '%W') AS day_name, details, COUNT(*) AS count
+          FROM tblpayments
+          WHERE date BETWEEN :fromDate AND :toDate
+          AND (details = :documentType OR :documentType = 'All')
+          GROUP BY day_name, details
+          ORDER BY FIELD(day_name, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'), day_name";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':fromDate', $fromDate);
+$stmt->bindParam(':toDate', $toDate);
+$stmt->bindParam(':documentType', $documentType);
+$stmt->execute();
 
-			if (!in_array($barangay, $barangays)) {
-				$barangays[] = $barangay;
-			}
+$chartData = [];
+$totalValues = [];
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $dayName = $row['day_name'];
+    $documentType = $row['details'];
+    $count = $row['count'];
 
-			if (!isset($datasets[$barangay])) {
-				$datasets[$barangay] = [];
-			}
+    if (!isset($chartData[$dayName])) {
+        $chartData[$dayName] = [];
+    }
 
-			$datasets[$barangay][$year] = $row['total_payments'];
+    $chartData[$dayName][$documentType] = $count;
 
-			if (!in_array($year, $labels)) {
-				$labels[] = $year;
-			}
-		}
+    if (!isset($totalValues[$documentType])) {
+        $totalValues[$documentType] = 0;
+    }
 
-		sort($labels);
-		?>
-		<script>
-			var chartData = {
-				labels: <?php echo json_encode($labels); ?>,
-				datasets: [
-					<?php foreach ($barangays as $barangay) { ?>
-						{
-							label: '<?php echo $barangay; ?>',
-							data: [
-								<?php foreach ($labels as $year) { ?>
-									<?php echo isset($datasets[$barangay][$year]) ? $datasets[$barangay][$year] : 0; ?>,
-								<?php } ?>
-							],
-							backgroundColor: getRandomColor(),
-							borderColor: getRandomColor(),
-							borderWidth: 1
-						},
-					<?php } ?>
-				]
-			};
+    $totalValues[$documentType] += $count;
+}
 
-			var chartOptions = {
-				responsive: true,
-				maintainAspectRatio: false,
-				aspectRatio: 1.5,
-				plugins: {
-					legend: {
-						position: "top"
-					}
-				},
-				scales: {
-					y: {
-						beginAtZero: true
-					}
-				}
-			};
-			function getRandomColor() {
-				var letters = "0123456789ABCDEF";
-				var color = "#";
-				for (var i = 0; i < 6; i++) {
-					color += letters[Math.floor(Math.random() * 16)];
-				}
-				return color;
-			}
 
-			document.addEventListener("DOMContentLoaded", function () {
-				var ctx = document.getElementById("myChart3").getContext("2d");
-				try {
-					new Chart(ctx, {
-						type: "bar",
-						data: chartData,
-						options: chartOptions
-					});
-				} catch (error) {
-					console.error(error);
-				}
-			});
-		</script>
-		<?php
-	} else {
-		echo "No data found.";
-	}
+$chartDataJson = json_encode($chartData);
+$totalValuesJson = json_encode($totalValues);
 ?>
+
+<script>
+
+  function displayChart() {
+    var chartData = <?php echo $chartDataJson; ?>;
+    var totalValues = <?php echo $totalValuesJson; ?>;
+    var days = Object.keys(chartData);
+    var documentTypes = Object.keys(chartData[days[0]]);
+
+    var datasets = [];
+    documentTypes.forEach(function(documentType) {
+      var data = days.map(function(day) {
+        return chartData[day][documentType] || 0;
+      });
+
+      datasets.push({
+        label: documentType,
+        data: data,
+        backgroundColor: getRandomColor()
+      });
+    });
+
+    var ctx = document.getElementById('myChart3').getContext('2d');
+    var chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: days,
+        datasets: datasets
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            precision: 0
+          }
+        }
+      }
+    });
+
+
+    var description = "Requested Certification: ";
+    var documentTypes = Object.keys(totalValues);
+    documentTypes.forEach(function(documentType) {
+      var value = totalValues[documentType];
+      description += " " + documentType + ": " + value + ",";
+    });
+
+    var descriptionElement = document.getElementById('description');
+    descriptionElement.textContent = description;
+  }
+
+
+  window.addEventListener('load', displayChart);
+
+
+  var applyFilterBtn = document.getElementById('applyFilterBtn');
+  applyFilterBtn.addEventListener('click', function(event) {
+    event.preventDefault(); 
+
+    var form = document.querySelector('form');
+    form.submit();
+
+    displayChart();
+  });
+
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+</script>
+<script>
+document.getElementById("pdfExportBtn").addEventListener("click", function () {
+  var doc = new jsPDF();
+  var chartRow = document.getElementById("chartRow");
+
+  var title = "Overview Reports";
+  doc.setFontSize(18);
+  doc.text(title, 10, 10);
+
+  var currentDate = new Date().toLocaleDateString();
+  doc.setFontSize(12);
+  doc.text("Date: " + currentDate, 10, 20);
+
+  html2canvas(chartRow).then(function (canvas) {
+    var imgData = canvas.toDataURL("image/png");
+    doc.addImage(imgData, "PNG", 10, 50, 200, 0);
+
+    doc.save("chart.pdf");
+  });
+});
+</script>
