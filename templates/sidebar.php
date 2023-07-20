@@ -222,7 +222,7 @@ $totalAnnouncements = $row1['total_announcements'];
                                         <span class="sub-item">Position Management</span>
                                     </a>
                                 </li>
-                                <?php if(isset($_SESSION['username']) && ($_SESSION['role'] == 'staff' || $_SESSION['role'] == 'purok leader')): ?>
+                                <?php if(isset($_SESSION['username']) && ($_SESSION['role'] == 'staff')): ?>
                                     <li>
                                         <a href="#support" data-toggle="modal">
                                             <span class="sub-item">Support & Feedback</span>

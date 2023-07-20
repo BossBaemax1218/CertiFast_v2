@@ -84,7 +84,6 @@ ini_set('display_errors', 1);
 $chartDataJson = "null";
 $totalValuesJson = "null";
 
-// Get the current date for the default From Date value
 $currentDate = date('Y-m-d');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -98,11 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-      // Get the selected date range from the form, or use the current date as the default
       $fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $currentDate;
       $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $currentDate;
 
-      // Get the selected document type from the form, or set it to 'All'
       $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
 
         switch ($dateType) {

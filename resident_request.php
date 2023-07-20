@@ -8,15 +8,32 @@ if (!isset($_SESSION["fullname"])) {
 
 $fullname = $_SESSION["fullname"];
 
-$sql = "SELECT *, tblresident.id, tblresident.purok FROM tblresident JOIN tbl_user_resident ON tblresident.email = tbl_user_resident.user_email WHERE tbl_user_resident.fullname = ?";
+$sql = "SELECT *, tblresident.id, tblresident.purok FROM tblresident JOIN tbl_user_resident ON tblresident.email = tbl_user_resident.user_email WHERE tbl_user_resident.fullname = ? AND tblresident.residency_status IN ('on hold', 'rejected')";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $fullname);
 $stmt->execute();
 $result = $stmt->get_result();
 
 $resident = array();
+$approvedResidents = array();
+
 while ($row = $result->fetch_assoc()) {
-    $resident[] = $row;
+    $status = $row['residency_status'];
+    $statusBadge = '';
+
+    if ($status == 'on hold') {
+        $statusBadge = '<span class="badge badge-warning">On Hold</span>';
+    } elseif ($status == 'rejected') {
+        $statusBadge = '<span class="badge badge-danger">Rejected</span>';
+    }
+
+    $row['residency_badge'] = $statusBadge;
+
+    if ($status == 'on hold') {
+        $resident[] = $row;
+    } elseif ($status == 'rejected') {
+        $resident[] = $row;
+    }
 }
 
 $query1 = "SELECT * FROM tblpurok";
@@ -74,6 +91,7 @@ $conn->close();
                                                     <th scope="col">Gender</th>
                                                     <th scope="col">Email</th>
                                                     <th scope="col">Purok</th>
+                                                    <th scope="col">Status</th>
                                                     <th class="text-center" scope="col">Action</th>
                                                 </tr>
                                             </thead>
@@ -92,6 +110,7 @@ $conn->close();
                                                             <td><?= $row['gender'] ?></td>
                                                             <td><?= $row['email'] ?></td>
                                                             <td><?= $row['purok'] ?></td>
+                                                            <td class="text-center"><?= $row['residency_badge'] ?></td>
                                                             <td class="text-center">
                                                             <div class="form-button-action">
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 

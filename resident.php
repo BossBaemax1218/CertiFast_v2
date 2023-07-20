@@ -12,6 +12,7 @@
         } elseif ($status == 'approved') {
             $statusBadge = '<span class="badge badge-primary">Approved</span>';
         }
+
     
         $row['residency_badge'] = $statusBadge;
         $resident[] = $row;

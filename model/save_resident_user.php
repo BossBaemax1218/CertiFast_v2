@@ -28,10 +28,8 @@
 	$profile 	= $conn->real_escape_string($_POST['profileimg']); // base 64 image
 	$profile2 	= $_FILES['img']['name'];
 
-	// change profile2 name
 	$newName = date('dmYHis').str_replace(" ", "", $profile2);
 
-	// image file directory
   	$target = "../assets/uploads/resident_profile/".basename($newName);
 	$check = "SELECT id FROM tblresident WHERE national_id='$national_id'";
 	$nat = $conn->query($check)->num_rows;	
@@ -98,7 +96,6 @@
 		$_SESSION['success'] = 'danger';
 	}
 
-	// Add an alert message to notify the user that no more information can be added
 	if($nat > 0){
 		echo "<script>alert('You cannot add more information.');</script>";
 	}

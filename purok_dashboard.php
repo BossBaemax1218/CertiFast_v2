@@ -1,18 +1,55 @@
 <?php 
-include 'server/server.php';
+include 'server/server.php' ?>
+<?php
+if (!isset($_SESSION["username"])) {
+    header("Location: dashboard.php");
+    exit;
+}
+
+$fullname = $_SESSION["username"];
+
+$query = "SELECT *, tblresident.id AS id FROM tblresident JOIN tbl_user_admin ON tblresident.purok = tbl_user_admin.purok WHERE tbl_user_admin.username = ? AND tblresident.residency_status IN ('on hold') ORDER BY 'tblresident.id' DESC";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $fullname);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$resident = array();
+$approvedResidents = array();
+
+while ($row = $result->fetch_assoc()) {
+    $status = $row['residency_status'];
+    $statusBadge = '';
+
+    if ($status == 'on hold') {
+        $statusBadge = '<span class="badge badge-warning">On Hold</span>';
+    }
+
+    $row['residency_badge'] = $statusBadge;
+
+    if ($status == 'on hold') {
+        $resident[] = $row;
+    }
+}
+?>
+<?php
 $query = "SELECT COUNT(DISTINCT details) as de FROM tblpayments WHERE details IN ('Barangay Clearance Payment', 'Business Permit Payment', 'Certificate of Residency Payment', 'Certificate of Indigency Payment')"; 
 $revenue1 = $conn->query($query)->fetch_assoc();
 
-$sql1 = "SELECT COUNT(name) as receipt FROM tblpayments";
+$sql1 = "SELECT COUNT(residency_status) as pending FROM tblresident WHERE residency_status='on hold'";
 $result1 = $conn->query($sql1);
 $row1 = $result1->fetch_assoc();
-$receiptCount = $row1['receipt'];
+$pendingCount = $row1['pending'];
 
-$query2 = "SELECT SUM(amounts) as am FROM tblpayments ORDER BY `date` DESC";
-$revenue3 = $conn->query($query2)->fetch_assoc();
+$query2 = "SELECT COUNT(residency_status) as approved FROM tblresident WHERE residency_status='approved'";
+$result2 = $conn->query($query2 );
+$row2 = $result2->fetch_assoc();
+$approvedCount = $row2['approved'];
 
-$sql = "SELECT * FROM tblpayments ORDER BY `date` DESC";
+$sql = "SELECT COUNT(residency_status) as rejected FROM tblresident WHERE residency_status='rejected'";
 $result = $conn->query($sql);
+$row2 = $result->fetch_assoc();
+$rejectedCount = $row2['rejected'];
 
 $revenue = array();
 while($row = $result->fetch_assoc()){
@@ -56,8 +93,8 @@ while($row = $result->fetch_assoc()){
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 16px;">Hold</h2>
-                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($receiptCount) ?></h3>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Pending</h2>
+                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($pendingCount) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,7 +118,7 @@ while($row = $result->fetch_assoc()){
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Approved</h2>
-                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue3['am'],2)?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($approvedCount)?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -104,8 +141,8 @@ while($row = $result->fetch_assoc()){
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 16px;">Reject</h2>
-                                                    <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h3>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Rejected</h2>
+                                                    <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($rejectedCount) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,6 +153,49 @@ while($row = $result->fetch_assoc()){
                                 </div>
                             </div>
 					    </div>
+                        <div class="card">
+                                    <div class="card-header md-2">                                    
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="residenttable" class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Fullname</th>
+                                                        <th scope="col">Address</th>
+                                                        <th scope="col">Birthdate</th>
+                                                        <th scope="col">Age</th>
+                                                        <th scope="col">Gender</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Purok</th>
+                                                        <th scope="col">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>                                           
+                                                <?php if (!empty($resident)): ?>
+                                                    <?php $no = 1; foreach ($resident as $row): ?>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="avatar avatar-xs ml-3">
+                                                                    <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
+                                                                </div>
+                                                                <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
+                                                            </td>
+                                                            <td><?= $row['address'] ?></td>
+                                                            <td><?= $row['birthdate'] ?></td>
+                                                            <td><?= $row['age'] ?></td>
+                                                            <td><?= $row['gender'] ?></td>
+                                                            <td><?= $row['email'] ?></td>
+                                                            <td><?= $row['purok'] ?></td>
+                                                            <td class="text-center"><?= $row['residency_badge'] ?></td>
+                                                        </tr>
+                                                    <?php $no++; endforeach ?>
+                                                <?php endif ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 				<?php include 'templates/main-footer.php' ?>

@@ -1,5 +1,5 @@
 <?php
-    include 'server/db_connection.php'; 
+    include 'server/dbconnect.php'; 
 
     $query = "SELECT * FROM tblbrgy_info WHERE id='1'";
     $result = $conn->query($query)->fetch_assoc();
@@ -28,11 +28,8 @@
     <link href="homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="homepage/assets/css/style.css" rel="stylesheet">
-
-    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
 </head>
 <body>

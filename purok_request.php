@@ -8,7 +8,7 @@ if (!isset($_SESSION["username"])) {
 
 $fullname = $_SESSION["username"];
 
-$query = "SELECT *, tblresident.id AS id FROM tblresident JOIN tbl_user_admin ON tblresident.purok = tbl_user_admin.purok WHERE tbl_user_admin.username = ? AND (tblresident.residency_status = 'on hold') ORDER BY tblresident.id DESC";
+$query = "SELECT *, tblresident.id AS id FROM tblresident JOIN tbl_user_admin ON tblresident.purok = tbl_user_admin.purok WHERE tbl_user_admin.username = ? AND tblresident.residency_status IN ('on hold', 'rejected')";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $fullname);
 $stmt->execute();
@@ -23,16 +23,16 @@ while ($row = $result->fetch_assoc()) {
 
     if ($status == 'on hold') {
         $statusBadge = '<span class="badge badge-warning">On Hold</span>';
-    } elseif ($status == 'approved') {
-        $statusBadge = '<span class="badge badge-primary">Approved</span>';
+    } elseif ($status == 'rejected') {
+        $statusBadge = '<span class="badge badge-danger">Rejected</span>';
     }
 
     $row['residency_badge'] = $statusBadge;
 
     if ($status == 'on hold') {
         $resident[] = $row;
-    } elseif ($status == 'approved') {
-        $approvedResidents[] = $row;
+    } elseif ($status == 'rejected') {
+        $resident[] = $row;
     }
 }
 ?>
@@ -165,7 +165,7 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                                             <option disabled selected>Select Status</option>
                                             <option value="on hold">On Hold</option>
                                             <option value="approved">Approved</option>
-                                            <option value="approved">Reject</option>
+                                            <option value="rejected">Rejected</option>
                                         </select>
                                     </div>
                                 </div>

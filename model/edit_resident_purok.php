@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); // Start the session if not already started
 include '../server/server.php';
 
 if (!isset($_SESSION['username'])) {
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $rstatus = $conn->real_escape_string($_POST['rstatus']);
 
     if (!empty($id) && !empty($rstatus)) {
-        $validStatuses = array('approved', 'rejected', 'on hold'); 
+        $validStatuses = array('approved', 'rejected', 'on hold');
         if (in_array($rstatus, $validStatuses)) {
             $query = "UPDATE tblresident SET residency_status=? WHERE id=?";
             $stmt = $conn->prepare($query);
@@ -30,11 +30,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->execute()) {
                 $_SESSION['message'] = 'Status has been updated!';
                 $_SESSION['success'] = 'success';
+
+                if ($rstatus === 'rejected') {
+                    header("Location: ../purok_requested.php");
+                    exit();
+                }
             } else {
                 $_SESSION['message'] = 'Failed to update Status.';
                 $_SESSION['success'] = 'danger';
                 echo $stmt->error; 
             }
+
             $stmt->close();
         } else {
             $_SESSION['message'] = 'Invalid residency status.';
