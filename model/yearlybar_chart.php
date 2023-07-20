@@ -1,4 +1,3 @@
-
 <div class="card mr-4 mt-3">
   <div class="card-header">
     <strong>REPORTS</strong>
@@ -16,10 +15,10 @@ include 'server/db_connect.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-  $fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : date('Y-m-d', strtotime('last monday'));
+// Assuming you have a database connection
+	$fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : date('Y-m-d', strtotime('last monday'));
   $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : date('Y-m-d', strtotime('next sunday'));
   $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
-
 
 $query = "SELECT DATE_FORMAT(date, '%W') AS day_name, details, COUNT(*) AS count
           FROM tblpayments
@@ -83,7 +82,7 @@ $totalValuesJson = json_encode($totalValues);
     var chart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: days,
+        labels: days, 
         datasets: datasets
       },
       options: {
@@ -96,7 +95,6 @@ $totalValuesJson = json_encode($totalValues);
       }
     });
 
-
     var description = "Requested Certification: ";
     var documentTypes = Object.keys(totalValues);
     documentTypes.forEach(function(documentType) {
@@ -104,10 +102,10 @@ $totalValuesJson = json_encode($totalValues);
       description += " " + documentType + ": " + value + ",";
     });
 
+
     var descriptionElement = document.getElementById('description');
     descriptionElement.textContent = description;
   }
-
 
   window.addEventListener('load', displayChart);
 
@@ -136,7 +134,7 @@ document.getElementById("pdfExportBtn").addEventListener("click", function () {
   var doc = new jsPDF();
   var chartRow = document.getElementById("chartRow");
 
-  var title = "Overview Reports";
+  var title = "Overview Chart Visualization Reports";
   doc.setFontSize(18);
   doc.text(title, 10, 10);
 
@@ -146,7 +144,7 @@ document.getElementById("pdfExportBtn").addEventListener("click", function () {
 
   html2canvas(chartRow).then(function (canvas) {
     var imgData = canvas.toDataURL("image/png");
-    doc.addImage(imgData, "PNG", 10, 50, 200, 0);
+    doc.addImage(imgData, "PNG", 10, 30, 190, 0);
 
     doc.save("chart.pdf");
   });

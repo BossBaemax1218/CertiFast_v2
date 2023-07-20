@@ -183,3 +183,24 @@ ini_set('display_errors', 1);
 	}
 ?>
 
+<script>
+document.getElementById("pdfExportBtn").addEventListener("click", function () {
+  var doc = new jsPDF();
+  var chartRow = document.getElementById("chartRow");
+
+  var title = "Overview Chart Visualization Reports";
+  doc.setFontSize(18);
+  doc.text(title, 10, 10);
+
+  var currentDate = new Date().toLocaleDateString();
+  doc.setFontSize(12);
+  doc.text("Date: " + currentDate, 10, 20);
+
+  html2canvas(chartRow).then(function (canvas) {
+    var imgData = canvas.toDataURL("image/png");
+    doc.addImage(imgData, "PNG", 10, 30, 190, 0);
+
+    doc.save("chart.pdf");
+  });
+});
+</script>
