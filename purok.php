@@ -18,14 +18,8 @@
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
-
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
-
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header">
@@ -66,7 +60,7 @@
                                                 <tr class="text-center">
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Purok</th>
-                                                    <!--<th scope="col">Purok Leader</th>-->
+                                                    <th scope="col">Purok Leader</th>
                                                     <th scope="col">No. of Residents</th>
                                                     <th scope="col">No. of Households</th>
                                                     <th scope="col">Action</th>
@@ -78,7 +72,7 @@
                                                     <tr class="text-center">
                                                         <td><?= $no ?></td>
                                                         <td><?= $row['purok'] ?></td>
-                                                        <!--<td><?= $row['total_households'] ?></td>-->
+                                                        <td><?= $row['purok_leader'] ?></td>
                                                         <td><?= $row['total_residents'] ?></td>
                                                         <td><?= $row['total_households'] ?></td>
                                                         <td>
@@ -124,6 +118,10 @@
                                 <div class="form-group">
                                     <label>Purok Name</label>
                                     <input type="text" class="form-control" placeholder="Enter Purok Name" name="purok" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Purok Leader</label>
+                                    <input type="text" class="form-control" placeholder="Enter Purok Name" name="purok_leader" required>
                                 </div>
                                 <div class="form-group">
                                     <label>No. of Residents</label>

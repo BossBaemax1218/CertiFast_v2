@@ -8,12 +8,13 @@
     }
 
 	$purok 	= $conn->real_escape_string($_POST['purok']);
+    $purok_leader 	= $conn->real_escape_string($_POST['purok_leader']);
 	$total_residents	= $conn->real_escape_string($_POST['total_residents']);
     $total_households	= $conn->real_escape_string($_POST['total_households']);
 
     if(!empty($purok) && !empty($total_residents) && !empty($total_households)){
 
-        $insert  = "INSERT INTO tblpurok (`purok`, `total_residents`,`total_households`) VALUES ('$purok', '$total_residents','$total_households')";
+        $insert  = "INSERT INTO tblpurok (`purok`, `total_residents`,`total_households`,`purok_leader`) VALUES ('$purok', '$total_residents','$total_households', '$purok_leader')";
         $result  = $conn->query($insert);
 
         if($result === true){

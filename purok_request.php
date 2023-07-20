@@ -35,16 +35,22 @@ while ($row = $result->fetch_assoc()) {
         $approvedResidents[] = $row;
     }
 }
-
-
-
-$query1 = "SELECT * FROM tblpurok  ORDER BY `purok`";
-$result1 = $conn->query($query1);
+?>
+<?php
+$fullname = $_SESSION["username"];
+$query1 = "SELECT * FROM tblpurok JOIN tbl_user_admin ON tblpurok.purok = tbl_user_admin.purok WHERE tbl_user_admin.username = ?";
+$stmt = $conn->prepare($query1);
+$stmt->bind_param("s", $fullname);
+$stmt->execute();
+$result1 = $stmt->get_result();
 
 $purok = array();
-while($row2 = $result1->fetch_assoc()){
-    $purok[] = $row2; 
+while ($row2 = $result1->fetch_assoc()) {
+    $purok[] = $row2;
 }
+$purokValue = isset($_SESSION['purok']) && !empty($_SESSION['purok']) ? ucwords($_SESSION['purok']) : '';
+
+$purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +68,7 @@ while($row2 = $result1->fetch_assoc()){
                     <div class="panel-header">
                     <div>
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
-                        <h3 class="text-center fw-bold" style="font-size: 150%;">Here are the Purok <?php echo ucwords($_SESSION['purok']); ?> records requester with CertiFast Portal:</h3>
+                        <h3 class="text-center fw-bold" style="font-size: 150%;">Here are the Purok <?php echo ($purokNumber); ?> records requester with CertiFast Portal:</h3>
                         <br>
                     </div>
                     <div class="page-inner">
@@ -159,6 +165,7 @@ while($row2 = $result1->fetch_assoc()){
                                             <option disabled selected>Select Status</option>
                                             <option value="on hold">On Hold</option>
                                             <option value="approved">Approved</option>
+                                            <option value="approved">Reject</option>
                                         </select>
                                     </div>
                                 </div>

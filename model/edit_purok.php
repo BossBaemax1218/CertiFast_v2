@@ -8,13 +8,14 @@
     }
     
 	$purok 	            = $conn->real_escape_string($_POST['purok']);
+    $purok_leader	            = $conn->real_escape_string($_POST['purok_leader']);
 	$total_residents 	= $conn->real_escape_string($_POST['total_residents']);
     $total_households 	= $conn->real_escape_string($_POST['total_households']);
     $id 	            = $conn->real_escape_string($_POST['id']);
 
     if(!empty($id)){
 
-        $query 		= "UPDATE tblpurok SET `purok` = '$purok', `total_residents`='$total_residents',`total_households`='$total_households' WHERE id=$id;";	
+        $query 		= "UPDATE tblpurok SET `purok` = '$purok', `total_residents`='$total_residents',`total_households`='$total_households' ,`purok_leader`='$purok_leader' WHERE id=$id;";	
 		$result 	= $conn->query($query);
 
         if($result === true){
