@@ -1,8 +1,20 @@
 <?php 
 include 'server/server.php' ?>
 <?php
-if (!isset($_SESSION["username"])) {
+if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "admin") {
+    header("Location: dashboard.php");
+    exit;
+}
+if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "staff") {
+    header("Location: dashboard.php");
+    exit;
+}
+if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "purok leader") {
     header("Location: purok_dashboard.php");
+    exit;
+}
+if (!isset($_SESSION["fullname"]) || $_SESSION["role"] !== "resident") {
+    header("Location: resident_dashboard.php");
     exit;
 }
 

@@ -1,5 +1,5 @@
 <?php
-    include 'server/db_connection.php'; 
+    include 'server/dbconnect.php'; 
 
     $query = "SELECT * FROM tblbrgy_info WHERE id='1'";
     $result = $conn->query($query)->fetch_assoc();

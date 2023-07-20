@@ -11,5 +11,5 @@
     $_SESSION['form'] = 'login';
 
 
-    header('location: ../login.php');
+    header('location: ../index.php');
 ?>

@@ -90,5 +90,15 @@
             modal.style.display = 'block';
         });
     </script>
+    <script>
+document.addEventListener('mousedown', function(event) {
+    // Check if the right mouse button (2) or middle mouse button (3) was clicked
+    if (event.which === 2 || event.which === 3) {
+        // Go back in the browser's history
+        history.back();
+    }
+});
+</script>
+
     </body>
 </html>
