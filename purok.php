@@ -116,7 +116,7 @@
                         <div class="modal-body">
                             <form method="POST" action="model/save_purok.php" >
                                 <div class="form-group">
-                                    <label>Purok Name</label>
+                                    <label>Purok</label>
                                     <input type="text" class="form-control" placeholder="Enter Purok Name" name="purok" required>
                                 </div>
                                 <div class="form-group">
