@@ -253,7 +253,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Payment Details(Optional)</label>
-                                    <textarea class="form-control" placeholder="Enter Payment Details" name="details">Business Permit Payment</textarea>
+                                    <textarea class="form-control" placeholder="Enter Payment Details" name="details">Business Permit</textarea>
                                 </div>
                         </div>
                         <div class="modal-footer">

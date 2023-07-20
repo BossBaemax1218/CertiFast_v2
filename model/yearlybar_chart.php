@@ -1,15 +1,78 @@
-<div class="card mr-4 mt-3">
-  <div class="card-header">
-    <strong>REPORTS</strong>
-  </div>
-  <div class="card-footer">
-    <p class="description" style="font-size: 14px;" id="description"></p>
-  </div>
-  <div class="card-body">
-    <canvas id="myChart3" style="width: 100%; max-width: 1450px; height: 440px;"></canvas>
-  </div>
-</div>
+<style>
+    /* Base styles for the card */
+    .card {
+      max-width: 1100px;
+      margin: auto 0px;
+      border-radius: 5px;
+    }
 
+    .card-header {
+      color: black;
+      padding: 5px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+    #description {
+      font-size: 16px;
+      margin-right: 5px;
+    }
+    table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    text-align: left;
+  }
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+      /* Adjust font size for small screens */
+      .description {
+        font-size: 12px;
+      }
+    }
+
+    @media screen and (max-width: 1100px) {
+      /* Adjust the width of the canvas for medium screens */
+      #myChart3 {
+        width: 100%;
+        max-width: 800px;
+        height: 350px;
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+      /* Adjust the width of the canvas for small and medium screens */
+      #myChart3 {
+        max-width: 600px;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      /* Adjust font size for extra small screens */
+      .description {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">
+      <strong>REPORTS</strong>
+    </div>
+    <div class="card-footer">
+      <p class="description" id="description"></p>
+    </div>
+    <div class="card-body">
+      <canvas id="myChart3" style="height: 350px;"></canvas>
+    </div>
+  </div>
 <?php
 include 'server/db_connect.php';
 error_reporting(E_ALL);
@@ -58,7 +121,6 @@ $totalValuesJson = json_encode($totalValues);
 ?>
 
 <script>
-
   function displayChart() {
     var chartData = <?php echo $chartDataJson; ?>;
     var totalValues = <?php echo $totalValuesJson; ?>;
@@ -95,16 +157,17 @@ $totalValuesJson = json_encode($totalValues);
       }
     });
 
-    var description = "Requested Certification: ";
-    var documentTypes = Object.keys(totalValues);
-    documentTypes.forEach(function(documentType) {
-      var value = totalValues[documentType];
-      description += " " + documentType + ": " + value + ",";
-    });
 
+    var description = "<table><tr><th>Result</th><th>Total Value</th></tr>";
+    var documentTypes = Object.keys(totalValues);
+    documentTypes.forEach(function (documentType) {
+      var value = totalValues[documentType];
+      description += "<tr><td>" + documentType + "</td><td><b>" + value + "</b></td></tr>";
+    });
+    description += "</table>";
 
     var descriptionElement = document.getElementById('description');
-    descriptionElement.textContent = description;
+    descriptionElement.innerHTML = description;
   }
 
   window.addEventListener('load', displayChart);

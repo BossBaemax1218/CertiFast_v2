@@ -19,44 +19,44 @@
 									</div>
 									<?php unset($_SESSION['message']); ?>
 								<?php endif ?>
-								<div class="d-flex flex-column mt-3">
-									<h3 class="fw-bold ml-4" style="font-size: 400%;">Overview</h3>
+								<div class="container mt-3">
+									<h3 class="fw-bold mb-4" style="font-size: 400%;">Overview</h3>
 									<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-								<div class="row" id="filterRow">
-									<div class="col-md-2 ml-4">
-									<label for="fromDate">From:</label>
-									<input type="date" class="form-control" id="fromDate" name="fromDate" value="<?php echo isset($_POST['fromDate']) ? htmlspecialchars($_POST['fromDate']) : date('Y-m-d'); ?>">
-									</div>
-									<div class="col-md-2">
-									<label for="toDate">To:</label>
-									<input type="date" class="form-control" id="toDate" name="toDate" value="<?php echo isset($_POST['toDate']) ? htmlspecialchars($_POST['toDate']) : date('Y-m-d'); ?>">
-									</div>
-									<div class="col-md-3">
-									<label for="documentType">Document Type:</label>
-									<select class="form-control" id="documentType" name="documentType">
-										<option value="All" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'All') echo 'selected'; ?>>All</option>
-										<option value="Barangay Clearance Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Barangay Clearance Payment') echo 'selected'; ?>>Barangay Clearance</option>
-										<option value="Certificate of Residency Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Residency Payment') echo 'selected'; ?>>Certificate of Residency</option>
-										<option value="Certificate of Indigency Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Indigency Payment') echo 'selected'; ?>>Certificate of Indigency</option>
-										<option value="Business Permit Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Business Permit Payment') echo 'selected'; ?>>Business Permit</option>
-									</select>
-									</div>
-									<!--<div class="col-md-2">
-										<label for="chartType">Date Type:</label>
-										<select class="form-control" id="chartType" name="chartType">
-										<option value="weekly">By Week</option>
-										<option value="monthly">By Month</option>
-										<option value="yearly">By Year</option>
-										<option value="mostcert">Most Certifications</option>
-										</select>
-									</div>-->
-									<div class="col-md-3 mt-3">
-									<button type="submit" class="btn btn-primary" id="applyFilterBtn">Apply Filter</button>
-									<button type="button" class="btn btn-danger" id="pdfExportBtn">Export</button>
-									</div>
-								</div>
-							</form>
-									<div class="row ml-2 mt-3" id="chartRow">
+										<div class="row mb-3">
+											<div class="col-sm-12 col-md-2 mb-2">
+												<label for="fromDate">From:</label>
+												<input type="date" class="form-control" id="fromDate" name="fromDate" value="<?php echo isset($_POST['fromDate']) ? htmlspecialchars($_POST['fromDate']) : date('Y-m-d'); ?>">
+											</div>
+											<div class="col-sm-12 col-md-2 mb-2">
+												<label for="toDate">To:</label>
+												<input type="date" class="form-control" id="toDate" name="toDate" value="<?php echo isset($_POST['toDate']) ? htmlspecialchars($_POST['toDate']) : date('Y-m-d'); ?>">
+											</div>
+											<div class="col-sm-12 col-md-2 mb-2">
+												<label for="chartType">Date Type:</label>
+												<select class="form-control" id="chartType" name="chartType">
+													<option value="weekly">By Week</option>
+													<option value="monthly">By Month</option>
+													<option value="yearly">By Year</option>
+													<option value="mostcert">Most Requested</option>
+												</select>
+											</div>
+											<div class="col-sm-12 col-md-3 mb-2">
+												<label for="documentType">Document Type:</label>
+												<select class="form-control" id="documentType" name="documentType">
+													<option value="All" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'All') echo 'selected'; ?>>All</option>
+													<option value="Barangay Clearance" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Barangay Clearance Payment') echo 'selected'; ?>>Barangay Clearance</option>
+													<option value="Certificate of Residency" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Residency') echo 'selected'; ?>>Certificate of Residency</option>
+													<option value="Certificate of Indigency" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Indigency') echo 'selected'; ?>>Certificate of Indigency</option>
+													<option value="Business Permit" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Business Permit') echo 'selected'; ?>>Business Permit</option>
+												</select>
+											</div>
+											<div class="col-sm-12 col-md-3 mt-3">
+												<button type="submit" class="btn btn-primary" id="applyFilterBtn">Apply Filter</button>
+												<button type="button" class="btn btn-danger ml-3" id="pdfExportBtn">Export</button>
+											</div>
+										</div>
+									</form>
+									<div class="row md-5">
 										<div class="col-md-12">
 											<div class="chart-wrapper">
 												<?php include 'model/yearlybar_chart.php' ?>
