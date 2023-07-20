@@ -2,7 +2,7 @@
 include 'server/server.php' ?>
 <?php
 if (!isset($_SESSION["username"])) {
-    header("Location: dashboard.php");
+    header("Location: purok_dashboard.php");
     exit;
 }
 
