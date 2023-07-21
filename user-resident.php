@@ -111,7 +111,6 @@ while ($row = $result->fetch_assoc()) {
 			</div>
 			<?php include 'templates/main-footer.php' ?>
 		</div>
-		
 	</div>
 	<?php include 'templates/footer.php' ?>
 </body>

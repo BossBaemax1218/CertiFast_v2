@@ -5,7 +5,6 @@
         </div>				
     </div>
 </footer>
-
 <!-- Modal -->
 <div class="modal fade" id="barangay" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">

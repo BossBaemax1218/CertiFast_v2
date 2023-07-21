@@ -14,7 +14,7 @@ $row1 = $result1->fetch_assoc();
 $totalAnnouncements = $row1['total_announcements'];
 ?>
 <style>
-    .notification-badge {
+.notification-badge {
   position: absolute;
   top: -10px;
   right: -10px;

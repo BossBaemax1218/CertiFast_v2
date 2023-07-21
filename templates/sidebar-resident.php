@@ -7,6 +7,7 @@ $current_page = PageName();
 ?>
 <?php
 include 'server/db_connection.php';
+session_start();
 
 $query1 = "SELECT COUNT(*) AS total_announcements FROM tbl_announcement";
 $result1 = $conn->query($query1);
@@ -14,7 +15,7 @@ $row1 = $result1->fetch_assoc();
 $totalAnnouncements = $row1['total_announcements'];
 ?>
 <style>
-    .notification-badge {
+.notification-badge {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -36,26 +37,14 @@ $totalAnnouncements = $row1['total_announcements'];
                     <?php endif ?>                  
                 </div>
                 <div class="info">
-                    <a data-toggle="collapse" href="<?= isset($_SESSION['fullname']) && $_SESSION['role']=='resident' ? '#collapseExample' : 'javascript:void(0)' ?>" aria-expanded="true">
+                    <a data-toggle="collapse" href="<?= isset($_SESSION['fullname']) && $_SESSION['role'] == 'resident' ? '#collapseExample' : 'javascript:void(0)' ?>" aria-expanded="true">
                         <span>
-                        <?= isset($_SESSION['fullname']) ? ucfirst($_SESSION['fullname']) : 'Guest User' ?>
-                            <span class="user-level"><?= isset($_SESSION['role']) ? ucfirst($_SESSION['role']) : 'Resident' ?></span>
-                        <?= isset($_SESSION['fullname']) && $_SESSION['role']=='resident' ? '<span class="caret"></span>' : null ?> 
+                            <?= isset($_SESSION['fullname']) ? ucwords($_SESSION['fullname']) : 'Guest User' ?>
+                            <span class="user-level"><?= isset($_SESSION['role']) ? ucwords($_SESSION['role']) : 'Resident' ?></span>
+                            <?= isset($_SESSION['fullname']) && $_SESSION['role'] == 'resident' ? '<span class="caret"></span>' : null ?> 
                         </span>
                     </a>
                     <div class="clearfix"></div>
-                    <div class="collapse in" id="collapseExample">
-                        <ul class="nav">
-                            <li>
-                                <a href="#edit_profile" data-toggle="modal">
-                                    <span class="link-collapse">Edit Profile</span>
-                                </a>
-                                <a href="#changepass" data-toggle="modal">
-                                    <span class="link-collapse">Change Password</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <ul class="nav nav-danger">
@@ -150,7 +139,7 @@ $totalAnnouncements = $row1['total_announcements'];
                                 <a href="#user_changepass" data-toggle="modal">
                                     <span class="link-collapse">Change Password</span>
                                 </a>
-                                <a type="button" data-toggle="tooltip" href="model/remove_resident.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete your account?');" class="btn btn-link btn-danger" data-original-title="Delete" style="text-decoration:none;">
+                                <a type="button" data-toggle="modal" data-target="#deleteConfirmationModal" class="btn btn-danger" style="text-decoration:none; color: white;">
                                     <span class="link-collapse">Delete Account</span>
                                 </a>
                             </li>
@@ -162,6 +151,33 @@ $totalAnnouncements = $row1['total_announcements'];
                     <a class="see-all" href="model/logout.php"><i class="fas fa-sign-out-alt"></i><p>Logout</p></a>
                 </li>
             </ul>
+        </div>
+    </div>
+</div>
+<!-- Add jQuery, Popper.js, and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Modal dialog -->
+<div id="deleteConfirmationModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="model/delete_account.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <p style="font-size: 16px;">Are you sure you want to delete your account?</p>
+                </div>
+                <div class="modal-footer">
+                    <input type="text" name="email" value="<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>" class="input" readonly>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger" name="submit">Delete</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
