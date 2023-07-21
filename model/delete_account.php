@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../server/db_connect.php';
+include '../server/db_cert.php';
 
 function deleteAccount($connection, $email)
 {

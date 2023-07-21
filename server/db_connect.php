@@ -1,15 +1,16 @@
 <?php
-    date_default_timezone_set('Asia/Manila');
+date_default_timezone_set('Asia/Manila');
 
 $host = 'localhost';
 $dbname = 'db_certifast';
 $username = 'root';
 $password = '';
 
-$connection = mysqli_connect($host, $username, $password, $dbname);
-
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
 
 ?>

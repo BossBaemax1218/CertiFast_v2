@@ -3,22 +3,31 @@
     <div class="card-header">
       <strong>REPORTS</strong>
     </div>
-    <div class="card-footer">
-      <p class="description" id="description"></p>
-    </div>
-    <div class="card-body">
-      <canvas id="myChart3"></canvas>
+    <div id="chartRow">
+        <div class="card-footer">
+          <p class="description" id="description"></p>
+        </div>
+        <div class="card-body">
+          <canvas id="myChart3"></canvas>
+        </div>
     </div>
   </div>
 
-<?php
+  <?php
 include 'server/db_connect.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+$currentDate = date('Y-m-d');
+$firstDayOfMonth = date('Y-m-01');
+
 $chartDataJson = "null";
 $totalValuesJson = "null";
 
+// Get the first day of the current month
+$firstDayOfMonth = date('Y-m-01');
+
+// Get the current date
 $currentDate = date('Y-m-d');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -32,10 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-      $fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $currentDate;
-      $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $currentDate;
-
-      $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
+        $fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $firstDayOfMonth;
+        $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $currentDate;
+        $dateType = isset($_POST['dateType']) ? $_POST['dateType'] : 'mostcert';
+        $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
 
         switch ($dateType) {
             case 'weekly':
@@ -70,19 +79,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         LIMIT 10";
                 break;
             default:
-                echo "Invalid date type selected.";
+                $errorMessage = "Invalid date type selected."; 
                 $conn->close();
-                exit();
+                break;
         }
 
+        // Prepare and execute the query
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':fromDate', $fromDate);
         $stmt->bindParam(':toDate', $toDate);
         $stmt->bindParam(':documentType', $documentType);
         $stmt->execute();
 
+        // Fetch the results
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        // Process the results and create chart data
         $chartData = [];
         $totalValues = [];
         foreach ($result as $row) {
@@ -103,10 +115,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $totalValues[$documentType] += $count;
         }
 
+        // Convert chart data and total values to JSON
         $chartDataJson = json_encode($chartData);
         $totalValuesJson = json_encode($totalValues);
     }
 }
+
+// Get the most cert and all documents data before applying filters
+$mostCertSql = "SELECT details, COUNT(*) AS count
+               FROM tblpayments
+               WHERE date BETWEEN :firstDayOfMonth AND :currentDate
+               GROUP BY details
+               ORDER BY count DESC
+               LIMIT 10";
+$mostCertStmt = $pdo->prepare($mostCertSql);
+$mostCertStmt->bindParam(':firstDayOfMonth', $firstDayOfMonth);
+$mostCertStmt->bindParam(':currentDate', $currentDate);
+$mostCertStmt->execute();
+
+$mostCertData = $mostCertStmt->fetchAll(PDO::FETCH_ASSOC);
+
+$allDocumentsSql = "SELECT details, COUNT(*) AS count
+                    FROM tblpayments
+                    WHERE date BETWEEN :firstDayOfMonth AND :currentDate
+                    GROUP BY details";
+$allDocumentsStmt = $pdo->prepare($allDocumentsSql);
+$allDocumentsStmt->bindParam(':firstDayOfMonth', $firstDayOfMonth);
+$allDocumentsStmt->bindParam(':currentDate', $currentDate);
+$allDocumentsStmt->execute();
+
+$allDocumentsData = $allDocumentsStmt->fetchAll(PDO::FETCH_ASSOC);
+
+$firstDayOfMonthData = [
+    'MostCert' => $mostCertData,
+    'All' => $allDocumentsData,
+];
 ?>
 <script>
     function displayChart() {
@@ -155,7 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
       });
 
-      var description = "<table><tr><th>Result</th><th>Value</th></tr>";
+      var description = "<table><tr><th>Document</th><th>Value</th></tr>";
         var documentTypes = Object.keys(totalValues);
         documentTypes.forEach(function(documentType) {
             var value = totalValues[documentType];

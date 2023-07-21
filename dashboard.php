@@ -129,7 +129,7 @@ if (!isset($_SESSION["username"])) {
 									</form>
 									<div class="row md-5">
 										<div class="col-md-12">
-											<div class="chart-wrapper" id="chartRow">
+											<div class="chart-wrapper">
 												<?php include 'model/chart.php' ?>
 											</div>
 										</div>
@@ -163,7 +163,7 @@ if (!isset($_SESSION["username"])) {
       doc.text("Document Type: " + documentType, 10, 40);
 
       var width = 180;
-      var height = 200;
+      var height = 150;
 
       html2canvas(chartRow, { scale: 2 }).then(function (canvas) {
         var imgData = canvas.toDataURL("image/png");
