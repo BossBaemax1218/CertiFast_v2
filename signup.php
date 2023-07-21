@@ -17,14 +17,8 @@
         <link rel="stylesheet" href="vendor-login/css/login-style.css">
         <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
- 
-        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-        <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-        <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
     </head>
     <body>
@@ -107,7 +101,7 @@
             </script>
         <?php } ?>
     </section>
-    <!-- Modal -->
+
     <div class="modal fade" id="termprivacy" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -123,9 +117,9 @@
                             <ul class="mt-2">
                                 <li>
                                     <p>We prioritize your privacy and safeguard your personal information when using the Barangay Los Amigos - CertiFast Portal. By using the portal, you agree to allow us to collect, use, and store your personal information as needed for the portal's services.</p>
-                                    <To>The CertiFast Portal uses necessary cookies for its functionalities to operate effectively. To learn more about the use of cookies and how CertiFast Portal uses personal information on behalf of your institution, please read <a href="#">CertiFast Portal Privacy Statement</a>.</span>
+                                    <To>The CertiFast Portal uses necessary cookies for its functionalities to operate effectively. To learn more about the use of cookies and how CertiFast Portal uses personal information on behalf of your institution, please read <a href="termpolicy.php#featured-policy" target="_blank">CertiFast Portal Privacy Statement</a>.</span>
                                     <br><br>
-                                    <span>When you select <b>"OK"</b> you are agreeing to Barangay Los Amigos - <a href="#"> CertiFast Portal  Terms of Use</a>.</span>
+                                    <span>When you select <b>"OK"</b> you are agreeing to Barangay Los Amigos - <a href="termpolicy.php#featured-term" target="_blank"> CertiFast Portal  Terms of Use</a>.</span>
                                 </li>                        
                             </ul>
                         </div>
@@ -137,21 +131,6 @@
             </div>
         </div>
     </div>
-    <!--<script>
-        function openModal(){
-            $('#termprivacy').modal('show');
-        }
-        function printDiv(divName) {
-            var printContents = document.getElementById(divName).innerHTML;
-            var originalContents = document.body.innerHTML;
-
-            document.body.innerHTML = printContents;
-
-            window.print();
-
-            document.body.innerHTML = originalContents;
-        }
-    </script>-->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var closeModalButton = document.getElementById('closeModalButton');
