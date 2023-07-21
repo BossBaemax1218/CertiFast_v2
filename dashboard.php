@@ -1,6 +1,6 @@
 <?php include 'server/server.php';
 if (!isset($_SESSION["username"])) {
-    header("Location: dashboard.php");
+    header("Location: login.php");
     exit;
 }
 ?>
@@ -9,9 +9,75 @@ if (!isset($_SESSION["username"])) {
 <head>
 	<?php include 'templates/header.php' ?>
 	<title>Overview - Dashboard</title>
+	<style>
+    .card {
+      max-width: 1200px;
+      margin: auto 0px;
+      border-radius: 5px;
+    }
+
+    .card-header {
+      color: black;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+    #description {
+      font-size: 16px;
+    }
+    table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    text-align: left;
+  }
+    @media screen and (max-width: 600px) {
+      .description {
+        font-size: 12px;
+      }
+      .card {
+      max-width: 1200px;
+      width: 400px;
+      height: 600px;
+    }
+    }
+
+    @media screen and (max-width: 1100px) {
+      #myChart3 {
+        width: 100%;
+        max-width: 1200px;
+        height: 350px;
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+      #myChart3 {
+        max-width: 1200px;
+        width: 100%;
+      height: 100%;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      .description {
+        font-size: 10px;
+      }
+      #myChart3 {
+        max-width: 1200px;
+        width: 100%;
+      height: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-
+<?php include 'templates/loading_screen.php' ?>
 			<div class="wrapper">
 				<?php include 'templates/main-header.php' ?>
 				<?php include 'templates/sidebar.php' ?>

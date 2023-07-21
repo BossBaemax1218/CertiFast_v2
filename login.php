@@ -19,14 +19,8 @@
         <link rel="stylesheet" href="vendor-login/css/login-style.css"/>
         <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
-        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-        <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-        <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>         
     </head>
     <body>

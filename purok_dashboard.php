@@ -1,20 +1,8 @@
 <?php 
 include 'server/server.php' ?>
 <?php
-if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "admin") {
-    header("Location: dashboard.php");
-    exit;
-}
-if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "staff") {
-    header("Location: dashboard.php");
-    exit;
-}
 if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "purok leader") {
     header("Location: purok_dashboard.php");
-    exit;
-}
-if (!isset($_SESSION["fullname"]) || $_SESSION["role"] !== "resident") {
-    header("Location: resident_dashboard.php");
     exit;
 }
 
@@ -43,8 +31,7 @@ while ($row = $result->fetch_assoc()) {
         $resident[] = $row;
     }
 }
-?>
-<?php
+
 $query = "SELECT COUNT(DISTINCT details) as de FROM tblpayments WHERE details IN ('Barangay Clearance Payment', 'Business Permit Payment', 'Certificate of Residency Payment', 'Certificate of Indigency Payment')"; 
 $revenue1 = $conn->query($query)->fetch_assoc();
 

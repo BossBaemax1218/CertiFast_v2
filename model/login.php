@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirectToLoginPage('Please fill in all the required fields.', 'danger', 'login');
     }
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['logout'])) {
-    logout(); // Call logout function if the logout parameter is set in the URL
+    logout();
 } else {
     redirectToLoginPage('Invalid request method.', 'danger', 'login');
 }

@@ -177,25 +177,46 @@ $totalAnnouncements = $row1['total_announcements'];
                     </a>
                 </li>
                 <?php endif ?>
-                <?php if(isset($_SESSION['username']) && ($_SESSION['role'] == 'staff' || $_SESSION['role'] == 'purok leader')): ?>
-                    <li class="nav-section">
-                        <span class="sidebar-mini-icon">
-                            <i class="settings"></i>
-                        </span>
-                        <h4 class="text-section">Settings</h4>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#support" data-toggle="modal">
-                            <i class="fas fa-edit"></i>
-                            <p>Support</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                    <a href="index.php#services">
-                        <i class="far fa-lightbulb"></i>
-                        <p>Services</p>
-                    </a>
-                </li>
+                <?php if(isset($_SESSION['username'])): ?>
+                    <?php if($_SESSION['role'] == 'purok leader'): ?>
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="settings"></i>
+                            </span>
+                            <h4 class="text-section">Settings</h4>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#support" data-toggle="modal">
+                                <i class="fas fa-edit"></i>
+                                <p>Support</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.php#services">
+                                <i class="far fa-lightbulb"></i>
+                                <p>Services</p>
+                            </a>
+                        </li>
+                    <?php elseif ($_SESSION['role'] == 'staff'): ?>
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="settings"></i>
+                            </span>
+                            <h4 class="text-section">Settings</h4>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#announcement" data-toggle="modal">
+                                <i class='fas fa-bullhorn'></i>
+                                <p>Post Announcement</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#support" data-toggle="modal">
+                                <i class="fas fa-edit"></i>
+                                <p>Support</p>
+                            </a>
+                        </li>
+                    <?php endif ?>
                 <?php endif ?>
                 <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'): ?>
                         <li class="nav-section">
@@ -222,13 +243,26 @@ $totalAnnouncements = $row1['total_announcements'];
                                         <span class="sub-item">Position Management</span>
                                     </a>
                                 </li>
-                                <?php if(isset($_SESSION['username']) && ($_SESSION['role'] == 'staff')): ?>
-                                    <li>
+                                <?php if($_SESSION['role']=='staff'):?>
+                                        <li class="nav-section">
+                                        <span class="sidebar-mini-icon">
+                                            <i class="settings"></i>
+                                        </span>
+                                        <h4 class="text-section">Settings</h4>
+                                    </li>
+                                        <li class="nav-item">
+                                            <a href="#announcement" data-toggle="modal">
+                                                <i class='fas fa-bullhorn'></i>
+                                                <p>Post Announcement</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
                                         <a href="#support" data-toggle="modal">
-                                            <span class="sub-item">Support & Feedback</span>
+                                            <i class="fas fa-edit"></i>
+                                            <p>Support</p>
                                         </a>
                                     </li>
-                                <?php else: ?>
+                                    <?php else: ?>
                                     <li class="<?= $current_page=='users.php' ? 'active' : null ?>">
                                         <a href="users.php">
                                             <span class="sub-item">Staff Management</span>
