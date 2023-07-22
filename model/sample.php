@@ -743,3 +743,140 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       return color;
     }
 </script>
+var mostCertDataLastMonth = <?php echo $mostCertJsonLastMonth; ?>;
+            var allDocumentsDataLastMonth = <?php echo $allDocumentsJsonLastMonth; ?>;
+
+$mostCertSqlLastMonth = "SELECT details, COUNT(*) AS count
+                                FROM tblpayments
+                                WHERE date BETWEEN :lastFirstDayOfMonth AND :currentDate
+                                GROUP BY details
+                                ORDER BY count DESC
+                                LIMIT 10";
+        $mostCertStmtLastMonth = $pdo->prepare($mostCertSqlLastMonth);
+        $mostCertStmtLastMonth->bindParam(':lastFirstDayOfMonth', $lastFirstDayOfMonth);
+        $mostCertStmtLastMonth->bindParam(':currentDate', $currentDate);
+        $mostCertStmtLastMonth->execute();
+
+        $mostCertDataLastMonth = $mostCertStmtLastMonth->fetchAll(PDO::FETCH_ASSOC);
+
+        $allDocumentsSqlLastMonth = "SELECT details, COUNT(*) AS count
+                                    FROM tblpayments
+                                    WHERE date BETWEEN :lastFirstDayOfMonth AND :currentDate
+                                    GROUP BY details";
+        $allDocumentsStmtLastMonth = $pdo->prepare($allDocumentsSqlLastMonth);
+        $allDocumentsStmtLastMonth->bindParam(':lastFirstDayOfMonth', $lastFirstDayOfMonth);
+        $allDocumentsStmtLastMonth->bindParam(':currentDate', $currentDate);
+        $allDocumentsStmtLastMonth->execute();
+
+        $allDocumentsDataLastMonth = $allDocumentsStmtLastMonth->fetchAll(PDO::FETCH_ASSOC);
+
+        $mostCertJsonLastMonth = json_encode($mostCertDataLastMonth);
+        $allDocumentsJsonLastMonth = json_encode($allDocumentsDataLastMonth);
+
+
+
+        <?php
+include 'server/db_connect.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$chartDataJson = "null";
+$totalValuesJson = "null";
+
+$currentDate = date('Y-m-d');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['dateType'])) {
+        $dateType = $_POST['dateType'];
+
+        $validDateTypes = array('weekly', 'monthly', 'yearly', 'mostcert');
+        if (!in_array($dateType, $validDateTypes)) {
+            echo "Invalid date type selected.";
+            $conn->close();
+            exit();
+        }
+
+        $fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $firstDayOfMonth;
+        $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $currentDate;
+        $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
+        switch ($dateType) {
+            case 'weekly':
+                // Calculate the start and end of the week for the given date
+                $startOfWeek = date('Y-m-d', strtotime('monday this week', strtotime($fromDate)));
+                $endOfWeek = date('Y-m-d', strtotime('sunday this week', strtotime($toDate)));
+        
+                $sql = "SELECT DATE_FORMAT(date, '%W') AS date_key, details, COUNT(*) AS count
+                        FROM tblpayments
+                        WHERE DATE_FORMAT(date, '%Y-%m-%d') BETWEEN :fromDate AND :toDate
+                        AND (details = :documentType OR :documentType = 'All')
+                        GROUP BY date_key, details
+                        ORDER BY FIELD(date_key, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'), date_key";
+                break;
+            case 'monthly':
+                $sql = "SELECT MONTH(date) AS date_key, details, COUNT(*) AS count
+                        FROM tblpayments
+                        WHERE DATE_FORMAT(date, '%Y-%m-%d') BETWEEN :fromDate AND :toDate
+                        GROUP BY date_key, details";
+                break;
+            case 'yearly':
+                $sql = "SELECT YEAR(date) AS date_key, details, COUNT(*) AS count
+                        FROM tblpayments
+                        WHERE DATE_FORMAT(date, '%Y-%m-%d') BETWEEN :fromDate AND :toDate
+                        GROUP BY date_key, details";
+                break;
+            case 'mostcert':
+                $sql = "SELECT details AS date_key, COUNT(*) AS count
+                        FROM tblpayments
+                        WHERE date BETWEEN :fromDate AND :toDate
+                        GROUP BY details
+                        ORDER BY count DESC
+                        LIMIT 10";
+                break;
+            default:
+                $errorMessage = "Invalid date type selected."; 
+                $conn->close();
+                break;
+        }
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':fromDate', $fromDate);
+        $stmt->bindParam(':toDate', $toDate);
+        if ($dateType === 'weekly' || $dateType === 'mostcert') {
+            // Bind the :documentType parameter for weekly and mostcert cases
+            $stmt->bindParam(':documentType', $documentType);
+        }
+        $stmt->execute();
+        
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        $chartData = [];
+        $totalValues = [];
+        foreach ($result as $row) {
+            $count = $row['count'];
+        
+            if ($dateType === 'mostcert') {
+                $documentType = $row['date_key'];
+                $dateKey = $documentType; 
+            } else {
+                $dateKey = $dateType === 'weekly' ? "" . $row['date_key'] : ($dateType === 'monthly' ? date('F', mktime(0, 0, 0, $row['date_key'], 1)) : $row['date_key']);
+                $documentType = $row['details']; 
+            }
+        
+            if (!isset($chartData[$dateKey])) {
+                $chartData[$dateKey] = [];
+            }
+        
+            $chartData[$dateKey][$documentType] = $count;
+        
+            if (!isset($totalValues[$documentType])) {
+                $totalValues[$documentType] = 0;
+            }
+        
+            $totalValues[$documentType] += $count;
+        }
+        
+        $chartDataJson = json_encode($chartData);
+        $totalValuesJson = json_encode($totalValues);
+    }
+}
+?>

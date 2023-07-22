@@ -77,7 +77,7 @@ if (!isset($_SESSION["username"])) {
   </style>
 </head>
 <body>
-<?php include 'templates/loading_screen.php' ?>
+
 			<div class="wrapper">
 				<?php include 'templates/main-header.php' ?>
 				<?php include 'templates/sidebar.php' ?>
@@ -158,12 +158,12 @@ if (!isset($_SESSION["username"])) {
 
       var currentDate = new Date().toLocaleDateString();
       doc.setFontSize(12);
-      doc.text("Current Date: " + currentDate, 10, 20);
-      doc.text("Date Range: " + fromDate + " - " + toDate, 10, 30);
+      doc.text("Latest Date: " + currentDate, 10, 20);
+      doc.text("Date: " + fromDate + " to " + toDate, 10, 30);
       doc.text("Document Type: " + documentType, 10, 40);
 
-      var width = 180;
-      var height = 150;
+      var width = 150;
+      var height = 120;
 
       html2canvas(chartRow, { scale: 2 }).then(function (canvas) {
         var imgData = canvas.toDataURL("image/png");
