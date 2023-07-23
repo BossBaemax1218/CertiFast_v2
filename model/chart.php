@@ -116,11 +116,7 @@ $totalValuesJson = json_encode($totalValues);
 
         var datasets = [];
         documentTypes.forEach(function(documentType) {
-            if (documentType === "Most Requested") {
-                var data = days.map(function(day) {
-                    return chartData[day]["Most Requested"] || 0;
-                });
-            } else if (documentType === "All") {
+            if (documentType === "All") {
                 var data = days.map(function(day) {
                     return chartData[day]["All"] || 0;
                 });
@@ -159,9 +155,7 @@ $totalValuesJson = json_encode($totalValues);
         var description = "<table><tr><th>The number of Requested Certification</th><th>Total</th></tr>";
         documentTypes.forEach(function(documentType) {
             var value;
-            if (documentType === "Most Requested Cert") {
-                value = totalValues["Most Requested Cert"] || 0;
-            } else if (documentType === "All") {
+            if (documentType === "All") {
                 value = totalValues["All"] || 0;
             } else {
                 value = totalValues[documentType] || 0;
