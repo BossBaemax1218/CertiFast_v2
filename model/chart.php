@@ -11,7 +11,10 @@
         </div>
     </div>
   </div>
-  <?php
+
+
+
+<?php
 include 'server/db_connect.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -22,8 +25,6 @@ $totalValuesJson = "null";
 $currentDate = date('Y-m-d');
 $lastMonday = date('Y-m-d', strtotime('last Monday'));
 
-// Set the initial dateType, fromDate, toDate, and documentType
-// If they are not present in the POST data
 $dateType = isset($_POST['dateType']) ? $_POST['dateType'] : 'weekly';
 $fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $lastMonday;
 $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $currentDate;
