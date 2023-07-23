@@ -108,7 +108,6 @@ if (!isset($_SESSION["username"])) {
 													<option value="weekly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'weekly') echo 'selected'; ?>>By Week</option>
 													<option value="monthly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'monthly') echo 'selected'; ?>>By Month</option>
 													<option value="yearly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'yearly') echo 'selected'; ?>>By Year</option>
-													<option value="mostcert" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'mostcert') echo 'selected'; ?>>Most Requested</option>
 												</select>
 											</div>
 											<div class="col-sm-12 col-md-3 mb-2">
@@ -162,7 +161,7 @@ if (!isset($_SESSION["username"])) {
       doc.text("Date: " + fromDate + " to " + toDate, 10, 30);
       doc.text("Document Type: " + documentType, 10, 40);
 
-      var width = 150;
+      var width = 180;
       var height = 120;
 
       html2canvas(chartRow, { scale: 2 }).then(function (canvas) {

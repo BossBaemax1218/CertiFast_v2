@@ -1,4 +1,3 @@
-
   <div class="card">
     <div class="card-header">
       <strong>REPORTS</strong>
@@ -12,7 +11,6 @@
         </div>
     </div>
   </div>
-
   <?php
 include 'server/db_connect.php';
 error_reporting(E_ALL);
@@ -22,69 +20,56 @@ $chartDataJson = "null";
 $totalValuesJson = "null";
 
 $currentDate = date('Y-m-d');
+$lastMonday = date('Y-m-d', strtotime('last Monday'));
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['dateType'])) {
         $dateType = $_POST['dateType'];
 
-        $validDateTypes = array('weekly', 'monthly', 'yearly', 'mostcert');
+        $validDateTypes = array('weekly', 'monthly', 'yearly');
         if (!in_array($dateType, $validDateTypes)) {
             echo "Invalid date type selected.";
             exit();
         }
 
-        $fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : date('Y-m-01');
+        $fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $lastMonday;
         $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $currentDate;
         $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
 
-        switch ($dateType) {
-            case 'weekly':
-                $startOfWeek = date('Y-m-d', strtotime('monday this week', strtotime($fromDate)));
-                $endOfWeek = date('Y-m-d', strtotime('sunday this week', strtotime($toDate)));
+        $sql = "SELECT ";
+        if ($dateType === 'weekly') {
 
-                $sql = "SELECT DATE_FORMAT(date, '%W') AS date_key, details, COUNT(*) AS count
-                        FROM tblpayments
-                        WHERE DATE_FORMAT(date, '%Y-%m-%d') BETWEEN :fromDate AND :toDate
-                        AND (details = :documentType OR :documentType = 'All')
-                        GROUP BY date_key, details
-                        ORDER BY FIELD(date_key, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'), date_key";
-                break;
-            case 'monthly':
-                $sql = "SELECT MONTH(date) AS date_key, details, COUNT(*) AS count
-                        FROM tblpayments
-                        WHERE DATE_FORMAT(date, '%Y-%m-%d') BETWEEN :fromDate AND :toDate
-                        GROUP BY date_key, details";
-                break;
-            case 'yearly':
-                $sql = "SELECT YEAR(date) AS date_key, details, COUNT(*) AS count
-                        FROM tblpayments
-                        WHERE DATE_FORMAT(date, '%Y-%m-%d') BETWEEN :fromDate AND :toDate
-                        GROUP BY date_key, details";
-                break;
-            case 'mostcert':
-                $sql = "SELECT details, COUNT(*) AS count
-                        FROM tblpayments
-                        WHERE DATE_FORMAT(date, '%Y-%m-%d') BETWEEN :fromDate AND :toDate
-                        GROUP BY details";
-                break;
-            default:
-                $errorMessage = "Invalid date type selected.";
-                exit();
+            $sql .= "CONCAT(' ', DATE_FORMAT(date, '%W')) AS date_key, ";
+        } elseif ($dateType === 'monthly') {
+            $sql .= "DATE_FORMAT(date, '%Y-%m') AS date_key, ";
+        } elseif ($dateType === 'yearly') {
+            $sql .= "DATE_FORMAT(date, '%Y') AS date_key, ";
         }
+        $sql .= "details, COUNT(*) AS count
+                FROM tblpayments
+                WHERE DATE(date) BETWEEN :fromDate AND :toDate ";
+
+        if ($documentType !== 'All') {
+            $sql .= "AND (details = :documentType) ";
+        }
+
+        $sql .= "GROUP BY date_key, details ";
+        $sql .= "ORDER BY FIELD(date_key, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', date_key), FIELD(details, 'Barangay Clearance Payment', 'Certificate of Residency Payment', 'Certificate of Indigency Payment', 'Business Permit Payment')";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':fromDate', $fromDate);
         $stmt->bindParam(':toDate', $toDate);
-        if ($dateType === 'weekly') {
-            // Bind the :documentType parameter for weekly and mostcert cases
+
+        if ($documentType !== 'All') {
             $stmt->bindParam(':documentType', $documentType);
         }
+
         $stmt->execute();
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if (empty($result)) {
-            $errorMessage = "No data available for the selected period.";
+            echo "No data available for the selected period.";
             exit();
         }
 
@@ -94,14 +79,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $count = $row['count'];
             $documentType = $row['details'];
 
-            // If it's the 'mostcert' case, we'll use the document type as the date key
-            $dateKey = $dateType === 'mostcert' ? $documentType : ($dateType === 'weekly' ? "" . $row['date_key'] : ($dateType === 'monthly' ? date('F', mktime(0, 0, 0, $row['date_key'], 1)) : $row['date_key']));
+            $dateKey = $dateType === 'weekly' ? "" . $row['date_key'] : ($dateType === 'monthly' ? date('F', mktime(0, 0, 0, (int)substr($row['date_key'], 5), 1)) : $row['date_key']);
 
             if (!isset($chartData[$dateKey])) {
                 $chartData[$dateKey] = [];
             }
-
-            $chartData[$dateKey][$documentType] = $count;
+            if ($documentType === 'All') {
+                $documentTypes = ['Certificate of Indigency Payment', 'Barangay Clearance Payment', 'Certificate of Residency Payment', 'Business Permit Payment'];
+                foreach ($documentTypes as $type) {
+                    if (!isset($chartData[$dateKey][$type])) {
+                        $chartData[$dateKey][$type] = 0;
+                    }
+                }
+            } else {
+                $chartData[$dateKey][$documentType] = $count;
+            }
 
             if (!isset($totalValues[$documentType])) {
                 $totalValues[$documentType] = 0;
@@ -109,13 +101,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $totalValues[$documentType] += $count;
         }
-
         $chartDataJson = json_encode($chartData);
         $totalValuesJson = json_encode($totalValues);
     }
 }
 ?>
-
 
 <script>
     function displayChart() {
@@ -134,9 +124,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         var datasets = [];
         documentTypes.forEach(function(documentType) {
-            if (documentType === "Most Requested Cert") {
+            if (documentType === "Most Requested") {
                 var data = days.map(function(day) {
-                    return chartData[day]["Most Requested Cert"] || 0;
+                    return chartData[day]["Most Requested"] || 0;
                 });
             } else if (documentType === "All") {
                 var data = days.map(function(day) {
@@ -174,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         });
 
-        var description = "<table><tr><th>This is the number of Requested Certification</th><th>Total Value</th></tr>";
+        var description = "<table><tr><th>The number of Requested Certification</th><th>Total</th></tr>";
         documentTypes.forEach(function(documentType) {
             var value;
             if (documentType === "Most Requested Cert") {
