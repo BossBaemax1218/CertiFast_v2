@@ -107,7 +107,9 @@ $totalValuesJson = json_encode($totalValues);
         if (chartData === null || totalValues === null) {
             var errorMessage = "<?php echo isset($errorMessage) ? $errorMessage : ''; ?>";
             var descriptionElement = document.getElementById('description');
-            descriptionElement.innerHTML = "<p style='color: red; font-weight: bold;'>" + errorMessage + "</p>";
+            descriptionElement.innerHTML = "<p style='color: red; font-weight: bold; font-size: 16px;'>" + errorMessage + "</p>";
+            var canvasElement = document.getElementById('myChart3');
+            canvasElement.style.display = 'none';
             return;
         }
 
