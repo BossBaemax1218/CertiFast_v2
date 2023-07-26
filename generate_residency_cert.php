@@ -25,7 +25,7 @@
 					</div>
 				</div>
 				<div class="page-inner">
-					<div class="row mt--2">
+					<div class="row mt-2">
 						<div class="col-md-12">
 
                             <?php if(isset($_SESSION['message'])): ?>
@@ -61,7 +61,7 @@
                                             <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid" width="150">
                                         </div>
                                     </div>                                 
-                                    <div class="row mt-4 justify-content-around">
+                                    <div class="content-letter row mt-4 justify-content-around ml-5 mr-5">
                                         <div class="col-md-12">
                                                 <div class="text-center">
                                                     <h1 class="mt-4 fw-bold mb-5" style="font-size:100px; color: black;">BARANGAY RESIDENCY</h1>
@@ -77,7 +77,7 @@
                                             </div>  
                                         </div>
                                         <div class="signature col-md-12">
-                                            <div class="p-3 text-right mt-2">
+                                            <div class="p-3 text-right mt-5">
                                                 <h2 class="fw-bold mb-6"><u><?= ucwords($captain['fullname']) ?></u></h2>
                                                 <p class="text mr-4">PUNONG BARANGAY</p>
                                             </div>
