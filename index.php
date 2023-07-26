@@ -126,14 +126,12 @@
 
     <section id="about" class="about section-bg">
       <div class="container" data-aos="fade-up">
-
         <div class="section-title">
           <h2>About</h2>
           <h3><span>About us</span></h3>
           <br>
           <h6>Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.</h6>
         </div>
-
         <div class="row">
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
             <img src="homepage/assets/img/download.jpg" class="img-fluid" alt="">
@@ -148,33 +146,36 @@
                 <i class="bx bx-check"></i>
                 <div>
                   <h5>Our Mission</h5>
-                  <p>Our mission is to create an efficient and secure certificate management system that ensures accuracy, accessibility, and timely delivery while maintaining data privacy and integrity.</p>
+                  <p>The Barangay Los Amigos commits to perform better duties and responsibilities to carry out the plans and objectives of the barangay through voluntary and excellent performance especially in the delivery of the basic needs such as improved roads, water system, health care, education, agricultural farming and the safety of the residents in all hazards around the barangay.</p>
                 </div>
               </li>
               <li>
                 <i class="bx bx-check"></i>
                 <div>
                   <h5>Our Vision</h5>
-                  <p>Our vision aims to simplify certificate issuance, tracking, and management, promoting transparency and improving service delivery.</p>
+                  <p>The Barangay Los Amigos envisions to be more industrious, abundant and secure community to live in where residents enjoy harmonious way of life without any uncertainties in mind at work and at home and most especially for a more directed and progressive Barangay Governance. </p>
+                </div>
+              </li>
+              <li>
+                <i class="bx bx-check"></i>
+                <div>
+                  <h5>Our Goal</h5>
+                  <p>The barangay aims to provide the basic needs of the residents such as road concreting of the different puroks.</p>
                 </div>
               </li>
             </ul>
           </div>
         </div>
-
       </div>
     </section>
 
-
     <section id="counts" class="counts">
       <div class="container" data-aos="fade-up">
-
         <div class="section-title">
           <h3><span>Resident Counter</span></h3>
         </div>
         <br>
         <div class="row">
-
           <div class="col-lg-3 col-md-6">
             <div class="count-box">
               <i class="bi bi-people"></i>
@@ -198,7 +199,6 @@
               <p>Purok</p>
             </div>
           </div>
-
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box">
               <i class="bi bi-person"></i>
@@ -206,9 +206,7 @@
               <p>Individuals</p>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
 
@@ -293,7 +291,7 @@
           <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-5.svg"></div>
-              <h4>Barangay Indingency</h4>
+              <h4>Barangay Indigency</h4>
               <p>The necessary documents for the submission of a Barangay Indigency commonly include the following:</p>
               <ul class="req-list">
                   <li>Barangay certificate of residency.</li>
@@ -335,7 +333,7 @@
               <div class="testimonial-item">
                 <img src="homepage/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
                 <h3>ROBERTO A. BALLARTA</h3>
-                <h4>Barangay Capitan</h4>
+                <h4>Punong Barangay</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                   I am very grateful for the warm support today. I hope we will be filled with many blessings and good health so that we can peacefully rest. In return, THANK YOU very much!
@@ -355,7 +353,20 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div> 
+            </div>
+            
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="homepage/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <h3>ABBIE CHARLOTTE CABIG-SARSALE</h3>
+                <h4>Barangay Treasurer</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  The greatest glory in living lies not in never falling, but in rising every time we fall.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div>
           </div>
           <div class="swiper-pagination"></div>
         </div>

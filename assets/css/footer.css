@@ -1,0 +1,146 @@
+.header{
+    font-weight: bold;
+    background-color: forestgreen;
+    padding: 20px;
+    color: white;
+    font-family: tahoma;
+    margin-top:5px;
+}
+.letter{
+    font-family: Tahoma;
+    font-size: 23%; 
+    margin: 15px 25px 50px 50px;
+    color: black; 
+    text-align: justify;
+    align-items: justify;
+}
+.title-header{
+    font-family: Tahoma;
+    font-size: 70px; 
+    color: black; 
+    text-align: justify;
+    align-items: justify;
+}
+.business{
+    font-family: Tahoma;
+    font-size: 20px; 
+    color: black; 
+    text-align: justify;
+    align-items: justify;
+}
+.credit{
+    font-family: Tahoma;
+    font-size: 18px; 
+    color: black; 
+    margin-top: 10px;
+    text-align: justify;
+    align-items: justify;
+}
+.validation{
+    font-family: Tahoma;
+    font-size: 16px; 
+    color: black; 
+    text-align: justify;
+    align-items: justify;
+}
+.signature{
+    margin-top: 50px;
+    color:black;
+    text-align: justify;
+    align-items: justify;
+}
+
+.footer-content {
+margin-top: 300px;
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+background-color: forestgreen;
+color: white;
+padding: 5px;
+display: flex;
+justify-content: space-between;;
+}
+.footer-names {
+display: inline-block;
+} 
+.text-left {
+text-align: right;  
+margin-right: 2%;
+margin-top: 10px;     
+}
+
+ul, ol {
+list-style: none;
+}   
+.footer-names .fw-bold {
+margin-top: 10px;
+margin: 0px;
+padding: 0px;
+color: yellow;
+}
+/* Media query for laptops and computers */
+@media (min-width: 992px) {
+.footer-names {
+    margin-bottom: 0;
+}
+
+.personal-info {
+    margin-left: 150px;
+}
+
+.family-info {
+    margin-left: 100px;
+}
+}
+
+/* Media query for phones */
+@media (max-width: 767px) {
+.footer-content {
+    flex-direction: column;
+}
+
+.footer-names {
+    margin-bottom: 20px;
+}
+
+.personal-info,
+.family-info {
+    margin-left: 0;
+}
+}
+@page {
+    margin: 0;
+    size: letter;
+}
+
+/* Media query for legal size */
+@media print and (size: legal) {
+    body {
+        margin: 0;
+    }
+
+    /* Remove header and footer space */
+    @page {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    /* Adjust .card-body to remove space */
+    .card-body {
+        padding: 0;
+    }
+
+    /* Remove unwanted margins in the header and footer */
+    .header, .footer-content {
+        margin: 0;
+    }
+}
+
+/* Media query for A4 size */
+@media print and (size: A4) {
+    body {
+        margin: 0;
+    }
+}
