@@ -49,7 +49,7 @@
 								</div>
 							    <div class="card-body" id="printThis">
                                     <div class="header d-flex flex-wrap justify-content-around">
-                                            <div class="text-center">
+                                            <div class="text-center"></div>
                                                 <h2 class="fw-bold mb-1">Republic of the Philippines</h2>
                                                 <h2 class="fw-bold mb-1">City of <?= ucwords($province) ?></h2>
                                                 <h1 class="fw-bold mb-1"  style="font-size: 40px;"><?= ucfirst($brgy) ?></i></h1>

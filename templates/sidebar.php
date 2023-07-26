@@ -191,12 +191,6 @@ $totalAnnouncements = $row1['total_announcements'];
                                 <p>Support</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="index.php#services">
-                                <i class="far fa-lightbulb"></i>
-                                <p>Services</p>
-                            </a>
-                        </li>
                     <?php elseif ($_SESSION['role'] == 'staff'): ?>
                         <li class="nav-section">
                             <span class="sidebar-mini-icon">

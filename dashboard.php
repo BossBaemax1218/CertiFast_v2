@@ -77,7 +77,6 @@ if (!isset($_SESSION["username"])) {
   </style>
 </head>
 <body>
-
 			<div class="wrapper">
 				<?php include 'templates/main-header.php' ?>
 				<?php include 'templates/sidebar.php' ?>
@@ -135,6 +134,126 @@ if (!isset($_SESSION["username"])) {
 									</div>
 								</div>
 							</div>
+              <?php if(isset($_SESSION['username']) && $_SESSION['role']=='purok leader'):?>
+              <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="card card-stats card card-round">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="icon-big text-center">
+                                        <i class="fas fa-user-clock fa-2x" style="color: gray;"></i>
+                                    </div>
+                                </div>
+                                <div class="col-2 col-stats">
+                                </div>
+                                <div class="col-2 col-stats">
+                                    <div class="numbers mt-2">
+                                        <h2 class="text-uppercase" style="font-size: 16px;">Pending</h2>
+                                        <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($pendingCount) ?></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <a href="purok_info.php?state=purok" class="card-link text" style="color: gray;"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-stats card card-round" >
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="icon-big text-center">
+                                        <i class="fas fa-user-check fa-2x" style="color: gray;"></i>
+                                    </div>
+                                </div>
+                                <div class="col-2 col-stats">
+                                </div>
+                                <div class="col-2 col-stats">
+                                    <div class="numbers mt-2">
+                                        <h2 class="text-uppercase" style="font-size: 16px;">Approved</h2>
+                                        <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($approvedCount)?></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <a href="revenue.php?state=revenue" class="card-link text" style="color: gray;"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-stats card-round">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="icon-big text-center">
+                                        <i class="fas fa-user-alt-slash fa-2x" style="color: gray;"></i>
+                                    </div>
+                                </div>
+                                <div class="col-2 col-stats">
+                                </div>
+                                <div class="col-2 col-stats">
+                                    <div class="numbers mt-2">
+                                        <h2 class="text-uppercase" style="font-size: 16px;">Rejected</h2>
+                                        <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($rejectedCount) ?></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <a href="purok_info.php?state=purok" class="card-link text" style="color: gray;"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+                <div class="card">
+                    <div class="card-header md-2">                                    
+                    </div>
+                          <div class="card-body">
+                              <div class="table-responsive">
+                                  <table id="residenttable" class="table">
+                                      <thead>
+                                          <tr>
+                                              <th scope="col">Fullname</th>
+                                              <th scope="col">Address</th>
+                                              <th scope="col">Birthdate</th>
+                                              <th scope="col">Age</th>
+                                              <th scope="col">Gender</th>
+                                              <th scope="col">Email</th>
+                                              <th scope="col">Purok</th>
+                                              <th scope="col">Status</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>                                           
+                                      <?php if (!empty($resident)): ?>
+                                          <?php $no = 1; foreach ($resident as $row): ?>
+                                              <tr>
+                                                  <td>
+                                                      <div class="avatar avatar-xs ml-3">
+                                                          <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
+                                                      </div>
+                                                      <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
+                                                  </td>
+                                                  <td><?= $row['address'] ?></td>
+                                                  <td><?= $row['birthdate'] ?></td>
+                                                  <td><?= $row['age'] ?></td>
+                                                  <td><?= $row['gender'] ?></td>
+                                                  <td><?= $row['email'] ?></td>
+                                                  <td><?= $row['purok'] ?></td>
+                                                  <td class="text-center"><?= $row['residency_badge'] ?></td>
+                                              </tr>
+                                          <?php $no++; endforeach ?>
+                                      <?php endif ?>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <?php endif ?>
 						</div>
 						<?php include 'templates/main-footer.php' ?>
 					</div>

@@ -3,7 +3,6 @@
     if (isset($_SESSION['username'])) {
         header('Location: dashboard.php');
     }
-
     if (isset($_SESSION['fullname'])) {
         header('Location: resident_dashboard.php');
     }

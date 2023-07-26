@@ -153,8 +153,8 @@ while($row = $result->fetch_assoc()){
                             </div>
 					    </div>
                         <div class="card">
-                                    <div class="card-header md-2">                                    
-                                    </div>
+                            <div class="card-header md-2">                                    
+                            </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table id="residenttable" class="table">
