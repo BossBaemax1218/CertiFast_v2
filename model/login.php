@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['avatar'] = $row['avatar'];
     
-                    header('location: ../purok_dashboard.php');
+                    header('location: ../dashboard.php');
                     exit();
                 }
             } else {

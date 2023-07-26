@@ -154,7 +154,7 @@ $totalValuesJson = json_encode($totalValues);
             }
         });
 
-        var description = "<table><tr><th>The number of Requested Certification</th><th>Total</th></tr>";
+        var description = "<table><tr><th>Document Type &nbsp</th><th>Total</th></tr>";
         documentTypes.forEach(function(documentType) {
             var value;
             if (documentType === "All") {

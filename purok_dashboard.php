@@ -1,11 +1,6 @@
 <?php 
 include 'server/server.php' ?>
 <?php
-if (!isset($_SESSION["username"]) || $_SESSION["role"] !== "purok leader") {
-    header("Location: purok_dashboard.php");
-    exit;
-}
-
 $fullname = $_SESSION["username"];
 
 $query = "SELECT *, tblresident.id AS id FROM tblresident JOIN tbl_user_admin ON tblresident.purok = tbl_user_admin.purok WHERE tbl_user_admin.username = ? AND tblresident.residency_status IN ('on hold') ORDER BY 'tblresident.id' DESC";

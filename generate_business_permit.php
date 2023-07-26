@@ -15,7 +15,7 @@ $result = $conn->query($sql)->fetch_assoc();
 	<title>Business Permit</title>
 </head>
 <body>
-
+<?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
@@ -33,14 +33,12 @@ $result = $conn->query($sql)->fetch_assoc();
 				<div class="page-inner">
 					<div class="row mt--2">
 						<div class="col-md-12">
-
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
                                     <?php echo $_SESSION['message']; ?>
                                 </div>
                             <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
-
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
@@ -67,7 +65,7 @@ $result = $conn->query($sql)->fetch_assoc();
                                             <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid" width="150">
                                         </div>
                                     </div> 
-                                    <div class="content">
+                                    <div class="content-letter">
                                         <div class="col-md-12">
                                             <div class="title-header text-center mb-3">
                                                 <span class="fw-bold"> BARANGAY</span> <br><span class="fw-bold"> BUSINESS PERMIT</span>
@@ -78,7 +76,7 @@ $result = $conn->query($sql)->fetch_assoc();
                                             $result = $conn->query($sql);
                                             $row = $result->fetch_assoc();
                                             ?>
-                                            <div class="business">
+                                            <div class="business ml-4">
                                                 <span class="ml-5 text-left">Nature of Business: <span class="fw-bold"><?= ucfirst($row['business_name']) ?></span></span><br>
                                                 <span class="ml-5 text-left">Proprietor: <span class="fw-bold"><?= ucfirst($row['owner1']) ?></span></span><br>
                                                 <span class="ml-5 text-left">Permit Number: <span class="fw-bold"><?= ucfirst($row['permit_number']) ?></span></span><br>
@@ -89,20 +87,23 @@ $result = $conn->query($sql)->fetch_assoc();
                                             <div class="letter ml-5 text-left mt-3">
                                                 <h2 class="mt-3">This permit is being issued subject to existing rules and regulations, provided however, that the necessary fees are paid to the Treasurer of the Barangay as assessed. </h2>
                                                 <h2 class="mt-3">This is non-transferable and shall be deemed null and void upon failure by the owner to follow the said rules and regulations set forth by the Local Government Unit of Davao.</h2>
-                                                <h2 class="mt-3"></h2>Given this <span class="text"><?= date('jS \d\a\y \o\f F, Y') ?></span> at <span><?= ucwords($town) ?></span>, Davao City</h2>
+                                                <h2 class="mt-3">Given this <span class="text"><?= date('jS \d\a\y \o\f F, Y') ?></span> at <span><?= ucwords($town) ?></span>, Davao City</h2>
                                             </div>
                                         </div>
-                                        <div class="signature text-right mt-3 mr-5">
+                                        <div class="signature text-right mt-5 mr-5">
                                             <h2 class="text-right fw-bold mr-4"><u><?= ucwords($captain['fullname']) ?></u></h2>
                                             <p class="text-right mr-5">PUNONG BARANGAY</p>
                                             <h2 class="fw-bold text-left ml-5"><u><?= ucfirst($row['owner1']) ?></u></h2>
                                             <p class="text-left" style="margin-left: 105px;">OWNER</p>
-                                            <p class="text-left ml-5" style="font-size: 17px;"><i>CTC No.</i>: <b><?= ucfirst($row['community_tax']) ?></b></p>
-                                            <p class="text-left ml-5" style="font-size: 17px;"><i>Issued On.</i>: <b><?= date('F jS, Y', strtotime($row['issued_on'])); ?></b></p>
-                                            <p class="text-left ml-5" style="font-size: 17px;"><i>Isuued at.</i>: <b><?= ucfirst($row['issued_at']) ?></b></p>
-                                            <p class="mr-5 text-right" style="font-size: 17px;"><i>Valid until:</i><i><?= date('F j, Y', strtotime($row['validation'])); ?></i></p>
-                                            <p class="text-center" style="font-size: 17px; margin-bottom: 290px;"><i>This license, while in force, shall be posted in a conspicuous place in the business premises.</i></p>
                                         </div>
+                                        <div class="text-left ml-5" style="font-size: 17px;">
+                                            <span><i>CTC No.</i>: <b><?= ucfirst($row['community_tax']) ?></b></span><br>
+                                            <span><i>Issued On.</i>: <b><?= date('F jS, Y', strtotime($row['issued_on'])); ?></b></span><br>
+                                            <span><i>Isuued at.</i>: <b><?= ucfirst($row['issued_at']) ?></b></span><br>
+                                            <p class="text-right mr-5" style="font-size: 17px;"><i>Valid until:</i><i><?= date('F j, Y', strtotime($row['validation'])); ?></i></p><br>
+                                        </div>
+
+                                        <p class="text-center" style="font-size: 17px; margin-bottom: 210px;"><i>This license, while in force, shall be posted in a conspicuous place in the business premises.</i></p>
                                     </div>
                                     <div class="footer-content">
                                         <div class="footer-names text-left">                                                       

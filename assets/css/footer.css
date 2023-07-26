@@ -1,78 +1,51 @@
-.header{
+.header {
     font-weight: bold;
     background-color: forestgreen;
     padding: 20px;
     color: white;
     font-family: tahoma;
-    margin-top:5px;
-}
-.letter{
-    font-family: Tahoma;
-    margin: 15px 25px 50px 50px;
-    color: black; 
-    text-align: justify;
-    align-items: justify;
-    font-size: 18px;
-    margin-left: 40px;
-    text-indent: 30px;
+    width: 100%;
 }
 
-
-.content{
-    font-family: Tahoma;
-    font-size: 23%; 
-    margin: 55px 35px;
-    color: black; 
+.content-letter {
+    font-size: 23px;
+    color: black;
     text-align: justify;
-    align-items: justify;
     padding: 20px;
     max-width: 100%;
 }
-.title-header{
-    font-family: Tahoma;
-    font-size: 50px; 
-    color: black; 
-    text-align: justify;
-    align-items: justify;
-    font-weight: bold;
+
+.title-header {
+    font-size: 80px;
+    color: black;
     text-align: center;
-    margin-bottom: 20px;
-}
-.business{
-    font-family: Tahoma;
-    font-size: 18px; 
-    color: black; 
+    font-weight: bold;
     text-align: justify;
-    align-items: justify;
+}
+
+.business {
+    font-size: 23px;
+    color: black;
+    text-align: justify;
     margin-left: 20px;
 }
-.credit{
-    font-family: Tahoma;
-    font-size: 18px; 
-    color: black; 
-    margin-top: 10px;
-    text-align: justify;
-    align-items: justify;
-}
-.validation{
-    font-family: Tahoma;
-    font-size: 16px; 
-    color: black; 
-    text-align: justify;
-    align-items: justify;
-}
-.signature{
-    margin-top: 50px;
-    color:black;
-    text-align: justify;
-    align-items: justify;
+
+.letter {
     font-size: 18px;
+    color: black;
+    text-align: justify;
+    text-indent: 30px;
+}
+
+.signature {
+    color: black;
+    text-align: justify;
+    font-size: 23px;
     margin-right: 40px;
     text-align: right;
 }
 
 .footer-content {
-margin-top: 300px;
 position: absolute;
 bottom: 0;
 left: 0;
@@ -131,37 +104,29 @@ color: yellow;
     margin-left: 0;
 }
 }
-@page {
-    margin: 0;
-    size: letter;
-}
 
-/* Media query for legal size */
-@media print and (size: legal) {
-    body {
-        margin: 0;
-    }
+@media print {
+    /* Common styles for all paper sizes (e.g., margins, font sizes, etc.) */
+    body { margin: 0; padding: 0; }
 
-    /* Remove header and footer space */
+    /* Legal size (8.5x14 inches) */
     @page {
-        margin-top: 0;
-        margin-bottom: 0;
+        size: legal;
     }
 
-    /* Adjust .card-body to remove space */
-    .card-body {
-        padding: 0;
+    /* Letter size (8.5x11 inches) */
+    @page {
+        size: letter;
     }
 
-    /* Remove unwanted margins in the header and footer */
+    /* A4 size (210x297 mm) */
+    @page {
+        size: A4;
+    }
+
+    /* Adjustments for header and footer */
     .header, .footer-content {
         margin: 0;
-    }
-}
-
-/* Media query for A4 size */
-@media print and (size: A4) {
-    body {
-        margin: 0;
+        padding: 0;
     }
 }

@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 <link rel="stylesheet" href="assets/js/plugin/dataTables.dateTime.min.css">
 <link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/certificates.css">
 <link rel="stylesheet" href="assets/css/footer.css">
 <link rel="stylesheet" href="homepage/assets/css/styles.css">
 <link rel="stylesheet" href="assets/js/plugin/datatables/Buttons-1.6.1/css/buttons.dataTables.min.css">

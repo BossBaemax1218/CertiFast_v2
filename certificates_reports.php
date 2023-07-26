@@ -35,7 +35,7 @@
 	<title>Certificate Reports</title>
 </head>
 <body>
-<?php include 'templates/header.php' ?>
+<?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>

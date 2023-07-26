@@ -8,7 +8,6 @@ if (!isset($_SESSION['username'])) {
 }
 
 $id = $conn->real_escape_string($_POST['id']);
-$brgy_id = $conn->real_escape_string($_POST['barangayid']);
 $name = $conn->real_escape_string($_POST['fullname']);
 $pos = $conn->real_escape_string($_POST['position']);
 $address = $conn->real_escape_string($_POST['address']);
@@ -28,17 +27,17 @@ $officials = ($result !== false) ? $result->num_rows : 0;
 if ($officials['barangay_id'] == $brgy_id || $officials <= 0) {
     if (!empty($id)) {
         if (!empty($profile) && !empty($profile2)) {
-            $query = "UPDATE tblofficials SET `picture`='$profile', `barangay_id`='$brgy_id', `fullname`='$name', `position`='$pos', `address`='$address', termstart='$start', termend='$end', `status`='$status' WHERE id=$id;";
+            $query = "UPDATE tblofficials SET `picture`='$profile', `fullname`='$name', `position`='$pos', `address`='$address', termstart='$start', termend='$end', `status`='$status' WHERE id=$id;";
         } else if (!empty($profile) && empty($profile2)) {
-            $query = "UPDATE tblofficials SET `picture`='$profile', `barangay_id`='$brgy_id', `fullname`='$name', `position`='$pos', `address`='$address', termstart='$start', termend='$end', `status`='$status' WHERE id=$id;";
+            $query = "UPDATE tblofficials SET `picture`='$profile', `fullname`='$name', `position`='$pos', `address`='$address', termstart='$start', termend='$end', `status`='$status' WHERE id=$id;";
         } else if (empty($profile) && !empty($profile2)) {
-            $query = "UPDATE tblofficials SET `picture`='$newName', `barangay_id`='$brgy_id', `fullname`='$name', `position`='$pos', `address`='$address', termstart='$start', termend='$end', `status`='$status' WHERE id=$id;";
+            $query = "UPDATE tblofficials SET `picture`='$newName', `fullname`='$name', `position`='$pos', `address`='$address', termstart='$start', termend='$end', `status`='$status' WHERE id=$id;";
             if (move_uploaded_file($_FILES['image']['tmp_name'], "../assets/uploads/officials_profile/" . $newName)) {
                 $_SESSION['message'] = 'Barangay Officials information has been updated!';
                 $_SESSION['success'] = 'success';
             }
         } else {
-            $query = "UPDATE tblofficials SET `fullname`='$name', `barangay_id`='$brgy_id', `position`='$pos', `address`='$address', termstart='$start', termend='$end', `status`='$status' WHERE id=$id;";
+            $query = "UPDATE tblofficials SET `fullname`='$name', `position`='$pos', `address`='$address', termstart='$start', termend='$end', `status`='$status' WHERE id=$id;";
         }
 
         if ($conn->query($query) === true) {
