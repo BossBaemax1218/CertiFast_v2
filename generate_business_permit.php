@@ -67,7 +67,7 @@ $result = $conn->query($sql)->fetch_assoc();
                                             <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid" width="150">
                                         </div>
                                     </div> 
-                                    <div class="row">
+                                    <div class="content">
                                         <div class="col-md-12">
                                             <div class="title-header text-center mb-3">
                                                 <span class="fw-bold"> BARANGAY</span> <br><span class="fw-bold"> BUSINESS PERMIT</span>
@@ -87,21 +87,21 @@ $result = $conn->query($sql)->fetch_assoc();
                                                 <span class="ml-5 text-left">Status: <span class="fw-bold"><?= ucfirst($row['status']) ?></span></span><br>
                                             </div>
                                             <div class="letter ml-5 text-left mt-3">
-                                                <h2 class="mt-3" style="text-indent: 40px;">This permit is being issued subject to existing rules and regulations, provided however, that the necessary fees are paid to the Treasurer of the Barangay as assessed. </h2>
-                                                <h2 class="mt-3" style="text-indent: 40px;">This is non-transferable and shall be deemed null and void upon failure by the owner to follow the said rules and regulations set forth by the Local Government Unit of Davao.</h2>
-                                                <h2 class="mt-3" style="text-indent: 40px;">Given this <span class="text"><?= date('jS \d\a\y \o\f F, Y') ?></span> at <span><?= ucwords($town) ?></span>, Davao City</h2>
+                                                <h2 class="mt-3">This permit is being issued subject to existing rules and regulations, provided however, that the necessary fees are paid to the Treasurer of the Barangay as assessed. </h2>
+                                                <h2 class="mt-3">This is non-transferable and shall be deemed null and void upon failure by the owner to follow the said rules and regulations set forth by the Local Government Unit of Davao.</h2>
+                                                <h2 class="mt-3"></h2>Given this <span class="text"><?= date('jS \d\a\y \o\f F, Y') ?></span> at <span><?= ucwords($town) ?></span>, Davao City</h2>
                                             </div>
                                         </div>
-                                        <div class="signature text-right mr-5">
+                                        <div class="signature text-right mt-3 mr-5">
                                             <h2 class="text-right fw-bold mr-4"><u><?= ucwords($captain['fullname']) ?></u></h2>
                                             <p class="text-right mr-5">PUNONG BARANGAY</p>
-                                            <h2 class="fw-bold text-left ml-4"><u><?= ucfirst($row['owner1']) ?></u></h2>
-                                            <p class="text-left" style="margin-left: 85px;">OWNER</p><br>
-                                            <p class="text-left ml-4" style="font-size: 16px;"><i>CTC No.</i>: <b><?= ucfirst($row['community_tax']) ?></b></p>
-                                            <p class="text-left ml-4" style="font-size: 16px;"><i>Issued On.</i>: <b><?= date('F jS, Y', strtotime($row['issued_on'])); ?></b></p>
-                                            <p class="text-left ml-4" style="font-size: 16px;"><i>Isuued at.</i>: <b><?= ucfirst($row['issued_at']) ?></b></p>
-                                            <p class="mr-5 text-right" style="font-size: 16px;"><i>Valid until:</i><i><?= date('F j, Y', strtotime($row['validation'])); ?></i></p>
-                                            <p class="text-center" style="font-size: 17px; margin-bottom: 300px;"><i>This license, while in force, shall be posted in a conspicuous place in the business premises.</i></p>
+                                            <h2 class="fw-bold text-left ml-5"><u><?= ucfirst($row['owner1']) ?></u></h2>
+                                            <p class="text-left" style="margin-left: 105px;">OWNER</p>
+                                            <p class="text-left ml-5" style="font-size: 17px;"><i>CTC No.</i>: <b><?= ucfirst($row['community_tax']) ?></b></p>
+                                            <p class="text-left ml-5" style="font-size: 17px;"><i>Issued On.</i>: <b><?= date('F jS, Y', strtotime($row['issued_on'])); ?></b></p>
+                                            <p class="text-left ml-5" style="font-size: 17px;"><i>Isuued at.</i>: <b><?= ucfirst($row['issued_at']) ?></b></p>
+                                            <p class="mr-5 text-right" style="font-size: 17px;"><i>Valid until:</i><i><?= date('F j, Y', strtotime($row['validation'])); ?></i></p>
+                                            <p class="text-center" style="font-size: 17px; margin-bottom: 290px;"><i>This license, while in force, shall be posted in a conspicuous place in the business premises.</i></p>
                                         </div>
                                     </div>
                                     <div class="footer-content">
