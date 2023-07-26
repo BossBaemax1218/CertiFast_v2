@@ -403,7 +403,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Remarks</label>
+                                        <label>Requirements</label>
                                         <textarea class="form-control" name="remarks" required placeholder="Enter Remarks"></textarea>
                                     </div>
                                 </div>
@@ -590,7 +590,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Remarks</label>
+                                        <label>Requirements</label>
                                         <textarea class="form-control" required name="remarks" placeholder="Enter Remarks" id="remarks" required></textarea>
                                     </div>
                                     <div class="form-group">

@@ -118,29 +118,36 @@ function editResident(that){
 }
 
 
-function editBlotter1(that){
-    id          = $(that).attr('data-id');
-    complainant         = $(that).attr('data-complainant');
-    respondent 		= $(that).attr('data-respondent');
-	victim 		= $(that).attr('data-victim');
-    type 		= $(that).attr('data-type');
-	l 		= $(that).attr('data-l');
-    date 	    = $(that).attr('data-date');
-	time 		= $(that).attr('data-time');
-    details 		= $(that).attr('data-details');
-    status 	= $(that).attr('data-status');
+function editPermit(that) {
+    id = $(that).attr('data-id');
+    business = $(that).attr('data-business');
+    owner1 = $(that).attr('data-owner1');
+    email = $(that).attr('data-email');
+    nature = $(that).attr('data-nature');
+    applied = $(that).attr('data-applied');
+    permit = $(that).attr('data-permit'); // Rename to permitTime
+    address = $(that).attr('data-address'); // Rename to addressDetails
+    location = $(that).attr('data-location'); // Rename to locationTime
+    issuedAt = $(that).attr('data-issuedAt'); // Rename to issuedAtDetails
+    issuedOn = $(that).attr('data-issuedOn'); // Rename to issuedOnTime
+    validation = $(that).attr('data-validation'); // Rename to validationDetails
+    status = $(that).attr('data-status');
 
-    $('#blotter_id').val(id);
-    $('#complainant').val(complainant);
-    $('#respondent').val(respondent);
-    $('#victim').val(victim);
-    $('#type').val(type);
-    $('#location').val(l);
-    $('#date').val(date);
-    $('#time').val(time);
-    $('#details').val(details);
+    $('#id').val(id);
+    $('#business').val(business); // Update ID to 'business'
+    $('#owner').val(owner1); // Update ID to 'owner'
+    $('#email').val(email);
+    $('#nature').val(nature);
+    $('#applied').val(applied);
+    $('#permit').val(permit); // Update ID to 'permitTime'
+    $('#addressDetails').val(address); // Update ID to 'addressDetails'
+    $('#location').val(location); // Update ID to 'locationTime'
+    $('#issuedAt').val(issuedAt); // Update ID to 'issuedAtDetails'
+    $('#issuedOn').val(issuedOn); // Update ID to 'issuedOnTime'
+    $('#validation').val(validation); // Update ID to 'validationDetails'
     $('#status').val(status);
 }
+
 
 $('.vstatus').change(function(){
     var val = $(this).val();

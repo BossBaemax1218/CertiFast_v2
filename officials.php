@@ -83,7 +83,7 @@
 										<table class="table">
 											<thead>
 												<tr>
-													<th scope="col">Barangay ID</th>
+													<!--<th scope="col">Barangay ID</th>-->
 													<th scope="col">Fullname</th>
 													<th scope="col">Position</th>
 													<th scope="col">Address</th>
@@ -101,7 +101,7 @@
 												<?php if (!empty($official)): ?>
 													<?php foreach ($official as $row): ?>
 														<tr>
-															<td><?= $row['barangay_id'] ?></td>
+															<!--<td><?= $row['barangay_id'] ?></td>-->
 															<td>
 																<div class="avatar avatar-xs mr-2">
 																	<img src="<?= (preg_match('/data:image/i', $row['picture'])) ? $row['picture'] : ('assets/uploads/officials_profile/' . $row['picture']) ?>" alt="Officials-Profile" class="avatar-img rounded-circle">
@@ -118,7 +118,7 @@
 																<?php endif ?>
 																<td class="text-center">
 																	<a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary"
-																		title="Edit Position" onclick="editOfficial(this)" data-id="<?= $row['id'] ?>" data-img="<?= $row['picture'] ?>" data-brgyid="<?= $row['barangay_id'] ?>" data-name="<?= $row['fullname'] ?>"
+																		title="Edit Position" onclick="editOfficial(this)" data-id="<?= $row['id'] ?>" data-img="<?= $row['picture'] ?>" data-name="<?= $row['fullname'] ?>"
 																		data-pos="<?= $row['pos_id'] ?>" data-add="<?= $row['address'] ?>" data-start="<?= $row['termstart'] ?>"
 																		data-end="<?= $row['termend'] ?>" data-status="<?= $row['status'] ?>">
 																		<i class="fas fa-edit"></i>
@@ -146,7 +146,6 @@
 					</div>
 				</div>
 			</div>
-			
 			 <!-- Modal -->
 			<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -174,10 +173,10 @@
 										<input type="file" class="form-control" name="image" accept=".jpeg, .jpg, .png" required>
 									</div>
 								</div>
-								<div class="form-group">
+								<!--<div class="form-group">
 									<label>Barangay ID</label>
-									<input type="text" class="form-control" name="barangayid" placeholder="Enter Barangay ID No." required>
-								</div>
+									<input type="text" class="form-control" name="barangay_id" placeholder="Enter Barangay ID No." required>
+								</div>-->
                                 <div class="form-group">
                                     <label>Fullname</label>
                                     <input type="text" class="form-control" placeholder="Enter Fullname" name="fullname" required>
@@ -250,10 +249,10 @@
                                     </div>
 									<?php endif ?>
                                 </div>
-								<div class="form-group">
+								<!--<div class="form-group">
 									<label>Barangay ID</label>
 									<input type="text" class="form-control" name="barangay_id" id="barangay_id" placeholder="Enter Barangay ID No.">
-								</div>
+								</div>-->
                                 <div class="form-group">
                                     <label>Fullname</label>
                                     <input type="text" class="form-control" placeholder="Enter Fullname" name="fullname"  id="name" required>

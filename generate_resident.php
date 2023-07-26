@@ -1,101 +1,12 @@
 <?php include 'server/server.php' ?>
 <?php 
-    $id = $_GET['id'];
-	$query = "SELECT * FROM tblresident WHERE id='$id'";
-    $result = $conn->query($query);
-    $resident = $result->fetch_assoc();
-
-    $c = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblposition.position='Kapitan'";
-    $captain = $conn->query($c)->fetch_assoc();
-    $s = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblposition.position='Secretary'";
-    $sec = $conn->query($s)->fetch_assoc();
-    $t = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblposition.position='Treasurer'";
-    $treasurer = $conn->query($t)->fetch_assoc();
-    $skc = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblposition.position='SK Chairman'";
-    $skchairman = $conn->query($skc)->fetch_assoc();
-    $k1 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='21'";
-    $kagawad1 = $conn->query($k1)->fetch_assoc();
-    $k2 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='22'";
-    $kagawad2 = $conn->query($k2)->fetch_assoc();
-    $k3 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='23'";
-    $kagawad3 = $conn->query($k3)->fetch_assoc();
-    $k4 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='24'";
-    $kagawad4 = $conn->query($k4)->fetch_assoc();
-    $k5 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='25'";
-    $kagawad5 = $conn->query($k5)->fetch_assoc();
-    $k6 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='26'";
-    $kagawad6 = $conn->query($k6)->fetch_assoc();
-    $k7 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='27'";
-    $kagawad7 = $conn->query($k7)->fetch_assoc();
-    $k8 = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblofficials.id='28'";
-    $kagawad8 = $conn->query($k8)->fetch_assoc();
+   include 'model/footer.php' 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
 	<title>Generate Resident Profile</title>
-    <style>
-    .footer-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: forestgreen;
-        color: white;
-        padding: 5px;
-        display: flex;
-        justify-content: space-between;;
-      }
-      .footer-names {
-        display: inline-block;
-      } 
-      .text-left {
-        text-align: right;  
-        margin-right: 2%;
-        margin-top: 10px;     
-      }
-
-      ul, ol {
-        list-style: none;
-      }   
-      .footer-names .fw-bold {
-        margin-top: 10px;
-        margin: 0px;
-        padding: 0px;
-        color: yellow;
-    }
-    /* Media query for laptops and computers */
-    @media (min-width: 992px) {
-        .footer-names {
-            margin-bottom: 0;
-        }
-
-        .personal-info {
-            margin-left: 150px;
-        }
-
-        .family-info {
-            margin-left: 100px;
-        }
-    }
-
-    /* Media query for phones */
-    @media (max-width: 767px) {
-        .footer-content {
-            flex-direction: column;
-        }
-        
-        .footer-names {
-            margin-bottom: 20px;
-        }
-
-        .personal-info,
-        .family-info {
-            margin-left: 0;
-        }
-    }
-    </style>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
@@ -139,25 +50,19 @@
 									</div>
 								</div>
 								    <div class="card-body" id="printThis">
-                                        <div class="card-header" style="background-color:forestgreen;">
-                                            <div class="card-head">
-                                                <div class="d-flex flex-wrap justify-content-around">
-                                                    <div class="text-center">
-                                                        <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid" width="150">
-                                                    </div>
-                                                        <div class="text-center" style="color: white;">
-                                                            <h2 class="mb-1">Republic of the Philippines</h2>
-                                                            <h2 class="mb-1">City of <?= ucwords($province) ?></h2>
-                                                            <h1 class="fw-bold mb-1"><?= ucwords($brgy) ?></i></h1>
-                                                            <h3 class="mb-2"><?= ucwords($town) ?></h3>				
-                                                            <h3><i class="fas fa-phone" style="color: yellow;"></i> <?= $number ?> &nbsp  <i class="fa fa-envelope" style="color: yellow;"></i> <?= $b_email ?></h3>
-                                                        </div>
-                                                    <div class="text-center">
-                                                        <img src="assets/uploads/<?= $brgy_logo ?>" class="img-fluid" width="150">
-                                                    </div>
+                                        <div class="header d-flex flex-wrap justify-content-around">
+                                                <div class="text-center">
+                                                    <h2 class="fw-bold mb-1">Republic of the Philippines</h2>
+                                                    <h2 class="fw-bold mb-1">City of <?= ucwords($province) ?></h2>
+                                                    <h1 class="fw-bold mb-1"  style="font-size: 40px;"><?= ucfirst($brgy) ?></i></h1>
+                                                    <h2 class="fw-bold mb-2"><?= ucwords($town) ?></h2>				
+                                                    <h3><i class="fas fa-phone" style="color: yellow;"></i> <span class="fw-bold"><?= $number ?></span>  &nbsp  <i class="fw-bold fa fa-envelope" style="color: yellow;"></i> <span class="fw-bold"><?= $b_email ?></span> </h3>
                                                 </div>
+                                            <div class="text-center mt-3">
+                                                <img src="assets/uploads/<?= $brgy_logo ?>" class="img-fluid mr-4" width="150">
+                                                <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid" width="150">
                                             </div>
-                                        </div>
+                                        </div>  
                                         <div class="col">
                                             <div class="text-center" style="margin-top: 30px;">
                                                 <h1 class="fw-bold" style="font-size:42px;">RESIDENT INFORMATION</h1>
@@ -266,7 +171,7 @@
                                             </div>
                                             <div class="col" style="margin-bottom: 300px;">
                                                 <div class="row">
-                                                    <h3 class="fw-bold text-left">National ID #:</h3>                                                       
+                                                    <h3 class="fw-bold text-left">Barangay ID #:</h3>                                                       
                                                 </div>                                               
                                                 <div class="text-left">
                                                     <h3 type="text" style="font-size:20px"><?= $resident['national_id'] ?></h3>
@@ -276,32 +181,32 @@
                                     <div class="footer-content">
                                         <div class="footer-names text-left">                                                       
                                             <ul>
-                                                <li><h1 class="fw-bold" style="margin-top: 90px;"><?= ucwords($captain['fullname']) ?></h1></li>
-                                                <li><h6 class="text">PUNONG BARANGAY</h6></li>
+                                                <li><h1 class="fw-bold" style="margin-top: 90px; color:white"><?= ucwords($captain['fullname']) ?></h1></li>
+                                                <li><h6 class="text" style="color:yellow">PUNONG BARANGAY</h6></li>
                                             </ul>                                                                                                  
                                         </div>
                                         <div class="footer-names text-left">                                                        
                                             <ul>
-                                                <h2 class="text-bold"><u>Barangay Kagawad</u></h2>
+                                                <h2 class="fw-bold text-white"><u>BARANGAY KAGAWAD</u></h2>
                                                 <li><h3 class="fw-bold"><?= ucwords($kagawad1['fullname']) ?></h3></li>
-                                                <li><h3 class="fw-bold"><?= ucwords($kagawad2['fullname']) ?></h3></li>
-                                                <li><h3 class="fw-bold"><?= ucwords($kagawad3['fullname']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad2['fullname']) ?></h3></li>                                                
                                                 <li><h3 class="fw-bold"><?= ucwords($kagawad4['fullname']) ?></h3></li>
                                                 <li><h3 class="fw-bold"><?= ucwords($kagawad5['fullname']) ?></h3></li>
                                                 <li><h3 class="fw-bold"><?= ucwords($kagawad6['fullname']) ?></h3></li>
                                                 <li><h3 class="fw-bold"><?= ucwords($kagawad7['fullname']) ?></h3></li>
+                                                <li><h3 class="fw-bold"><?= ucwords($kagawad3['fullname']) ?></h3></li>
                                             </ul>                                                       
                                         </div>
-                                        <div class="footer-names text-left">                                                       
+                                        <div class="footer-names text-left mt-3">                                                       
                                             <ul>
                                                 <li><h3 class="fw-bold"><?= ucwords($kagawad8['fullname']) ?></h3></li>
-                                                <li><h6 class="text">IPMR</h6></li>
+                                                <li><h6 class="fw-bold text-white" style="font-size: 15px;">IPMR</h6></li>
                                                 <li><h3 class="fw-bold"><?= ucwords($skchairman['fullname']) ?></h3></li>
-                                                <li><h6 class="text">SK Chairman</h6></li>
+                                                <li><h6 class="fw-bold text-white" style="font-size: 15px;">SK Chairman</h6></li>
                                                 <li><h3 class="fw-bold"><?= ucwords($sec['fullname']) ?></h3></li>
-                                                <li><h6 class="text">Barangay Secretary</h6></li>
+                                                <li><h6 class="fw-bold text-white" style="font-size: 15px;">Barangay Secretary</h6></li>
                                                 <li><h3 class="fw-bold"><?= ucwords($treasurer['fullname']) ?></h3></li>
-                                                <li><h6 class="text">Barangay Treasurery</h6></li>
+                                                <li><h6 class="fw-bold text-white" style="font-size: 15px;">Barangay Treasurery</h6></li>
                                             </ul>                                                       
                                         </div>
                                     </div>

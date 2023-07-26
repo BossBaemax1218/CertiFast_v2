@@ -25,7 +25,7 @@ $check = "SELECT id FROM tblofficials WHERE barangay_id='$brgy_id'";
 $result = $conn->query($check);
 $officials = ($result !== false) ? $result->num_rows : 0;
 
-if ($officials['id'] == $id || $officials <= 0) {
+if ($officials['barangay_id'] == $brgy_id || $officials <= 0) {
     if (!empty($id)) {
         if (!empty($profile) && !empty($profile2)) {
             $query = "UPDATE tblofficials SET `picture`='$profile', `barangay_id`='$brgy_id', `fullname`='$name', `position`='$pos', `address`='$address', termstart='$start', termend='$end', `status`='$status' WHERE id=$id;";

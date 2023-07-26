@@ -7,67 +7,6 @@
 <head>
 	<?php include 'templates/header.php' ?>
 	<title>Certificate of Indigency</title>
-    <style>
-    .footer-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: forestgreen;
-        color: white;
-        padding: 5px;
-        display: flex;
-        justify-content: space-between;;
-      }
-      .footer-names {
-        display: inline-block;
-      } 
-      .text-left {
-        text-align: right;  
-        margin-right: 2%;
-        margin-top: 10px;     
-      }
-
-      ul, ol {
-        list-style: none;
-      }   
-      .footer-names .fw-bold {
-        margin-top: 10px;
-        margin: 0px;
-        padding: 0px;
-        color: yellow;
-    }
-    /* Media query for laptops and computers */
-    @media (min-width: 992px) {
-        .footer-names {
-            margin-bottom: 0;
-        }
-
-        .personal-info {
-            margin-left: 150px;
-        }
-
-        .family-info {
-            margin-left: 100px;
-        }
-    }
-
-    /* Media query for phones */
-    @media (max-width: 767px) {
-        .footer-content {
-            flex-direction: column;
-        }
-        
-        .footer-names {
-            margin-bottom: 20px;
-        }
-
-        .personal-info,
-        .family-info {
-            margin-left: 0;
-        }
-    }
-    </style>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

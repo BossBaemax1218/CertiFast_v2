@@ -2,6 +2,12 @@
 <?php 
    include 'model/footer-permit.php' 
 ?>
+<?php
+
+$sql = "SELECT * FROM tblpermit";
+$result = $conn->query($sql)->fetch_assoc();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +15,7 @@
 	<title>Business Permit</title>
 </head>
 <body>
-<?php include 'templates/loading_screen.php' ?>
+
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
@@ -66,13 +72,19 @@
                                             <div class="title-header text-center mb-3">
                                                 <span class="fw-bold"> BARANGAY</span> <br><span class="fw-bold"> BUSINESS PERMIT</span>
                                             </div>
+                                            <?php
+                                            $id = $_GET['id'];
+                                            $sql = "SELECT * FROM tblpermit WHERE id='$id'";
+                                            $result = $conn->query($sql);
+                                            $row = $result->fetch_assoc();
+                                            ?>
                                             <div class="business">
-                                                <span class="ml-5 text-left">Nature of Business:</span><br>
-                                                <span class="ml-5 text-left">Proprietor:</span><br>
-                                                <span class="ml-5 text-left">Permit Number:</span><br>
-                                                <span class="ml-5 text-left">Address:</span><br>
-                                                <span class="ml-5 text-left">Business Location:</span><br>
-                                                <span class="ml-5 text-left">Status:</span><br>
+                                                <span class="ml-5 text-left">Nature of Business: <span class="fw-bold"><?= ucfirst($row['business_name']) ?></span></span><br>
+                                                <span class="ml-5 text-left">Proprietor: <span class="fw-bold"><?= ucfirst($row['owner1']) ?></span></span><br>
+                                                <span class="ml-5 text-left">Permit Number: <span class="fw-bold"><?= ucfirst($row['permit_number']) ?></span></span><br>
+                                                <span class="ml-5 text-left">Address: <span class="fw-bold"><?= ucfirst($row['address']) ?></span></span><br>
+                                                <span class="ml-5 text-left">Business Location: <span class="fw-bold"><?= ucfirst($row['location']) ?></span></span><br>
+                                                <span class="ml-5 text-left">Status: <span class="fw-bold"><?= ucfirst($row['status']) ?></span></span><br>
                                             </div>
                                             <div class="letter ml-5 text-left mt-3">
                                                 <h2 class="mt-3" style="text-indent: 40px;">This permit is being issued subject to existing rules and regulations, provided however, that the necessary fees are paid to the Treasurer of the Barangay as assessed. </h2>
@@ -83,13 +95,13 @@
                                         <div class="signature text-right mr-5">
                                             <h2 class="text-right fw-bold mr-4"><u><?= ucwords($captain['fullname']) ?></u></h2>
                                             <p class="text-right mr-5">PUNONG BARANGAY</p>
-                                            <h2 class="fw-bold text-left ml-4"><u><?= ucwords($captain['fullname']) ?></u></h2>
+                                            <h2 class="fw-bold text-left ml-4"><u><?= ucfirst($row['owner1']) ?></u></h2>
                                             <p class="text-left" style="margin-left: 85px;">OWNER</p><br>
-                                            <p class="text-left ml-4"><i>CTC No.</i>: <b></b></p>
-                                            <p class="text-left ml-4"><i>Issued On.</i>: <b><?= date('F jS, Y') ?></b></p>
-                                            <p class="text-left ml-4"><i>Isuued at.</i>: <b><?= ucwords($town) ?>, Davao City</b></p>
-                                            <p class="mr-4 text-right" style="font-size: 16px;"><i>Valid until:</i></p>
-                                            <p class="text-center" style="font-size: 16px; margin-bottom: 300px;"><i>This license, while in force, shall be posted in a conspicuous place in the business premises.</i></p>
+                                            <p class="text-left ml-4" style="font-size: 16px;"><i>CTC No.</i>: <b><?= ucfirst($row['community_tax']) ?></b></p>
+                                            <p class="text-left ml-4" style="font-size: 16px;"><i>Issued On.</i>: <b><?= date('F jS, Y', strtotime($row['issued_on'])); ?></b></p>
+                                            <p class="text-left ml-4" style="font-size: 16px;"><i>Isuued at.</i>: <b><?= ucfirst($row['issued_at']) ?></b></p>
+                                            <p class="mr-5 text-right" style="font-size: 16px;"><i>Valid until:</i><i><?= date('F j, Y', strtotime($row['validation'])); ?></i></p>
+                                            <p class="text-center" style="font-size: 17px; margin-bottom: 300px;"><i>This license, while in force, shall be posted in a conspicuous place in the business premises.</i></p>
                                         </div>
                                     </div>
                                     <div class="footer-content">
@@ -131,7 +143,7 @@
 				</div>
 			</div>
             
-           <!-- <div class="modal fade" id="pment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+           <div class="modal fade" id="pment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -164,11 +176,8 @@
                         </form>
                     </div>
                 </div>
-            </div>-->
-
-			<!-- Main Footer -->
+            </div>
 			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
 			<?php if(!isset($_GET['closeModal'])){ ?>
             
                 <script>

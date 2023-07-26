@@ -8,16 +8,28 @@ if (!isset($_SESSION["fullname"])) {
 
 $fullname = $_SESSION["user_email"];
 
-$sql = "SELECT * FROM tblpermit JOIN tbl_user_resident ON tblpermit.email = tbl_user_resident.user_email WHERE tbl_user_resident.user_email = ?";
-$stmt = $conn->prepare($sql);
+$query = "SELECT *, tblpermit.address, tblpermit.status FROM tblpermit JOIN tbl_user_resident ON tblpermit.email = tbl_user_resident.user_email WHERE tbl_user_resident.user_email = ?";
+$stmt = $conn->prepare($query);
 $stmt->bind_param("s", $fullname);
 $stmt->execute();
 $result = $stmt->get_result();
 
+$statusBadges = [
+    'on hold' => '<span class="badge badge-info">On Hold</span>',
+    'operating' => '<span class="badge badge-primary">Operating</span>',
+    'suspended' => '<span class="badge badge-warning">Suspended</span>',
+    'closed' => '<span class="badge badge-danger">Closed</span>'
+];
+
 $permit = array();
-while ($row = $result->fetch_assoc()) { 
+while ($row = $result->fetch_assoc()) {
+    $status = $row['status'];
+    $statusBadge = isset($statusBadges[$status]) ? $statusBadges[$status] : '';
+
+    $row['permit_badge'] = $statusBadge;
     $permit[] = $row;
 }
+$stmt->close();
 
 ?>
 <!DOCTYPE html>
@@ -53,25 +65,29 @@ while ($row = $result->fetch_assoc()) {
                                 <h5 class="text-center fw-bold mt-5"><a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;">APPLY</a></h5>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table id="residenttable" class="table">
+                                    <table id="residenttable" class="table">
 											<thead>
 												<tr class="text-center">
-													<th scope="col">Name of Business</th>
-													<th scope="col">Business Owner</th>
-                                                    <th scope="col">Business Email</th>
-													<th scope="col">Description</th>
-													<th scope="col">Date Applied</th>
+													<th scope="col">Nature of Business</th>
+													<th scope="col">Owner Name</th>
+													<th scope="col">Address</th>
+													<th scope="col">Permit #</th>
+													<th scope="col">Applied</th>
+													<th scope="col">Valid Until</th>
+													<th scope="col">Status</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php if(!empty($permit)): ?>
 													<?php foreach($permit as $row): ?>
 													<tr class="text-center">
-														<td><?= ucwords($row['name']) ?></td>
+														<td><?= ucwords($row['business_name']) ?></td>
 														<td><?= !empty($row['owner1']) ? ucwords($row['owner1']) : $row['owner1'] ?></td>
-                                                        <td><?= ucwords($row['email']) ?></td>
-														<td><?= $row['nature'] ?></td>
-														<td><?= $row['applied'] ?></td>													
+														<td><?= $row['address'] ?></td>
+														<td><?= ucwords($row['permit_number']) ?></td>
+														<td><?= ucwords($row['applied']) ?></td>
+														<td><?= ucwords($row['validation']) ?></td>
+														<td class="text-center"><?= $row['permit_badge'] ?></td>												
 													</tr>
 													<?php endforeach ?>
 												<?php endif ?>
@@ -98,23 +114,27 @@ while ($row = $result->fetch_assoc()) {
                         <div class="modal-body">
                             <form method="POST" action="model/save_permit_user.php" >
                                 <div class="form-group">
-                                    <label>Business Name</label>
-                                    <input type="text" class="form-control" placeholder="Enter Business Name" name="name"  required>
+                                    <label>Nature of Business Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter Business Name" name="business_name"  required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Business Owner</label>
+                                    <label>Business Owner Name</label>
                                     <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="owner1" value="<?= $_SESSION['fullname'] ?>" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label>Business Email</label>
+                                    <label>Business Email Address</label>
                                     <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="email" value="<?= $_SESSION['user_email'] ?>" readonly>
                                 </div>
 								<div class="form-group">
-                                    <label>Description</label>
-                                    <input type="text" class="form-control" placeholder="Description" name="nature" required>
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" placeholder="Enter your business address" name="address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Business Location</label>
+                                    <input type="text" class="form-control" placeholder="Enter your exact business location" name="location" required>
                                 </div>
 								<div class="form-group">
-                                    <label>Date Applied Nature</label>
+                                    <label>Date Applied</label>
                                     <input type="date" class="form-control" name="applied" value="<?= date('Y-m-d'); ?>" required>
                                 </div>
                        		</div>

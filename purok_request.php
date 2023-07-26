@@ -185,13 +185,13 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
 	    </div>
 	<?php include 'templates/footer.php' ?>
     <script>
-function editResident(that){
-    id          = $(that).attr('data-id');
-    rstatus     = $(that).data('rstatus');
+    function editResident(that){
+        id          = $(that).attr('data-id');
+        rstatus     = $(that).data('rstatus');
 
-    $('#res_id').val(id);
-    $('#rstatus').val(rstatus);
-}
+        $('#res_id').val(id);
+        $('#rstatus').val(rstatus);
+    }
     </script>
 </body>
 </html>
