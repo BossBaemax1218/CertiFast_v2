@@ -1,6 +1,6 @@
 # ABMS : MySQL database backup
 #
-# Generated: Sunday 23. July 2023
+# Generated: Wednesday 26. July 2023
 # Hostname: localhost
 # Database: db_certifast
 # --------------------------------------------------------
@@ -179,7 +179,6 @@ DROP TABLE IF EXISTS `tblofficials`;
 CREATE TABLE `tblofficials` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `picture` text DEFAULT NULL,
-  `barangay_id` varchar(50) DEFAULT NULL,
   `fullname` varchar(50) DEFAULT NULL,
   `position` varchar(50) DEFAULT NULL,
   `address` varchar(50) NOT NULL,
@@ -187,27 +186,27 @@ CREATE TABLE `tblofficials` (
   `termend` date DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO tblofficials VALUES("18","04072023203349person.png","23414511","Roberto A. Ballarta","1","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("19","04072023203349person.png","23414512","Abbie Charlotte Cabig-Sarsale","3","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("20","04072023203349person.png","23414514","Melliza Joie Basuga-Tañac","4","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("21","04072023203349person.png","23414515","Aileen N. Atino","2","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("22","04072023203349person.png","23414516","Ruel Ceballos","2","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("23","04072023203349person.png","23414517","Simeon Alejaga Sr.","2","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("24","04072023203349person.png","23414518","Angelico Santander Jr.","2","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("25","04072023203349person.png","23414519","Ann Liezl Deliquiña","2","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("26","04072023203349person.png","23414520","Raymundo Pupa","2","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("27","04072023203349person.png","23414521","Adonis Santander","2","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("28","04072023203349person.png","23414522","Arlene D. Suaybaguio","2","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("29","04072023203349person.png","23414523","Rowen Sampadong","5","1-A","2018-07-02","2024-07-10","Active");
-INSERT INTO tblofficials VALUES("30","04072023203349person.png","23414524","Karol Jean Pilongo","6","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("31","04072023203349person.png","23414525","Alien Rey Basa","6","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("32","04072023203349person.png","23414526","Gladys Calicdan","6","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("33","04072023203349person.png","23414527","Kim Sitchon","6","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("34","04072023203349person.png","23414528","Adrian Bibat","6","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("35","04072023203349person.png","23414529","Nico Tabaranza","6","1-A","2018-07-02","2024-07-02","Active");
-INSERT INTO tblofficials VALUES("36","04072023203349person.png","23414530","Roxanne Joy Marie Gelicame","6","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("18","26072023170308BALLARTA.jpg","Roberto A. Ballarta","1","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("19","26072023170316BRGYSEC.jpg","Abbie Charlotte Cabig-Sarsale","3","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("20","26072023170603BRGYTREAS.jpg","Melliza Joie Basuga-Tañac","4","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("21","26072023170620NATINO.jpg","Aileen N. Natino","2","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("22","26072023170644CEBALLOS.jpg","Ruel C. Ceballos","2","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("23","26072023171419CONCON.jpg","Loudel Concon","2","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("24","26072023171432SANTANDER,ANGELICO.jpg","Angelico Santander Jr.","2","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("25","26072023171444DELIQUIÑA.jpg","Ann Liezl Deliquiña","2","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("26","26072023171451PUPA.jpg","Raymundo Pupa","2","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("27","26072023171505SANTANDER,ADONIS.jpg","Adonis Santander","2","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("28","26072023171516SUAYBAGUIO.jpg","Arlene D. Suaybaguio","2","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("29","26072023171526SAMPADONG.jpg","Rowen Sampadong","5","1-A","2018-07-02","2024-07-10","Active");
+INSERT INTO tblofficials VALUES("30","04072023203349person.png","Karol Jean Pilongo","6","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("31","04072023203349person.png","Alien Rey Basa","6","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("32","04072023203349person.png","Gladys Calicdan","6","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("33","04072023203349person.png","Kim Sitchon","6","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("34","04072023203349person.png","Adrian Bibat","6","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("35","04072023203349person.png","Nico Tabaranza","6","1-A","2018-07-02","2024-07-02","Active");
+INSERT INTO tblofficials VALUES("36","04072023203349person.png","Roxanne Joy Marie Gelicame","6","1-A","2018-07-02","2024-07-02","Active");
 
 
 
@@ -622,15 +621,23 @@ DROP TABLE IF EXISTS `tblpermit`;
 
 CREATE TABLE `tblpermit` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(80) DEFAULT NULL,
+  `permit_number` varchar(50) NOT NULL,
+  `business_name` varchar(80) DEFAULT NULL,
   `owner1` varchar(200) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
-  `nature` varchar(220) DEFAULT NULL,
+  `address` varchar(50) NOT NULL,
+  `location` varchar(50) NOT NULL,
   `applied` date DEFAULT NULL,
+  `community_tax` varchar(50) NOT NULL,
+  `issued_on` date NOT NULL DEFAULT current_timestamp(),
+  `issued_at` varchar(50) NOT NULL,
+  `validation` date NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO tblpermit VALUES("3","Charlottee","Sofia Garcia Cruz","cyberlez12345@gmail.com","Online Shops","2023-07-23");
+INSERT INTO tblpermit VALUES("3","002-24","Charlottee","Sofia Garcia Cruz","cyberlez12345@gmail.com","Purok 6-B7, Barangay Los Amigos, Tugbok District, ","Purok 6-B7, Barangay Los Amigos, Tugbok District, ","2023-07-23","01416992","2023-07-26","Davao City","2023-07-26","on hold");
+INSERT INTO tblpermit VALUES("4","002-26","Chocolatt","Sofia Garcia Cruz","cyberlez12345@gmail.com","1-A Los Amigos","Los Amigos Tugbok Davao City","2023-07-26","01416993","2023-07-26","Davao City","2023-07-26","on hold");
 
 
 
@@ -765,7 +772,7 @@ CREATE TABLE `tblresident` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1008 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-INSERT INTO tblresident VALUES("1003","98796883741234","Filipino","130720232013171.png","Sofia","Garcia","Cruz","1-A Los Amigos","Tugbok, Davao City","2000-09-18","22","Single","Female","11-A","Yes","12311231236715","09272938801","cyberlez12345@gmail.com","N/A","4ps Requirements","1","","approved");
+INSERT INTO tblresident VALUES("1003","98796883741234","Filipino","130720232013171.png","Sofia","Garcia","Cruz","1-A Los Amigos","Tugbok, Davao City","2000-09-18","22","Single","Female","11-A","Yes","12311231236715","09272938801","cyberlez12345@gmail.com","N/A","4ps Requirements","1","School Purposes","approved");
 INSERT INTO tblresident VALUES("401","7020040824-0730","Filipino","03072023123634person.png","Maria","Clara","Torres","Tugbok, Los Amigos","Caloocan","1988-12-01","34","Separated","Female","9","Yes","000123 456401","9576866780","kre7gk3wkr@gmail.com","N/A","4ps Requirements","1","","");
 INSERT INTO tblresident VALUES("402","0819970917-0684","Filipino","03072023123634person.png","Pedro","Reyes","Torres","Tugbok, Los Amigos","Tuguegarao","1988-11-05","34","Separated","Female","4-B","Yes","000123 456402","9677901530","p6u56dxsnz@yahoo.com","Sel-employed","Bank Requirements","1","","");
 INSERT INTO tblresident VALUES("403","8319910915-9191","Filipino","03072023123634person.png","Sofia","Aquino","Reyes","Tugbok, Los Amigos","Kabugao","1988-03-18","35","Single","Female","7","Yes","000123 456403","9576343972","19rvjt0tda@gmail.com","Student","Bank Requirements","1","","");
