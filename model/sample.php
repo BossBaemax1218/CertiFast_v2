@@ -1362,3 +1362,48 @@ $totalValuesJson = json_encode($totalValues);
     }
 </script>
 
+<li class="nav-item <?= $current_page=='residency_certificate.php' || $current_page=='generate_resident_cert.php' ? 'active' : null ?>">
+                    <a href="residency_certificate.php">
+                        <i class="fas fa-home"></i>
+                        <p>Barangay Residency</p>
+                    </a>
+                </li>
+                <li class="nav-item <?= $current_page=='resident_certification.php' || $current_page=='generate_brgy_cert.php' ? 'active' : null ?>">
+                    <a href="resident_certification.php">
+                        <i class="fas fa-file-alt"></i>
+                        <p>Barangay Clearance</p>
+                    </a>
+                </li>
+                <li class="nav-item <?= $current_page=='resident_indigency.php' || $current_page=='generate_indi_cert.php' ? 'active' : null ?>">
+                    <a href="resident_indigency.php">
+                        <i class="fa fa-users"></i>
+                        <p>Barangay Indigency</p>
+                    </a>
+                </li>
+                <li class="nav-item <?= $current_page=='business_permit.php' || $current_page=='generate_business_permit.php' ? 'active' : null ?>">
+                    <a href="business_permit.php">
+                        <i class="fas fa-briefcase"></i>
+                        <p>Business Permit</p>
+                    </a>
+                </li>
+
+
+                <div class="panel-header">
+					<div class="page-inner mt-2">
+						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row mb-2">
+							<h2 class="text-black fw-bold" style = "font-size: 300%;">List of Certifications</h2>
+						</div>
+                        <div class="d-flex align-items-right align-items-md-right flex-column flex-md-row mb-2">
+                            <div class="col-sm-12 col-md-4 mb-2">
+                                <label for="documentType">Certificate Type:</label>
+                                <select class="form-control" id="documentType" name="documentType">
+                                    <option value="Barangay Clearance Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Barangay Clearance Payment') echo 'selected'; ?>>Barangay Clearance</option>
+                                    <option value="Certificate of Residency Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Residency Payment') echo 'selected'; ?>>Certificate of Residency</option>
+                                    <option value="Certificate of Indigency Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Indigency Payment') echo 'selected'; ?>>Certificate of Indigency</option>
+                                    <option value="Business Permit Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Business Permit Payment') echo 'selected'; ?>>Business Permit</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary text-right mt-3" id="applyFilterBtn">Apply Filter</button>
+                            </div>
+                        </div>
+					</div>
+				</div>

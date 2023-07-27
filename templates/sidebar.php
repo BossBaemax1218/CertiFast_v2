@@ -122,28 +122,10 @@ $totalAnnouncements = $row1['total_announcements'];
                     </span>
                     <h4 class="text-section">Documents</h4>
                 </li>
-                <li class="nav-item <?= $current_page=='residency_certificate.php' || $current_page=='generate_resident_cert.php' ? 'active' : null ?>">
-                    <a href="residency_certificate.php">
-                        <i class="fas fa-home"></i>
-                        <p>Barangay Residency</p>
-                    </a>
-                </li>
-                <li class="nav-item <?= $current_page=='resident_certification.php' || $current_page=='generate_brgy_cert.php' ? 'active' : null ?>">
-                    <a href="resident_certification.php">
-                        <i class="fas fa-file-alt"></i>
-                        <p>Barangay Clearance</p>
-                    </a>
-                </li>
-                <li class="nav-item <?= $current_page=='resident_indigency.php' || $current_page=='generate_indi_cert.php' ? 'active' : null ?>">
-                    <a href="resident_indigency.php">
-                        <i class="fa fa-users"></i>
-                        <p>Barangay Indigency</p>
-                    </a>
-                </li>
-                <li class="nav-item <?= $current_page=='business_permit.php' || $current_page=='generate_business_permit.php' ? 'active' : null ?>">
-                    <a href="business_permit.php">
-                        <i class="fas fa-briefcase"></i>
-                        <p>Business Permit</p>
+                <li class="nav-item <?= $current_page=='list_certificates.php' ? 'active' : null ?>">
+                    <a href="list_certificates.php">
+                        <i class="fas fa-stream"></i>
+                        <p>List of Certificates</p>
                     </a>
                 </li>
                 <li class="nav-section">
@@ -220,11 +202,11 @@ $totalAnnouncements = $row1['total_announcements'];
                             <h4 class="text-section">Settings</h4>
                         </li>
                         <li class="nav-item <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'active' : null ?>">
-                        <a href="#settings" data-toggle="collapse" class="collapsed" aria-expanded="false">
-                            <i class="fas fa-wrench"></i>
-                                <p>Settings</p>
-                            <span class="caret"></span>
-                        </a>
+                            <a href="#settings" data-toggle="collapse" class="collapsed" aria-expanded="false">
+                                <i class="fas fa-wrench"></i>
+                                    <p>Settings</p>
+                                <span class="caret"></span>
+                            </a>
                         <div class="collapse <?= $current_page=='purok.php' || $current_page=='position.php' || $current_page=='users.php' || $current_page=='user-resident.php' || $current_page=='support.php' || $current_page=='backup.php' ? 'show' : null ?>" id="settings">
                             <ul class="nav nav-collapse">
                                 <li class="<?= $current_page=='purok.php' ? 'active' : null ?>">

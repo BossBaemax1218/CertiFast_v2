@@ -1,5 +1,6 @@
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="assets/img/CFLogo2.ico" type="image/x-icon"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script src= "https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
