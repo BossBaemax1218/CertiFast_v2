@@ -274,8 +274,8 @@
                                         <input type="file" class="form-control" name="img" accept="image/*">
                                     </div>
                                     <div class="form-group">
-                                        <label>National ID No.</label>
-                                        <input type="text" class="form-control" name="national" placeholder="Enter National ID No." required>
+                                        <label>Barangay ID No.</label>
+                                        <input type="text" class="form-control" name="national" placeholder="Enter Barangay ID No." required>
                                     </div>
                                     <div class="form-group">
                                         <label>Citizenship</label>
@@ -286,20 +286,20 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Firstname</label>
-                                                <input type="text" class="form-control" placeholder="Enter Firstname" name="fname" required>
+                                                <label>First name</label>
+                                                <input type="text" class="form-control" placeholder="Enter First name" name="fname" required>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Middlename</label>
-                                                <input type="text" class="form-control" placeholder="Enter Middlename" name="mname" required>
+                                                <label>Middle name</label>
+                                                <input type="text" class="form-control" placeholder="Enter Middle name" name="mname" required>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Lastname</label>
-                                                <input type="text" class="form-control" placeholder="Enter Lastname" name="lname" required>
+                                                <label>Last name</label>
+                                                <input type="text" class="form-control" placeholder="Enter Last name" name="lname" required>
                                             </div>
                                         </div>
                                     </div>
@@ -404,7 +404,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Requirements</label>
-                                        <textarea class="form-control" name="remarks" required placeholder="Enter Remarks"></textarea>
+                                        <textarea class="form-control" name="remarks" required placeholder="Enter Requirements"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -461,8 +461,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>National ID</label>
-                                        <input type="text" class="form-control" name="national" id="nat_id" placeholder="Enter National ID" readonly>
+                                        <label>Barangay ID</label>
+                                        <input type="text" class="form-control" name="national" id="nat_id" placeholder="Enter Barangay ID" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label>Citizenship</label>
@@ -473,19 +473,19 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Firstname</label>
+                                                <label>First name</label>
                                                 <input type="text" class="form-control" placeholder="Enter Firstname" name="fname" id="fname" required>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Middlename</label>
+                                                <label>Middle name</label>
                                                 <input type="text" class="form-control" placeholder="Enter Middlename" name="mname" id="mname" required>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Lastname</label>
+                                                <label>Last name</label>
                                                 <input type="text" class="form-control" placeholder="Enter Lastname" name="lname" id="lname" required>
                                             </div>
                                         </div>

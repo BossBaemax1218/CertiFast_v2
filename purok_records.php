@@ -53,7 +53,22 @@ if (!empty($resident)) {
                                 <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
                             <div class="card">
-                                <div class="card-header md-2">                                    
+                                <div class="card-header md-2">
+                                    <div class="card-head-row">
+										<div class="card-title fw-bold">Current Barangay Officials</div>
+										<?php if(isset($_SESSION['username'])):?>
+											<div class="card-tools">
+												<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
+													<i class="fa fa-plus"></i>
+													Add Profiling
+												</a>
+												<a href="model/export_purok.php" class="btn btn-danger btn-border btn-round btn-sm">
+													<i class="fas fa-download"></i>
+													Export CSV
+												</a>
+											</div>
+										<?php endif?>
+									</div>                                    
                                 </div>
 								<div class="card-body">
                                     <div class="table-responsive">

@@ -18,13 +18,17 @@ function editChair(that){
 
 function editPurok(that){
     purok = $(that).attr('data-name');
-    total_residents = $(that).attr('data-res');
-    total_households = $(that).attr('data-hh');
+    purok_leader = $(that).attr('data-purok_leader');
+    contact_number = $(that).attr('data-contact_number');
+    total_residents = $(that).attr('data-total_residents');
+    total_households = $(that).attr('data-total_households');
     id = $(that).attr('data-id');
 
     $('#purok').val(purok);
-    $('#residents').val(total_residents);
-    $('#households').val(total_households);
+    $('#purok_leader').val(purok_leader);
+    $('#contact_number').val(contact_number);
+    $('#total_residents').val(total_residents);
+    $('#total_households').val(total_households);
     $('#purok_id').val(id);
 }
 

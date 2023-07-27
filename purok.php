@@ -55,15 +55,16 @@
 								</div>
 								<div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table id="residenttable" class="table">
                                             <thead>
-                                                <tr class="text-center">
+                                                <tr>
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Purok</th>
                                                     <th scope="col">Purok Leader</th>
+                                                    <th scope="col">Contact</th>
                                                     <th scope="col">No. of Residents</th>
                                                     <th scope="col">No. of Households</th>
-                                                    <th scope="col">Action</th>
+                                                    <th  class="text-center" scope="col">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -73,12 +74,13 @@
                                                         <td><?= $no ?></td>
                                                         <td><?= $row['purok'] ?></td>
                                                         <td><?= $row['purok_leader'] ?></td>
+                                                        <td><?= $row['contact_number'] ?></td>
                                                         <td><?= $row['total_residents'] ?></td>
                                                         <td><?= $row['total_households'] ?></td>
-                                                        <td>
+                                                        <td  class="text-center">
                                                             <div class="form-button-action">
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="Edit Purok" onclick="editPurok(this)" 
-                                                                    data-name="<?= $row['purok'] ?>" data-res="<?= $row['total_residents'] ?>" data-hh="<?= $row['total_households'] ?>" data-id="<?= $row['id'] ?>">
+                                                                    data-name="<?= $row['purok'] ?>" data-purok_leader="<?= $row['purok_leader'] ?>" data-contact_number="<?= $row['contact_number'] ?>" data-total_residents="<?= $row['total_residents'] ?>" data-total_households="<?= $row['total_households'] ?>" data-id="<?= $row['id'] ?>">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
                                                                 <a type="button" data-toggle="tooltip" href="model/remove_purok.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this purok?');" class="btn btn-link btn-danger" data-original-title="Remove">
@@ -124,6 +126,10 @@
                                     <input type="text" class="form-control" placeholder="Enter Purok Name" name="purok_leader" required>
                                 </div>
                                 <div class="form-group">
+                                    <label>Contact Number (Optional)</label>
+                                    <input type="text" class="form-control" placeholder="+63 000 000 0000" name="contact_number" required>
+                                </div>
+                                <div class="form-group">
                                     <label>No. of Residents</label>
                                     <input type="text" class="form-control" placeholder="Enter No. of Residents" name="total_residents" required>
                                 </div>
@@ -141,8 +147,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Modal -->
             <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -159,32 +163,51 @@
                                     <input type="text" class="form-control" id="purok" placeholder="Enter Purok Name" name="purok" required>
                                 </div>
                                 <div class="form-group">
+                                    <label>Purok Leader</label>
+                                    <input type="text" class="form-control" placeholder="Enter Purok Name" name="purok_leader" id="purok_leader" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Contact Number (Optional)</label>
+                                    <input type="text" class="form-control" placeholder="+63 000 000 0000" name="contact_number" id="contact_number" required>
+                                </div>
+                                <div class="form-group">
                                     <label>No. of Residents</label>
-                                    <input type="text" class="form-control" id="residents" placeholder="Enter No. of Residents" name="residents" required>
+                                    <input type="text" class="form-control" id="total_residents" placeholder="Enter No. of Residents" name="total_residents" required>
                                 </div>
                                 <div class="form-group">
                                     <label>No. of Households</label>
-                                    <input type="text" class="form-control" id="households" placeholder="Enter No. of Households" name="households" required>
+                                    <input type="text" class="form-control" id="total_households" placeholder="Enter No. of Households" name="total_households" required>
                                 </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <input type="hidden" id="purok_id" name="id">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Update</button>
-                        </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="text" id="purok_id" name="id">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-danger">Update</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
-
-			<!-- Main Footer -->
 			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
-			
 		</div>
-		
 	</div>
 	<?php include 'templates/footer.php' ?>
+    <script>
+        function editPurok(that){
+            purok = $(that).attr('data-name');
+            purok_leader = $(that).attr('data-purok_leader');
+            contact_number = $(that).attr('data-contact_number');
+            total_residents = $(that).attr('data-total_residents');
+            total_households = $(that).attr('data-total_households');
+            id = $(that).attr('data-id');
+
+            $('#purok').val(purok);
+            $('#purok_leader').val(purok_leader);
+            $('#contact_number').val(contact_number);
+            $('#total_residents').val(total_residents);
+            $('#total_households').val(total_households);
+            $('#purok_id').val(id);
+        }
+    </script>
 </body>
 </html>

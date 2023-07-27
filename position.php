@@ -54,9 +54,9 @@
 								</div>
 								<div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table id="residenttable" class="table">
                                             <thead>
-                                                <tr class="text-center">
+                                                <tr>
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Position</th>
                                                     <th scope="col">Action</th>
