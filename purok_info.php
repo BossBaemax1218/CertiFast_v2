@@ -32,8 +32,8 @@
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
-		<div class="main-panel">
-			<div class="content">
+		<div class="main-panel mt-5">
+			<div class="container">
 				<div class="panel-header" style = "background-color: #E42654">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
@@ -115,13 +115,8 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- Main Footer -->
-			<?php include 'templates/main-footer.php' ?>
-			<!-- End Main Footer -->
-			
+			<?php include 'templates/main-footer.php' ?>	
 		</div>
-		
 	</div>
 	<?php include 'templates/footer.php' ?>
 </body>

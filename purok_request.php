@@ -63,8 +63,8 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
-            <div class="main-panel">
-                <div class="content">
+            <div class="main-panel mt-5">
+                <div class="container">
                     <div class="panel-header">
                     <div>
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
@@ -180,9 +180,9 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                         </form>
                     </div>
                 </div>
-            </div>
-			<?php include 'templates/main-footer.php' ?>		
-	    </div>
+            </div>	
+			<?php include 'templates/main-footer.php' ?>
+        </div>	
 	<?php include 'templates/footer.php' ?>
     <script>
     function editResident(that){

@@ -57,102 +57,97 @@ $conn->close();
 	<div class="wrapper">
 		<?php include 'templates/main-header-resident.php' ?>
 		<?php include 'templates/sidebar-resident.php' ?>
-		<div class="main-panel">
-			<div class="content">
-				<div class="panel-header">
-                <div>
+		<div class="main-panel mt-5">
+			    <div class="container">
                     <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
                     <h3 class="text-center fw-bold"> Here are the online registration request with CertiFast Portal. </h3>
-                    <br>
-                </div>
-				<div class="page-inner">
-					<div class="row">
-						<div class="col-md-12">
-                            <?php if(isset($_SESSION['message'])): ?>
-                                    <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                                        <?php echo $_SESSION['message']; ?>
-                                    </div>
-                                <?php unset($_SESSION['message']); ?>
-                            <?php endif ?>
-                            <div class="card">
-                                <h5 class="text-center fw-bold mt-5">
-                                    <a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;" <?php echo isset($_SESSION['success']) || $nat > 0 ? 'disabled' : ''; ?>>
-                                        REQUEST
-                                    </a>
-                                </h5>
-								<div class="card-body">
-                                    <div class="table-responsive">
-                                        <table id="residenttable" class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Fullname</th>
-                                                    <th scope="col">Address</th>
-                                                    <th scope="col">Birthdate</th>
-                                                    <th scope="col">Gender</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Purok</th>
-                                                    <th scope="col">Status</th>
-                                                    <th class="text-center" scope="col">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php if (!empty($resident)): ?>
-                                                    <?php $no = 1; foreach ($resident as $row): ?>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="avatar avatar-xs ml-3">
-                                                                    <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
-                                                                </div>
-                                                                <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
-                                                            </td>
-                                                            <td><?= $row['address'] ?></td>
-                                                            <td><?= $row['birthdate'] ?></td>
-                                                            <td><?= $row['gender'] ?></td>
-                                                            <td><?= $row['email'] ?></td>
-                                                            <td><?= $row['purok'] ?></td>
-                                                            <td class="text-center"><?= $row['residency_badge'] ?></td>
-                                                            <td class="text-center">
-                                                            <div class="form-button-action">
-                                                                <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
-                                                                    data-id="<?= $row['id'] ?>" 
-                                                                    data-national="<?= $row['national_id'] ?>" 
-                                                                    data-fname="<?= $row['firstname'] ?>" 
-                                                                    data-mname="<?= $row['middlename'] ?>" 
-                                                                    data-lname="<?= $row['lastname'] ?>" 
-                                                                    data-address="<?= $row['address'] ?>" 
-                                                                    data-bplace="<?= $row['birthplace'] ?>" 
-                                                                    data-bdate="<?= $row['birthdate'] ?>" 
-                                                                    data-age="<?= $row['age'] ?>"
-                                                                    data-cstatus="<?= $row['civilstatus'] ?>" 
-                                                                    data-gender="<?= $row['gender'] ?>"
-                                                                    data-purok="<?= $row['purok'] ?>" 
-                                                                    data-vstatus="<?= $row['voterstatus'] ?>" 
-                                                                    data-taxno="<?= $row['taxno'] ?>" 
-                                                                    data-number="<?= $row['phone'] ?>" 
-                                                                    data-email="<?= $row['email'] ?>" 
-                                                                    data-occu="<?= $row['occupation'] ?>" 
-                                                                    data-remarks="<?= $row['remarks'] ?>" 
-                                                                    data-img="<?= $row['picture'] ?>" 
-                                                                    data-citi="<?= $row['citizenship'];?>" 
-                                                                    data-dead="<?= $row['resident_type'];?>" 
-                                                                    data-purpose="<?= $row['purpose'] ?>">
-                                                                    <i class="fa fa-eye"></i>
-                                                                </a>
-                                                            </div>
-                                                        </td>
+                    <div class="page-inner">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?php if(isset($_SESSION['message'])): ?>
+                                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                            <?php echo $_SESSION['message']; ?>
+                                        </div>
+                                    <?php unset($_SESSION['message']); ?>
+                                <?php endif ?>
+                                <div class="card">
+                                    <h5 class="text-center fw-bold mt-5">
+                                        <a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;" <?php echo isset($_SESSION['success']) || $nat > 0 ? 'disabled' : ''; ?>>
+                                            REQUEST
+                                        </a>
+                                    </h5>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="residenttable" class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Fullname</th>
+                                                        <th scope="col">Address</th>
+                                                        <th scope="col">Birthdate</th>
+                                                        <th scope="col">Gender</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Purok</th>
+                                                        <th scope="col">Status</th>
+                                                        <th class="text-center" scope="col">Action</th>
                                                     </tr>
-                                                <?php $no++; endforeach ?>
-                                            <?php endif ?>
-                                        </tbody>
-                                    </table>
+                                                </thead>
+                                                <tbody>
+                                                    <?php if (!empty($resident)): ?>
+                                                        <?php $no = 1; foreach ($resident as $row): ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="avatar avatar-xs ml-3">
+                                                                        <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
+                                                                    </div>
+                                                                    <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
+                                                                </td>
+                                                                <td><?= $row['address'] ?></td>
+                                                                <td><?= $row['birthdate'] ?></td>
+                                                                <td><?= $row['gender'] ?></td>
+                                                                <td><?= $row['email'] ?></td>
+                                                                <td><?= $row['purok'] ?></td>
+                                                                <td class="text-center"><?= $row['residency_badge'] ?></td>
+                                                                <td class="text-center">
+                                                                <div class="form-button-action">
+                                                                    <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
+                                                                        data-id="<?= $row['id'] ?>" 
+                                                                        data-national="<?= $row['national_id'] ?>" 
+                                                                        data-fname="<?= $row['firstname'] ?>" 
+                                                                        data-mname="<?= $row['middlename'] ?>" 
+                                                                        data-lname="<?= $row['lastname'] ?>" 
+                                                                        data-address="<?= $row['address'] ?>" 
+                                                                        data-bplace="<?= $row['birthplace'] ?>" 
+                                                                        data-bdate="<?= $row['birthdate'] ?>" 
+                                                                        data-age="<?= $row['age'] ?>"
+                                                                        data-cstatus="<?= $row['civilstatus'] ?>" 
+                                                                        data-gender="<?= $row['gender'] ?>"
+                                                                        data-purok="<?= $row['purok'] ?>" 
+                                                                        data-vstatus="<?= $row['voterstatus'] ?>" 
+                                                                        data-taxno="<?= $row['taxno'] ?>" 
+                                                                        data-number="<?= $row['phone'] ?>" 
+                                                                        data-email="<?= $row['email'] ?>" 
+                                                                        data-occu="<?= $row['occupation'] ?>" 
+                                                                        data-remarks="<?= $row['remarks'] ?>" 
+                                                                        data-img="<?= $row['picture'] ?>" 
+                                                                        data-citi="<?= $row['citizenship'];?>" 
+                                                                        data-dead="<?= $row['resident_type'];?>" 
+                                                                        data-purpose="<?= $row['purpose'] ?>">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php $no++; endforeach ?>
+                                                <?php endif ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Modal -->
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -20,8 +20,8 @@
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
-		<div class="main-panel">
-			<div class="content">
+		<div class="main-panel mt-5">
+			<div class="container">
 				<div class="panel-header">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">

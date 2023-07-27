@@ -14,8 +14,8 @@
 	    <div class="wrapper">
             <?php include 'templates/main-header.php' ?>
             <?php include 'templates/sidebar.php' ?>
-		    <div class="main-panel">
-			    <div class="content">
+		    <div class="main-panel mt-5">
+			    <div class="container mt-5">
                     <div>
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1><br>
                         <h6 class="text-center" style="text-align: justify;"> Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.  </h6>

@@ -35,8 +35,8 @@ if (!empty($resident)) {
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
-		<div class="main-panel">
-			<div class="content">
+		<div class="main-panel mt-5">
+			<div class="container">
 				<div class="panel-header">
                 <div>
                     <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>

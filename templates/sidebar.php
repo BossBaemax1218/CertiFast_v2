@@ -69,7 +69,7 @@ $totalAnnouncements = $row1['total_announcements'];
                 </li>
             <?php endif ?>
             <?php if(isset($_SESSION['username']) && ($_SESSION['role'] == 'purok leader')): ?>
-                <li class="nav-item <?= $current_page=='dashboard.php' || $current_page=='dashboard.php' || $current_page=='dashboard.php'  ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page=='dashboard.php' ? 'active' : null ?>">
                     <a href="dashboard.php" >
                         <i class="bx bxs-dashboard"></i>
                         <p>Dashboard</p>
@@ -90,13 +90,13 @@ $totalAnnouncements = $row1['total_announcements'];
                     </span>
                     <h4 class="text-section">Records</h4>
                 </li>
-                <li class="nav-item <?= $current_page=='purok_records.php' || $current_page=='purok_records.php' || $current_page=='purok_records.php'  ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page=='purok_records.php'  ? 'active' : null ?>">
                     <a href="purok_records.php" >
                         <i class='bx bx-file-find' ></i>
                         <p>Purok Management</p>
                     </a>
                 </li>
-                <li class="nav-item <?= $current_page=='purok_request.php' || $current_page=='purok_request.php' || $current_page=='purok_request.php'  ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page=='purok_request.php'  ? 'active' : null ?>">
                     <a href="purok_request.php" >
                         <i class='bx bxs-file' ></i>
                         <p>Requester Management</p>
@@ -110,7 +110,7 @@ $totalAnnouncements = $row1['total_announcements'];
                     </span>
                     <h4 class="text-section">Dashboard</h4>
                 </li>
-                <li class="nav-item <?= $current_page=='dashboard.php' || $current_page=='resident_info.php' || $current_page=='purok_info.php'  ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page=='dashboard.php'  ? 'active' : null ?>">
                     <a href="dashboard.php" >
                         <i class="fas fa-chart-bar"></i>
                         <p>Overview</p>

@@ -7,7 +7,6 @@ $current_page = PageName();
 ?>
 <?php
 include 'server/db_connection.php';
-session_start();
 
 $query1 = "SELECT COUNT(*) AS total_announcements FROM tbl_announcement";
 $result1 = $conn->query($query1);

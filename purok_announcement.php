@@ -37,13 +37,11 @@ while ($row = $result->fetch_assoc()) {
 <body>
 	<?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-    <?php include 'templates/main-header.php' ?>
-		<?php include 'templates/sidebar.php' ?>
-		<div class="main-panel">
-			<div class="content">
-                    <div>
+        <?php include 'templates/main-header.php' ?>
+            <?php include 'templates/sidebar.php' ?>
+		    <div class="main-panel">
+			    <div class="container">
                         <h1 class="text-center fw-bold mt-5" style="font-size: 400%;">Announcement</h1>
-                    </div>
 						<?php if(isset($_SESSION['message'])): ?>
 								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
 									<?php echo $_SESSION['message']; ?>
@@ -77,8 +75,8 @@ while ($row = $result->fetch_assoc()) {
                     </div>
                 </div>
 				<?php include 'templates/main-footer.php' ?>
-	        </div>
-	    </div>
+            </div>
+        </div>
 	<?php include 'templates/footer.php' ?>
 </body>
 </html>
