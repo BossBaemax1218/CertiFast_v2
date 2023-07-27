@@ -386,13 +386,13 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input type="text" class="form-control" placeholder="Enter Email Address" name="email" required>
+                                                <input type="text" class="form-control" placeholder="Enter Email Address" value="no-email@sample.com" name="email" required>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Contact Number</label>
-                                                <input type="text" class="form-control" placeholder="Enter Contact Number" name="number" required>
+                                                <input type="text" class="form-control" placeholder="Enter Contact Number" value="+63 000-000-000-00" name="number" required>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -404,7 +404,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Requirements</label>
-                                        <textarea class="form-control" name="remarks" required placeholder="Enter Requirements"></textarea>
+                                        <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
                                     </div>
                                 </div>
                             </div>

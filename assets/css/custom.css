@@ -13,3 +13,30 @@
     z-index: 2;
     cursor:pointer;
 }
+
+@media (max-width: 767px) {
+    #revenuetable {
+        font-size: 12px;
+    }
+    #revenuetable td, #revenuetable th {
+        padding: 8px 4px;
+    }
+}
+
+@media (max-width: 575px) {
+    #revenuetable .text-center {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #revenuetable {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
