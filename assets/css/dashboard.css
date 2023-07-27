@@ -49,19 +49,6 @@
   #description {
     font-size: 16px;
   }
-  table {
-  border-collapse: collapse;
-  width: 50%;
-}
-
-th, td {
-  padding: 2px;
-  text-align: left;
-}
-
-th {
-  text-align: left;
-}
 
 .form-container {
   display: flex;
@@ -104,10 +91,6 @@ th {
     .description {
       font-size: 16px;
     }
-    table {
-  border-collapse: collapse;
-  width: 100%;
-}
   }
 
   @media screen and (max-width: 1100px) {
@@ -116,10 +99,6 @@ th {
       max-width: 1200px;
       height: 350px;
     }
-    table {
-  border-collapse: collapse;
-  width: 100%;
-}
   }
 
   @media screen and (max-width: 800px) {
@@ -128,10 +107,6 @@ th {
       width: 100%;
     height: 100%;
     }
-    table {
-  border-collapse: collapse;
-  width: 100%;
-}
   }
 
   @media screen and (max-width: 400px) {
@@ -139,59 +114,9 @@ th {
       font-size: 16px;
       display: flex;
     }
-    table {
-  border-collapse: collapse;
-  width: 100%;
-}
     #myChart3 {
       max-width: 1200px;
       width: 100%;
     height: 100%;
     }
   }
-      /* Add custom styles for responsiveness */
-      table {
-      width: 100%;
-      border-collapse: collapse;
-  }
-
-  th, td {
-      padding: 8px;
-      text-align: left;
-  }
-
-  .avatar {
-      display: inline-block;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      overflow: hidden;
-  }
-
-  .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-  }
-
-  /* Add media queries for responsiveness */
-  @media screen and (max-width: 767px) {
-      /* Adjust the table layout for smaller screens */
-      th, td {
-          display: block;
-      }
-
-      th {
-          text-align: left;
-      }
-
-      .avatar {
-          margin-right: 10px;
-      }
-
-      .d-flex {
-          display: flex;
-          align-items: center;
-      }
-  }
-  

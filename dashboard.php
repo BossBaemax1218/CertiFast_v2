@@ -100,10 +100,10 @@ while($row = $result->fetch_assoc()){
                                             <label for="documentType">Document Type:</label>
                                             <select class="form-control" id="documentType" name="documentType">
                                                 <option value="All" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'All') echo 'selected'; ?>>All</option>
-                                                <option value="Barangay Clearance Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Barangay Clearance Payment') echo 'selected'; ?>>Barangay Clearance</option>
-                                                <option value="Certificate of Residency Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Residency Payment') echo 'selected'; ?>>Certificate of Residency</option>
-                                                <option value="Certificate of Indigency Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Indigency Payment') echo 'selected'; ?>>Certificate of Indigency</option>
-                                                <option value="Business Permit Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Business Permit Payment') echo 'selected'; ?>>Business Permit</option>
+                                                <option value="Barangay Clearance" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Barangay Clearance') echo 'selected'; ?>>Barangay Clearance</option>
+                                                <option value="Certificate of Residency" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Residency') echo 'selected'; ?>>Certificate of Residency</option>
+                                                <option value="Certificate of Indigency" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Indigency') echo 'selected'; ?>>Certificate of Indigency</option>
+                                                <option value="Business Permit" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Business Permit') echo 'selected'; ?>>Business Permit</option>
                                             </select>
                                         </div>
                                         <div class="col-sm-12 col-md-6 mt-3">

@@ -120,12 +120,18 @@ $totalAnnouncements = $row1['total_announcements'];
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">Documents</h4>
+                    <h4 class="text-section">Files</h4>
                 </li>
-                <li class="nav-item <?= $current_page=='list_certificates.php' ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page=='list_certificates.php' || $current_page=='generate_brgy_cert.php' || $current_page=='generate_residency_cert.php' || $current_page=='generate_indi_cert.php' ? 'active' : null ?>">
                     <a href="list_certificates.php">
                         <i class="fas fa-stream"></i>
                         <p>List of Certificates</p>
+                    </a>
+                </li>
+                <li class="nav-item <?= $current_page=='business_permit.php' || $current_page=='generate_business_permit.php'  ? 'active' : null ?>">
+                    <a href="business_permit.php" >
+                        <i class="fas fa-stream"></i>
+                        <p>List of Business</p>
                     </a>
                 </li>
                 <li class="nav-section">

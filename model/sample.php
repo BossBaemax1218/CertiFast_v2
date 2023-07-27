@@ -1407,3 +1407,109 @@ $totalValuesJson = json_encode($totalValues);
                         </div>
 					</div>
 				</div>
+                function redirectToPage() {
+    var certType = document.getElementById('certType').value;
+    var authorizeStatus = document.getElementById('authorize_status').value;
+
+    switch (certType) {
+        case 'Barangay Clearance':
+            window.location.href = 'generate_brgy_cert.php';
+            break;
+        case 'Certificate of Residency':
+            window.location.href = 'generate_residency.php';
+            break;
+        case 'Certificate of Indigency':
+            window.location.href = 'generate_indi_cert.php';
+            break;
+        case 'Business Permit':
+            window.location.href = 'generate_business_permit.php';
+            break;
+        case 'Certificate of OATH Taking':
+            window.location.href = 'certificate_of_oath_taking.php';
+            break;
+        case 'Certificate of Tree Planting':
+            window.location.href = 'certificate_of_tree_planting.php';
+            break;
+        case 'Certificate of Resident Information':
+            window.location.href = 'generate_resident.php';
+            break;
+        case 'Certificate of Residency Abroad':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Residency DSWD':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of PUM-PUI':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Lost Immunization Card':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Good Moral':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of DLPC':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Live In':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Oneness':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Low Income':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of New-Appearance':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Philheath POS Application':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Family Home Estate Tax':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Family Home Estate Tax-Celestial':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Death':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Residency-Deped':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Barangay':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Travel Derby':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Sold Pigs':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        case 'Certificate of Birth':
+            window.location.href = 'certificate_of_residency_abroad.php';
+            break;
+        default:
+            window.location.href = 'list_certificates.php';
+            break;
+    }
+}
+
+document.getElementById('applyFilterBtn').addEventListener('click', function() {
+    redirectToPage();
+});
+
+
+<div class="col-sm-12 col-md-1 mr-4">
+                                        <button type="submit" class="btn btn-primary" style="margin-top: 27px;" id="applyFilterBtn">Apply Filter</button>
+                                    </div>
+
+
+                                                                        <!--<div class="col-sm-12 col-md-2 text-left">
+                                        <label for="authorize_status">Authorize Status:</label>
+                                        <select class="form-control" id="authorize_status" name="authorize_status">
+                                            <option value="Yes" <?php if (isset($_POST['authorize_status']) && $_POST['authorize_status'] === 'Yes') echo 'selected'; ?>>Yes</option>
+                                            <option value="No" <?php if (isset($_POST['authorize_status']) && $_POST['authorize_status'] === 'No') echo 'selected'; ?>>No</option>
+                                        </select>                               
+                                    </div>-->

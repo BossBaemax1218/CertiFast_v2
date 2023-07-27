@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php 
-    $query = "SELECT COUNT(DISTINCT details) as de FROM tblpayments WHERE details IN ('Barangay Clearance Payment', 'Business Permit Payment', 'Certificate of Residency Payment', 'Certificate of Indigency Payment')"; 
+    $query = "SELECT COUNT(DISTINCT details) as de FROM tblpayments WHERE details IN ('Barangay Clearance', 'Business Permit', 'Certificate of Residency', 'Certificate of Indigency')"; 
     $revenue1 = $conn->query($query)->fetch_assoc();
 
     $sql1 = "SELECT COUNT(name) as receipt FROM tblpayments";
@@ -22,11 +22,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?php include 'templates/header.php' ?>     
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-  <script src="https://cdn.jsdelivr.net/npm/table-html-export"></script>              
+	<?php include 'templates/header.php' ?>                 
 	<title>Transaction Reports</title>
 </head>
 <body>
@@ -130,7 +126,7 @@
 						<?php endif ?>
 					</div>
                     <div class="page-inner">
-                        <div class="row mt--2">
+                        <div class="row mt-2">
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -158,54 +154,60 @@
                                             <?php endif ?>
                                             </div>
                                         </div>
-                                    <div class="card-body">
-                                        <div class="row w-50">
-                                            <div class="col ml-3">
-                                                <label>Minimum Date</label>
-                                                <input type="text" class="form-control datepicker" placeholder="Enter Date" id="min">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="min">Minimum Date</label>
+                                                        <input type="text" class="form-control datepicker" placeholder="Enter Date" id="min">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="max">Maximum Date</label>
+                                                        <input type="text" class="form-control datepicker" placeholder="Enter Date" id="max">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col">
-                                                <label>Maximum Date</label>
-                                                <input type="text" class="form-control datepicker" placeholder="Enter Date" id="max">
-                                            </div>
-                                        </div>
-                                        <div class="table-responsive mt-3">
-                                            <table id="revenuetable" class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="text-center" scope="col">Date</th>
-                                                        <th scope="col">Recipient</th>
-                                                        <th scope="col">Details</th>
-                                                        <th scope="col">Amount</th>
-                                                        <th scope="col">Cashier</th>
-                                                        <th class="text-center" scope="col">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php if(!empty($revenue)): ?>
-                                                        <?php $no=1; foreach($revenue as $row): ?>
+                                            <div class="table-responsive mt-3">
+                                                <table id="revenuetable" class="table">
+                                                    <thead>
                                                         <tr>
-                                                            <td class="text-center"><?= $row['date'] ?></td>
-                                                            <td><?= $row['name'] ?></td>
-                                                            <td><?= $row['details'] ?></td>
-                                                            <td> <i class="fa-solid fa-peso-sign"></i> <?= number_format($row['amounts'],2) ?></td>
-                                                            <td><?= $row['user'] ?></td>
-                                                            <td class="text-center">
-                                                                <div class="form-button-action">
-                                                                    <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
-                                                                    <a type="button" data-toggle="tooltip" href="model/remove_payment.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this data?');" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                        <i class="fas fa-trash"></i>
-                                                                    </a>
-                                                                    <?php endif ?>
-                                                                </div>
-                                                            </td>
+                                                            <th class="text-center" scope="col">Date</th>
+                                                            <th scope="col">Recipient</th>
+                                                            <th scope="col">Details</th>
+                                                            <th scope="col">Amount</th>
+                                                            <th scope="col">Cashier</th>
+                                                            <th class="text-center" scope="col">Action</th>
                                                         </tr>
-                                                        <?php $no++; endforeach ?>
-                                                    <?php endif ?>
-                                                </tbody>
-                                            </table>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php if (!empty($revenue)) : ?>
+                                                            <?php $no = 1;
+                                                            foreach ($revenue as $row) : ?>
+                                                                <tr>
+                                                                    <td class="text-center"><?= $row['date'] ?></td>
+                                                                    <td><?= $row['name'] ?></td>
+                                                                    <td><?= $row['details'] ?></td>
+                                                                    <td> <i class="fa-solid fa-peso-sign"></i> <?= number_format($row['amounts'], 2) ?></td>
+                                                                    <td><?= $row['user'] ?></td>
+                                                                    <td class="text-center">
+                                                                        <div class="form-button-action">
+                                                                            <?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'administrator') : ?>
+                                                                                <a type="button" data-toggle="tooltip" href="model/remove_payment.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this data?');" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                                                    <i class="fas fa-trash"></i>
+                                                                                </a>
+                                                                            <?php endif ?>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php $no++;
+                                                            endforeach ?>
+                                                        <?php endif ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -34,23 +34,24 @@
                             <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                    <div class="modal-header">
-                                        </div>
-                                        <div class="modal-body">
-                                            <?php if ($_SESSION['success'] == 'danger'): ?>
-                                                <h5 class="modal-title text-center w-100">
-                                                    <i class="fas fa-exclamation-triangle fa-3x d-block mx-auto" style="color: #d64242"></i>
-                                                </h5>
-                                            <?php elseif ($_SESSION['success'] == 'success'): ?>
-                                                <h5 class="modal-title text-center w-100">
-                                                    <i class="fas fa-check-circle fa-3x d-block mx-auto" style="color: #34c240"></i>
-                                                </h5>
-                                            <?php endif; ?>
-                                            <br>
-                                            <p class="text-center" style="font-size: 24px; font-weight: bold;"><?php echo $_SESSION['message']; ?></p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" id="closeModalButton">Close</button>
+                                        <div class="modal-header">
+                                            </div>
+                                            <div class="modal-body">
+                                                <?php if ($_SESSION['success'] == 'danger'): ?>
+                                                    <h5 class="modal-title text-center w-100">
+                                                        <i class="fas fa-exclamation-triangle fa-3x d-block mx-auto" style="color: #d64242"></i>
+                                                    </h5>
+                                                <?php elseif ($_SESSION['success'] == 'success'): ?>
+                                                    <h5 class="modal-title text-center w-100">
+                                                        <i class="fas fa-check-circle fa-3x d-block mx-auto" style="color: #34c240"></i>
+                                                    </h5>
+                                                <?php endif; ?>
+                                                <br>
+                                                <p class="text-center" style="font-size: 24px; font-weight: bold;"><?php echo $_SESSION['message']; ?></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" id="closeModalButton">Close</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

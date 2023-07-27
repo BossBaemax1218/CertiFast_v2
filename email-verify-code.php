@@ -34,9 +34,6 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close"  id="closeModalButton" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
                                     </div>                                  
                                     <div class="modal-body">
                                         <?php if ($_SESSION['success'] == 'danger'): ?>
@@ -50,6 +47,9 @@
                                         <?php endif; ?>
                                         <br>
                                         <p class="text-center" style="font-size: 24px; font-weight: bold;"><?php echo $_SESSION['message']; ?></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" id="closeModalButton">Close</button>
                                     </div>
                                 </div>
                             </div>
@@ -90,13 +90,11 @@
         });
     </script>
     <script>
-document.addEventListener('mousedown', function(event) {
-    // Check if the right mouse button (2) or middle mouse button (3) was clicked
-    if (event.which === 2 || event.which === 3) {
-        // Go back in the browser's history
-        history.back();
-    }
-});
+    document.addEventListener('mousedown', function(event) {
+        if (event.which === 2 || event.which === 3) {
+            history.back();
+        }
+    });
 </script>
 
     </body>

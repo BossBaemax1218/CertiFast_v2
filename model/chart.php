@@ -11,9 +11,6 @@
         </div>
     </div>
   </div>
-
-
-
 <?php
 include 'server/db_connect.php';
 error_reporting(E_ALL);
@@ -47,7 +44,7 @@ if ($documentType !== 'All') {
 }
 
 $sql .= "GROUP BY date_key, details ";
-$sql .= "ORDER BY FIELD(date_key, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', date_key), FIELD(details, 'Barangay Clearance Payment', 'Certificate of Residency Payment', 'Certificate of Indigency Payment', 'Business Permit Payment')";
+$sql .= "ORDER BY FIELD(date_key, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', date_key), FIELD(details, 'Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit')";
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(':fromDate', $fromDate);
@@ -78,7 +75,7 @@ foreach ($result as $row) {
         $chartData[$dateKey] = [];
     }
     if ($documentType === 'All') {
-        $documentTypes = ['Certificate of Indigency Payment', 'Barangay Clearance Payment', 'Certificate of Residency Payment', 'Business Permit Payment'];
+        $documentTypes = ['Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit'];
         foreach ($documentTypes as $type) {
             if (!isset($chartData[$dateKey][$type])) {
                 $chartData[$dateKey][$type] = 0;

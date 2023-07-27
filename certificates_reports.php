@@ -1,17 +1,17 @@
 <?php include 'server/server.php' ?>
 <?php 
-    $query = "SELECT COUNT(details) as clearance FROM tblpayments WHERE details = 'Barangay Clearance Payment'"; 
+    $query = "SELECT COUNT(details) as clearance FROM tblpayments WHERE details = 'Barangay Clearance'"; 
     $revenue1 = $conn->query($query)->fetch_assoc();
 
-    $sql1 = "SELECT COUNT(details) as residency FROM tblpayments WHERE details = 'Certificate of Residency Payment'";
+    $sql1 = "SELECT COUNT(details) as residency FROM tblpayments WHERE details = 'Certificate of Residency'";
     $result1 = $conn->query($sql1);
     $row1 = $result1->fetch_assoc();
     $residencyCount = $row1['residency'];
 
-	$query2 = "SELECT COUNT(details) as indigency FROM tblpayments WHERE details = 'Certificate of Indigency Payment'";
+	$query2 = "SELECT COUNT(details) as indigency FROM tblpayments WHERE details = 'Certificate of Indigency'";
 	$revenue3 = $conn->query($query2)->fetch_assoc();
 
-    $query3 = "SELECT COUNT(details) as permit FROM tblpayments WHERE details = 'Business Permit Payment'"; 
+    $query3 = "SELECT COUNT(details) as permit FROM tblpayments WHERE details = 'Business Permit'"; 
     $revenue2 = $conn->query($query3)->fetch_assoc();
 
     $sql = "SELECT * FROM tblpayments ORDER BY `date` DESC";
@@ -21,8 +21,6 @@
 	while($row = $result->fetch_assoc()){
 		$revenue[] = $row; 
 	}
-
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">

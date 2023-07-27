@@ -20,7 +20,6 @@
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
-
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header">
@@ -53,7 +52,7 @@
                                     <div class="table-responsive">
                                         <table id="residenttable" class="table">
                                             <thead>
-                                                <tr class="text-center">
+                                                <tr>
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Email</th>
@@ -67,7 +66,7 @@
                                             <tbody>
                                                 <?php if(!empty($ticket)): ?>
                                                     <?php $no=1; foreach($ticket as $row): ?>
-                                                    <tr class="text-center">
+                                                    <tr>
                                                         <td><?= $no ?></td>
                                                         <td><?= $row['name'] ?></td>
                                                         <td><a href="mailto:<?= $row['email'] ?>"><?= $row['email'] ?></a></td>
