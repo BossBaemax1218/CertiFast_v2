@@ -72,22 +72,21 @@ while($row = $result->fetch_assoc()){
                     </div>
                     <?php unset($_SESSION['message']); ?>
                 <?php endif ?>
-                <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
+                <?php if (isset($_SESSION['username']) && ($_SESSION['role'] == 'staff' || $_SESSION['role'] == 'administrator')): ?>
                     <div class="container mt-3">
                         <h3 class="fw-bold text-black mb-4" style="font-size: 400%;">Overview</h3>
-                        <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                            <div class="row mb-3">
-                                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                                <div class="container">
                                     <div class="row mb-3">
-                                        <div class="col-sm-12 col-md-2 mb-2">
+                                        <div class="col-sm-12 col-md-4 mb-2">
                                             <label for="fromDate">From:</label>
                                             <input type="date" class="form-control" id="fromDate" name="fromDate" value="<?php echo isset($_POST['fromDate']) ? htmlspecialchars($_POST['fromDate']) : date('Y-m-d'); ?>">
                                         </div>
-                                        <div class="col-sm-12 col-md-2 mb-2">
+                                        <div class="col-sm-12 col-md-4 mb-2">
                                             <label for="toDate">To:</label>
                                             <input type="date" class="form-control" id="toDate" name="toDate" value="<?php echo isset($_POST['toDate']) ? htmlspecialchars($_POST['toDate']) : date('Y-m-d'); ?>">
                                         </div>
-                                        <div class="col-sm-12 col-md-2 mb-2">
+                                        <div class="col-sm-12 col-md-4 mb-2">
                                             <label for="dateType">Date Type:</label>
                                             <select class="form-control" id="dateType" name="dateType">
                                                 <option value="weekly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'weekly') echo 'selected'; ?>>By Week</option>
@@ -95,7 +94,9 @@ while($row = $result->fetch_assoc()){
                                                 <option value="yearly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'yearly') echo 'selected'; ?>>By Year</option>
                                             </select>
                                         </div>
-                                        <div class="col-sm-12 col-md-3 mb-2">
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-12 col-md-4 mb-2">
                                             <label for="documentType">Document Type:</label>
                                             <select class="form-control" id="documentType" name="documentType">
                                                 <option value="All" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'All') echo 'selected'; ?>>All</option>
@@ -105,21 +106,20 @@ while($row = $result->fetch_assoc()){
                                                 <option value="Business Permit Payment" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Business Permit Payment') echo 'selected'; ?>>Business Permit</option>
                                             </select>
                                         </div>
-                                        <div class="col-sm-12 col-md-3 mt-3">
+                                        <div class="col-sm-12 col-md-6 mt-3">
                                             <button type="submit" class="btn btn-primary" id="applyFilterBtn">Apply Filter</button>
                                             <button type="button" class="btn btn-danger" id="pdfExportBtn">Export</button>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                        </form>
-                        <div class="row md-5">
-                            <div class="col-md-12">
-                                <div class="chart-wrapper">
-                                    <?php include 'model/chart.php' ?>
+                                </div>
+                            </form>
+                            <div class="row md-5">
+                                <div class="col-md-12">
+                                    <div class="chart-wrapper">
+                                        <?php include 'model/chart.php' ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 <?php endif ?>
                 <?php if(isset($_SESSION['username']) && $_SESSION['role']=='purok leader'):?>

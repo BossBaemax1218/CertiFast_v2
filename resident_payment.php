@@ -32,7 +32,7 @@ include 'server/db_connection.php';
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive mt-3">
-                                            <table id="revenuetable" class="table">
+                                            <table id="residenttable" class="table">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Date</th>
@@ -44,11 +44,7 @@ include 'server/db_connection.php';
                                                 <tbody>
                                                     <?php
                                                     $user_name = $_SESSION['fullname'];
-
-                                                    // Prepare and execute the SQL query to fetch payment history for the logged-in user
-                                                    $paymentHistoryQuery = "SELECT * FROM tblpayments AS p JOIN tbl_user_resident AS u ON p.email=u.user_email WHERE u.fullname=? ORDER BY p.date DESC";
-                                                                            
-
+                                                    $paymentHistoryQuery = "SELECT * FROM tblpayments AS p JOIN tbl_user_resident AS u ON p.email=u.user_email WHERE u.fullname=? ORDER BY p.date DESC";                                                                        
                                                     $stmt = $conn->prepare($paymentHistoryQuery);
                                                     $stmt->bind_param("s", $user_name);
                                                     $stmt->execute();

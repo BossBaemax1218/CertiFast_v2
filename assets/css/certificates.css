@@ -1,5 +1,5 @@
 .card-body {
-    padding: 20px; /* Add some padding for better readability on small screens */
+    padding: 20px;
 }
 
 .header {
@@ -44,7 +44,6 @@
     margin: 0;
 }
 
-/* Add media queries for responsiveness */
 @media screen and (max-width: 767px) {
     .header {
         flex-direction: column;

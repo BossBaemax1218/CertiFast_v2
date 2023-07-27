@@ -61,12 +61,12 @@
                                             <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid" width="150">
                                         </div>
                                     </div>                                 
-                                    <div class="content-letter">
+                                    <div class="content-letter row mt-4 justify-content-around ml-5 mr-5">
                                         <div class="col-md-12">
                                                 <div class="text-center">
                                                     <h1 class="mt-4 fw-bold mb-5" style="font-size:100px; color: black;">BARANGAY RESIDENCY</h1>
                                                 </div>
-                                            <div class="letter"></div>
+                                            <div class="letter">
                                                 <h2 class="text">To Whom It May Concern:</h2>
                                                 <h2 class="mt-4" style="text-indent: 40px;">This is to certify that <span class="fw-bold" style="font-size:24px"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
                                                 of legal age, a bona fide resident of <span class="text"> Purok <?= ucwords($resident['purok']) ?></span>, <span class="text"><?= ucwords($town) ?></span>, Davao City.
@@ -86,7 +86,7 @@
                                     <div class="footer-content">
                                         <div class="footer-names text-left">                                                       
                                             <ul>
-                                                <li><h1 class="text-white fw-bold" style="margin-top: 90px; font-size: 30px;"><?= ucwords($captain['fullname']) ?></h1></li>
+                                                <li><h1 class="fw-bold" style="margin-top: 90px; color:white"><?= ucwords($captain['fullname']) ?></h1></li>
                                                 <li><h6 class="text" style="color:yellow">PUNONG BARANGAY</h6></li>
                                             </ul>                                                                                                  
                                         </div>

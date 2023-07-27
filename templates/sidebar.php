@@ -176,7 +176,7 @@ $totalAnnouncements = $row1['total_announcements'];
                         <p>Official's Reports</p>
                     </a>
                 </li>
-                <?php endif ?>
+            <?php endif ?>
                 <?php if(isset($_SESSION['username'])): ?>
                     <?php if($_SESSION['role'] == 'purok leader'): ?>
                         <li class="nav-section">

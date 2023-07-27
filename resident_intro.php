@@ -21,41 +21,28 @@
             <?php include 'templates/main-header-resident.php' ?>
             <?php include 'templates/sidebar-resident.php' ?>
 		    <div class="main-panel">
-			    <div class="content">
+                <div class="content">
                     <div>
-                        <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
-                        <h5 class="text-center fw-bold"> Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.  </h5>
+                        <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1><br>
+                        <h6 class="text-center" style="text-align: justify;"> Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.  </h6>
                     </div>
                     <div class="page-inner">
-                    <section id="about" class="about section-bg">
-                        <div class="container" data-aos="fade-up">
-                                <div class="section-title">
-                                    <h6></h6>
-                                </div>
+                        <section id="about" class="about section-bg">
+                            <div class="container" data-aos="fade-up">
                                 <div class="row">
                                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
                                         <img src="homepage/assets/img/hero-bg.jpg" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-                                            <h3>Barangay Los Amigos - CertiFast Portal</h3>
-                                            <p>
-                                            The Certifast Portal provides a user-friendly platform for efficient and secure handling of certificates, revolutionizing the process of issuance and management.
-                                            </p>
                                         <ul>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                <div>
-                                                    <h5>Our Mission</h5>
-                                                    <p>Our mission is to create an efficient and secure certificate management system that ensures accuracy, accessibility, and timely delivery while maintaining data privacy and integrity.</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                <div>
-                                                    <h5>Our Vision</h5>
-                                                    <p>Our vision aims to simplify certificate issuance, tracking, and management, promoting transparency and improving service delivery.</p>
-                                                </div>
-                                            </li>
+                                            <h3>Barangay Los Amigos - CertiFast Portal</h3>
+                                            <span>The Certifast Portal provides a user-friendly platform for efficient and secure handling of certificates, revolutionizing the process of issuance and management.</span><br>
+                                            <br><h5><b>Our Mission</b></h5>
+                                            <p>The Barangay Los Amigos envisions to be more industrious, abundant and secure community to live in where residents enjoy harmonious way of life without any uncertainties in mind at work and at home and most especially for a more directed and progressive Barangay Governance. </p>
+                                            <h5><b>Our Vision</b></h5>
+                                            <p>The Barangay Los Amigos commits to perform better duties and responsibilities to carry out the plans and objectives of the barangay through voluntary and excellent performance especially in the delivery of the basic needs such as improved roads, water system, health care, education, agricultural farming and the safety of the residents in all hazards around the barangay.</p>
+                                            <h5><b>Our Goal</b></h5>
+                                            <p>The barangay aims to provide the basic needs of the residents such as road concreting of the different puroks.</p>
                                         </ul>
                                     </div>
                                 </div>
