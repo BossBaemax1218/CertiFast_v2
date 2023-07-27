@@ -60,19 +60,19 @@ while($row = $result->fetch_assoc()){
 	<title>CertiFast Portal</title>
 </head>
 <body>
-<div class="wrapper">
-    <?php include 'templates/main-header.php' ?>
-    <?php include 'templates/sidebar.php' ?>
-    <div class="main-panel">
-        <div class="content d-flex flex-column">
-            <div class="panel-header d-flex flex-column mt-1">
-                <?php if (isset($_SESSION['message'])): ?>
-                    <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success'] == 'danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                        <?php echo $_SESSION['message']; ?>
-                    </div>
-                    <?php unset($_SESSION['message']); ?>
-                <?php endif ?>
-                <?php if (isset($_SESSION['username']) && ($_SESSION['role'] == 'staff' || $_SESSION['role'] == 'administrator')): ?>
+    <div class="wrapper">
+        <?php include 'templates/main-header.php' ?>
+        <?php include 'templates/sidebar.php' ?>
+        <div class="main-panel">
+            <div class="content d-flex flex-column">
+                <div class="panel-header d-flex flex-column mt-1">
+                    <?php if (isset($_SESSION['message'])): ?>
+                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success'] == 'danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                            <?php echo $_SESSION['message']; ?>
+                        </div>
+                        <?php unset($_SESSION['message']); ?>
+                    <?php endif ?>
+                    <?php if (isset($_SESSION['username']) && ($_SESSION['role'] == 'staff' || $_SESSION['role'] == 'administrator')): ?>
                     <div class="container mt-3">
                         <h3 class="fw-bold text-black mb-4" style="font-size: 400%;">Overview</h3>
                             <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
