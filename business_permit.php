@@ -141,35 +141,31 @@
 						<form method="POST" action="model/save_permit.php" >
 								<div class="form-group">
                                     <label>Permit #</label>
-                                    <input type="text" class="form-control" placeholder="" name="permit_number" required>
+                                    <input type="text" class="form-control" placeholder="000-000" name="permit_number" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Nature of Business</label>
-                                    <input type="text" class="form-control" placeholder="" name="business_name" required>
+                                    <input type="text" class="form-control" placeholder="(Sari-Sari Store)" name="business_name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Proprietor</label>
-                                    <input type="text" class="form-control mb-2" placeholder="" name="owner1" required>
+                                    <input type="text" class="form-control mb-2" placeholder="Enter your name" name="owner1" required>
                                 </div>
 								<div class="form-group">
                                     <label>Business Email</label>
-                                    <input type="text" class="form-control mb-2" placeholder="" name="email" required>
+                                    <input type="text" class="form-control mb-2" placeholder="Enter your email address" name="email" required>
                                 </div>
 								<div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" class="form-control mb-2" placeholder="" name="address" required>
+                                    <input type="text" class="form-control mb-2" placeholder="Enter your current address" name="address" required>
                                 </div>
 								<div class="form-group">
                                     <label>Business Location</label>
-                                    <input type="text" class="form-control mb-2" placeholder="" name="location" required>
-                                </div>
-								<div class="form-group">
-                                    <label>Date Applied</label>
-                                    <input type="date" class="form-control" name="applied" value="<?= date('Y-m-d'); ?>" required>
+                                    <input type="text" class="form-control mb-2" placeholder="Enter your business located" name="location" required>
                                 </div>
 								<div class="form-group">
                                     <label>CTC #</label>
-                                    <input type="text" class="form-control" name="community_tax" value="" required>
+                                    <input type="text" class="form-control" placeholder="0000-00000" name="community_tax" value="" required>
                                 </div>
 								<div class="form-group">
                                     <label>Issued On</label>
@@ -177,11 +173,11 @@
                                 </div>
 								<div class="form-group">
                                     <label>Issued At</label>
-                                    <input type="text" class="form-control" name="issued_at" value="" required>
+                                    <input type="text" class="form-control" value="Barangay Los Amigos, Davao City" name="issued_at" value="" required>
                                 </div>
 								<div class="form-group">
                                     <label>Valid Until</label>
-                                    <input type="date" class="form-control" name="validation" value="<?= date('Y-m-d'); ?>" required>
+                                    <input type="date" class="form-control" name="validation" value="<?= date('Y-m-d', strtotime('+9 months')); ?>" required>
                                 </div>
 								<div class="form-group">
                                     <label>Status</label>
@@ -192,6 +188,10 @@
 										<option value="suspended">Suspended</option>
 										<option value="closed">Closed</option>
 									</select>
+                                </div>
+								<div class="form-group">
+                                    <label>Date Applied</label>
+                                    <input type="date" class="form-control" name="applied" value="<?= date('Y-m-d'); ?>" required>
                                 </div>
                        		</div>
 							<div class="modal-footer">
@@ -239,10 +239,6 @@
                                     <input type="text" class="form-control mb-2" placeholder="" name="location" id="location" required>
                                 </div>
 								<div class="form-group">
-                                    <label>Date Applied</label>
-                                    <input type="date" class="form-control" name="applied"  id="applied" value="<?= date('Y-m-d'); ?>" required>
-                                </div>
-								<div class="form-group">
                                     <label>CTC #</label>
                                     <input type="text" class="form-control" name="community_tax" id="community_tax"  value="" required>
                                 </div>
@@ -267,6 +263,10 @@
 										<option value="suspended">Suspended</option>
 										<option value="closed">Closed</option>
 									</select>
+                                </div>
+								<div class="form-group">
+                                    <label>Date Applied</label>
+                                    <input type="date" class="form-control" name="applied"  id="applied" value="<?= date('Y-m-d'); ?>" readonly>
                                 </div>
                        		</div>
 							<div class="modal-footer">

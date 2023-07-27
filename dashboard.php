@@ -127,8 +127,7 @@ while($row = $result->fetch_assoc()){
                         <h1 class="text-left fw-bold ml-5 mt-5" style="font-size: 400%;">Purok Dashboard</h1>
                     </div>
                     <div class="page-inner">
-                        <div class="row mt-5">
-                        <div class="row mt-5">
+                        <div class="row mt-2">
                                 <div class="col-12 col-sm-6 col-md-4">
                                     <div class="card card-stats card card-round">
                                         <div class="card-body">
@@ -203,8 +202,8 @@ while($row = $result->fetch_assoc()){
                                 </div>
                             </div>
                         </div>
-                        <div class="card mt-5">
-                            <div class="card-header mb-2">
+                        <div class="card">
+                            <div class="card-header">
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
