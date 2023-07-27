@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Certificate of Indigency</title>
+	<title>CertiFast Portal</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

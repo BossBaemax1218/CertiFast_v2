@@ -24,7 +24,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Business Permit</title>
+	<title>CertiFast Portal</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

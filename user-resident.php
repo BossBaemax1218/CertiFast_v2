@@ -23,7 +23,7 @@ while ($row = $result->fetch_assoc()) {
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Resident Management</title>
+	<title>CertiFast Portal</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

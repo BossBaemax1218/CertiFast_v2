@@ -30,7 +30,7 @@
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
   <script src="https://cdn.jsdelivr.net/npm/table-html-export"></script>              
-	<title>Certificate Reports</title>
+	<title>CertiFast Portal</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

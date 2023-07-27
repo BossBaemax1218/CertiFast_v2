@@ -2,11 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php include 'templates/header.php' ?>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-  <link href="homepage/assets/img/favicon.png" rel="icon">                 
-	<title>Certifast Portal</title>
+<?php include 'templates/header.php' ?>                
+	<title>CertiFast Portal</title>
     <link href="homepage/assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="homepage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">

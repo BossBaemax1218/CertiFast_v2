@@ -23,7 +23,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>                 
-	<title>Transaction Reports</title>
+	<title>CertiFast Portal</title>
 </head>
 <body>
 <?php include 'templates/header.php' ?>

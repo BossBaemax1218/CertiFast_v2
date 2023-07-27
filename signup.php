@@ -12,7 +12,7 @@
     <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Register - CertiFast Portal  </title>
+        <title>CertiFast Portal</title>
 
         <link rel="stylesheet" href="vendor-login/css/login-style.css">
         <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
@@ -22,6 +22,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
     </head>
     <body>
+<div class="container">
     <section class="container forms">
         <div class="form">
             <div class="form-content">
@@ -101,6 +102,7 @@
             </script>
         <?php } ?>
     </section>
+</div>
 
     <div class="modal fade" id="termprivacy" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

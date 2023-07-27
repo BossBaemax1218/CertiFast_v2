@@ -57,7 +57,7 @@ while($row = $result->fetch_assoc()){
 <head>
 	<?php include 'templates/header.php' ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Overview - Dashboard</title>
+	<title>CertiFast Portal</title>
 </head>
 <body>
 <div class="wrapper">
@@ -120,13 +120,14 @@ while($row = $result->fetch_assoc()){
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 <?php endif ?>
                 <?php if(isset($_SESSION['username']) && $_SESSION['role']=='purok leader'):?>
                     <div class="form">
                         <h1 class="text-left fw-bold ml-5 mt-5" style="font-size: 400%;">Purok Dashboard</h1>
                     </div>
-                    <div class="page-inner">
+                    <div class="container">
                         <div class="row mt-2">
                                 <div class="col-12 col-sm-6 col-md-4">
                                     <div class="card card-stats card card-round">
@@ -202,46 +203,48 @@ while($row = $result->fetch_assoc()){
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header">
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="residenttable" class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Fullname</th>
-                                                    <th scope="col">Address</th>
-                                                    <th scope="col">Birthdate</th>
-                                                    <th scope="col">Age</th>
-                                                    <th scope="col">Gender</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Purok</th>
-                                                    <th scope="col">Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>                                           
-                                            <?php if (!empty($resident)): ?>
-                                                <?php $no = 1; foreach ($resident as $row): ?>
+                        <div class="container">
+                            <div class="card">
+                                <div class="card-header">
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="residenttable" class="table">
+                                                <thead>
                                                     <tr>
-                                                        <td>
-                                                            <div class="avatar avatar-xs ml-3">
-                                                                <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
-                                                            </div>
-                                                            <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
-                                                        </td>
-                                                        <td><?= $row['address'] ?></td>
-                                                        <td><?= $row['birthdate'] ?></td>
-                                                        <td><?= $row['age'] ?></td>
-                                                        <td><?= $row['gender'] ?></td>
-                                                        <td><?= $row['email'] ?></td>
-                                                        <td><?= $row['purok'] ?></td>
-                                                        <td class="text-center"><?= $row['residency_badge'] ?></td>
+                                                        <th scope="col">Fullname</th>
+                                                        <th scope="col">Address</th>
+                                                        <th scope="col">Birthdate</th>
+                                                        <th scope="col">Age</th>
+                                                        <th scope="col">Gender</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Purok</th>
+                                                        <th scope="col">Status</th>
                                                     </tr>
-                                                <?php $no++; endforeach ?>
-                                            <?php endif ?>
-                                        </tbody>
-                                    </table>
+                                                </thead>
+                                                <tbody>                                           
+                                                <?php if (!empty($resident)): ?>
+                                                    <?php $no = 1; foreach ($resident as $row): ?>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="avatar avatar-xs ml-3">
+                                                                    <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
+                                                                </div>
+                                                                <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
+                                                            </td>
+                                                            <td><?= $row['address'] ?></td>
+                                                            <td><?= $row['birthdate'] ?></td>
+                                                            <td><?= $row['age'] ?></td>
+                                                            <td><?= $row['gender'] ?></td>
+                                                            <td><?= $row['email'] ?></td>
+                                                            <td><?= $row['purok'] ?></td>
+                                                            <td class="text-center"><?= $row['residency_badge'] ?></td>
+                                                        </tr>
+                                                    <?php $no++; endforeach ?>
+                                                <?php endif ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
