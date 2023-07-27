@@ -15,11 +15,11 @@
 		<?php include 'templates/sidebar.php' ?>
 		<div class="main-panel">
 			<div class="content">
-				<div class="panel-header" style = "background-color: #E42654">
+				<div class="panel-header">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Generate Certificate</h2>
+								<h1 class="text fw-bold" style="font-size: 50px;">Generate Certificate</h1>
 							</div>
 						</div>
 					</div>
@@ -61,7 +61,7 @@
                                             <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid" width="150">
                                         </div>
                                     </div> 
-                                    <div class="row mt-4 justify-content-around">
+                                    <div class="content-letter">
                                         <div class="col-md-12">
                                             <div class="text-center">
                                                 <h1 class="mt-4 fw-bold mb-5" style="font-size:100px; color:black;"> CERTIFICATE OF CLEARANCE </h1>
@@ -78,19 +78,19 @@
                                             </div>
                                         </div>
                                         <div class="signature col-md-12">
-                                            <div class="p-3 text-right mt-2">
+                                            <div class="p-3 text-right mt-5">
                                                 <h2 class="fw-bold mb-0"><u><?= ucwords($captain['fullname']) ?></u></h2>
                                                 <p class="text-right" style="margin-right: 20px;">PUNONG BARANGAY</p>
                                                 <p class="text-right mt-5 mr-4" style="font-size: 16px;">By the authorization of the Punong Barangay:</p>
                                                 <h2 class="fw-bold mb-1 mt-3" style="margin-right: 120px;"><u><?= ucwords($kagawad8['fullname']) ?></u></h2>
-                                                <p class="text-right" style="margin-right: 180px;">Barangay Kagawad</p>
+                                                <p class="text-right" style="margin-right: 180px; margin-bottom:220px;">Barangay Kagawad</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="footer-content">
+                                    <div class="footer-content mt-5">
                                         <div class="footer-names text-left">                                                       
                                             <ul>
-                                                <li><h1 class="fw-bold" style="margin-top: 90px; color:white"><?= ucwords($captain['fullname']) ?></h1></li>
+                                                <li><h1 class="text-white fw-bold" style="margin-top: 90px; font-size: 30px;"><?= ucwords($captain['fullname']) ?></h1></li>
                                                 <li><h6 class="text" style="color:yellow">PUNONG BARANGAY</h6></li>
                                             </ul>                                                                                                  
                                         </div>

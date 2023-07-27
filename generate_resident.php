@@ -17,11 +17,11 @@
 
 		<div class="main-panel">
 			<div class="content">
-				<div class="panel-header" style = "background-color: #E42654">
+				<div class="panel-header">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Generate Resident Profile</h2>
+                                <h1 class="text fw-bold" style="font-size: 50px;">Generate Certificate</h1>
 							</div>
 						</div>
 					</div>
@@ -181,9 +181,9 @@
                                     <div class="footer-content">
                                         <div class="footer-names text-left">                                                       
                                             <ul>
-                                                <li><h1 class="fw-bold" style="margin-top: 90px; color:white"><?= ucwords($captain['fullname']) ?></h1></li>
+                                                <li><h1 class="text-white fw-bold" style="margin-top: 90px; font-size: 30px;"><?= ucwords($captain['fullname']) ?></h1></li>
                                                 <li><h6 class="text" style="color:yellow">PUNONG BARANGAY</h6></li>
-                                            </ul>                                                                                                  
+                                            </ul>                                                                                                   
                                         </div>
                                         <div class="footer-names text-left">                                                        
                                             <ul>

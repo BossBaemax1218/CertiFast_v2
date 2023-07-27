@@ -11,21 +11,16 @@
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<!-- Main Header -->
 		<?php include 'templates/main-header.php' ?>
-		<!-- End Main Header -->
-
-		<!-- Sidebar -->
 		<?php include 'templates/sidebar.php' ?>
-		<!-- End Sidebar -->
 
 		<div class="main-panel">
 			<div class="content">
-				<div class="panel-header" style = "background-color: #E42654">
+				<div class="panel-header">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Generate Certificate</h2>
+                                <h1 class="text fw-bold" style="font-size: 50px;">Generate Certificate</h1>
 							</div>
 						</div>
 					</div>
@@ -71,12 +66,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-4" style="margin: 50px 10px 50px 50px;">
+                                    <div class="content-letter">
                                         <div class="col-md-12">
                                             <div class="text-center">
                                                 <h1 class="mt-4 fw-bold mb-5" style="font-size:100px;">BARANGAY CERTIFICATION</h1>
                                             </div>
-                                            <h2 class="mt-5 fw-bold">TO WHOM IT MAY CONCERN:</h2>
+                                            <h2 class="mt-5">To Whom It May Concern:</h2>
                                             <h2 class="mt-3" style="text-indent: 40px;">This is to certify that <span class="fw-bold" style="font-size:25px"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
                                             of legal age, and is a bona fide resident of <span class="fw-bold" style="font-size:20px"> Purok <?= ucwords($resident['purok']) ?></span>, <span class="fw-bold" style="font-size:20px"><?= ucwords($town) ?></span>, Davao City.
                                             <h2 class="mt-3" style="text-indent: 40px;">This further certifies that the above mentioned belongs to an indigent family in this Barangay.</h2>
@@ -94,8 +89,8 @@
                                     <div class="footer-content">
                                         <div class="footer-names text-left">                                                       
                                             <ul>
-                                                <li><h1 class="fw-bold mb-6" style="margin-top: 90px;"><?= ucwords($captain['fullname']) ?></h1></li>
-                                                <li><h6 class="text mr-5">PUNONG BARANGAY</h6></li>
+                                                <li><h1 class="text-white fw-bold" style="margin-top: 90px; font-size: 30px;"><?= ucwords($captain['fullname']) ?></h1></li>
+                                                <li><h6 class="text" style="color:yellow">PUNONG BARANGAY</h6></li>
                                             </ul>                                                                                                  
                                         </div>
                                         <div class="footer-names text-left">                                                        

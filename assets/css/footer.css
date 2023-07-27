@@ -42,7 +42,6 @@
     text-align: justify;
     font-size: 23px;
     margin-right: 40px;
-    text-align: right;
 }
 
 .footer-content {
@@ -58,6 +57,7 @@ justify-content: space-between;;
 }
 .footer-names {
 display: inline-block;
+font-size: 30px;
 } 
 .text-left {
 text-align: right;  
