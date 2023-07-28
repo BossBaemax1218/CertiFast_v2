@@ -25,7 +25,7 @@
         <section class="container forms">
             <div class="form">
                 <div class="form-content">
-                    <a class="text-center" href="index.php"><img src="vendor-login/images/trans-title.png" alt="" class="image"></a>
+                    <a class="text-center ml-3" href="index.php"><img src="vendor-login/images/trans-title.png" alt="" class="image"></a>
                     <form method="POST" action="model/login.php">
                         <p class="text-center">Please sign in correctly with your personal information.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
