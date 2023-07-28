@@ -174,9 +174,9 @@ $totalAnnouncements = $row1['total_announcements'];
                             <h4 class="text-section">Settings</h4>
                         </li>
                         <li class="nav-item">
-                            <a href="#support" data-toggle="modal">
+                            <a data-target="#support" data-toggle="modal">
                                 <i class="fas fa-edit"></i>
-                                <p>Support</p>
+                                <p>Submit a concern</p>
                             </a>
                         </li>
                     <?php elseif ($_SESSION['role'] == 'staff'): ?>
@@ -227,11 +227,11 @@ $totalAnnouncements = $row1['total_announcements'];
                                 </li>
                                 <?php if($_SESSION['role']=='staff'):?>
                                         <li class="nav-section">
-                                        <span class="sidebar-mini-icon">
-                                            <i class="settings"></i>
-                                        </span>
-                                        <h4 class="text-section">Settings</h4>
-                                    </li>
+                                            <span class="sidebar-mini-icon">
+                                                <i class="settings"></i>
+                                            </span>
+                                            <h4 class="text-section">Settings</h4>
+                                        </li>
                                         <li class="nav-item">
                                             <a href="#announcement" data-toggle="modal">
                                                 <i class='fas fa-bullhorn'></i>

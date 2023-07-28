@@ -102,12 +102,12 @@ $totalAnnouncements = $row1['total_announcements'];
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">Support</h4>
+                    <h4 class="text-section">Reports</h4>
                 </li>
                 <li class="nav-item">
                     <a href="#support" data-toggle="modal">
                         <i class="fas fa-edit"></i>
-                        <p>Submit a Support</p>
+                        <p>Submit a Concern</p>
                     </a>
                 </li>
                 <li class="nav-section">
