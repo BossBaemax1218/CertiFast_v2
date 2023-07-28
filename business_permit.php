@@ -33,17 +33,17 @@
 		<?php include 'templates/sidebar.php' ?>
 		<div class="main-panel">
 			<div class="content">
-				<div class="panel-header">
-					<div class="page-inner">
-						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-							<div>
-								<h2 class="text-black fw-bold" style ="font-size: 300%;">Business Permit</h2>
-							</div>
-						</div>
-					</div>
-				</div>
 				<div class="page-inner">
 					<div class="row mt-2">
+						<div class="panel-header">
+							<div class="page-inner">
+								<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+									<div>
+										<h2 class="text-black fw-bold" style ="font-size: 300%;">Business Permit</h2>
+									</div>
+								</div>
+							</div>
+						</div>
 						<div class="col-md-12">
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">

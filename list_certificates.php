@@ -21,15 +21,15 @@
 		<?php include 'templates/sidebar.php' ?>
 		<div class="main-panel">
 			<div class="content">
-                <div class="panel-header">
-					<div class="page-inner mt-2">
-						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row mb-2">
-							<h2 class="text-black fw-bold" style = "font-size: 300%;">Generate Certificates</h2>
-						</div>
-					</div>
-				</div>
 				<div class="page-inner">
-					<div class="row">
+					<div class="container">
+                        <div class="panel-header">
+                            <div class="page-inner mt-2">
+                                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row mb-2">
+                                    <h2 class="text-black fw-bold" style = "font-size: 300%;">Generate Certificates</h2>
+                                </div>
+                            </div>
+                        </div>
 						<div class="col-md-12">
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
@@ -43,7 +43,7 @@
                                         <div class="card-title">Certificate Management</div>
                                     </div>
                                     <div class="d-flex align-items-right align-items-md-right justify-content-end flex-column flex-md-row">
-                                        <div class="col-sm-12 col-md-3 text-center">
+                                        <div class="col-sm-12 col-md-4 mr-3 text-center">
                                             <select class="form-control" id="certType" name="certType">
                                                 <option value="Default" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Default') echo 'selected'; ?>>Select Types of Certificates</option>
                                                 <option value="Barangay Clearance" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Barangay Clearance') echo 'selected'; ?>>Barangay Clearance</option>
