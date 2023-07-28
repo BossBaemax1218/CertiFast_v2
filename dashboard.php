@@ -124,10 +124,10 @@ while($row = $result->fetch_assoc()){
                     </div>
                 <?php endif ?>
                 <?php if(isset($_SESSION['username']) && $_SESSION['role']=='purok leader'):?>
-                    <div class="form">
-                        <h1 class="text-left fw-bold ml-5 mt-5" style="font-size: 400%;">Purok Dashboard</h1>
-                    </div>
                     <div class="container">
+                        <div class="form">
+                            <h1 class="text-left fw-bold ml-1 mt-5" style="font-size: 400%;">Purok Dashboard</h1>
+                        </div>
                         <div class="row mt-2">
                                 <div class="col-12 col-sm-6 col-md-4">
                                     <div class="card card-stats card card-round">
@@ -251,8 +251,8 @@ while($row = $result->fetch_assoc()){
                     </div>
                 <?php endif ?>
                </div>
-            </div>
             <?php include 'templates/main-footer.php' ?>
+            </div>
         </div>
         <?php include 'templates/footer.php' ?>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -63,8 +63,8 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
-            <div class="main-panel mt-5">
-                <div class="container">
+            <div class="main-panel">
+                <div class="content">
                     <div class="panel-header">
                     <div>
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
@@ -72,7 +72,7 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                         <br>
                     </div>
                     <div class="page-inner">
-                        <div class="row">
+                        <div class="container">
                             <div class="col-md-12">
                                 <?php if(isset($_SESSION['message'])): ?>
                                         <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">

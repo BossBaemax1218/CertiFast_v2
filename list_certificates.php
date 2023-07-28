@@ -42,11 +42,10 @@
                                     <div class="card-head-row">
                                         <div class="card-title">Certificate Management</div>
                                     </div>
-                                    <div class="d-flex align-items-right align-items-md-right justify-content-end flex-column flex-md-row mb-2">
-                                        <div class="col-sm-12 col-md-4 text-left">
-                                            <label for="certType">Certificate Type:</label>
+                                    <div class="d-flex align-items-right align-items-md-right justify-content-end flex-column flex-md-row">
+                                        <div class="col-sm-12 col-md-3 text-center">
                                             <select class="form-control" id="certType" name="certType">
-                                                <option value="Default" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Default') echo 'selected'; ?>>Select Certificates</option>
+                                                <option value="Default" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Default') echo 'selected'; ?>>Select Types of Certificates</option>
                                                 <option value="Barangay Clearance" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Barangay Clearance') echo 'selected'; ?>>Barangay Clearance</option>
                                                 <option value="Certificate of Residency" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Residency') echo 'selected'; ?>>Certificate of Residency</option>
                                                 <option value="Certificate of Indigency" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Indigency') echo 'selected'; ?>>Certificate of Indigency</option>

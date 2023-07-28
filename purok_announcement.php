@@ -39,8 +39,8 @@ while ($row = $result->fetch_assoc()) {
 	<div class="wrapper">
         <?php include 'templates/main-header.php' ?>
             <?php include 'templates/sidebar.php' ?>
-		    <div class="main-panel mt-5">
-			    <div class="container mt-5">
+		    <div class="main-panel">
+			    <div class="content">
                         <h1 class="text-center fw-bold mt-5" style="font-size: 400%;">Announcement</h1>
 						<?php if(isset($_SESSION['message'])): ?>
 								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
@@ -49,7 +49,7 @@ while ($row = $result->fetch_assoc()) {
 							<?php unset($_SESSION['message']); ?>
 						<?php endif ?>
                     <div class="page-inner">
-                        <div class="row">
+                        <div class="container">
                             <div class="col-md-12">
                                 <div class="card">
                                     <section class=" text-center two-column-list mb-sm-5 pr-lg-3 container-fluid" id="two-column-list">

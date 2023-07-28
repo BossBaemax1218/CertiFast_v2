@@ -58,11 +58,11 @@ $conn->close();
 		<?php include 'templates/main-header-resident.php' ?>
 		<?php include 'templates/sidebar-resident.php' ?>
 		<div class="main-panel mt-5">
-			    <div class="container">
+			    <div class="content">
                     <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
                     <h3 class="text-center fw-bold"> Here are the online registration request with CertiFast Portal. </h3>
                     <div class="page-inner">
-                        <div class="row">
+                        <div class="container">
                             <div class="col-md-12">
                                 <?php if(isset($_SESSION['message'])): ?>
                                         <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">

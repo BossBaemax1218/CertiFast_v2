@@ -10,13 +10,13 @@
 	    <div class="wrapper">
             <?php include 'templates/main-header-resident.php' ?>
             <?php include 'templates/sidebar-resident.php' ?>
-		    <div class="main-panel mt-5">
-                <div class="container mt-5">
+		    <div class="main-panel">
+                <div class="content">
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1><br>
                         <h6 class="text-center" style=" font-size: 16px; text-align: justify;"> Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.  </h6>
-                    <div class="page-inner">
+                    <div class="page-inner mt-5">
                         <section id="about" class="about section-bg">
-                            <div class="container" data-aos="fade-up">
+                            <div class="container mt-5" data-aos="fade-up">
                                 <div class="row">
                                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
                                         <img src="homepage/assets/img/hero-bg.jpg" class="img-fluid" alt="">
@@ -38,8 +38,8 @@
                         </section>
                     </div>
                 </div>
-                </div>
 				<?php include 'templates/main-footer.php' ?>
+            </div>
 	    </div>
 	<?php include 'templates/footer.php' ?>
     <script src="homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>

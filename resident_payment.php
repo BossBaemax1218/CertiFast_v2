@@ -24,7 +24,7 @@ include 'server/db_connection.php';
                         <?php unset($_SESSION['message']); ?>
                     <?php endif ?>
                     <div class="page-inner">
-                        <div class="row">
+                        <div class="container">
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header">
