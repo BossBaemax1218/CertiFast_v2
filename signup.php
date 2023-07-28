@@ -12,11 +12,12 @@
     <html lang="en">
     <head>
         <title>CertiFast Portal</title>
-        <link href="Homepage/vendor-login/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="Homepage/vendor-login/css/login-style.css">
-        <link rel="icon" href="Homepage/vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
+        <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
     </head>
     <body>
 <div class="container">
@@ -89,11 +90,11 @@
                             echo $year . " &copy; Barangay Los Amigos - CertiFast Portal";
                         ?>
                     </div>
-                    <p style="font-size: 13px;"><a href="#termprivacy" style="font-size: 13px;" data-toggle="modal">Privacy and Term of Use</a></p>
+                    <p style="font-size: 13px;"><a href="#termprivacy" style="font-size: 13px; text-decoration: none;" data-toggle="modal">Privacy and Term of Use</a></p>
                 </div>
             </footer>
             <?php if(!isset($_GET['closeModal'])){ ?>
-            <script>
+            <script></script>
                 setTimeout(function(){ openModal(); }, 1000);
             </script>
         <?php } ?>
