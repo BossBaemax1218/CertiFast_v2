@@ -204,55 +204,125 @@ h2 {
   box-sizing: border-box;
 }
 
-/* For devices with a maximum width of 1440px (laptops and below) */
-@media (max-width: 1440px) {
-  .container {
-    padding: 0 40px;
-  }
-}
+  @media (max-width: 576px) {
+    .forms {
+      padding: 15px;
+    }
 
-/* For devices with a maximum width of 1024px (laptops and below) */
-@media (max-width: 1024px) {
-  .container {
-    padding: 0 30px;
-  }
-}
+    .form-content {
+      text-align: center;
+    }
 
-/* For devices with a maximum width of 768px (tablets and below) */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
-  }
+    .form-content p {
+      font-size: 18px;
+    }
 
-  .form {
-    padding: 20px;
-  }
+    .form-group {
+      margin-bottom: 10px;
+    }
 
-  .form img {
-    max-width: 150px;
-    align-items: center;
-  }
+    .input,
+    .password,
+    .submit-button {
+      width: 100%;
+    }
 
-  .form-group input,
-  .form-group button,
-  .submit-button {
-    margin-bottom: 15px;
-  }
-}
+    .footer {
+      text-align: center;
+    }
 
-/* For devices with a maximum width of 480px (phones and iPod below) */
-@media (max-width: 480px) {
-  .container {
-    padding: 0 10px;
+    .footer p {
+      margin-bottom: 5px;
+    }
+    .form img{
+      max-height:4rem!important ;
+      object-fit:contain !important ;
+      height : auto !important ;
+      display:block   !important ;
+    }
   }
 
-  .form img {
-    max-width: 120px;
-    align-items: center;
-  }
-}
+  @media (min-width: 577px) and (max-width: 767px) {
 
-/* Footer font size */
+    .forms {
+      padding: 30px; 
+    }
+
+    .form-content {
+      text-align: center;
+    }
+
+    .form-content p {
+      font-size: 20px;
+    }
+    .form img{
+      max-height:4rem!important ;
+      object-fit:contain !important ;
+      height : auto !important ;
+      display:block   !important ;
+    }
+
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .form-content {
+      text-align: left; 
+    }
+
+    .form-content p {
+      font-size: 22px;
+    }
+    .form img{
+      max-height:4rem!important ;
+      object-fit:contain !important ;
+      height : auto !important ;
+      display:block   !important ;
+    }
+
+  }
+
+  @media (min-width: 992px) and (max-width: 1200px) {
+    .forms {
+      max-width: 960px; 
+      margin: 0 auto;
+      padding: 40px; 
+    }
+
+    .form-content p {
+      font-size: 24px;
+    }
+    .form img{
+      max-height:4rem!important ;
+      object-fit:contain !important ;
+      height : auto !important ;
+      display:block   !important ;
+    }
+
+  }
+
+  @media (min-width: 1201px) {
+    .forms {
+      max-width: 1200px;
+      margin: 0 auto; 
+      padding: 50px;
+    }
+
+    .form-content {
+      text-align: center;
+    }
+
+    .form-content p {
+      font-size: 26px;
+    }
+    .form img{
+      max-height:4rem!important ;
+      object-fit:contain !important ;
+      height : auto !important ;
+      display:block   !important ;
+    }
+
+  }
+
 .footer {
     font-size: 13px;
     text-align: center;
