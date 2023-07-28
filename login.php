@@ -30,7 +30,7 @@
                         <p class="text-center">Please sign in correctly with your personal information.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
                             <div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" id="closeModalButton" data-dismiss="modal" aria-label="Close">
