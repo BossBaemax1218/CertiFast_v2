@@ -3,7 +3,6 @@
 include '../server/server.php';
 
 if (! empty($_FILES)) {
-    // Validating SQL file type by extensions
     if (! in_array(strtolower(pathinfo($_FILES["backup_file"]["name"], PATHINFO_EXTENSION)), array(
         "sql"
     ))) {
@@ -47,8 +46,6 @@ function restoreMysqlDB($filePath, $conn)
         $lines = file($filePath);
         
         foreach ($lines as $line) {
-            
-            // Ignoring comments from the SQL script
             if (substr($line, 0, 2) == '--' || $line == '') {
                 continue;
             }
@@ -62,13 +59,13 @@ function restoreMysqlDB($filePath, $conn)
                 }
                 $sql = '';
             }
-        } // end foreach
+        } 
         
         if ($error) {
             $response = false;
         } else {
             $response = true;
         }
-    } // end if file exists
+    }
     return $response;
 }

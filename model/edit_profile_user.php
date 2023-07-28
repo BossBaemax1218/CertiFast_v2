@@ -10,10 +10,8 @@
 	$fullname 	= $conn->real_escape_string($_POST['fullname']);
     $profile 	= $conn->real_escape_string($_POST['profileimg']); // base 64 image
 	$profile2 	= $_FILES['img']['name'];
-    // change profile2 name
     $newName = date('dmYHis').str_replace(" ", "", $profile2);
 
-    // image file directory
     $target = "../assets/uploads/avatar/".basename($newName);
 
     if(!empty($fullname)){

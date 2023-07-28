@@ -2,7 +2,6 @@
 
 require("../server/server.php");
 
-// get Users
 $query = "SELECT national_id,firstname,middlename,lastname,address,birthplace,birthdate,age,civilstatus,gender,purok,voterstatus,taxno,phone,email FROM tblresident";
 if (!$result = $conn->query($query)) {
     exit($conn->error);

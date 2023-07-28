@@ -35,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = $conn->real_escape_string($_POST['address']);
     $password = $conn->real_escape_string($_POST['password']);
 
-    // Validate email, password, and name
     if (empty($purok) || empty($fullname) || empty($email) || empty($address) || empty($password)) {
         redirectToSignupPage('Please fill in all the required fields.', 'danger');
     }
@@ -44,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirectToSignupPage('Invalid email address format.', 'danger');
     }
 
-    // Check if the email already exists in tbl_user_resident
     $checkQueryResident = "SELECT * FROM tbl_user_resident WHERE user_email = ?";
     $stmt = $conn->prepare($checkQueryResident);
     $stmt->bind_param("s", $email);
@@ -55,18 +53,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirectToSignupPage('Email already exists. Please choose a different one.', 'danger');
     }
 
-    // Generate verification code
     $verificationCode = substr(md5(uniqid(rand(), true)), 0, 6);
-    $verificationExpire = time() + (5 * 60); // 5 minutes
+    $verificationExpire = time() + (5 * 60);
     $verificationSend = date('Y-m-d H:i:s', strtotime('+5 minutes'));
 
     $year = date("Y");
 
-    // Store verification code and expiration time in session
     $_SESSION['verification_code'] = $verificationCode;
     $_SESSION['verification_send'] = $verificationSend;
 
-    // Send verification code to email
     $mail = new PHPMailer();
     $mail->setFrom('no-reply@gmail.com', 'Barangay Los Amigos - CertiFast');
     $mail->addAddress($email);
@@ -146,7 +141,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </body>
     </html>';
 
-    // SMTP configuration if required
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;

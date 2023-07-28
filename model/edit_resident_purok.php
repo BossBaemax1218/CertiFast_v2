@@ -1,5 +1,5 @@
 <?php
-session_start(); // Start the session if not already started
+session_start();
 include '../server/server.php';
 
 if (!isset($_SESSION['username'])) {

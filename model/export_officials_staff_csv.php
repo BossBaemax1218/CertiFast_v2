@@ -2,7 +2,6 @@
 
 require("../server/server.php");
 
-// get Users
 $query = "SELECT fullname,position,address,termstart,termend,status FROM tblofficials";
 if (!$result = $conn->query($query)) {
     exit($conn->error);

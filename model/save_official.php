@@ -14,10 +14,9 @@ $address = $conn->real_escape_string($_POST['address']);
 $start = $conn->real_escape_string($_POST['start']);
 $end = $conn->real_escape_string($_POST['end']);
 $status = $conn->real_escape_string($_POST['status']);
-$profile = $conn->real_escape_string($_POST['picture']); // base64 image
+$profile = $conn->real_escape_string($_POST['picture']); 
 $profile2 = ($_FILES['image']['name'] ?? null);
 
-// change profile2 name
 $newName = date('dmYHis') . str_replace(" ", "", $profile2);
 
 if (!empty($name)) {

@@ -11,12 +11,9 @@
     $user       = $conn->real_escape_string($_POST['username']);
     $pass       = $conn->real_escape_string($_POST['pass']);
     $usertype   = $conn->real_escape_string($_POST['user_type']);
-    $profile    = $conn->real_escape_string($_POST['profileimg']); // base 64 image
+    $profile    = $conn->real_escape_string($_POST['profileimg']);
     $profile2   = $_FILES['img']['name'];
-    // change profile2 name
     $newName = date('dmYHis').str_replace(" ", "", $profile2);
-
-    // image file directory
     $target = "../assets/uploads/avatar/".basename($newName);
 
     if(!empty($user) && !empty($pass) && !empty($usertype)){

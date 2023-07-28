@@ -7,62 +7,46 @@ require '../PHPMailer/src/SMTP.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Include server configuration
 include '../server/server.php';
 
-
-// Function to generate a verification code
 function generateVerificationCode()
 {
-    // Generate a random verification code (you can modify this according to your requirements)
+
     $verificationCode = substr(md5(uniqid(rand(), true)), 0, 6);
     return $verificationCode;
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Retrieve the email address from the form
     $email = $_POST['email'];
-
-    // Check if the email address is empty or not valid
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        // Handle the case when the email address is empty or not valid
         $_SESSION['message'] = 'Please enter a valid email address.';
         $_SESSION['success'] = 'danger';
         $_SESSION['form'] = 'signup';
         header('Location: ../forgot-password.php');
         exit();
     }
-
-    // Create a new PHPMailer instance
     $_SESSION['email'] = $email;
     $mail = new PHPMailer(true);
 
     try {
-        // Configure SMTP settings
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'barangaylosamigos.certifast@gmail.com';
         $mail->Password = 'ipqostilxutxmbxl';
         $mail->Port = 587;
-
-        // Set the user_email details
         $mail->setFrom('no-reply@gmail.com', 'Barangay Los Amigos - CertiFast');
         $mail->addAddress($email);
         $mail->Subject = 'Your new password verification code has been sent';
 
-        // Check if the email address is already registered and account_status is 1
         $stmt = $conn->prepare("SELECT user_email FROM tbl_user_resident WHERE user_email = ? AND account_status = 'verified'");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // Email address exists and account_status is 1, generate a verification code and send it
             $verificationCode = generateVerificationCode();
             $year = date("Y");
-
-            // Set the email body with HTML and CSS
             $mail->isHTML(true);
             $mail->Body = 
                 '<!DOCTYPE html>
@@ -138,18 +122,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </table>
                 </body>
                 </html>';
-
-            // Store the new verification code and codesend in the database
             $verifycode = $verificationCode;
             $codesend = date('Y-m-d H:i:s', strtotime('now'));
             $stmt = $conn->prepare("UPDATE tbl_user_resident SET verification_code = ?, verification_send = ? WHERE user_email = ?");
             $stmt->bind_param("sss", $verifycode, $codesend, $email);
             $stmt->execute();
-
-            // Send the email
             if ($mail->send()) {
-                // Email sent successfully
-                // Redirect the user to the verification code confirmation page
                 $_SESSION['message'] = 'Verification code successfully sent.';
                 $_SESSION['success'] = 'success';
                 $_SESSION['form'] = 'signup';
@@ -157,7 +135,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 header('Location: ../password-verify-code.php?email=' . $email);
                 exit();
             } else {
-                // Email sending failed
                 $_SESSION['message'] = 'Email sending failed.';
                 $_SESSION['success'] = 'danger';
                 $_SESSION['form'] = 'signup';
@@ -165,7 +142,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 exit();
             }
         } else {
-            // Email address does not exist or account_status is not 1
             $_SESSION['message'] = 'Your failed to verify your email address.';
             $_SESSION['success'] = 'danger';
             $_SESSION['form'] = 'signup';
@@ -173,7 +149,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit();
         }
     } catch (Exception $e) {
-        // Exception occurred
         $_SESSION['message'] = 'Unable to send email. Please try again later.';
         $_SESSION['success'] = 'danger';
         $_SESSION['form'] = 'signup';

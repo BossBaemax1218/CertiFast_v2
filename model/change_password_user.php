@@ -17,7 +17,7 @@
                 $user = $res->fetch_assoc();
                 $stored_hash = $user['password'];
 
-                $cur_pass_md5 = md5($cur_pass); // MD5 hash of the entered current password
+                $cur_pass_md5 = md5($cur_pass);
 
                 if ($cur_pass_md5 === $stored_hash) {
 

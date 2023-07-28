@@ -19,7 +19,7 @@ function redirectToLoginPage($message, $success, $form)
 
 function logout()
 {
-    session_destroy(); // Destroy all session data
+    session_destroy();
     header('location: ../login.php');
     exit();
 }
@@ -28,21 +28,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_email = $conn->real_escape_string($_POST['email']);
     $password = $_POST['password'];
 
-    // Check if the user has exceeded the maximum login attempts
     if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] >= 5) {
-        // Check if the user has waited for at least 1 minute
         if (isset($_SESSION['last_login_attempt']) && (time() - $_SESSION['last_login_attempt']) < 60) {
             $remaining_time = 60 - (time() - $_SESSION['last_login_attempt']);
             redirectToLoginPage('You have exceeded the maximum login attempts. Please try again in ' . $remaining_time . ' seconds.', 'danger', 'login');
         } else {
-            // Reset the login attempts and last login attempt time
             $_SESSION['login_attempts'] = 0;
             $_SESSION['last_login_attempt'] = null;
         }
     }
 
     if ($user_email != '' && $password != '') {
-        // Check if the user is an admin, staff, or purok leader
         $adminStaffQuery = "SELECT * FROM tbl_user_admin WHERE username = ?";
         $stmt = $conn->prepare($adminStaffQuery);
         $stmt->bind_param("s", $user_email);
@@ -53,8 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $row = $adminStaffResult->fetch_assoc();
             $hashedPassword = $row['password'];
             $role = $row['user_type'];
-    
-            // Verify the password using password_verify
+
             if (password_verify($password, $hashedPassword)) {
                 if ($role == 'administrator') {
                     $_SESSION['message'] = 'You have successfully logged in as an administrator!';
@@ -92,7 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // Check if the user is a verified resident
         $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = ?";
         $stmt = $conn->prepare($residentQuery);
         $stmt->bind_param("s", $user_email);
@@ -103,7 +97,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $row = $residentResult->fetch_assoc();
             $hashedPassword = $row['password'];
 
-            // Verify the password using MD5 hashing
             if (md5($password) === $hashedPassword) {
                 if ($row['account_status'] === 'verified') {
                     $_SESSION['user_email'] = $row['user_email'];

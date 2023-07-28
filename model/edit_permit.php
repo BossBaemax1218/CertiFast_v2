@@ -23,14 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $id = $_POST['id'];
 
-    // Check if the record with the given ID exists in the database
     $check_query = "SELECT COUNT(*) AS count FROM tblpermit WHERE id = $id";
     $check_result = $conn->query($check_query);
     $row = $check_result->fetch_assoc();
     $record_count = $row['count'];
 
     if ($record_count > 0) {
-        // If the record exists, update it
         $update_query = "UPDATE tblpermit SET 
                             permit_number = '$permit_number',
                             business_name = '$business_name',
@@ -63,6 +61,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../business_permit.php");
     $conn->close();
 } else {
-    // Redirect back if the form was not submitted properly
     header("Location: ../business_permit.php");
 }
