@@ -4,23 +4,16 @@
 <head>
 <?php include 'templates/header.php' ?>                
 	<title>CertiFast Portal</title>
-    <link href="homepage/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="homepage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="homepage/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="homepage/assets/css/style.css" rel="stylesheet">
 </head>
 <body>
 	<?php include 'templates/loading_screen.php' ?>
 	    <div class="wrapper">
             <?php include 'templates/main-header-resident.php' ?>
             <?php include 'templates/sidebar-resident.php' ?>
-		    <div class="main-panel">
-                <div class="container">
+		    <div class="main-panel mt-5">
+                <div class="container mt-5">
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1><br>
-                        <h6 class="text-center" style="text-align: justify;"> Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.  </h6>
+                        <h6 class="text-center" style=" font-size: 16px; text-align: justify;"> Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.  </h6>
                     <div class="page-inner">
                         <section id="about" class="about section-bg">
                             <div class="container" data-aos="fade-up">
@@ -45,8 +38,8 @@
                         </section>
                     </div>
                 </div>
+                </div>
 				<?php include 'templates/main-footer.php' ?>
-	        </div>
 	    </div>
 	<?php include 'templates/footer.php' ?>
     <script src="homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>

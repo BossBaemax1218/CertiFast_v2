@@ -39,8 +39,8 @@ while ($row = $result->fetch_assoc()) {
 	<div class="wrapper">
         <?php include 'templates/main-header.php' ?>
             <?php include 'templates/sidebar.php' ?>
-		    <div class="main-panel">
-			    <div class="container">
+		    <div class="main-panel mt-5">
+			    <div class="container mt-5">
                         <h1 class="text-center fw-bold mt-5" style="font-size: 400%;">Announcement</h1>
 						<?php if(isset($_SESSION['message'])): ?>
 								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
