@@ -64,16 +64,16 @@
     </div>
   </header>
 
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1 style="font-size: 70px;">Welcome to <span>Barangay Los Amigos</span></h1>
-      <br>
-      <div class="d-flex">
-        <a href="#main" class="btn-get-started scrollto">Get Started</a>
-        <a href="https://www.youtube.com/watch?v=NroSCViBo1M" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Play Now</span></a>
-      </div>
+<section id="hero" class="d-flex align-items-center">
+  <div class="container" data-aos="zoom-out" data-aos-delay="100">
+    <h1 class="hero-title">Welcome to <span>Barangay Los Amigos</span></h1>
+    <br>
+    <div class="d-flex">
+      <a href="#main" class="btn-get-started scrollto">Get Started</a>
+      <a href="https://www.youtube.com/watch?v=NroSCViBo1M" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Play Now</span></a>
     </div>
-  </section>
+  </div>
+</section>
 
   <main id="main">
     <section id="featured-services" class="featured-services">
@@ -247,18 +247,16 @@
 
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
-
         <div class="section-title">
           <h2>Services</h2>
           <h3><span>Our Offered Certificates</span></h3>
           <br>
           <h6>Say goodbye to spreadsheet tracking. Our certificate management system online provides clarity and simplifies compliance.</h6>
         </div>
-
         <div class="row">
-          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-4 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><img src="homepage/assets/img/clients/logo-2.svg"></div>
+            <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Residency</h4>
               <p>The necessary documents for the submission of a Barangay Residency commonly include the following: </p>
               <ul class="req-list"> 
@@ -268,13 +266,12 @@
                   <li>A barangay clearance or certificate of residency.</li>
               </ul>
               <br>
-              <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
+              <h5><a href="login.php" class="btn-request-now">APPLY NOW</a></h5>
             </div>
           </div>
-
-          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="300">
+          <div class="col-lg-4 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><img src="homepage/assets/img/clients/logo-3.svg"></div>
+            <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Clearance</h4>
               <p>The necessary documents for the submission of a Barangay Clearance commonly include the following:</p>
               <ul class="req-list">
@@ -284,13 +281,27 @@
                   <li>A barangay clearance or certificate of residency.</li>
               </ul>
               <br>
-              <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
+              <h5><a href="login.php" class="btn-request-now">APPLY NOW</a></h5>
             </div>
           </div>
-
-          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-lg-4 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><img src="homepage/assets/img/clients/logo-5.svg"></div>
+            <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
+              <h4>Barangay Identification</h4>
+              <p>The necessary documents for the submission of a Barangay Identification (ID) commonly include the following:</p>
+              <ul class="req-list">
+                  <li>Barangay certificate from your previous barangay (if any).</li>
+                  <li>A valid ID, passport, birth certificate or marriage certificate.</li>
+                  <li>Photocopy of any Utility Bill or Proof of Billing (such as electric bill, water bill, etc.) </li>
+                  <li>A barangay clearance or certificate of residency.</li>
+              </ul>
+              <br>
+              <h5><a href="login.php" class="btn-request-now">APPLY NOW</a></h5>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+            <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Indigency</h4>
               <p>The necessary documents for the submission of a Barangay Indigency commonly include the following:</p>
               <ul class="req-list">
@@ -300,23 +311,37 @@
                   <li>Barangay Clearance.</li>
               </ul>
               <br>
-              <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
+              <h5><a href="login.php" class="btn-request-now">APPLY NOW</a></h5>
             </div>
           </div>
-
-          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-4 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Business Permit</h4>
-              <p>The necessary documents for the submission of a Business Permit commonly include the following:</p>
+              <p>The necessary documents for the submission of a Business Permit of the Barangay commonly include the following:</p>
               <ul class="req-list">
+                  <li>Barangay certificate of residency.</li>
+                  <li>A valid ID, passport, birth certificate or marriage certificate.</li>
+                  <li>Certificate of Income. </li>
                   <li>Barangay Clearance.</li>
-                  <li>DTI Registration or SEC Registration.</li>
-                  <li>BIR Certificate of Registration. </li>
-                  <li>Mayor's Permit.</li>
               </ul>
               <br>
-              <h5><a href="login.php" class="btn-request-now">REQUEST NOW</a></h5>
+              <h5><a href="login.php" class="btn-request-now">APPLY NOW</a></h5>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
+              <h4>Other Certificates</h4>
+              <p>The necessary documents for the submission of a Other Certificates commonly include the following:</p>
+              <ul class="req-list">
+                  <li>Barangay certificate of residency.</li>
+                  <li>A valid ID, passport, birth certificate or marriage certificate.</li>
+                  <li>Certificate of Income. </li>
+                  <li>Barangay Clearance.</li>
+              </ul>
+              <br>
+              <h5><a href="login.php" class="btn-request-now">OTHERS</a></h5>
             </div>
           </div>
         </div>
@@ -331,7 +356,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="homepage/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <img src="homepage/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img mb-2" alt="">
                 <h3>ROBERTO A. BALLARTA</h3>
                 <h4>Punong Barangay</h4>
                 <p>
@@ -344,7 +369,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="homepage/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <img src="homepage/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img mb-2" alt="">
                 <h3>ABBIE CHARLOTTE CABIG-SARSALE</h3>
                 <h4>Barangay Secretary</h4>
                 <p>
@@ -357,12 +382,12 @@
             
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="homepage/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>ABBIE CHARLOTTE CABIG-SARSALE</h3>
+                <img src="homepage/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img mb-2" alt="">
+                <h3>MELLIZA JOIE BASUGA-TAÑAC</h3>
                 <h4>Barangay Treasurer</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  The greatest glory in living lies not in never falling, but in rising every time we fall.
+                  Where your treasure is, there will your heart be also.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>

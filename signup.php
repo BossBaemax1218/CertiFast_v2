@@ -11,6 +11,7 @@
 <!DOCTYPE html>
     <html lang="en">
     <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CertiFast Portal</title>
         <link rel="stylesheet" href="Homepage/vendor-login/css/login-style.css">
         <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
@@ -90,11 +91,11 @@
                             echo $year . " &copy; Barangay Los Amigos - CertiFast Portal";
                         ?>
                     </div>
-                    <p style="font-size: 13px;"><a href="#termprivacy" style="font-size: 13px; text-decoration: none;" data-toggle="modal">Privacy and Term of Use</a></p>
+                    <p style="font-size: 13px;"><a href="#termprivacy" style="font-size: 13px; text-decoration:none;" data-toggle="modal">Privacy and Term of Use</a></p>
                 </div>
             </footer>
             <?php if(!isset($_GET['closeModal'])){ ?>
-            <script></script>
+            <script>
                 setTimeout(function(){ openModal(); }, 1000);
             </script>
         <?php } ?>

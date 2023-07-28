@@ -11,7 +11,7 @@
     <html lang="en">
     <head>
         <title>CertiFast Portal</title>
-        <link rel="stylesheet" href="vendor-login/css/password-style.css"/>
+        <link rel="stylesheet" href="Homepage/vendor-login/css/password-style.css"/>
         <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
         <link href="vendor-login/css/bootstrap.min.css" rel="stylesheet">

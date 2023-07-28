@@ -480,6 +480,7 @@ h6 {
   font-size: 30px;
   font-weight: bold;
 }
+
 #hero .btn-get-started {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
@@ -557,6 +558,84 @@ h6 {
     height: 120vh;
   }
 }
+
+/* Responsive modifications for the hero section */
+@media (max-width: 576px) {
+  #hero h1 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  #hero h2 {
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+
+  #hero .btn-get-started,
+  #hero .btn-watch-video {
+    font-size: 12px;
+    padding: 8px 20px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  #hero h1 {
+    font-size: 40px;
+    line-height: 48px;
+  }
+
+  #hero h2 {
+    font-size: 26px;
+    line-height: 32px;
+    margin-bottom: 25px;
+  }
+
+  #hero .btn-get-started,
+  #hero .btn-watch-video {
+    font-size: 13px;
+    padding: 10px 24px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  #hero h1 {
+    font-size: 44px;
+    line-height: 52px;
+  }
+
+  #hero h2 {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 25px;
+  }
+
+  #hero .btn-get-started,
+  #hero .btn-watch-video {
+    font-size: 14px;
+    padding: 10px 24px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  #hero h1 {
+    font-size: 54px;
+    line-height: 62px;
+  }
+
+  #hero h2 {
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 25px;
+  }
+
+  #hero .btn-get-started,
+  #hero .btn-watch-video {
+    font-size: 16px;
+    padding: 12px 26px;
+  }
+}
+
 
 section {
   padding: 60px 0;
@@ -866,17 +945,10 @@ section {
   position: relative;
   display: absolute;
   justify-content: center;
-
+  height: 400px; /* Added to set a fixed height for icon-box */
 }
 
-.icon-box .btn-request-now {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.services .icon-box .icon img {
+.services .icon-box .icon {
   margin: 0 auto;
   width: 100px;
   height: 80px;
@@ -891,8 +963,12 @@ section {
 }
 
 .services .icon-box .icon img {
-  color:  #E42654;
-  font-size: 28px;
+  max-width: 80px; /* Changed to 'max-width' to limit the image size */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  color:  #E42654; /* Removed font-size and set color here */
+  font-size: 28px; /* Moved font-size from previous '.services .icon-box .icon img' */
   transition: ease-in-out 0.3s;
 }
 
@@ -913,11 +989,18 @@ section {
   margin-bottom: 0;
 }
 
-.services .icon-box .req-list{
-  font-size: 14px; 
-  text-align: left; 
-  margin-top: 10px; 
-  font-weight: #c9c8c8;
+.services .icon-box .req-list {
+  font-size: 14px;
+  text-align: left;
+  margin-top: 10px;
+  font-weight: #c9c8c8; /* This should be 'font-weight: normal;' instead */
+}
+
+.services .icon-box .btn-request-now {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .services .icon-box:hover {
@@ -926,7 +1009,7 @@ section {
 }
 
 .services .icon-box:hover h4 a,
-.services .icon-box:hover .icon i {
+.services .icon-box:hover .icon img {
   color:  #E42654;
 }
 

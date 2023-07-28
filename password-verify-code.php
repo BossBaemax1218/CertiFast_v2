@@ -11,14 +11,14 @@
     <html lang="en">
     <head></head>
         <title>CertiFast Portal</title>
-
-        <link rel="stylesheet" href="vendor-login/css/password-style.css"/>
+        <link rel="stylesheet" href="Homepage/vendor-login/css/password-style.css"/>
         <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
         <link href="vendor-login/css/bootstrap.min.css" rel="stylesheet">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>                   
     </head>
     <body>
+    <div class="container">
         <section class="container forms">
             <div class="form">
                 <div class="form-content">
@@ -70,6 +70,7 @@
                 </footer>
             </div>
         </section>
+    </div>
         <script>
         document.addEventListener('DOMContentLoaded', function() {
             var closeModalButton = document.getElementById('closeModalButton');
