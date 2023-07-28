@@ -1,12 +1,9 @@
 <?php
     include 'server/dbconnect.php'; 
-
     $query = "SELECT * FROM tblbrgy_info WHERE id='1'";
     $result = $conn->query($query)->fetch_assoc();
-
     $brgyoff = "SELECT tblofficials.fullname, tblofficials.picture, tblposition.position FROM tblofficials JOIN tblposition ON tblofficials.position = tblposition.id WHERE tblposition.position IN ('Kapitan','Secretary','Treasurer','Kagawad') AND `status`='Active'";
     $brgyofficials = $conn->query($brgyoff);
-
     $brgyofs = array();
     while ($brgyof = $brgyofficials->fetch_assoc()) {
       $brgyofs[] = $brgyof;
@@ -15,21 +12,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-  <link href="homepage/assets/img/favicon.png" rel="icon">
-
-  <title>CertiFast Portal</title>
-
-    <link href="homepage/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="homepage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="homepage/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="homepage/assets/css/style.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link href="Homepage/assets/img/favicon.png" rel="icon">
+    <title>Barangay Los Amigos | CertiFast Portal</title>
+    <link href="Homepage/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="Homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="Homepage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="Homepage/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="Homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="Homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="Homepage/assets/css/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
 </head>
 <body>
@@ -45,7 +39,7 @@
 
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a href="index.php"><img src="homepage/assets/img/title-logo.png" alt="title-logo"></a></h1>
+      <h1 class="logo"><a href="index.php"><img src="Homepage/assets/img/title-logo.png" alt="title-logo"></a></h1>
       <nav id="navbar" class="navbar">
         <ul>
             <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -86,7 +80,7 @@
           <div class="row">
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
               <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                <div class="icon"><img src="homepage/assets/img/clients/logo-8.svg"></div>
+                <div class="icon"><img src="Homepage/assets/img/clients/logo-8.svg"></div>
                 <h4 class="title" style="color: black;">Step 1</h4>
                 <h6 class="pre-title" style="color: black; font-weight: bold;">Request</h6>
                 <p class="description" style="color: black;">Select the type of barangay certificate that you would like to request in CertiFast Portal.</p>
@@ -95,7 +89,7 @@
 
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                <div class="icon"><img src="homepage/assets/img/clients/logo-14.svg"></div>
+                <div class="icon"><img src="Homepage/assets/img/clients/logo-14.svg"></div>
                 <h4 class="title" style="color: black;">Step 2</h4>
                 <h6 class="pre-title" style="color: black; font-weight: bold;">Review</h6>
                 <p class="description" style="color: black;">Make sure your personal information is true and correct by reviewing it carefully on the screen.</p>
@@ -104,7 +98,7 @@
 
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
               <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                <div class="icon"><img src="homepage/assets/img/clients/logo-10.svg"></div>
+                <div class="icon"><img src="Homepage/assets/img/clients/logo-10.svg"></div>
                 <h4 class="title" style="color: black;">Step 3</h4>
                 <h6 class="pre-title" style="color: black; font-weight: bold;">Interview</h6>
                 <p class="description" style="color: black;">Giving a few essential interview at the barangay office to guarantee the authenticity of your information.</p>
@@ -113,7 +107,7 @@
 
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
               <a href="#services"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                <div class="icon"><img src="homepage/assets/img/clients/logo-11.svg"></div>
+                <div class="icon"><img src="Homepage/assets/img/clients/logo-11.svg"></div>
                 <h4 class="title" style="color: black;">Step 4</h4>
                 <h6 class="pre-title" style="color: black; font-weight: bold;">Approval</h6>
                 <p class="description" style="color: black;">Prepare a cash in hand to ensure you can pay for the certificate after a quick interview.</p>
@@ -134,7 +128,7 @@
         </div>
         <div class="row">
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-            <img src="homepage/assets/img/download.jpg" class="img-fluid" alt="">
+            <img src="Homepage/assets/img/download.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <h3>Barangay Los Amigos - CertiFast Portal</h3>
@@ -217,27 +211,27 @@
         <div class="row">
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="homepage/assets/img/clients/logo-1.png" class="img-fluid" alt="">
+            <img src="Homepage/assets/img/clients/logo-1.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="homepage/assets/img/clients/logo-2.png" class="img-fluid" alt="">
+            <img src="Homepage/assets/img/clients/logo-2.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="homepage/assets/img/clients/logo-3.png" class="img-fluid" alt="">
+            <img src="Homepage/assets/img/clients/logo-3.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="homepage/assets/img/clients/logo-4.png" class="img-fluid" alt="">
+            <img src="Homepage/assets/img/clients/logo-4.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="homepage/assets/img/clients/logo-5.png" class="img-fluid" alt="">
+            <img src="Homepage/assets/img/clients/logo-5.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="homepage/assets/img/clients/logo-6.png" class="img-fluid" alt="">
+            <img src="Homepage/assets/img/clients/logo-6.png" class="img-fluid" alt="">
           </div>
 
         </div>
@@ -256,7 +250,7 @@
         <div class="row">
           <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-            <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
+            <div class="icon"><img src="Homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Residency</h4>
               <p>The necessary documents for the submission of a Barangay Residency commonly include the following: </p>
               <ul class="req-list"> 
@@ -269,7 +263,7 @@
           </div>
           <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-            <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
+            <div class="icon"><img src="Homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Clearance</h4>
               <p>The necessary documents for the submission of a Barangay Clearance commonly include the following:</p>
               <ul class="req-list">
@@ -282,7 +276,7 @@
           </div>
           <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-            <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
+            <div class="icon"><img src="Homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Identification</h4>
               <p>The necessary documents for the submission of a Barangay Identification (ID) commonly include the following:</p>
               <ul class="req-list">
@@ -295,7 +289,7 @@
           </div>
           <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-            <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
+            <div class="icon"><img src="Homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Indigency</h4>
               <p>The necessary documents for the submission of a Barangay Indigency commonly include the following:</p>
               <ul class="req-list">
@@ -309,7 +303,7 @@
           </div>
           <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
+              <div class="icon"><img src="Homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Business Permit</h4>
               <p>The necessary documents for the submission of a Business Permit of the Barangay commonly include the following:</p>
               <ul class="req-list">
@@ -322,7 +316,7 @@
           </div>
           <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
+              <div class="icon"><img src="Homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Other Certificates</h4>
               <p>The necessary documents for the submission of a Other Certificates commonly include the following:</p>
               <ul class="req-list">
@@ -345,7 +339,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="homepage/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img mb-2" alt="">
+                <img src="Homepage/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img mb-2" alt="">
                 <h3>ROBERTO A. BALLARTA</h3>
                 <h4>Punong Barangay</h4>
                 <p>
@@ -358,7 +352,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="homepage/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img mb-2" alt="">
+                <img src="Homepage/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img mb-2" alt="">
                 <h3>ABBIE CHARLOTTE CABIG-SARSALE</h3>
                 <h4>Barangay Secretary</h4>
                 <p>
@@ -371,7 +365,7 @@
             
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="homepage/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img mb-2" alt="">
+                <img src="Homepage/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img mb-2" alt="">
                 <h3>MELLIZA JOIE BASUGA-TAÑAC</h3>
                 <h4>Barangay Treasurer</h4>
                 <p>
@@ -558,14 +552,14 @@
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  <script src="homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="homepage/assets/vendor/aos/aos.js"></script>
-  <script src="homepage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="homepage/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="homepage/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="homepage/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="homepage/assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="homepage/assets/vendor/php-email-form/validate.js"></script>
-  <script src="homepage/assets/js/main.js"></script>
+  <script src="Homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="Homepage/assets/vendor/aos/aos.js"></script>
+  <script src="Homepage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="Homepage/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="Homepage/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="Homepage/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="Homepage/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="Homepage/assets/vendor/php-email-form/validate.js"></script>
+  <script src="Homepage/assets/js/main.js"></script>
 </body>
 </html>
