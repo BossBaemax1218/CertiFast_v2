@@ -21,16 +21,14 @@ include 'server/db_connection.php'
 				<div class="content">
 					<section class="main-content mt-5">
 						<div class="container mt-2">
-						<?php if(isset($_SESSION['message'])): ?>
-									<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-										<?php echo $_SESSION['message']; ?>
-									</div>
+							<?php if (isset($_SESSION['message'])): ?>
+								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success'] == 'danger' ? 'bg-danger text-light' : null ?>" role="alert">
+									<?php echo $_SESSION['message']; ?>
+								</div>
 								<?php unset($_SESSION['message']); ?>
 							<?php endif ?>
-							<div>
-								<h1 class="text-center">Barangay Los Amigos - <strong>CertiFast Portal</strong></h1>
-								<h5 class="text-center fw-bold"> Here are the steps in setting an registration request with CertiFast Portal.</h5>
-							</div>
+							<h1 class="text-center">Barangay Los Amigos - <strong>CertiFast Portal</strong></h1>
+							<h5 class="text-center fw-bold"> Here are the steps in setting an registration request with CertiFast Portal.</h5>
 							<section id="featured-services" class="featured-services">
 								<div class="container" data-aos="fade-up">
 									<div class="row">

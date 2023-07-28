@@ -44,7 +44,7 @@ $stmt->close();
 		<?php include 'templates/main-header-resident.php' ?>
 		<?php include 'templates/sidebar-resident.php' ?>
 		<div class="main-panel mt-5">
-			<div class="container">
+			<div class="content">
 				<div class="panel-header">
                     <div>
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
@@ -53,7 +53,7 @@ $stmt->close();
                     </div>
 				</div>
 				<div class="page-inner">
-					<div class="row mt-2">
+					<div class="container mt-2">
 						<div class="col-md-12">
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">

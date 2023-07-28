@@ -25,7 +25,7 @@
 	$number 	= $conn->real_escape_string($_POST['number']);
 	$occupation = $conn->real_escape_string($_POST['occupation']);
     $remarks 	= $conn->real_escape_string($_POST['remarks']);
-	$profile 	= $conn->real_escape_string($_POST['profileimg']); // base 64 image
+	$profile 	= $conn->real_escape_string($_POST['profileimg']);
 	$profile2 	= $_FILES['img']['name'];
 
 	$newName = date('dmYHis').str_replace(" ", "", $profile2);
