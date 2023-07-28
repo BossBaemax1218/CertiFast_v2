@@ -83,7 +83,6 @@
                 </footer>
             </div>
             <?php if(!isset($_GET['closeModal'])){ ?>
-                
                 <script>
                     setTimeout(function(){ openModal(); }, 1000);
                 </script>
