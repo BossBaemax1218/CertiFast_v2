@@ -60,6 +60,28 @@
             list-style-type: none;
             line-height: 1.5;
         }
+        /* Styles for larger screens */
+        .container {
+        max-width: 960px;
+        margin: 0 auto;
+        }
+
+        /* Styles for medium-sized screens */
+        @media (max-width: 768px) {
+        .container {
+            max-width: 90%;
+        }
+        }
+
+        /* Styles for smaller screens */
+        @media (max-width: 576px) {
+        h3 {
+            font-size: 1.5rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+        }
     </style>   
 </head>
 <body>
@@ -82,12 +104,13 @@
 
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1 class="text-center"><span style="font-size: 100px;">Privacy Notice</span></h1>
+      <h1 class="text-center"><span style="font-size: 80px;">Privacy Notice</span></h1>
       <br>
     </div>
   </section>
 
   <main id="main">
+<div class="container">
       <section id="featured-policy" class="featured-services">
         <div class="container" data-aos="zoom-out" data-aos-delay="100">
         <h3>Privacy Notice</h3>
@@ -216,6 +239,8 @@
             </ul>
         </div>
     </section>
+</div>
+<div class="container">
     <section id="featured-term" class="featured-services">
         <div class="container" data-aos="zoom-out" data-aos-delay="100">
             <h4>Term and Conditions</h4>
@@ -331,6 +356,7 @@
             </ul>
         </div>
       </section>
+</div>
   </main>
   <footer id="footer">
     <div class="container py-4">

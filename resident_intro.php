@@ -19,7 +19,7 @@
                             <div class="container mt-5" data-aos="fade-up">
                                 <div class="row">
                                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-                                        <img src="homepage/assets/img/hero-bg.jpg" class="img-fluid" alt="">
+                                        <img src="Homepage/assets/img/hero-bg.jpg" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
                                         <ul>

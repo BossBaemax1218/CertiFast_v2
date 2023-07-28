@@ -56,13 +56,13 @@ while ($row = $result->fetch_assoc()) {
                                         <div class="announcement-slider border-r-xs-0 border-r position-relative">
                                             <?php foreach($purok as $row): ?>
                                                 <ul class="nolist list-unstyled position-relative mb-0 px-lg-5 pt-lg-5">
-                                                    <i class="text md-5" style="font-size: 18px; color: green;"><?= $row['time_display']; ?></i>
-                                                    <li class="border-bottom pb-3 mt-4">                                                       
-                                                        <span class="meta text-uppercase md-3" style="font-size: 20px; font-weight: bold;"><?= date('F d, Y', strtotime($row['date_posted'])); ?></span>
+                                                    <i class="text md-5 mt-3" style="font-size: 14px; color: green;"><?= $row['time_display']; ?></i>
+                                                    <li class="border-bottom pb-3 mt-3">                                                       
+                                                        <span class="meta text-uppercase md-3" style="font-size: 16px; font-weight: bold;"><?= date('F d, Y', strtotime($row['date_posted'])); ?></span>
                                                         <h3 class="text-uppercase font-weight-bold mt-3">
-                                                            <a href="https://www.facebook.com/profile.php?id=100064303345469" style="font-size: 30px; color: red"><?= $row['subject'] ?></a>
+                                                            <a href="https://www.facebook.com/profile.php?id=100064303345469" style="font-size: 22px; color: red"><?= $row['subject'] ?></a>
                                                         </h3>
-                                                        <p class="mt-2 post_intro" style="font-size: 23px;"><?= $row['message'] ?></p>
+                                                        <p class="mt-2 post_intro" style="font-size: 18px;"><?= $row['message'] ?></p>
                                                         <i class=" text-left mt-5 post_intro" style="font-size: 15px;">- Barangay Los Amigos Officials</i>
                                                     </li>                                                
                                                 </ul>
