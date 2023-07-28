@@ -12,8 +12,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link href="Homepage/assets/img/favicon.png" rel="icon">
     <title>Barangay Los Amigos | CertiFast Portal</title>
     <link href="Homepage/assets/vendor/aos/aos.css" rel="stylesheet">
@@ -31,8 +29,8 @@
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center ms-4"><a href="mailto:losamigosdavaocity.gov@gmail.com"> <?= ucwords($result['brgy_email']) ?></a></i>
-        <i class="bi bi-telephone d-flex align-items-center ms-4"> <span><?= ucwords($result['contact_number']) ?></span></i>
+        <i class="bi bi-envelope d-flex align-items-center ms-4"><a href="mailto:losamigosdavaocity.gov@gmail.com"> <?= $result['brgy_email'] ?></a></i>
+        <i class="bi bi-telephone d-flex align-items-center ms-4"> <span><?= $result['contact_number'] ?></span></i>
       </div>
     </div>
   </section>
@@ -63,7 +61,7 @@
     <h1 class="hero-title">Welcome to <span>Barangay Los Amigos</span></h1>
     <br>
     <div class="d-flex">
-      <a href="#main" class="btn-get-started scrollto">Get Started</a>
+      <a href="#main" class="text-center btn-get-started scrollto">Get Started</a>
       <a href="https://www.youtube.com/watch?v=NroSCViBo1M" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Play Now</span></a>
     </div>
   </div>
@@ -248,7 +246,7 @@
           <h6>Say goodbye to spreadsheet tracking. Our certificate management system online provides clarity and simplifies compliance.</h6>
         </div>
         <div class="row">
-          <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
             <div class="icon"><img src="Homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Residency</h4>
@@ -261,7 +259,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
             <div class="icon"><img src="Homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Clearance</h4>
@@ -274,7 +272,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
             <div class="icon"><img src="Homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Identification</h4>
@@ -287,7 +285,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
             <div class="icon"><img src="Homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Indigency</h4>
@@ -301,7 +299,7 @@
 
             </div>
           </div>
-          <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><img src="Homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Business Permit</h4>
@@ -314,7 +312,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-6 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><img src="Homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Other Certificates</h4>
@@ -501,9 +499,9 @@
 
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>CertiFast</h3>
-            <p><?= ucwords($result['brgy_address']) ?> <br> <br>
-              <strong>Telephone:</strong> <?= ucwords($result['contact_number']) ?><br>
-              <strong>Email:</strong> <?= ucwords($result['brgy_email']) ?><br>
+            <p><?= $result['brgy_address'] ?> <br> <br>
+              <strong>Telephone:</strong> <?= $result['contact_number'] ?><br>
+              <strong>Email:</strong> <?= $result['brgy_email'] ?><br>
             </p>
           </div>
 

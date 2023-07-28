@@ -10,7 +10,6 @@
 <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CertiFast Portal</title>
         <link rel="stylesheet" href="Homepage/vendor-login/css/login-style.css">
         <link rel="icon" href="Homepage/vendor-login/images/CFLogo2.ico" type="image/x-icon"/>

@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-  <link href="Homepage/assets/img/favicon.png" rel="icon">
+    <title>Barangay Los Amigos | CertiFast Portal</title>
 
-  <title>CertiFast Portal</title>
-
+    <link href="Homepage/assets/img/favicon.png" rel="icon">
     <link href="Homepage/assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="Homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="Homepage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -15,7 +12,6 @@
     <link href="Homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="Homepage/assets/css/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
     <style>
         main {
@@ -94,6 +90,10 @@
             <li><a class="nav-link scrollto" href="index.php#about">About</a></li>
             <li><a class="nav-link scrollto" href="index.php#services">Certificates</a></li>
             <li class="dropdown"><a href="#"><span>Officials</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto " href="barangay-officials.php">Barangay Officials</a></li>
+              <li><a class="nav-link scrollto " href="sangguniankabataan-officials.php">SK Officials</a></li>
+            </ul>
           </li>
           <li><a href="login.php" class="btn-login" style="text-decoration:none;"> Login</a></li>
         </ul>
