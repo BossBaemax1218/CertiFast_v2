@@ -11,14 +11,12 @@
 <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CertiFast Portal</title>
-        <link rel="stylesheet" href="vendor-login/css/login-style.css">
-        <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
+        <link href="Homepage/vendor-login/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="Homepage/vendor-login/css/login-style.css">
+        <link rel="icon" href="Homepage/vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     </head>
     <body>
 <div class="container">
