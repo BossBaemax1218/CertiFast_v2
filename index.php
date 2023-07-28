@@ -254,7 +254,7 @@
           <h6>Say goodbye to spreadsheet tracking. Our certificate management system online provides clarity and simplifies compliance.</h6>
         </div>
         <div class="row">
-          <div class="col-lg-4 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
             <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Residency</h4>
@@ -265,11 +265,9 @@
                   <li>Photocopy of any Utility Bill or Proof of Billing (such as electric bill, water bill, etc.) </li>
                   <li>A barangay clearance or certificate of residency.</li>
               </ul>
-              <br>
-              <h5><a href="login.php" class="btn-request-now">APPLY NOW</a></h5>
             </div>
           </div>
-          <div class="col-lg-4 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
             <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Clearance</h4>
@@ -280,11 +278,9 @@
                   <li>Photocopy of any Utility Bill or Proof of Billing (such as electric bill, water bill, etc.) </li>
                   <li>A barangay clearance or certificate of residency.</li>
               </ul>
-              <br>
-              <h5><a href="login.php" class="btn-request-now">APPLY NOW</a></h5>
             </div>
           </div>
-          <div class="col-lg-4 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
             <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Identification</h4>
@@ -295,11 +291,9 @@
                   <li>Photocopy of any Utility Bill or Proof of Billing (such as electric bill, water bill, etc.) </li>
                   <li>A barangay clearance or certificate of residency.</li>
               </ul>
-              <br>
-              <h5><a href="login.php" class="btn-request-now">APPLY NOW</a></h5>
             </div>
           </div>
-          <div class="col-lg-4 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
             <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Barangay Indigency</h4>
@@ -310,11 +304,10 @@
                   <li>Certificate of Income. </li>
                   <li>Barangay Clearance.</li>
               </ul>
-              <br>
-              <h5><a href="login.php" class="btn-request-now">APPLY NOW</a></h5>
+
             </div>
           </div>
-          <div class="col-lg-4 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Business Permit</h4>
@@ -325,11 +318,9 @@
                   <li>Certificate of Income. </li>
                   <li>Barangay Clearance.</li>
               </ul>
-              <br>
-              <h5><a href="login.php" class="btn-request-now">APPLY NOW</a></h5>
             </div>
           </div>
-          <div class="col-lg-4 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-4 d-flex align-items-center position-relative mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><img src="homepage/assets/img/clients/logo-9.svg"></div>
               <h4>Other Certificates</h4>
@@ -340,8 +331,6 @@
                   <li>Certificate of Income. </li>
                   <li>Barangay Clearance.</li>
               </ul>
-              <br>
-              <h5><a href="login.php" class="btn-request-now">OTHERS</a></h5>
             </div>
           </div>
         </div>

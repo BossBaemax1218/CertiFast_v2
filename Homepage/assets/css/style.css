@@ -945,7 +945,6 @@ section {
   position: relative;
   display: absolute;
   justify-content: center;
-  height: 400px; /* Added to set a fixed height for icon-box */
 }
 
 .services .icon-box .icon {
@@ -963,12 +962,12 @@ section {
 }
 
 .services .icon-box .icon img {
-  max-width: 80px; /* Changed to 'max-width' to limit the image size */
+  max-width: 80px;
   height: auto;
   display: block;
   margin: 0 auto;
-  color:  #E42654; /* Removed font-size and set color here */
-  font-size: 28px; /* Moved font-size from previous '.services .icon-box .icon img' */
+  color:  #E42654;
+  font-size: 28px;
   transition: ease-in-out 0.3s;
 }
 
@@ -993,7 +992,7 @@ section {
   font-size: 14px;
   text-align: left;
   margin-top: 10px;
-  font-weight: #c9c8c8; /* This should be 'font-weight: normal;' instead */
+  font-weight: #c9c8c8;
 }
 
 .services .icon-box .btn-request-now {
