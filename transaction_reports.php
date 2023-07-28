@@ -39,16 +39,16 @@
 								</div>
 							<?php unset($_SESSION['message']); ?>
 						<?php endif ?>
-                        <div class="row">
-                            <div class="panel-header">
-                                <div class="page-inner">
-                                    <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-                                        <div>
-                                            <h1 class="text-center fw-bold" style="font-size: 300%;">Transaction Reports</h1>
-                                        </div>
+                        <div class="panel-header">
+                            <div class="page-inner">
+                                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                                    <div>
+                                        <h1 class="text-center fw-bold" style="font-size: 300%;">Transaction Reports</h1>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="card card-stats card card-round">
                                     <div class="card-body">

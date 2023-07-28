@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
                                         <ul>
-                                            <h3>Barangay Los Amigos - CertiFast Portal</h3>
+                                            <h3><b>Barangay Los Amigos - CertiFast Portal</b></h3>
                                             <span>The Certifast Portal provides a user-friendly platform for efficient and secure handling of certificates, revolutionizing the process of issuance and management.</span><br>
                                             <br><h5><b>Our Mission</b></h5>
                                             <p>The Barangay Los Amigos envisions to be more industrious, abundant and secure community to live in where residents enjoy harmonious way of life without any uncertainties in mind at work and at home and most especially for a more directed and progressive Barangay Governance. </p>

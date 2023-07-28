@@ -46,8 +46,7 @@
 								</div>
 							<?php unset($_SESSION['message']); ?>
 						<?php endif ?>
-                        <div class="row">
-                            <div class="panel-header">
+                        <div class="panel-header">
                                 <div class="page-inner">
                                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                                         <div>
@@ -56,6 +55,7 @@
                                     </div>
                                 </div>
                             </div>
+                        <div class="row">
                             <div class="col-md-3">
                                 <div class="card card-stats card card-round">
                                     <div class="card-body">

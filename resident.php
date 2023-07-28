@@ -18,7 +18,7 @@
         $resident[] = $row;
     }
 
-    $query1 = "SELECT * FROM tblpurok ORDER BY `purok`";
+    $query1 = "SELECT * FROM tblpurok";
     $result1 = $conn->query($query1);
 
     $purok = array();
@@ -245,6 +245,10 @@
 					</div>
 				</div>
 			</div>
+			<?php include 'templates/main-footer.php' ?>	
+		</div>
+	</div>
+<?php include 'templates/footer.php' ?>
             <!-- Modal -->
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl" role="document">
@@ -611,10 +615,6 @@
                     </div>
                 </div>
             </div>
-			<?php include 'templates/main-footer.php' ?>	
-		</div>
-	</div>
-	<?php include 'templates/footer.php' ?>
     <script>
 function editResident(that){
     id          = $(that).attr('data-id');
