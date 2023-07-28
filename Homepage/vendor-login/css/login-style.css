@@ -33,12 +33,12 @@ body {
 }
 
 .form img {
-  max-width: 100%;
+  max-width: 200%;
   height: auto;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
   display: inline-flex;
-  text-align: center;
+  text-align: left;
   margin: auto;
 }
 
@@ -235,7 +235,7 @@ h2 {
       margin-bottom: 5px;
     }
     .form img{
-      max-height:4rem!important ;
+      max-height:40rem!important ;
       object-fit:contain !important ;
       height : auto !important ;
       display:block   !important ;
@@ -256,7 +256,7 @@ h2 {
       font-size: 20px;
     }
     .form img{
-      max-height:4rem!important ;
+      max-height:40rem!important ;
       object-fit:contain !important ;
       height : auto !important ;
       display:block   !important ;
@@ -273,7 +273,7 @@ h2 {
       font-size: 22px;
     }
     .form img{
-      max-height:4rem!important ;
+      max-height:40rem!important ;
       object-fit:contain !important ;
       height : auto !important ;
       display:block   !important ;
@@ -292,7 +292,7 @@ h2 {
       font-size: 24px;
     }
     .form img{
-      max-height:4rem!important ;
+      max-height:40rem!important ;
       object-fit:contain !important ;
       height : auto !important ;
       display:block   !important ;
@@ -315,7 +315,7 @@ h2 {
       font-size: 26px;
     }
     .form img{
-      max-height:4rem!important ;
+      max-height:40rem!important ;
       object-fit:contain !important ;
       height : auto !important ;
       display:block   !important ;

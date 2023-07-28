@@ -12,9 +12,9 @@
     <head>
         <title>CertiFast Portal</title>
         <link rel="stylesheet" href="Homepage/vendor-login/css/password-style.css"/>
-        <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
+        <link rel="icon" href="Homepage/vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-        <link href="vendor-login/css/bootstrap.min.css" rel="stylesheet">
+        <link href="Homepage/vendor-login/css/bootstrap.min.css" rel="stylesheet">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>                       
     </head>
     <body>
@@ -23,7 +23,7 @@
             <div class="form">
                 <div class="form-content">
                     <form id="myForm" method="POST" action="model/edit_password.php">
-                        <h4 class="text-center">Reset Password</h4>
+                        <h2 class="text-center">Reset Password</h2>
                         <p class="text-center">Please register your personal information if you haven't registered yet.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
                                 <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">

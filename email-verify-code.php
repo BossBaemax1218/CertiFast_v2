@@ -12,7 +12,7 @@
     <head>
         <title>CertiFast Portal</title>
         <link rel="stylesheet" href="Homepage/vendor-login/css/password-style.css"/>
-        <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
+        <link rel="icon" href="Homepage/vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -24,7 +24,7 @@
             <div class="form">
                 <div class="form-content">
                     <form id="myForm" method="POST" action="model/email_verified.php">
-                        <h4 class="text-center">Verification Code</h4>
+                        <h2 class="text-center">Verification Code</h2>
                         <p class="text-center">We sent you a code, please type the code to verified your account.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
                         <div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">

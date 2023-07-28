@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CertiFast Portal</title>
         <link rel="stylesheet" href="Homepage/vendor-login/css/login-style.css">
-        <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
+        <link rel="icon" href="Homepage/vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -31,9 +31,9 @@
     <section class="container forms">
         <div class="form">
             <div class="form-content">
-                <a class="text-center ml-3" href="index.php"><img src="vendor-login/images/trans-title.png" alt="" class="image"></a>
+                <a class="text-center ml-3" href="index.php"><img src="Homepage/vendor-login/images/trans-title.png" alt="" class="image"></a>
                 <form id="myForm" method="POST" action="model/signup.php">
-                    <p class="text-center">To stay connected with us, please sign up with your personal information.</p>
+                    <span class="text-center">To stay connected with us, please sign up with your personal information.</span>
                     <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
                         <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">

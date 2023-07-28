@@ -42,8 +42,8 @@
                                     <div class="card-head-row">
                                         <div class="card-title">Certificate Management</div>
                                     </div>
-                                    <div class="d-flex align-items-right align-items-md-right justify-content-end flex-column flex-md-row">
-                                        <div class="col-sm-12 col-md-4 mr-3 text-center">
+                                    <div class="d-flex align-items-right align-items-md-right justify-content-end flex-column flex-md-row mt-5">
+                                        <div class="col-sm-12 col-md-4 text-center">
                                             <select class="form-control" id="certType" name="certType">
                                                 <option value="Default" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Default') echo 'selected'; ?>>Select Types of Certificates</option>
                                                 <option value="Barangay Clearance" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Barangay Clearance') echo 'selected'; ?>>Barangay Clearance</option>
@@ -73,6 +73,13 @@
                                                 <option value="Certificate of Sold Pigs" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Sold Pigs') echo 'selected'; ?>>Certificate of Sold Pigs</option>
                                                 <option value="Certificate of Birth" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Birth') echo 'selected'; ?>>Certificate of Birth</option>
                                             </select>                             
+                                        </div>
+                                        <div class="col-sm-12 col-md-4 text-center mr-3">
+                                            <select class="form-control" id="authorize_status" name="authorize_status">
+                                                <option value="Default" <?php if (isset($_POST['authorize_status']) && $_POST['authorize_status'] === 'Default') echo 'selected'; ?>>Select Types of Authorization</option>
+                                                <option value="Yes" <?php if (isset($_POST['authorize_status']) && $_POST['authorize_status'] === 'Yes') echo 'selected'; ?>>Yes</option>
+                                                <option value="No" <?php if (isset($_POST['authorize_status']) && $_POST['authorize_status'] === 'No') echo 'selected'; ?>>No</option>
+                                            </select>                               
                                         </div>
                                     </div>
                                     <div class="card-body">
