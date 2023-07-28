@@ -1,5 +1,11 @@
 <?php include 'server/dbconnect.php' ?>
 <?php
+    if (isset($_SESSION['username'])) {
+        header('Location: dashboard.php');
+    }
+    if (isset($_SESSION['fullname'])) {
+        header('Location: resident_dashboard.php');
+    }
     $query1 = "SELECT * FROM tblpurok";
     $result1 = $conn->query($query1);
 
