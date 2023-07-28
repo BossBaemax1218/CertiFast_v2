@@ -11,7 +11,6 @@
     <html lang="en">
     <head>
         <title>CertiFast Portal</title>
-
         <link rel="stylesheet" href="vendor-login/css/password-style.css"/>
         <link rel="icon" href="vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -23,7 +22,6 @@
         <section class="container forms">
             <div class="form">
                 <div class="form-content">
-                    <a href="#"><img src="images/trans-title.png" alt="" class="image"></a>
                     <form id="myForm" method="POST" action="model/edit_password.php">
                         <h4 class="text-center">Reset Password</h4>
                         <p class="text-center">Please register your personal information if you haven't registered yet.</p>
@@ -94,13 +92,11 @@
         });
     </script>
     <script>
-document.addEventListener('mousedown', function(event) {
-    // Check if the right mouse button (2) or middle mouse button (3) was clicked
-    if (event.which === 2 || event.which === 3) {
-        // Go back in the browser's history
-        history.back();
-    }
-});
+    document.addEventListener('mousedown', function(event) {
+        if (event.which === 2 || event.which === 3) {
+            history.back();
+        }
+    });
 </script>
 
     <script src="vendor-login/js/reset-password.js"></script>
