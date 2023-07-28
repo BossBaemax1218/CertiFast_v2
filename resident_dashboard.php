@@ -5,9 +5,7 @@ include 'server/db_connection.php'
 <html lang="en">
 <head>  
 	<?php include 'templates/header.php' ?>
-  <link href="homepage/assets/img/favicon.png" rel="icon">                 
 	<title>Certifast Portal</title>
-    <link href="homepage/assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="homepage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="homepage/assets/css/style.css" rel="stylesheet">
@@ -73,8 +71,8 @@ include 'server/db_connection.php'
 				<?php include 'templates/main-footer.php' ?>
 			</div>
   		</div>
-		  <?php include 'templates/footer.php' ?>
-		  <script src="homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+	<?php include 'templates/footer.php' ?>
+	<script src="homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="homepage/assets/vendor/aos/aos.js"></script>
     <script src="homepage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="homepage/assets/vendor/glightbox/js/glightbox.min.js"></script>
