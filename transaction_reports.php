@@ -63,7 +63,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Recipient</h2>
-                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($receiptCount) ?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($receiptCount) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -87,7 +87,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Payments</h2>
-                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue3['am'],2)?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($revenue3['am'],2)?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -111,7 +111,7 @@
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Certificates</h2>
-                                                    <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h3>
+                                                    <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -134,21 +134,9 @@
                                             <div class="card-title">Transaction History</div>
                                             <?php if(isset($_SESSION['username'])):?>
                                             <div class="card-tools">
-                                                <a id="print" class="btn btn-primary btn-border btn-round btn-sm">
-                                                    <i class="fa fa-file"></i>
-                                                    Print
-                                                </a>
-                                                <a id="pdf" class="btn btn-primary btn-border btn-round btn-sm">
-                                                    <i class="fa fa-file"></i>
-                                                    Pdf
-                                                </a>
-                                                <a id="txt" class="btn btn-primary btn-border btn-round btn-sm">
-                                                    <i class="fa fa-file"></i>
-                                                    Text
-                                                </a>
-                                                <a id="csv" class="btn btn-primary btn-border btn-round btn-sm">
-                                                    <i class="fa fa-file"></i>
-                                                    Excel
+                                                <a id="pdf" class="btn btn-danger btn-border btn-round btn-sm">
+                                                    <i class="fas fa-download"></i>
+                                                     Export PDF
                                                 </a>
                                             </div>
                                             <?php endif ?>
@@ -156,13 +144,13 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-12 col-md-6">
+                                                <div class="col-sm-12 col-md-3">
                                                     <div class="form-group">
                                                         <label for="min">Minimum Date</label>
                                                         <input type="text" class="form-control datepicker" placeholder="Enter Date" id="min">
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-6">
+                                                <div class="col-sm-12 col-md-3">
                                                     <div class="form-group">
                                                         <label for="max">Maximum Date</label>
                                                         <input type="text" class="form-control datepicker" placeholder="Enter Date" id="max">
@@ -170,7 +158,7 @@
                                                 </div>
                                             </div>
                                             <div class="table-responsive mt-3">
-                                                <table id="revenuetable" class="table">
+                                                <table id="residenttable" class="table">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-center" scope="col">Date</th>
@@ -218,6 +206,25 @@
 	    </div>
 	<?php include 'templates/footer.php' ?>
     <script src="assets/js/min-max-date.js"></script>
-    <script src="assets/js/export.js"></script>
+    <script>
+        $(document).on("click", "#pdf", function () {
+        console.log("Exporting revenue table as PDF...");
+
+        const currentDate = new Date().toISOString().slice(0, 10);
+
+        const title = "Transaction Reports - " + currentDate;
+        const filename = "Transaction_" + currentDate + ".pdf";
+
+        const doc = new jsPDF();
+
+        doc.setFontSize(20);
+        doc.text(title, 15, 15);
+
+        const options = { startY: 25 };
+        doc.autoTable({ html: "#residenttable", startY: 30 });
+
+        doc.save(filename);
+        });
+    </script>
 </body>
 </html>

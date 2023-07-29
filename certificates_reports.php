@@ -157,9 +157,9 @@
                                             <div class="card-title">Certificate Reports</div>
                                             <?php if(isset($_SESSION['username'])):?>
                                             <div class="card-tools">
-                                                <a id="csv" class="btn btn-primary btn-border btn-round btn-sm">
-                                                    <i class="fa fa-file"></i>
-                                                    Export
+                                                <a id="pdf" class="btn btn-danger btn-border btn-round btn-sm">
+                                                    <i class="fas fa-download"></i>
+                                                    Export PDF
                                                 </a>
                                             </div>
                                             <?php endif ?>
@@ -167,7 +167,7 @@
                                         </div>
                                     <div class="card-body">
                                         <div class="table-responsive mt-3">
-                                            <table id="revenuetable" class="table">
+                                            <table id="residenttable" class="table">
                                                 <thead>
                                                     <tr>
                                                         <th class="text-center" scope="col">Date</th>
@@ -211,6 +211,25 @@
 	    </div>
 	<?php include 'templates/footer.php' ?>
 <script src="assets/js/min-max-date.js"></script>
-<script src="assets/js/export.js"></script>
+<script>
+        $(document).on("click", "#pdf", function () {
+        console.log("Exporting revenue table as PDF...");
+
+        const currentDate = new Date().toISOString().slice(0, 10);
+
+        const title = "Certification Reports - " + currentDate;
+        const filename = "Certificates_" + currentDate + ".pdf";
+
+        const doc = new jsPDF();
+
+        doc.setFontSize(20);
+        doc.text(title, 15, 15);
+
+        const options = { startY: 25 };
+        doc.autoTable({ html: "#residenttable", startY: 30 });
+
+        doc.save(filename);
+        });
+    </script>
 </body>
 </html>

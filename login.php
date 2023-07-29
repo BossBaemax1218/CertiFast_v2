@@ -10,49 +10,172 @@
 <!DOCTYPE html>
     <html lang="en">
     <head>
+        <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
         <title>CertiFast Portal</title>
         <link rel="stylesheet" href="Homepage/vendor-login/css/login-style.css">
         <link rel="icon" href="Homepage/vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+        <style>
+.modal {
+    position: absolute;
+    width: 340px;
+    height: 230px;
+    top: 5%;
+    left:10%;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 8px 10px 14px 10px rgba(0,0,0,0.4);
+    overflow: hidden;
+    margin: auto;
+	animation: show-modal .7s ease-in-out;
+	
+	&.hide {
+		animation: hide-modal .6s ease-in-out both;
+	}
+
+.button {
+    position: absolute;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #F65656;
+    color: #fff;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    border:none;
+	transition: background .3s ease-in-out;
+		
+		&:hover {
+			background: #EC3434;
+		}
+    }
+}
+@keyframes show-modal {
+	0% {
+		transform: scale(0);
+	}
+	60% {
+		transform: scale(1.1);
+	}
+	80% {
+		transform: scale(.95);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes hide-modal {
+	0% {
+		transform: scale(1);
+	}
+	20% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scale(0);
+	}
+}
+
+@media (max-width: 767px) {
+#myform {
+    width: 100%;
+    max-width: 400px;
+}
+img{
+    width: 80%;
+    max-width: 400px;
+}
+
+.message {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 19px;
+    margin: 0;
+    padding: 0 30px;
+}
+
+.form-content {
+    padding: 10px;
+}
+
+.form-group input,
+.form-group button,
+.form-link,
+.form-group button {
+    font-size: 14px;
+}
+.modal {
+    max-width: 95%;
+    max-height: 100%;
+    padding: 15px;
+    top: 5%;
+    left:0;
+    right: 0;
+}
+}
+
+@media (max-width: 576px) {
+#myform {
+    left: 15px;
+    right: 15px;
+    max-width: 150%;
+}
+img{
+    width: 80%;
+    max-width: 400px;
+}
+.message {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 19px;
+    margin: 0;
+    padding: 0 30px;
+}
+.modal {
+    max-width: 95%;
+    max-height: 90%;
+    padding: 10px;
+    top: 5%;
+    left:0;
+    right: 0;
+}
+}
+</style>   
     </head>
     <body>
     <div class="container">
         <section class="container forms">
-            <div class="form">
+            <div class="form"  id="myForm">
                 <div class="form-content">
-                    <a class="text-left" href="index.php"><img src="Homepage/vendor-login/images/trans-title.png" alt="" class="text-center image"></a>
-                    <form id="myForm" method="POST" action="model/login.php">
-                        <span class="text-center">Please sign in correctly with your personal information.</span>
-                        <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
-                            <div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" id="closeModalButton" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <?php if ($_SESSION['success'] == 'danger'): ?>
-                                                <h5 class="modal-title text-center w-100">
-                                                    <i class="fas fa-exclamation-triangle fa-3x d-block mx-auto" style="color: #d64242"></i>
-                                                </h5>
-                                            <?php elseif ($_SESSION['success'] == 'success'): ?>
-                                                <h5 class="modal-title text-center w-100">
-                                                    <i class="fas fa-check-circle fa-3x d-block mx-auto" style="color: #34c240"></i>
-                                                </h5>
-                                            <?php endif; ?>
-                                            <br>
-                                            <p class="text-center" style="font-size: 24px; font-weight: bold;"><?php echo $_SESSION['message']; ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php unset($_SESSION['message']); ?>
+                <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
+                <div class="modal-wrapper">
+                    <div class="modal" id="loginModal">
+                        <?php if ($_SESSION['success'] == 'danger'): ?>
+                            <h5 class="modal-title text-center">
+                                <i class="fas fa-exclamation-triangle fa-3x mt-5" style="color: #d64242"></i>
+                            </h5>
+                        <?php elseif ($_SESSION['success'] == 'success'): ?>
+                            <h5 class="modal-title text-center">
+                                <i class="fas fa-check-circle fa-3x mt-5" style="color: #34c240"></i>
+                            </h5>
                         <?php endif; ?>
+                        <br>
+                        <p class="text-center mb-5" style="font-size: 14px;"><?php echo $_SESSION['message']; ?></p>
+                        <button type="button" class="button" id="closeModalButton">Dismiss</button>
+                    </div>
+                </div>
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
+                    <a class="text-left" href="index.php"><img src="Homepage/vendor-login/images/trans-title.png" alt="" class="text-center image"></a>
+                    <form method="POST" action="model/login.php">
+                    <span class="text-center">Please sign in correctly with your personal information.</span>
                         <div class="form-group input-field">
                             <input id="email" type="text" name="email" autocomplete="off" placeholder="Email or username" class="input">
                         </div>
@@ -78,7 +201,7 @@
                                 echo $year . " &copy; Barangay Los Amigos - CertiFast Portal";
                             ?>
                         </div>
-                        <p style="font-size: 13px;"><a href="#termprivacy" style="font-size: 13px; text-decoration: none;" data-toggle="modal">Privacy and Term of Use</a></p>
+                        <p style="font-size: 13px;"><a href="termpolicy.php" target="_blank" style="font-size: 13px; text-decoration: none;">Privacy and Term of Use</a></p>
                     </div>
                 </footer>
             </div>
@@ -88,35 +211,6 @@
                 </script>
             <?php } ?>
         </section>
-    </div>
-    <div class="modal fade" id="termprivacy" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h6 class="modal-title" id="exampleModalLabel">Privacy, Cookies, and Terms of Use</h6>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="#" enctype="multipart/form-data">
-                        <div class="form-group form-floating-label">
-                            <ul class="mt-2">
-                                <li>
-                                    <p>We prioritize your privacy and safeguard your personal information when using the Barangay Los Amigos - CertiFast Portal. By using the portal, you agree to allow us to collect, use, and store your personal information as needed for the portal's services.</p>
-                                    <To>The CertiFast Portal uses necessary cookies for its functionalities to operate effectively. To learn more about the use of cookies and how CertiFast Portal uses personal information on behalf of your institution, please read <a href="termpolicy.php#featured-policy" target="_blank">CertiFast Portal Privacy Statement</a>.</span>
-                                    <br><br>
-                                    <span>When you select <b>"OK"</b> you are agreeing to Barangay Los Amigos - <a href="termpolicy.php#featured-term" target="_blank"> CertiFast Portal  Terms of Use</a>.</span>
-                                </li>                        
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" data-dismiss="modal" id="closeModalButton">OK</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

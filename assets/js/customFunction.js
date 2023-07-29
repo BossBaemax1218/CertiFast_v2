@@ -44,6 +44,7 @@ function editPrecinct(that){
 
 function editOfficial(that){
     brgyid = $(that).attr('data-brgyid');
+    pic    = $(that).attr('data-img');
     id = $(that).attr('data-id');
     name = $(that).attr('data-name');
     pos = $(that).attr('data-pos');
@@ -60,6 +61,13 @@ function editOfficial(that){
     $('#start').val(start);
     $('#end').val(end);
     $('#status').val(status);
+
+    var str = pic;
+    var n = str.includes("data:image");
+    if(!n){
+        pic = 'assets/uploads/resident_profile/'+pic;
+    }
+    $('#image').attr('src', pic);
 }
 
 function editResident(that){

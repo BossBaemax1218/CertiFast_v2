@@ -83,7 +83,6 @@
 										<table class="table">
 											<thead>
 												<tr>
-													<!--<th scope="col">Barangay ID</th>-->
 													<th scope="col">Fullname</th>
 													<th scope="col">Position</th>
 													<th scope="col">Address</th>
@@ -101,7 +100,6 @@
 												<?php if (!empty($official)): ?>
 													<?php foreach ($official as $row): ?>
 														<tr>
-															<!--<td><?= $row['barangay_id'] ?></td>-->
 															<td>
 																<div class="avatar avatar-xs mr-2">
 																	<img src="<?= (preg_match('/data:image/i', $row['picture'])) ? $row['picture'] : ('assets/uploads/officials_profile/' . $row['picture']) ?>" alt="Officials-Profile" class="avatar-img rounded-circle">
@@ -117,17 +115,19 @@
 																	<td><?= $row['status'] == 'Active' ? '<span class="badge badge-primary">Active</span>' : '<span class="badge badge-danger">Inactive</span>' ?></td>
 																<?php endif ?>
 																<td class="text-center">
-																	<a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary"
-																		title="Edit Position" onclick="editOfficial(this)" data-id="<?= $row['id'] ?>" data-img="<?= $row['picture'] ?>" data-name="<?= $row['fullname'] ?>"
-																		data-pos="<?= $row['pos_id'] ?>" data-add="<?= $row['address'] ?>" data-start="<?= $row['termstart'] ?>"
-																		data-end="<?= $row['termend'] ?>" data-status="<?= $row['status'] ?>">
-																		<i class="fas fa-edit"></i>
-																	</a>
-																	<?php if ($_SESSION['role'] == 'administrator'): ?>
-																		<a type="button" data-toggle="tooltip" href="model/remove_official.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this official?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																			<i class="fas fa-trash"></i>
+																	<div class="form-button-action">
+																		<a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary"
+																			title="Edit Officials" onclick="editOfficial(this)" data-id="<?= $row['id'] ?>" data-img="<?= $row['picture'] ?>" data-name="<?= $row['fullname'] ?>"
+																			data-pos="<?= $row['pos_id'] ?>" data-add="<?= $row['address'] ?>" data-start="<?= $row['termstart'] ?>"
+																			data-end="<?= $row['termend'] ?>" data-status="<?= $row['status'] ?>">
+																			<i class="fas fa-edit"></i>
 																		</a>
-																	<?php endif ?>
+																		<?php if ($_SESSION['role'] == 'administrator'): ?>
+																			<a type="button" data-toggle="tooltip" href="model/remove_official.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this official?');" class="btn btn-link btn-danger" data-original-title="Remove">
+																				<i class="fas fa-trash"></i>
+																			</a>
+																		<?php endif ?>
+																	</div>
 																</td>
 															<?php endif ?>
 														</tr>
@@ -146,7 +146,6 @@
 					</div>
 				</div>
 			</div>
-			 <!-- Modal -->
 			<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -159,7 +158,7 @@
                         <div class="modal-body">
                             <form method="POST" action="model/save_official.php" enctype="multipart/form-data">
 								<div class="text-center">
-									<div id="my_camera" style="height: 250px;" class="text-center">
+									<div style="height: 250px;" class="text-center" id="my_camera">
 										<img src="assets/img/person.png" alt="..." class="img img-fluid" width="250">
 									</div>
 									<div class="form-group d-flex justify-content-center">
@@ -173,10 +172,6 @@
 										<input type="file" class="form-control" name="image" accept=".jpeg, .jpg, .png" required>
 									</div>
 								</div>
-								<!--<div class="form-group">
-									<label>Barangay ID</label>
-									<input type="text" class="form-control" name="barangay_id" placeholder="Enter Barangay ID No." required>
-								</div>-->
                                 <div class="form-group">
                                     <label>Fullname</label>
                                     <input type="text" class="form-control" placeholder="Enter Fullname" name="fullname" required>
@@ -219,8 +214,6 @@
                     </div>
                 </div>
             </div>
-
-			<!-- Modal -->
 			<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -233,7 +226,7 @@
                         <div class="modal-body">
                             <form method="POST" action="model/edit_official.php" enctype="multipart/form-data">
 								<div class="text-center">
-                                    <div id="my_camera" style="height: 250;" class="text-center">
+                                    <div id="my_camera1" style="height: 250;" class="text-center">
                                         <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
                                     </div>
 									<?php if(isset($_SESSION['username'])):?>
@@ -249,10 +242,6 @@
                                     </div>
 									<?php endif ?>
                                 </div>
-								<!--<div class="form-group">
-									<label>Barangay ID</label>
-									<input type="text" class="form-control" name="barangay_id" id="barangay_id" placeholder="Enter Barangay ID No.">
-								</div>-->
                                 <div class="form-group">
                                     <label>Fullname</label>
                                     <input type="text" class="form-control" placeholder="Enter Fullname" name="fullname"  id="name" required>
@@ -299,5 +288,34 @@
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>
+	<script>
+	function editOfficial(that){
+			brgyid = $(that).attr('data-brgyid');
+			pic    = $(that).attr('data-img');
+			id = $(that).attr('data-id');
+			name = $(that).attr('data-name');
+			pos = $(that).attr('data-pos');
+			address = $(that).attr('data-add');
+			start = $(that).attr('data-start');
+			end = $(that).attr('data-end');
+			status = $(that).attr('data-status');
+			
+			$('#barangay_id').val(brgyid);
+			$('#off_id').val(id);
+			$('#name').val(name);
+			$('#position').val(pos);
+			$('#address').val(address);
+			$('#start').val(start);
+			$('#end').val(end);
+			$('#status').val(status);
+
+			var str = pic;
+			var n = str.includes("data:image");
+			if(!n){
+				pic = 'assets/uploads/resident_profile/'+pic;
+			}
+			$('#image').attr('src', pic);
+		}
+	</script>
 </body>
 </html>

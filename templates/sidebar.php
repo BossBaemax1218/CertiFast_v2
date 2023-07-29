@@ -174,9 +174,9 @@ $totalAnnouncements = $row1['total_announcements'];
                             <h4 class="text-section">Settings</h4>
                         </li>
                         <li class="nav-item">
-                            <a data-target="#support" data-toggle="modal">
+                            <a type="button" data-target="#support" data-toggle="modal">
                                 <i class="fas fa-edit"></i>
-                                <p>Submit a Concern</p>
+                                <p>Submit Concern</p>
                             </a>
                         </li>
                     <?php elseif ($_SESSION['role'] == 'staff'): ?>

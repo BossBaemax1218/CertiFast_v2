@@ -39,6 +39,10 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/extra/vanilla-datetimerange-picker-dark.css">
     <script src="assets/js/plugin/webfont/webfont.min.js"></script>
     
+    <link href="Homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="Homepage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="Homepage/assets/css/style.css" rel="stylesheet">
+    
 <script>
     WebFont.load({
         google: {"families":["Lato:300,400,700,900"]},

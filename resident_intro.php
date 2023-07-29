@@ -13,10 +13,10 @@
 		    <div class="main-panel">
                 <div class="content">
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1><br>
-                        <h6 class="text-center" style=" font-size: 16px; text-align: justify;"> Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.  </h6>
-                    <div class="page-inner mt-5">
+                        <h3 class="text-center" style=" font-size: 16px;"> Barangay Los Amigos online certificate management system has got you covered. Enjoy fast and easy access to your certificates with just a few clicks.  </h3>
+                    <div class="page-inner">
                         <section id="about" class="about section-bg">
-                            <div class="container mt-5" data-aos="fade-up">
+                            <div class="container" data-aos="fade-up">
                                 <div class="row">
                                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
                                         <img src="Homepage/assets/img/hero-bg.jpg" class="img-fluid" alt="">

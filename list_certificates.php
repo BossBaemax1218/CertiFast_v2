@@ -22,7 +22,7 @@
 		<div class="main-panel">
 			<div class="content">
 				<div class="page-inner">
-					<div class="container">
+					<div class="row">
                         <div class="panel-header">
                             <div class="page-inner mt-2">
                                 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row mb-2">
@@ -135,11 +135,11 @@
                                             </table>
                                         </div>
                                     </div>
+                                </div>
                             </div>
-						</div>
-					</div>
-				</div>
-			</div>
+                        </div>
+                    </div>
+                </div>
 			<?php include 'templates/main-footer.php' ?>
 		</div>
 	</div>

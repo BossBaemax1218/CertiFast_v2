@@ -50,7 +50,6 @@ include 'model/status.php';
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>CertiFast Portal</title>
 </head>
 <body>
@@ -60,17 +59,16 @@ include 'model/status.php';
         <div class="main-panel">
             <div class="content d-flex flex-column">
                 <div class="panel-header d-flex flex-column mt-1">
-                    <?php if (isset($_SESSION['message'])): ?>
-                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success'] == 'danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                            <?php echo $_SESSION['message']; ?>
-                        </div>
-                        <?php unset($_SESSION['message']); ?>
-                    <?php endif ?>
                     <?php if (isset($_SESSION['username']) && ($_SESSION['role'] == 'staff' || $_SESSION['role'] == 'administrator')): ?>
-                    <div class="container mt-3">
-                        <h3 class="fw-bold text-black mb-4" style="font-size: 400%;">Overview</h3>
-                            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                                <div class="container">
+                        <div class="container mt-3">
+                            <h3 class="fw-bold text-black mb-4" style="font-size: 400%;">Overview</h3>
+                                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                                    <?php if (isset($_SESSION['message'])): ?>
+                                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success'] == 'danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                            <?php echo $_SESSION['message']; ?>
+                                        </div>
+                                        <?php unset($_SESSION['message']); ?>
+                                    <?php endif ?>
                                     <div class="row mb-3">
                                         <div class="col-sm-12 col-md-4 mb-2">
                                             <label for="fromDate">From:</label>
@@ -105,22 +103,20 @@ include 'model/status.php';
                                             <button type="button" class="btn btn-danger" id="pdfExportBtn">Export</button>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
-                            <div class="row md-5">
-                                <div class="col-md-12">
-                                    <div class="chart-wrapper">
-                                        <?php include 'model/chart.php' ?>
+                                </form>
+                                <div class="row md-5">
+                                    <div class="col-md-12">
+                                        <div class="chart-wrapper">
+                                            <?php include 'model/chart.php' ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <?php endif ?>
-                    <?php if(isset($_SESSION['username']) && $_SESSION['role']=='purok leader'):?>
-                    <div class="container">
+                        <?php endif ?>
+                        <?php if(isset($_SESSION['username']) && $_SESSION['role']=='purok leader'):?>
+                        <div class="container">
                         <div class="form">
-                            <h1 class="text-left fw-bold ml-1 mt-5" style="font-size: 400%;">Purok Dashboard</h1>
+                            <h1 class="text-left fw-bold ml-1 mb-2 mt-5" style="font-size: 400%;">Purok Dashboard</h1>
                         </div>
                         <div class="row mt-2">
                             <div class="col-12 col-sm-6 col-md-4">
@@ -137,7 +133,7 @@ include 'model/status.php';
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Pending</h2>
-                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($pendingCount) ?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($pendingCount) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -161,7 +157,7 @@ include 'model/status.php';
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Approved</h2>
-                                                    <h3 class="fw-bold" style="font-size: 35px; color: #C77C8D;"><?= number_format($approvedCount)?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($approvedCount)?></h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -185,7 +181,7 @@ include 'model/status.php';
                                                 <div class="col-2 col-stats">
                                                     <div class="numbers mt-2">
                                                         <h2 class="text-uppercase" style="font-size: 16px;">Rejected</h2>
-                                                        <h3 class="fw-bold text-uppercase" style="font-size: 35px; color: #C77C8D;"><?= number_format($rejectedCount) ?></h3>
+                                                        <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($rejectedCount) ?></h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -197,6 +193,12 @@ include 'model/status.php';
                                 </div>
                             </div>
                             <div class="container">
+                                <?php if(isset($_SESSION['message'])): ?>
+        								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+        									<?php echo $_SESSION['message']; ?>
+        								</div>
+        							<?php unset($_SESSION['message']); ?>
+        						<?php endif ?>
                                 <div class="card">
                                     <div class="card-header">
                                     </div>
@@ -206,10 +208,7 @@ include 'model/status.php';
                                                     <thead>
                                                         <tr>
                                                             <th scope="col">Fullname</th>
-                                                            <th scope="col">Address</th>
                                                             <th scope="col">Birthdate</th>
-                                                            <th scope="col">Age</th>
-                                                            <th scope="col">Gender</th>
                                                             <th scope="col">Email</th>
                                                             <th scope="col">Purok</th>
                                                             <th scope="col">Status</th>
@@ -225,10 +224,7 @@ include 'model/status.php';
                                                                     </div>
                                                                     <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
                                                                 </td>
-                                                                <td><?= $row['address'] ?></td>
                                                                 <td><?= $row['birthdate'] ?></td>
-                                                                <td><?= $row['age'] ?></td>
-                                                                <td><?= $row['gender'] ?></td>
                                                                 <td><?= $row['email'] ?></td>
                                                                 <td><?= $row['purok'] ?></td>
                                                                 <td class="text-center"><?= $row['residency_badge'] ?></td>
@@ -245,11 +241,10 @@ include 'model/status.php';
                         <?php endif ?>
                     </div>
                </div>
-                <?php include 'templates/main-footer.php' ?>
-            </div>
-            </div>
+            <?php include 'templates/main-footer.php' ?>
         </div>
-        <?php include 'templates/footer.php' ?>
+    </div>
+<?php include 'templates/footer.php' ?>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>

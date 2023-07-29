@@ -138,25 +138,25 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter Name" name="name" required >
+                                <input type="text" class="form-control" placeholder="Enter Name" name="name" value="<?= $_SESSION['username'] ?>" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Enter Email Address" name="email" required >
+                                <input type="email" class="form-control" placeholder="samplename@gmail.com" name="email" required >
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Enter Contact Number(optional)" name="number">
+                        <input type="text" class="form-control" placeholder="Contact Number(optional)" name="number">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Enter Subject" name="subject" required>
+                        <input type="text" class="form-control" placeholder="Subject (Concern, Problems and etc...)" name="subject" required>
                     </div>
                     <div class="form-group">
-                        <textarea type="text" class="form-control" rows="5" placeholder="Enter Message" name="message" required ></textarea>
+                        <textarea type="text" class="form-control" rows="5" placeholder="Message" name="message" required ></textarea>
                     </div>
-            </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Send</button>
@@ -185,15 +185,15 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="date" class="form-control" name="date" required>
+                                <input type="date" class="form-control" name="date" value="<?= date('Y-m-d'); ?>" required>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Enter Subject" name="subject" required>
+                        <input type="text" class="form-control" placeholder="Subject (Concern, Problems and etc...)" name="subject" required>
                     </div>
                     <div class="form-group">
-                        <textarea type="text" class="form-control" rows="6" placeholder="Enter Message" name="message" required ></textarea>
+                        <textarea type="text" class="form-control" rows="6" placeholder="Message" name="message" required ></textarea>
                     </div>
             </div>
             <div class="modal-footer">

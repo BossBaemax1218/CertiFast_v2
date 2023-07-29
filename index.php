@@ -12,6 +12,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link href="Homepage/assets/img/favicon.png" rel="icon">
     <title>Barangay Los Amigos | CertiFast Portal</title>
     <link href="Homepage/assets/vendor/aos/aos.css" rel="stylesheet">

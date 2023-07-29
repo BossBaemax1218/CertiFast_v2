@@ -1,0 +1,36 @@
+.modal {
+    position: fixed;
+    width: 380px;
+    height: 220px;
+    top: 30px;
+    left: 365px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 4px 8px 12px 0 rgba(0,0,0,0.4);
+    overflow: hidden;
+}
+      
+p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 19px;
+    margin: 0;
+    padding: 0 30px;
+}
+
+.button {
+    position: absolute;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #F65656;
+    color: #fff;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    transition:.3s ease all;
+    z-index: 2;
+}

@@ -20,19 +20,19 @@
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
-		<div class="main-panel mt-5">
-			<div class="container">
+		<div class="main-panel mt-3">
+			<div class="content">
 				<div class="panel-header">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-black fw-bold" style = "font-size: 300%;">Settings</h2>
+								<h2 class="text-black fw-bold" style = "font-size: 300%;">Purok Management</h2>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="page-inner">
-					<div class="row mt--2">
+					<div class="row mt-1">
 						<div class="col-md-12">
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
@@ -136,58 +136,57 @@
                                 <div class="form-group">
                                     <label>No. of Households</label>
                                     <input type="text" class="form-control" placeholder="Enter No. of Households" name="total_households" required>
+                                </div>                           
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Create</button>
                                 </div>
-                            
+                            </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Create</button>
-                        </div>
-                        </form>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Purok</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Purok</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST" action="model/edit_purok.php" >
+                                    <div class="form-group">
+                                        <label>Purok Name</label>
+                                        <input type="text" class="form-control" id="purok" placeholder="Enter Purok Name" name="purok" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Purok Leader</label>
+                                        <input type="text" class="form-control" placeholder="Enter Purok Name" name="purok_leader" id="purok_leader" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact Number (Optional)</label>
+                                        <input type="text" class="form-control" placeholder="+63 000 000 0000" name="contact_number" id="contact_number" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>No. of Residents</label>
+                                        <input type="text" class="form-control" id="total_residents" placeholder="Enter No. of Residents" name="total_residents" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>No. of Households</label>
+                                        <input type="text" class="form-control" id="total_households" placeholder="Enter No. of Households" name="total_households" required>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" id="purok_id" name="id">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-danger">Update</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <form method="POST" action="model/edit_purok.php" >
-                                <div class="form-group">
-                                    <label>Purok Name</label>
-                                    <input type="text" class="form-control" id="purok" placeholder="Enter Purok Name" name="purok" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Purok Leader</label>
-                                    <input type="text" class="form-control" placeholder="Enter Purok Name" name="purok_leader" id="purok_leader" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Number (Optional)</label>
-                                    <input type="text" class="form-control" placeholder="+63 000 000 0000" name="contact_number" id="contact_number" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>No. of Residents</label>
-                                    <input type="text" class="form-control" id="total_residents" placeholder="Enter No. of Residents" name="total_residents" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>No. of Households</label>
-                                    <input type="text" class="form-control" id="total_households" placeholder="Enter No. of Households" name="total_households" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="hidden" id="purok_id" name="id">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-danger">Update</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
-            </div>
 			<?php include 'templates/main-footer.php' ?>
 		</div>
 	</div>

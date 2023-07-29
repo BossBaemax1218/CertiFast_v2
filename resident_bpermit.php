@@ -15,8 +15,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 $statusBadges = [
-    'on hold' => '<span class="badge badge-info">On Hold</span>',
-    'operating' => '<span class="badge badge-primary">Operating</span>',
+    'on hold' => '<span class="badge badge-primary">On Hold</span>',
+    'operating' => '<span class="badge badge-success">Operating</span>',
     'suspended' => '<span class="badge badge-warning">Suspended</span>',
     'closed' => '<span class="badge badge-danger">Closed</span>'
 ];
@@ -68,11 +68,10 @@ $stmt->close();
                                     <table id="residenttable" class="table">
 											<thead>
 												<tr class="text-center">
-													<th scope="col">Nature of Business</th>
-													<th scope="col">Owner Name</th>
+													<th scope="col">Business</th>
+													<th scope="col">Name</th>
 													<th scope="col">Address</th>
-													<th scope="col">Permit #</th>
-													<th scope="col">Applied</th>
+													<th scope="col">Permit</th>
 													<th scope="col">Valid Until</th>
 													<th scope="col">Status</th>
 												</tr>
@@ -85,7 +84,6 @@ $stmt->close();
 														<td><?= !empty($row['owner1']) ? ucwords($row['owner1']) : $row['owner1'] ?></td>
 														<td><?= $row['address'] ?></td>
 														<td><?= ucwords($row['permit_number']) ?></td>
-														<td><?= ucwords($row['applied']) ?></td>
 														<td><?= ucwords($row['validation']) ?></td>
 														<td class="text-center"><?= $row['permit_badge'] ?></td>												
 													</tr>

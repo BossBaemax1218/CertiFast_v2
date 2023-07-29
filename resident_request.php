@@ -81,73 +81,39 @@ $conn->close();
                                             <table id="residenttable" class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">Fullname</th>
-                                                        <th scope="col">Address</th>
+                                                        <th class="text-center" scope="col">Fullname</th>
                                                         <th scope="col">Birthdate</th>
-                                                        <th scope="col">Gender</th>
-                                                        <th scope="col">Email</th>
+                                                        <th class="text-center" scope="col">Email</th>
                                                         <th scope="col">Purok</th>
-                                                        <th scope="col">Status</th>
-                                                        <th class="text-center" scope="col">Action</th>
+                                                        <th class="text-center" scope="col">Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php if (!empty($resident)): ?>
                                                         <?php $no = 1; foreach ($resident as $row): ?>
                                                             <tr>
-                                                                <td>
+                                                                <td class="text-center">
                                                                     <div class="avatar avatar-xs ml-3">
                                                                         <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
                                                                     </div>
                                                                     <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
                                                                 </td>
-                                                                <td><?= $row['address'] ?></td>
                                                                 <td><?= $row['birthdate'] ?></td>
-                                                                <td><?= $row['gender'] ?></td>
-                                                                <td><?= $row['email'] ?></td>
+                                                                <td class="text-center"><?= $row['email'] ?></td>
                                                                 <td><?= $row['purok'] ?></td>
                                                                 <td class="text-center"><?= $row['residency_badge'] ?></td>
-                                                                <td class="text-center">
-                                                                <div class="form-button-action">
-                                                                    <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
-                                                                        data-id="<?= $row['id'] ?>" 
-                                                                        data-national="<?= $row['national_id'] ?>" 
-                                                                        data-fname="<?= $row['firstname'] ?>" 
-                                                                        data-mname="<?= $row['middlename'] ?>" 
-                                                                        data-lname="<?= $row['lastname'] ?>" 
-                                                                        data-address="<?= $row['address'] ?>" 
-                                                                        data-bplace="<?= $row['birthplace'] ?>" 
-                                                                        data-bdate="<?= $row['birthdate'] ?>" 
-                                                                        data-age="<?= $row['age'] ?>"
-                                                                        data-cstatus="<?= $row['civilstatus'] ?>" 
-                                                                        data-gender="<?= $row['gender'] ?>"
-                                                                        data-purok="<?= $row['purok'] ?>" 
-                                                                        data-vstatus="<?= $row['voterstatus'] ?>" 
-                                                                        data-taxno="<?= $row['taxno'] ?>" 
-                                                                        data-number="<?= $row['phone'] ?>" 
-                                                                        data-email="<?= $row['email'] ?>" 
-                                                                        data-occu="<?= $row['occupation'] ?>" 
-                                                                        data-remarks="<?= $row['remarks'] ?>" 
-                                                                        data-img="<?= $row['picture'] ?>" 
-                                                                        data-citi="<?= $row['citizenship'];?>" 
-                                                                        data-dead="<?= $row['resident_type'];?>" 
-                                                                        data-purpose="<?= $row['purpose'] ?>">
-                                                                        <i class="fa fa-eye"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    <?php $no++; endforeach ?>
-                                                <?php endif ?>
-                                            </tbody>
-                                        </table>
+                                                            </tr>
+                                                        <?php $no++; endforeach ?>
+                                                    <?php endif ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
             <!-- Modal -->
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -307,7 +273,7 @@ $conn->close();
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Remarks</label>
+                                            <label>Requirements</label>
                                             <textarea class="form-control" name="remarks" required placeholder="Enter Remarks"></textarea>
                                         </div>
                                     </div>
@@ -375,13 +341,13 @@ $conn->close();
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Firstname</label>
+                                                <label>First name</label>
                                                 <input type="text" class="form-control" placeholder="Enter Firstname" name="fname" id="fname" disabled>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Middlename</label>
+                                                <label>Middle name</label>
                                                 <input type="text" class="form-control" placeholder="Enter Middlename" name="mname" id="mname" disabled>
                                             </div>
                                         </div>
@@ -492,7 +458,7 @@ $conn->close();
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Remarks</label>
+                                        <label>Requirements</label>
                                         <textarea class="form-control" name="remarks" placeholder="Enter Remarks" id="remarks" disabled></textarea>
                                     </div>
                                 </div>
