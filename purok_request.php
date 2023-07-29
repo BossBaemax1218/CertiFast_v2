@@ -91,7 +91,6 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                                                         <th scope="col">Fullname</th>
                                                         <th scope="col">Address</th>
                                                         <th scope="col">Birthdate</th>
-                                                        <th scope="col">Age</th>
                                                         <th scope="col">Gender</th>
                                                         <th scope="col">Email</th>
                                                         <th scope="col">Purok</th>
@@ -116,7 +115,6 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                                                             </td>
                                                             <td><?= $row['address'] ?></td>
                                                             <td><?= $row['birthdate'] ?></td>
-                                                            <td><?= $row['age'] ?></td>
                                                             <td><?= $row['gender'] ?></td>
                                                             <td><?= $row['email'] ?></td>
                                                             <td><?= $row['purok'] ?></td>

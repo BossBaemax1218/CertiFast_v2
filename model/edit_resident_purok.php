@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['success'] = 'success';
 
                 if ($rstatus === 'rejected') {
-                    header("Location: ../purok_requested.php");
+                    header("Location: ../purok_request.php");
                     exit();
                 }
             } else {

@@ -176,7 +176,7 @@ $totalAnnouncements = $row1['total_announcements'];
                         <li class="nav-item">
                             <a data-target="#support" data-toggle="modal">
                                 <i class="fas fa-edit"></i>
-                                <p>Submit a concern</p>
+                                <p>Submit a Concern</p>
                             </a>
                         </li>
                     <?php elseif ($_SESSION['role'] == 'staff'): ?>
@@ -193,7 +193,7 @@ $totalAnnouncements = $row1['total_announcements'];
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#support" data-toggle="modal">
+                            <a type="button" href="#support" data-toggle="modal">
                                 <i class="fas fa-edit"></i>
                                 <p>Support</p>
                             </a>
