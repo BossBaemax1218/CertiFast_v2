@@ -54,6 +54,15 @@
 		}
     }
 }
+
+.message {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 19px;
+    margin-top: 130px;
+    padding: 0 30px;
+}
+
 #myForm {
     position: relative;
 }
@@ -98,7 +107,7 @@ img{
     max-width: 800px;
 }
 .message {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
     line-height: 19px;
     margin: 0;
@@ -138,7 +147,7 @@ img{
     max-width: 400px;
 }
 .message {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
     line-height: 19px;
     margin: 0;
@@ -157,11 +166,11 @@ img{
     <body>
     <div class="container">
         <section class="container forms">
-            <div class="form"  id="myForm"></div>
+            <div class="form" id="myForm" >
                 <div class="form-content">
                     <form method="POST" action="model/edit_password.php">
-                        <h3 class="text-center">Reset Password</h3>
-                        <p class="text-center">Please register your personal information if you haven't registered yet.</p>
+                        <h4 class="text-center">Change Password</h4>
+                        <p class="text-center">You have requested to reset your password.</p>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
                             <div class="modal" id="signupModal">
                                 <?php if ($_SESSION['success'] == 'danger'): ?>
@@ -173,8 +182,7 @@ img{
                                         <i class="fas fa-check-circle fa-3x d-block mx-auto" style="color: #34c240"></i>
                                     </h5>
                                 <?php endif; ?>
-                                <br>
-                                <p class="message text-center" style="font-size: 14px;"><?php echo $_SESSION['message']; ?></p>
+                                <p class="message text-center"><?php echo $_SESSION['message']; ?></p>
                                 <button type="button" class="button" id="closeModalButton">Dismiss</button>
                             </div>                                       
                             <?php unset($_SESSION['message']); ?>
