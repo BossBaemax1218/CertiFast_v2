@@ -24,8 +24,8 @@
             <div class="form" id="myForm">
                 <div class="form-content">      
                     <form method="POST" action="model/forgot_password.php">
-                        <div class="text-center mt-3 mb-3">
-                            <h3 class="text-center">Forgot Password</h3>
+                        <div class="header-title text-center mt-3 mb-3">
+                            <h4 class="text-center">Forgot Password</h4>
                             <span class="text-center">Please enter your email address for verification code.</span>
                         </div>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
@@ -39,7 +39,7 @@
                                         <i class="fas fa-check-circle fa-3x d-block mx-auto" style="color: #34c240"></i>
                                     </h5>
                                 <?php endif; ?>
-                                <span class="message text-center mt-3 ml-3"><?php echo $_SESSION['message']; ?></span>
+                                <span class="message text-center mb-3 ml-3"><?php echo $_SESSION['message']; ?></span>
                                 <button type="button" class="button" id="closeModalButton">Dismiss</button>
                             </div>                                       
                             <?php unset($_SESSION['message']); ?>
@@ -48,7 +48,7 @@
                             <input id="email" type="email" autocomplete="off" name="email" placeholder="Email" class="input">
                         </div>
                         <div class="field button-field text-center">
-                            <button type="submit" value="submit" class="far fa-paper-plane" style='font-size:20px'> &nbsp Send</button>
+                            <button type="submit" value="submit" class="far fa-paper-plane"> &nbsp Send</button>
                         </div>
                     </form>
                     <div class="form-link text-center">

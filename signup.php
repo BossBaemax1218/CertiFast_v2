@@ -17,148 +17,13 @@
 <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+        <meta content='width=device-width, initial-scale=1' name='viewport' />
         <title>CertiFast Portal</title>
-        <link rel="stylesheet" href="Homepage/vendor-login/css/login-style.css">
-        <link rel="icon" href="Homepage/vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="assets/css/login-style.css"/>
+        <link rel="icon" href="assets/img/CFLogo2.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <style>
-.modal {
-    position: absolute;
-    width: 340px;
-    height: 230px;
-    top: 5%;
-    left:10%;
-    background: #fff;
-    border-radius: 3px;
-    box-shadow: 8px 10px 14px 10px rgba(0,0,0,0.4);
-    overflow: hidden;
-    margin: auto;
-	animation: show-modal .7s ease-in-out;
-	
-	&.hide {
-		animation: hide-modal .6s ease-in-out both;
-	}
-
-.button {
-    position: absolute;
-    height: 40px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #F65656;
-    color: #fff;
-    line-height: 40px;
-    font-size: 16px;
-    font-weight: 400;
-    cursor: pointer;
-    border:none;
-	transition: background .3s ease-in-out;
-		
-		&:hover {
-			background: #EC3434;
-		}
-    }
-}
-#myForm {
-    position: relative;
-}
-@keyframes show-modal {
-	0% {
-		transform: scale(0);
-	}
-	60% {
-		transform: scale(1.1);
-	}
-	80% {
-		transform: scale(.95);
-	}
-	100% {
-		transform: scale(1);
-	}
-}
-
-@keyframes hide-modal {
-	0% {
-		transform: scale(1);
-	}
-	20% {
-		transform: scale(1.1);
-	}
-	100% {
-		transform: scale(0);
-	}
-}
-
-@media (max-width: 767px) {
-#myform {
-    width: 100%;
-    max-width: 400px;
-}
-img{
-    width: 80%;
-    max-width: 400px;
-}
-
-.message {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 19px;
-    margin: 0;
-    padding: 0 30px;
-}
-
-.form-content {
-    padding: 10px;
-}
-
-.form-group input,
-.form-group button,
-.form-link,
-.form-group button {
-    font-size: 14px;
-}
-.modal {
-    max-width: 95%;
-    max-height: 100%;
-    padding: 15px;
-    top: 5%;
-    left:0;
-    right: 0;
-}
-}
-
-@media (max-width: 576px) {
-#myform {
-    left: 15px;
-    right: 15px;
-    width: 100%;
-    max-width: 150%;
-}
-img{
-    width: 80%;
-    max-width: 400px;
-}
-.message {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 19px;
-    margin: 0;
-    padding: 0 30px;
-}
-.modal {
-    max-width: 95%;
-    max-height: 90%;
-    padding: 10px;
-    top: 5%;
-    left:0;
-    right: 0;
-}
-}
-</style>      
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>  
 </head>
 <body>
 <div class="container">
@@ -180,7 +45,7 @@ img{
                                         </h5>
                                     <?php endif; ?>
                                     <br>
-                                    <p class="message text-center" style="font-size: 14px;"><?php echo $_SESSION['message']; ?></p>
+                                    <span class="message text-center mb-5 ml-4"><?php echo $_SESSION['message']; ?></span>
                                     <button type="button" class="button" id="closeModalButton">Dismiss</button>
                                 </div>
                             </div>                                     
@@ -208,7 +73,7 @@ img{
                         <input id="password" type="password" name="password" autocomplete="off" placeholder="Password" class="password">
                     </div>
                     <div class="form-group button-field">
-                        <button type="submit" value="submit" class="submit-button">Submit</button>
+                        <button type="submit" value="submit" class="submit-button"> Submit</button>
                     </div>
                 </form>
                 <div class="form-link">
@@ -216,14 +81,14 @@ img{
                 </div>
             </div>
             <footer class="footer mt-3">
-                <div class="container-fluid">
+                <div class="container-fluid text-center">
                     <div class="copyright">
                         <?php
                             $year = date("Y");
                             echo $year . " &copy; Barangay Los Amigos - CertiFast Portal";
                         ?>
                     </div>
-                    <p style="font-size: 13px;"><a href="termpolicy.php#featured-term" target="_blank"  style="font-size: 13px; text-decoration:none;">Privacy and Term of Use</a></p>
+                    <span><a href="termpolicy.php#featured-term" target="_blank">Privacy and Term of Use</a></span>
                 </div>
             </footer>
             <?php if(!isset($_GET['closeModal'])){ ?>

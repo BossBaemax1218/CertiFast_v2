@@ -241,134 +241,149 @@
 					</div>
 				</div>
 			</div>
-                    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">New Resident Registration Form</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                    <div class="modal-body">
-                                        <form method="POST" action="model/save_resident.php" enctype="multipart/form-data">
-                                            <input type="hidden" name="size" value="1000000">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div style="height: 250;" class="text-center" id="my_camera">
-                                                            <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
-                                                        </div>
-                                                        <div class="form-group d-flex justify-content-center">
-                                                            <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
-                                                            <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
-                                                        </div>
-                                                        <div id="profileImage">
-                                                            <input type="hidden" name="profileimg">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="file" class="form-control" name="img" accept="image/*">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Barangay ID No.</label>
-                                                            <input type="text" class="form-control" name="national" placeholder="Enter Barangay ID No." required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Citizenship</label>
-                                                            <input type="text" class="form-control" name="citizenship" placeholder="Enter citizenship" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>First name</label>
-                                                            <input type="text" class="form-control" placeholder="Enter First name" name="fname" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Middle name</label>
-                                                            <input type="text" class="form-control" placeholder="Enter Middle name" name="mname" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Last name</label>
-                                                            <input type="text" class="form-control" placeholder="Enter Last name" name="lname" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Address</label>
-                                                            <input type="text" class="form-control" placeholder="Enter Address" name="address" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Place of Birth</label>
-                                                            <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Birthdate</label>
-                                                            <input type="date" class="form-control" placeholder="Enter Birthdate" name="bdate" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Age</label>
-                                                            <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Civil Status</label>
-                                                            <select class="form-control" name="cstatus">
-                                                                <option disabled selected>Select Civil Status</option>
-                                                                <option value="Single">Single</option>
-                                                                <option value="Married">Married</option>
-                                                                <option value="Widow">Widow</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Gender</label>
-                                                            <select class="form-control" required name="gender">
-                                                                <option disabled selected value="">Select Gender</option>
-                                                                <option value="Male">Male</option>
-                                                                <option value="Female">Female</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Purok</label>
-                                                            <select class="form-control" required name="purok">
-                                                                <option disabled selected>Select Purok Name</option>
-                                                                <?php foreach($purok as $row):?>
-                                                                    <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                                <?php endforeach ?>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Voters Status</label>
-                                                            <select class="form-control vstatus" required name="vstatus">
-                                                                <option disabled selected>Select Voters Status</option>
-                                                                <option value="Yes">Yes</option>
-                                                                <option value="No">No</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Tax no</label>
-                                                            <input type="number" class="form-control" placeholder="Enter Tax number" min="6" name="taxno" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Email</label>
-                                                            <input type="text" class="form-control" placeholder="Enter Email Address" value="no-email@sample.com" name="email" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Contact Number</label>
-                                                            <input type="text" class="form-control" placeholder="Enter Contact Number" value="+63 000-000-000-00" name="number" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Occupation</label>
-                                                            <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Requirements</label>
-                                                            <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
-                                                        </div>
+            <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New Resident Registration Form</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                            <div class="modal-body">
+                                <form method="POST" action="model/save_resident.php" enctype="multipart/form-data">
+                                    <input type="hidden" name="size" value="1000000">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div style="height: 250;" class="text-center" id="my_camera">
+                                                    <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
+                                                </div>
+                                                <?php if(isset($_SESSION['username'])):?>
+                                                <div class="form-group d-flex justify-content-center">
+                                                    <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
+                                                    <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
+                                                </div>
+                                                <div id="profileImage">
+                                                    <input type="hidden" name="profileimg">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="file" class="form-control" name="img" accept="image/*">
+                                                </div>
+                                                <?php endif ?>
+                                                <div class="form-group text-center">
+                                                    <div class="selectgroup selectgroup-secondary selectgroup-pills">
+                                                        <label class="selectgroup-item">
+                                                            <input type="radio" name="deceased" value="1" class="selectgroup-input" checked="">
+                                                            <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-walking"></i></span>
+                                                        </label><p class="mt-1 mr-3"><b>Alive</b></p>
+                                                        <label class="selectgroup-item">
+                                                            <input type="radio" name="deceased" value="0" class="selectgroup-input">
+                                                            <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-people-carry"></i></span>
+                                                        </label><p  class="mt-1 mr-3"><b>Deceased</b></p>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                <div class="form-group">
+                                                    <label>Barangay ID No.</label>
+                                                    <input type="text" class="form-control" name="national" placeholder="Enter Barangay ID No." required>
                                                 </div>
-                                            </form>
+                                                <div class="form-group">
+                                                    <label>Citizenship</label>
+                                                    <input type="text" class="form-control" name="citizenship" placeholder="Enter citizenship" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>First name</label>
+                                                    <input type="text" class="form-control" placeholder="Enter First name" name="fname" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Middle name</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Middle name" name="mname" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Last name</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Last name" name="lname" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Address</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Address" name="address" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Place of Birth</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Birthdate</label>
+                                                    <input type="date" class="form-control" placeholder="Enter Birthdate" name="bdate" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Age</label>
+                                                    <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Civil Status</label>
+                                                    <select class="form-control" name="cstatus">
+                                                        <option disabled selected>Select Civil Status</option>
+                                                        <option value="Single">Single</option>
+                                                        <option value="Married">Married</option>
+                                                        <option value="Widow">Widow</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Gender</label>
+                                                    <select class="form-control" required name="gender">
+                                                        <option disabled selected value="">Select Gender</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Purok</label>
+                                                    <select class="form-control" required name="purok">
+                                                        <option disabled selected>Select Purok Name</option>
+                                                        <?php foreach($purok as $row):?>
+                                                            <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
+                                                        <?php endforeach ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Voters Status</label>
+                                                    <select class="form-control vstatus" required name="vstatus">
+                                                        <option disabled selected>Select Voters Status</option>
+                                                        <option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Tax no</label>
+                                                    <input type="number" class="form-control" placeholder="Enter Tax number" min="6" name="taxno" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Email Address" value="no-email@sample.com" name="email" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Contact Number</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Contact Number" value="+63 000-000-000-00" name="number" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Occupation</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Requirements</label>
+                                                    <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    
                     <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -398,7 +413,7 @@
                                                         <input type="file" class="form-control" name="img" accept="image/*">
                                                     </div>
                                                 <?php endif ?>
-                                                <div class="form-group">
+                                                <div class="form-group text-center">
                                                     <div class="selectgroup selectgroup-secondary selectgroup-pills">
                                                         <label class="selectgroup-item">
                                                             <input type="radio" name="deceased" value="1" class="selectgroup-input" checked="" id="alive">

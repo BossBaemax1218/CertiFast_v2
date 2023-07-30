@@ -25,8 +25,8 @@
                 <div class="form-content">
                     <form method="POST" action="model/password_verified.php">
                         <div class="text-center mt-3 mb-3">
-                            <h3 class="text-center">Verification Code</h3>
-                            <span class="text-center">We sent you a code, please type the code to verified your account.</span>
+                            <h4 class="text-center">Verification Code</h4>
+                            <span class="text-center">We sent you a code, please type the code to reset your password.</span>
                         </div>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'signup'): ?>
                             <div class="modal" id="signupModal">
@@ -40,13 +40,13 @@
                                     </h5>
                                 <?php endif; ?>
                                 <br>
-                                <p class="message text-center" style="font-size: 14px;"><?php echo $_SESSION['message']; ?></p>
+                                <span class="message text-center mt-3 ml-3"><?php echo $_SESSION['message']; ?></span>
                                 <button type="button" class="button" id="closeModalButton">Dismiss</button>
                             </div>                                       
                             <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>
                         <input type="hidden" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>" class="input" readonly>                                  
-                        <div class="field input-field">
+                        <div class="field input-field mt-2">
                             <input type="text" name="verification_code" autocomplete="off" placeholder="Verification Code" class="input">
                         </div>
                         <div class="field button-field text-center">
@@ -56,7 +56,7 @@
                 </div>
                 <footer class="footer mt-3">
                     <div class="container-fluid">
-                        <div class="copyright ml-auto text-center" style="font-size: 14px;">
+                        <div class="copyright ml-auto text-center">
                             <?php  $year = date("Y"); echo  $year . " &copy Barangay Los Amigos - CertiFast Portal" ?>
                         </div>				
                     </div>

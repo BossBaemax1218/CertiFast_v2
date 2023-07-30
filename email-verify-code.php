@@ -25,7 +25,7 @@
                 <div class="form-content">
                     <form method="POST" action="model/email_verified.php">
                         <div class="text-center mt-3 mb-3">
-                            <h3 class="text-center">Verification Code</h3>
+                            <h4 class="text-center">Verification Code</h4>
                             <span class="text-center">We sent you a code, please type the code to verified your account.</span>
                         </div>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>

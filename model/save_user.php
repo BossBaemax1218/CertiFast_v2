@@ -9,6 +9,7 @@
 
     $fullname       = $conn->real_escape_string($_POST['fullname']);
     $user       = $conn->real_escape_string($_POST['username']);
+    $purok       = $conn->real_escape_string($_POST['purok']);
     $pass       = $conn->real_escape_string($_POST['pass']);
     $usertype   = $conn->real_escape_string($_POST['user_type']);
     $profile    = $conn->real_escape_string($_POST['profileimg']);
@@ -27,7 +28,7 @@
             $_SESSION['success'] = 'danger';
         }else{
             if(!empty($profile) && !empty($profile2)){
-                $insert  = "INSERT INTO tbl_user_admin (`fullname`,`username`, `password`, user_type, avatar) VALUES ('$fullname','$user', '$hashedPassword', '$usertype','$profile')";
+                $insert  = "INSERT INTO tbl_user_admin (`fullname`,`username`, `purok`, `password`, user_type, avatar) VALUES ('$fullname','$user', '$purok', '$hashedPassword', '$usertype','$profile')";
                 $result  = $conn->query($insert);
     
                 if($result === true){
@@ -39,7 +40,7 @@
                     $_SESSION['success'] = 'danger';
                 }
             }else if(!empty($profile) && empty($profile2)){
-                $insert  = "INSERT INTO tbl_user_admin (`fullname`,`username`, `password`, user_type, avatar) VALUES ('$fullname','$user', '$hashedPassword', '$usertype','$profile')";
+                $insert  = "INSERT INTO tbl_user_admin (`fullname`,`username`, `purok`, `password`, user_type, avatar) VALUES ('$fullname','$user', '$purok','$hashedPassword', '$usertype','$profile')";
                 $result  = $conn->query($insert);
     
                 if($result === true){
@@ -51,7 +52,7 @@
                     $_SESSION['success'] = 'danger';
                 }
             }else if(empty($profile) && !empty($profile2)){
-                $insert  = "INSERT INTO tbl_user_admin (`fullname`,`username`, `password`, user_type, avatar) VALUES ('$fullname','$user', '$hashedPassword', '$usertype','$newName')";
+                $insert  = "INSERT INTO tbl_user_admin (`fullname`,`username`,`purok`, `password`, user_type, avatar) VALUES ('$fullname','$user','$purok', '$hashedPassword', '$usertype','$newName')";
                 $result  = $conn->query($insert);
 
                 move_uploaded_file($_FILES['img']['tmp_name'], $target);
@@ -65,7 +66,7 @@
                     $_SESSION['success'] = 'danger';
                 }
             }else{
-                $insert  = "INSERT INTO tbl_user_admin (`fullname`,`username`, `password`, user_type) VALUES ('$fullname','$user', '$hashedPassword', '$usertype')";
+                $insert  = "INSERT INTO tbl_user_admin (`fullname`,`username`,`purok`, `password`, user_type) VALUES ('$fullname','$user', '$purok', '$hashedPassword', '$usertype')";
                 $result  = $conn->query($insert);
                 
                 if($result === true){

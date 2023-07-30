@@ -1,0 +1,335 @@
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-image: url('../img/brgyHall.jpg');
+  background-size: cover;
+  opacity: 0.9;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.form img {
+  max-width: 200%;
+  height: auto;
+  display: block;
+  margin: auto;
+  text-align: left;
+}
+
+.form {
+  position: absolute;
+  max-width: 430px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 1px;
+  background: #fff;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #232836;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.container-fluid{
+  font-size: 14px;
+  text-align: center;
+}
+
+.form .form-group {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+
+.form-group input,
+.form-group button {
+  height: 100%;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 6px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+span .description{
+  font-size: 16px;
+  text-align: center;
+}
+
+.form-group input {
+  outline: none;
+  border: 1px solid #cacaca;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  border-bottom-width: 2px;
+  border-color: #cfcfcf;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #8b8b8b;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.form-group button {
+  color: #fff;
+  background-color: #fc4160;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.form-group button:hover {
+  background-color: #016dcb;
+}
+
+.form-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.form-link span,
+.form-link a {
+  font-size: 14px;
+  font-weight: 400;
+  color: #232836;
+  text-align: center;
+  margin: auto;
+}
+
+.form a {
+  color: #0171d3;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+  margin: auto;
+}
+
+.form-content a:hover {
+  text-decoration: underline;
+}
+
+.line {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  margin: 25px 0;
+  background-color: #8b8b8b;
+}
+
+.line::before {
+  content: 'Or';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #8b8b8b;
+  color: #8b8b8b;
+  padding: 0 15px;
+}
+
+.media-options {
+  margin-bottom: 20px;
+}
+
+.media-options a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.modal {
+  position: absolute;
+  width: 340px;
+  height: 230px;
+  top: 5%;
+  left: 10%;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 8px 10px 14px 10px rgba(0,0,0,0.4);
+  overflow: hidden;
+  margin: auto;
+  animation: show-modal .6s ease-in-out;
+}
+
+.modal.hide {
+  animation: hide-modal .4s ease-in-out both;
+}
+
+.modal .button {
+  position: absolute;
+  height: 40px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f65656;
+  color: #fff;
+  line-height: 40px;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  border: none;
+  transition: background .3s ease-in-out;
+}
+
+.modal .button:hover {
+  background: #ec3434;
+}
+
+.message {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 19px;
+  margin: 15px;
+  padding: 0 30px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes show-modal {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes hide-modal {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@media (max-width: 767px) {
+  #myform {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  img {
+    width: 80%;
+    max-width: 400px;
+  }
+
+  .message {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 19px;
+    margin: 0;
+    padding: 0 30px;
+  }
+
+  .form-content {
+    padding: 10px;
+  }
+
+  .form-group input,
+  .form-group button,
+  .form-link,
+  .form-group button {
+    font-size: 14px;
+  }
+
+  .modal {
+    max-width: 95%;
+    max-height: 100%;
+    padding: 15px;
+    top: 5%;
+    left: 0;
+    right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  #myform {
+    left: 15px;
+    right: 15px;
+    max-width: 150%;
+  }
+
+  img {
+    width: 80%;
+    max-width: 400px;
+  }
+
+  .message {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 19px;
+    margin: 0;
+    padding: 0 30px;
+  }
+
+  .modal {
+    max-width: 95%;
+    max-height: 90%;
+    padding: 10px;
+    top: 5%;
+    left: 0;
+    right: 0;
+  }
+}
