@@ -1,10 +1,10 @@
 <?php
     session_start();
     if (isset($_SESSION['username'])) {
-        header('Location: password-verify-code.php');
+        header('Location: forgot-password.php');
     }
     if (isset($_SESSION['fullname'])) {
-        header('Location: password-verify-code.php');
+        header('Location: forgot-password.php');
     }
 ?>
 <!DOCTYPE html>

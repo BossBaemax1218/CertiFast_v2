@@ -7,6 +7,13 @@
 	while($row = $result->fetch_assoc()){
 		$resident[] = $row; 
 	}
+    $query1 = "SELECT * FROM tblpurok ORDER BY `purok`";
+    $result1 = $conn->query($query1);
+
+    $purok = array();
+	while($row2 = $result1->fetch_assoc()){
+		$purok[] = $row2; 
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,7 +128,17 @@
                                                                 <?php endif ?>
                                                                 <td class="text-center">
                                                                     <div class="form-button-action">
-                                                                        <a type="button" data-toggle="tooltip" href="#" class="btn btn-link btn-primary generate-certificate-btn" data-original-title="Generate Certificate">
+                                                                        <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
+                                                                            data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-address="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
+                                                                            data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-taxno="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
+                                                                            data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-purpose="<?= $row['purpose'] ?>">
+                                                                            <?php if(isset($_SESSION['username'])): ?>
+                                                                                <i class="fas fa-edit"></i>
+                                                                            <?php else: ?>
+                                                                                <i class="fa fa-eye"></i>
+                                                                            <?php endif ?>
+                                                                        </a>
+                                                                        <a type="button" data-toggle="tooltip" href="#" class="btn btn-link btn-danger generate-certificate-btn" data-original-title="Generate Certificate">
                                                                             <i class="fas fa-print"></i>
                                                                         </a>
                                                                     </div>
@@ -140,38 +157,255 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Update Resident Information</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="model/edit_resident.php" enctype="multipart/form-data">
+                                        <input type="hidden" name="size" value="1000000">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div id="my_camera1" style="height: 250;" class="text-center">
+                                                    <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" id="image">
+                                                </div>
+                                                <?php if(isset($_SESSION['username'])):?>
+                                                    <div class="form-group d-flex justify-content-center">
+                                                        <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam1">Open Camera</button>
+                                                        <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo1()">Capture</button>   
+                                                    </div>
+                                                    <div id="profileImage1">
+                                                        <input type="hidden" name="profileimg">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="file" class="form-control" name="img" accept="image/*">
+                                                    </div>
+                                                <?php endif ?>
+                                                <div class="form-group">
+                                                    <div class="selectgroup selectgroup-secondary selectgroup-pills">
+                                                        <label class="selectgroup-item">
+                                                            <input type="radio" name="deceased" value="1" class="selectgroup-input" checked="" id="alive">
+                                                            <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-walking"></i></span>
+                                                        </label><p class="mt-1 mr-3"><b>Alive</b></p>
+                                                        <label class="selectgroup-item">
+                                                            <input type="radio" name="deceased" value="0" class="selectgroup-input" id="dead">
+                                                            <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-people-carry"></i></span>
+                                                        </label><p  class="mt-1 mr-3"><b>Deceased</b></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Barangay ID</label>
+                                                    <input type="text" class="form-control" name="national" id="nat_id" placeholder="Enter Barangay ID" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Citizenship</label>
+                                                    <input type="text" class="form-control" name="citizenship" id="citizenship" placeholder="Enter citizenship" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>First name</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Firstname" name="fname" id="fname" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Middle name</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Middlename" name="mname" id="mname" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Last name</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Lastname" name="lname" id="lname" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Address</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Address" id="address" name="address" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Place of Birth</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" id="bplace" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Birthdate</label>
+                                                    <input type="date" class="form-control" placeholder="Enter Birthdate" name="bdate" id="bdate" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Age</label>
+                                                    <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" id="age" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Civil Status</label>
+                                                    <select class="form-control" required name="cstatus" id="cstatus">
+                                                        <option disabled selected>Select Civil Status</option>
+                                                        <option value="Single">Single</option>
+                                                        <option value="Married">Married</option>
+                                                        <option value="Widow">Widow</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Sex</label>
+                                                    <select class="form-control" required name="gender" id="gender">
+                                                        <option disabled selected value="">Select Sex</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Purok</label>
+                                                    <select class="form-control" required name="purok" id="purok">
+                                                        <option disabled selected>Select Purok Name</option>
+                                                        <?php foreach($purok as $row):?>
+                                                            <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
+                                                        <?php endforeach ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Voters Status</label>
+                                                    <select class="form-control vstatus" required name="vstatus" id="vstatus">
+                                                        <option disabled selected>Select Voters Status</option>
+                                                        <option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Tax no</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Tax No." name="taxno" id="taxno" required>
+                                                </div>                        
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Email Address" name="email" id="email" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Contact Number</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Contact Number" name="number" id="number" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Occupation</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" id="occupation" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Requirements</label>
+                                                    <textarea class="form-control" required name="remarks" placeholder="Enter Remarks" id="remarks" required></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Purpose</label>
+                                                    <textarea class="form-control" name="purpose" placeholder="Enter Purpose" id="purpose" required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="hidden" name="id" id="res_id">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <?php if(isset($_SESSION['username'])): ?>
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <?php endif ?>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 			<?php include 'templates/main-footer.php' ?>
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("certType").addEventListener("change", function () {
-            var certType = this.value;
-            var rows = document.querySelectorAll("#residenttable tbody tr");
-            for (var i = 0; i < rows.length; i++) {
-                var row = rows[i];
-                var residentId = row.getAttribute("data-id");
-                var generateBtn = row.querySelector(".generate-certificate-btn");
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("certType").addEventListener("change", function () {
+    var certType = this.value;
+    var rows = document.querySelectorAll("#residenttable tbody tr");
+    for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        var residentId = row.getAttribute("data-id");
+        var generateBtn = row.querySelector(".generate-certificate-btn");
+        switch (certType) {
+            case 'Barangay Clearance':
+                generateBtn.href = 'generate_brgy_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Residency':
+                generateBtn.href = 'generate_residency_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Indigency':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Firt Time Jobseekers':
+                generateBtn.href = 'generate_jobseekers.php?id=' + residentId;
+                break;
+            case 'Certificate of OATH Taking':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Tree Planting':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Resident Information':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Residency Abroad':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Residency DSWD':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of PUM-PUI':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Lost Immunization Card':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Good Moral':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of DLPC':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Live In':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Oneness':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Low Income':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of New-Appearance':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Philheath POS Application':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Family Home Estate Tax':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Family Home Estate Tax-Celestial':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Death':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Residency-Deped':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Barangay':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Travel Derby':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Sold Pigs':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
+            case 'Certificate of Birth':
+                generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
+                break;
                 
-                switch (certType) {
-                    case 'Barangay Clearance':
-                        generateBtn.href = 'generate_brgy_cert.php?id=' + residentId;
-                        break;
-                    case 'Certificate of Residency':
-                        generateBtn.href = 'generate_residency_cert.php?id=' + residentId;
-                        break;
-                    case 'Certificate of Indigency':
-                        generateBtn.href = 'generate_indi_cert.php?id=' + residentId;
-                        break;
-                    // Add more cases for other certificate types if needed
-                    default:
-                        generateBtn.href = 'list_certificates.php';
-                        break;
-                }
+            default:
+                generateBtn.href = 'list_certificates.php';
+                break;
             }
-        });
+        }
     });
-    </script>
+});
+</script>
 </body>
 </html>

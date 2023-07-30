@@ -1,16 +1,16 @@
 <?php
     session_start();
     if (isset($_SESSION['username'])) {
-        header('Location: forgot-password.php');
+        header('Location: login.php');
     }
     if (isset($_SESSION['fullname'])) {
-        header('Location: forgot-password.php');
+        header('Location: login.php');
     }
 ?>
 <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+        <meta content='width=device-width, initial-scale=1' name='viewport' />
         <title>CertiFast Portal</title>
         <link rel="stylesheet" href="Homepage/vendor-login/css/password-style.css">
         <link rel="icon" href="Homepage/vendor-login/images/CFLogo2.ico" type="image/x-icon"/>
