@@ -64,9 +64,9 @@ $conn->close();
                     <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
                     <h3 class="text-center fw-bold"> Here are the online registration request with CertiFast Portal. </h3>
                     <div class="page-inner">
-                        <div class="search ml-5">
+                        <div class="search">
                             <form method="GET" class="mb-3">
-                                <div class="input-group col-sm-12 col-md-11 ml-5">
+                                <div class="input-group col-sm-12 col-md-12">
                                     <select class="form-control" id="certType" name="search">
                                         <option value="Default" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Default') echo 'selected'; ?>>Select Types of Certificates</option>
                                         <option value="Show All" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Show All') echo 'selected'; ?>>Show All</option>
