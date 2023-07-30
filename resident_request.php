@@ -64,13 +64,14 @@ $conn->close();
                     <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
                     <h3 class="text-center fw-bold"> Here are the online registration request with CertiFast Portal. </h3>
                     <div class="page-inner">
-                        <div class="search">
-                            <form method="GET" class="mb-3">
-                                <div class="input-group col-sm-12 col-md-12">
+                        <div class="container col-sm-12 col-md-12">
+                            <form method="GET" class="col-sm-12 col-md-12">
+                                <div class="input-group">
                                     <select class="form-control" id="certType" name="search">
                                         <option value="Default" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Default') echo 'selected'; ?>>Select Types of Certificates</option>
-                                        <option value="Show All" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Show All') echo 'selected'; ?>>Show All</option>
+                                        <option value="Show All" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Show All') echo 'selected'; ?>><b>Show All</b></option>
                                         <option value="Barangay Clearance" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Barangay Clearance') echo 'selected'; ?>>Barangay Clearance</option>
+                                        <option value="Barangay Identification (ID)" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Barangay Identification (ID)') echo 'selected'; ?>>Barangay Identification (ID)</option>
                                         <option value="Certificate of Residency" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Residency') echo 'selected'; ?>>Certificate of Residency</option>
                                         <option value="Certificate of Indigency" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Indigency') echo 'selected'; ?>>Certificate of Indigency</option>
                                         <option value="Certificate of Firt Time Jobseekers" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Firt Time Jobseekers') echo 'selected'; ?>>Certificate of Firt Time Jobseekers</option>
