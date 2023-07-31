@@ -34,6 +34,6 @@
         $_SESSION['success'] = 'danger';
     }
 
-    header("Location: ../resident_bpermit.php");
+    header("Location: ../resident_certificates.php");
 
 	$conn->close();

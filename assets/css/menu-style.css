@@ -71,22 +71,23 @@ color: #17c0eb
   justify-content: space-between;
   width: 100%;
 }
-.btns button{
+.btns button,
+.btns a{
   background: #e0004b;
   width: 100%;
-  padding: 9px 0px;
+  padding:4px 50px;
   outline: none;
-  border: 2px solid #e0004b;
+  border: 1px solid #e0004b;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   color: #e0004b;
   transition: all 0.3s linear;
+  text-decoration:none; 
+  color:white; 
 }
-button a{
-  text-decoration: none;
-}
+
 .btns button:first-child{
   background: none;
   margin-right: 5px;

@@ -39,8 +39,10 @@
                                         <i class="fas fa-check-circle fa-3x d-block mx-auto" style="color: #34c240"></i>
                                     </h5>
                                 <?php endif; ?>
-                                <span class="message text-center mt-3 ml-3"><?php echo $_SESSION['message']; ?></span>
-                                <button type="button" class="button" id="closeModalButton">Dismiss</button>
+                                <div class="text-center mt-3 mb-3">
+                                    <span class="message text-center mb-3 ml-3"><?php echo $_SESSION['message']; ?></span>                                 
+                                </div>
+                                <button type="button" class="button mt-3" id="closeModalButton">Dismiss</button>
                             </div>                                       
                             <?php unset($_SESSION['message']); ?>
                         <?php endif; ?>

@@ -42,8 +42,10 @@ if (isset($_SESSION['fullname'])) {
                                         <i class="fas fa-check-circle fa-3x d-block mx-auto" style="color: #34c240"></i>
                                     </h5>
                                 <?php endif; ?>
-                                <span class="message text-center mb-5"><?php echo $_SESSION['message']; ?></span>
-                                <button type="button" class="button" id="closeModalButton">Dismiss</button>
+                                <div class="text-center mt-3 mb-3">
+                                    <span class="message text-center"><?php echo $_SESSION['message']; ?></span>                                 
+                                </div>
+                                <button type="button" class="button mt-3" id="closeModalButton">Dismiss</button>
                             </div>
                         </div>                                  
                         <?php unset($_SESSION['message']); ?>

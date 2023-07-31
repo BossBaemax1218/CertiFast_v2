@@ -72,18 +72,12 @@ $totalAnnouncements = $row1['total_announcements'];
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">Form</h4>
+                    <h4 class="text-section">Requested Form</h4>
                 </li>
                 <li class="nav-item <?= $current_page=='resident_request.php' || $current_page=='resident_request.php' ? 'active' : null ?>">
                     <a href="resident_request.php">
                         <i class="far fa-paper-plane"></i>
-                        <p>Submit Request Form</p>
-                    </a>
-                </li>
-                <li class="nav-item <?= $current_page=='resident_bpermit.php' || $current_page=='resident_bpermit.php' ? 'active' : null ?>">
-                    <a href="resident_bpermit.php">
-                        <i class="far fa-paper-plane"></i>
-                        <p>Apply Business Permit</p>
+                        <p>Request Cetificates</p>
                     </a>
                 </li>
                 <li class="nav-section">
@@ -91,6 +85,12 @@ $totalAnnouncements = $row1['total_announcements'];
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
                     <h4 class="text-section">History</h4>
+                </li>
+                <li class="nav-item <?= $current_page=='resident_certificates.php' || $current_page=='resident_certificates.php' ? 'active' : null ?>">
+                    <a href="resident_certificates.php">
+                        <i class="fas fa-stream"></i>
+                        <p>Certificates</p>
+                    </a>
                 </li>
                 <li class="nav-item <?= $current_page=='resident_payment.php' || $current_page=='resident_payment.php' ? 'active' : null ?>">
                     <a href="resident_payment.php">
