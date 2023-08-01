@@ -29,18 +29,18 @@
 
         }else{
             if(!empty($profile) && !empty($profile2)){
-                $insert  = "UPDATE tbl_user_resident SET avatar='$profile' WHERE fullname='$fullname'";
+                $insert  = "UPDATE tbl_user_resident SET photo='$profile' WHERE fullname='$fullname'";
                 $result  = $conn->query($insert);
-                $_SESSION['avatar'] = $profile;
+                $_SESSION['photo'] = $profile;
             }else if(!empty($profile) && empty($profile2)){
-                $insert  = "UPDATE tbl_user_resident SET avatar='$profile' WHERE fullname='$fullname'";
+                $insert  = "UPDATE tbl_user_resident SET photo='$profile' WHERE fullname='$fullname'";
                 $result  = $conn->query($insert);
-                $_SESSION['avatar'] = $profile;
+                $_SESSION['photo'] = $profile;
             }else{
-                $insert  = "UPDATE tbl_user_resident SET avatar='$newName' WHERE fullname='$fullname'";
+                $insert  = "UPDATE tbl_user_resident SET photo='$newName' WHERE fullname='$fullname'";
                 $result  = $conn->query($insert);
                 move_uploaded_file($_FILES['img']['tmp_name'], $target);
-                $_SESSION['avatar'] = $newName;
+                $_SESSION['photo'] = $newName;
             }
 
             $_SESSION['message'] = "Profile has been updated! Please login again!";

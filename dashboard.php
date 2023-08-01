@@ -238,7 +238,7 @@ include 'model/status.php';
                                 </div>
                             </div>
                         </div>
-                        <?php endif ?>
+                    <?php endif ?>
                     </div>
                </div>
             <?php include 'templates/main-footer.php' ?>

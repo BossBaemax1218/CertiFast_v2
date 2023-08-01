@@ -50,31 +50,46 @@
 								<div class="card-body" id="printThis">
                                     <div class="header d-flex flex-wrap justify-content-around">
                                             <div class="text-center">
-                                                <h2 class="fw-bold mb-1">Republic of the Philippines</h2>
-                                                <h2 class="fw-bold mb-1">City of <?= ucwords($province) ?></h2>
-                                                <h1 class="fw-bold mb-1"  style="font-size: 40px;"><?= ucfirst($brgy) ?></i></h1>
-                                                <h2 class="fw-bold mb-2"><?= ucwords($town) ?></h2>				
-                                                <h3><i class="fas fa-phone" style="color: yellow;"></i> <span class="fw-bold"><?= $number ?></span>  &nbsp  <i class="fw-bold fa fa-envelope" style="color: yellow;"></i> <span class="fw-bold"><?= $b_email ?></span> </h3>
+                                                <h1 class="fw-bold mb-1">Republic of the Philippines</h1>
+                                                <h1 class="fw-bold mb-1">City of <?= ucwords($province) ?></h1>
+                                                <h1 class="fw-bold mb-1"  style="font-size: 45px;"><?= ucfirst($brgy) ?></i></h1>
+                                                <h2 class="fw-bold mb-2" style="font-size: 24px;"><?= ucwords($town) ?></h2>				
+                                                <h2 style="font-size: 20px;"><i class="fas fa-phone" style="color: yellow;"></i> <span class="fw-bold"><?= $number ?></span>  &nbsp  <i class="fw-bold fa fa-envelope" style="color: yellow;"></i> <span class="fw-bold"><?= $b_email ?></span> </h2>
                                             </div>
                                         <div class="text-center mt-3">
                                             <img src="assets/uploads/<?= $brgy_logo ?>" class="img-fluid mr-4" width="150">
                                             <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid" width="150">
                                         </div>
                                     </div>                                 
-                                    <div class="content-letter row mt-4 justify-content-around ml-5 mr-5">
+                                    <div class="content-letter">
                                         <div class="col-md-12">
-                                                <div class="text-center">
-                                                    <h1 class="mt-4 fw-bold mb-5" style="font-size:100px; color: black;">BARANGAY RESIDENCY</h1>
-                                                </div>
+                                            <div class="text-center">
+                                                <h1 class="mt-4 fw-bold mb-5" style="font-size:100px;">BARANGAY RESIDENCY</h1>
+                                            </div>
+                                            <span class="text" style="text-align: justify;">
+                                                    To Whom It May Concern:
+                                            </span>
                                             <div class="letter">
-                                                <h2 class="text">To Whom It May Concern:</h2>
-                                                <h2 class="mt-4" style="text-indent: 40px;">This is to certify that <span class="fw-bold" style="font-size:24px"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
-                                                of legal age, a bona fide resident of <span class="text"> Purok <?= ucwords($resident['purok']) ?></span>, <span class="text"><?= ucwords($town) ?></span>, Davao City.
-                                                <h2 class="mt-4" style="text-indent: 40px;">This further certifies that the abovementioned is living in this Barangay for (10) years.</h2>
-                                                <h2 class="mt-4" style="text-indent: 40px;">This certification is issued upon the request of the aforementioned for <span class="fw-bold"><?= ucwords($resident['remarks']) ?></span> 
-                                                or for whatever legal purpose/s that may serve her/him best. </h2> <h2 class="mt-4" style="text-indent: 40px;">Done this <span class="fw-bold">
-                                                <?= date('jS \d\a\y \o\f F, Y') ?></span> at <span class="fw-text"><?= ucwords($town) ?></span>, Davao City.</h2> 
-                                            </div>  
+                                                <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
+                                                    This is to certify that 
+                                                    <span class="fw-bold" style="font-size:24px"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
+                                                    of legal age, a bona fide resident of 
+                                                    <span class="text"> Purok <?= ucwords($resident['purok']) ?></span>, 
+                                                    <span class="text"><?= ucwords($town) ?></span>, Davao City.
+                                                </h2>
+                                                <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
+                                                    This further certifies that the abovementioned is living in this Barangay for (10) years.
+                                                </h2>
+                                                <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
+                                                    This certification is issued upon the request of the aforementioned for 
+                                                    <span class="fw-bold"><?= ucwords($resident['remarks']) ?></span> 
+                                                    or for whatever legal purpose/s that may serve her/him best.
+                                                </h2>
+                                                <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
+                                                    Done this <span class="fw-bold">
+                                                    <?= date('jS \d\a\y \o\f F, Y') ?></span> at <span class="fw-text"><?= ucwords($town) ?></span>, Davao City.
+                                                </h2>
+                                            </div>
                                         </div>
                                         <div class="signature col-md-12">
                                             <div class="p-3 text-right mt-5">
@@ -86,9 +101,9 @@
                                     <div class="footer-content">
                                         <div class="footer-names text-left">                                                       
                                             <ul>
-                                                <li><h1 class="fw-bold" style="margin-top: 90px; color:white"><?= ucwords($captain['fullname']) ?></h1></li>
-                                                <li><h6 class="text" style="color:yellow">PUNONG BARANGAY</h6></li>
-                                            </ul>                                                                                                  
+                                                <li><h1 class="fw-bold" style="font-size: 30px; margin-top: 90px; color:white"><?= ucwords($captain['fullname']) ?></h1></li>
+                                                <li><h4 class="text" style="color:yellow">PUNONG BARANGAY</h4></li>
+                                            </ul>                                                                                                 
                                         </div>
                                         <div class="footer-names text-left">                                                        
                                             <ul>

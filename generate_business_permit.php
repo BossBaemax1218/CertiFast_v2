@@ -3,10 +3,8 @@
    include 'model/footer-permit.php' 
 ?>
 <?php
-
 $sql = "SELECT * FROM tblpermit";
 $result = $conn->query($sql)->fetch_assoc();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,22 +51,22 @@ $result = $conn->query($sql)->fetch_assoc();
 								</div>
 								<div class="card-body" id="printThis">
                                     <div class="header d-flex flex-wrap justify-content-around">
-                                            <div class="text-center" style="color: white;">
+                                            <div class="text-center">
                                                 <h2 class="fw-bold mb-1">Republic of the Philippines</h2>
                                                 <h2 class="fw-bold mb-1">City of <?= ucwords($province) ?></h2>
-                                                <h1 class="fw-bold mb-1"  style="font-size: 40px;"><?= ucfirst($brgy) ?></i></h1>
+                                                <h1 class="fw-bold mb-1"  style="font-size: 30px;"><?= ucfirst($brgy) ?></i></h1>
                                                 <h2 class="fw-bold mb-2"><?= ucwords($town) ?></h2>				
-                                                <h3><i class="fas fa-phone" style="color: yellow;"></i> <span class="fw-bold"><?= $number ?></span>  &nbsp  <i class="fw-bold fa fa-envelope" style="color: yellow;"></i> <span class="fw-bold"><?= $b_email ?></span> </h3>
+                                                <h2><i class="fas fa-phone" style="color: yellow;"></i> <span class="fw-bold"><?= $number ?></span>  &nbsp  <i class="fw-bold fa fa-envelope" style="color: yellow;"></i> <span class="fw-bold"><?= $b_email ?></span> </h2>
                                             </div>
                                         <div class="text-center mt-3">
                                             <img src="assets/uploads/<?= $brgy_logo ?>" class="img-fluid mr-4" width="150">
                                             <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid" width="150">
                                         </div>
                                     </div> 
-                                    <div class="content-letter">
+                                    <div class="content-letter text-justify">
                                         <div class="col-md-12">
-                                            <div class="title-header text-center mb-2">
-                                                <span class="fw-bold"> BARANGAY</span> <br><span class="fw-bold"> BUSINESS PERMIT</span>
+                                            <div class="title-header text-center mb-1">
+                                                <span class="fw-bold" style="font-size: 80px; text-align: justify;">BARANGAY <br> BUSINESS PERMIT</span>
                                             </div>
                                             <?php
                                             $id = $_GET['id'];
@@ -76,41 +74,46 @@ $result = $conn->query($sql)->fetch_assoc();
                                             $result = $conn->query($sql);
                                             $row = $result->fetch_assoc();
                                             ?>
-                                            <div class="business ml-4">
-                                                <span class="ml-5 text-left">Nature of Business: <span class="fw-bold"><?= ucfirst($row['business_name']) ?></span></span><br>
-                                                <span class="ml-5 text-left">Proprietor: <span class="fw-bold"><?= ucfirst($row['owner1']) ?></span></span><br>
-                                                <span class="ml-5 text-left">Permit Number: <span class="fw-bold"><?= ucfirst($row['permit_number']) ?></span></span><br>
-                                                <span class="ml-5 text-left">Address: <span class="fw-bold"><?= ucfirst($row['address']) ?></span></span><br>
-                                                <span class="ml-5 text-left">Business Location: <span class="fw-bold"><?= ucfirst($row['location']) ?></span></span><br>
-                                                <span class="ml-5 text-left">Status: <span class="fw-bold"><?= ucfirst($row['status']) ?></span></span><br>
+                                            <div class="business" style="text-align: justify;">
+                                                <span class="text-justify">Nature of Business: <span class="fw-bold"><?= ucfirst($row['business_name']) ?></span></span><br>
+                                                <span class="text-justify">Proprietor: <span class="fw-bold"><?= ucfirst($row['owner1']) ?></span></span><br>
+                                                <span class="text-justify">Permit Number: <span class="fw-bold"><?= ucfirst($row['permit_number']) ?></span></span><br>
+                                                <span class="text-justify">Address: <span class="fw-bold"><?= ucfirst($row['address']) ?></span></span><br>
+                                                <span class="text-justify">Business Location: <span class="fw-bold"><?= ucfirst($row['location']) ?></span></span><br>
+                                                <span class="text-justify">Status: <span class="fw-bold"><?= ucfirst($row['status']) ?></span></span><br>
                                             </div>
-                                            <div class="letter ml-5 text-left mt-3">
-                                                <h2 class="mt-3">This permit is being issued subject to existing rules and regulations, provided however, that the necessary fees are paid to the Treasurer of the Barangay as assessed. </h2>
-                                                <h2 class="mt-3">This is non-transferable and shall be deemed null and void upon failure by the owner to follow the said rules and regulations set forth by the Local Government Unit of Davao.</h2>
-                                                <h2 class="mt-3">Given this <span class="text"><?= date('jS \d\a\y \o\f F, Y') ?></span> at <span><?= ucwords($town) ?></span>, Davao City</h2>
+                                            <div class="letter text-justify mt-3" style="text-align: justify;">
+                                                <h2 class="mt-3" style="text-align: justify;">
+                                                    This permit is being issued subject to existing rules and regulations, provided however, that the necessary fees are paid to the Treasurer of the Barangay as assessed.
+                                                </h2>
+                                                <h2 class="mt-3" style="text-align: justify;">
+                                                    This is non-transferable and shall be deemed null and void upon failure by the owner to follow the said rules and regulations set forth by the Local Government Unit of Davao.
+                                                </h2>
+                                                <h2 class="mt-3" style="text-align: justify;">
+                                                    Given this <span class="text"><?= date('jS \d\a\y \o\f F, Y') ?></span> at <span><?= ucwords($town) ?></span>, Davao City
+                                                </h2>
                                             </div>
                                         </div>
-                                        <div class="signature text-right mt-5 mr-5">
+                                        <div class="signature text-justify mt-5 mr-5">
                                             <h2 class="text-right fw-bold mr-4"><u><?= ucwords($captain['fullname']) ?></u></h2>
                                             <p class="text-right mr-5">PUNONG BARANGAY</p>
-                                            <h2 class="fw-bold text-left ml-5"><u><?= ucfirst($row['owner1']) ?></u></h2>
-                                            <p class="text-left" style="margin-left: 105px;">OWNER</p>
+                                            <h2 class="fw-bold text-justify ml-5"><u><?= ucfirst($row['owner1']) ?></u></h2>
+                                            <p class="text-justify" style="margin-left: 105px;">OWNER</p>
                                         </div>
-                                        <div class="text-left ml-5" style="font-size: 17px;">
+                                        <div class="ttext-justify mt-4 ml-5" style="font-size: 17px;">
                                             <span><i>CTC No.</i>: <b><?= ucfirst($row['community_tax']) ?></b></span><br>
                                             <span><i>Issued On.</i>: <b><?= date('F jS, Y', strtotime($row['issued_on'])); ?></b></span><br>
-                                            <span><i>Isuued at.</i>: <b><?= ucfirst($row['issued_at']) ?></b></span><br>
-                                            <p class="text-right mr-5" style="font-size: 17px;"><i>Valid until:</i><i><?= date('F j, Y', strtotime($row['validation'])); ?></i></p><br>
+                                            <span><i>Issued at.</i>: <b><?= ucfirst($row['issued_at']) ?></b></span><br>
+                                            <p class="text-right mr-5" style="font-size: 18px;"><i>Valid until:</i><i><?= date('F j, Y', strtotime($row['validation'])); ?></i></p><br>
                                         </div>
-
-                                        <p class="text-center" style="font-size: 17px; margin-bottom: 210px;"><i>This license, while in force, shall be posted in a conspicuous place in the business premises.</i></p>
+                                        <p class="text-center" style="font-size: 18px; margin-bottom: 215px;"><i>This license, while in force, shall be posted in a conspicuous place in the business premises.</i></p>
                                     </div>
                                     <div class="footer-content">
                                         <div class="footer-names text-left">                                                       
                                             <ul>
-                                                <li><h1 class="text-white fw-bold" style="margin-top: 90px; font-size: 30px;"><?= ucwords($captain['fullname']) ?></h1></li>
-                                                <li><h6 class="text" style="color:yellow">PUNONG BARANGAY</h6></li>
-                                            </ul>                                                                                                  
+                                                <li><h1 class="fw-bold" style="font-size: 30px; margin-top: 90px; color:white"><?= ucwords($captain['fullname']) ?></h1></li>
+                                                <li><h4 class="text" style="color:yellow">PUNONG BARANGAY</h4></li>
+                                            </ul>                                                                                                 
                                         </div>
                                         <div class="footer-names text-left">                                                        
                                             <ul>

@@ -50,11 +50,11 @@
 							    <div class="card-body" id="printThis">
                                     <div class="header d-flex flex-wrap justify-content-around">
                                             <div class="text-center">
-                                                <h2 class="fw-bold mb-1">Republic of the Philippines</h2>
-                                                <h2 class="fw-bold mb-1">City of <?= ucwords($province) ?></h2>
-                                                <h1 class="fw-bold mb-1"  style="font-size: 40px;"><?= ucfirst($brgy) ?></i></h1>
-                                                <h2 class="fw-bold mb-2"><?= ucwords($town) ?></h2>				
-                                                <h3><i class="fas fa-phone" style="color: yellow;"></i> <span class="fw-bold"><?= $number ?></span>  &nbsp  <i class="fw-bold fa fa-envelope" style="color: yellow;"></i> <span class="fw-bold"><?= $b_email ?></span> </h3>
+                                                <h1 class="fw-bold mb-1">Republic of the Philippines</h1>
+                                                <h1 class="fw-bold mb-1">City of <?= ucwords($province) ?></h1>
+                                                <h1 class="fw-bold mb-1"  style="font-size: 45px;"><?= ucfirst($brgy) ?></i></h1>
+                                                <h2 class="fw-bold mb-2" style="font-size: 24px;"><?= ucwords($town) ?></h2>				
+                                                <h2 style="font-size: 20px;"><i class="fas fa-phone" style="color: yellow;"></i> <span class="fw-bold"><?= $number ?></span>  &nbsp  <i class="fw-bold fa fa-envelope" style="color: yellow;"></i> <span class="fw-bold"><?= $b_email ?></span> </h2>
                                             </div>
                                         <div class="text-center mt-3">
                                             <img src="assets/uploads/<?= $brgy_logo ?>" class="img-fluid mr-4" width="150">
@@ -64,35 +64,43 @@
                                     <div class="content-letter">
                                         <div class="col-md-12">
                                             <div class="text-center">
-                                                <h1 class="mt-4 fw-bold mb-5" style="font-size:100px; color:black;"> CERTIFICATE OF CLEARANCE </h1>
+                                                <h1 class="mt-4 fw-bold mb-5" style="font-size:100px;">CERTIFICATE OF CLEARANCE</h1>
                                             </div>
+                                            <span class="text" style="text-align: justify;">
+                                                    To Whom It May Concern:
+                                            </span>
                                             <div class="letter">
-                                                <h2 class="mt-5 text-left">To Whom It May Concern:</h2>
-                                                <h2 class="mt-3" style="text-indent: 60px;">This is to certify that per records now existing in this office  <span class="fw-bold"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
-                                                of legal age, and a resident of Purok <span class="text"><?= ucwords($resident['purok']) ?></span> <span class="text"><?= ucwords($town) ?></span>, Davao City, Philippines with 
-                                                Community Tax Certificate No.<span class="fw-bold"> <?= ucwords($resident['taxno']) ?></span>  issued on <span class="fw-bold"><?= date('F d, Y') ?></span> 
-                                                at Davao City has not been convicted of any Crime, Criminal, Civil nor there is any pending case filed against him/her.</h2> <h2 class="mt-3" style="text-indent: 60px;">This certification is issued upon the request of the 
-                                                aforementioned for <span class="fw-bold"><?= ucwords($resident['remarks']) ?></span> or for whatever legal purpose/s that may serve her/him best.</h2>
-                                                <h2 class="mt-4" style="text-indent: 60px;"> Done this <span class="fw-bold"><?= date('jS \d\a\y \o\f F, Y') ?></span> at <span class="fw-text"><?= ucwords($town) ?>
-                                                </span>, Davao City.</h2>
+                                                <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
+                                                    This is to certify that per records now existing in this office 
+                                                    <span class="fw-bold"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
+                                                    of legal age, and a resident of Purok <span class="text"><?= ucwords($resident['purok']) ?></span> 
+                                                    <span class="text"><?= ucwords($town) ?></span>, Davao City, Philippines with 
+                                                    Community Tax Certificate No.<span class="fw-bold"> <?= ucwords($resident['taxno']) ?></span> 
+                                                    issued on <span class="fw-bold"><?= date('F d, Y') ?></span> at Davao City has not been convicted of any Crime, 
+                                                    Criminal, Civil nor there is any pending case filed against him/her.
+                                                </h2>
+                                                <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
+                                                    This certification is issued upon the request of the aforementioned for 
+                                                    <span class="fw-bold"><?= ucwords($resident['remarks']) ?></span> or for whatever legal purpose/s that may serve her/him best.
+                                                </h2>
+                                                <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
+                                                    Done this <span class="fw-bold"><?= date('jS \d\a\y \o\f F, Y') ?></span> at <span class="fw-text"><?= ucwords($town) ?></span>, Davao City.
+                                                </h2>
                                             </div>
                                         </div>
                                         <div class="signature col-md-12">
                                             <div class="p-3 text-right mt-5">
                                                 <h2 class="fw-bold mb-0"><u><?= ucwords($captain['fullname']) ?></u></h2>
-                                                <p class="text-right" style="margin-right: 20px;">PUNONG BARANGAY</p>
-                                                <p class="text-right mt-5 mr-4" style="font-size: 16px;">By the authorization of the Punong Barangay:</p>
-                                                <h2 class="fw-bold mb-1 mt-3" style="margin-right: 120px;"><u><?= ucwords($kagawad8['fullname']) ?></u></h2>
-                                                <p class="text-right" style="margin-right: 180px; margin-bottom:220px;">Barangay Kagawad</p>
+                                                <p class="text-right" style="margin-right: 20px; margin-bottom: 300px;">PUNONG BARANGAY</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="footer-content mt-5">
                                         <div class="footer-names text-left">                                                       
                                             <ul>
-                                                <li><h1 class="text-white fw-bold" style="margin-top: 90px; font-size: 30px;"><?= ucwords($captain['fullname']) ?></h1></li>
-                                                <li><h6 class="text" style="color:yellow">PUNONG BARANGAY</h6></li>
-                                            </ul>                                                                                                  
+                                                <li><h1 class="fw-bold" style="font-size: 30px; margin-top: 90px; color:white"><?= ucwords($captain['fullname']) ?></h1></li>
+                                                <li><h4 class="text" style="color:yellow">PUNONG BARANGAY</h4></li>
+                                            </ul>                                                                                                
                                         </div>
                                         <div class="footer-names text-left">                                                        
                                             <ul>

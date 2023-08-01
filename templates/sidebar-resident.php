@@ -29,8 +29,8 @@ $totalAnnouncements = $row1['total_announcements'];
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <?php if(!empty($_SESSION['avatar'])): ?>
-                        <img src="<?= preg_match('/data:image/i', $_SESSION['avatar']) ? $_SESSION['avatar'] : 'assets/uploads/avatar/'.$_SESSION['avatar'] ?>" alt="..." class="avatar-img rounded-circle">
+                    <?php if(!empty($_SESSION['photo'])): ?>
+                        <img src="<?= preg_match('/data:image/i', $_SESSION['photo']) ? $_SESSION['photo'] : 'assets/uploads/avatar/'.$_SESSION['photo'] ?>" alt="..." class="avatar-img rounded-circle">
                     <?php else: ?>
                         <img src="assets/img/person.png" alt="..." class="avatar-img rounded-circle">
                     <?php endif ?>                  
@@ -39,11 +39,36 @@ $totalAnnouncements = $row1['total_announcements'];
                     <a data-toggle="collapse" href="<?= isset($_SESSION['fullname']) && $_SESSION['role'] == 'resident' ? '#collapseExample' : 'javascript:void(0)' ?>" aria-expanded="true">
                         <span>
                             <?= isset($_SESSION['fullname']) ? ucwords($_SESSION['fullname']) : 'Guest User' ?>
-                            <span class="user-level"><?= isset($_SESSION['role']) ? ucwords($_SESSION['role']) : 'Resident' ?></span>
-                            <?= isset($_SESSION['fullname']) && $_SESSION['role'] == 'resident' ? '<span class="caret"></span>' : null ?> 
+                            <span class="user-level">
+                                <?php
+                                if (isset($_SESSION['role']) && $_SESSION['role'] == 'resident') {
+                                    echo 'Resident';
+                                } else {
+                                    echo 'Guest';
+                                }
+                                ?>
+                            </span>
+                            <?php if (isset($_SESSION['fullname']) && $_SESSION['role'] == 'resident') : ?>
+                                <span class="caret"></span>
+                            <?php endif; ?>
                         </span>
                     </a>
                     <div class="clearfix"></div>
+                    <div class="collapse in" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="#edit_user_profile" data-toggle="modal">
+                                    <span class="link-collapse">Edit Profile</span>
+                                </a>
+                                <a href="#user_changepass" data-toggle="modal">
+                                    <span class="link-collapse">Change Password</span>
+                                </a><br>
+                                <a type="button" data-toggle="modal" data-target="#deleteConfirmationModal" class="btn btn-danger" style="padding: 4px 50px; text-decoration:none;">
+                                    <span class="link-collapse text-white">Delete Account</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <ul class="nav nav-danger">
@@ -105,7 +130,7 @@ $totalAnnouncements = $row1['total_announcements'];
                     <h4 class="text-section">Reports</h4>
                 </li>
                 <li class="nav-item">
-                    <a href="#support" data-toggle="modal">
+                    <a href="#support_user" data-toggle="modal">
                         <i class="fas fa-edit"></i>
                         <p>Submit a Concern</p>
                     </a>
@@ -121,29 +146,6 @@ $totalAnnouncements = $row1['total_announcements'];
                         <i class="far fa-lightbulb"></i>
                         <p>Services</p>
                     </a>
-                </li>
-                <br>
-                <li class="nav-item <?= $current_page=='purok.php' || $current_page=='position.php' ? 'active' : null ?>">
-                    <a href="#settings" data-toggle="collapse" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-wrench"></i>
-                            <p> Account Settings</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse <?= $current_page=='purok.php' ? 'show' : null ?>" id="settings">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="#edit_user_profile" data-toggle="modal">
-                                    <span class="link-collapse">Edit Profile</span>
-                                </a>
-                                <a href="#user_changepass" data-toggle="modal">
-                                    <span class="link-collapse">Change Password</span>
-                                </a>
-                                <a type="button" data-toggle="modal" data-target="#deleteConfirmationModal" class="btn btn-danger" style="text-decoration:none; color: white;">
-                                    <span class="link-collapse">Delete Account</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
                 <br>
                 <li class="nav-item active">

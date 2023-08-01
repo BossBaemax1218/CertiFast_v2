@@ -18,7 +18,7 @@
         $resident[] = $row;
     }
 
-    $query1 = "SELECT * FROM tblpurok ORDER BY `purok`";
+    $query1 = "SELECT * FROM tblpurok";
     $result1 = $conn->query($query1);
 
     $purok = array();

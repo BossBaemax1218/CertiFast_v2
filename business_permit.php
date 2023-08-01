@@ -38,8 +38,8 @@
 						<div class="panel-header">
 							<div class="page-inner">
 								<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-									<div>
-										<h2 class="text-black fw-bold" style ="font-size: 300%;">Business Permit</h2>
+									<div class="text-center">
+										<h1 class="text-center fw-bold" style ="font-size: 400%;">Business Permit</h1>
 									</div>
 								</div>
 							</div>
@@ -70,11 +70,11 @@
 										<table id="residenttable" class="table">
 											<thead>
 												<tr class="text-center">
+													<th scope="col">Date</th>
 													<th scope="col">Nature of Business</th>
 													<th scope="col">Owner Name</th>
 													<th scope="col">Address</th>
 													<th scope="col">Permit #</th>
-													<th scope="col">Applied</th>
 													<th scope="col">Valid Until</th>
 													<th scope="col">Status</th>
 													<?php if(isset($_SESSION['username'])):?>
@@ -86,12 +86,12 @@
 												<?php if(!empty($permit)): ?>
 													<?php foreach($permit as $row): ?>
 													<tr class="text-center">
+														<td><?= ucwords($row['applied']) ?></td>
 														<td><?= ucwords($row['business_name']) ?></td>
 														<td><?= !empty($row['owner1']) ? ucwords($row['owner1']) : $row['owner1'] ?></td>
 														<td><?= $row['address'] ?></td>
 														<td><?= ucwords($row['permit_number']) ?></td>
-														<td><?= ucwords($row['applied']) ?></td>
-														<td><?= ucwords($row['validation']) ?></td>
+														<td><?= $row['validation'] ?></td>
 														<td class="text-center"><?= $row['permit_badge'] ?></td>	
                                                         <?php if(isset($_SESSION['username'])):?>
 														<td>
@@ -165,7 +165,7 @@
                                 </div>
 								<div class="form-group">
                                     <label>CTC #</label>
-                                    <input type="text" class="form-control" placeholder="0000-00000" name="community_tax" value="" required>
+                                    <input type="text" class="form-control" placeholder="0000-00000" name="community_tax" required>
                                 </div>
 								<div class="form-group">
                                     <label>Issued On</label>
@@ -173,7 +173,7 @@
                                 </div>
 								<div class="form-group">
                                     <label>Issued At</label>
-                                    <input type="text" class="form-control" value="Barangay Los Amigos, Davao City" name="issued_at" value="" required>
+                                    <input type="text" class="form-control" value="Barangay Los Amigos, Davao City" name="issued_at" required>
                                 </div>
 								<div class="form-group">
                                     <label>Valid Until</label>
@@ -214,29 +214,15 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="model/edit_permit.php" >
+								<input type="hidden" class="form-control" name="applied"  id="applied" value="<?= date('Y-m-d'); ?>" readonly>
+								<input type="hidden" class="form-control" placeholder="" name="business_name" id="business_name" readonly>
+								<input type="hidden" class="form-control mb-2" placeholder="" name="owner1" id="owner1" readonly>
+                                <input type="hidden" class="form-control mb-2" placeholder="" name="email" id="email" readonly>
+                                <input type="hidden" class="form-control mb-2" placeholder="" name="address" id="address" readonly>
+                                <input type="hidden" class="form-control mb-2" placeholder="" name="location" id="location" readonly>
 								<div class="form-group">
                                     <label>Permit #</label>
                                     <input type="text" class="form-control" placeholder="" name="permit_number" id="permit_number" required>
-                                </div>
-								<div class="form-group">
-                                    <label>Nature of Business</label>
-                                    <input type="text" class="form-control" placeholder="" name="business_name" id="business_name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Proprietor</label>
-                                    <input type="text" class="form-control mb-2" placeholder="" name="owner1" id="owner1" required>
-                                </div>
-								<div class="form-group">
-                                    <label>Business Email</label>
-                                    <input type="text" class="form-control mb-2" placeholder="" name="email" id="email" required>
-                                </div>
-								<div class="form-group">
-                                    <label>Address</label>
-                                    <input type="text" class="form-control mb-2" placeholder="" name="address" id="address" required>
-                                </div>
-								<div class="form-group">
-                                    <label>Business Location</label>
-                                    <input type="text" class="form-control mb-2" placeholder="" name="location" id="location" required>
                                 </div>
 								<div class="form-group">
                                     <label>CTC #</label>
@@ -248,11 +234,11 @@
                                 </div>
 								<div class="form-group">
                                     <label>Issued At</label>
-                                    <input type="text" class="form-control" name="issued_at" id="issued_at" value="" required>
+                                    <input type="text" class="form-control" name="issued_at" id="issued_at" value="Barangay Los Amigos, Davao City" required>
                                 </div>
 								<div class="form-group">
                                     <label>Valid Until</label>
-                                    <input type="date" class="form-control" name="validation" id="validation" value="<?= date('Y-m-d'); ?>" required>
+                                    <input type="date" class="form-control" name="validation" id="validation" required>
                                 </div>
 								<div class="form-group">
                                     <label>Status</label>
@@ -263,10 +249,6 @@
 										<option value="suspended">Suspended</option>
 										<option value="closed">Closed</option>
 									</select>
-                                </div>
-								<div class="form-group">
-                                    <label>Date Applied</label>
-                                    <input type="date" class="form-control" name="applied"  id="applied" value="<?= date('Y-m-d'); ?>" readonly>
                                 </div>
                        		</div>
 							<div class="modal-footer">

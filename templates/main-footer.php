@@ -166,6 +166,48 @@
     </div>
 </div>
 <!-- Modal -->
+<div class="modal fade" id="support_user" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Contact Concern</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="background-color: white">
+                <form method="POST" action="model/save_support.php">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Enter Name" name="name" value="<?= $_SESSION['fullname'] ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="samplename@gmail.com" name="email" required >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Contact Number(optional)" name="number">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Subject (Concern, Problems and etc...)" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea type="text" class="form-control" rows="5" placeholder="Message" name="message" required ></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
 <div class="modal fade" id="announcement" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -219,7 +261,7 @@
                 <form method="POST" action="model/change_password.php">
                     <div class="form-group">
                         <label>Username</label>
-                        <input type="text" class="form-control" placeholder="Enter Name" readonly name="username" value="<?= $_SESSION['username'] ?>" required >
+                        <input type="text" class="form-control" placeholder="Enter Name" name="username" value="<?= $_SESSION['username'] ?>" required >
                     </div>
                     <div class="form-group form-floating-label">
                         <label>Current Password</label>
@@ -258,7 +300,7 @@
             <div class="modal-body">
                 <form method="POST" action="model/change_password_user.php">
                     <div class="form-group">
-                        <label>Username</label>
+                        <label>Fullname</label>
                         <input type="text" class="form-control" placeholder="Enter Name" readonly name="fullname" value="<?= $_SESSION['fullname'] ?>" required >
                     </div>
                     <div class="form-group form-floating-label">
@@ -369,10 +411,10 @@
                 <input type="hidden" name="size" value="1000000">
                     <div class="text-center">
                         <div id="my_camera" style="height: 250;" class="text-center">
-                            <?php if(empty($_SESSION['avatar'])): ?>
+                            <?php if(empty($_SESSION['photo'])): ?>
                                 <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
                             <?php else: ?>
-                                <img src="<?= preg_match('/data:image/i', $_SESSION['avatar']) ? $_SESSION['avatar'] : 'assets/uploads/avatar/'.$_SESSION['avatar'] ?>" alt="..." class="img img-fluid" width="250" >
+                                <img src="<?= preg_match('/data:image/i', $_SESSION['photo']) ? $_SESSION['photo'] : 'assets/uploads/avatar/'.$_SESSION['photo'] ?>" alt="..." class="img img-fluid" width="250" >
                             <?php endif ?>
                         </div>
                         <div class="form-group d-flex justify-content-center">

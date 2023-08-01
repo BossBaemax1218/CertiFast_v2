@@ -1,5 +1,38 @@
 <?php 
-include 'server/db_connection.php' 
+include 'server/db_connection.php';
+if (!isset($_SESSION["fullname"])) {
+    header("Location: login.php");
+    exit;
+}
+$fullname = $_SESSION["fullname"];
+$query = "SELECT *,p.id,p.status FROM tblresident_requested AS p JOIN tbl_user_resident AS u ON p.resident_name=u.fullname WHERE u.fullname=?";       
+
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $fullname);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$resident = array();
+
+while ($row = $result->fetch_assoc()) {
+    $status = $row['status'];
+    $statusBadge = '';
+
+    if ($status == 'on hold') {
+        $statusBadge = '<span class="badge badge-warning btn-sm">On Hold</span>';
+    } elseif ($status == 'approved') {
+        $statusBadge = '<span class="badge badge-success btn-sm">Approved</span>';
+    } elseif ($status == 'rejected') {
+        $statusBadge = '<span class="badge badge-danger btn-sm">Rejected</span>';
+    }
+
+    $resident[] = $row;
+}
+$stmt->close();
+
+?>
+<?php
+include 'model/requested_status.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,46 +55,120 @@ include 'server/db_connection.php'
 								</div>
 								<?php unset($_SESSION['message']); ?>
 							<?php endif ?>
-							<h1 class="text-center fw-bold" style="font-size: 300%;">Barangay Los Amigos - <strong>CertiFast Portal</strong></h1>
-							<h3 class="text-center"> Here are the steps in setting an registration request with CertiFast Portal.</h3>
-							<section id="featured-services" class="featured-services">
-								<div class="container" data-aos="fade-up">
-									<div class="row">
-										<div class="col-md-4 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-											<a href="#services" style="text-decoration: none;"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-												<div class="icon" style="text-decoration: none;"><img src="Homepage/assets/img/clients/logo-8.svg"></div>
-												<h4 class="title" style="color: black;">Step 1</h4>
-												<h6 class="pre-title" style="color: black; font-weight: bold;">Request</h6>
-												<p class="description" style="color: black;">Go to form and <strong>submit a request</strong> by registrating your personal information that you would like to request in CertiFast Portal.</p>
-											</div></a>
-										</div>
-										<div class="col-md-4 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-											<a href="#services" style="text-decoration: none;"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-												<div class="icon"><img src="Homepage/assets/img/clients/logo-14.svg"></div>
-												<h4 class="title" style="color: black;">Step 2</h4>
-												<h6 class="pre-title" style="color: black; font-weight: bold;">Review</h6>
-												<p class="description" style="color: black;">Make sure your personal information is true and correct by <b>reviewing it carefully</b> on the screen. And don't submit it abortly.</p>
-											</div></a>
-										</div>
-										<div class="col-md-4 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-											<a href="#services" style="text-decoration: none;"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-												<div class="icon"><img src="Homepage/assets/img/clients/logo-10.svg"></div>
-												<h4 class="title" style="color: black;">Step 3</h4>
-												<h6 class="pre-title" style="color: black; font-weight: bold;">Interview</h6>
-												<p class="description" style="color: black;">Go to <b>Barangay Office</b>, we need to have few essential interview to guarantee the authenticity of your information.</p>
-											</div></a>
-										</div>	
-										<div class="col-md-4 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-											<a href="#services" style="text-decoration: none;"><div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-												<div class="icon"><img src="Homepage/assets/img/clients/logo-11.svg"></div>
-												<h4 class="title" style="color: black;">Step 4</h4>
-												<h6 class="pre-title" style="color: black; font-weight: bold;">Release</h6>
-												<p class="description" style="color: black;">Prepare a <b>cash in hand</b> to ensure you can pay for the certificate after a quick interview. Please make sure you had your cash.</p>
-											</div></a>
+							<h1 class="text-center fw-bold mb-4" style="font-size: 400%;">Resident <strong>Dashboard</strong></h1>
+							<div class="row mt-2">
+								<div class="col-12 col-sm-6 col-md-4">
+									<div class="card card-stats card card-round">
+										<div class="card-body">
+											<div class="row">
+												<div class="col-4">
+													<div class="icon-big text-center">
+														<i class="fas fa-user-clock fa-2x" style="color: gray;"></i>
+													</div>
+												</div>
+												<div class="col-2 col-stats">
+												</div>
+												<div class="col-2 col-stats">
+													<div class="numbers mt-2">
+														<h2 class="text-uppercase" style="font-size: 16px;">Pending</h2>
+														<h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($pendingCount) ?></h3>
+													</div>
+												</div>
+											</div>
+											<div class="card-body">
+												<a href="purok_info.php?state=purok" class="card-link text" style="color: gray;"></a>
+											</div>
 										</div>
 									</div>
-								</div> 
-                    		</section>
+								</div>
+								<div class="col-12 col-sm-6 col-md-4">
+									<div class="card card-stats card card-round" >
+										<div class="card-body">
+											<div class="row">
+												<div class="col-4">
+													<div class="icon-big text-center">
+														<i class="fas fa-user-check fa-2x" style="color: gray;"></i>
+													</div>
+												</div>
+												<div class="col-2 col-stats">
+												</div>
+												<div class="col-2 col-stats">
+													<div class="numbers mt-2">
+														<h2 class="text-uppercase" style="font-size: 16px;">Approved</h2>
+														<h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($approvedCount)?></h3>
+														</div>
+													</div>
+												</div>
+												<div class="card-body">
+													<a href="revenue.php?state=revenue" class="card-link text" style="color: gray;"></a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-6 col-md-4">
+										<div class="card card-stats card-round">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-4">
+														<div class="icon-big text-center">
+															<i class="fas fa-user-alt-slash fa-2x" style="color: gray;"></i>
+														</div>
+													</div>
+													<div class="col-2 col-stats">
+													</div>
+													<div class="col-2 col-stats">
+														<div class="numbers mt-2">
+															<h2 class="text-uppercase" style="font-size: 16px;">Rejected</h2>
+															<h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($rejectedCount) ?></h3>
+														</div>
+													</div>
+												</div>
+												<div class="card-body">
+													<a href="purok_info.php?state=purok" class="card-link text" style="color: gray;"></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						<div class="container">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-header">
+										<h4 class="card-title">Certificate Request Status</h4>
+									</div>
+									<div class="card-body">
+										<div class="table-responsive mt-3">
+											<table id="residenttable" class="table">
+												<thead>
+													<tr>
+														<th scope="col">Date Applied</th>
+														<th scope="col">Name of Resident</th>
+														<th scope="col">Name of Certificate</th>
+														<th class="text-center" scope="col">Status</th>
+													</tr>
+												</thead>
+												<tbody>
+												<?php if (!empty($resident)): ?>
+													<?php foreach ($resident as $row): ?> 
+														<tr>
+															<td><?= $row['date_applied'] ?></td>
+															<td><?= $row['resident_name'] ?></td>
+															<td><?= $row['certificate_name'] ?></td>
+															<td class="text-center status-cell"><?= $row['residency_badge'] = $statusBadge; ?></td>
+														</tr>
+														<?php endforeach ?>
+															<?php else: ?>
+														<tr>
+															<td colspan="4" class="text-center">No data history available</td>
+														</tr>
+													<?php endif ?>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</section>
 				</div>
@@ -69,14 +176,5 @@ include 'server/db_connection.php'
 			</div>
   		</div>
 	<?php include 'templates/footer.php' ?>
-	<script src="Homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="Homepage/assets/vendor/aos/aos.js"></script>
-    <script src="Homepage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="Homepage/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="Homepage/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="Homepage/assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="Homepage/assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="Homepage/assets/vendor/php-email-form/validate.js"></script>
-    <script src="Homepage/assets/js/main.js"></script>
-    </body>
+</body>
 </html>

@@ -10,10 +10,10 @@ include 'server/db_connection.php';
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-    <?php include 'templates/main-header-resident.php' ?>
-		<?php include 'templates/sidebar-resident.php' ?>
-		<div class="main-panel">
-			<div class="content">
+        <?php include 'templates/main-header-resident.php' ?>
+            <?php include 'templates/sidebar-resident.php' ?>
+		    <div class="main-panel">
+			    <div class="content">
                     <div>
                         <h1 class="text-center fw-bold mt-5" style="font-size: 400%;">Payments History</h1>
                     </div>

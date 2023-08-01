@@ -37,11 +37,25 @@ $totalAnnouncements = $row1['total_announcements'];
                     <?php endif ?>                  
                 </div>
                 <div class="info">
-                    <a data-toggle="collapse" href="<?= isset($_SESSION['username']) && $_SESSION['role']=='administrator' ? '#collapseExample' : 'javascript:void(0)' ?>" aria-expanded="true">
+                    <a data-toggle="collapse" href="<?= isset($_SESSION['username']) && ($_SESSION['role'] == 'administrator' || $_SESSION['role'] == 'staff' || $_SESSION['role'] == 'purok leader') ? '#collapseExample' : 'javascript:void(0)' ?>" aria-expanded="true">
                         <span>
-                        <?= isset($_SESSION['username']) ? ucwords($_SESSION['username']) : 'Guest User' ?>
-                            <span class="user-level"><?= isset($_SESSION['role']) ? ucwords($_SESSION['role']) : 'Guest' ?></span>
-                        <?= isset($_SESSION['username']) && $_SESSION['role']=='administrator' ? '<span class="caret"></span>' : null ?> 
+                            <?= isset($_SESSION['username']) ? ucwords($_SESSION['username']) : 'Guest User' ?>
+                            <span class="user-level">
+                                <?php
+                                if (isset($_SESSION['role'])) {
+                                    $role = ucwords($_SESSION['role']);
+                                    if ($_SESSION['role'] == 'staff' || $_SESSION['role'] == 'purok leader') {
+                                        $role = ucwords($_SESSION['role']) . '';
+                                    }
+                                    echo $role;
+                                } else {
+                                    echo 'Guest';
+                                }
+                                ?>
+                            </span>
+                            <?php if (isset($_SESSION['username']) && ($_SESSION['role'] == 'administrator' || $_SESSION['role'] == 'staff' || $_SESSION['role'] == 'purok leader')) : ?>
+                                <span class="caret"></span>
+                            <?php endif; ?>
                         </span>
                     </a>
                     <div class="clearfix"></div>
@@ -122,7 +136,7 @@ $totalAnnouncements = $row1['total_announcements'];
                     </span>
                     <h4 class="text-section">Files</h4>
                 </li>
-                <li class="nav-item <?= $current_page=='list_certificates.php' || $current_page=='generate_brgy_cert.php' || $current_page=='generate_residency_cert.php' || $current_page=='generate_indi_cert.php' ? 'active' : null ?>">
+                <li class="nav-item <?= $current_page=='list_certificates.php' || $current_page=='generate_brgy_cert.php' || $current_page=='generate_residency_cert.php' || $current_page=='generate_indi_cert.php' || $current_page=='generate_birth.php' || $current_page=='generate_brgy_id.php' || $current_page=='generate_death.php' || $current_page=='generate_family_tax.php' || $current_page=='generate_good_moral.php' || $current_page=='generate_jobseekers.php' || $current_page=='generate_live_in.php' || $current_page=='generate_oath.php' ? 'active' : null ?>">
                     <a href="list_certificates.php">
                         <i class="fas fa-stream"></i>
                         <p>List of Certificates</p>
