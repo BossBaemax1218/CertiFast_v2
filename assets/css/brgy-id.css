@@ -1,0 +1,132 @@
+.id-card {
+    width: 750px;
+    height: 450px;
+    border: 2px solid #ddd;
+    border-radius: 1px;
+    padding: 20px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.headers{
+    width: 650px;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-style: Arial;
+}
+
+.sub-header{
+    width: 705px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    background-color: #3f598a;
+    color: #f2d3d4;
+    text-align: center;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    padding: 4px 100px;
+}
+.sub-footer{
+    background-image: url("../img/wave1.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 45px;
+    padding: 100px;
+}
+.sub-footer1{
+    background-image: url("../img/wave1.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 180px;
+    padding: 100px;
+}
+.profile-pic{
+    width: 155px;
+    height: 155px;
+    border: 2px solid black;
+    border-radius: 1px;
+    padding: 20px;
+    position: absolute;
+}
+.logos {
+    width: 100px;
+}
+.namelist{
+    text-align: left;
+    font-size: 18px;
+    padding: 5px;
+    margin-left: 250px;
+    position: absolute;
+    margin-top: 20px;
+}
+.names{
+    text-align: justify;
+    font-size: 24px;
+    padding: 5px;
+    margin-left: 90px;
+    position: absolute;
+    margin-top: 10px;
+}
+.sub-names{
+    text-align: justify;
+    font-size: 20px;
+    margin-left: 20px;
+    position: absolute;
+    margin-top: 130px;
+    padding: 20px;
+}
+.namelist h3,
+.names h3,
+.namelist p {
+    margin: 0;
+}
+.sub-names h5,
+.sub-names h1,
+.sub-names h3 {
+    margin: 0;
+}
+.idnumber{
+    font-weight: bold;
+    text-align: right;
+    font-size: 15px;
+    padding: 5px;
+    margin-left: 520px;
+    position: absolute;
+}
+.signature{
+    font-size: 15px;
+    padding: 30px;
+    margin-left: 70px;
+    text-align: justify;
+    margin-top: 180px;
+    position: absolute;
+}
+.precint{
+    font-size: 16px;
+    padding: 30px;
+    margin-left: 410px;
+    text-align: justify;
+    margin-top: 180px;
+    position: absolute;
+}
+.signature-line{
+    margin-left: 50px;
+    text-align: justify;
+    margin-top: 210px;
+    position: absolute;
+    border: 1px solid black;
+    width: 160px;
+    color: black;
+}
+.precint-line{
+    margin-left: 520px;
+    text-align: justify;
+    margin-top: 230px;
+    position: absolute;
+    border: 1px solid black;
+    width: 160px;
+    color: black;
+}

@@ -51,11 +51,11 @@
                                                 <div class="text-center">
                                                     <h1 class="fw-bold mb-1">Republic of the Philippines</h1>
                                                     <h1 class="fw-bold mb-1">City of <?= ucwords($province) ?></h1>
-                                                    <h1 class="fw-bold mb-1"  style="font-size: 45px;"><?= ucfirst($brgy) ?></i></h1>
-                                                    <h2 class="fw-bold mb-2" style="font-size: 24px;"><?= ucwords($town) ?></h2>				
+                                                    <h1 class="fw-bold mb-1"  style="font-size: 40px;"><?= ucfirst($brgy) ?></i></h1>
+                                                    <h2 class="fw-bold mb-2" style="font-size: 22px;"><?= ucwords($town) ?></h2>				
                                                     <h2 style="font-size: 20px;"><i class="fas fa-phone" style="color: yellow;"></i> <span class="fw-bold"><?= $number ?></span>  &nbsp  <i class="fw-bold fa fa-envelope" style="color: yellow;"></i> <span class="fw-bold"><?= $b_email ?></span> </h2>
                                                 </div>
-                                            <div class="text-center mt-3">
+                                            <div class="text-center mt-4">
                                                 <img src="assets/uploads/<?= $brgy_logo ?>" class="img-fluid mr-4" width="150">
                                                 <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid" width="150">
                                             </div>
@@ -64,33 +64,42 @@
                                     <div class="content-letter">
                                         <div class="col-md-12">
                                             <div class="text-center">
-                                                <h1 class="mt-4 fw-bold mb-5" style="font-size:100px;">BARANGAY CERTIFICATION</h1>
+                                                <h1 class="mt-3 fw-bold mb-4" style="font-size:70px;"><u>OATH OF UNDERTAKING</u></h1>
                                             </div>
-                                            <h2 class="mt-5">To Whom It May Concern:</h2>
-                                            <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
-                                                This is to certify that 
-                                                <span class="fw-bold" style="text-indent: 40px;"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
-                                                of legal age, and is a bona fide resident of 
-                                                <span class="text" style="text-indent: 40px;"> Purok <?= ucwords($resident['purok']) ?></span>, 
-                                                <span class="text" style="text-indent: 40px;"><?= ucwords($town) ?></span>, Davao City.
-                                            </h2>
-                                            <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
-                                                This further certifies that the above mentioned belongs to an indigent family in this Barangay.
-                                            </h2>
-                                            <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
-                                                This certification is issued upon the request of aforementioned for 
-                                                <span class="fw-bold" style="text-indent: 40px;"><?= ucwords($resident['remarks']) ?></span> 
-                                                or for whatever legal purpose/s that may serve her/him best.
-                                            </h2>
-                                            <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
-                                                Done this <span class="fw-bold" style="text-indent: 40px;"><?= date('jS F, Y') ?></span> 
-                                                at <span class="fw-text" style="text-indent: 40px;"><?= ucwords($town) ?></span>, Davao City.
-                                            </h2>
+                                            <h3 class="mt-4 text-justify" style="text-indent: 60px;">
+                                                I, <span class="fw-bold"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
+                                                <?= ucwords($resident['age']) ?> years old, resident of
+                                                <span class="text"> Purok <?= ucwords($resident['purok']) ?></span>, 
+                                                <span class="text"><?= ucwords($town) ?></span>, Davao City, for <?= ucwords($resident['purok']) ?>, availing the benefits of Republic Act 11261,
+                                                otherwise otherwise known as the First Time Jobseekers Act of 2019, do hereby declare, agree and undertake to abide and be bounded by the following:
+                                                <ol class="mt-4">
+                                                    <li>1. That this is the first time that I will actively look for a job, and therefore requesting that a Barangay Certification be issued in my favor to avail the benefits of the law;</li>
+                                                    <li>2. That I am aware that the benefit and privilege/s under the said law shall be valid only for one (1) year from that date that the Barangay Certification is issued;</li>
+                                                    <li>3. That I can avail the benefits of the law only once;</li>
+                                                    <li>4. That I understand that my personal information shall be included in the Roster/List of First Time Jobseekers and will not be used for any unlawful purpose;</li>
+                                                    <li>5. That I will inform and/or report to the Barangay personally, through text or other means, or through my family/relatives once I get employed; and</li>
+                                                    <li>6. That I am not a beneficiary for the JobStart Program under R.A. No. 10869 and other laws that give similar exemptions for the documents or transactions exempted under R.A. No. 11261</li>
+                                                    <li>7. That if issued the request Certification, I will not use the same in any fraud, neither falsify nor help and/or assist in the fabrication of the said certification.</li>
+                                                    <li>8. That this undertaking is made solely for the purpose of obtaining a Barangay Certification consistent with the objective of R.A. No. 11261 and not for any other purpose.</li>
+                                                    <li>9. That I consent to the use of my personal information pursuant to the Data Privacy and other applicable laws, rules, and regulations.</li>
+                                                </ol>
+                                            </h3>
+                                            <h3 class="mt-3 text-justify">
+                                                Signed this <span class="fw-bold" style="text-indent: 60px;"><?= date('jS F, Y') ?></span> 
+                                                in the City of Davao.
+                                            </h3>
                                         </div>
-                                        <div class="col-md-12" style="margin-top: 100px;">
-                                            <div class="p-3 text-right mt-2" style="margin-bottom: 300px;">
-                                                <h2 class="fw-bold mb-6"><u><?= ucwords($captain['fullname']) ?></u></h2>
-                                                <p class="text-right mr-4">PUNONG BARANGAY</p>
+                                        <div class="col-md-12 text-right" style="margin-top: 10px;">
+                                            <div class="p-3 text" style="font-size: 15px; margin-bottom: 200px;">
+                                                <ol>
+                                                    <li class="fw-bold text" style="font-size: 20px; text-align: right;"><span class="fw-bold"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span></li>
+                                                    <li class="text" style="margin-right: 42px;">First Time Jobseeker</li>
+                                                    <li class="text" style="margin-right: 18px;">Date: <span class="fw-bold"><?= date('jS F, Y') ?></span></li>
+                                                    <li class="fw-bold text mt-3 mb-3" style="margin-right: 81px;">Witnessed By:</li>
+                                                    <li class="fw-bold" style="font-size: 20px;"><?= ucwords($captain['fullname']) ?></li>
+                                                    <li class="text" style="margin-right: 58px;">Punong Barangay</li>
+                                                    <li class="text" style="margin-right: 16px;">Date: <span class="fw-bold"><?= date('jS F, Y') ?></span></li>
+                                                </ol>
                                             </div>
                                         </div>
                                     </div>

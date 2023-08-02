@@ -45,8 +45,8 @@
 										</div>
 									</div>
 								</div>
-								<div class="card-body" id="printThis">
-                                    <div class="card-header" style="background-color:forestgreen;">
+								    <div class="card-body" id="printThis">
+                                        <div class="card-header" style="background-color:forestgreen;">
                                             <div class="header d-flex flex-wrap justify-content-around">
                                                 <div class="text-center">
                                                     <h1 class="fw-bold mb-1">Republic of the Philippines</h1>
@@ -55,12 +55,12 @@
                                                     <h2 class="fw-bold mb-2" style="font-size: 24px;"><?= ucwords($town) ?></h2>				
                                                     <h2 style="font-size: 20px;"><i class="fas fa-phone" style="color: yellow;"></i> <span class="fw-bold"><?= $number ?></span>  &nbsp  <i class="fw-bold fa fa-envelope" style="color: yellow;"></i> <span class="fw-bold"><?= $b_email ?></span> </h2>
                                                 </div>
-                                            <div class="text-center mt-3">
-                                                <img src="assets/uploads/<?= $brgy_logo ?>" class="img-fluid mr-4" width="150">
-                                                <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid" width="150">
-                                            </div>
-                                        </div> 
-                                    </div>
+                                                <div class="text-center mt-3">
+                                                    <img src="assets/uploads/<?= $brgy_logo ?>" class="img-fluid mr-4" width="150">
+                                                    <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid" width="150">
+                                                </div>
+                                            </div> 
+                                        </div>
                                     <div class="content-letter">
                                         <div class="col-md-12">
                                             <div class="text-center">
