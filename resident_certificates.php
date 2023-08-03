@@ -6,29 +6,37 @@ if (!isset($_SESSION["fullname"])) {
     exit;
 }
 
-$fullname = $_SESSION["user_email"];
+$fullname = $_SESSION["fullname"];
 
-$query = "SELECT *, r.resident_name, r.certificate_name FROM tblresident_requested AS r JOIN tbl_user_resident AS u ON r.purok = u.purok WHERE u.user_email = ?";
-$stmt = $conn->prepare($query);
+$sql = "SELECT *,r.id, s.certificate_name, s.status, s.date_applied 
+        FROM tblresident AS r 
+        JOIN tblresident_requested AS s ON r.certificate_name = s.certificate_name 
+        JOIN tbl_user_resident AS u ON u.fullname = s.resident_name
+        WHERE u.fullname = ? AND s.status IN ('on hold','approved','rejected')";
+
+$stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $fullname);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$statusBadges = [
-    'on hold' => '<span class="badge badge-primary">On Hold</span>',
-    'operating' => '<span class="badge badge-success">Operating</span>',
-    'suspended' => '<span class="badge badge-warning">Suspended</span>',
-    'closed' => '<span class="badge badge-danger">Closed</span>'
-];
+$resident = array();
+$approvedResidents = array();
 
-$permit = array();
 while ($row = $result->fetch_assoc()) {
     $status = $row['status'];
-    $statusBadge = isset($statusBadges[$status]) ? $statusBadges[$status] : '';
 
-    $row['permit_badge'] = $statusBadge;
-    $permit[] = $row;
+    $statusBadge = '';
+    if ($status == 'on hold') {
+        $statusBadge = '<span class="badge badge-warning">On Hold</span>';
+    } elseif ($status == 'approved') {
+        $statusBadge = '<span class="badge badge-success">Approved</span>';
+    } elseif ($status == 'rejected') {
+        $statusBadge = '<span class="badge badge-danger">Rejected</span>';
+    }
+
+    $row['residency_badge'] = $statusBadge;
 }
+
 $stmt->close();
 
 ?>
@@ -79,7 +87,7 @@ $stmt->close();
 														<td><?= ucwords($row['date_applied']) ?></td>
 														<td><?= ucwords($row['resident_name']) ?></td>
 														<td><?= ucwords($row['certificate_name']) ?></td>
-														<td class="text-center"><?= $row['permit_badge'] ?></td>												
+														<td class="text-center"><?= $row['residency_badge'] ?></td>												
 													</tr>
 													<?php endforeach ?>
 												<?php endif ?>

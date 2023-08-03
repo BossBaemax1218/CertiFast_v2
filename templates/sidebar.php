@@ -63,10 +63,10 @@ $totalAnnouncements = $row1['total_announcements'];
                         <ul class="nav">
                             <li>
                                 <a href="#edit_profile" data-toggle="modal">
-                                    <span class="link-collapse">Edit Profile</span>
+                                    <span class="link-collapse">Profile Picture</span>
                                 </a>
                                 <a href="#changepass" data-toggle="modal">
-                                    <span class="link-collapse">Change Password</span>
+                                    <span class="link-collapse">Account Information</span>
                                 </a>
                             </li>
                         </ul>
@@ -107,13 +107,25 @@ $totalAnnouncements = $row1['total_announcements'];
                 <li class="nav-item <?= $current_page=='purok_records.php'  ? 'active' : null ?>">
                     <a href="purok_records.php" >
                         <i class='bx bx-file-find' ></i>
-                        <p>Purok Management</p>
+                        <p>Purok Records</p>
                     </a>
                 </li>
                 <li class="nav-item <?= $current_page=='purok_request.php'  ? 'active' : null ?>">
                     <a href="purok_request.php" >
                         <i class='bx bxs-file' ></i>
-                        <p>Requester Management</p>
+                        <p>Requester Records</p>
+                    </a>
+                </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">History</h4>
+                </li>
+                <li class="nav-item <?= $current_page=='list_purok_resident.php'  ? 'active' : null ?>">
+                    <a href="list_purok_resident.php" >
+                        <i class='fas fa-stream' ></i>
+                        <p>List of Resident</p>
                     </a>
                 </li>
             <?php endif ?>

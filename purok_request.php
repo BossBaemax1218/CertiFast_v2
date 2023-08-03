@@ -72,7 +72,7 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                         <br>
                     </div>
                     <div class="page-inner">
-                        <div class="container">
+                        <div class="content">
                             <div class="col-md-12">
                                 <?php if(isset($_SESSION['message'])): ?>
                                         <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">

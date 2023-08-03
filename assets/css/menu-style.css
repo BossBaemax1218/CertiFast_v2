@@ -89,7 +89,7 @@ color: #17c0eb
 }
 
 .btns button:first-child{
-  background: none;
+  background: #e0004b;
   margin-right: 5px;
 }
 .btns button:last-child{

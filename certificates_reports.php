@@ -1,26 +1,45 @@
 <?php include 'server/server.php' ?>
 <?php 
-    $query = "SELECT COUNT(details) as clearance FROM tblpayments WHERE details = 'Barangay Clearance'"; 
+    $query = "SELECT COUNT(certificate_name) as pending FROM tblresident_requested WHERE status = 'on hold'"; 
     $revenue1 = $conn->query($query)->fetch_assoc();
 
-    $sql1 = "SELECT COUNT(details) as residency FROM tblpayments WHERE details = 'Certificate of Residency'";
+    $sql1 = "SELECT COUNT(certificate_name) as approved FROM tblresident_requested WHERE status = 'approved'";
     $result1 = $conn->query($sql1);
     $row1 = $result1->fetch_assoc();
-    $residencyCount = $row1['residency'];
+    $residencyCount = $row1['approved'];
 
-	$query2 = "SELECT COUNT(details) as indigency FROM tblpayments WHERE details = 'Certificate of Indigency'";
+	$query2 = "SELECT COUNT(certificate_name) as rejected FROM tblresident_requested WHERE status = 'rejected'";
 	$revenue3 = $conn->query($query2)->fetch_assoc();
 
-    $query3 = "SELECT COUNT(details) as permit FROM tblpayments WHERE details = 'Business Permit'"; 
-    $revenue2 = $conn->query($query3)->fetch_assoc();
-
-    $sql = "SELECT * FROM tblpayments ORDER BY `date` DESC";
+    $sql = "SELECT *, r.id, r.email, s.cert_id, s.certificate_name, s.status, s.date_applied 
+    FROM tblresident AS r 
+    JOIN tblresident_requested AS s ON r.certificate_name = s.certificate_name 
+    WHERE s.status IN('approved','rejected')";
     $result = $conn->query($sql);
 
-    $revenue = array();
-	while($row = $result->fetch_assoc()){
-		$revenue[] = $row; 
-	}
+    $resident = array();
+    $approvedResidents = array();
+
+    while ($row = $result->fetch_assoc()) {
+    $status = $row['status'];
+    $statusBadge = '';
+
+    if ($status == 'on hold') {
+        $statusBadge = '<span class="badge badge-warning">On Hold</span>';
+    } elseif ($status == 'approved') {
+        $statusBadge = '<span class="badge badge-success">Approved</span>';
+    } elseif ($status == 'rejected') {
+        $statusBadge = '<span class="badge badge-danger">Rejected</span>';
+    }
+
+    $row['residency_badge'] = $statusBadge;
+
+    if ($status == 'on hold' || $status == 'rejected') {
+        $resident[] = $row;
+    } elseif ($status == 'approved') {
+        $resident[] = $row;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +75,7 @@
                                 </div>
                             </div>
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="card card-stats card card-round">
                                     <div class="card-body">
                                         <div class="row">
@@ -67,8 +86,8 @@
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 16px;">Residency</h2>
-                                                    <h3 class="fw-bold" style="font-size: 25px; color: #C77C8D;"><?= number_format($residencyCount)?></h3>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Pending</h2>
+                                                    <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($revenue1['pending']) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -78,7 +97,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="card card-stats card card-round" >
                                     <div class="card-body">
                                         <div class="row">
@@ -89,8 +108,8 @@
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 16px;">Indigency</h2>
-                                                    <h3 class="fw-bold" style="font-size: 25px; color: #C77C8D;"><?= number_format($revenue3['indigency'])?></h3>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Approved</h2>
+                                                    <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($residencyCount)?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -100,7 +119,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="card card-stats card-round">
                                     <div class="card-body">
                                         <div class="row">
@@ -111,30 +130,8 @@
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h3 class="text-uppercase" style="font-size: 16px;">Clearance</h3>
-                                                    <h5 class="fw-bold text-uppercase" style="font-size: 25px; color: #C77C8D;"><?= number_format($revenue1['clearance']) ?></h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <a href="purok_info.php?state=purok" class="card-link text" style="color: gray;"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card card-stats card-round">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="icon-big text-center">
-                                                    <i class="fas fa-file-alt fa-2x" style="color: gray;"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-2 col-stats">
-                                                <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 16px;">Permit</h2>
-                                                    <h3 class="fw-bold text-uppercase" style="font-size: 25px; color: #C77C8D;"><?= number_format($revenue2['permit']) ?></h3>
+                                                    <h3 class="text-uppercase" style="font-size: 16px;">Rejected</h3>
+                                                    <h5 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($revenue3['rejected'])?></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -172,23 +169,25 @@
                                                     <tr>
                                                         <th class="text-center" scope="col">Date</th>
                                                         <th scope="col">Recipient</th>
-                                                        <th scope="col">Details</th>
                                                         <th scope="col">Email</th>
+                                                        <th scope="col">Certificate</th>
+                                                        <th class="text-center" scope="col">Status</th>
                                                         <th class="text-center" scope="col">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php if(!empty($revenue)): ?>
-                                                        <?php $no=1; foreach($revenue as $row): ?>
+                                                    <?php if(!empty($resident)): ?>
+                                                        <?php $no=1; foreach($resident as $row): ?>
                                                         <tr>
-                                                            <td class="text-center"><?= $row['date'] ?></td>
-                                                            <td><?= $row['name'] ?></td>
-                                                            <td><?= $row['details'] ?></td>
+                                                            <td class="text-center"><?= $row['date_applied'] ?></td>
+                                                            <td><?= $row['resident_name'] ?></td>
                                                             <td><?= $row['email'] ?></td>
+                                                            <td><?= $row['certificate_name'] ?></td>
+                                                            <td class="text-center"><?= $row['residency_badge'] ?></td>
                                                             <td class="text-center">
                                                                 <div class="form-button-action">
                                                                     <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
-                                                                    <a type="button" data-toggle="tooltip" href="model/remove_payment.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this data?');" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                                    <a type="button" data-toggle="tooltip" href="model/remove_resident_user.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this data?');" class="btn btn-link btn-danger" data-original-title="Remove">
                                                                         <i class="fas fa-trash"></i>
                                                                     </a>
                                                                     <?php endif ?>

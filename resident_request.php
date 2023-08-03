@@ -23,8 +23,8 @@ while ($row = $result->fetch_assoc()) {
 
     if ($status == 'on hold') {
         $statusBadge = '<span class="badge badge-warning">On Hold</span>';
-    }elseif ($status == 'operating') {
-            $statusBadge = '<span class="badge badge-success">Operating</span>';
+    }elseif ($status == 'approved') {
+            $statusBadge = '<span class="badge badge-success">Approved</span>';
     } elseif ($status == 'rejected') {
         $statusBadge = '<span class="badge badge-danger">Rejected</span>';
     }
@@ -77,7 +77,7 @@ $conn->close();
                                         <option value="Certificate of Residency" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Residency') echo 'selected'; ?>>Certificate of Residency</option>
                                         <option value="Certificate of Indigency" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Indigency') echo 'selected'; ?>>Certificate of Indigency</option>
                                         <option value="First Time Jobseekers" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'First Time Jobseekers') echo 'selected'; ?>>First Time Jobseekers</option>
-                                        <option value="Certificate of OATH Taking" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of OATH Taking') echo 'selected'; ?>>Certificate of OATH Taking</option>
+                                        <option value="Certificate of Oath Taking" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Oath Taking') echo 'selected'; ?>>Certificate of Oath Taking</option>
                                         <option value="Certificate of Death" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Death') echo 'selected'; ?>>Certificate of Death</option>
                                         <option value="Certificate of Birth" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Birth') echo 'selected'; ?>>Certificate of Birth</option>
                                         <option value="Certificate of Good Moral" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Good Moral') echo 'selected'; ?>>Certificate of Good Moral</option>
@@ -142,7 +142,7 @@ $conn->close();
                                         <div class="name_job"><?php echo ucwords($box['name']); ?></div>
                                         <p><?php echo $box['description']; ?></p>
                                         <div class="btns">
-                                            <a href="<?php echo $box['link']; ?>" data-toggle="modal"><button>Request</button></a>
+                                            <a href="<?php echo $box['link']; ?>" data-toggle="modal"><button style="padding 20px 100px; background: #e0004b;">Request</button></a>
                                         </div>
                                     </div>
                                     <?php endforeach; ?>
@@ -151,7 +151,182 @@ $conn->close();
                         </div>
                     </div>
                 </div>
-
+        <div class="modal fade" id="addgoodmoral" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Certificate of Good Moral Form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
+                            <form method="POST" action="model/save_goodmoral.php" enctype="multipart/form-data">
+                                <input type="hidden" name="size" value="1000000">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>What is your complete name?</label>
+                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What purok do you live?</label>
+                                                <select class="form-control" required name="purok">
+                                                    <option disabled selected>Select Purok Name</option>
+                                                    <?php foreach($purok as $row):?>
+                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is your tax no?</label>
+                                                <input type="number" class="form-control" placeholder="Enter your tax number" min="6" name="taxno" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="certificate_name" value="certificate of good moral" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <div class="modal fade" id="adddeath" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Death Certificate Form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
+                            <form method="POST" action="model/save_residency.php" enctype="multipart/form-data">
+                                <input type="hidden" name="size" value="1000000">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Who died and what was their name?</label>
+                                                <input type="text" class="form-control" placeholder="Enter the name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is the birthdate of the person died?</label>
+                                                <input type="date" class="form-control" name="bdate" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is their current age before she/he died?</label>
+                                                <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What purok do you live?</label>
+                                                <select class="form-control" required name="purok">
+                                                    <option disabled selected>Select Purok Name</option>
+                                                    <?php foreach($purok as $row):?>
+                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is the date of the person died?</label>
+                                                <input type="date" class="form-control" name="ddate" required>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <h5><b>Fill out also the names of you're (Parents-Family-Guardians): </b></h5>
+                                            </div>                                           
+                                            <div class="form-group">
+                                                <label>What is their name?</label>
+                                                <input type="text" class="form-control" placeholder="Complete Name" name="cname" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="certificate_name" value="certificate of death" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <div class="modal fade" id="addbrgyId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Barangay Identification Form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
+                            <form method="POST" action="model/save_brgy_id.php" enctype="multipart/form-data">
+                                <input type="hidden" name="size" value="1000000">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>What is your complete name?</label>
+                                                <input type="text" class="form-control" placeholder="Enter the name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>When is your birthdate?</label>
+                                                <input type="date" class="form-control" name="bdate" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What purok do you live?</label>
+                                                <select class="form-control" required name="purok">
+                                                    <option disabled selected>Select Purok Name</option>
+                                                    <?php foreach($purok as $row):?>
+                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Precint number? (If you are a voters of Barangay Los Amigos)</label>
+                                                <input type="number" class="form-control" placeholder="Enter your precint number" name="precint" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is your contact number?</label>
+                                                <input type="number" class="form-control" placeholder="Enter your contact number" name="phone" required>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <h5><b>In case of emergency (Parents-Family-Guardians): </b></h5>
+                                            </div>                                           
+                                            <div class="form-group">
+                                                <label>What is their name?</label>
+                                                <input type="text" class="form-control" placeholder="Complete Name" name="parents" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What kind of relationship do you have with the person?</label>
+                                                <select class="form-control" required name="relationship">
+                                                    <option disabled selected>Select Relationship</option>
+                                                        <option value="Mother">Mother</option>
+                                                        <option value="Father">Father</option>
+                                                        <option value="Uncle">Uncle</option>
+                                                        <option value="Antie">Antie</option>
+                                                        <option value="Grandfather">Grandmother</option>
+                                                        <option value="Grandfather">Grandfather</option>
+                                                        <option value="Brother">Brother</option>
+                                                        <option value="Sister">Sister</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="certificate_name" value="certificate of death" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <div class="modal fade" id="addpermit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -169,11 +344,11 @@ $conn->close();
                                 </div>
                                 <div class="form-group">
                                     <label>Business Owner Name</label>
-                                    <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="owner1" value="<?= $_SESSION['fullname'] ?>" readonly>
+                                    <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="owner1" value="<?= $_SESSION["fullname"]; ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Business Email Address</label>
-                                    <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="email" value="<?= $_SESSION['user_email'] ?>" readonly>
+                                    <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="email" value="" required>
                                 </div>
 								<div class="form-group">
                                     <label>Address</label>
@@ -189,7 +364,8 @@ $conn->close();
                                 </div>
                        		</div>
 							<div class="modal-footer">
-                                <input type="text" name="certificate_name" value="business permit" required>
+                                <input type="hidden" name="certificate_name" value="business permit" required>
+                                <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
 								<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 								<button type="submit" class="btn btn-danger">Create</button>
 							</div>
@@ -197,11 +373,55 @@ $conn->close();
                     </div>
                 </div>
             </div>
+        <div class="modal fade" id="addoath" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Certificate of Oath Undertaking Form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
+                            <form method="POST" action="model/save_oath.php" enctype="multipart/form-data">
+                                <input type="hidden" name="size" value="1000000">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>What is your complete name?</label>
+                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is your current age?</label>
+                                                <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What purok do you live?</label>
+                                                <select class="form-control" required name="purok">
+                                                    <option disabled selected>Select Purok Name</option>
+                                                    <?php foreach($purok as $row):?>
+                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="certificate_name" value="certificate of oath taking" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <div class="modal fade" id="addclearance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New Resident Registration Form</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Barangay Clerance Form</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -211,74 +431,12 @@ $conn->close();
                                 <input type="hidden" name="size" value="1000000">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div style="height: 250;" class="text-center" id="my_camera">
-                                                <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
-                                            </div>
-                                            <div class="form-group d-flex justify-content-center">
-                                                <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
-                                                <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
-                                            </div>
-                                            <div id="profileImage">
-                                                <input type="hidden" name="profileimg">
+                                            <div class="form-group">
+                                                <label>What is your complete name?</label>
+                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                             </div>
                                             <div class="form-group">
-                                                <input type="file" class="form-control" name="img" accept="image/*">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Barangay ID No.</label>
-                                                <input type="text" class="form-control" name="national" placeholder="Enter Barangay ID No." required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Citizenship</label>
-                                                <input type="text" class="form-control" name="citizenship" placeholder="Enter citizenship" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>First name</label>
-                                                <input type="text" class="form-control" placeholder="Enter First name" name="fname" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Middle name</label>
-                                                <input type="text" class="form-control" placeholder="Enter Middle name" name="mname" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Last name</label>
-                                                <input type="text" class="form-control" placeholder="Enter Last name" name="lname" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Enter Address" name="address" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Place of Birth</label>
-                                                <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Birthdate</label>
-                                                <input type="date" class="form-control" placeholder="Enter Birthdate" name="bdate" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Age</label>
-                                                <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Civil Status</label>
-                                                <select class="form-control" name="cstatus">
-                                                    <option disabled selected>Select Civil Status</option>
-                                                    <option value="Single">Single</option>
-                                                    <option value="Married">Married</option>
-                                                    <option value="Widow">Widow</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Gender</label>
-                                                <select class="form-control" required name="gender">
-                                                    <option disabled selected value="">Select Gender</option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Purok</label>
+                                                <label>What purok do you live?</label>
                                                 <select class="form-control" required name="purok">
                                                     <option disabled selected>Select Purok Name</option>
                                                     <?php foreach($purok as $row):?>
@@ -287,36 +445,201 @@ $conn->close();
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Voters Status</label>
-                                                <select class="form-control vstatus" required name="vstatus">
-                                                    <option disabled selected>Select Voters Status</option>
-                                                    <option value="Yes">Yes</option>
-                                                    <option value="No">No</option>
-                                                </select>
+                                                <label>What is your tax no?</label>
+                                                <input type="number" class="form-control" placeholder="Enter your tax number" min="6" name="taxno" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>Tax no</label>
-                                                <input type="number" class="form-control" placeholder="Enter Tax number" min="6" name="taxno" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="text" class="form-control" placeholder="Enter Email Address" value="no-email@sample.com" name="email" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Contact Number</label>
-                                                <input type="text" class="form-control" placeholder="Enter Contact Number" value="+63 000-000-000-00" name="number" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Occupation</label>
-                                                <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Requirements</label>
+                                                <label>What requirements you need this certificates?</label>
                                                 <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
+                                        <input type="hidden" name="certificate_name" value="barangay clearance" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <div class="modal fade" id="addlivein" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Live in Certificate Form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
+                            <form method="POST" action="model/save_live_in.php" enctype="multipart/form-data">
+                                <input type="hidden" name="size" value="1000000">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>What the name of your Husband?</label>
+                                                <input type="text" class="form-control" placeholder="Enter your name" name="husband" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is the current age of the Husband?</label>
+                                                <input type="number" class="form-control" placeholder="Enter your husband age" min="1" name="husband_age" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What the name your Wife?</label>
+                                                <input type="text" class="form-control" placeholder="Enter your name" name="wife" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is the current age of the Wife?</label>
+                                                <input type="number" class="form-control" placeholder="Enter your wife's age" min="1" name="wife_age" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>How many years do you live together?</label>
+                                                <input type="number" class="form-control" placeholder="" name="purpose" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What purok do you live?</label>
+                                                <select class="form-control" required name="purok">
+                                                    <option disabled selected>Select Purok Name</option>
+                                                    <?php foreach($purok as $row):?>
+                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What requirements you need this certificates?</label>
+                                                <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="certificate_name" value="certificate of live in" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <div class="modal fade" id="addfamilytax" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Family Tax Estate Certificate Form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
+                            <form method="POST" action="model/save_family_tax.php" enctype="multipart/form-data">
+                                <input type="hidden" name="size" value="1000000">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h5><b>Fill out all the credentials of your family: </b></h5>
+                                            </div>                                        
+                                            <div class="form-group">
+                                                <label>Wife Name</label>
+                                                <input type="text" class="form-control" placeholder="Wife's name" name="wife" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Husband Name</label>
+                                                <input type="text" class="form-control" placeholder="Husband's name" name="husband" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Children Name's</label>
+                                                <input type="text" class="form-control mb-2" placeholder="First child name" name="firstchild" required>
+                                                <input type="text" class="form-control mb-2" placeholder="Second child name" name="secondchild">
+                                                <input type="text" class="form-control mb-2" placeholder="Third child name (Optional)" name="thirdchild">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is the number of Transfer Certificate of Title you owned?</label>
+                                                <input class="form-control" name="remarks" required placeholder="Enter your owned TCT number"></input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="certificate_name" value="family home estate" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <div class="modal fade" id="addbirth" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Birth Certificate Form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
+                            <form method="POST" action="model/save_birth.php" enctype="multipart/form-data">
+                                <input type="hidden" name="size" value="1000000">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>What is the name of the child?</label>
+                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is the birthday?</label>
+                                                <input type="date" class="form-control" placeholder="Birthdate" name="bdate" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is your current age?</label>
+                                                <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is your gender?</label>
+                                                <select class="form-control" required name="gender">
+                                                    <option disabled selected value="">Select Gender</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What purok do you live?</label>
+                                                <select class="form-control" required name="purok">
+                                                    <option disabled selected>Select Purok Name</option>
+                                                    <?php foreach($purok as $row):?>
+                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <h5><b>Fill out also the names of you parents/guardians: </b></h5>
+                                            </div>                                           
+                                            <div class="form-group">
+                                                <label>Mother Name</label>
+                                                <input type="text" class="form-control" placeholder="Mother's name" name="momname" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Father Name</label>
+                                                <input type="text" class="form-control" placeholder="Father's name" name="dadname" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Guardian's Name (Optional)</label>
+                                                <input type="text" class="form-control" placeholder="Guardian's name" name="gname">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What requirements you need this certificates?</label>
+                                                <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="certificate_name" value="certificate of birth" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -329,84 +652,22 @@ $conn->close();
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New Resident Registration Form</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Certificate of Residency Form</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                         <div class="modal-body">
-                            <form method="POST" action="model/save_residency.php" enctype="multipart/form-data">
+                            <form method="POST" action="model/save_clearance.php" enctype="multipart/form-data">
                                 <input type="hidden" name="size" value="1000000">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div style="height: 250;" class="text-center" id="my_camera">
-                                                <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
-                                            </div>
-                                            <div class="form-group d-flex justify-content-center">
-                                                <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
-                                                <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
-                                            </div>
-                                            <div id="profileImage">
-                                                <input type="hidden" name="profileimg">
+                                            <div class="form-group">
+                                                <label>What is your complete name?</label>
+                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                             </div>
                                             <div class="form-group">
-                                                <input type="file" class="form-control" name="img" accept="image/*">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Barangay ID No.</label>
-                                                <input type="text" class="form-control" name="national" placeholder="Enter Barangay ID No." required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Citizenship</label>
-                                                <input type="text" class="form-control" name="citizenship" placeholder="Enter citizenship" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>First name</label>
-                                                <input type="text" class="form-control" placeholder="Enter First name" name="fname" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Middle name</label>
-                                                <input type="text" class="form-control" placeholder="Enter Middle name" name="mname" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Last name</label>
-                                                <input type="text" class="form-control" placeholder="Enter Last name" name="lname" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Enter Address" name="address" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Place of Birth</label>
-                                                <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Birthdate</label>
-                                                <input type="date" class="form-control" placeholder="Enter Birthdate" name="bdate" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Age</label>
-                                                <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Civil Status</label>
-                                                <select class="form-control" name="cstatus">
-                                                    <option disabled selected>Select Civil Status</option>
-                                                    <option value="Single">Single</option>
-                                                    <option value="Married">Married</option>
-                                                    <option value="Widow">Widow</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Gender</label>
-                                                <select class="form-control" required name="gender">
-                                                    <option disabled selected value="">Select Gender</option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Purok</label>
+                                                <label>What purok do you live?</label>
                                                 <select class="form-control" required name="purok">
                                                     <option disabled selected>Select Purok Name</option>
                                                     <?php foreach($purok as $row):?>
@@ -415,36 +676,18 @@ $conn->close();
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Voters Status</label>
-                                                <select class="form-control vstatus" required name="vstatus">
-                                                    <option disabled selected>Select Voters Status</option>
-                                                    <option value="Yes">Yes</option>
-                                                    <option value="No">No</option>
-                                                </select>
+                                                <label>What is your tax no?</label>
+                                                <input type="number" class="form-control" placeholder="Enter your tax number" min="6" name="taxno" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>Tax no</label>
-                                                <input type="number" class="form-control" placeholder="Enter Tax number" min="6" name="taxno" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="text" class="form-control" placeholder="Enter Email Address" value="no-email@sample.com" name="email" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Contact Number</label>
-                                                <input type="text" class="form-control" placeholder="Enter Contact Number" value="+63 000-000-000-00" name="number" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Occupation</label>
-                                                <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Requirements</label>
+                                                <label>What requirements you need this certificates?</label>
                                                 <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
+                                        <input type="hidden" name="certificate_name" value="certificate of residency" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -453,88 +696,26 @@ $conn->close();
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="addindigency" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addindigency" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New Resident Registration Form</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Certificate of Indigency Form</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                         <div class="modal-body">
-                            <form method="POST" action="model/save_resident_user.php" enctype="multipart/form-data">
+                            <form method="POST" action="model/save_clearance.php" enctype="multipart/form-data">
                                 <input type="hidden" name="size" value="1000000">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div style="height: 250;" class="text-center" id="my_camera">
-                                                <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
-                                            </div>
-                                            <div class="form-group d-flex justify-content-center">
-                                                <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
-                                                <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
-                                            </div>
-                                            <div id="profileImage">
-                                                <input type="hidden" name="profileimg">
+                                            <div class="form-group">
+                                                <label>What is your complete name?</label>
+                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                             </div>
                                             <div class="form-group">
-                                                <input type="file" class="form-control" name="img" accept="image/*">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Barangay ID No.</label>
-                                                <input type="text" class="form-control" name="national" placeholder="Enter Barangay ID No." required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Citizenship</label>
-                                                <input type="text" class="form-control" name="citizenship" placeholder="Enter citizenship" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>First name</label>
-                                                <input type="text" class="form-control" placeholder="Enter First name" name="fname" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Middle name</label>
-                                                <input type="text" class="form-control" placeholder="Enter Middle name" name="mname" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Last name</label>
-                                                <input type="text" class="form-control" placeholder="Enter Last name" name="lname" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Enter Address" name="address" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Place of Birth</label>
-                                                <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Birthdate</label>
-                                                <input type="date" class="form-control" placeholder="Enter Birthdate" name="bdate" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Age</label>
-                                                <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Civil Status</label>
-                                                <select class="form-control" name="cstatus">
-                                                    <option disabled selected>Select Civil Status</option>
-                                                    <option value="Single">Single</option>
-                                                    <option value="Married">Married</option>
-                                                    <option value="Widow">Widow</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Gender</label>
-                                                <select class="form-control" required name="gender">
-                                                    <option disabled selected value="">Select Gender</option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Purok</label>
+                                                <label>What purok do you live?</label>
                                                 <select class="form-control" required name="purok">
                                                     <option disabled selected>Select Purok Name</option>
                                                     <?php foreach($purok as $row):?>
@@ -543,36 +724,62 @@ $conn->close();
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Voters Status</label>
-                                                <select class="form-control vstatus" required name="vstatus">
-                                                    <option disabled selected>Select Voters Status</option>
-                                                    <option value="Yes">Yes</option>
-                                                    <option value="No">No</option>
-                                                </select>
+                                                <label>What is your tax no?</label>
+                                                <input type="number" class="form-control" placeholder="Enter your tax number" min="6" name="taxno" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>Tax no</label>
-                                                <input type="number" class="form-control" placeholder="Enter Tax number" min="6" name="taxno" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="text" class="form-control" placeholder="Enter Email Address" value="no-email@sample.com" name="email" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Contact Number</label>
-                                                <input type="text" class="form-control" placeholder="Enter Contact Number" value="+63 000-000-000-00" name="number" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Occupation</label>
-                                                <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Requirements</label>
+                                                <label>What requirements you need this certificates?</label>
                                                 <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
+                                        <input type="hidden" name="certificate_name" value="certificate of indigency" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <div class="modal fade" id="addjobseekers" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Certificate of First Time Jobseekers Form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
+                            <form method="POST" action="model/save_clearance.php" enctype="multipart/form-data">
+                                <input type="hidden" name="size" value="1000000">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>What is your complete name?</label>
+                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What purok do you live?</label>
+                                                <select class="form-control" required name="purok">
+                                                    <option disabled selected>Select Purok Name</option>
+                                                    <?php foreach($purok as $row):?>
+                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>How many year's you have been a resident of Los Amigos?</label>
+                                                <input type="number" class="form-control" placeholder="" min="6" name="year" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="certificate_name" value="first time jobseekers" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>

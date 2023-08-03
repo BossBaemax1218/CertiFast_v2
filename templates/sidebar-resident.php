@@ -36,19 +36,23 @@ $totalAnnouncements = $row1['total_announcements'];
                     <?php endif ?>                  
                 </div>
                 <div class="info">
-                    <a data-toggle="collapse" href="<?= isset($_SESSION['fullname']) && $_SESSION['role'] == 'resident' ? '#collapseExample' : 'javascript:void(0)' ?>" aria-expanded="true">
+                    <a data-toggle="collapse" href="<?= isset($_SESSION['fullname']) && ($_SESSION['role'] == 'resident') ? '#collapseExample' : 'javascript:void(0)' ?>" aria-expanded="true">
                         <span>
                             <?= isset($_SESSION['fullname']) ? ucwords($_SESSION['fullname']) : 'Guest User' ?>
                             <span class="user-level">
                                 <?php
-                                if (isset($_SESSION['role']) && $_SESSION['role'] == 'resident') {
-                                    echo 'Resident';
+                                if (isset($_SESSION['role'])) {
+                                    $role = ucwords($_SESSION['role']);
+                                    if ($_SESSION['role'] == 'resident') {
+                                        $role = ucwords($_SESSION['role']) . '';
+                                    }
+                                    echo $role;
                                 } else {
                                     echo 'Guest';
                                 }
                                 ?>
                             </span>
-                            <?php if (isset($_SESSION['fullname']) && $_SESSION['role'] == 'resident') : ?>
+                            <?php if (isset($_SESSION['fullname']) && ($_SESSION['role'] == 'resident' || $_SESSION['role'] == 'resident' || $_SESSION['role'] == 'resident')) : ?>
                                 <span class="caret"></span>
                             <?php endif; ?>
                         </span>
@@ -58,10 +62,10 @@ $totalAnnouncements = $row1['total_announcements'];
                         <ul class="nav">
                             <li>
                                 <a href="#edit_user_profile" data-toggle="modal">
-                                    <span class="link-collapse">Edit Profile</span>
+                                    <span class="link-collapse">Profile Picture</span>
                                 </a>
                                 <a href="#user_changepass" data-toggle="modal">
-                                    <span class="link-collapse">Change Password</span>
+                                    <span class="link-collapse">Account Information</span>
                                 </a><br>
                                 <a type="button" data-toggle="modal" data-target="#deleteConfirmationModal" class="btn btn-danger" style="padding: 4px 50px; text-decoration:none;">
                                     <span class="link-collapse text-white">Delete Account</span>
@@ -97,7 +101,19 @@ $totalAnnouncements = $row1['total_announcements'];
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">Requested Form</h4>
+                    <h4 class="text-section">Profiling</h4>
+                </li>
+                <li class="nav-item <?= $current_page=='resident_profiling.php' || $current_page=='resident_profiling.php' ? 'active' : null ?>">
+                    <a href="resident_profiling.php">
+                        <i class="far fa-paper-plane"></i>
+                        <p>Personal Data</p>
+                    </a>
+                </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Certification Form</h4>
                 </li>
                 <li class="nav-item <?= $current_page=='resident_request.php' || $current_page=='resident_request.php' ? 'active' : null ?>">
                     <a href="resident_request.php">

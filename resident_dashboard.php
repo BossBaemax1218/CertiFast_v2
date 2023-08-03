@@ -5,7 +5,7 @@ if (!isset($_SESSION["fullname"])) {
     exit;
 }
 $fullname = $_SESSION["fullname"];
-$query = "SELECT *,p.id,p.status FROM tblresident_requested AS p JOIN tbl_user_resident AS u ON p.resident_name=u.fullname WHERE u.fullname=?";       
+$query = "SELECT *,p.cert_id,p.status FROM tblresident_requested AS p JOIN tbl_user_resident AS u ON p.resident_name=u.fullname WHERE u.fullname=? AND p.status IN ('on hold', 'approved')";       
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $fullname);

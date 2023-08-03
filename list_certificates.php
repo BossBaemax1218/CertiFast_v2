@@ -1,12 +1,36 @@
 <?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT *, r.id FROM tblresident AS r JOIN tblresident_requested AS s ON r.purok=s.purok";
-    $result = $conn->query($query);
 
-    $resident = array();
-	while($row = $result->fetch_assoc()){
-		$resident[] = $row; 
-	}
+$sql = "SELECT *, r.id, s.cert_id, s.certificate_name, s.status, s.date_applied 
+        FROM tblresident AS r 
+        JOIN tblresident_requested AS s ON r.certificate_name = s.certificate_name 
+        WHERE r.residency_status='approved' AND s.status ='on hold'";
+$result = $conn->query($sql);
+
+$resident = array();
+$approvedResidents = array();
+
+while ($row = $result->fetch_assoc()) {
+    $status = $row['status'];
+    $statusBadge = '';
+
+    if ($status == 'on hold') {
+        $statusBadge = '<span class="badge badge-warning">On Hold</span>';
+    } elseif ($status == 'approved') {
+        $statusBadge = '<span class="badge badge-success">Approved</span>';
+    } elseif ($status == 'rejected') {
+        $statusBadge = '<span class="badge badge-danger">Rejected</span>';
+    }
+
+    $row['residency_badge'] = $statusBadge;
+
+    if ($status == 'on hold' || $status == 'rejected') {
+        $resident[] = $row;
+    } elseif ($status == 'approved') {
+        $resident[] = $row;
+    }
+}
+
 
     $query1 = "SELECT * FROM tblpurok";
     $result1 = $conn->query($query1);
@@ -64,7 +88,7 @@
                                                 <option value="Barangay Identification" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Barangay Identification') echo 'selected'; ?>>Barangay Identification</option>
                                                 <option value="Certificate of Residency" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Residency') echo 'selected'; ?>>Certificate of Residency</option>
                                                 <option value="Certificate of Indigency" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Indigency') echo 'selected'; ?>>Certificate of Indigency</option>
-                                                <option value="Firt Time Jobseekers" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Firt Time Jobseekers') echo 'selected'; ?>>Firt Time Jobseekers</option>
+                                                <option value="First Time Jobseekers" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'First Time Jobseekers') echo 'selected'; ?>>First Time Jobseekers</option>
                                                 <option value="Certificate of OATH Taking" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of OATH Taking') echo 'selected'; ?>>Certificate of OATH Taking</option>
                                                 <option value="Certificate of Good Moral" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Good Moral') echo 'selected'; ?>>Certificate of Good Moral</option>
                                                 <option value="Certificate of Live In" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Live In') echo 'selected'; ?>>Certificate of Live In</option>
@@ -79,12 +103,11 @@
                                             <table id="residenttable" class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">Fullname</th>
-                                                        <th scope="col">Birthdate</th>
-                                                        <th scope="col">Age</th>
-                                                        <th scope="col">Civil Status</th>
-                                                        <th scope="col">Gender</th>
+                                                        <th scope="col">Date</th>
+                                                        <th class="text-center" scope="col">Fullname</th>
+                                                        <th scope="col">Certificates Name</th>
                                                         <th scope="col">Purok</th>
+                                                        <th class="text-center" scope="col">Status</th>
                                                         <?php if (isset($_SESSION['username'])) : ?>
                                                             <?php if ($_SESSION['role'] == 'administrator') : ?>
                                                         <?php endif ?>
@@ -97,20 +120,20 @@
                                                         <?php $no = 1;
                                                         foreach ($resident as $row) : ?>
                                                             <tr data-id="<?= $row['id'] ?>">
+                                                                <td><?= $row['date_applied'] ?></td>
                                                                 <td>
                                                                     <?= ucwords($row['lastname'] . ', ' . $row['firstname'] . ' ' . $row['middlename']) ?>
                                                                 </td>
-                                                                <td><?= $row['birthdate'] ?></td>
-                                                                <td><?= $row['age'] ?></td>
-                                                                <td><?= $row['civilstatus'] ?></td>
-                                                                <td><?= $row['gender'] ?></td>
+                                                                <td><?= $row['certificate_name'] ?></td>
                                                                 <td><?= $row['purok'] ?></td>
+                                                                <td class="text-center"><?= $row['residency_badge'] ?></td>
                                                                 <?php if (isset($_SESSION['username'])) : ?>
                                                                     <?php if ($_SESSION['role'] == 'administrator') : ?>
                                                                 <?php endif ?>
                                                                 <td class="text-center">
                                                                     <div class="form-button-action">
-                                                                        <a type="button" href="#" data-toggle="modal" class="btn btn-link btn-primary generate-certificate-btn-link" data-original-title="Edit Credentials" data-id="<?= $row['id'] ?>">
+                                                                        <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Status" onclick="editStatus(this)" 
+                                                                            data-id="<?= $row['cert_id'] ?>" data-status="<?= $row['status'] ?>">
                                                                             <?php if(isset($_SESSION['username'])): ?>
                                                                                 <i class="fas fa-edit"></i>
                                                                             <?php else: ?>
@@ -136,40 +159,41 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="editclearance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Update Status</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="POST" action="model/edit_resident_purok.php" enctype="multipart/form-data">
-                                    <input type="hidden" name="size" value="1000000">
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <select class="form-control primary rstatus" required name="rstatus">
-                                                <option disabled selected>Select Status</option>
-                                                <option value="on hold">On Hold</option>
-                                                <option value="approved">Approved</option>
-                                                <option value="rejected">Rejected</option>
-                                            </select>
-                                        </div>
+            </div>
+        </div>
+        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Update Status</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST" action="model/edit_cert_status.php" enctype="multipart/form-data">
+                                <input type="hidden" name="size" value="1000000">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <select class="form-control primary" required name="status">
+                                            <option disabled selected>Select Status</option>
+                                            <option value="on hold">On Hold</option>
+                                            <option value="approved">Approved</option>
+                                            <option value="rejected">Rejected</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <input type="hidden" name="id" id="res_id">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    <?php if(isset($_SESSION['username'])): ?>
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                    <?php endif ?>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="hidden" name="id" id="id">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <?php if(isset($_SESSION['username'])): ?>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                                <?php endif ?>
+                            </div>
+                        </form>
                     </div>
-                </dvi>
+                </div>
             </div>
 			<?php include 'templates/main-footer.php' ?>
 		</div>
@@ -239,5 +263,14 @@
         });
     });
 </script>
+<script>
+    function editStatus(that){
+        id          = $(that).attr('data-id');
+        status     = $(that).data('data-status');
+
+        $('#id').val(id);
+        $('#status').val(status);
+    }
+    </script>
 </body>
 </html>

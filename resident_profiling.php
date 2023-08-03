@@ -1,49 +1,53 @@
-<?php include 'server/server.php' ?>
+<?php include 'server/db_connection.php' ?>
 <?php 
-    
-	$query = "SELECT * FROM `tblresident` WHERE residency_status='approved' ORDER BY `id` DESC";
-    $result = $conn->query($query);
+    if (!isset($_SESSION["fullname"])) {
+        header("Location: login.php");
+        exit;
+    }
 
-    $resident = array();
-    while ($row = $result->fetch_assoc()) {
-        $status = $row['residency_status'];
-        $statusBadge = '';
-        if ($status == 'on hold') {
-            $statusBadge = '<span class="badge badge-warning">On Hold</span>';
-        } elseif ($status == 'approved') {
-            $statusBadge = '<span class="badge badge-primary">Approved</span>';
-        }
+$fullname = $_SESSION["fullname"];
 
-    
-        $row['residency_badge'] = $statusBadge;
+$sql = "SELECT *, tblresident.id, tblresident.purok FROM tblresident JOIN tbl_user_resident ON tblresident.email = tbl_user_resident.user_email WHERE tbl_user_resident.fullname = ? AND tblresident.residency_status IN ('on hold', 'approved','rejected')";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $fullname);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$resident = array();
+$approvedResidents = array();
+
+while ($row = $result->fetch_assoc()) {
+    $status = $row['residency_status'];
+    $statusBadge = '';
+
+    if ($status == 'on hold') {
+        $statusBadge = '<span class="badge badge-warning">On Hold</span>';
+    }elseif ($status == 'approved') {
+            $statusBadge = '<span class="badge badge-success">Approved</span>';
+    } elseif ($status == 'rejected') {
+        $statusBadge = '<span class="badge badge-danger">Rejected</span>';
+    }
+
+    $row['residency_badge'] = $statusBadge;
+
+    if ($status == 'on hold') {
+        $resident[] = $row;
+    } elseif ($status == 'approved') {
+        $resident[] = $row;
+    } elseif ($status == 'rejected') {
         $resident[] = $row;
     }
+}
 
-    $query1 = "SELECT * FROM tblpurok";
-    $result1 = $conn->query($query1);
+$query1 = "SELECT * FROM tblpurok";
+$result1 = $conn->query($query1);
 
-    $purok = array();
-	while($row2 = $result1->fetch_assoc()){
-		$purok[] = $row2; 
-	}
+$purok = array();
+while($row = $result1->fetch_assoc()){
+    $purok[] = $row; 
+}
 
-    $query1 = "SELECT COUNT(*) AS total_resident FROM tblresident";
-    $result1 = $conn->query($query1);
-    
-    if ($result1 && $result1->num_rows > 0) {
-        $row3 = $result1->fetch_assoc();
-        $totalresident = $row3['total_resident'];
-    } else {
-        $totalresident = 0;
-    }
-
-	$query2 = "SELECT * FROM tblresident WHERE voterstatus='Yes'";
-    $result2 = $conn->query($query2);
-	$votersyes= $result2->num_rows;
-
-	$query3 = "SELECT * FROM tblresident WHERE voterstatus='No'";
-    $result3 = $conn->query($query3);
-	$votersno= $result3->num_rows;
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,120 +58,42 @@
 <body>
 <?php include 'templates/loading_screen.php' ?>
 	<div class="wrapper">
-		<?php include 'templates/main-header.php' ?>
-		<?php include 'templates/sidebar.php' ?>
+		<?php include 'templates/main-header-resident.php' ?>
+		<?php include 'templates/sidebar-resident.php' ?>
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header">
-					<div class="page-inner">
-						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-							<div>
-								<h1 class="text-center fw-bold" style="font-size: 300%;">Resident Reports</h1>
-							</div>
+					<div class="page-inner mt-2">
+						<div class="d-flex align-items-center align-items-md-center flex-column">
+                            <h1 class="text-center fw-bold" style="font-size: 400%;">Resident Profiling</h1>
+                            <h2 class="text-center">Please fill out your personal information first before you requested any of the certifications in Barangay Los Amigos.</h2>
 						</div>
+                        <?php if(isset($_SESSION['fullname'])):?>
+                        <h4 class="text-center fw-bold mt-5">
+                            <a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;" <?php echo isset($_SESSION['success']) || $nat > 0 ? 'disabled' : ''; ?>>
+                                CLICK HERE TO REGISTER YOUR PERSONAL DATA
+                            </a>
+                        </h4>
+                        <?php endif ?>
 					</div>
 				</div>
-                <div class="page-inner mt-2">
+                <div class="page-inner mt-1">
                     <?php if(isset($_SESSION['message'])): ?>
-								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-									<?php echo $_SESSION['message']; ?>
-								</div>
-							<?php unset($_SESSION['message']); ?>
-						<?php endif ?>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card card-stats card card-round">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="icon-big text-center">
-                                                <i class="fas fa-user fa-2x" style="color: gray;"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-stats">
-                                        </div>
-                                        <div class="col-2 col-stats">
-                                            <div class="numbers mt-2">
-                                                <h2 class="text-uppercase" style="font-size: 16px;">Residents</h2>
-                                                <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($totalresident) ?></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                    
-                                    </div>
-                                </div>
+                            <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                <?php echo $_SESSION['message']; ?>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-stats card card-round">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="icon-big text-center">
-                                                <i class="fas fa-user-check fa-2x" style="color: gray;"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-stats">
-                                        </div>
-                                        <div class="col-2 col-stats">
-                                            <div class="numbers mt-2">
-                                                <h2 class="text-uppercase" style="font-size: 16px;">Voters</h2>
-                                                <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($votersyes) ?></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <!--<a href="users.php?state=male" class="card-link text" style="color: gray;">Total Voters</a>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-stats card card-round">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="icon-big text-center">
-                                                <i class="fas fa-user-times fa-2x" style="color: gray;"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-stats">
-                                        </div>
-                                        <div class="col-2 col-stats">
-                                            <div class="numbers mt-2">
-                                                <h2 class="text-uppercase" style="font-size: 16px;">NonVoters</h2>
-                                                <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($votersno) ?></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <?php unset($_SESSION['message']); ?>
+                    <?php endif ?>
                 </div>
-				<div class="page-inner md-2">
+				<div class="page-inner">
 					<div class="row">
 						<div class="col-md-12">
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Resident Information</div>
-                                        <?php if(isset($_SESSION['username'])):?>
+										<div class="card-title">Registration Status</div>
 										<div class="card-tools">
-											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
-												<i class="fa fa-plus"></i>
-												Resident
-											</a>
-                                            <a href="model/export_resident_csv.php" class="btn btn-danger btn-border btn-round btn-sm">
-												<i class="fa fa-file"></i>
-												Export CSV
-											</a>
 										</div>
-                                        <?php endif ?>
 									</div>
 								</div>
 								<div class="card-body">
@@ -180,8 +106,8 @@
                                                     <th scope="col">Email</th>
 													<th scope="col">Purok</th>
                                                     <th class="text-center" scope="col">Status</th>
-                                                    <?php if(isset($_SESSION['username'])):?>
-                                                        <?php if($_SESSION['role']=='administrator'):?>
+                                                    <?php if(isset($_SESSION['fullname'])):?>
+                                                        <?php if($_SESSION['role']=='resident'):?>
 													
                                                     <?php endif ?>
 													<th class="text-center" scope="col">Action</th>
@@ -202,9 +128,9 @@
                                                         <td><?= $row['email'] ?></td>
                                                         <td><?= $row['purok'] ?></td>
                                                         <td class="text-center"><?= $row['residency_badge'] ?></td>
-                                                        <?php if(isset($_SESSION['username'])):?>
+                                                        <?php if(isset($_SESSION['fullname'])):?>
                                                             
-                                                            <?php if($_SESSION['role']=='administrator'):?>
+                                                            <?php if($_SESSION['role']=='resident'):?>
                                                         
                                                         <?php endif ?>
 														<td class="text-center">
@@ -219,11 +145,8 @@
                                                                         <i class="fa fa-eye"></i>
                                                                     <?php endif ?>
                                                                 </a>
-                                                                <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
-																<a type="button" data-toggle="tooltip" href="generate_resident.php?id=<?= $row['id'] ?>" class="btn btn-link btn-info" data-original-title="Generate">
-                                                                    <i class="fas fa-print"></i>
-																</a>
-                                                                <a type="button" data-toggle="tooltip" href="model/remove_resident.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this resident?');" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                                <?php if(isset($_SESSION['fullname']) && $_SESSION['role']=='resident'):?>
+                                                                <a type="button" data-toggle="tooltip" href="model/remove_resident_user.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this resident?');" class="btn btn-link btn-danger" data-original-title="Remove">
 																	<i class="fas fa-trash"></i>
 																</a>
                                                                 <?php endif ?>
@@ -246,20 +169,20 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">New Resident Registration Form</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Registration Form</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                             <div class="modal-body">
-                                <form method="POST" action="model/save_resident.php" enctype="multipart/form-data">
+                                <form method="POST" action="model/save_resident_user.php" enctype="multipart/form-data">
                                     <input type="hidden" name="size" value="1000000">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div style="height: 250;" class="text-center" id="my_camera">
                                                     <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
                                                 </div>
-                                                <?php if(isset($_SESSION['username'])):?>
+                                                <?php if(isset($_SESSION['fullname'])):?>
                                                 <div class="form-group d-flex justify-content-center">
                                                     <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
                                                     <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
@@ -284,40 +207,40 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Barangay ID No.</label>
-                                                    <input type="text" class="form-control" name="national" placeholder="Enter Barangay ID No." required>
+                                                    <label>What is your Barangay ID No.</label>
+                                                    <input type="text" class="form-control" name="national" placeholder="Enter your Barangay ID No." required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Citizenship</label>
-                                                    <input type="text" class="form-control" name="citizenship" placeholder="Enter citizenship" required>
+                                                    <label>Are you a Filipino or Half Filipino?</label>
+                                                    <input type="text" class="form-control" name="citizenship" placeholder="Enter your citizenship" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>First name</label>
-                                                    <input type="text" class="form-control" placeholder="Enter First name" name="fname" required>
+                                                    <label>What is your first name?</label>
+                                                    <input type="text" class="form-control" placeholder="Joe Anne" name="fname" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Middle name</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Middle name" name="mname" required>
+                                                    <label>What is your middle initial?</label>
+                                                    <input type="text" class="form-control" placeholder="G." name="mname" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Last name</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Last name" name="lname" required>
+                                                    <label>What is your surname?</label>
+                                                    <input type="text" class="form-control" placeholder="Aldoe" name="lname" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Address</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Address" name="address" required>
+                                                    <label>What is your current address?</label>
+                                                    <input type="text" class="form-control" placeholder="Enter your address" name="address" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Place of Birth</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" required>
+                                                    <label>What is your birthdate?</label>
+                                                    <input type="date" class="form-control" placeholder="Enter your birthdate" name="bdate" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Birthdate</label>
-                                                    <input type="date" class="form-control" placeholder="Enter Birthdate" name="bdate" required>
+                                                    <label>Where do you born?</label>
+                                                    <input type="text" class="form-control" placeholder="Enter your birthplace" name="bplace" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Age</label>
-                                                    <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
+                                                    <label>What is your current age?</label>
+                                                    <input type="number" class="form-control" placeholder="Enter your age" min="1" name="age" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Civil Status</label>
@@ -346,7 +269,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Voters Status</label>
+                                                    <label>Are you already a voters?</label>
                                                     <select class="form-control vstatus" required name="vstatus">
                                                         <option disabled selected>Select Voters Status</option>
                                                         <option value="Yes">Yes</option>
@@ -354,24 +277,16 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Tax no</label>
-                                                    <input type="number" class="form-control" placeholder="Enter Tax number" min="6" name="taxno" required>
-                                                </div>
-                                                <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Email Address" value="no-email@sample.com" name="email" required>
+                                                    <input type="text" class="form-control" placeholder="Enter your email address" value="no-email@sample.com" name="email" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Contact Number</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Contact Number" value="+63 000-000-000-00" name="number" required>
+                                                    <input type="text" class="form-control" placeholder="Enter your contact number" value="+63 000-000-000-00" name="number" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Occupation</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Requirements</label>
-                                                    <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
+                                                    <input type="text" class="form-control" placeholder="Enter your occupation" name="occupation" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -389,20 +304,20 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Update Resident Information</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Update Profiling Information</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST" action="model/edit_resident.php" enctype="multipart/form-data">
+                                    <form method="POST" action="model/edit_resident_user.php" enctype="multipart/form-data">
                                         <input type="hidden" name="size" value="1000000">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div id="my_camera1" style="height: 250;" class="text-center">
                                                     <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" id="image">
                                                 </div>
-                                                <?php if(isset($_SESSION['username'])):?>
+                                                <?php if(isset($_SESSION['fullname'])):?>
                                                     <div class="form-group d-flex justify-content-center">
                                                         <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam1">Open Camera</button>
                                                         <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo1()">Capture</button>   
@@ -472,9 +387,9 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Sex</label>
+                                                    <label>Gender</label>
                                                     <select class="form-control" required name="gender" id="gender">
-                                                        <option disabled selected value="">Select Sex</option>
+                                                        <option disabled selected value="">Select Gender</option>
                                                         <option value="Male">Male</option>
                                                         <option value="Female">Female</option>
                                                     </select>
@@ -495,11 +410,7 @@
                                                         <option value="Yes">Yes</option>
                                                         <option value="No">No</option>
                                                     </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Tax no</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Tax No." name="taxno" id="taxno" required>
-                                                </div>                        
+                                                </div>                      
                                                 <div class="form-group">
                                                     <label>Email</label>
                                                     <input type="text" class="form-control" placeholder="Enter Email Address" name="email" id="email" required>
@@ -512,22 +423,10 @@
                                                     <label>Occupation</label>
                                                     <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" id="occupation" required>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Requirements</label>
-                                                    <textarea class="form-control" required name="remarks" placeholder="Enter Remarks" id="remarks" required></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Purpose</label>
-                                                    <textarea class="form-control" name="purpose" placeholder="Enter Purpose" id="purpose" required></textarea>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="hidden" name="id" id="res_id">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                            <?php if(isset($_SESSION['username'])): ?>
-                                            <button type="submit" class="btn btn-primary">Update</button>
-                                            <?php endif ?>
+                                            <input type="hidden" name="remarks" value="N/A" id="remarks">
                                         </div>
                                     </form>
                                 </div>

@@ -1,5 +1,5 @@
 <?php 
-	include '../server/server.php';
+	include '../server/db_connection.php';
 
 	if(!isset($_SESSION['fullname'])){
 		if (isset($_SERVER["HTTP_REFERER"])) {
@@ -105,6 +105,6 @@
 		$_SESSION['message'] = 'ID is already taken. Please enter a unique ID!';
 		$_SESSION['success'] = 'danger';
 	}
-    header("Location: ../resident_request.php");
+    header("Location: ../resident_profiling.php");
 
 	$conn->close();

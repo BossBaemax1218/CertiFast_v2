@@ -41,8 +41,8 @@ while($row2 = $result1->fetch_assoc()){
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
-		<div class="main-panel mt-5">
-			<div class="container">
+		<div class="main-panel mt-2">
+			<div class="content">
 				<div class="panel-header">
                     <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
                     <h2 class="text-center fw-bold" style="font-size: 200%;">Here are the Purok <?php echo isset($_SESSION['purok']) ? ucwords($_SESSION['purok']) : ''; ?> records with CertiFast Portal:</h2>
@@ -162,17 +162,31 @@ while($row2 = $result1->fetch_assoc()){
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div style="height: 250;" class="text-center" id="my_camera">
-                                                <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
-                                            </div>
-                                            <div class="form-group d-flex justify-content-center">
-                                                <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
-                                                <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
-                                            </div>
-                                            <div id="profileImage">
-                                                <input type="hidden" name="profileimg">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="file" class="form-control" name="img" accept="image/*">
+                                                    <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
+                                                </div>
+                                                <?php if(isset($_SESSION['username'])):?>
+                                                <div class="form-group d-flex justify-content-center">
+                                                    <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
+                                                    <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
+                                                </div>
+                                                <div id="profileImage">
+                                                    <input type="hidden" name="profileimg">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="file" class="form-control" name="img" accept="image/*">
+                                                </div>
+                                            <?php endif ?>
+                                            <div class="form-group text-center">
+                                                <div class="selectgroup selectgroup-secondary selectgroup-pills">
+                                                    <label class="selectgroup-item">
+                                                        <input type="radio" name="deceased" value="1" class="selectgroup-input" checked="">
+                                                        <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-walking"></i></span>
+                                                    </label><p class="mt-1 mr-3"><b>Alive</b></p>
+                                                    <label class="selectgroup-item">
+                                                        <input type="radio" name="deceased" value="0" class="selectgroup-input" id="dead">
+                                                        <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-people-carry"></i></span>
+                                                    </label><p  class="mt-1 mr-3"><b>Deceased</b></p>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Barangay ID No.</label>
@@ -293,18 +307,32 @@ while($row2 = $result1->fetch_assoc()){
                                 <input type="hidden" name="size" value="1000000">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div style="height: 250;" class="text-center" id="my_camera">
-                                            <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
+                                        <div id="my_camera1" style="height: 250;" class="text-center">
+                                            <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" id="image">
                                         </div>
-                                        <div class="form-group d-flex justify-content-center">
-                                            <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
-                                            <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
-                                        </div>
-                                        <div id="profileImage">
-                                            <input type="hidden" name="profileimg">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="file" class="form-control" name="img" accept="image/*">
+                                        <?php if(isset($_SESSION['username'])):?>
+                                            <div class="form-group d-flex justify-content-center">
+                                                <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam1">Open Camera</button>
+                                                <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo1()">Capture</button>   
+                                            </div>
+                                            <div id="profileImage1">
+                                                <input type="hidden" name="profileimg">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="file" class="form-control" name="img" accept="image/*">
+                                            </div>
+                                        <?php endif ?>
+                                        <div class="form-group text-center">
+                                            <div class="selectgroup selectgroup-secondary selectgroup-pills">
+                                                <label class="selectgroup-item">
+                                                    <input type="radio" name="deceased" value="1" class="selectgroup-input" checked="" id="alive">
+                                                    <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-walking"></i></span>
+                                                </label><p class="mt-1 mr-3"><b>Alive</b></p>
+                                                <label class="selectgroup-item">
+                                                    <input type="radio" name="deceased" value="0" class="selectgroup-input" id="dead">
+                                                    <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-people-carry"></i></span>
+                                                </label><p  class="mt-1 mr-3"><b>Deceased</b></p>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Barangay ID No.</label>

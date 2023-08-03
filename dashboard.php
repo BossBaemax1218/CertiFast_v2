@@ -4,10 +4,10 @@ if (!isset($_SESSION["username"])) {
     exit;
 }
 $fullname = $_SESSION["username"];
-$query = "SELECT *, r.id AS id 
+$query = "SELECT *, r.id AS id, r.requested_date
           FROM tblresident AS r 
           JOIN tbl_user_admin AS a ON r.purok = a.purok 
-          WHERE a.username = ? AND r.residency_status IN ('on hold', 'approved', 'rejected') 
+          WHERE a.username = ? AND r.residency_status IN ('on hold') 
           ORDER BY r.id DESC"; 
 
 $stmt = $conn->prepare($query);
@@ -24,19 +24,11 @@ while ($row = $result->fetch_assoc()) {
 
     if ($status == 'on hold') {
         $statusBadge = '<span class="badge badge-warning">On Hold</span>';
-    }elseif ($status == 'approved') {
-        $statusBadge = '<span class="badge badge-success">Approved</span>';
-    }elseif ($status == 'rejected') {
-        $statusBadge = '<span class="badge badge-danger">Rejected</span>';
     }
 
     $row['residency_badge'] = $statusBadge;
 
     if ($status == 'on hold') {
-        $resident[] = $row;
-    }elseif ($status == 'approved') {
-        $resident[] = $row;
-    }elseif ($status == 'rejected') {
         $resident[] = $row;
     }
 }
@@ -114,7 +106,7 @@ include 'model/status.php';
                             </div>
                         <?php endif ?>
                         <?php if(isset($_SESSION['username']) && $_SESSION['role']=='purok leader'):?>
-                        <div class="container">
+                    <div class="container">
                         <div class="form">
                             <h1 class="text-left fw-bold ml-1 mb-2 mt-5" style="font-size: 400%;">Purok Dashboard</h1>
                         </div>
@@ -207,6 +199,7 @@ include 'model/status.php';
                                             <table id="residenttable" class="table">
                                                     <thead>
                                                         <tr>
+                                                            <th scope="col">Date</th>
                                                             <th scope="col">Fullname</th>
                                                             <th scope="col">Birthdate</th>
                                                             <th scope="col">Email</th>
@@ -218,6 +211,7 @@ include 'model/status.php';
                                                     <?php if (!empty($resident)): ?>
                                                         <?php $no = 1; foreach ($resident as $row): ?>
                                                             <tr>
+                                                                <td><?= $row['requested_date'] ?></td>
                                                                 <td>
                                                                     <div class="avatar avatar-xs ml-3">
                                                                         <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
@@ -238,7 +232,7 @@ include 'model/status.php';
                                 </div>
                             </div>
                         </div>
-                    <?php endif ?>
+                        <?php endif ?>
                     </div>
                </div>
             <?php include 'templates/main-footer.php' ?>
