@@ -5,7 +5,7 @@ if (!isset($_SESSION["fullname"])) {
     exit;
 }
 $fullname = $_SESSION["fullname"];
-$query = "SELECT *,p.cert_id,p.status FROM tblresident_requested AS p JOIN tbl_user_resident AS u ON p.resident_name=u.fullname WHERE u.fullname=? AND p.status IN ('on hold', 'approved')";       
+$query = "SELECT *,p.cert_id,p.status FROM tblresident_requested AS p JOIN tbl_user_resident AS u ON p.resident_name=u.fullname WHERE u.fullname=? AND p.status IN ('on hold')";       
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $fullname);
@@ -154,7 +154,7 @@ include 'model/requested_status.php';
 														<tr>
 															<td><?= $row['date_applied'] ?></td>
 															<td><?= $row['resident_name'] ?></td>
-															<td><?= $row['certificate_name'] ?></td>
+															<td><?= ucwords($row['certificate_name']) ?></td>
 															<td class="text-center status-cell"><?= $row['residency_badge'] = $statusBadge; ?></td>
 														</tr>
 														<?php endforeach ?>

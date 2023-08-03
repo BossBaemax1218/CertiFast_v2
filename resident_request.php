@@ -142,7 +142,7 @@ $conn->close();
                                         <div class="name_job"><?php echo ucwords($box['name']); ?></div>
                                         <p><?php echo $box['description']; ?></p>
                                         <div class="btns">
-                                            <a href="<?php echo $box['link']; ?>" data-toggle="modal"><button style="padding 20px 100px; background: #e0004b;">Request</button></a>
+                                            <a href="<?php echo $box['link']; ?>" data-toggle="modal"><button style="padding 10px 100px; background: #e0004b;">Request</button></a>
                                         </div>
                                     </div>
                                     <?php endforeach; ?>
@@ -186,7 +186,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of good moral" required>
-                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -245,7 +245,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of death" required>
-                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -318,7 +318,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of death" required>
-                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -331,7 +331,7 @@ $conn->close();
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Create Business Permit</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Business Permit Form</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -365,7 +365,7 @@ $conn->close();
                        		</div>
 							<div class="modal-footer">
                                 <input type="hidden" name="certificate_name" value="business permit" required>
-                                <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
 								<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 								<button type="submit" class="btn btn-danger">Create</button>
 							</div>
@@ -408,7 +408,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of oath taking" required>
-                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -456,7 +456,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="barangay clearance" required>
-                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -516,7 +516,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of live in" required>
-                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -564,7 +564,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="family home estate" required>
-                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -639,7 +639,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of birth" required>
-                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -658,7 +658,7 @@ $conn->close();
                         </button>
                     </div>
                         <div class="modal-body">
-                            <form method="POST" action="model/save_clearance.php" enctype="multipart/form-data">
+                            <form method="POST" action="model/save_residency.php" enctype="multipart/form-data">
                                 <input type="hidden" name="size" value="1000000">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -681,13 +681,17 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>What requirements you need this certificates?</label>
-                                                <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
+                                                <input class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></input>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>How long have you been a resident of Barangay Los Amigos?</label>
+                                                <input type="number" class="form-control" name="purpose" required placeholder=""></input>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of residency" required>
-                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -706,7 +710,7 @@ $conn->close();
                         </button>
                     </div>
                         <div class="modal-body">
-                            <form method="POST" action="model/save_clearance.php" enctype="multipart/form-data">
+                            <form method="POST" action="model/save_indigency.php" enctype="multipart/form-data">
                                 <input type="hidden" name="size" value="1000000">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -735,7 +739,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of indigency" required>
-                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -779,7 +783,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="first time jobseekers" required>
-                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>

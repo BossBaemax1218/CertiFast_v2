@@ -1,39 +1,42 @@
 <?php 
-	include('../server/server.php');
+    include('../server/server.php');
 
-    if(!isset($_SESSION['fullname'])){
+    if (!isset($_SESSION['fullname'])) {
         if (isset($_SERVER["HTTP_REFERER"])) {
             header("Location: " . $_SERVER["HTTP_REFERER"]);
         }
     }
-    
-	$business_name = $conn->real_escape_string($_POST['business_name']);
-	$owner1 	= $conn->real_escape_string($_POST['owner1']);
-    $email 	    = $conn->real_escape_string($_POST['email']);
-	$address	= $conn->real_escape_string($_POST['address']);
-    $location	= $conn->real_escape_string($_POST['location']);
-    $applied 	= $conn->real_escape_string($_POST['applied']);
 
-    if(!empty($business_name) && !empty($owner1) && !empty($address) && !empty($location) && !empty($applied)){
+    $business_name = $conn->real_escape_string($_POST['business_name']);
+    $owner1        = $conn->real_escape_string($_POST['owner1']);
+    $email         = $conn->real_escape_string($_POST['email']);
+    $address       = $conn->real_escape_string($_POST['address']);
+    $location      = $conn->real_escape_string($_POST['location']);
+    $applied       = $conn->real_escape_string($_POST['applied']);
+    $cert_name      = $conn->real_escape_string($_POST['certificate_name']);
 
-        $insert  = "INSERT INTO tblpermit (`business_name`, `owner1`, `email`, address, location, applied, status) VALUES ('$business_name', '$owner1','$email', '$address', '$location','$applied', 'on hold')";
-        $result  = $conn->query($insert);
+    if (!empty($business_name) && !empty($owner1) && !empty($address) && !empty($location) && !empty($applied) && !empty($cert_name)) {
+        list($firstname, $middlename, $lastname) = explode(' ', $owner1, 3);
 
-        if($result === true){
-            $_SESSION['message'] = 'Business Permit added!';
+        $insert = "INSERT INTO tblpermit (`business_name`, `owner1`, `email`, `address`, `location`, `applied`, `status`) VALUES ('$business_name', '$owner1', '$email', '$address', '$location', '$applied', 'on hold')";
+        $result = $conn->query($insert);
+
+        if ($result === true) {
+            $fullname = $firstname . ' ' . $middlename . ' ' . $lastname;
+            $insert_requested = "INSERT INTO tblresident_requested(`resident_name`, `certificate_name`, `purok`,`email`, `status`) VALUES ('$owner1', '$cert_name', '$location','$email', 'on hold')";
+            $result_requested = $conn->query($insert_requested);
+
+            $_SESSION['message'] = 'You have requested a business permit, and the request has been sent!';
             $_SESSION['success'] = 'success';
-
-        }else{
+        } else {
             $_SESSION['message'] = 'Something went wrong!';
             $_SESSION['success'] = 'danger';
         }
-
-    }else{
-
+    } else {
         $_SESSION['message'] = 'Please fill up the form completely!';
         $_SESSION['success'] = 'danger';
     }
 
-    header("Location: ../resident_certificates.php");
-
-	$conn->close();
+    header("Location: ../resident_request.php");
+    $conn->close();
+?>

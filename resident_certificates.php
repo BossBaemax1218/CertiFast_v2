@@ -8,11 +8,11 @@ if (!isset($_SESSION["fullname"])) {
 
 $fullname = $_SESSION["fullname"];
 
-$sql = "SELECT *,r.id, s.certificate_name, s.status, s.date_applied 
+$sql = "SELECT *,s.cert_id, s.certificate_name, s.status, s.date_applied 
         FROM tblresident AS r 
         JOIN tblresident_requested AS s ON r.certificate_name = s.certificate_name 
         JOIN tbl_user_resident AS u ON u.fullname = s.resident_name
-        WHERE u.fullname = ? AND s.status IN ('on hold','approved','rejected')";
+        WHERE u.fullname = ? AND s.status IN ('approved','rejected')";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $fullname);
@@ -35,6 +35,11 @@ while ($row = $result->fetch_assoc()) {
     }
 
     $row['residency_badge'] = $statusBadge;
+	if ($status == 'on hold') {
+        $resident[] = $row;
+    } elseif ($status == 'rejected') {
+        $resident[] = $row;
+    }
 }
 
 $stmt->close();
@@ -81,8 +86,8 @@ $stmt->close();
 												</tr>
 											</thead>
 											<tbody>
-												<?php if(!empty($permit)): ?>
-													<?php foreach($permit as $row): ?>
+												<?php if(!empty($resident)): ?>
+													<?php foreach($resident as $row): ?>
 													<tr class="text-center">
 														<td><?= ucwords($row['date_applied']) ?></td>
 														<td><?= ucwords($row['resident_name']) ?></td>
