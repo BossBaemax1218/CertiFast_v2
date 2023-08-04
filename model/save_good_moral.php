@@ -10,15 +10,13 @@
     $fullname  = $conn->real_escape_string($_POST['fullname']);
     $purok     = $conn->real_escape_string($_POST['purok']);
     $taxno     = $conn->real_escape_string($_POST['taxno']);
-    $remarks   = $conn->real_escape_string($_POST['remarks']);
-    $purpose   = $conn->real_escape_string($_POST['purpose']);
     $cert_name = $conn->real_escape_string($_POST['certificate_name']);
     $user_email = $conn->real_escape_string($_POST['email']);
 
-    if (!empty($fullname) && !empty($purok) && !empty($taxno) && !empty($remarks) && !empty($cert_name)) {
+    if (!empty($fullname) && !empty($purok) && !empty($taxno) && !empty($cert_name)) {
         list($firstname, $middlename, $lastname) = explode(' ', $fullname, 3);
 
-        $update_query = "UPDATE tblresident SET `purok` = '$purok', `taxno` = '$taxno', `remarks` = '$remarks', `email` = '$user_email', `purpose` = '$purpose', `certificate_name` = '$cert_name' WHERE `firstname` = '$firstname' AND `middlename` = '$middlename' AND `lastname` = '$lastname'";
+        $update_query = "UPDATE tblresident SET `purok` = '$purok', `taxno` = '$taxno', `email` = '$user_email', `certificate_name` = '$cert_name' WHERE `firstname` = '$firstname' AND `middlename` = '$middlename' AND `lastname` = '$lastname'";
         $result_resident = $conn->query($update_query);
 
         if ($result_resident === true) {
@@ -26,7 +24,7 @@
             $result_requested = $conn->query($insert_requested);
 
             if ($result_requested === true) {
-                $_SESSION['message'] = 'You have requested a certificate of residency has been sent!';
+                $_SESSION['message'] = 'You have requested a certificate of good moral has been sent!';
                 $_SESSION['success'] = 'success';
             } else {
                 $_SESSION['message'] = 'Something went wrong!';

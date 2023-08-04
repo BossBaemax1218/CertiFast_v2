@@ -11,10 +11,10 @@
 	$query2 = "SELECT COUNT(certificate_name) as rejected FROM tblresident_requested WHERE status = 'rejected'";
 	$revenue3 = $conn->query($query2)->fetch_assoc();
 
-    $sql = "SELECT *, r.id, r.email, s.cert_id, s.certificate_name, s.status, s.date_applied 
-    FROM tblresident AS r 
-    JOIN tblresident_requested AS s ON r.certificate_name = s.certificate_name 
-    WHERE s.status IN('approved','rejected')";
+    $query3 = "SELECT COUNT(certificate_name) as claimed FROM tblresident_requested WHERE status = 'claimed'";
+	$revenue4 = $conn->query($query3)->fetch_assoc();
+
+    $sql = "SELECT * FROM tblresident_requested WHERE status IN('on hold','claimed','approved','rejected')";
     $result = $conn->query($sql);
 
     $resident = array();
@@ -30,13 +30,19 @@
         $statusBadge = '<span class="badge badge-success">Approved</span>';
     } elseif ($status == 'rejected') {
         $statusBadge = '<span class="badge badge-danger">Rejected</span>';
+    } elseif ($status == 'claimed') {
+        $statusBadge = '<span class="badge badge-danger">Claimed</span>';
     }
 
     $row['residency_badge'] = $statusBadge;
 
-    if ($status == 'on hold' || $status == 'rejected') {
+    if ($status == 'on hold') {
         $resident[] = $row;
     } elseif ($status == 'approved') {
+        $resident[] = $row;
+    } elseif ($status == 'rejected') {
+        $resident[] = $row;
+    } elseif ($status == 'claimed') {
         $resident[] = $row;
     }
 }
@@ -45,10 +51,6 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>     
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-  <script src="https://cdn.jsdelivr.net/npm/table-html-export"></script>              
 	<title>CertiFast Portal</title>
 </head>
 <body>
@@ -75,19 +77,19 @@
                                 </div>
                             </div>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="card card-stats card card-round">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-4">
                                                 <div class="icon-big text-center">
-                                                    <i class="fas fa-file-alt fa-2x" style="color: gray;"></i>
+                                                    <i class="fa fa-history fa-2x" aria-hidden="true" style="color: gray;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Pending</h2>
-                                                    <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($revenue1['pending']) ?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 25px; color: #C77C8D;"><?= number_format($revenue1['pending']) ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,19 +99,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="card card-stats card card-round" >
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-4">
                                                 <div class="icon-big text-center">
-                                                    <i class="fas fa-file-alt fa-2x" style="color: gray;"></i>
+                                                    <i class="fa fa-check fa-2x" aria-hidden="true" style="color: gray;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h2 class="text-uppercase" style="font-size: 16px;">Approved</h2>
-                                                    <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($residencyCount)?></h3>
+                                                    <h3 class="fw-bold" style="font-size: 25px; color: #C77C8D;"><?= number_format($residencyCount)?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -119,24 +121,46 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="card card-stats card-round">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-4">
                                                 <div class="icon-big text-center">
-                                                    <i class="fas fa-file-alt fa-2x" style="color: gray;"></i>
+                                                    <i class="fa fa-ban fa-2x" aria-hidden="true" style="color: gray;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
                                                     <h3 class="text-uppercase" style="font-size: 16px;">Rejected</h3>
-                                                    <h5 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($revenue3['rejected'])?></h5>
+                                                    <h5 class="fw-bold text-uppercase" style="font-size: 25px; color: #C77C8D;"><?= number_format($revenue3['rejected'])?></h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="card-body">
                                             <a href="purok_info.php?state=purok" class="card-link text" style="color: gray;"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card card-stats card card-round">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="icon-big text-center">
+                                                    <i class="fa fa-thumbs-up fa-2x" aria-hidden="true" style="color: gray;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-2 col-stats">
+                                                <div class="numbers mt-2">
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Claimed</h2>
+                                                    <h3 class="fw-bold" style="font-size: 25px; color: #C77C8D;"><?= number_format($revenue4['claimed']) ?></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <a href="revenue.php?state=all" class="card-link text" style="color: gray;"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -171,7 +195,7 @@
                                                         <th scope="col">Recipient</th>
                                                         <th scope="col">Email</th>
                                                         <th scope="col">Certificate</th>
-                                                        <th class="text-center" scope="col">Status</th>
+                                                        <th scope="col">Status</th>
                                                         <th class="text-center" scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -182,12 +206,12 @@
                                                             <td class="text-center"><?= $row['date_applied'] ?></td>
                                                             <td><?= $row['resident_name'] ?></td>
                                                             <td><?= $row['email'] ?></td>
-                                                            <td><?= $row['certificate_name'] ?></td>
-                                                            <td class="text-center"><?= $row['residency_badge'] ?></td>
+                                                            <td><?= ucwords($row['certificate_name']) ?></td>
+                                                            <td><?= $row['residency_badge'] ?></td>
                                                             <td class="text-center">
                                                                 <div class="form-button-action">
                                                                     <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
-                                                                    <a type="button" data-toggle="tooltip" href="model/remove_resident_user.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this data?');" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                                    <a type="button" data-toggle="tooltip" href="model/remove_resident_cert.php?id=<?= $row['cert_id'] ?>" onclick="return confirm('Are you sure you want to delete this data?');" class="btn btn-link btn-danger" data-original-title="Remove">
                                                                         <i class="fas fa-trash"></i>
                                                                     </a>
                                                                     <?php endif ?>

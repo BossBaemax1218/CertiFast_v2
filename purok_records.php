@@ -8,7 +8,7 @@ if (!isset($_SESSION["username"])) {
 
 $username = $_SESSION["username"];
 
-$sql = "SELECT * FROM tblresident JOIN tbl_user_admin ON tblresident.purok = tbl_user_admin.purok WHERE tbl_user_admin.username = ?";
+$sql = "SELECT *, r.id AS id FROM tblpurok_records AS r JOIN tbl_user_admin AS a ON r.purok = a.purok WHERE a.username = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $username);
 $stmt->execute();
@@ -22,8 +22,9 @@ while ($row = $result->fetch_assoc()) {
 if (!empty($resident)) {
     $_SESSION['purok'] = $resident[0]['purok'];
 }
+
 $query1 = "SELECT * FROM tblpurok";
-$result1 = $conn->query($query1);
+$result1 = $conn->query($query1); 
 
 $purok = array();
 while($row2 = $result1->fetch_assoc()){
@@ -44,9 +45,9 @@ while($row2 = $result1->fetch_assoc()){
 		<div class="main-panel mt-2">
 			<div class="content">
 				<div class="panel-header">
-                    <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
-                    <h2 class="text-center fw-bold" style="font-size: 200%;">Here are the Purok <?php echo isset($_SESSION['purok']) ? ucwords($_SESSION['purok']) : ''; ?> records with CertiFast Portal:</h2>
-                    <div class="page-inner">
+                    <h1 class="text-center fw-bold mt-3" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
+                    <h3 class="text-center mt-2" style="font-size: 150%;">The following is a list of records of Purok <?php echo isset($_SESSION['purok']) ? ucwords($_SESSION['purok']) : ''; ?> who had them verified by their Purok Leader are listed below.</h3>
+                    <div class="page-inner mt-4">
                         <div class="row">
                             <div class="col-md-12">
                                 <?php if(isset($_SESSION['message'])): ?>
@@ -97,9 +98,6 @@ while($row2 = $result1->fetch_assoc()){
                                                     <?php $no = 1; foreach ($resident as $row): ?>
                                                     <tr>
                                                         <td>
-                                                            <div class="avatar avatar-xs ml-3">
-                                                                <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
-                                                            </div>
                                                             <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
                                                         </td>
                                                         <td><?= $row['address'] ?></td>
@@ -125,9 +123,9 @@ while($row2 = $result1->fetch_assoc()){
                                                                     <?php endif ?>
                                                                 </a>
                                                                 <?php if(isset($_SESSION['username']) && $_SESSION['role']=='purok leader'):?>
-                                                                <a type="button" data-toggle="modal" data-target="#deleteConfirmationModal" href="model/remove_purok_records.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this resident?');" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                    <i class="fas fa-trash"></i>
-                                                                </a>
+                                                                    <button type="button" class="btn btn-link btn-danger" data-toggle="modal" data-target="#confirmDeleteModal<?= $row['id'] ?>" data-original-title="Remove">
+                                                                        <i class="fas fa-trash"></i>
+                                                                    </button>
                                                                 <?php endif ?>
                                                             </div>
                                                         </td>
@@ -146,7 +144,30 @@ while($row2 = $result1->fetch_assoc()){
                 </div>	
             </div>
         </div>
-        <!-- Modal -->
+        <?php foreach ($resident as $row) { ?>
+        <div class="modal fade" id="confirmDeleteModal<?= $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmDeleteModalLabel">Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this resident?
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post" action="model/remove_purok_records.php">
+                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
                 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -161,22 +182,8 @@ while($row2 = $result1->fetch_assoc()){
                                     <input type="hidden" name="size" value="1000000">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div style="height: 250;" class="text-center" id="my_camera">
-                                                    <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
-                                                </div>
-                                                <?php if(isset($_SESSION['username'])):?>
-                                                <div class="form-group d-flex justify-content-center">
-                                                    <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
-                                                    <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
-                                                </div>
-                                                <div id="profileImage">
-                                                    <input type="hidden" name="profileimg">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="file" class="form-control" name="img" accept="image/*">
-                                                </div>
-                                            <?php endif ?>
-                                            <div class="form-group text-center">
+                                        <h3 class="mt-2"><b>Kindly update your purok assignment with the latest <br> resident information.</b></h3>
+                                            <div class="form-group text-center mt-3">                                               
                                                 <div class="selectgroup selectgroup-secondary selectgroup-pills">
                                                     <label class="selectgroup-item">
                                                         <input type="radio" name="deceased" value="1" class="selectgroup-input" checked="">
@@ -190,21 +197,21 @@ while($row2 = $result1->fetch_assoc()){
                                             </div>
                                             <div class="form-group">
                                                 <label>Barangay ID No.</label>
-                                                <input type="text" class="form-control" name="national" placeholder="Enter Barangay ID No." required>
+                                                <input type="text" class="form-control" name="national" placeholder="Barangay ID No." required>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>First name</label>
-                                                        <input type="text" class="form-control" placeholder="Enter First name" name="fname" required>
+                                                        <input type="text" class="form-control" placeholder="Ex: Juan" name="fname" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Middle name</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Middle name" name="mname" required>
+                                                        <input type="text" class="form-control" placeholder="Ex: G." name="mname" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Last name</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Last name" name="lname" required>
+                                                        <input type="text" class="form-control" placeholder="Ex: Luna" name="lname" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -212,11 +219,11 @@ while($row2 = $result1->fetch_assoc()){
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Address</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Address" name="address" required>
+                                                        <input type="text" class="form-control" placeholder="Ex: 1-A Los Amigos" name="address" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Place of Birth</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" required>
+                                                        <input type="text" class="form-control" placeholder="Ex: Tugbok, Los Amigos" name="bplace" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Birthdate</label>
@@ -273,12 +280,16 @@ while($row2 = $result1->fetch_assoc()){
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
+                                                        <label>Email</label>
+                                                        <input type="text" class="form-control" placeholder="Ex: no-sample@gmail.com" name="email" required>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label>Contact Number</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Contact Number" value="+63 000-000-000-00" name="number" required>
+                                                        <input type="text" class="form-control" placeholder="Ex: +63 000-000-0000" name="number" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Occupation</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" required>
+                                                        <input type="text" class="form-control" placeholder="Ex: Teacher" name="occupation" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -297,32 +308,18 @@ while($row2 = $result1->fetch_assoc()){
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">New Resident Registration Form</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Update Resident Registration Form</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="model/save_purok_resident.php" enctype="multipart/form-data">
+                            <form method="POST" action="model/edit_purok_resident.php" enctype="multipart/form-data">
                                 <input type="hidden" name="size" value="1000000">
                                 <div class="row">
+                                <h3 class="text-center mt-2"><b>Kindly check the resident information.</b></h3>
                                     <div class="col-md-12">
-                                        <div id="my_camera1" style="height: 250;" class="text-center">
-                                            <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" id="image">
-                                        </div>
-                                        <?php if(isset($_SESSION['username'])):?>
-                                            <div class="form-group d-flex justify-content-center">
-                                                <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam1">Open Camera</button>
-                                                <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo1()">Capture</button>   
-                                            </div>
-                                            <div id="profileImage1">
-                                                <input type="hidden" name="profileimg">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="file" class="form-control" name="img" accept="image/*">
-                                            </div>
-                                        <?php endif ?>
-                                        <div class="form-group text-center">
+                                        <div class="form-group text-center mt-3">
                                             <div class="selectgroup selectgroup-secondary selectgroup-pills">
                                                 <label class="selectgroup-item">
                                                     <input type="radio" name="deceased" value="1" class="selectgroup-input" checked="" id="alive">
@@ -419,6 +416,10 @@ while($row2 = $result1->fetch_assoc()){
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control" placeholder="Ex: no-sample@gmail.com" name="email" id="email" required>
+                                                </div>
+                                                <div class="form-group">
                                                     <label>Contact Number</label>
                                                     <input type="text" class="form-control" placeholder="Enter Contact Number" value="+63 000-000-000-00" name="number" id="number" required>
                                                 </div>
@@ -434,7 +435,7 @@ while($row2 = $result1->fetch_assoc()){
                                     <input type="hidden" name="id" id="res_id">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                     <?php if(isset($_SESSION['username'])): ?>
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
                                     <?php endif ?>
                                 </div>
                             </form>

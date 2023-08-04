@@ -76,11 +76,11 @@
                                                 <span class="text" style="text-indent: 40px;"><?= ucwords($town) ?></span>, Davao City.
                                             </h2>
                                             <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
-                                                This further certifies that the abovementioned died in his/her residence on <?= date('F j, Y') ?> and is not a Person Under Monitoring (PUM) nor a Person Under Investigation (PUI) as per record from the Barangay Health Emergency Response Team (BHERT) in this barangay..
+                                                This further certifies that the abovementioned died in his/her residence on <?= date('F j, Y', strtotime($resident['purpose'])) ?> and is not a Person Under Monitoring (PUM) nor a Person Under Investigation (PUI) as per record from the Barangay Health Emergency Response Team (BHERT) in this barangay.
                                             </h2>
                                             <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
-                                                This certification is issued upon the request of <b><?= ucwords($resident['purok']) ?> parents name</b> for 
-                                                <span class="fw-bold" style="text-indent: 40px;"><?= ucwords($resident['remarks']) ?></span> 
+                                                This certification is issued upon the request of <b><?= ucwords($resident['parents']) ?></b> 
+                                                <span class="fw-bold" style="text-indent: 40px;">(<?= ucwords($resident['relationship']) ?>)</span> 
                                                 or for whatever legal purpose/s that may serve her/him best.
                                             </h2>
                                             <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">

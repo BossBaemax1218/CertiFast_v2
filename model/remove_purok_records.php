@@ -1,33 +1,28 @@
-<?php 
-	include '../server/server.php';
+<?php
+include '../server/server.php';
 
-	if(!isset($_SESSION['username']) && $_SESSION['role']!='administrator'){
-		if (isset($_SERVER["HTTP_REFERER"])) {
-			header("Location: " . $_SERVER["HTTP_REFERER"]);
-		}
-	}
-	
-	$id 	= $conn->real_escape_string($_GET['id']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && ctype_digit($_POST['id'])) {
+    $id = $_POST['id'];
 
-	if($id != ''){
-		$query 		= "DELETE FROM tblresident WHERE id = '$id'";
-		
-		$result 	= $conn->query($query);
-		
-		if($result === true){
-            $_SESSION['message'] = 'Resident has been removed!';
-            $_SESSION['success'] = 'danger';
-            
-        }else{
-            $_SESSION['message'] = 'Something went wrong!';
-            $_SESSION['success'] = 'danger';
-        }
-	}else{
+    $query = "DELETE FROM tblpurok_records WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $id);
 
-		$_SESSION['message'] = 'Missing Resident ID!';
-		$_SESSION['success'] = 'danger';
-	}
+    if ($stmt->execute()) {
+        $_SESSION['message'] = 'Resident record has been removed!';
+        $_SESSION['success'] = 'success';
+    } else {
+        $_SESSION['message'] = 'Something went wrong!';
+        $_SESSION['success'] = 'danger';
+    }
 
-	header("Location: ../purok_records.php");
-	$conn->close();
+    $stmt->close();
+} else {
+    $_SESSION['message'] = 'Invalid request!';
+    $_SESSION['success'] = 'danger';
+}
 
+$conn->close();
+header("Location: ../purok_records.php");
+exit;
+?>

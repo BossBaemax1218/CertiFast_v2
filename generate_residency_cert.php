@@ -91,7 +91,7 @@
                                                 </h2>
                                             </div>
                                         </div>
-                                        <div class="signature col-md-12">
+                                        <div class="signature col-md-12" style="margin-bottom: 300px;">
                                             <div class="p-3 text-right mt-5">
                                                 <h2 class="fw-bold mb-6"><u><?= ucwords($captain['fullname']) ?></u></h2>
                                                 <p class="text mr-4">PUNONG BARANGAY</p>
@@ -101,7 +101,7 @@
                                     <div class="footer-content">
                                         <div class="footer-names text-left">                                                       
                                             <ul>
-                                                <li><h1 class="fw-bold" style="font-size: 30px; margin-top: 90px; color:white"><?= ucwords($captain['fullname']) ?></h1></li>
+                                                <li><h1 class="fw-bold" style="font-size: 30px; margin-top: 90px; color:white;"><?= ucwords($captain['fullname']) ?></h1></li>
                                                 <li><h4 class="text" style="color:yellow">PUNONG BARANGAY</h4></li>
                                             </ul>                                                                                                 
                                         </div>

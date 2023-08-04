@@ -66,25 +66,24 @@ $conn->close();
 					<div class="page-inner mt-2">
 						<div class="d-flex align-items-center align-items-md-center flex-column">
                             <h1 class="text-center fw-bold" style="font-size: 400%;">Resident Profiling</h1>
-                            <h2 class="text-center">Please fill out your personal information first before you requested any of the certifications in Barangay Los Amigos.</h2>
+                            <h3 class="text-center">Please registered your personal information first before you requested any of the certifications in Barangay Los Amigos.</h3>
+                            <h4 class="text-center mt-2">This shows that if you are in <b>On Hold</b> status, you are not abled to request any Barangay Los Amigos certificates without having your Purok Leader's approval. <br class="mt-2"> Please read and be aware of this information.</h4>
 						</div>
                         <?php if(isset($_SESSION['fullname'])):?>
-                        <h4 class="text-center fw-bold mt-5">
+                        <h4 class="text-center fw-bold mt-5 mb-2">
                             <a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;" <?php echo isset($_SESSION['success']) || $nat > 0 ? 'disabled' : ''; ?>>
                                 CLICK HERE TO REGISTER YOUR PERSONAL DATA
                             </a>
                         </h4>
                         <?php endif ?>
+                            <?php if(isset($_SESSION['message'])): ?>
+                                <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <?php echo $_SESSION['message']; ?>
+                                </div>
+                            <?php unset($_SESSION['message']); ?>
+                        <?php endif ?>
 					</div>
 				</div>
-                <div class="page-inner mt-1">
-                    <?php if(isset($_SESSION['message'])): ?>
-                            <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                                <?php echo $_SESSION['message']; ?>
-                            </div>
-                        <?php unset($_SESSION['message']); ?>
-                    <?php endif ?>
-                </div>
 				<div class="page-inner">
 					<div class="row">
 						<div class="col-md-12">
@@ -208,27 +207,27 @@ $conn->close();
                                                 </div>
                                                 <div class="form-group">
                                                     <label>What is your Barangay ID No.</label>
-                                                    <input type="text" class="form-control" name="national" placeholder="Enter your Barangay ID No." required>
+                                                    <input type="text" class="form-control" name="national" placeholder="Ex: BLA - 0000-000" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Are you a Filipino or Half Filipino?</label>
-                                                    <input type="text" class="form-control" name="citizenship" placeholder="Enter your citizenship" required>
+                                                    <input type="text" class="form-control" name="citizenship" placeholder="Ex: Filipino" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>What is your first name?</label>
-                                                    <input type="text" class="form-control" placeholder="Joe Anne" name="fname" required>
+                                                    <input type="text" class="form-control" placeholder="Ex: Joe Anne" name="fname" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>What is your middle initial?</label>
-                                                    <input type="text" class="form-control" placeholder="G." name="mname" required>
+                                                    <input type="text" class="form-control" placeholder="Ex: G." name="mname" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>What is your surname?</label>
-                                                    <input type="text" class="form-control" placeholder="Aldoe" name="lname" required>
+                                                    <input type="text" class="form-control" placeholder="Ex: Aldoe" name="lname" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>What is your current address?</label>
-                                                    <input type="text" class="form-control" placeholder="Enter your address" name="address" required>
+                                                    <input type="text" class="form-control" placeholder="Ex: Tugbok, Los Amigos" name="address" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>What is your birthdate?</label>
@@ -236,7 +235,7 @@ $conn->close();
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Where do you born?</label>
-                                                    <input type="text" class="form-control" placeholder="Enter your birthplace" name="bplace" required>
+                                                    <input type="text" class="form-control" placeholder="Ex: Tugbok, Los Amigos, Davao City" name="bplace" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>What is your current age?</label>
@@ -278,15 +277,15 @@ $conn->close();
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" placeholder="Enter your email address" value="no-email@sample.com" name="email" required>
+                                                    <input type="text" class="form-control" placeholder="no-email@gmail.com" value="" name="email" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Contact Number</label>
-                                                    <input type="text" class="form-control" placeholder="Enter your contact number" value="+63 000-000-000-00" name="number" required>
+                                                    <input type="text" class="form-control" placeholder="+63 000-000-000-00" value="" name="number" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Occupation</label>
-                                                    <input type="text" class="form-control" placeholder="Enter your occupation" name="occupation" required>
+                                                    <input type="text" class="form-control" placeholder="Ex: Teacher" name="occupation" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -343,31 +342,31 @@ $conn->close();
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Barangay ID</label>
-                                                    <input type="text" class="form-control" name="national" id="nat_id" placeholder="Enter Barangay ID" readonly>
+                                                    <input type="text" class="form-control" name="national" id="nat_id" placeholder="Ex: BLA - 0000-000" readonly>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Citizenship</label>
-                                                    <input type="text" class="form-control" name="citizenship" id="citizenship" placeholder="Enter citizenship" required>
+                                                    <input type="text" class="form-control" name="citizenship" id="citizenship" placeholder="Ex: Filipino" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>First name</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Firstname" name="fname" id="fname" required>
+                                                    <input type="text" class="form-control" placeholder="Ex: Juan" name="fname" id="fname" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Middle name</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Middlename" name="mname" id="mname" required>
+                                                    <input type="text" class="form-control" placeholder="Ex: G." name="mname" id="mname" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Last name</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Lastname" name="lname" id="lname" required>
+                                                    <input type="text" class="form-control" placeholder="Ex: Luna" name="lname" id="lname" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Address</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Address" id="address" name="address" required>
+                                                    <input type="text" class="form-control" placeholder="Ex: Tugbok, Los Amigos" id="address" name="address" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Place of Birth</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" id="bplace" required>
+                                                    <input type="text" class="form-control" placeholder="Ex: Tugbok, Los Amigos" name="bplace" id="bplace" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Birthdate</label>
@@ -375,7 +374,7 @@ $conn->close();
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Age</label>
-                                                    <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" id="age" required>
+                                                    <input type="number" class="form-control" placeholder="Age" min="1" name="age" id="age" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Civil Status</label>
@@ -413,15 +412,15 @@ $conn->close();
                                                 </div>                      
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Email Address" name="email" id="email" required>
+                                                    <input type="text" class="form-control" placeholder="no-sample@gmail.com" name="email" id="email" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Contact Number</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Contact Number" name="number" id="number" required>
+                                                    <input type="text" class="form-control" placeholder="+63 000-000-0000" name="number" id="number" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Occupation</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" id="occupation" required>
+                                                    <input type="text" class="form-control" placeholder="Ex: Teacher" name="occupation" id="occupation" required>
                                                 </div>
                                             </div>
                                         </div>

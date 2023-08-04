@@ -6,13 +6,11 @@ if (!isset($_SESSION["fullname"])) {
     exit;
 }
 
-$fullname = $_SESSION["fullname"];
+$fullname = $_SESSION["user_email"];
 
 $sql = "SELECT *,s.cert_id, s.certificate_name, s.status, s.date_applied 
-        FROM tblresident AS r 
-        JOIN tblresident_requested AS s ON r.certificate_name = s.certificate_name 
-        JOIN tbl_user_resident AS u ON u.fullname = s.resident_name
-        WHERE u.fullname = ? AND s.status IN ('approved','rejected')";
+        FROM tblresident_requested AS s JOIN tbl_user_resident AS u ON u.user_email = s.email
+        WHERE u.user_email = ? AND s.status IN ('on hold','approved','rejected')";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $fullname);
@@ -37,7 +35,10 @@ while ($row = $result->fetch_assoc()) {
     $row['residency_badge'] = $statusBadge;
 	if ($status == 'on hold') {
         $resident[] = $row;
-    } elseif ($status == 'rejected') {
+		
+    } elseif ($status == 'approved') {
+        $resident[] = $row;
+    }elseif ($status == 'rejected') {
         $resident[] = $row;
     }
 }

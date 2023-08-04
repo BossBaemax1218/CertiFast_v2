@@ -71,7 +71,7 @@ include 'model/requested_status.php';
 												<div class="col-2 col-stats">
 													<div class="numbers mt-2">
 														<h2 class="text-uppercase" style="font-size: 16px;">Pending</h2>
-														<h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($pendingCount) ?></h3>
+														<h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($row['pending']) ?></h3>
 													</div>
 												</div>
 											</div>
@@ -95,7 +95,7 @@ include 'model/requested_status.php';
 												<div class="col-2 col-stats">
 													<div class="numbers mt-2">
 														<h2 class="text-uppercase" style="font-size: 16px;">Approved</h2>
-														<h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($approvedCount)?></h3>
+														<h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($row['approved'])?></h3>
 														</div>
 													</div>
 												</div>
@@ -119,7 +119,7 @@ include 'model/requested_status.php';
 													<div class="col-2 col-stats">
 														<div class="numbers mt-2">
 															<h2 class="text-uppercase" style="font-size: 16px;">Rejected</h2>
-															<h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($rejectedCount) ?></h3>
+															<h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($row['rejected']) ?></h3>
 														</div>
 													</div>
 												</div>

@@ -30,7 +30,7 @@
 
 	$newName = date('dmYHis').str_replace(" ", "", $profile2);
   	$target = "../assets/uploads/resident_profile/".basename($newName);
-	$check = "SELECT id FROM tblresident WHERE national_id='$national_id'";
+	$check = "SELECT id FROM tblpurok_records WHERE national_id='$national_id'";
 	$nat = $conn->query($check)->num_rows;	
 
 	if($nat == 0){
@@ -38,7 +38,7 @@
 
 			if(!empty($profile) && !empty($profile2)){
 
-				$query = "INSERT INTO tblresident (`national_id`,citizenship,`picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`) 
+				$query = "INSERT INTO tblpurok_records (`national_id`,citizenship,`picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`) 
 							VALUES ('$national_id','$citizen','$profile','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks')";
 
 				if($conn->query($query) === true){
@@ -48,7 +48,7 @@
 				}
 			}else if(!empty($profile) && empty($profile2)){
 
-				$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`,`occupation`, `remarks`) 
+				$query = "INSERT INTO tblpurok_records (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`,`occupation`, `remarks`) 
 							VALUES ('$national_id','$citizen','$profile','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks')";
 
 				if($conn->query($query) === true){
@@ -59,7 +59,7 @@
 
 			}else if(empty($profile) && !empty($profile2)){
 
-				$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`) 
+				$query = "INSERT INTO tblpurok_records (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`) 
 							VALUES ('$national_id','$citizen','$newName','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks')";
 
 				if($conn->query($query) === true){
@@ -75,7 +75,7 @@
 				}
 
 			}else{
-				$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`,`firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`) 
+				$query = "INSERT INTO tblpurok_records (`national_id`, citizenship, `picture`,`firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`) 
 							VALUES ('$national_id','$citizen','person.png','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks')";
 
 				if($conn->query($query) === true){

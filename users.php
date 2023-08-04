@@ -70,6 +70,7 @@
 													<th scope="col">Fullname</th>
 													<th scope="col">Username</th>
 													<th scope="col">User Type</th>
+													<th scope="col">Purok</th>
 													<th scope="col">Created At</th>
 													<th class="text-center" scope="col">Action</th>
 												</tr>
@@ -89,6 +90,7 @@
                                                             <?= ucwords($row['username']) ?>
 														</td>
 														<td><?= $row['user_type'] ?></td>
+														<td><?= $row['purok'] ?></td>
 														<td><?= $row['created_at'] ?></td>
 														<td class="text-center">
 															<div class="form-button-action">

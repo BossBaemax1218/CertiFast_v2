@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = $conn->real_escape_string($_POST['status']);
 
     if (!empty($id) && !empty($status)) {
-        $validStatuses = array('approved', 'rejected', 'on hold');
+        $validStatuses = array('approved', 'rejected', 'on hold','claimed');
         if (in_array($status, $validStatuses)) {
             $query = "UPDATE tblresident_requested SET status=? WHERE cert_id=?";
             $stmt = $conn->prepare($query);
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['success'] = 'success';
 
                 if ($status === 'rejected') {
-                    header("Location: ../purok_request.php");
+                    header("Location: ../list_certificates.php");
                     exit();
                 }
             } else {

@@ -66,12 +66,9 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
             <div class="main-panel">
                 <div class="content">
                     <div class="panel-header">
-                    <div>
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
-                        <h3 class="text-center fw-bold" style="font-size: 150%;">Here are the Purok <?php echo ($purokNumber); ?> records requester with CertiFast Portal:</h3>
-                        <br>
-                    </div>
-                    <div class="page-inner">
+                        <h3 class="text-center mt-2" style="font-size: 150%;">The following is a list of records for Purok <?php echo ($purokNumber); ?> residents who are using the CertiFast Portal to request certifications.</h3>
+                    <div class="page-inner mt-4">
                         <div class="content">
                             <div class="col-md-12">
                                 <?php if(isset($_SESSION['message'])): ?>

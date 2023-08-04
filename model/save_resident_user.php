@@ -43,7 +43,7 @@
 			if($conn->query($query) === true){
 
 				if(move_uploaded_file($_FILES['img']['tmp_name'], $target)){
-					$_SESSION['message'] = 'Your personal information has been saved!';
+					$_SESSION['message'] = 'Your personal information has been saved be aware that if your status is in ON HOLD, please wait for your Purok Leader to approved your information!';
 					$_SESSION['success'] = 'success';
 				} else {
 					$_SESSION['message'] = 'Failed to upload the profile image.';
@@ -57,7 +57,7 @@
 
 			if($conn->query($query) === true){
 
-				$_SESSION['message'] = 'Your personal information has been saved!';
+				$_SESSION['message'] = 'Your personal information has been saved be aware that if your status is in ON HOLD, please wait for your Purok Leader to approved your information!';
 				$_SESSION['success'] = 'success';
 			}
 
@@ -69,7 +69,7 @@
 			if($conn->query($query) === true){
 
 				if(move_uploaded_file($_FILES['img']['tmp_name'], $target)){
-					$_SESSION['message'] = 'Your personal information has been saved!';
+					$_SESSION['message'] = 'Your personal information has been saved be aware that if your status is in ON HOLD, please wait for your Purok Leader to approved your information!';
 					$_SESSION['success'] = 'success';
 				} else {
 					$_SESSION['message'] = 'Failed to upload the profile image.';
@@ -83,7 +83,7 @@
 
 			if($conn->query($query) === true){
 
-				$_SESSION['message'] = 'Your personal information has been saved!';
+				$_SESSION['message'] = 'Your personal information has been saved be aware that if your status is in ON HOLD, please wait for your Purok Leader to approved your information!';
 				$_SESSION['success'] = 'success';
 			}
 		}

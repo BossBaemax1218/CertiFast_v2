@@ -1,14 +1,14 @@
 <?php
 include 'server/db_connection.php';
 
-$username = $_SESSION["fullname"];
+$username = $_SESSION["user_email"];
 $sql = "SELECT 
             SUM(CASE WHEN r.status = 'on hold' THEN 1 ELSE 0 END) as pending,
             SUM(CASE WHEN r.status = 'approved' THEN 1 ELSE 0 END) as approved,
             SUM(CASE WHEN r.status = 'rejected' THEN 1 ELSE 0 END) as rejected
 			FROM tblresident_requested AS r 
-			JOIN tbl_user_resident AS a ON r.purok = a.purok 
-			WHERE a.fullname = ?";
+			JOIN tbl_user_resident AS a ON r.email = a.user_email 
+			WHERE a.user_email = ?";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $username);

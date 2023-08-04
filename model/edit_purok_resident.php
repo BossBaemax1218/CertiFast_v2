@@ -34,14 +34,14 @@
 	$newName = date('dmYHis').str_replace(" ", "", $profile2);
 
   	$target = "../assets/uploads/resident_profile/".basename($newName);
-	$check = "SELECT id FROM tblresident WHERE national_id='$national_id'";
+	$check = "SELECT id FROM tblpurok_records WHERE national_id='$national_id'";
 	$nat = $conn->query($check)->fetch_assoc();	
 	if($nat['id'] == $id || count($nat) <= 0){
 		if(!empty($id)){
 
 			if(!empty($profile) && !empty($profile2)){
 
-				$query = "UPDATE tblresident SET national_id='$national_id',citizenship='$citi',`picture`='$profile', `firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
+				$query = "UPDATE tblpurok_records SET national_id='$national_id',citizenship='$citi',`picture`='$profile', `firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
 						age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `taxno`='$taxno', `phone`='$number', `email`='$email',`occupation`='$occu', `remarks`='$remarks',
 						`resident_type`='$deceased', `purpose`='$purpose'
 						WHERE id=$id;";
@@ -53,7 +53,7 @@
 				}
 			}else if(!empty($profile) && empty($profile2)){
 
-				$query = "UPDATE tblresident SET national_id='$national_id',citizenship='$citi',`picture`='$profile', `firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
+				$query = "UPDATE tblpurok_records SET national_id='$national_id',citizenship='$citi',`picture`='$profile', `firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
 						age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `taxno`='$taxno', `phone`='$number', `email`='$email',`occupation`='$occu', `remarks`='$remarks',
 						`resident_type`='$deceased', `purpose`='$purpose'
 						WHERE id=$id;";
@@ -66,7 +66,7 @@
 
 			}else if(empty($profile) && !empty($profile2)){
 
-				$query = "UPDATE tblresident SET national_id='$national_id',citizenship='$citi',`picture`='$newName', `firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
+				$query = "UPDATE tblpurok_records SET national_id='$national_id',citizenship='$citi',`picture`='$newName', `firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
 							age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `taxno`='$taxno', `phone`='$number', `email`='$email',`occupation`='$occu', `remarks`='$remarks',
 							`resident_type`='$deceased', `purpose`='$purpose'
 							WHERE id=$id;";
@@ -84,7 +84,7 @@
 				}
 
 			}else{
-				$query = "UPDATE tblresident SET national_id='$national_id',citizenship='$citi',`firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
+				$query = "UPDATE tblpurok_records SET national_id='$national_id',citizenship='$citi',`firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
 							age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `taxno`='$taxno', `phone`='$number', `email`='$email',`occupation`='$occu', `remarks`='$remarks',
 							`resident_type`='$deceased', `purpose`='$purpose'
 							WHERE id=$id;";
