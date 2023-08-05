@@ -1,6 +1,10 @@
 <?php include 'server/server.php' ?>
 <?php 
-   include 'model/footer.php' 
+   include 'model/footer.php';
+   $id = $_GET['id'];
+   $query = "SELECT * FROM tblclearance WHERE c_id='$id'";
+   $result = $conn->query($query);
+   $resident = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +76,7 @@
                                             <div class="letter">
                                                 <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
                                                     This is to certify that per records now existing in this office 
-                                                    <span class="fw-bold"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
+                                                    <span class="fw-bold"><?= ucwords($resident['fullname']) ?></span>, 
                                                     of legal age, and a resident of Purok <span class="text"><?= ucwords($resident['purok']) ?></span> 
                                                     <span class="text"><?= ucwords($town) ?></span>, Davao City, Philippines with 
                                                     Community Tax Certificate No.<span class="fw-bold"> <?= ucwords($resident['taxno']) ?></span> 
@@ -81,7 +85,7 @@
                                                 </h2>
                                                 <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
                                                     This certification is issued upon the request of the aforementioned for 
-                                                    <span class="fw-bold"><?= ucwords($resident['remarks']) ?></span> or for whatever legal purpose/s that may serve her/him best.
+                                                    <span class="fw-bold"><?= ucwords($resident['requirement']) ?></span> or for whatever legal purpose/s that may serve her/him best.
                                                 </h2>
                                                 <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
                                                     Done this <span class="fw-bold"><?= date('jS \d\a\y \o\f F, Y') ?></span> at <span class="fw-text"><?= ucwords($town) ?></span>, Davao City.
@@ -157,7 +161,7 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" name="name" value="<?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?>">
+                            <input type="hidden" name="name" value="<?= ucwords($resident['fullname']) ?>">
                             <input type="hidden" name="email" value="<?= ucwords($resident['email']) ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>

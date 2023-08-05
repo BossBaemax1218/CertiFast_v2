@@ -8,14 +8,13 @@ if (!isset($_SESSION["fullname"])) {
 
 $fullname = $_SESSION["fullname"];
 
-$sql = "SELECT *, tblresident.id, tblresident.purok FROM tblresident JOIN tbl_user_resident ON tblresident.email = tbl_user_resident.user_email WHERE tbl_user_resident.fullname = ? AND tblresident.residency_status IN ('on hold', 'operating','rejected')";
+$sql = "SELECT *, tblresident.id AS id, tblresident.purok FROM tblresident JOIN tbl_user_resident ON tblresident.email = tbl_user_resident.user_email WHERE tbl_user_resident.fullname = ? AND tblresident.residency_status IN ('on hold', 'operating','rejected')";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $fullname);
 $stmt->execute();
 $result = $stmt->get_result();
 
 $resident = array();
-$approvedResidents = array();
 
 while ($row = $result->fetch_assoc()) {
     $status = $row['residency_status'];
@@ -63,7 +62,8 @@ $conn->close();
 		<?php include 'templates/sidebar-resident.php' ?>
 		<div class="main-panel mt-2">
 			    <div class="content">
-                    <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Certificates</h1>
+                    <h1 class="text-center fw-bold mt-5" style="font-size: 400%;">Barangay Certificates</h1>
+                    <h3 class="text-center">Please fill out your personal information before submitting any of the requested certifications in Barangay Los Amigos.</h3>
                     <div class="page-inner">
                         <div class="container col-sm-12 col-md-12">
                             <form method="GET" class="col-sm-12 col-md-12">
@@ -161,13 +161,13 @@ $conn->close();
                         </button>
                     </div>
                         <div class="modal-body">
-                            <form method="POST" action="model/save_goodmoral.php" enctype="multipart/form-data">
+                            <form method="POST" action="model/save_good_moral.php" enctype="multipart/form-data">
                                 <input type="hidden" name="size" value="1000000">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -205,17 +205,17 @@ $conn->close();
                         </button>
                     </div>
                         <div class="modal-body">
-                            <form method="POST" action="model/save_residency.php" enctype="multipart/form-data">
+                            <form method="POST" action="model/save_death.php" enctype="multipart/form-data">
                                 <input type="hidden" name="size" value="1000000">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Who died and what was their name?</label>
-                                                <input type="text" class="form-control" placeholder="Enter the name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Juan G. Luna" name="dead_person" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is the birthdate of the person died?</label>
-                                                <input type="date" class="form-control" name="bdate" required>
+                                                <input type="date" class="form-control" name="birthdate" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is their current age before she/he died?</label>
@@ -232,19 +232,34 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>What is the date of the person died?</label>
-                                                <input type="date" class="form-control" name="ddate" required>
+                                                <input type="date" class="form-control" name="death_date" required>
                                             </div>
                                             <div class="form-group mt-2">
                                                 <h5><b>Fill out also the names of you're (Parents-Family-Guardians): </b></h5>
                                             </div>                                           
                                             <div class="form-group">
                                                 <label>What is their name?</label>
-                                                <input type="text" class="form-control" placeholder="Complete Name" name="cname" required>
+                                                <input type="text" class="form-control" placeholder="Complete Name" name="parents" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What kind of relationship do you have with the person?</label>
+                                                <select class="form-control" required name="relationship">
+                                                    <option disabled selected>Select Relationship</option>
+                                                        <option value="Mother">Mother</option>
+                                                        <option value="Father">Father</option>
+                                                        <option value="Uncle">Uncle</option>
+                                                        <option value="Antie">Antie</option>
+                                                        <option value="Grandfather">Grandmother</option>
+                                                        <option value="Grandfather">Grandfather</option>
+                                                        <option value="Brother">Brother</option>
+                                                        <option value="Sister">Sister</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of death" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
@@ -270,7 +285,7 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Enter the name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>When is your birthdate?</label>
@@ -344,7 +359,7 @@ $conn->close();
                                 </div>
                                 <div class="form-group">
                                     <label>Business Owner Name</label>
-                                    <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="owner1" value="<?= $_SESSION["fullname"]; ?>" required>
+                                    <input type="text" class="form-control mb-2" placeholder="Juan G. Luna" name="owner1" value="<?= $_SESSION["fullname"]; ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Business Email Address</label>
@@ -389,7 +404,7 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is your current age?</label>
@@ -433,7 +448,7 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -446,17 +461,17 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>What is your tax no?</label>
-                                                <input type="number" class="form-control" placeholder="Enter your tax number" min="6" name="taxno" required>
+                                                <input type="number" class="form-control" placeholder="Tax No." min="6" name="taxno" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What requirements you need this certificates?</label>
-                                                <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
+                                                <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements "></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="barangay clearance" required>
-                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
+                                        <input type="text" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -589,15 +604,15 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is the name of the child?</label>
-                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fname" value="" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is the birthday?</label>
-                                                <input type="date" class="form-control" placeholder="Birthdate" name="bdate" required>
+                                                <input type="date" class="form-control" placeholder="Birthdate" name="birthdate" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is your current age?</label>
-                                                <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
+                                                <input type="number" class="form-control" placeholder="Age" min="1" name="age" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is your gender?</label>
@@ -617,28 +632,25 @@ $conn->close();
                                                 </select>
                                             </div>
                                             <div class="form-group mt-2">
-                                                <h5><b>Fill out also the names of you parents/guardians: </b></h5>
+                                                <h5><b>Fill out also the names of your Parents: </b></h5>
                                             </div>                                           
                                             <div class="form-group">
                                                 <label>Mother Name</label>
-                                                <input type="text" class="form-control" placeholder="Mother's name" name="momname" required>
+                                                <input type="text" class="form-control" placeholder="Mother's name" name="mother" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Father Name</label>
-                                                <input type="text" class="form-control" placeholder="Father's name" name="dadname" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Guardian's Name (Optional)</label>
-                                                <input type="text" class="form-control" placeholder="Guardian's name" name="gname">
+                                                <input type="text" class="form-control" placeholder="Father's name" name="father" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What requirements you need this certificates?</label>
-                                                <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
+                                                <textarea class="form-control" name="remarks" required placeholder="Ex: 4ps Requirements, School Requirements"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of birth" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
@@ -664,7 +676,11 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is your current age?</label>
+                                                <input type="number" class="form-control" placeholder="Age" min="6" name="age" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -676,22 +692,18 @@ $conn->close();
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is your tax no?</label>
-                                                <input type="number" class="form-control" placeholder="Enter your tax number" min="6" name="taxno" required>
-                                            </div>
-                                            <div class="form-group">
                                                 <label>What requirements you need this certificates?</label>
-                                                <input class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></input>
+                                                <input class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements">
                                             </div>
                                             <div class="form-group">
-                                                <label>How long have you been a resident of Barangay Los Amigos?</label>
-                                                <input type="number" class="form-control" name="purpose" required placeholder=""></input>
+                                                <label>How many years have you lived in the barangay?</label>
+                                                <input type="number" class="form-control" name="resident_years" required placeholder="Ex: 1 years up to ">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of residency" required>
-                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
+                                        <input type="hidden" name="requester" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -716,7 +728,7 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -764,7 +776,7 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Enter your name" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Enter your name" name="Juan G. Luna" value="<?= $_SESSION["fullname"]; ?>" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -776,8 +788,8 @@ $conn->close();
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>How many year's you have been a resident of Los Amigos?</label>
-                                                <input type="number" class="form-control" placeholder="" min="6" name="year" required>
+                                                <label>How many years have you lived in the barangay?</label>
+                                                <input type="number" class="form-control" placeholder="1 year up to" min="6" name="purpose" required>
                                             </div>
                                         </div>
                                     </div>

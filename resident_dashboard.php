@@ -49,12 +49,6 @@ include 'model/requested_status.php';
 				<div class="content">
 					<section class="main-content mt-2">
 						<div class="container">
-							<?php if (isset($_SESSION['message'])): ?>
-								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success'] == 'danger' ? 'bg-danger text-light' : null ?>" role="alert">
-									<?php echo $_SESSION['message']; ?>
-								</div>
-								<?php unset($_SESSION['message']); ?>
-							<?php endif ?>
 							<h1 class="text-center fw-bold mb-4" style="font-size: 400%;">Resident <strong>Dashboard</strong></h1>
 							<div class="row mt-2">
 								<div class="col-12 col-sm-6 col-md-4">
@@ -131,6 +125,12 @@ include 'model/requested_status.php';
 									</div>
 								</div>
 							</div>
+							<?php if (isset($_SESSION['message'])): ?>
+								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success'] == 'danger' ? 'bg-danger text-light' : null ?>" role="alert">
+									<?php echo $_SESSION['message']; ?>
+								</div>
+								<?php unset($_SESSION['message']); ?>
+							<?php endif ?>
 						<div class="container">
 							<div class="col-md-12">
 								<div class="card">

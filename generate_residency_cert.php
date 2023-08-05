@@ -1,6 +1,10 @@
 <?php include 'server/server.php' ?>
 <?php 
-   include 'model/footer.php' 
+   include 'model/footer.php';
+   $id = $_GET['id'];
+   $query = "SELECT * FROM tblresidency WHERE res_id='$id'";
+   $result = $conn->query($query);
+   $resident = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,17 +76,17 @@
                                             <div class="letter">
                                                 <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
                                                     This is to certify that 
-                                                    <span class="fw-bold" style="font-size:24px"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
-                                                    of legal age, a bona fide resident of 
+                                                    <span class="fw-bold" style="font-size:24px"><?= ucwords($resident['fullname']) ?></span>, 
+                                                    <?= ucwords($resident['age']) ?> years old, and is a bona fide resident of 
                                                     <span class="text"> Purok <?= ucwords($resident['purok']) ?></span>, 
                                                     <span class="text"><?= ucwords($town) ?></span>, Davao City.
                                                 </h2>
                                                 <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
-                                                    This further certifies that the abovementioned is living in this Barangay for (<?= ucwords($resident['purpose']) ?>) years.
+                                                    This further certifies that the abovementioned is living in this Barangay for (<?= ucwords($resident['resident_year']) ?>) years.
                                                 </h2>
                                                 <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
                                                     This certification is issued upon the request of the aforementioned for 
-                                                    <span class="fw-bold"><?= ucwords($resident['remarks']) ?></span> 
+                                                    <span class="fw-bold"><?= ucwords($resident['requirement']) ?></span> 
                                                     or for whatever legal purpose/s that may serve her/him best.
                                                 </h2>
                                                 <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
@@ -162,7 +166,7 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" class="form-control" name="name" value="<?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?>">
+                            <input type="hidden" class="form-control" name="name" value="<?= ucwords($resident['fullname']) ?>">
                             <input type="hidden" name="email" value="<?= ucwords($resident['email']) ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>

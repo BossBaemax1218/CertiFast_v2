@@ -37,7 +37,7 @@
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Birth Certificate</div>
+										<div class="card-title">Death Certificate</div>
 										<div class="card-tools">
 											<button class="btn btn-info btn-border btn-round btn-sm" onclick="printDiv('printThis')">
 												<i class="fa fa-print"></i>

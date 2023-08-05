@@ -63,28 +63,24 @@ $conn->close();
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header">
-					<div class="page-inner mt-2">
-						<div class="d-flex align-items-center align-items-md-center flex-column">
-                            <h1 class="text-center fw-bold" style="font-size: 400%;">Resident Profiling History</h1>
-                            <h2 class="text-center">This is the complete list of the requested resident's personal data from Barangay Los Amigos.</h2>
-						</div>
-                        <?php if(isset($_SESSION['fullname'])):?>
-                        <h4 class="text-center fw-bold mt-5">
-                            <a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;" <?php echo isset($_SESSION['success']) || $nat > 0 ? 'disabled' : ''; ?>>
-                                CLICK HERE TO REGISTER YOUR PERSONAL DATA
-                            </a>
-                        </h4>
-                        <?php endif ?>
-					</div>
-				</div>
-                <div class="page-inner mt-1">
-                    <?php if(isset($_SESSION['message'])): ?>
-                            <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                                <?php echo $_SESSION['message']; ?>
-                            </div>
-                        <?php unset($_SESSION['message']); ?>
+                    <div class="d-flex align-items-center align-items-md-center flex-column">
+                        <h1 class="text-center fw-bold" style="font-size: 400%;">Resident Profiling History</h1>
+                        <h2 class="text-center">This is the complete list of the requested resident's personal data from Barangay Los Amigos.</h2>
+                    </div>
+                    <?php if(isset($_SESSION['fullname'])):?>
+                    <h4 class="text-center fw-bold mt-5">
+                        <a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;" <?php echo isset($_SESSION['success']) || $nat > 0 ? 'disabled' : ''; ?>>
+                            CLICK HERE TO REGISTER YOUR PERSONAL DATA
+                        </a>
+                    </h4>
                     <?php endif ?>
-                </div>
+                    <?php if(isset($_SESSION['message'])): ?>
+                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                            <?php echo $_SESSION['message']; ?>
+                        </div>
+                    <?php unset($_SESSION['message']); ?>
+                <?php endif ?>
+				</div>
 				<div class="page-inner">
 					<div class="row">
 						<div class="col-md-12">

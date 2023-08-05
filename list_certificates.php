@@ -1,56 +1,44 @@
 <?php include 'server/server.php' ?>
 <?php 
-$sql = "SELECT *, r.id, s.cert_id, s.certificate_name, s.status, s.date_applied 
-FROM tblresident AS r 
-JOIN tblresident_requested AS s 
-ON r.email=s.email
-WHERE s.status IN ('on hold', 'approved')
-AND s.certificate_name != 'business permit'";
+$sql = "SELECT s.*, c1.c_id, c2.brgy_id, c3.res_id, c4.death_id, c5.birth_id, c6.live_id, c7.job_id, c8.fam_id, c9.good_id, c10.indi_id, c11.id, c12.oath_id
+        FROM tblresident_requested AS s JOIN tblclearance AS c1 ON s.email = c1.email
+        LEFT JOIN tblbrgy_id AS c2 ON s.email = c2.email
+        LEFT JOIN tblresidency AS c3 ON s.email = c3.email
+        LEFT JOIN tbldeath AS c4 ON s.email = c4.email
+        LEFT JOIN tblbirthcert AS c5 ON s.email = c5.email
+        LEFT JOIN tbllive_in AS c6 ON s.email = c6.email
+        LEFT JOIN tblfirstjob AS c7 ON s.email = c7.email
+        LEFT JOIN tblfamily_tax AS c8 ON s.email = c8.email
+        LEFT JOIN tblgood_moral AS c9 ON s.email = c9.email
+        LEFT JOIN tblindigency AS c10 ON s.email = c10.email
+        LEFT JOIN tblpermit AS c11 ON s.email = c11.email
+        LEFT JOIN tbloath AS c12 ON s.email = c12.email
+        WHERE s.status IN ('on hold', 'approved') ORDER BY s.cert_id";
+        $result = $conn->query($sql);
 
-$result = $conn->query($sql);
+$resident = array();
+while ($row = $result->fetch_assoc()) {
+    $status = $row['status'];
+    $statusBadge = '';
 
-if ($result === false) {
-    echo "Error: " . $conn->error;
-} else {
-    $resident = array();
-    $approvedResidents = array();
+    if ($status === 'on hold') {
+        $statusBadge = '<span class="badge badge-warning">On Hold</span>';
+    } elseif ($status === 'approved') {
+        $statusBadge = '<span class="badge badge-success">Approved</span>';
+    } else {
+        $statusBadge = '<span class="badge badge-secondary">Unknown</span>';
+    }
 
-    while ($row = $result->fetch_assoc()) {
-        $status = $row['status'];
-        $statusBadge = '';
+    $row['residency_badge'] = $statusBadge;
 
-        if ($status == 'on hold') {
-            $statusBadge = '<span class="badge badge-warning">On Hold</span>';
-        } elseif ($status == 'approved') {
-            $statusBadge = '<span class="badge badge-success">Approved</span>';
-        } elseif ($status == 'rejected') {
-            $statusBadge = '<span class="badge badge-danger">Rejected</span>';
-        }
-
-        $row['residency_badge'] = $statusBadge;
-
-        if ($status == 'on hold') {
-            $resident[] = $row;
-        } elseif ($status == 'approved') {
-            $resident[] = $row;
-        }
+    if ($status == 'on hold') {
+        $resident[] = $row;
+    } elseif ($status == 'approved') {
+        $resident[] = $row;
+    } elseif ($status == 'claimed') {
+        $resident[] = $row;
     }
 }
-    $query1 = "SELECT * FROM tblpurok";
-    $result1 = $conn->query($query1);
-
-    $purok = array();
-	while($row2 = $result1->fetch_assoc()){
-		$purok[] = $row2; 
-	}
-    
-    $sql = "SELECT *, list_certificates FROM tblcertificates";
-    $result2 = $conn->query($sql);
-
-    $cert = array();
-	while($row3 = $result2->fetch_assoc()){
-		$cert[] = $row3; 
-	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,42 +92,40 @@ if ($result === false) {
                                                 <tbody>
                                                     <?php if (!empty($resident)) : ?>
                                                         <?php foreach ($resident as $row) : ?>
-                                                            <tr data-id="<?= $row['id'] ?>">
-                                                            <?php
-                                                                    $status = $row['status'];
-                                                                    $btnDisabled = ($status === 'on hold') ? 'disabled' : '';
-                                                                ?>
+                                                            <tr data-res_id="<?= $row['res_id'] ?>" data-c_id="<?= $row['c_id'] ?>" data-indi_id="<?= $row['indi_id'] ?>">
                                                                 <td><?= $row['date_applied'] ?></td>
                                                                 <td>
-                                                                    <?= ucwords($row['lastname'] . ', ' . $row['firstname'] . ' ' . $row['middlename']) ?>
+                                                                    <?= ucwords($row['resident_name']) ?>
                                                                 </td>
                                                                 <td><?= ucwords($row['certificate_name']) ?></td>
                                                                 <td><?= $row['purok'] ?></td>
                                                                 <td class="text-center"><?= $row['residency_badge'] ?></td>
-                                                                    <?php if (isset($_SESSION['username'])) : ?>
-                                                                        <?php if ($_SESSION['role'] == 'administrator') : ?>
-                                                                    <?php endif ?>
-                                                                    <td class="text-center">
-                                                                        <div class="form-button-action">
-                                                                            <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Status" onclick="editStatus(this)" 
-                                                                                data-cert_id="<?= $row['cert_id'] ?>" data-status="<?= $row['status'] ?>">
-                                                                                <?php if(isset($_SESSION['username'])): ?>
-                                                                                    <i class="fas fa-edit"></i>
-                                                                                <?php else: ?>
-                                                                                    <i class="fa fa-eye"></i>
-                                                                                <?php endif ?>
-                                                                            </a>
-                                                                            <a type="button" data-toggle="tooltip" href="#" class="btn btn-link btn-danger generate-certificate-btn" data-original-title="Generate Certificate" data-certificate_name="<?= $row['certificate_name'] ?>" data-status="<?= $status ?>" <?= $btnDisabled ?>>
-                                                                                <i class="fas fa-print"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                    <?php endif ?>
-                                                                </tr>
-                                                            <?php
-                                                            endforeach ?>
-                                                        <?php endif ?>
-                                                    </tbody>
+                                                                <?php if (isset($_SESSION['username'])) : ?>
+                                                                    <?php if ($_SESSION['role'] == 'administrator') : ?>
+                                                                <?php endif ?>
+                                                                <td class="text-center">
+                                                                    <div class="form-button-action">
+                                                                        <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Status" onclick="editStatus(this)" data-cert_id="<?= $row['cert_id'] ?>" data-status="<?= $row['status'] ?>">
+                                                                            <?php if(isset($_SESSION['username'])): ?>
+                                                                                <i class="fas fa-edit"></i>
+                                                                            <?php else: ?>
+                                                                                <i class="fa fa-eye"></i>
+                                                                            <?php endif ?>
+                                                                        </a>
+                                                                        <?php
+                                                                            $status = $row['status'];
+                                                                            $btnDisabled = ($status === 'on hold') ? 'disabled' : '';
+                                                                        ?>
+                                                                        <a type="button" data-toggle="tooltip" href="#" class="btn btn-link btn-danger generate-certificate-btn" data-original-title="Generate Certificate" data-certificate_name="<?= $row['certificate_name'] ?>" data-status="<?= $status ?>" <?= $btnDisabled ?>>
+                                                                            <i class="fas fa-print"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </td>
+                                                                <?php endif ?>
+                                                            </tr>
+                                                        <?php endforeach ?>
+                                                    <?php endif ?>
+                                                </tbody>
                                                 </table>
                                             </div>
                                         </div>
@@ -149,7 +135,7 @@ if ($result === false) {
                         </div>
                     </div>
                 </div>
-        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                             <div class="modal-header">
@@ -168,6 +154,7 @@ if ($result === false) {
                                             <option value="on hold">On Hold</option>
                                             <option value="approved">Approved</option>
                                             <option value="rejected">Rejected</option>
+                                            <option value="claimed">Claimed</option>
                                         </select>
                                     </div>
                                 </div>
@@ -192,7 +179,9 @@ if ($result === false) {
         var rows = document.querySelectorAll("#residenttable tbody tr");
         for (var i = 0; i < rows.length; i++) {
             var row = rows[i];
-            var residentId = row.getAttribute("data-id");
+            var residencyId = row.getAttribute("data-res_id");
+            var clearanceId = row.getAttribute("data-c_id");
+            var indigencyId = row.getAttribute("data-indi_id");
             var generateBtn = row.querySelector(".generate-certificate-btn");
             generateBtn.addEventListener("click", function () {
                 var certificateName = this.getAttribute("data-certificate_name");
@@ -200,16 +189,16 @@ if ($result === false) {
                 if (status === "approved") {
             switch (certificateName.toLowerCase()) {
                 case 'barangay clearance':
-                     window.location.href = 'generate_brgy_cert.php?id=' + residentId;
+                     window.location.href = 'generate_brgy_cert.php?id=' + clearanceId;
                     break;
                 case 'barangay identification':
-                     window.location.href = 'generate_brgy_id.php?id=' + residentId;
+                     window.location.href = 'generate_brgy_id.php?id=' + brgyId;
                     break;
                 case 'certificate of residency':
-                     window.location.href = 'generate_residency_cert.php?id=' + residentId;
+                     window.location.href = 'generate_residency_cert.php?id=' + residencyId;
                     break;
                 case 'certificate of indigency':
-                     window.location.href = 'generate_indi_cert.php?id=' + residentId;
+                     window.location.href = 'generate_indi_cert.php?id=' + indigencyId;
                     break;
                 case 'firt time jobseekers':
                      window.location.href = 'generate_jobseekers.php?id=' + residentId;
