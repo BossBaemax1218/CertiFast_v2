@@ -1,6 +1,10 @@
 <?php include 'server/server.php' ?>
 <?php 
-   include 'model/footer.php' 
+   include 'model/footer.php';
+$id = $_GET['id'];
+$query = "SELECT * FROM tbloath WHERE oath_id='$id'";
+$result = $conn->query($query);
+$resident = $result->fetch_assoc(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,10 +71,10 @@
                                                 <h1 class="mt-3 fw-bold mb-4" style="font-size:70px;"><u>OATH OF UNDERTAKING</u></h1>
                                             </div>
                                             <h3 class="mt-4 text-justify" style="text-indent: 60px;">
-                                                I, <span class="fw-bold"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
+                                                I, <span class="fw-bold"><?= ucwords($resident['fullname']) ?></span>, 
                                                 <?= ucwords($resident['age']) ?> years old, resident of
                                                 <span class="text"> Purok <?= ucwords($resident['purok']) ?></span>, 
-                                                <span class="text"><?= ucwords($town) ?></span>, Davao City, for <?= ucwords($resident['purok']) ?>, availing the benefits of Republic Act 11261,
+                                                Barangay Los Amigos, Tugbok District, Davao City, for 10 year/s, availing the benefits of Republic Act 11261,
                                                 otherwise otherwise known as the First Time Jobseekers Act of 2019, do hereby declare, agree and undertake to abide and be bounded by the following:
                                                 <ol class="mt-4">
                                                     <li>1. That this is the first time that I will actively look for a job, and therefore requesting that a Barangay Certification be issued in my favor to avail the benefits of the law;</li>
@@ -92,13 +96,13 @@
                                         <div class="col-md-12 text-right" style="margin-top: 10px;">
                                             <div class="p-3 text" style="font-size: 15px; margin-bottom: 200px;">
                                                 <ol>
-                                                    <li class="fw-bold text" style="font-size: 20px; text-align: right;"><span class="fw-bold"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span></li>
+                                                    <li class="fw-bold text" style="font-size: 20px; text-align: right;"><span class="fw-bold"><?= ucwords($resident['fullname']) ?></span></li>
                                                     <li class="text" style="margin-right: 42px;">First Time Jobseeker</li>
-                                                    <li class="text" style="margin-right: 18px;">Date: <span class="fw-bold"><?= date('jS F, Y') ?></span></li>
+                                                    <li class="text" style="margin-right: 34px;">Date: <span class="fw-bold"><?= date('F j, Y') ?></span></li>
                                                     <li class="fw-bold text mt-3 mb-3" style="margin-right: 81px;">Witnessed By:</li>
                                                     <li class="fw-bold" style="font-size: 20px;"><?= ucwords($captain['fullname']) ?></li>
                                                     <li class="text" style="margin-right: 58px;">Punong Barangay</li>
-                                                    <li class="text" style="margin-right: 16px;">Date: <span class="fw-bold"><?= date('jS F, Y') ?></span></li>
+                                                    <li class="text" style="margin-right: 32px;">Date: <span class="fw-bold"><?= date('F j, Y') ?></span></li>
                                                 </ol>
                                             </div>
                                         </div>
@@ -167,7 +171,7 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" class="form-control" name="name" value="<?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?>">
+                            <input type="hidden" name="name" value="<?= ucwords($resident['requester']) ?>">
                             <input type="hidden" name="email" value="<?= ucwords($resident['email']) ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>

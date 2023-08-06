@@ -14,14 +14,15 @@ $res_years  = $conn->real_escape_string($_POST['resident_years']);
 $req        = $conn->real_escape_string($_POST['requirement']);
 $cert_name  = $conn->real_escape_string($_POST['certificate_name']);
 $user_email = $conn->real_escape_string($_POST['requester']);
+$fname   = $conn->real_escape_string($_POST['fname']);
 
 if (!empty($fullname) && !empty($purok) && !empty($age) && !empty($res_years) && !empty($req)) {
 
-    $insert_query = "INSERT INTO tblresidency(`fullname`,`cert_name`,`age`, `purok`, `resident_year`, `requirement`, `email`) VALUES ('$fullname', '$cert_name',  '$age', '$purok', '$res_years', '$req', '$user_email')";
+    $insert_query = "INSERT INTO tblresidency(`fullname`,`cert_name`,`age`, `purok`, `resident_year`, `requirement`,`requester`, `email`) VALUES ('$fullname', '$cert_name',  '$age', '$purok', '$res_years', '$req', '$fname','$user_email')";
     $result_resident = $conn->query($insert_query);
 
     if ($result_resident === true) {
-        $insert_requested = "INSERT INTO tblresident_requested(`resident_name`, `certificate_name`, `email`, `purok`, `status`) VALUES ('$fullname', '$cert_name','$user_email', '$purok', 'on hold')";
+        $insert_requested = "INSERT INTO tblresident_requested(`resident_name`, `certificate_name`, `email`, `purok`, `status`) VALUES ('$fname', '$cert_name','$user_email', '$purok', 'on hold')";
         $result_requested = $conn->query($insert_requested);
 
         if ($result_requested === true) {

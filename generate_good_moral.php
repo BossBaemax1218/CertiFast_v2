@@ -1,6 +1,10 @@
 <?php include 'server/server.php' ?>
 <?php 
-   include 'model/footer.php' 
+   include 'model/footer.php';
+   $id = $_GET['id'];
+$query = "SELECT * FROM tblgood_moral WHERE good_id='$id'";
+$result = $conn->query($query);
+$resident = $result->fetch_assoc(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +75,7 @@
                                             </span>
                                             <div class="letter">
                                                 <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
-                                                    This is to certify that <span class="fw-bold"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
+                                                    This is to certify that <span class="fw-bold"><?= ucwords($resident['fullname']) ?></span>, 
                                                     of legal age, and a resident of Purok <span class="text"><?= ucwords($resident['purok']) ?></span> 
                                                     <span class="text"><?= ucwords($town) ?></span>, Davao City, Philippines with 
                                                     Community Tax Certificate No.<span class="fw-bold"> <?= ucwords($resident['taxno']) ?></span> 
@@ -81,8 +85,7 @@
                                                     This further certifies that as per record now existing in this office the abovementioned has not been convicted of any Crime, Criminal, Civil nor there is any pending case filed against him/her. 
                                                 </h2>
                                                 <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
-                                                    This certification is issued upon the request of the aforementioned for 
-                                                    <span class="fw-bold"><?= ucwords($resident['remarks']) ?></span> or for whatever legal purpose/s that may serve her/him best.
+                                                    This certification is issued upon the request of the aforementioned for whatever legal purposes that serves her/him best. 
                                                 </h2>
                                                 <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
                                                     Done this <span class="fw-bold"><?= date('jS \d\a\y \o\f F, Y') ?></span> at <span class="fw-text"><?= ucwords($town) ?></span>, Davao City.
@@ -150,7 +153,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Date Issued</label>
-                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d H:i:s') ?>">
+                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Payment Details(Optional)</label>
@@ -158,8 +161,8 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" name="name" value="<?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?>">
-                            <input type="hidden" name="email" value="<?= ucwords($resident['email']) ?>">
+                            <input type="hidden" name="name" value="<?= $resident['requester'] ?>">
+                            <input type="hidden" name="email" value="<?= $resident['email'] ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>

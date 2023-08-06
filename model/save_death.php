@@ -1,59 +1,52 @@
 <?php 
-session_start();
 include('../server/server.php');
 
 if (!isset($_SESSION['fullname'])) {
     if (isset($_SERVER["HTTP_REFERER"])) {
         header("Location: " . $_SERVER["HTTP_REFERER"]);
-        exit();
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$dead_person      = $conn->real_escape_string($_POST['dead_person']);
+$death_bdate      = $conn->real_escape_string($_POST['death_bdate']);
+$age      = $conn->real_escape_string($_POST['age']);
+$purok      = $conn->real_escape_string($_POST['purok']);
+$death_date      = $conn->real_escape_string($_POST['death_date']);
+$guardian      = $conn->real_escape_string($_POST['guardian']);
+$rship      = $conn->real_escape_string($_POST['relationship']);
+$cert_name  = $conn->real_escape_string($_POST['certificate_name']);
+$user_email = $conn->real_escape_string($_POST['email']);
+$fullname      = $conn->real_escape_string($_POST['fullname']);
 
-    $fullname  = $conn->real_escape_string($_POST['dead_person']);
-    $bdate      = $conn->real_escape_string($_POST['birthdate']);
-    $age        = $conn->real_escape_string($_POST['age']);
-    $purok     = $conn->real_escape_string($_POST['purok']);
-    $ddate     = $conn->real_escape_string($_POST['death_date']);
-    $cname      = $conn->real_escape_string($_POST['parents']);
-    $rship      = $conn->real_escape_string($_POST['relationship']);
-    $cert_name  = $conn->real_escape_string($_POST['certificate_name']);
-    $fname      = $conn->real_escape_string($_POST['fullname']);
-    $user_email = $conn->real_escape_string($_POST['email']);
+if (!empty($dead_person) && !empty($death_bdate) &&!empty($age) &&!empty($purok) &&!empty($death_date) && !empty($guardian) && !empty($rship)) {
 
-    if (!empty($fullname) && !empty($bdate) && !empty($age) && !empty($purok) && !empty($ddate) && !empty($cname) && !empty($rship)) {
-        list($firstname, $middlename, $lastname) = explode(' ', $fname, 3);
+    $insert_query = "INSERT INTO tbldeath(`death_person`,`death_bdate`, `age`, `purok`, `death_date`,`guardian`,`relationship`, `cert_name`, `requester`,`email`) 
+                                VALUES ('$dead_person','$death_bdate','$age','$purok','$death_date','$guardian','$rship', '$cert_name','$fullname', '$user_email')";
+    $result_resident = $conn->query($insert_query);
 
-        $update_query = "UPDATE tblresident SET `dead_person` = '$fullname',`purpose` = '$bdate', `age` = '$age', `purok` = '$purok', `death_date` = '$ddate', `parents` = '$cname', `relationship` = '$rship', `certificate_name` = '$cert_name' WHERE `firstname` = '$firstname' AND `middlename` = '$middlename' AND `lastname` = '$lastname'";
-        $result_resident = $conn->query($update_query);
+    if ($result_resident === true) {
+        $insert_requested = "INSERT INTO tblresident_requested(`resident_name`, `certificate_name`, `email`, `purok`, `status`) VALUES ('$fullname', '$cert_name','$user_email', '$purok', 'on hold')";
+        $result_requested = $conn->query($insert_requested);
 
-        if ($result_resident) {
-            $insert_requested = "INSERT INTO tblresident_requested (`resident_name`, `certificate_name`, `email`, `purok`, `status`) VALUES ('$fname', '$cert_name', '$user_email', '$purok', 'on hold')";
-            $result_requested = $conn->query($insert_requested);
-
-            if ($result_requested) {
-                $_SESSION['message'] = 'You have requested a certificate of death that has been sent!';
-                $_SESSION['success'] = 'success';
-            } else {
-                $_SESSION['message'] = 'Something went wrong while inserting into tblresident_requested!';
-                $_SESSION['success'] = 'danger';
-            }
+        if ($result_requested === true) {
+            $_SESSION['message'] = 'You have requested a certificate of death has been sent!';
+            $_SESSION['success'] = 'success';
         } else {
-            $_SESSION['message'] = 'Something went wrong while updating tblresident!';
+            $_SESSION['message'] = 'Something went wrong while inserting into tblresident_requested: ' . $conn->error;
             $_SESSION['success'] = 'danger';
         }
     } else {
-        $_SESSION['message'] = 'Please fill up the form completely!';
+        $_SESSION['message'] = 'Something went wrong while inserting into tbldeath: ' . $conn->error;
         $_SESSION['success'] = 'danger';
     }
 } else {
-    if (isset($_SERVER["HTTP_REFERER"])) {
-        header("Location: " . $_SERVER["HTTP_REFERER"]);
-        exit();
-    }
+    $_SESSION['message'] = 'Please fill up the form completely!';
+    $_SESSION['success'] = 'danger';
 }
+
+if (isset($_SERVER["HTTP_REFERER"])) {
+    header("Location: " . $_SERVER["HTTP_REFERER"]);
+}
+
 $conn->close();
-header("Location: " . $_SERVER["HTTP_REFERER"]);
-exit();
 ?>
