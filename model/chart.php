@@ -44,7 +44,8 @@ if ($documentType !== 'All') {
 }
 
 $sql .= "GROUP BY date_key, details ";
-$sql .= "ORDER BY FIELD(date_key, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', date_key), FIELD(details, 'Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit')";
+$sql .= "ORDER BY FIELD(date_key, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', date_key), FIELD(details, 'Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit','Certificate of Good Moral',
+'Certificate of Birth','Certificate of Oath Taking','First Time Jobseekers','Certificate of Live In','Barangay Identification','Certificate of Death','Business Permit','Family Home Estate')";
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(':fromDate', $fromDate);
@@ -75,7 +76,8 @@ foreach ($result as $row) {
         $chartData[$dateKey] = [];
     }
     if ($documentType === 'All') {
-        $documentTypes = ['Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit'];
+        $documentTypes = ['Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit','Certificate of Good Moral',
+        'Certificate of Birth','Certificate of Oath Taking','First Time Jobseekers','Certificate of Live In','Barangay Identification','Certificate of Death','Business Permit','Family Home Estate'];
         foreach ($documentTypes as $type) {
             if (!isset($chartData[$dateKey][$type])) {
                 $chartData[$dateKey][$type] = 0;
@@ -160,7 +162,7 @@ $totalValuesJson = json_encode($totalValues);
                 value = totalValues[documentType] || 0;
             }
 
-            description += "<tr><td>" + documentType + "</td><td><b>" + value + "</b></td></tr>";
+            description += "<tr><td>" + documentType + " " + " " +"</td><td><b>" + value + "</b></td></tr>";
         });
         description += "</table>";
 

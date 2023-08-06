@@ -182,7 +182,7 @@ while($row2 = $result1->fetch_assoc()){
                                     <input type="hidden" name="size" value="1000000">
                                     <div class="row">
                                         <div class="col-md-12">
-                                        <h3 class="mt-2"><b>Kindly update your purok assignment with the latest <br> resident information.</b></h3>
+                                        <h4 class="mt-2"><b>Kindly update your purok assignment with the latest <br> resident information.</b></h4>
                                             <div class="form-group text-center mt-3">                                               
                                                 <div class="selectgroup selectgroup-secondary selectgroup-pills">
                                                     <label class="selectgroup-item">
