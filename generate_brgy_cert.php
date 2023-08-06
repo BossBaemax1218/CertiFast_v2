@@ -153,7 +153,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Date Issued</label>
-                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d H:i:s') ?>">
+                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Payment Details(Optional)</label>
@@ -161,8 +161,8 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" name="name" value="<?= ucwords($resident['fullname']) ?>">
-                            <input type="hidden" name="email" value="<?= ucwords($resident['email']) ?>">
+                            <input type="hidden" name="name" value="<?= $resident['fullname'] ?>">
+                            <input type="hidden" name="email" value="<?= $resident['email'] ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>

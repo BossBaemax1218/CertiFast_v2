@@ -16,7 +16,7 @@ $user_email = $conn->real_escape_string($_POST['email']);
 
 if (!empty($fullname) && !empty($purok) && !empty($tax) && !empty($req) && !empty($cert_name) && !empty($user_email)) {
 
-    $insert_query = "INSERT INTO tblclearance(`clea_name`,`cert_name`,`purok`, `taxno`, `requirement`,`email`) VALUES ('$fullname', '$cert_name', '$purok', '$tax', '$req', '$user_email')";
+    $insert_query = "INSERT INTO tblclearance(`fullname`,`cert_name`,`purok`, `taxno`, `requirement`,`email`) VALUES ('$fullname', '$cert_name', '$purok', '$tax', '$req', '$user_email')";
     $result_resident = $conn->query($insert_query);
 
     if ($result_resident === true) {

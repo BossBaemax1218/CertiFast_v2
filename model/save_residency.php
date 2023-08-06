@@ -17,7 +17,7 @@ $user_email = $conn->real_escape_string($_POST['requester']);
 
 if (!empty($fullname) && !empty($purok) && !empty($age) && !empty($res_years) && !empty($req)) {
 
-    $insert_query = "INSERT INTO tblresidency(`res_name`,`cert_name`,`age`, `purok`, `resident_year`, `requirement`, `email`) VALUES ('$fullname', '$cert_name',  '$age', '$purok', '$res_years', '$req', '$user_email')";
+    $insert_query = "INSERT INTO tblresidency(`fullname`,`cert_name`,`age`, `purok`, `resident_year`, `requirement`, `email`) VALUES ('$fullname', '$cert_name',  '$age', '$purok', '$res_years', '$req', '$user_email')";
     $result_resident = $conn->query($insert_query);
 
     if ($result_resident === true) {

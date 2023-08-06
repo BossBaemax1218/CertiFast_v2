@@ -164,7 +164,7 @@ $result = $conn->query($sql)->fetch_assoc();
                                 </div>
                                 <div class="form-group">
                                     <label>Date Issued</label>
-                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d H:i:s') ?>">
+                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Payment Details(Optional)</label>
@@ -172,8 +172,8 @@ $result = $conn->query($sql)->fetch_assoc();
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" class="form-control" name="name" value="<?= ucfirst($permit['owner1']) ?>">
-                            <input type="hidden" class="form-control" name="email" value="<?= ucfirst($permit['email']) ?>">
+                            <input type="hidden" class="form-control" name="name" value="<?= $permit['owner1'] ?>">
+                            <input type="hidden" class="form-control" name="email" value="<?= $permit['email'] ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>

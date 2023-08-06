@@ -1,6 +1,10 @@
 <?php include 'server/server.php' ?>
 <?php 
-   include 'model/footer.php' 
+   include 'model/footer.php';
+   $id = $_GET['id'];
+   $query = "SELECT * FROM tblindigency WHERE indi_id='$id'";
+   $result = $conn->query($query);
+   $resident = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +73,7 @@
                                             <h2 class="mt-5">To Whom It May Concern:</h2>
                                             <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
                                                 This is to certify that 
-                                                <span class="fw-bold" style="text-indent: 40px;"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, 
+                                                <span class="fw-bold" style="text-indent: 40px;"><?= ucwords($resident['fullname']) ?></span>, 
                                                 of legal age, and is a bona fide resident of 
                                                 <span class="text" style="text-indent: 40px;"> Purok <?= ucwords($resident['purok']) ?></span>, 
                                                 <span class="text" style="text-indent: 40px;"><?= ucwords($town) ?></span>, Davao City.
@@ -79,7 +83,7 @@
                                             </h2>
                                             <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
                                                 This certification is issued upon the request of aforementioned for 
-                                                <span class="fw-bold" style="text-indent: 40px;"><?= ucwords($resident['remarks']) ?></span> 
+                                                <span class="fw-bold" style="text-indent: 40px;"><?= ucwords($resident['requirements']) ?></span> 
                                                 or for whatever legal purpose/s that may serve her/him best.
                                             </h2>
                                             <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
@@ -150,7 +154,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Date Issued</label>
-                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d H:i:s') ?>">
+                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Payment Details(Optional)</label>
@@ -158,8 +162,8 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" class="form-control" name="name" value="<?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?>">
-                            <input type="hidden" name="email" value="<?= ucwords($resident['email']) ?>">
+                            <input type="hidden" class="form-control" name="name" value="<?= $resident['fullname'] ?>">
+                            <input type="hidden" name="email" value="<?= $resident['email'] ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>

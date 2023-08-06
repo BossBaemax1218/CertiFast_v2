@@ -12,7 +12,7 @@
 	$amount 	    = $conn->real_escape_string($_POST['amount']);
     $date           = $conn->real_escape_string($_POST['date']);
 	$details 	    = $conn->real_escape_string($_POST['details']);
-    $email 	    = $conn->real_escape_string($_POST['email']);
+    $email 	        = $conn->real_escape_string($_POST['email']);
 
     if(!empty($user) && !empty($name)){
 
