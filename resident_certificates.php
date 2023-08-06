@@ -62,7 +62,7 @@ $stmt->close();
 				<div class="panel-header">
                     <div class="text-center mb-3">
                         <h1 class="text-center fw-bold mt-3" style="font-size: 400%;">Certification Requested</h1>
-                        <h3 class="text-center fw-bold mt-2"> This is the list of the requested certifications transaction with CertiFast Portal. </h3>
+                        <h3 class="text-center mt-2"> This is the list of the requested certifications transaction with CertiFast Portal. </h3>
                     </div>
 				</div>
 				<div class="page-inner">

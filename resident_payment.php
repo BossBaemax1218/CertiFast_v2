@@ -16,6 +16,7 @@ include 'server/db_connection.php';
 			    <div class="content">
                     <div>
                         <h1 class="text-center fw-bold mt-5" style="font-size: 400%;">Payments History</h1>
+                        <h4 class="text-center">This is the list of all of your payments in Barangay Los Amigos CertiFast Portal.</h4>
                     </div>
                     <?php if(isset($_SESSION['message'])): ?>
                             <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
@@ -30,7 +31,7 @@ include 'server/db_connection.php';
                                     <div class="card-header">
                                         <h4 class="card-title">Payment History</h4>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body"></div>
                                         <div class="table-responsive mt-3">
                                             <table id="residenttable" class="table">
                                                 <thead>
