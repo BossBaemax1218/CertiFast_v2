@@ -67,7 +67,6 @@ $conn->close();
 						<div class="d-flex align-items-center align-items-md-center flex-column">
                             <h1 class="text-center fw-bold" style="font-size: 400%;">Resident Profiling</h1>
                             <h3 class="text-center">Please registered your personal information first before you requested any of the certifications in Barangay Los Amigos.</h3>
-                            <h4 class="text-center mt-2">This shows that if you are in <b>On Hold</b> status, you are not abled to request any Barangay Los Amigos certificates without having your Purok Leader's approval. <br class="mt-2"> Please read and be aware of this information.</h4>
 						</div>
                         <?php if(isset($_SESSION['fullname'])):?>
                         <h4 class="text-center fw-bold mt-5 mb-2">
@@ -158,8 +157,9 @@ $conn->close();
 											</tbody>
 										</table>
 									</div>
-								</div>
+								</div>                             
 							</div>
+                            <h5 class="text-left mt-2">Note: Please check that all of the information you registered are correct in order to prevent confusion during registering.</h5>
 						</div>
 					</div>
 				</div>

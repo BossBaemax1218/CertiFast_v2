@@ -96,7 +96,10 @@ $conn->close();
                                     </div>
                                     <?php unset($_SESSION['message']); ?>
                                 <?php endif ?>
-
+                                <div class="container">
+                                    <h5 class="text-left mt-2">Note: Please be ensure that your personal data has been <b>Approved</b> already by your respected <b><i>Purok Leader</i></b>,
+                                        before you requested any of certifications.</h5>
+                                </div>
                                 <div class="container">
                                     <?php
                                     include 'server/db_connection.php';
