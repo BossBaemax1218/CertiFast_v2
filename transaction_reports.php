@@ -11,7 +11,7 @@
 	$query2 = "SELECT SUM(amounts) as am FROM tblpayments ORDER BY `date` DESC";
 	$revenue3 = $conn->query($query2)->fetch_assoc();
 
-    $sql = "SELECT * FROM tblpayments ORDER BY `date` DESC";
+    $sql = "SELECT * FROM tblpayments ORDER BY `date` ASC";
     $result = $conn->query($sql);
 
     $revenue = array();
@@ -33,12 +33,6 @@
 		<div class="main-panel">
 			<div class="content">
 					<div class="page-inner mt-2">
-						<?php if(isset($_SESSION['message'])): ?>
-								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-									<?php echo $_SESSION['message']; ?>
-								</div>
-							<?php unset($_SESSION['message']); ?>
-						<?php endif ?>
                         <div class="panel-header">
                             <div class="page-inner">
                                 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
@@ -126,6 +120,12 @@
 						<?php endif ?>
 					</div>
                     <div class="page-inner">
+                    <?php if(isset($_SESSION['message'])): ?>
+								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+									<?php echo $_SESSION['message']; ?>
+								</div>
+							<?php unset($_SESSION['message']); ?>
+						<?php endif ?>
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <div class="card">

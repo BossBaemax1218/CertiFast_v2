@@ -1,6 +1,10 @@
 <?php include 'server/server.php' ?>
 <?php 
-   include 'model/footer.php' 
+   include 'model/footer.php';
+   $id = $_GET['id'];
+   $query = "SELECT * FROM tblfirstjob WHERE job_id='$id'";
+   $result = $conn->query($query);
+   $resident = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +73,7 @@
                                             </div>
                                             <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
                                                 This is to certify that Mr./Ms.
-                                                <span class="fw-bold" style="text-indent: 40px;"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, of legal age, and is a bona fide resident of 
+                                                <span class="fw-bold" style="text-indent: 40px;"><?= ucwords($resident['fullname']) ?></span>, of legal age, and is a bona fide resident of 
                                                 <span class="text" style="text-indent: 40px;"> Purok <?= ucwords($resident['purok']) ?></span>, 
                                                 <span class="text" style="text-indent: 40px;"><?= ucwords($town) ?></span>, Davao City for <?= ucwords($town) ?>, is qualified availee of RA 11261 or the First Time Jobseekers Act of 2019.
                                             </h2>
@@ -77,17 +81,17 @@
                                                 I further certify that the holder/bearer was informed of his/her rights, including the duties and responsibilities accorded by RA 11261 through the Oath undertaking he/she has signed and executed in the presence of Barangay Official.                                                
                                             </h2>
                                             <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
-                                                Signed this <span class="fw-bold" style="text-indent: 40px;"><?= date('jS F, Y') ?></span> 
-                                                in the <span class="fw-text" style="text-indent: 40px;"><?= ucwords($town) ?></span>, Davao City.
+                                                Signed this <span class="text" style="text-indent: 40px;"><?= date('jS \d\a\y \o\f F, Y') ?></span>,
+                                                in the City of Davao.
                                             </h2>
                                             <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
                                                 <?php
                                                 $oneYearValidation = strtotime('+1 year', strtotime(date('jS F, Y')));
                                                 ?>
-                                                This certification is valid only <span class="fw-bold" style="text-indent: 40px;"><?php echo date('jS F, Y', $oneYearValidation); ?></span> 
+                                                This certification is valid only <span class="text" style="text-indent: 40px;"><u><?php echo date('jS F, Y', $oneYearValidation); ?></u></span> 
                                             </h2>
                                         </div>
-                                        <div class="col-md-12" style="margin-top: 100px;">
+                                        <div class="col-md-12" style="margin-top: 90px;">
                                             <div class="p-3 text-right mt-2" style="margin-bottom: 300px;">
                                                 <h2 class="fw-bold mb-6"><u><?= ucwords($captain['fullname']) ?></u></h2>
                                                 <p class="text-right mr-4">PUNONG BARANGAY</p>
@@ -158,7 +162,7 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" class="form-control" name="name" value="<?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?>">
+                            <input type="hidden" class="form-control" name="name" value="<?= ucwords($resident['requester']) ?>">
                             <input type="hidden" name="email" value="<?= ucwords($resident['email']) ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>

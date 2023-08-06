@@ -1,20 +1,20 @@
 <?php include 'server/server.php' ?>
 <?php 
-$sql = "SELECT s.*, c1.c_id, c2.brgy_id, c3.res_id, c4.death_id, c5.birth_id, c6.live_id, c7.job_id, c8.fam_id, c9.good_id, c10.indi_id, c11.id, c12.oath_id
-        FROM tblresident_requested AS s JOIN tblclearance AS c1 ON s.email = c1.email
-        LEFT JOIN tblbrgy_id AS c2 ON s.email = c2.email
-        LEFT JOIN tblresidency AS c3 ON s.email = c3.email
-        LEFT JOIN tbldeath AS c4 ON s.email = c4.email
-        LEFT JOIN tblbirthcert AS c5 ON s.email = c5.email
-        LEFT JOIN tbllive_in AS c6 ON s.email = c6.email
-        LEFT JOIN tblfirstjob AS c7 ON s.email = c7.email
-        LEFT JOIN tblfamily_tax AS c8 ON s.email = c8.email
-        LEFT JOIN tblgood_moral AS c9 ON s.email = c9.email
-        LEFT JOIN tblindigency AS c10 ON s.email = c10.email
-        LEFT JOIN tblpermit AS c11 ON s.email = c11.email
-        LEFT JOIN tbloath AS c12 ON s.email = c12.email
-        WHERE s.status IN ('on hold', 'approved') ORDER BY s.cert_id";
-        $result = $conn->query($sql);
+$sql = "SELECT s.*, s.certificate_name as certificate_name, s.resident_name as resident_name, s.purok as purok, s.date_applied as date_applied,
+(SELECT GROUP_CONCAT(DISTINCT c_id) FROM tblclearance c1 WHERE c1.email = s.email) AS c_id,
+(SELECT GROUP_CONCAT(DISTINCT brgy_id) FROM tblbrgy_id c2 WHERE c2.email = s.email) AS brgy_id,
+(SELECT GROUP_CONCAT(DISTINCT res_id) FROM tblresidency c3 WHERE c3.email = s.email) AS res_id,
+(SELECT GROUP_CONCAT(DISTINCT death_id) FROM tbldeath c4 WHERE c4.email = s.email) AS death_id,
+(SELECT GROUP_CONCAT(DISTINCT birth_id) FROM tblbirthcert c5 WHERE c5.email = s.email) AS birth_id,
+(SELECT GROUP_CONCAT(DISTINCT live_id) FROM tbllive_in c6 WHERE c6.email = s.email) AS live_id,
+(SELECT GROUP_CONCAT(DISTINCT job_id) FROM tblfirstjob c7 WHERE c7.email = s.email) AS job_id,
+(SELECT GROUP_CONCAT(DISTINCT fam_id) FROM tblfamily_tax c8 WHERE c8.email = s.email) AS fam_id,
+(SELECT GROUP_CONCAT(DISTINCT good_id) FROM tblgood_moral c9 WHERE c9.email = s.email) AS good_id,
+(SELECT GROUP_CONCAT(DISTINCT indi_id) FROM tblindigency c10 WHERE c10.email = s.email) AS indi_id,
+(SELECT GROUP_CONCAT(DISTINCT oath_id) FROM tbloath c12 WHERE c12.email = s.email) AS oath_id 
+FROM tblresident_requested AS s WHERE s.status IN ('on hold', 'approved') AND s.certificate_name != 'business permit' GROUP BY s.certificate_name, s.resident_name ORDER BY s.cert_id ASC";
+
+$result = $conn->query($sql);
 
 $resident = array();
 while ($row = $result->fetch_assoc()) {
@@ -31,11 +31,19 @@ while ($row = $result->fetch_assoc()) {
 
     $row['residency_badge'] = $statusBadge;
 
-    if ($status == 'on hold') {
-        $resident[] = $row;
-    } elseif ($status == 'approved') {
-        $resident[] = $row;
-    } elseif ($status == 'claimed') {
+    if ($status == 'on hold' || $status == 'approved') {
+        $row['c_id'] = $row['c_id'];
+        $row['brgy_id'] = $row['brgy_id'];
+        $row['res_id'] = $row['res_id'];
+        $row['death_id'] = $row['death_id'];
+        $row['birth_id'] = $row['birth_id'];
+        $row['live_id'] = $row['live_id'];
+        $row['job_id'] = $row['job_id'];
+        $row['fam_id'] = $row['fam_id'];
+        $row['good_id'] = $row['good_id'];
+        $row['indi_id'] = $row['indi_id'];
+        $row['oath_id'] = $row['oath_id'];
+
         $resident[] = $row;
     }
 }
@@ -55,11 +63,9 @@ while ($row = $result->fetch_assoc()) {
 			<div class="content">
 				<div class="page-inner">
 					<div class="row">
-                        <div class="panel-header">
-                            <div class="page-inner mt-2">
-                                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row mb-2">
-                                    <h1 class="text-black fw-bold" style = "font-size: 400%;">Generate Certificates</h1>
-                                </div>
+                        <div class="page-inner">
+                            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row mb-2">
+                                <h1 class="text-black fw-bold" style = "font-size: 400%;">Generate Certificates</h1>
                             </div>
                         </div>
 						<div class="col-md-12">
@@ -80,7 +86,7 @@ while ($row = $result->fetch_assoc()) {
                                                         <th scope="col">Date</th>
                                                         <th class="text-center" scope="col">Fullname</th>
                                                         <th scope="col">Certificates Name</th>
-                                                        <th scope="col">Purok</th>
+                                                        <th scope="col">Email</th>
                                                         <th class="text-center" scope="col">Status</th>
                                                         <?php if (isset($_SESSION['username'])) : ?>
                                                             <?php if ($_SESSION['role'] == 'administrator') : ?>
@@ -92,13 +98,15 @@ while ($row = $result->fetch_assoc()) {
                                                 <tbody>
                                                     <?php if (!empty($resident)) : ?>
                                                         <?php foreach ($resident as $row) : ?>
-                                                            <tr data-res_id="<?= $row['res_id'] ?>" data-c_id="<?= $row['c_id'] ?>" data-indi_id="<?= $row['indi_id'] ?>">
+                                                            <tr data-res_id="<?= $row['res_id'] ?>" data-c_id="<?= $row['c_id'] ?>" data-indi_id="<?= $row['indi_id'] ?>" data-fam_id="<?= $row['fam_id'] ?>" 
+                                                            data-death_id="<?= $row['death_id'] ?>" data-birth_id="<?= $row['birth_id'] ?>" data-oath_id="<?= $row['oath_id'] ?>" 
+                                                            data-brgy_id="<?= $row['brgy_id'] ?>" data-live_id="<?= $row['live_id'] ?>" data-first_id="<?= $row['job_id'] ?>" data-good_id="<?= $row['good_id'] ?>">
                                                                 <td><?= $row['date_applied'] ?></td>
                                                                 <td>
                                                                     <?= ucwords($row['resident_name']) ?>
                                                                 </td>
                                                                 <td><?= ucwords($row['certificate_name']) ?></td>
-                                                                <td><?= $row['purok'] ?></td>
+                                                                <td><?= $row['email'] ?></td>
                                                                 <td class="text-center"><?= $row['residency_badge'] ?></td>
                                                                 <?php if (isset($_SESSION['username'])) : ?>
                                                                     <?php if ($_SESSION['role'] == 'administrator') : ?>
@@ -106,7 +114,7 @@ while ($row = $result->fetch_assoc()) {
                                                                 <td class="text-center">
                                                                     <div class="form-button-action">
                                                                         <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Status" onclick="editStatus(this)" data-cert_id="<?= $row['cert_id'] ?>" data-status="<?= $row['status'] ?>">
-                                                                            <?php if(isset($_SESSION['username'])): ?>
+                                                                            <?php if (isset($_SESSION['username'])): ?>
                                                                                 <i class="fas fa-edit"></i>
                                                                             <?php else: ?>
                                                                                 <i class="fa fa-eye"></i>
@@ -116,7 +124,7 @@ while ($row = $result->fetch_assoc()) {
                                                                             $status = $row['status'];
                                                                             $btnDisabled = ($status === 'on hold') ? 'disabled' : '';
                                                                         ?>
-                                                                        <a type="button" data-toggle="tooltip" href="#" class="btn btn-link btn-danger generate-certificate-btn" data-original-title="Generate Certificate" data-certificate_name="<?= $row['certificate_name'] ?>" data-status="<?= $status ?>" <?= $btnDisabled ?>>
+                                                                        <a type="button" data-toggle="tooltip" class="btn btn-link btn-danger generate-certificate-btn" data-original-title="Generate Certificate" data-certificate_name="<?= $row['certificate_name'] ?>" data-status="<?= $status ?>" <?= $btnDisabled ?>>
                                                                             <i class="fas fa-print"></i>
                                                                         </a>
                                                                     </div>
@@ -174,61 +182,73 @@ while ($row = $result->fetch_assoc()) {
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var rows = document.querySelectorAll("#residenttable tbody tr");
-        for (var i = 0; i < rows.length; i++) {
-            var row = rows[i];
-            var residencyId = row.getAttribute("data-res_id");
-            var clearanceId = row.getAttribute("data-c_id");
-            var indigencyId = row.getAttribute("data-indi_id");
-            var generateBtn = row.querySelector(".generate-certificate-btn");
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+    var rows = document.querySelectorAll("#residenttable tbody tr");
+    for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        var residencyId = row.getAttribute("data-res_id");
+        var clearanceId = row.getAttribute("data-c_id");
+        var indigencyId = row.getAttribute("data-indi_id");
+        var famId = row.getAttribute("data-fam_id");
+        var brgyId = row.getAttribute("data-brgy_id");
+        var firstId = row.getAttribute("data-first_id");
+        var oathId = row.getAttribute("data-oath_id");
+        var goodId = row.getAttribute("data-good_id");
+        var liveId = row.getAttribute("data-live_id");
+        var deathId = row.getAttribute("data-death_id");
+        var birthId = row.getAttribute("data-birth_id");
+        var generateBtn = row.querySelector(".generate-certificate-btn");
+
+        (function (residencyId, clearanceId, indigencyId, famId) {
             generateBtn.addEventListener("click", function () {
                 var certificateName = this.getAttribute("data-certificate_name");
                 var status = this.getAttribute("data-status");
                 if (status === "approved") {
-            switch (certificateName.toLowerCase()) {
-                case 'barangay clearance':
-                     window.location.href = 'generate_brgy_cert.php?id=' + clearanceId;
-                    break;
-                case 'barangay identification':
-                     window.location.href = 'generate_brgy_id.php?id=' + brgyId;
-                    break;
-                case 'certificate of residency':
-                     window.location.href = 'generate_residency_cert.php?id=' + residencyId;
-                    break;
-                case 'certificate of indigency':
-                     window.location.href = 'generate_indi_cert.php?id=' + indigencyId;
-                    break;
-                case 'firt time jobseekers':
-                     window.location.href = 'generate_jobseekers.php?id=' + residentId;
-                    break;
-                case 'certificate of oath taking':
-                     window.location.href = 'generate_oath.php?id=' + residentId;
-                    break;
-                case 'certificate of good moral':
-                     window.location.href = 'generate_good_moral.php?id=' + residentId;
-                    break;
-                case 'certificate of live in':
-                     window.location.href = 'generate_live_in.php?id=' + residentId;
-                    break;
-                case 'family home estate tax':
-                     window.location.href = 'generate_family_tax.php?id=' + residentId;
-                    break;
-                case 'certificate of death':
-                     window.location.href = 'generate_death.php?id=' + residentId;
-                    break;
-                case 'certificate of birth':
-                     window.location.href = 'generate_birth.php?id=' + residentId;
-                    break;
-                default:
-                     window.location.href = 'list_certificates.php';
-                    break;
+                    switch (certificateName.toLowerCase()) {
+                        case 'barangay clearance':
+                            window.location.href = 'generate_brgy_cert.php?id=' + clearanceId;
+                            break;
+                        case 'barangay identification':
+                            window.location.href = 'generate_brgy_id.php?id=' + brgyId;
+                            break;
+                        case 'certificate of residency':
+                            window.location.href = 'generate_residency_cert.php?id=' + residencyId;
+                            break;
+                        case 'certificate of indigency':
+                            window.location.href = 'generate_indi_cert.php?id=' + indigencyId;
+                            break;
+                        case 'first time jobseekers':
+                            window.location.href = 'generate_jobseekers.php?id=' + firstId;
+                            break;
+                        case 'certificate of oath taking':
+                            window.location.href = 'generate_oath.php?id=' + oathId;
+                            break;
+                        case 'certificate of good moral':
+                            window.location.href = 'generate_good_moral.php?id=' + goodId;
+                            break;
+                        case 'certificate of live in':
+                            window.location.href = 'generate_live_in.php?id=' + liveId;
+                            break;
+                        case 'family home estate':
+                            window.location.href = 'generate_family_tax.php?id=' + famId;
+                            break;
+                        case 'certificate of death':
+                            window.location.href = 'generate_death.php?id=' + deathId;
+                            break;
+                        case 'certificate of birth':
+                            window.location.href = 'generate_birth.php?id=' +  birthId;
+                            break;
+                        default:
+                            window.location.href = 'list_certificates.php';
+                            break;
+                    }
                 }
-            }
-        });
+            });
+        })(residencyId, clearanceId, indigencyId, famId);
     }
 });
+
 </script>
 <script>
     function editStatus(that){

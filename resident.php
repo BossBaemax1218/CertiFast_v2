@@ -68,12 +68,6 @@
 					</div>
 				</div>
                 <div class="page-inner mt-2">
-                    <?php if(isset($_SESSION['message'])): ?>
-								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-									<?php echo $_SESSION['message']; ?>
-								</div>
-							<?php unset($_SESSION['message']); ?>
-						<?php endif ?>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card card-stats card card-round">
@@ -118,7 +112,6 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <!--<a href="users.php?state=male" class="card-link text" style="color: gray;">Total Voters</a>-->
                                     </div>
                                 </div>
                             </div>
@@ -141,15 +134,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body">
-                                    
+                                    <div class="card-body">                                    
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-				<div class="page-inner md-2">
+				<div class="page-inner">
+                <?php if(isset($_SESSION['message'])): ?>
+								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+									<?php echo $_SESSION['message']; ?>
+								</div>
+							<?php unset($_SESSION['message']); ?>
+						<?php endif ?>
 					<div class="row">
 						<div class="col-md-12">
                             <div class="card">

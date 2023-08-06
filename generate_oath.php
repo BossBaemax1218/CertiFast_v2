@@ -89,7 +89,7 @@ $resident = $result->fetch_assoc();
                                                 </ol>
                                             </h3>
                                             <h3 class="mt-3 text-justify">
-                                                Signed this <span class="fw-bold" style="text-indent: 60px;"><?= date('jS F, Y') ?></span> 
+                                                Signed this <span class="fw-bold" style="text-indent: 60px;"><?= date('jS \d\a\y \o\f F, Y') ?></span> 
                                                 in the City of Davao.
                                             </h3>
                                         </div>
@@ -163,7 +163,7 @@ $resident = $result->fetch_assoc();
                                 </div>
                                 <div class="form-group">
                                     <label>Date Issued</label>
-                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d H:i:s') ?>">
+                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Payment Details(Optional)</label>

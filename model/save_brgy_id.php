@@ -7,18 +7,23 @@ if (!isset($_SESSION['fullname'])) {
     }
 }
 
-$fullname   = $conn->real_escape_string($_POST['fullname']);
+$id   = $conn->real_escape_string($_POST['id_no']);
+$owner   = $conn->real_escape_string($_POST['fullname']);
+$bdate   = $conn->real_escape_string($_POST['birthdate']);
 $purok      = $conn->real_escape_string($_POST['purok']);
-$age        = $conn->real_escape_string($_POST['age']);
-$res_years  = $conn->real_escape_string($_POST['resident_years']);
-$req        = $conn->real_escape_string($_POST['requirement']);
+$precint        = $conn->real_escape_string($_POST['precintno']);
+$phone   = $conn->real_escape_string($_POST['phone']);
+$contact   = $conn->real_escape_string($_POST['contact_number']);
+$guardian   = $conn->real_escape_string($_POST['guardian']);
+$rship  = $conn->real_escape_string($_POST['relationship']);
 $cert_name  = $conn->real_escape_string($_POST['certificate_name']);
+$fname = $conn->real_escape_string($_POST['fname']);
 $user_email = $conn->real_escape_string($_POST['email']);
-$fname   = $conn->real_escape_string($_POST['fname']);
 
-if (!empty($fullname) && !empty($purok) && !empty($age) && !empty($res_years) && !empty($req)) {
+if (!empty($id) && !empty($owner) &&  !empty($bdate) &&  !empty($purok) &&  !empty($precint) &&  !empty($phone) &&  !empty($contact) &&  !empty($guardian) &&  !empty($rship)) {
 
-    $insert_query = "INSERT INTO tblresidency(`fullname`,`cert_name`,`age`, `purok`, `resident_year`, `requirement`,`requester`, `email`) VALUES ('$fullname', '$cert_name',  '$age', '$purok', '$res_years', '$req', '$fname','$user_email')";
+    $insert_query = "INSERT INTO tblbrgy_id(`id_no`, `fullname`, `birthdate`, `purok`, `precintno`, `phone`, `contact_number`,`guardian`,`relationship`, `cert_name`, `requester`,`email`) 
+                                    VALUES ('$id', '$owner', '$bdate', '$purok','$precint', '$phone','$contact', '$guardian','$rship','$cert_name', '$fname',  '$user_email')";
     $result_resident = $conn->query($insert_query);
 
     if ($result_resident === true) {
@@ -26,14 +31,14 @@ if (!empty($fullname) && !empty($purok) && !empty($age) && !empty($res_years) &&
         $result_requested = $conn->query($insert_requested);
 
         if ($result_requested === true) {
-            $_SESSION['message'] = 'You have requested a certificate of residency has been sent!';
+            $_SESSION['message'] = 'You have requested a barangay ID in has been sent!';
             $_SESSION['success'] = 'success';
         } else {
             $_SESSION['message'] = 'Something went wrong while inserting into tblresident_requested: ' . $conn->error;
             $_SESSION['success'] = 'danger';
         }
     } else {
-        $_SESSION['message'] = 'Something went wrong while inserting into tblresidency: ' . $conn->error;
+        $_SESSION['message'] = 'Something went wrong while inserting into tblbrgy_id: ' . $conn->error;
         $_SESSION['success'] = 'danger';
     }
 } else {

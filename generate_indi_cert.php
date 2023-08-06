@@ -87,7 +87,7 @@
                                                 or for whatever legal purpose/s that may serve her/him best.
                                             </h2>
                                             <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
-                                                Done this <span class="fw-bold" style="text-indent: 40px;"><?= date('jS F, Y') ?></span> 
+                                                Done this <span class="fw-bold" style="text-indent: 40px;"><?= date('jS \d\a\y \o\f F, Y') ?></span> 
                                                 at <span class="fw-text" style="text-indent: 40px;"><?= ucwords($town) ?></span>, Davao City.
                                             </h2>
                                         </div>

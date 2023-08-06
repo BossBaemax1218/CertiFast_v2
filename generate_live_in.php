@@ -1,6 +1,10 @@
 <?php include 'server/server.php' ?>
 <?php 
-   include 'model/footer.php' 
+   include 'model/footer.php';
+   $id = $_GET['id'];
+   $query = "SELECT * FROM tbllive_in WHERE live_id='$id'";
+   $result = $conn->query($query);
+   $resident = $result->fetch_assoc(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,20 +75,20 @@
                                             </span>
                                             <div class="letter">
                                                 <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
-                                                    This is to certify that <span class="fw-bold"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, <span class="text"><?= ucwords($resident['age']) ?></span>
-                                                     and <span class="fw-bold"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></span>, <?= ucwords($resident['age']) ?>, and both resident of Purok <span class="text"><?= ucwords($resident['purok']) ?></span> 
+                                                    This is to certify that <span class="fw-bold"><?= ucwords($resident['husband']) ?></span>, <span class="text"><?= ucwords($resident['husband_age']) ?></span> years old
+                                                     and <span class="fw-bold"><?= ucwords($resident['wife']) ?></span>, <?= ucwords($resident['wife_age']) ?> years old, and both resident of Purok <span class="text"><?= ucwords($resident['purok']) ?></span> 
                                                     <span class="text"><?= ucwords($town) ?></span>, Davao City. 
                                                 </h2>
                                                 <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
                                                     This further certifies that the abovementioned names are living together for
-                                                    <span class="fw-bold"><?= ucwords($resident['remarks']) ?></span>.
+                                                    <span class="text"><?= ucwords($resident['living_year']) ?></span> years.
                                                 </h2>
                                                 <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
                                                     This certification is issued upon the request of the aforementioned for 
-                                                    <span class="fw-bold"><?= ucwords($resident['remarks']) ?></span> or for whatever legal purposes that serves her/him best. 
+                                                    <span class="fw-bold"><?= ucwords($resident['requirements']) ?></span> or for whatever legal purposes that serves her/him best. 
                                                 </h2>
                                                 <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
-                                                    Done this <span class="fw-bold"><?= date('jS \d\a\y \o\f F, Y') ?></span> at <span class="fw-text"><?= ucwords($town) ?></span>, Davao City.
+                                                    Done this <span class="text"><?= date('jS \d\a\y \o\f F, Y') ?></span> at <span class="fw-text"><?= ucwords($town) ?></span>, Davao City.
                                                 </h2>
                                             </div>
                                         </div>
@@ -149,7 +153,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Date Issued</label>
-                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d H:i:s') ?>">
+                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Payment Details(Optional)</label>
@@ -157,7 +161,7 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" name="name" value="<?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?>">
+                            <input type="hidden" name="name" value="<?= ucwords($resident['requester']) ?>">
                             <input type="hidden" name="email" value="<?= ucwords($resident['email']) ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>

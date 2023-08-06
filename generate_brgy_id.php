@@ -1,6 +1,10 @@
 <?php include 'server/server.php' ?>
 <?php 
-   include 'model/footer.php' 
+   include 'model/footer.php';
+   $id = $_GET['id'];
+   $query = "SELECT * FROM tblbrgy_id WHERE brgy_id='$id'";
+   $result = $conn->query($query);
+   $resident = $result->fetch_assoc();  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +55,7 @@
                                             <div class="text-center">
                                                 <h1 class="mt-4 fw-bold mb-5" style="font-size:100px;">BARANGAY IDENTIFICATION</h1>
                                             </div>
-                                            <div class="id-card mb-5"></div>
+                                            <div class="id-card">
                                                 <div class="headers">
                                                     <div class="text-center ml-5">
                                                         <img src="assets/uploads/<?= $city_logo ?>" class="img-fluid mr-2 ml-4 logos">
@@ -67,13 +71,13 @@
                                                 <div class="sub-header">
                                                     <h1 class="fw-bold mt-1">BARANGAY IDENTIFICATION CARD</h1>
                                                 </div>
-                                                <span class="idnumber">ID No. BLA-123445</span>
+                                                <span class="idnumber">ID No. <?= $resident['id_no'] ?></span>
                                                 <div class="namelist">
-                                                    <h3 class="fw-bold"><?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></h3>
+                                                    <h3 class="fw-bold"><?= ucwords($resident['fullname']) ?></h3>
                                                     <p class="text" style="font-size: 14px">Name</p>
                                                     <h3 class="fw-bold"><?= date('F j, Y', strtotime($resident['birthdate'])) ?></h3>
                                                     <p class="text" style="font-size: 14px">Birthday</p>
-                                                    <h3 class="fw-bold mt-2">Purok <?= $resident['purok'] ?>, Barangay Los Amigos, <br> Tugbok District, Davao City, Del Sur, 8000</h3>
+                                                    <h3 class="fw-bold mt-2">Purok <?= $resident['purok'] ?>,Barangay Los Amigos,<br>Tugbok District, Davao City, Del Sur, 8000</h3>
                                                     <p class="text" style="font-size: 14px">Address</p>
                                                 </div>
                                                 <div class="profile-pic mt-3 ml-5"></div>
@@ -82,26 +86,26 @@
                                                     Signature
                                                 </p>
                                                 <p class="precint">
-                                                    Precint No.
+                                                    Precint No. <strong class="ml-5"><?= $resident['precintno'] ?></strong>
                                                 </p>
                                                 <hr class="precint-line">
                                                 <div class="sub-footer"></div>
                                             </div>   
-                                            <div class="id-card mb-5">
-                                                <span class="text-left ml-4 mt-5" style="font-size: 18px">In case of emergency, please notify:</span>
+                                            <div class="id-card mb-5 mt-5" style="color: black;">
+                                                <span class="text-left ml-4 mt-5" style="font-size: 16px">In case of emergency, please notify:</span>
                                                 <div class="names">
-                                                    <h3 class="text">Name: <?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?></h3>
-                                                    <h3 class="text" style="font-size: 18px">Address: Purok <?= $resident['purok'] ?>, Barangay Los Amigos, Tugbok District, Davao City</h3>
-                                                    <h3 class="text" style="font-size: 18px">Contact Number: <?= $resident['phone'] ?></h3>
-                                                    <h3 class="text"> Relationship: <?= date('F j, Y', strtotime($resident['birthdate'])) ?></h3>
+                                                    <h3 class="text">Name: <?= ucwords($resident['guardian']) ?></h3>
+                                                    <h3 class="text" style="font-size: 16px">Address: Purok <?= $resident['purok'] ?>, Barangay Los Amigos, Tugbok District, Davao City</h3>
+                                                    <h3 class="text" style="font-size: 16px">Contact Number: <?= $resident['contact_number'] ?></h3>
+                                                    <h3 class="text"> Relationship: <?= $resident['relationship'] ?></h3>
                                                 </div>
                                                 <div class="sub-names">
                                                     <h3 class="text-center"> This is to clarify that the name indicates in this
                                                         identification card <br> is a bona fide resident of 
                                                         Barangay Los Amigos, Tugbok District, Davao City.</h3>
                                                     <h3 class="text-center mt-4"> Issued this <?= date('jS \d\a\y \o\f F, Y') ?>.</h3>
-                                                    <h1 class="fw-bold text-center mt-5"><?= ucwords($captain['fullname']) ?></h1>
-                                                    <h5 class="text-center">Punong Barangay</h5>
+                                                    <h1 class="fw-bold text-center mt-5" style="color: black;"><?= ucwords($captain['fullname']) ?></h1>
+                                                    <h5 class="text-center" style="color: black;">Punong Barangay</h5>
                                                 </div>
                                                 <div class="sub-footer1"></div>
                                             </div>                                                                                                                                                                       
@@ -113,7 +117,7 @@
                     </div>
                 </div>
             <!-- Modal -->
-           <!--<div class="modal fade" id="pment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+            <div class="modal fade" id="pment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -130,7 +134,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Date Issued</label>
-                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d H:i:s') ?>">
+                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Payment Details(Optional)</label>
@@ -138,7 +142,7 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" class="form-control" name="name" value="<?= ucwords($resident['firstname'].' '.$resident['middlename'].' '.$resident['lastname']) ?>">
+                            <input type="hidden" name="name" value="<?= ucwords($resident['fullname']) ?>">
                             <input type="hidden" name="email" value="<?= ucwords($resident['email']) ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
@@ -146,7 +150,7 @@
                         </form>
                     </div>
                 </div>
-            </div>-->
+            </div>
 			<?php include 'templates/main-footer.php' ?>
 			<?php if(!isset($_GET['closeModal'])){ ?>
             

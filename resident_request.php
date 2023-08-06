@@ -167,7 +167,7 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -186,6 +186,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of good moral" required>
+                                        <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
@@ -211,15 +212,15 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Who died and what was their name?</label>
-                                                <input type="text" class="form-control" placeholder="Juan G. Luna" name="dead_person" required>
+                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="dead_person" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is the birthdate of the person died?</label>
-                                                <input type="date" class="form-control" name="birthdate" required>
+                                                <input type="date" class="form-control" name="death_bdate" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is their current age before she/he died?</label>
-                                                <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
+                                                <input type="number" class="form-control" placeholder="Age" min="1" name="age" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -239,7 +240,7 @@ $conn->close();
                                             </div>                                           
                                             <div class="form-group">
                                                 <label>What is their name?</label>
-                                                <input type="text" class="form-control" placeholder="Complete Name" name="parents" required>
+                                                <input type="text" class="form-control" placeholder="Guardian Name" name="guardian" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What kind of relationship do you have with the person?</label>
@@ -284,12 +285,20 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <label>Barangay ID No.</label>
+                                                <input type="text" class="form-control" placeholder="" name="id_no" value="<?= 'BLA - ' . date('Yjn') ?>" required>
+                                            </div>
+                                            <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>When is your birthdate?</label>
-                                                <input type="date" class="form-control" name="bdate" required>
+                                                <input type="date" class="form-control" name="birthdate" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What is your contact number?</label>
+                                                <input type="number" class="form-control" placeholder="Contact Number" name="phone" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -302,18 +311,18 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>Precint number? (If you are a voters of Barangay Los Amigos)</label>
-                                                <input type="number" class="form-control" placeholder="Enter your precint number" name="precint" required>
+                                                <input type="number" class="form-control" placeholder="Precint number" name="precintno" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is your contact number?</label>
-                                                <input type="number" class="form-control" placeholder="Enter your contact number" name="phone" required>
+                                                <label>What is the contact number?</label>
+                                                <input type="number" class="form-control" placeholder="Contact Number" name="contact_number" required>
                                             </div>
                                             <div class="form-group mt-2">
                                                 <h5><b>In case of emergency (Parents-Family-Guardians): </b></h5>
                                             </div>                                           
                                             <div class="form-group">
                                                 <label>What is their name?</label>
-                                                <input type="text" class="form-control" placeholder="Complete Name" name="parents" required>
+                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="guardian" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What kind of relationship do you have with the person?</label>
@@ -332,7 +341,8 @@ $conn->close();
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <input type="hidden" name="certificate_name" value="certificate of death" required>
+                                        <input type="hidden" name="certificate_name" value="barangay identification" required>
+                                        <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
@@ -355,23 +365,23 @@ $conn->close();
                             <form method="POST" action="model/save_permit_user.php" >
                                 <div class="form-group">
                                     <label>Nature of Business Name</label>
-                                    <input type="text" class="form-control" placeholder="Enter Business Name" name="business_name"  required>
+                                    <input type="text" class="form-control" placeholder="Ex: Sari-Sari Store" name="business_name"  required>
                                 </div>
                                 <div class="form-group">
                                     <label>Business Owner Name</label>
-                                    <input type="text" class="form-control mb-2" placeholder="Juan G. Luna" name="owner1" value="<?= $_SESSION["fullname"]; ?>" required>
+                                    <input type="text" class="form-control mb-2" placeholder="Ex: Juan G. Luna" name="owner1" value="" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Business Email Address</label>
-                                    <input type="text" class="form-control mb-2" placeholder="Enter Owner Name" name="email" value="" required>
+                                    <input type="text" class="form-control mb-2" placeholder="Ex: sample@gmail.com" name="email" value="" required>
                                 </div>
 								<div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" class="form-control" placeholder="Enter your business address" name="address" required>
+                                    <input type="text" class="form-control" placeholder="Address" name="address" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Business Location</label>
-                                    <input type="text" class="form-control" placeholder="Enter your exact business location" name="location" required>
+                                    <input type="text" class="form-control" placeholder="Business Location" name="location" required>
                                 </div>
 								<div class="form-group">
                                     <label>Date Applied</label>
@@ -380,7 +390,8 @@ $conn->close();
                        		</div>
 							<div class="modal-footer">
                                 <input type="hidden" name="certificate_name" value="business permit" required>
-                                <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
+                                <input type="hidden" name="req_email" value="<?= $_SESSION["user_email"]; ?>" required>
+                                <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
 								<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 								<button type="submit" class="btn btn-danger">Create</button>
 							</div>
@@ -404,7 +415,7 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is your current age?</label>
@@ -423,6 +434,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of oath taking" required>
+                                        <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
@@ -471,6 +483,7 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="barangay clearance" required>
+                                        <input type="text" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="text" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
@@ -496,23 +509,23 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What the name of your Husband?</label>
-                                                <input type="text" class="form-control" placeholder="Enter your name" name="husband" required>
+                                                <input type="text" class="form-control" placeholder="Husband's Name" name="husband" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is the current age of the Husband?</label>
-                                                <input type="number" class="form-control" placeholder="Enter your husband age" min="1" name="husband_age" required>
+                                                <input type="number" class="form-control" placeholder="Husband's Age" min="1" name="husband_age" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What the name your Wife?</label>
-                                                <input type="text" class="form-control" placeholder="Enter your name" name="wife" required>
+                                                <input type="text" class="form-control" placeholder="Wife's Name" name="wife" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is the current age of the Wife?</label>
-                                                <input type="number" class="form-control" placeholder="Enter your wife's age" min="1" name="wife_age" required>
+                                                <input type="number" class="form-control" placeholder="Wife's age" min="1" name="wife_age" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>How many years do you live together?</label>
-                                                <input type="number" class="form-control" placeholder="" name="purpose" required>
+                                                <input type="number" class="form-control" placeholder="" name="living_year" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -525,12 +538,13 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>What requirements you need this certificates?</label>
-                                                <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
+                                                <textarea class="form-control" name="requirements" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of live in" required>
+                                        <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
@@ -559,26 +573,31 @@ $conn->close();
                                             </div>                                        
                                             <div class="form-group">
                                                 <label>Wife Name</label>
-                                                <input type="text" class="form-control" placeholder="Wife's name" name="wife" required>
+                                                <input type="text" class="form-control" placeholder="Name" name="fam_1" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Husband Name</label>
-                                                <input type="text" class="form-control" placeholder="Husband's name" name="husband" required>
+                                                <input type="text" class="form-control" placeholder="Name" name="fam_2" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Children Name's</label>
-                                                <input type="text" class="form-control mb-2" placeholder="First child name" name="firstchild" required>
-                                                <input type="text" class="form-control mb-2" placeholder="Second child name" name="secondchild">
-                                                <input type="text" class="form-control mb-2" placeholder="Third child name (Optional)" name="thirdchild">
+                                                <input type="text" class="form-control mb-2" placeholder="First child name" name="fam_3" required>
+                                                <input type="text" class="form-control mb-2" placeholder="Second child name" name="fam_4">
+                                                <input type="text" class="form-control mb-2" placeholder="Third child name (Optional)" name="fam_5">
                                             </div>
                                             <div class="form-group">
-                                                <label>What is the number of Transfer Certificate of Title you owned?</label>
-                                                <input class="form-control" name="remarks" required placeholder="Enter your owned TCT number"></input>
+                                                <label>Transfer Certificate of Title (TCT) number?</label>
+                                                <input class="form-control" name="tctno" required placeholder="TCT number"></input>
                                             </div>
+                                            <div class="form-group">
+                                                <label>What requirements you need this certificates?</label>
+                                                <input class="form-control" name="requirements" required placeholder="Ex: 4ps Requirements"></input>
+                                            </div>                                           
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="family home estate" required>
+                                        <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
@@ -604,11 +623,11 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is the name of the child?</label>
-                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fname" value="" required>
+                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is the birthday?</label>
-                                                <input type="date" class="form-control" placeholder="Birthdate" name="birthdate" required>
+                                                <input type="date" class="form-control" placeholder="Birthdate" name="bdate" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is your current age?</label>
@@ -644,13 +663,13 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>What requirements you need this certificates?</label>
-                                                <textarea class="form-control" name="remarks" required placeholder="Ex: 4ps Requirements, School Requirements"></textarea>
+                                                <textarea class="form-control" name="requirement" required placeholder="Ex: School Requirements"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of birth" required>
-                                        <input type="hidden" name="email" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
@@ -703,7 +722,8 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of residency" required>
-                                        <input type="hidden" name="requester" value="<?= $_SESSION["user_email"]; ?>" required>
+                                        <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -728,7 +748,7 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -740,17 +760,14 @@ $conn->close();
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is your tax no?</label>
-                                                <input type="number" class="form-control" placeholder="Enter your tax number" min="6" name="taxno" required>
-                                            </div>
-                                            <div class="form-group">
                                                 <label>What requirements you need this certificates?</label>
-                                                <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
+                                                <textarea class="form-control" name="requirements" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="certificate of indigency" required>
+                                        <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
@@ -770,13 +787,17 @@ $conn->close();
                         </button>
                     </div>
                         <div class="modal-body">
-                            <form method="POST" action="model/save_clearance.php" enctype="multipart/form-data">
+                            <form method="POST" action="model/save_job.php" enctype="multipart/form-data">
                                 <input type="hidden" name="size" value="1000000">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Enter your name" name="Juan G. Luna" value="<?= $_SESSION["fullname"]; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>How old are you?</label>
+                                                <input type="number" class="form-control" placeholder="Age" min="1" name="age" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -787,14 +808,11 @@ $conn->close();
                                                     <?php endforeach ?>
                                                 </select>
                                             </div>
-                                            <div class="form-group">
-                                                <label>How many years have you lived in the barangay?</label>
-                                                <input type="number" class="form-control" placeholder="1 year up to" min="6" name="purpose" required>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="first time jobseekers" required>
+                                        <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>

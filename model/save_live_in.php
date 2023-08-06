@@ -7,18 +7,21 @@ if (!isset($_SESSION['fullname'])) {
     }
 }
 
-$fullname   = $conn->real_escape_string($_POST['fullname']);
+$husband   = $conn->real_escape_string($_POST['husband']);
+$wife   = $conn->real_escape_string($_POST['wife']);
+$h_age   = $conn->real_escape_string($_POST['wife_age']);
 $purok      = $conn->real_escape_string($_POST['purok']);
-$age        = $conn->real_escape_string($_POST['age']);
-$res_years  = $conn->real_escape_string($_POST['resident_years']);
-$req        = $conn->real_escape_string($_POST['requirement']);
+$w_age        = $conn->real_escape_string($_POST['husband_age']);
+$living_year   = $conn->real_escape_string($_POST['living_year']);
+$req   = $conn->real_escape_string($_POST['requirements']);
 $cert_name  = $conn->real_escape_string($_POST['certificate_name']);
+$fname = $conn->real_escape_string($_POST['fname']);
 $user_email = $conn->real_escape_string($_POST['email']);
-$fname   = $conn->real_escape_string($_POST['fname']);
 
-if (!empty($fullname) && !empty($purok) && !empty($age) && !empty($res_years) && !empty($req)) {
+if (!empty($husband) && !empty($wife) &&  !empty($h_age) &&  !empty($w_age) &&  !empty($purok) &&  !empty($living_year) &&  !empty($req)) {
 
-    $insert_query = "INSERT INTO tblresidency(`fullname`,`cert_name`,`age`, `purok`, `resident_year`, `requirement`,`requester`, `email`) VALUES ('$fullname', '$cert_name',  '$age', '$purok', '$res_years', '$req', '$fname','$user_email')";
+    $insert_query = "INSERT INTO tbllive_in(`husband`, `wife`, `husband_age`, `wife_age`, `purok`, `living_year`, `requirements`, `cert_name`, `requester`,`email`) 
+                                    VALUES ('$husband', '$wife', '$h_age', '$w_age','$purok', '$living_year','$req', '$cert_name','$fname',  '$user_email')";
     $result_resident = $conn->query($insert_query);
 
     if ($result_resident === true) {
@@ -26,14 +29,14 @@ if (!empty($fullname) && !empty($purok) && !empty($age) && !empty($res_years) &&
         $result_requested = $conn->query($insert_requested);
 
         if ($result_requested === true) {
-            $_SESSION['message'] = 'You have requested a certificate of residency has been sent!';
+            $_SESSION['message'] = 'You have requested a certificate of live in has been sent!';
             $_SESSION['success'] = 'success';
         } else {
             $_SESSION['message'] = 'Something went wrong while inserting into tblresident_requested: ' . $conn->error;
             $_SESSION['success'] = 'danger';
         }
     } else {
-        $_SESSION['message'] = 'Something went wrong while inserting into tblresidency: ' . $conn->error;
+        $_SESSION['message'] = 'Something went wrong while inserting into tbllive_in: ' . $conn->error;
         $_SESSION['success'] = 'danger';
     }
 } else {

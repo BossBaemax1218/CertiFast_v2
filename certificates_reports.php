@@ -31,7 +31,7 @@
     } elseif ($status == 'rejected') {
         $statusBadge = '<span class="badge badge-danger">Rejected</span>';
     } elseif ($status == 'claimed') {
-        $statusBadge = '<span class="badge badge-danger">Claimed</span>';
+        $statusBadge = '<span class="badge badge-info">Claimed</span>';
     }
 
     $row['residency_badge'] = $statusBadge;
@@ -61,12 +61,6 @@
 		<div class="main-panel">
 			<div class="content">
 					<div class="page-inner mt-2">
-						<?php if(isset($_SESSION['message'])): ?>
-								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-									<?php echo $_SESSION['message']; ?>
-								</div>
-							<?php unset($_SESSION['message']); ?>
-						<?php endif ?>
                         <div class="panel-header">
                                 <div class="page-inner">
                                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
@@ -170,7 +164,13 @@
 						<?php endif ?>
 					</div>
                     <div class="page-inner">
-                        <div class="row mt--2">
+                        <?php if(isset($_SESSION['message'])): ?>
+								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+									<?php echo $_SESSION['message']; ?>
+								</div>
+							<?php unset($_SESSION['message']); ?>
+						<?php endif ?>
+                        <div class="row mt-2">
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -211,9 +211,9 @@
                                                             <td class="text-center">
                                                                 <div class="form-button-action">
                                                                     <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
-                                                                    <a type="button" data-toggle="tooltip" href="model/remove_resident_cert.php?id=<?= $row['cert_id'] ?>" onclick="return confirm('Are you sure you want to delete this data?');" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                                    <button type="button" class="btn btn-link btn-danger" data-toggle="modal" data-target="#confirmDeleteModal<?= $row['cert_id'] ?>" data-original-title="Remove">
                                                                         <i class="fas fa-trash"></i>
-                                                                    </a>
+                                                                    </button>
                                                                     <?php endif ?>
                                                                 </div>
                                                             </td>
@@ -233,6 +233,30 @@
 	        </div>
 	    </div>
 	<?php include 'templates/footer.php' ?>
+    <?php foreach ($resident as $row) { ?>
+        <div class="modal fade" id="confirmDeleteModal<?= $row['cert_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmDeleteModalLabel">Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this resident?
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post" action="model/remove_cert.php">
+                            <input type="hidden" name="id" value="<?= $row['cert_id'] ?>">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
 <script src="assets/js/min-max-date.js"></script>
 <script>
         $(document).on("click", "#pdf", function () {
