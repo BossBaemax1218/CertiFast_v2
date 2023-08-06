@@ -61,10 +61,10 @@ $totalAnnouncements = $row1['total_announcements'];
                     <div class="collapse in" id="collapseExample">
                         <ul class="nav">
                             <li>
-                                <a href="#edit_user_profile" data-toggle="modal">
+                                <a href="" type="button" data-target="#edit_user_profile" data-toggle="modal">
                                     <span class="link-collapse">Profile Picture</span>
                                 </a>
-                                <a href="#user_changepass" data-toggle="modal">
+                                <a href="" type="button" data-target="#user_changepass" data-toggle="modal">
                                     <span class="link-collapse">Account Information</span>
                                 </a><br>
                                 <a type="button" data-toggle="modal" data-target="#deleteConfirmationModal" class="btn btn-danger" style="padding: 4px 50px; text-decoration:none;">
@@ -146,7 +146,7 @@ $totalAnnouncements = $row1['total_announcements'];
                     <h4 class="text-section">Reports</h4>
                 </li>
                 <li class="nav-item">
-                    <a href="#support_user" data-toggle="modal">
+                    <a href="" type="button" data-target="#support_user" data-toggle="modal">
                         <i class="fas fa-edit"></i>
                         <p>Submit a Concern</p>
                     </a>
@@ -196,4 +196,127 @@ $totalAnnouncements = $row1['total_announcements'];
         </div>
     </div>
 </div>
-
+<!-- Modal -->
+<div class="modal" id="support_user">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Contact Concern</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="model/save_support.php">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Enter Name" name="name" value="<?= $_SESSION['fullname'] ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="samplename@gmail.com" name="email" required >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Contact Number(optional)" name="number">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Subject (Concern, Problems and etc...)" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea type="text" class="form-control" rows="5" placeholder="Message" name="message" required ></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="edit_user_profile">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create System User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="model/edit_profile_user.php" enctype="multipart/form-data">
+                <input type="hidden" name="size" value="1000000">
+                    <div class="text-center">
+                        <div id="my_camera" style="height: 250;" class="text-center">
+                            <?php if(empty($_SESSION['photo'])): ?>
+                                <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
+                            <?php else: ?>
+                                <img src="<?= preg_match('/data:image/i', $_SESSION['photo']) ? $_SESSION['photo'] : 'assets/uploads/avatar/'.$_SESSION['photo'] ?>" alt="..." class="img img-fluid" width="250" >
+                            <?php endif ?>
+                        </div>
+                        <div class="form-group d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
+                            <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
+                        </div>
+                        <div id="profileImage">
+                            <input type="hidden" name="profileimg">
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="img" accept="image/*">
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" value="<?= $_SESSION['fullname']; ?>" name="fullname">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="user_changepass">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="model/change_password_user.php">
+                    <div class="form-group">
+                        <label>Fullname</label>
+                        <input type="text" class="form-control" placeholder="Enter Name" readonly name="fullname" value="<?= $_SESSION['fullname'] ?>" required >
+                    </div>
+                    <div class="form-group form-floating-label">
+                        <label>Current Password</label>
+                        <input type="password" id="cur_user_pass" class="form-control" placeholder="Enter Current Password" name="cur_pass" required >
+                        <span toggle="#cur_user_pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    </div>
+                    <div class="form-group form-floating-label">
+                        <label>New Password</label>
+                        <input type="password" id="new_user_pass" class="form-control" placeholder="Enter New Password" name="new_pass" required >
+                        <span toggle="#new_user_pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    </div>
+                    <div class="form-group form-floating-label">
+                        <label>Confirm Password</label>
+                        <input type="password" id="con_user_pass" class="form-control" placeholder="Confirm Password" name="con_pass" required >
+                        <span toggle="#con_user_pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Change</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

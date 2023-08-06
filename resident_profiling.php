@@ -84,6 +84,9 @@ $conn->close();
 					</div>
 				</div>
 				<div class="page-inner">
+                    <div class="p-2 mb-2 bg-danger text-white">
+                        <h5 class="text-left mt-2"> <i class="fas fa-exclamation-circle"></i>  Please check all of your information you registered are correct in order to prevent confusion during registering.</h5>
+                    </div>
 					<div class="row">
 						<div class="col-md-12">
                             <div class="card">
@@ -136,7 +139,7 @@ $conn->close();
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
                                                                     data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-address="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
                                                                     data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-taxno="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
-                                                                    data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-purpose="<?= $row['purpose'] ?>">
+                                                                    data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>">
                                                                     <?php if(isset($_SESSION['username'])): ?>
                                                                         <i class="fas fa-edit"></i>
                                                                     <?php else: ?>
@@ -159,7 +162,6 @@ $conn->close();
 									</div>
 								</div>                             
 							</div>
-                            <h5 class="text-left mt-2">Note: Please check that all of the information you registered are correct in order to prevent confusion during registering.</h5>
 						</div>
 					</div>
 				</div>

@@ -74,8 +74,9 @@ $stmt->close();
                                 </div>
                             <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
-								<h5 class="text-left mt-2"><b>Note:</b> If you've ever questioned why a certificate you requested did not appear, it's likely your personal data status is <strong>On Hold</strong>, and you are unable to request any 
-									<br>Barangay Los Amigos certifications without getting prior permission from your <b>Purok Leader</b>.</h5>
+							<div class="p-2 mb-2 bg-danger text-white">
+								<h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>  If you've ever questioned why a certificate you requested did not appear, it's likely your personal data status is <strong>On Hold</strong>, and you are unable to request any Barangay Los Amigos certifications without getting prior permission from your <b>Purok Leader</b>.</h5>
+							</div>
                             <div class="card">
 								<div class="card-body">
 									<div class="table-responsive">

@@ -125,13 +125,13 @@ include 'model/requested_status.php';
 									</div>
 								</div>
 							</div>
-							<?php if (isset($_SESSION['message'])): ?>
+						<div class="container">
+						<?php if (isset($_SESSION['message'])): ?>
 								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success'] == 'danger' ? 'bg-danger text-light' : null ?>" role="alert">
 									<?php echo $_SESSION['message']; ?>
 								</div>
 								<?php unset($_SESSION['message']); ?>
 							<?php endif ?>
-						<div class="container">
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">

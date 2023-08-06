@@ -96,8 +96,8 @@ $conn->close();
                                     </div>
                                     <?php unset($_SESSION['message']); ?>
                                 <?php endif ?>
-                                <div class="container">
-                                    <h5 class="text-left mt-2">Note: Please be ensure that your personal data has been <b>Approved</b> already by your respected <b><i>Purok Leader</i></b>,
+                                <div class="p-2 mb-2 bg-danger text-white container">
+                                    <h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>  Please be ensure that your personal data has been <b>Approved</b> already by your respected <b><i>Purok Leader</i></b>,
                                         before you requested any of certifications.</h5>
                                 </div>
                                 <div class="container">
@@ -145,7 +145,7 @@ $conn->close();
                                         <div class="name_job"><?php echo ucwords($box['name']); ?></div>
                                         <p><?php echo $box['description']; ?></p>
                                         <div class="btns">
-                                            <a href="<?php echo $box['link']; ?>" data-toggle="modal"><button style="padding 10px 100px; background: #e0004b;">Request</button></a>
+                                            <a type="button" href="<?php echo $box['link']; ?>" data-toggle="modal" class="p-2 text-center">Request</a>
                                         </div>
                                     </div>
                                     <?php endforeach; ?>
@@ -486,8 +486,8 @@ $conn->close();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="certificate_name" value="barangay clearance" required>
-                                        <input type="text" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
-                                        <input type="text" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
+                                        <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>

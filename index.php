@@ -408,7 +408,8 @@
                 <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">How does CertiFast Portal works? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq2" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                  The system allows community members to request for different certificates online, such as Barangay Registration, Barangay Residency, Barangay Clearances, Barangay Indigency, Business Permit, Barangay ID. Once the certificate is processed and approved, community members may download it online via the portal.
+                  The system allows community members to request for different certificates online, such as Barangay Registration, Barangay Residency, Barangay Clearances, Barangay Indigency, Business Permit, Barangay ID and more.
+                   Once the certificate is processed and approved, community members may proceed to the barangay office to claimed their requested certifications.
                   </p>
                 </div>
               </li>
@@ -416,15 +417,6 @@
               <li>
                 <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">What certificates are available for request through Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq3" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Using a CertiFast Certificate Management System brings several advantages, including improved efficiency, reduced paperwork, faster processing times, enhanced accuracy, easier tracking of certificate records, and increased convenience for both administrators and applicants.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Can resident apply for certificates online? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq4" class="collapse" data-bs-parent=".faq-list">
                   <p>Certifast Portal of Barangay Los Amigos processes different types of certificates including, but not limited to: 
                     Barangay Registration,
                     Barangay Residency,
@@ -432,6 +424,15 @@
                     Barangay Indigency,
                     Business Permit,
                     Barangay ID.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Can resident apply for certificates online? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+                  <p>
+                  Using a CertiFast Certificate Management System brings several advantages, including improved efficiency, reduced paperwork, faster processing times, enhanced accuracy, easier tracking of certificate records, and increased convenience for both administrators and applicants.
                   </p>
                 </div>
               </li>
