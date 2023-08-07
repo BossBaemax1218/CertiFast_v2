@@ -4,7 +4,7 @@ if (!isset($_SESSION["username"])) {
     exit;
 }
 $fullname = $_SESSION["username"];
-$query = "SELECT *, r.id AS id, r.requested_date
+$query = "SELECT *, r.id AS id, r.residency_date
           FROM tblresident AS r 
           JOIN tbl_user_admin AS a ON r.purok = a.purok 
           WHERE a.username = ? AND r.residency_status IN ('on hold') 
@@ -219,7 +219,7 @@ include 'model/status.php';
                                                     <?php if (!empty($resident)): ?>
                                                         <?php $no = 1; foreach ($resident as $row): ?>
                                                             <tr>
-                                                                <td><?= $row['requested_date'] ?></td>
+                                                                <td><?= $row['residency_date'] ?></td>
                                                                 <td>
                                                                     <div class="avatar avatar-xs ml-3">
                                                                         <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">

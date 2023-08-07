@@ -132,6 +132,9 @@ include 'model/requested_status.php';
 								</div>
 								<?php unset($_SESSION['message']); ?>
 							<?php endif ?>
+						    <div class="p-2 mb-2 bg-danger text-white container">
+                                <h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i> Kindly proceed to profiling to registered your account by providing the necessary personal data.</h5>
+                            </div>
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">

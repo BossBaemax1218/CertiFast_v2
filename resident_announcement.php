@@ -33,47 +33,113 @@ while ($row = $result->fetch_assoc()) {
 <head>
 	<?php include 'templates/header.php' ?>                  
 	<title>CertiFast Portal</title>
+    <style>
+    .announcement-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .announcement-table th,
+    .announcement-table td {
+        padding: 10px;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .announcement-table th {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .announcement-table td.title-header {
+        color: #fff;
+        padding: 15px;
+        background-color: #e42654;
+        font-weight: bold;
+        border-radius: 12px 12px 0 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .announcement-table h5.date {
+        font-size: 14px;
+        text-align: right;
+        color: #fff;
+    }
+
+    .announcement-table h3.subject {
+        color: #fff;
+        font-size: 24px;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .announcement-table td.message {
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 1px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .announcement-table p {
+        color: #000;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .announcement-table td.officials {
+        font-size: 15px;
+        color: green;
+        text-align: center;
+        padding: 10px 15px;
+        background-color: #fff;
+        color: green;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 12px 12px;
+    }
+</style>
 </head>
 <body>
 	<?php include 'templates/loading_screen.php' ?>
-	<div class="wrapper">
-        <?php include 'templates/main-header-resident.php' ?>
-            <?php include 'templates/sidebar-resident.php' ?>
-		    <div class="main-panel mt-5">
-			    <div class="container">
-                        <h1 class="text-center fw-bold mt-5" style="font-size: 400%;">Announcement</h1>
+        <div class="wrapper">
+            <?php include 'templates/main-header-resident.php' ?>
+                <?php include 'templates/sidebar-resident.php' ?>
+                <div class="main-panel mt-5">
+                    <div class="container">
+                        <h1 class="text-center fw-bold mt-5" style="font-size: 500%;">Announcement</h1>
 						<?php if(isset($_SESSION['message'])): ?>
 								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
 									<?php echo $_SESSION['message']; ?>
 								</div>
 							<?php unset($_SESSION['message']); ?>
 						<?php endif ?>
-                    <div class="page-inner">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <section class=" text-center two-column-list mb-sm-5 pr-lg-3 container-fluid" id="two-column-list">
-                                        <div class="announcement-slider border-r-xs-0 border-r position-relative">
-                                            <?php foreach($purok as $row): ?>
-                                                <ul class="nolist list-unstyled position-relative mb-0 px-lg-5 pt-lg-5">
-                                                    <i class="text md-5 mt-3" style="font-size: 14px; color: green;"><?= $row['time_display']; ?></i>
-                                                    <li class="border-bottom pb-3 mt-3">                                                       
-                                                        <span class="meta text-uppercase md-3" style="font-size: 16px; font-weight: bold;"><?= date('F d, Y', strtotime($row['date_posted'])); ?></span>
-                                                        <h3 class="text-uppercase font-weight-bold mt-3">
-                                                            <a href="https://www.facebook.com/profile.php?id=100064303345469" style="font-size: 22px; color: red"><?= $row['subject'] ?></a>
-                                                        </h3>
-                                                        <p class="mt-2 post_intro" style="font-size: 18px;"><?= $row['message'] ?></p>
-                                                        <i class=" text-left mt-5 post_intro" style="font-size: 15px;">- Barangay Los Amigos Officials</i>
-                                                    </li>                                                
-                                                </ul>
-                                            <?php endforeach; ?>                                                     
-                                        </div>
-                                    </section>
-                                </div>
+                        <section class="text-center two-column-list mb-sm-5 pr-lg-3 container-fluid" id="two-column-list">
+                            <div class="announcement-slider border-r-xs-0 border-r position-relative">
+                                <table class="announcement-table">
+                                    <?php foreach($purok as $row): ?>
+                                        <tr>
+                                            <td class="title-header" colspan="1">
+                                                <h5 class="date">
+                                                    <?= date('F d, Y', strtotime($row['date_posted'])); ?>
+                                                </h5>
+                                                <h3 class="subject">
+                                                    <a href="https://www.facebook.com/profile.php?id=100064303345469"><?= $row['subject'] ?></a>
+                                                </h3>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="message" colspan="2">
+                                                <p><?= $row['message'] ?></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="officials" colspan="2"><i>- Barangay Los Amigos</i></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1"></td>
+                                        </tr>
+                                    <?php endforeach; ?>                                                     
+                                </table>
                             </div>
-                        </div>
+                        </section>
                     </div>
-                </div>
 				<?php include 'templates/main-footer.php' ?>
 	        </div>
 	    </div>

@@ -7,7 +7,7 @@
 
 $fullname = $_SESSION["username"];
 
-$sql = "SELECT *, r.id, r.purok,r.requested_date FROM tblresident AS r JOIN tbl_user_admin AS a ON r.purok = a.purok WHERE a.username = ? AND r.residency_status IN ('on hold', 'approved','rejected')";
+$sql = "SELECT *, r.id, r.purok,r.residency_date FROM tblresident AS r JOIN tbl_user_admin AS a ON r.purok = a.purok WHERE a.username = ? AND r.residency_status IN ('on hold', 'approved','rejected')";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $fullname);
 $stmt->execute();
@@ -67,13 +67,6 @@ $conn->close();
                         <h1 class="text-center fw-bold" style="font-size: 400%;">Resident Profiling History</h1>
                         <h2 class="text-center">This is the complete list of the requested resident's personal data from Barangay Los Amigos.</h2>
                     </div>
-                    <?php if(isset($_SESSION['fullname'])):?>
-                    <h4 class="text-center fw-bold mt-5">
-                        <a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;" <?php echo isset($_SESSION['success']) || $nat > 0 ? 'disabled' : ''; ?>>
-                            CLICK HERE TO REGISTER YOUR PERSONAL DATA
-                        </a>
-                    </h4>
-                    <?php endif ?>
                     <?php if(isset($_SESSION['message'])): ?>
                         <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
                             <?php echo $_SESSION['message']; ?>
@@ -87,7 +80,7 @@ $conn->close();
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Resident Status History</div>
+										<div class="card-title">Resident Status</div>
 										<div class="card-tools">
 										</div>
 									</div>

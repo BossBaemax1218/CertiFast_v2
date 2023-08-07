@@ -18,7 +18,7 @@
       <h1 class="logo"><a href="index.php"><img src="Homepage/assets/img/title-logo.png" alt="title-logo"></a></h1>
       <nav id="navbar" class="navbar">
         <ul>
-            <li><a class="nav-link scrollto active" href="index.php#hero">Home</a></li>
+            <li><a class="nav-link scrollto active" href="index.php">Home</a></li>
             <li><a class="nav-link scrollto" href="index.php#about">About</a></li>
             <li><a class="nav-link scrollto" href="index.php#services">Certificates</a></li>
             <li class="dropdown"><a href="#"><span>Officials</span> <i class="bi bi-chevron-down"></i></a>

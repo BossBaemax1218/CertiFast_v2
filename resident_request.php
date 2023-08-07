@@ -145,7 +145,7 @@ $conn->close();
                                         <div class="name_job"><?php echo ucwords($box['name']); ?></div>
                                         <p><?php echo $box['description']; ?></p>
                                         <div class="btns">
-                                            <a type="button" href="<?php echo $box['link']; ?>" data-toggle="modal" class="p-2 text-center">Request</a>
+                                            <a type="button" href="<?php echo $box['link']; ?>" data-toggle="modal" class="p-2 text-center white">Request</a>
                                         </div>
                                     </div>
                                     <?php endforeach; ?>

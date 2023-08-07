@@ -9,8 +9,9 @@ if (!isset($_SESSION["fullname"])) {
 $fullname = $_SESSION["user_email"];
 
 $sql = "SELECT *,s.cert_id, s.certificate_name, s.status, s.date_applied 
-        FROM tblresident_requested AS s JOIN tbl_user_resident AS u ON u.user_email = s.email
-        WHERE u.user_email = ? AND s.status IN ('on hold','approved','rejected')";
+        FROM tblresident_requested AS s JOIN tbl_user_resident AS u ON u.user_email = s.email JOIN
+		tblresident AS r ON r.email=s.email WHERE u.user_email = ? AND s.status IN ('on hold','approved','rejected')
+		AND r.residency_status='approved'";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $fullname);
