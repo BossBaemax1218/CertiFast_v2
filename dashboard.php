@@ -55,12 +55,6 @@ include 'model/status.php';
                         <div class="container mt-3">
                             <h3 class="fw-bold text-black mb-4" style="font-size: 400%;">Overview</h3>
                                 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                                    <?php if (isset($_SESSION['message'])): ?>
-                                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success'] == 'danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                                            <?php echo $_SESSION['message']; ?>
-                                        </div>
-                                        <?php unset($_SESSION['message']); ?>
-                                    <?php endif ?>
                                     <div class="row mb-3">
                                         <div class="col-sm-12 col-md-4 mb-2">
                                             <label for="fromDate">From:</label>
@@ -99,7 +93,7 @@ include 'model/status.php';
                                             </select>
                                         </div>
                                         <div class="col-sm-12 col-md-6 mt-3">
-                                            <button type="submit" class="btn btn-primary" id="applyFilterBtn">Apply Filter</button>
+                                            <button type="button" class="btn btn-primary" id="applyFilterBtn">Apply Filter</button>
                                             <button type="button" class="btn btn-danger" id="pdfExportBtn">Export</button>
                                         </div>
                                     </div>

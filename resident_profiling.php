@@ -209,7 +209,7 @@ $conn->close();
                                                 </div>
                                                 <div class="form-group">
                                                     <label>What is your Barangay ID No.</label>
-                                                    <input type="text" class="form-control" name="national" placeholder="Ex: BLA - 0000-000" required>
+                                                    <input type="text" class="form-control" name="national" placeholder="Ex: BLA - 0000-000" value="<?= 'BLA - ' . date('Yjn') ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Are you a Filipino or Half Filipino?</label>

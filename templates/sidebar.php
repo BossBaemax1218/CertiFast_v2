@@ -397,7 +397,7 @@ $totalAnnouncements = $row1['total_announcements'];
                     </div>
             </div>
             <div class="modal-footer">
-                <input type="hidden" value="<?= $_SESSION['fullname']; ?>" name="fullname">
+                <input type="hidden" value="<?= $_SESSION['username']; ?>" name="fullname">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Update</button>
             </div>
@@ -419,7 +419,7 @@ $totalAnnouncements = $row1['total_announcements'];
                 <form method="POST" action="model/change_password_user.php">
                     <div class="form-group">
                         <label>Fullname</label>
-                        <input type="text" class="form-control" placeholder="Enter Name" readonly name="fullname" value="<?= $_SESSION['fullname'] ?>" required >
+                        <input type="text" class="form-control" placeholder="Enter Name" readonly name="fullname" value="<?= $_SESSION['username'] ?>" required >
                     </div>
                     <div class="form-group form-floating-label">
                         <label>Current Password</label>
