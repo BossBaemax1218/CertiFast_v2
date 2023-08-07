@@ -27,10 +27,6 @@
             $_SESSION['success'] = 'danger';
         }
 
-    }else{
-
-        $_SESSION['message'] = 'Please fill up the form completely!';
-        $_SESSION['success'] = 'danger';
     }
 
     if (isset($_SERVER["HTTP_REFERER"])) {
