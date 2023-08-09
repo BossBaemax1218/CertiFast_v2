@@ -25,6 +25,7 @@ $totalAnnouncements = $row1['total_announcements'];
 }
 </style>
 <?php include 'model/fetch_brgy_info.php' ?>
+<?php include 'main-footer.php' ?>
 <div class="sidebar sidebar-style-2">			
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
@@ -318,3 +319,4 @@ $totalAnnouncements = $row1['total_announcements'];
         </div>
     </div>
 </div>
+

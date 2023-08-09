@@ -2,9 +2,9 @@
 include '../server/server.php';
 
 $username = $conn->real_escape_string($_POST['fullname']);
-$cur_pass = $conn->real_escape_string($_POST['cur_pass']);
-$new_pass = $conn->real_escape_string($_POST['new_pass']);
-$con_pass = $conn->real_escape_string($_POST['con_pass']);
+$cur_pass = $conn->real_escape_string($_POST['current_pass']);
+$new_pass = $conn->real_escape_string($_POST['newest_pass']);
+$con_pass = $conn->real_escape_string($_POST['confirm_pass']);
 
 if (!empty($username)) {
     if ($new_pass == $con_pass) {

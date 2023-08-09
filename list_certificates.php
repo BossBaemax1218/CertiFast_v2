@@ -12,7 +12,7 @@ $sql = "SELECT s.*, s.certificate_name as certificate_name, s.resident_name as r
 (SELECT GROUP_CONCAT(DISTINCT good_id) FROM tblgood_moral c9 WHERE c9.email = s.email) AS good_id,
 (SELECT GROUP_CONCAT(DISTINCT indi_id) FROM tblindigency c10 WHERE c10.email = s.email) AS indi_id,
 (SELECT GROUP_CONCAT(DISTINCT oath_id) FROM tbloath c12 WHERE c12.email = s.email) AS oath_id 
-FROM tblresident_requested AS s WHERE s.status IN ('on hold', 'approved') AND s.certificate_name != 'business permit' GROUP BY s.certificate_name, s.resident_name ORDER BY s.cert_id ASC";
+FROM tblresident_requested AS s WHERE s.status IN ('on hold', 'approved') AND s.certificate_name != 'business permit' GROUP BY s.certificate_name, s.resident_name,s.email ORDER BY s.cert_id DESC";
 
 $result = $conn->query($sql);
 

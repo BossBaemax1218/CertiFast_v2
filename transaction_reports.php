@@ -1,9 +1,9 @@
 <?php include 'server/server.php' ?>
 <?php 
-    $query = "SELECT COUNT(DISTINCT details) as de FROM tblpayments WHERE details IN ('Barangay Clearance', 'Business Permit', 'Certificate of Residency', 'Certificate of Indigency')"; 
+    $query = "SELECT COUNT(DISTINCT certificate_name) as de FROM tblresident_requested WHERE status='approved'"; 
     $revenue1 = $conn->query($query)->fetch_assoc();
 
-    $sql1 = "SELECT COUNT(name) as receipt FROM tblpayments";
+    $sql1 = "SELECT COUNT(DISTINCT email) as receipt FROM tblpayments";
     $result1 = $conn->query($sql1);
     $row1 = $result1->fetch_assoc();
     $receiptCount = $row1['receipt'];
@@ -11,7 +11,7 @@
 	$query2 = "SELECT SUM(amounts) as am FROM tblpayments ORDER BY `date` DESC";
 	$revenue3 = $conn->query($query2)->fetch_assoc();
 
-    $sql = "SELECT * FROM tblpayments ORDER BY `date` ASC";
+    $sql = "SELECT * FROM tblpayments ORDER BY `date` DESC";
     $result = $conn->query($sql);
 
     $revenue = array();
@@ -104,7 +104,7 @@
                                             </div>
                                             <div class="col-2 col-stats">
                                                 <div class="numbers mt-2">
-                                                    <h2 class="text-uppercase" style="font-size: 16px;">Certificates</h2>
+                                                    <h2 class="text-uppercase" style="font-size: 16px;">Approved</h2>
                                                     <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($revenue1['de']) ?></h3>
                                                 </div>
                                             </div>
