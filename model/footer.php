@@ -13,7 +13,7 @@
 		$officials[] = $row; 
 	}
 
-    $c = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblposition.position='Kapitan'";
+    $c = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblposition.id='1'";
     $captain = $conn->query($c)->fetch_assoc();
     $s = "SELECT * FROM tblofficials JOIN tblposition ON tblofficials.position=tblposition.id WHERE tblposition.position='Secretary'";
     $sec = $conn->query($s)->fetch_assoc();

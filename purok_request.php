@@ -67,16 +67,19 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                 <div class="content">
                     <div class="panel-header">
                         <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
-                        <h3 class="text-center mt-2" style="font-size: 150%;">The following is a list of records for Purok <?php echo ($purokNumber); ?> residents who are using the CertiFast Portal to request certifications.</h3>
+                        <h3 class="text-center mt-2" style="font-size: 150%;">The following is a list of records for Purok <?php echo ($purokNumber); ?> residents who are requesting certificates using the CertiFast Portal. </h3>
                     <div class="page-inner mt-4">
                         <div class="content">
                             <div class="col-md-12">
-                                <?php if(isset($_SESSION['message'])): ?>
-                                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                                            <?php echo $_SESSION['message']; ?>
-                                        </div>
-                                    <?php unset($_SESSION['message']); ?>
-                                <?php endif ?>
+                            <?php if(isset($_SESSION['message'])): ?>
+                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <?php echo $_SESSION['message']; ?>
+                                </div>
+                            <?php unset($_SESSION['message']); ?>
+                            <?php endif ?>
                                 <div class="card">
                                     <div class="card-header md-2">                                    
                                     </div>
@@ -167,9 +170,9 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                             </div>
                             <div class="modal-footer">
                                 <input type="hidden" name="id" id="res_id">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Close</button>
                                 <?php if(isset($_SESSION['username'])): ?>
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary">Change</button>
                                 <?php endif ?>
                             </div>
                         </form>

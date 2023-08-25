@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT * FROM tbl_user_admin WHERE user_type IN ('staff','purok leader')";
+	$query = "SELECT * FROM tbl_user_admin WHERE user_type IN ('staff','administrator','purok leader')";
     $result = $conn->query($query);
 
     $users = array();
@@ -33,7 +33,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-black fw-bold" style = "font-size: 300%;">Settings</h2>
+								<h2 class="text-black fw-bold" style = "font-size: 300%;">Staff Account</h2>
 							</div>
 						</div>
 					</div>
@@ -52,12 +52,37 @@
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Official User's Management</div>
+										<div class="card-title"></div>
 										<div class="card-tools">
 											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
 												<i class="fa fa-plus"></i>
-												User
+												Add User
 											</a>
+											<a class="btn btn-info btn-border btn-round btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Filter Options
+											</a>
+											<div class="dropdown-menu mt-3 mr-3" aria-labelledby="filterDropdown">
+												<div class="dropdown-item">
+													<label>User Type:</label>
+													<select class="form-control" id="filterCert" name="cert_name" onclick="event.stopPropagation();">
+														<option value="">Show All</option>
+														<option value="staff">Staff</option>
+														<option value="administrator">Administrator</option>
+														<option value="purok leader">Purok Leader</option>
+													</select>
+												</div>
+												<div class="dropdown-item">
+													<label>From Date:</label>
+													<input type="date" class="form-control datepicker" id="fromDate" placeholder="Select date range">
+												</div>
+												<div class="dropdown-item">
+													<label>To Date:</label>
+													<input type="date" class="form-control datepicker" id="toDate" placeholder="Select date range">
+												</div>
+												<div class="dropdown-item">
+													<button type="button" id="clearFilters" class="form-control btn btn-outline-primary">Clear Filters</button>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -94,9 +119,9 @@
 														<td><?= $row['created_at'] ?></td>
 														<td class="text-center">
 															<div class="form-button-action">
-																<a type="button" data-toggle="tooltip" href="model/remove_user.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this user?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																	<i class="fas fa-trash"></i>
-																</a>
+                                                                <a type="button" class="btn btn-link btn-danger" data-toggle="modal" data-target="#confirmDeleteModal<?= $row['id'] ?>" data-original-title="Remove">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </a>
 															</div>
 														</td>
 														
@@ -116,6 +141,30 @@
 					</div>
 				</div>
 			</div>
+			<?php foreach ($users as $row) { ?>
+        <div class="modal fade" id="confirmDeleteModal<?= $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmDeleteModalLabel">Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center" style="font-size: 16px;">
+                        Are you certain you want to remove name <strong><?= ucwords($row['fullname']) ?></strong> ?
+                    </div>
+                    <div class="modal-footer mt-3 d-flex justify-content-center">
+                        <form method="post" action="model/remove_user.php">
+                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                            <button type="button" class="btn btn-danger text-center mr-2">No</button>
+                            <button type="submit" class="btn btn-primary text-center">Yes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
 
             <!-- Modal -->
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -177,7 +226,7 @@
                                 </div>
                             
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer mt-2 d-flex justify-content-center">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Create</button>
                         </div>
@@ -187,8 +236,48 @@
             </div>
 			<?php include 'templates/main-footer.php' ?>			
 		</div>
-		
 	</div>
 	<?php include 'templates/footer.php' ?>
+	<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const filterCert = document.getElementById("filterCert");
+  const fromDate = document.getElementById("fromDate");
+  const toDate = document.getElementById("toDate");
+  const clearFiltersBtn = document.getElementById("clearFilters");
+  
+  const tableRows = document.querySelectorAll("#residenttable tbody tr");
+  
+  function rowMatchesFilter(row) {
+    const certValue = filterCert.value.toLowerCase();
+    const rowCert = row.querySelector("td:nth-child(4)").textContent.toLowerCase();
+    const rowDate = new Date(row.querySelector("td:nth-child(6)").textContent);
+    const from = new Date(fromDate.value);
+    const to = new Date(toDate.value);
+
+    return (certValue === "" || rowCert.includes(certValue)) &&
+           (isNaN(from) || rowDate >= from) &&
+           (isNaN(to) || rowDate <= to);
+  }
+  
+  function applyFilter() {
+    tableRows.forEach(row => {
+      const shouldDisplay = rowMatchesFilter(row);
+      row.style.display = shouldDisplay ? "table-row" : "none";
+    });
+  }
+
+  function clearFilters() {
+    filterCert.value = "";
+    fromDate.value = "";
+    toDate.value = "";
+    applyFilter();
+  }
+
+  filterCert.addEventListener("change", applyFilter);
+  fromDate.addEventListener("change", applyFilter);
+  toDate.addEventListener("change", applyFilter);
+  clearFiltersBtn.addEventListener("click", clearFilters);
+});
+</script>
 </body>
 </html>

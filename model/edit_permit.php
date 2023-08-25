@@ -20,33 +20,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $issued_at = $conn->real_escape_string($_POST['issued_at']);
     $validation = $conn->real_escape_string($_POST['validation']);
     $status = $conn->real_escape_string($_POST['status']);
+    $cert_name = $conn->real_escape_string($_POST['certificate_name']);
+    $req = $conn->real_escape_string($_POST['requirement']);
 
     $id = $_POST['id'];
 
-    $check_query = "SELECT COUNT(*) AS count FROM tblpermit WHERE id = $id";
-    $check_result = $conn->query($check_query);
-    $row = $check_result->fetch_assoc();
-    $record_count = $row['count'];
+    $statusMapping = [
+        'on hold' => 'on hold',           
+        'operating' => 'claimed',
+        'suspened' => 'rejected',    
+        'closed' => 'rejected', 
+    ];
 
-    if ($record_count > 0) {
-        $update_query = "UPDATE tblpermit SET 
-                            permit_number = '$permit_number',
-                            business_name = '$business_name',
-                            owner1 = '$owner1',
-                            email = '$email',
-                            address = '$address',
-                            location = '$location',
-                            applied = '$applied',
-                            community_tax = '$community_tax',
-                            issued_on = '$issued_on',
-                            issued_at = '$issued_at',
-                            validation = '$validation',
-                            status = '$status'
-                        WHERE id = $id";
+    if (isset($statusMapping[$status])) {
+        $mappedStatus = $statusMapping[$status];
 
-        $result = $conn->query($update_query);
+        $permit_update_query = "UPDATE tblpermit SET 
+                                permit_number = '$permit_number',
+                                business_name = '$business_name',
+                                owner1 = '$owner1',
+                                email = '$email',
+                                address = '$address',
+                                location = '$location',
+                                applied = '$applied',
+                                community_tax = '$community_tax',
+                                issued_on = '$issued_on',
+                                issued_at = '$issued_at',
+                                validation = '$validation',
+                                status = '$status'
+                            WHERE id = $id";
 
-        if ($result === true) {
+        $permit_update_result = $conn->query($permit_update_query);
+
+        $resident_update_query = "UPDATE tblresident_requested SET status = '$mappedStatus' WHERE requirement = '$req' AND certificate_name = '$cert_name' LIMIT 1";
+        $resident_update_result = $conn->query($resident_update_query);
+
+        if ($permit_update_result === true && $resident_update_result === true) {
             $_SESSION['message'] = 'Business Permit updated successfully!';
             $_SESSION['success'] = 'success';
         } else {
@@ -54,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['success'] = 'danger';
         }
     } else {
-        $_SESSION['message'] = 'No record found with the provided ID. Update failed!';
+        $_SESSION['message'] = 'Invalid status provided!';
         $_SESSION['success'] = 'danger';
     }
 
@@ -63,3 +72,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     header("Location: ../business_permit.php");
 }
+?>

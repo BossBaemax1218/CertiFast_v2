@@ -46,16 +46,19 @@ while($row2 = $result1->fetch_assoc()){
 			<div class="content">
 				<div class="panel-header">
                     <h1 class="text-center fw-bold mt-3" style="font-size: 300%;">Barangay Los Amigos - CertiFast Portal</h1>
-                    <h3 class="text-center mt-2" style="font-size: 150%;">The following is a list of records of Purok <?php echo isset($_SESSION['purok']) ? ucwords($_SESSION['purok']) : ''; ?> who had them verified by their Purok Leader are listed below.</h3>
+                    <h3 class="text-center mt-2" style="font-size: 150%;">The records of Purok <?php echo isset($_SESSION['purok']) ? ucwords($_SESSION['purok']) : ''; ?> that have been confirmed are mentioned below.</h3>
                     <div class="page-inner mt-4">
                         <div class="row">
                             <div class="col-md-12">
-                                <?php if(isset($_SESSION['message'])): ?>
-                                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                                            <?php echo $_SESSION['message']; ?>
-                                        </div>
-                                    <?php unset($_SESSION['message']); ?>
-                                <?php endif ?>
+                            <?php if(isset($_SESSION['message'])): ?>
+                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <?php echo $_SESSION['message']; ?>
+                                </div>
+                            <?php unset($_SESSION['message']); ?>
+                            <?php endif ?>
                                 <div class="card">
                                     <div class="card-header md-2">
                                         <div class="card-head-row">
@@ -154,14 +157,14 @@ while($row2 = $result1->fetch_assoc()){
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        Are you sure you want to delete this resident?
+                    <div class="modal-body text-center" style="font-size: 16px">
+                        Are you sure you want to remove this resident?
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer mt-2 d-flex justify-content-center">
                         <form method="post" action="model/remove_purok_records.php">
                             <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">No</button>
+                            <button type="submit" class="btn btn-primary">Yes</button>
                         </form>
                     </div>
                 </div>
@@ -295,8 +298,7 @@ while($row2 = $result1->fetch_assoc()){
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <div class="modal-footer mt-2 d-flex justify-content-center">
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </form>
@@ -431,11 +433,10 @@ while($row2 = $result1->fetch_assoc()){
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer mt-2 d-flex justify-content-center">
                                     <input type="hidden" name="id" id="res_id">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                     <?php if(isset($_SESSION['username'])): ?>
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-primary">Change</button>
                                     <?php endif ?>
                                 </div>
                             </form>

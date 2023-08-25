@@ -25,7 +25,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-black fw-bold" style="font-size: 300%">Settings</h2>
+								<h2 class="text-black fw-bold" style="font-size: 300%">Position Management</h2>
 							</div>
 						</div>
 					</div>
@@ -33,8 +33,11 @@
 				<div class="page-inner">
 					<div class="row mt-2">
 						<div class="col-md-12">
-                            <?php if(isset($_SESSION['message'])): ?>
+                        <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <?php echo $_SESSION['message']; ?>
                                 </div>
                             <?php unset($_SESSION['message']); ?>
@@ -43,7 +46,7 @@
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Barangay Positions</div>
+										<div class="card-title"></div>
 										<div class="card-tools">
 											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
 												<i class="fa fa-plus"></i>   
@@ -56,7 +59,7 @@
                                     <div class="table-responsive">
                                         <table id="residenttable" class="table">
                                             <thead>
-                                                <tr>
+                                                <tr class="text-center">
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Position</th>
                                                     <th scope="col">Action</th>
@@ -74,9 +77,9 @@
                                                                     title="Edit Position" onclick="editPos(this)" data-pos="<?= $row['position'] ?>" data-id="<?= $row['id'] ?>">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
-                                                                <a type="button" data-toggle="tooltip" href="model/remove_position.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this position?');" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                                <!--<a type="button" data-toggle="tooltip" href="model/remove_position.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this position?');" class="btn btn-link btn-danger" data-original-title="Remove">
                                                                     <i class="fas fa-trash"></i>
-                                                                </a>
+                                                                </a>-->
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -95,7 +98,6 @@
 					</div>
 				</div>
 			</div>
-
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -107,14 +109,12 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="model/save_position.php" >
-                                <div class="form-group">
-                                    <label>Position</label>
-                                    <input type="text" class="form-control" placeholder="Enter Position" name="position" required>
-                                </div>
-                            
+                            <div class="form-group">
+                                <label>Position</label>
+                                <input type="text" class="form-control" placeholder="Enter Position" name="position" required>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <div class="modal-footer mt-2 d-flex justify-content-center">
                             <button type="submit" class="btn btn-danger">Create</button>
                         </div>
                         </form>
@@ -133,16 +133,14 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="model/edit_position.php" >
-                                <div class="form-group">
-                                    <label for="position">Position</label>
-                                    <input type="text" class="form-control" id="position" placeholder="Position" name="position" required>
-                                </div>
-                            
+                            <div class="form-group">
+                                <label for="position">Position</label>
+                                <input type="text" class="form-control" id="position" placeholder="Position" name="position" required>
+                            </div>                          
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer mt-2 d-flex justify-content-center">
                             <input type="hidden" id="pos_id" name="id">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-primary">Change</button>
                         </div>
                         </form>
                     </div>

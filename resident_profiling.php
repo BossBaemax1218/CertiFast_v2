@@ -7,7 +7,7 @@
 
 $fullname = $_SESSION["fullname"];
 
-$sql = "SELECT *, tblresident.id, tblresident.purok FROM tblresident JOIN tbl_user_resident ON tblresident.email = tbl_user_resident.user_email WHERE tbl_user_resident.fullname = ? AND tblresident.residency_status IN ('on hold', 'approved','rejected')";
+$sql = "SELECT *, tblresident.id, tblresident.purok FROM tblresident JOIN tbl_user_resident ON tblresident.requester = tbl_user_resident.fullname WHERE tbl_user_resident.fullname = ? AND tblresident.residency_status IN ('on hold', 'approved','rejected')";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $fullname);
 $stmt->execute();
@@ -39,12 +39,17 @@ while ($row = $result->fetch_assoc()) {
     }
 }
 
-$query1 = "SELECT * FROM tblpurok";
-$result1 = $conn->query($query1);
+$user = $_SESSION["user_email"];
 
-$purok = array();
-while($row = $result1->fetch_assoc()){
-    $purok[] = $row; 
+$query1 = "SELECT * FROM tbl_user_resident WHERE tbl_user_resident.user_email=?";
+$stmt = $conn->prepare($query1);
+$stmt->bind_param("s", $user);
+$stmt->execute();
+$result1 = $stmt->get_result();
+
+$res = array();
+while($row2 = $result1->fetch_assoc()){
+	$res[] = $row2; 
 }
 
 $conn->close();
@@ -65,34 +70,37 @@ $conn->close();
 				<div class="panel-header">
 					<div class="page-inner mt-2">
 						<div class="d-flex align-items-center align-items-md-center flex-column">
-                            <h1 class="text-center fw-bold" style="font-size: 400%;">Resident Profiling</h1>
-                            <h3 class="text-center">Please registered your personal information first before you requested any of the certifications in Barangay Los Amigos.</h3>
+                            <h1 class="text-center fw-bold" style="font-size: 300%;">Resident Profiling</h1>
+                            <h4 class="text-center">Please registered your personal information first before you requested any of the certifications in Barangay Los Amigos.</h4>
 						</div>
-                        <?php if(isset($_SESSION['fullname'])):?>
-                        <h4 class="text-center fw-bold mt-5 mb-2">
-                            <a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;" <?php echo isset($_SESSION['success']) || $nat > 0 ? 'disabled' : ''; ?>>
-                                CLICK HERE TO REGISTER YOUR PERSONAL DATA
-                            </a>
-                        </h4>
-                        <?php endif ?>
-                            <?php if(isset($_SESSION['message'])): ?>
-                                <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                        <?php if(isset($_SESSION['message'])): ?>
+                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <?php echo $_SESSION['message']; ?>
                                 </div>
                             <?php unset($_SESSION['message']); ?>
+                            <?php endif ?>
+                        <?php if(isset($_SESSION['fullname'])):?>
+                        <h4 class="text-center fw-bold mt-5 mb-4">
+                            <a href="#add" data-toggle="modal" class="btn-request-now" style="text-decoration: none; color:white;" <?php echo isset($_SESSION['success']) || $nat > 0 ? 'disabled' : ''; ?>>
+                                CLICK HERE TO REGISTER
+                            </a>
+                        </h4>
                         <?php endif ?>
 					</div>
 				</div>
 				<div class="page-inner">
-                    <div class="p-2 mb-2 bg-danger text-white">
-                        <h5 class="text-left mt-2"> <i class="fas fa-exclamation-circle"></i>  Please check all of your information you registered are correct in order to prevent confusion during registering.</h5>
+                    <div class="p-1 mb-2 bg-info text-white">
+                        <h5 class="text-left"> <i class="fas fa-exclamation-circle"></i>  To avoid confusion during registration, please double-check that all of your information is accurate.</h5>
                     </div>
 					<div class="row">
 						<div class="col-md-12">
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Registration Status</div>
+										<div class="card-title"></div>
 										<div class="card-tools">
 										</div>
 									</div>
@@ -102,11 +110,13 @@ $conn->close();
 										<table id="residenttable" class="table">
 											<thead>
 												<tr>
+												    <th class="text-center" scope="col">Barangay ID</th>
 													<th class="text-center" scope="col">Fullname</th>												
 													<th scope="col">Birthdate</th>
                                                     <th scope="col">Email</th>
+                                                    <th scope="col">Contact</th>
 													<th scope="col">Purok</th>
-                                                    <th class="text-center" scope="col">Status</th>
+                                                    <th class="text-center" scope="col">Purok Leader Verification</th>
                                                     <?php if(isset($_SESSION['fullname'])):?>
                                                         <?php if($_SESSION['role']=='resident'):?>
 													
@@ -119,7 +129,8 @@ $conn->close();
 												<?php if(!empty($resident)): ?>
 													<?php $no=1; foreach($resident as $row): ?>
 													<tr>
-														<td>
+													    <td class="text-center"><?= $row['national_id'] ?></td>
+														<td class="text-center">
                                                             <div class="avatar avatar-xs ml-3">
                                                                 <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
                                                             </div>
@@ -127,6 +138,7 @@ $conn->close();
                                                         </td>														
 														<td><?= $row['birthdate'] ?></td>
                                                         <td><?= $row['email'] ?></td>
+                                                        <td><?= $row['phone'] ?></td>
                                                         <td><?= $row['purok'] ?></td>
                                                         <td class="text-center"><?= $row['residency_badge'] ?></td>
                                                         <?php if(isset($_SESSION['fullname'])):?>
@@ -138,8 +150,7 @@ $conn->close();
 															<div class="form-button-action">
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
                                                                     data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-address="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
-                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-taxno="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
-                                                                    data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>">
+                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-taxno="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" data-status="<?= $row['residency_status'];?>" data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>">
                                                                     <?php if(isset($_SESSION['username'])): ?>
                                                                         <i class="fas fa-edit"></i>
                                                                     <?php else: ?>
@@ -208,13 +219,23 @@ $conn->close();
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>What is your Barangay ID No.</label>
-                                                    <input type="text" class="form-control" name="national" placeholder="Ex: BLA - 0000-000" value="<?= 'BLA - ' . date('Yjn') ?>" required>
+                                                    <label>Barangay ID No.</label>
+                                                    <input type="text" class="form-control btn btn-light btn-info" name="national" placeholder="Ex: BLA - 0000-000" value="<?= 'BLA - ' . date('Yjn') ?>" required>
+                                                </div>
+                                                <?php foreach($res as $row2):?>
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="text" class="text-black form-control btn btn-light btn-info disabled" value="<?= $row2["user_email"] ?>" name="email">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Are you a Filipino or Half Filipino?</label>
-                                                    <input type="text" class="form-control" name="citizenship" placeholder="Ex: Filipino" required>
+                                                    <label>Purok</label>
+                                                    <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 </div>
+                                                <div class="form-group">
+                                                    <label>What is your current address?</label>
+                                                    <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Tugbok, Los Amigos" name="address" value="<?= $row2["address"] ?>">
+                                                </div>
+                                                <?php endforeach ?>
                                                 <div class="form-group">
                                                     <label>What is your first name?</label>
                                                     <input type="text" class="form-control" placeholder="Ex: Joe Anne" name="fname" required>
@@ -224,19 +245,19 @@ $conn->close();
                                                     <input type="text" class="form-control" placeholder="Ex: G." name="mname" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>What is your surname?</label>
+                                                    <label>What is your last name?</label>
                                                     <input type="text" class="form-control" placeholder="Ex: Aldoe" name="lname" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>What is your current address?</label>
-                                                    <input type="text" class="form-control" placeholder="Ex: Tugbok, Los Amigos" name="address" required>
+                                                    <label>Are you a Filipino or Half Filipino?</label>
+                                                    <input type="text" class="form-control" name="citizenship" placeholder="Ex: Filipino" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>What is your birthdate?</label>
                                                     <input type="date" class="form-control" placeholder="Enter your birthdate" name="bdate" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Where do you born?</label>
+                                                    <label>Where did you born?</label>
                                                     <input type="text" class="form-control" placeholder="Ex: Tugbok, Los Amigos, Davao City" name="bplace" required>
                                                 </div>
                                                 <div class="form-group">
@@ -261,25 +282,12 @@ $conn->close();
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Purok</label>
-                                                    <select class="form-control" required name="purok">
-                                                        <option disabled selected>Select Purok Name</option>
-                                                        <?php foreach($purok as $row):?>
-                                                            <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                        <?php endforeach ?>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
                                                     <label>Are you already a voters?</label>
                                                     <select class="form-control vstatus" required name="vstatus">
                                                         <option disabled selected>Select Voters Status</option>
                                                         <option value="Yes">Yes</option>
                                                         <option value="No">No</option>
                                                     </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="text" class="form-control" placeholder="no-email@gmail.com" value="" name="email" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Contact Number</label>
@@ -292,6 +300,7 @@ $conn->close();
                                             </div>
                                         </div>
                                         <div class="modal-footer">
+                                            <input type="hidden" name="requester" value="<?= $_SESSION["fullname"]; ?>" required>
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-primary">Save</button>
                                         </div>
@@ -305,7 +314,7 @@ $conn->close();
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Update Profiling Information</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">View Profiling</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -318,19 +327,7 @@ $conn->close();
                                                 <div id="my_camera1" style="height: 250;" class="text-center">
                                                     <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" id="image">
                                                 </div>
-                                                <?php if(isset($_SESSION['fullname'])):?>
-                                                    <div class="form-group d-flex justify-content-center">
-                                                        <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam1">Open Camera</button>
-                                                        <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo1()">Capture</button>   
-                                                    </div>
-                                                    <div id="profileImage1">
-                                                        <input type="hidden" name="profileimg">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="file" class="form-control" name="img" accept="image/*">
-                                                    </div>
-                                                <?php endif ?>
-                                                <div class="form-group text-center">
+                                                <div class="form-group text-center mt-3">
                                                     <div class="selectgroup selectgroup-secondary selectgroup-pills">
                                                         <label class="selectgroup-item">
                                                             <input type="radio" name="deceased" value="1" class="selectgroup-input" checked="" id="alive">
@@ -343,86 +340,64 @@ $conn->close();
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label>Purok Leader Verification Status</label>
+                                                    <input type="text" class="text-uppercase form-control btn btn-outline-light btn-primary disabled" name="status" id="status" required>
+                                                </div>
+                                                <div class="form-group">
                                                     <label>Barangay ID</label>
-                                                    <input type="text" class="form-control" name="national" id="nat_id" placeholder="Ex: BLA - 0000-000" readonly>
+                                                    <input type="text" class="form-control btn btn-light btn-dark disabled text-black" name="national" id="nat_id" placeholder="Ex: BLA - 0000-000">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Citizenship</label>
-                                                    <input type="text" class="form-control" name="citizenship" id="citizenship" placeholder="Ex: Filipino" required>
+                                                    <input type="text" class="form-control btn btn-light btn-dark disabled text-black" name="citizenship" id="citizenship" placeholder="Ex: Filipino" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>First name</label>
-                                                    <input type="text" class="form-control" placeholder="Ex: Juan" name="fname" id="fname" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Middle name</label>
-                                                    <input type="text" class="form-control" placeholder="Ex: G." name="mname" id="mname" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Last name</label>
-                                                    <input type="text" class="form-control" placeholder="Ex: Luna" name="lname" id="lname" required>
+                                                    <label>Complete Name (Last name, First name, Middle initial)</label>
+                                                    <input type="text" class="form-control btn btn-light btn-dark disabled text-black" placeholder="Ex: Juan" name="fname" value="<?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Address</label>
-                                                    <input type="text" class="form-control" placeholder="Ex: Tugbok, Los Amigos" id="address" name="address" required>
+                                                    <input type="text" class="form-control btn btn-light btn-dark disabled text-black" placeholder="Ex: Tugbok, Los Amigos" id="address" name="address" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Place of Birth</label>
-                                                    <input type="text" class="form-control" placeholder="Ex: Tugbok, Los Amigos" name="bplace" id="bplace" required>
+                                                    <input type="text" class="form-control btn btn-light btn-dark disabled text-black" placeholder="Ex: Tugbok, Los Amigos" name="bplace" id="bplace" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Birthdate</label>
-                                                    <input type="date" class="form-control" placeholder="Enter Birthdate" name="bdate" id="bdate" required>
+                                                    <input type="date" class="form-control btn btn-light btn-dark disabled text-black" placeholder="Enter Birthdate" name="bdate" id="bdate" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Age</label>
-                                                    <input type="number" class="form-control" placeholder="Age" min="1" name="age" id="age" required>
+                                                    <input type="number" class="form-control btn btn-light btn-dark disabled text-black" placeholder="Age" min="1" name="age" id="age" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Civil Status</label>
-                                                    <select class="form-control" required name="cstatus" id="cstatus">
-                                                        <option disabled selected>Select Civil Status</option>
-                                                        <option value="Single">Single</option>
-                                                        <option value="Married">Married</option>
-                                                        <option value="Widow">Widow</option>
-                                                    </select>
+                                                    <input class="form-control btn btn-light btn-dark disabled text-black" required name="cstatus" id="cstatus">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Gender</label>
-                                                    <select class="form-control" required name="gender" id="gender">
-                                                        <option disabled selected value="">Select Gender</option>
-                                                        <option value="Male">Male</option>
-                                                        <option value="Female">Female</option>
-                                                    </select>
+                                                    <input class="form-control btn btn-light btn-dark disabled text-black" required name="gender" id="gender">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Purok</label>
-                                                    <select class="form-control" required name="purok" id="purok">
-                                                        <option disabled selected>Select Purok Name</option>
-                                                        <?php foreach($purok as $row):?>
-                                                            <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                        <?php endforeach ?>
-                                                    </select>
+                                                    <input class="form-control btn btn-light btn-dark disabled text-black" required name="purok" id="purok">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Voters Status</label>
-                                                    <select class="form-control vstatus" required name="vstatus" id="vstatus">
-                                                        <option disabled selected>Select Voters Status</option>
-                                                        <option value="Yes">Yes</option>
-                                                        <option value="No">No</option>
-                                                    </select>
+                                                    <input class="form-control btn btn-light btn-dark disabled text-black" required name="vstatus" id="vstatus">
                                                 </div>                      
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" placeholder="no-sample@gmail.com" name="email" id="email" required>
+                                                    <input type="text" class="form-control btn btn-light btn-dark disabled text-black" placeholder="no-sample@gmail.com" name="email" id="email" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Contact Number</label>
-                                                    <input type="text" class="form-control" placeholder="+63 000-000-0000" name="number" id="number" required>
+                                                    <input type="text" class="form-control btn btn-light btn-dark disabled text-black" placeholder="+63 000-000-0000" name="number" id="number" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Occupation</label>
-                                                    <input type="text" class="form-control" placeholder="Ex: Teacher" name="occupation" id="occupation" required>
+                                                    <input type="text" class="form-control btn btn-light btn-dark disabled text-black" placeholder="Ex: Teacher" name="occupation" id="occupation" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -438,6 +413,21 @@ $conn->close();
             </div>	
         </div>
     <?php include 'templates/footer.php' ?>
+    <script>
+    const addressInput = document.getElementById('addressInput');
+
+    addressInput.addEventListener('keydown', (event) => {
+        event.preventDefault();
+    });
+
+    addressInput.addEventListener('paste', (event) => {
+        event.preventDefault();
+    });
+
+    addressInput.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+    });
+</script>
     <script>
 function editResident(that){
     id          = $(that).attr('data-id');
@@ -462,6 +452,7 @@ function editResident(that){
     dead 	    = $(that).attr('data-dead');
     remarks 	= $(that).attr('data-remarks');
     purpose 	= $(that).attr('data-purpose');
+    status 	= $(that).attr('data-status');
 
     $('#res_id').val(id);
     $('#nat_id').val(nat_id);
@@ -483,6 +474,7 @@ function editResident(that){
     $('#citizenship').val(citi);
     $('#remarks').val(remarks);
     $('#purpose').val(purpose);
+    $('#status').val(status);
 
     if(dead==1){
         $("#alive").prop("checked", true);

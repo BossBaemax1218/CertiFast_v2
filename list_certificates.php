@@ -1,18 +1,18 @@
 <?php include 'server/server.php' ?>
 <?php 
-$sql = "SELECT s.*, s.certificate_name as certificate_name, s.resident_name as resident_name, s.purok as purok, s.date_applied as date_applied,
-(SELECT GROUP_CONCAT(DISTINCT c_id) FROM tblclearance c1 WHERE c1.email = s.email) AS c_id,
-(SELECT GROUP_CONCAT(DISTINCT brgy_id) FROM tblbrgy_id c2 WHERE c2.email = s.email) AS brgy_id,
-(SELECT GROUP_CONCAT(DISTINCT res_id) FROM tblresidency c3 WHERE c3.email = s.email) AS res_id,
-(SELECT GROUP_CONCAT(DISTINCT death_id) FROM tbldeath c4 WHERE c4.email = s.email) AS death_id,
-(SELECT GROUP_CONCAT(DISTINCT birth_id) FROM tblbirthcert c5 WHERE c5.email = s.email) AS birth_id,
-(SELECT GROUP_CONCAT(DISTINCT live_id) FROM tbllive_in c6 WHERE c6.email = s.email) AS live_id,
-(SELECT GROUP_CONCAT(DISTINCT job_id) FROM tblfirstjob c7 WHERE c7.email = s.email) AS job_id,
-(SELECT GROUP_CONCAT(DISTINCT fam_id) FROM tblfamily_tax c8 WHERE c8.email = s.email) AS fam_id,
-(SELECT GROUP_CONCAT(DISTINCT good_id) FROM tblgood_moral c9 WHERE c9.email = s.email) AS good_id,
-(SELECT GROUP_CONCAT(DISTINCT indi_id) FROM tblindigency c10 WHERE c10.email = s.email) AS indi_id,
-(SELECT GROUP_CONCAT(DISTINCT oath_id) FROM tbloath c12 WHERE c12.email = s.email) AS oath_id 
-FROM tblresident_requested AS s WHERE s.status IN ('on hold', 'approved') AND s.certificate_name != 'business permit' GROUP BY s.certificate_name, s.resident_name,s.email ORDER BY s.cert_id DESC";
+$sql = "SELECT s.*, s.req_cert_id as req_cert_id, s.certificate_name as certificate_name, s.resident_name as resident_name, s.purok as purok, s.date_applied as date_applied,
+(SELECT GROUP_CONCAT(c_id) FROM tblclearance c1 WHERE c1.email = s.email AND c1.requirement = s.requirement) AS c_id,
+(SELECT GROUP_CONCAT(brgy_id) FROM tblbrgy_id c2 WHERE c2.email = s.email AND c2.requirement = s.requirement) AS brgy_id,
+(SELECT GROUP_CONCAT(res_id) FROM tblresidency c3 WHERE c3.email = s.email AND c3.requirement = s.requirement) AS res_id,
+(SELECT GROUP_CONCAT(death_id) FROM tbldeath c4 WHERE c4.email = s.email AND c4.requirement = s.requirement) AS death_id,
+(SELECT GROUP_CONCAT(birth_id) FROM tblbirthcert c5 WHERE c5.email = s.email AND c5.requirement = s.requirement) AS birth_id,
+(SELECT GROUP_CONCAT(live_id) FROM tbllive_in c6 WHERE c6.email = s.email AND c6.requirements = s.requirement) AS live_id,
+(SELECT GROUP_CONCAT(job_id) FROM tblfirstjob c7 WHERE c7.email = s.email AND c7.requirement = s.requirement) AS job_id,
+(SELECT GROUP_CONCAT(fam_id) FROM tblfamily_tax c8 WHERE c8.email = s.email AND c8.requirements = s.requirement) AS fam_id,
+(SELECT GROUP_CONCAT(good_id) FROM tblgood_moral c9 WHERE c9.email = s.email AND c9.requirement = s.requirement) AS good_id,
+(SELECT GROUP_CONCAT(indi_id) FROM tblindigency c10 WHERE c10.email = s.email AND c10.requirements = s.requirement) AS indi_id,
+(SELECT GROUP_CONCAT(oath_id) FROM tbloath c12 WHERE c12.email = s.email AND c12.requirement = s.requirement) AS oath_id 
+FROM tblresident_requested AS s WHERE s.status IN ('on hold', 'approved') AND s.certificate_name != 'business permit' GROUP BY req_cert_id ORDER BY s.cert_id DESC";
 
 $result = $conn->query($sql);
 
@@ -53,6 +53,18 @@ while ($row = $result->fetch_assoc()) {
 <head>
 	<?php include 'templates/header.php' ?>
 	<title>CertiFast Portal</title>
+    <style>
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            color: black;
+        }
+
+        .form-check-input {
+            margin-right: 8px; 
+            margin-bottom: 5px;
+    }
+    </style>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
@@ -65,29 +77,84 @@ while ($row = $result->fetch_assoc()) {
 					<div class="row">
                         <div class="page-inner">
                             <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row mb-2">
-                                <h1 class="text-black fw-bold" style = "font-size: 400%;">Generate Certificates</h1>
+                                <h1 class="text fw-bold" style = "font-size: 300%;">List of Requested Certificates</h1>
                             </div>
                         </div>
 						<div class="col-md-12">
-                            <?php if(isset($_SESSION['message'])): ?>
+                        <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <?php echo $_SESSION['message']; ?>
                                 </div>
                             <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
                             <div class="card">
                                 <div class="card-header">
-                                    <h1 class="card-title">Certificate Management</h1>
+                                    <div class="card-head-row">
+                                        <div class="card-title">
+                                        </div>  
+                                            <div class="card-tools">
+                                                <a class="btn btn-info btn-border btn-round btn-sm" type="button" data-toggle="modal" data-target="#changeStatus">
+                                                    Change Status
+                                                </a>
+                                                <a class="btn btn-info btn-border btn-round btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Filter Options
+                                                </a>
+                                                <div class="dropdown-menu mt-3 mr-3" aria-labelledby="filterDropdown">
+                                                    <div class="dropdown-item">
+                                                        <label>Request Status:</label>
+                                                        <select class="form-control" id="filterStatus" name="status" onclick="event.stopPropagation();">
+                                                            <option value="">All</option>
+                                                            <option value="on hold">On Hold</option>
+                                                            <option value="approved">Approved</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <label>Select types of Certificates:</label>
+                                                        <select class="form-control" id="filterCert" name="cert_name" onclick="event.stopPropagation();">
+                                                            <option value="">Show All</option>
+                                                            <option value="Barangay Clearance">Barangay Clearance</option>
+                                                            <option value="Barangay identification">Barangay Identification (ID)</option>
+                                                            <option value="Certificate Of Residency">Certificate of Residency</option>
+                                                            <option value="Certificate Of Indigency">Certificate of Indigency</option>
+                                                            <option value="First Time Jobseekers">First Time Jobseekers</option>
+                                                            <option value="Certificate Of Oath Taking">Certificate of Oath Taking</option>
+                                                            <option value="Certificate Of Death">Certificate of Death</option>
+                                                            <option value="Certificate Of Birth">Certificate of Birth</option>
+                                                            <option value="Certificate Of Good Moral">Certificate of Good Moral</option>
+                                                            <option value="Certificate Of Live In">Certificate of Live In</option>
+                                                            <option value="Family Home Estate">Family Home Estate</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <label>From Date:</label>
+                                                        <input type="date" class="form-control" id="fromDate" name="fromDate" placeholder="Select date range">
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <label>To Date:</label>
+                                                        <input type="date" class="form-control" id="toDate" name="toDate" placeholder="Select date range">
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <button type="button" id="clearFilters" class="form-control btn btn-outline-primary">Clear Filters</button>
+                                                    </div>
+                                                </div>
+                                            </div>                                                                             
+                                        </div>
+                                    </div>
                                     <div class="card-body">
-                                        <div class="table-responsive">
+                                        <div class="table-responsive">                                          
                                             <table id="residenttable" class="table">
                                                 <thead>
                                                     <tr>
+                                                        <th scope="col">Certificate ID</th>
                                                         <th scope="col">Date</th>
                                                         <th class="text-center" scope="col">Fullname</th>
                                                         <th scope="col">Certificates Name</th>
                                                         <th scope="col">Email</th>
-                                                        <th class="text-center" scope="col">Status</th>
+                                                        <th scope="col">Purpose</th>
+                                                        <th scope="col">Status</th>
                                                         <?php if (isset($_SESSION['username'])) : ?>
                                                             <?php if ($_SESSION['role'] == 'administrator') : ?>
                                                         <?php endif ?>
@@ -96,46 +163,54 @@ while ($row = $result->fetch_assoc()) {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php if (!empty($resident)) : ?>
-                                                        <?php foreach ($resident as $row) : ?>
-                                                            <tr data-res_id="<?= $row['res_id'] ?>" data-c_id="<?= $row['c_id'] ?>" data-indi_id="<?= $row['indi_id'] ?>" data-fam_id="<?= $row['fam_id'] ?>" 
-                                                            data-death_id="<?= $row['death_id'] ?>" data-birth_id="<?= $row['birth_id'] ?>" data-oath_id="<?= $row['oath_id'] ?>" 
-                                                            data-brgy_id="<?= $row['brgy_id'] ?>" data-live_id="<?= $row['live_id'] ?>" data-first_id="<?= $row['job_id'] ?>" data-good_id="<?= $row['good_id'] ?>">
-                                                                <td><?= $row['date_applied'] ?></td>
-                                                                <td>
-                                                                    <?= ucwords($row['resident_name']) ?>
-                                                                </td>
-                                                                <td><?= ucwords($row['certificate_name']) ?></td>
-                                                                <td><?= $row['email'] ?></td>
-                                                                <td class="text-center"><?= $row['residency_badge'] ?></td>
-                                                                <?php if (isset($_SESSION['username'])) : ?>
-                                                                    <?php if ($_SESSION['role'] == 'administrator') : ?>
+                                                <?php if (!empty($resident)) : ?>
+                                                    <?php foreach ($resident as $row) : ?>
+                                                        <tr data-res_id="<?= $row['res_id'] ?>"
+                                                            data-c_id="<?= $row['c_id'] ?>"
+                                                            data-indi_id="<?= $row['indi_id'] ?>"
+                                                            data-fam_id="<?= $row['fam_id'] ?>"
+                                                            data-death_id="<?= $row['death_id'] ?>"
+                                                            data-birth_id="<?= $row['birth_id'] ?>"
+                                                            data-oath_id="<?= $row['oath_id'] ?>"
+                                                            data-brgy_id="<?= $row['brgy_id'] ?>"
+                                                            data-live_id="<?= $row['live_id'] ?>"
+                                                            data-first_id="<?= $row['job_id'] ?>"
+                                                            data-good_id="<?= $row['good_id'] ?>">
+                                                            <td><?= $row['req_cert_id'] ?></td>
+                                                            <td><?= $row['date_applied'] ?></td>
+                                                            <td><?= ucwords($row['resident_name']) ?></td>
+                                                            <td><?= ucwords($row['certificate_name']) ?></td>
+                                                            <td><?= $row['email'] ?></td>
+                                                            <td><?= $row['requirement'] ?></td>
+                                                            <td><?= $row['residency_badge'] ?></td>
+                                                            <?php if (isset($_SESSION['username'])) : ?>
+                                                                <?php if ($_SESSION['role'] == 'administrator') : ?>
                                                                 <?php endif ?>
                                                                 <td class="text-center">
                                                                     <div class="form-button-action">
-                                                                        <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Status" onclick="editStatus(this)" data-cert_id="<?= $row['cert_id'] ?>" data-status="<?= $row['status'] ?>">
-                                                                            <?php if (isset($_SESSION['username'])): ?>
-                                                                                <i class="fas fa-edit"></i>
-                                                                            <?php else: ?>
-                                                                                <i class="fa fa-eye"></i>
-                                                                            <?php endif ?>
+                                                                        <a type="button" data-toggle="tooltip" class="btn btn-link btn-secondary view-certificate-btn"
+                                                                            data-original-title="View Certificate"
+                                                                            data-certificate-name="<?= $row['certificate_name'] ?>">
+                                                                            <i class="fas fa-eye"></i>
                                                                         </a>
                                                                         <?php
                                                                             $status = $row['status'];
                                                                             $btnDisabled = ($status === 'on hold') ? 'disabled' : '';
                                                                         ?>
-                                                                        <a type="button" data-toggle="tooltip" class="btn btn-link btn-danger generate-certificate-btn" data-original-title="Generate Certificate" data-certificate_name="<?= $row['certificate_name'] ?>" data-status="<?= $status ?>" <?= $btnDisabled ?>>
+                                                                        <a type="button" data-toggle="tooltip" class="btn btn-link btn-danger generate-certificate-btn"
+                                                                            data-original-title="Generate Certificate"
+                                                                            data-certificate_name="<?= $row['certificate_name'] ?>"
+                                                                            data-status="<?= $status ?>" <?= $btnDisabled ?>>
                                                                             <i class="fas fa-print"></i>
                                                                         </a>
                                                                     </div>
                                                                 </td>
-                                                                <?php endif ?>
-                                                            </tr>
-                                                        <?php endforeach ?>
-                                                    <?php endif ?>
-                                                </tbody>
-                                                </table>
-                                            </div>
+                                                            <?php endif ?>
+                                                        </tr>
+                                                    <?php endforeach ?>
+                                                <?php endif ?>
+                                            </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -143,45 +218,81 @@ while ($row = $result->fetch_assoc()) {
                         </div>
                     </div>
                 </div>
-            <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Update Status</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="POST" action="model/edit_cert_status.php" enctype="multipart/form-data">
-                                <input type="hidden" name="size" value="1000000">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <select class="form-control primary" required name="status">
-                                            <option disabled selected>Select Status</option>
-                                            <option value="on hold">On Hold</option>
-                                            <option value="approved">Approved</option>
-                                            <option value="rejected">Rejected</option>
-                                            <option value="claimed">Claimed</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="hidden" name="cert_id" id="cert_id">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <?php if(isset($_SESSION['username'])): ?>
-                                <button type="submit" class="btn btn-primary">Update</button>
-                                <?php endif ?>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
 			<?php include 'templates/main-footer.php' ?>
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>
+    <div class="modal fade" id="filterStatusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select class="form-control" id="filterStatus" name="status">
+                            <option value="on hold">On Hold</option>
+                            <option value="approved">Approved</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button id="saveStatusBtn" class="btn btn-danger">Change</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const filterStatus = document.getElementById("filterStatus");
+  const filterCert = document.getElementById("filterCert");
+  const fromDate = document.getElementById("fromDate");
+  const toDate = document.getElementById("toDate");
+  const clearFiltersBtn = document.getElementById("clearFilters");
+  
+  const tableRows = document.querySelectorAll("#residenttable tbody tr");
+  
+  function rowMatchesFilter(row) {
+    const statusValue = filterStatus.value.toLowerCase();
+    const certValue = filterCert.value.toLowerCase();
+    const rowStatus = row.querySelector("td:nth-child(7)").textContent.toLowerCase();
+    const rowCert = row.querySelector("td:nth-child(4)").textContent.toLowerCase();
+    const rowDate = new Date(row.querySelector("td:nth-child(2)").textContent);
+    const from = new Date(fromDate.value);
+    const to = new Date(toDate.value);
+
+    return (statusValue === "" || rowStatus.includes(statusValue)) &&
+           (certValue === "" || rowCert.includes(certValue)) &&
+           (isNaN(from) || rowDate >= from) &&
+           (isNaN(to) || rowDate <= to);
+  }
+  
+  function applyFilter() {
+    tableRows.forEach(row => {
+      const shouldDisplay = rowMatchesFilter(row);
+      row.style.display = shouldDisplay ? "table-row" : "none";
+    });
+  }
+  function clearFilters() {
+    filterStatus.value = "";
+    filterCert.value = "";
+    fromDate.value = "";
+    toDate.value = "";
+    applyFilter();
+  }
+
+  filterStatus.addEventListener("change", applyFilter);
+  filterCert.addEventListener("change", applyFilter);
+  fromDate.addEventListener("change", applyFilter);
+  toDate.addEventListener("change", applyFilter);
+  clearFiltersBtn.addEventListener("click", clearFilters);
+});
+</script>
 <script>
    document.addEventListener("DOMContentLoaded", function () {
     var rows = document.querySelectorAll("#residenttable tbody tr");
@@ -198,66 +309,137 @@ while ($row = $result->fetch_assoc()) {
         var liveId = row.getAttribute("data-live_id");
         var deathId = row.getAttribute("data-death_id");
         var birthId = row.getAttribute("data-birth_id");
-        var generateBtn = row.querySelector(".generate-certificate-btn");
+        var generateBtn = row.querySelector(".generate-certificate-btn ");
 
-        (function (residencyId, clearanceId, indigencyId, famId) {
+        (function (residencyId, clearanceId, indigencyId, famId, brgyId, firstId, oathId, goodId, liveId, deathId, birthId) {
             generateBtn.addEventListener("click", function () {
                 var certificateName = this.getAttribute("data-certificate_name");
                 var status = this.getAttribute("data-status");
                 if (status === "approved") {
+                    var url;
+
                     switch (certificateName.toLowerCase()) {
                         case 'barangay clearance':
-                            window.location.href = 'generate_brgy_cert.php?id=' + clearanceId;
+                            url = 'generate_brgy_cert.php?id=' + clearanceId;
                             break;
                         case 'barangay identification':
-                            window.location.href = 'generate_brgy_id.php?id=' + brgyId;
+                            url = 'generate_brgy_id.php?id=' + brgyId;
                             break;
                         case 'certificate of residency':
-                            window.location.href = 'generate_residency_cert.php?id=' + residencyId;
+                            url = 'generate_residency_cert.php?id=' + residencyId;
                             break;
                         case 'certificate of indigency':
-                            window.location.href = 'generate_indi_cert.php?id=' + indigencyId;
+                            url = 'generate_indi_cert.php?id=' + indigencyId;
                             break;
                         case 'first time jobseekers':
-                            window.location.href = 'generate_jobseekers.php?id=' + firstId;
+                            url = 'generate_jobseekers.php?id=' + firstId;
                             break;
                         case 'certificate of oath taking':
-                            window.location.href = 'generate_oath.php?id=' + oathId;
+                            url = 'generate_oath.php?id=' + oathId;
                             break;
                         case 'certificate of good moral':
-                            window.location.href = 'generate_good_moral.php?id=' + goodId;
+                            url = 'generate_good_moral.php?id=' + goodId;
                             break;
                         case 'certificate of live in':
-                            window.location.href = 'generate_live_in.php?id=' + liveId;
+                            url = 'generate_live_in.php?id=' + liveId;
                             break;
                         case 'family home estate':
-                            window.location.href = 'generate_family_tax.php?id=' + famId;
+                            url = 'generate_family_tax.php?id=' + famId;
                             break;
                         case 'certificate of death':
-                            window.location.href = 'generate_death.php?id=' + deathId;
+                            url = 'generate_death.php?id=' + deathId;
                             break;
                         case 'certificate of birth':
-                            window.location.href = 'generate_birth.php?id=' +  birthId;
+                            url = 'generate_birth.php?id=' +  birthId;
                             break;
                         default:
-                            window.location.href = 'list_certificates.php';
+                            url = 'list_certificates.php';
                             break;
                     }
+
+                    window.location.href = url;
                 }
             });
-        })(residencyId, clearanceId, indigencyId, famId);
+        })(residencyId, clearanceId, indigencyId, famId, birthId, deathId, liveId, goodId, oathId, firstId, indigencyId, brgyId);
     }
 });
-
 </script>
 <script>
-    function editStatus(that){
-        cert_id          = $(that).attr('data-cert_id');
-        status     = $(that).data('data-status');
+   document.addEventListener("DOMContentLoaded", function () {
+    var rows = document.querySelectorAll("#residenttable tbody tr");
+    for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        var resId = row.getAttribute("data-res_id");
+        var clrId = row.getAttribute("data-c_id");
+        var indId = row.getAttribute("data-indi_id");
+        var famId = row.getAttribute("data-fam_id");
+        var brgyIdAttr = row.getAttribute("data-brgy_id");
+        var firstId = row.getAttribute("data-first_id");
+        var oathId = row.getAttribute("data-oath_id");
+        var goodId = row.getAttribute("data-good_id");
+        var liveId = row.getAttribute("data-live_id");
+        var dId = row.getAttribute("data-death_id");
+        var birthIdAttr = row.getAttribute("data-birth_id");
+        var viewBtn = row.querySelector(".view-certificate-btn ");
 
-        $('#cert_id').val(cert_id);
-        $('#status').val(status);
+        (function (resId, clrId, indId, famId, brgyIdAttr, firstId, oathId, goodId, liveId, dId, birthIdAttr) {
+            viewBtn.addEventListener("click", function () {
+                var certName = this.getAttribute("data-certificate-name");
+                var editModal = document.getElementById("editModal");
+
+                switch (certName.toLowerCase()) {
+                    case 'barangay clearance':
+                        localStorage.setItem('openCleCertModal', 'true');
+                        window.location.href = 'view_brgy_cert.php?id=' + clrId;
+                        break;
+                    case 'barangay identification':
+                        localStorage.setItem('openIndiCertModal', 'true');
+                        window.location.href = 'view_brgy_id.php?id=' + brgyIdAttr;
+                        break;
+                    case 'certificate of residency':
+                        localStorage.setItem('openResCertModal', 'true');
+                        window.location.href = 'view_residency_cert.php?id=' + resId;
+                        break;
+                    case 'certificate of indigency':
+                        localStorage.setItem('openIndiCertModal', 'true');
+                        window.location.href = 'view_indi_cert.php?id=' + indId;
+                        break;
+                    case 'first time jobseekers':
+                        localStorage.setItem('openIndiCertModal', 'true');
+                        window.location.href = 'view_jobseekers.php?id=' + firstId;
+                        break;
+                    case 'certificate of oath taking':
+                        localStorage.setItem('openIndiCertModal', 'true');
+                        window.location.href = 'view_oath.php?id=' + oathId;
+                        break;
+                    case 'certificate of good moral':
+                        localStorage.setItem('openIndiCertModal', 'true');
+                        window.location.href = 'view_good_moral.php?id=' + goodId;
+                        break;
+                    case 'certificate of live in':
+                        localStorage.setItem('openIndiCertModal', 'true');
+                        window.location.href = 'view_live_in.php?id=' + liveId;
+                        break;
+                    case 'family home estate':
+                        localStorage.setItem('openIndiCertModal', 'true');
+                        window.location.href = 'view_family_tax.php?id=' + famId;
+                        break;
+                    case 'certificate of death':
+                        localStorage.setItem('openIndiCertModal', 'true');
+                        window.location.href = 'view_death.php?id=' + dId;
+                        break;
+                    case 'certificate of birth':
+                        localStorage.setItem('openIndiCertModal', 'true');
+                        window.location.href = 'view_birth.php?id=' +  birthIdAttr;
+                        break;
+                    default:
+                        url = 'list_certificates.php';
+                        break;
+                }
+            });
+        })(resId, clrId, indId, famId, brgyIdAttr, firstId, oathId, goodId, liveId, dId, birthIdAttr);
     }
-    </script>
+});
+</script>
 </body>
 </html>

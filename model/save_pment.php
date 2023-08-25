@@ -1,7 +1,7 @@
-<?php 
-	include('../server/server.php');
+<?php
+    include('../server/server.php');
 
-    if(!isset($_SESSION['username'])){
+    if (!isset($_SESSION['username'])) {
         if (isset($_SERVER["HTTP_REFERER"])) {
             header("Location: " . $_SERVER["HTTP_REFERER"]);
         }
@@ -9,34 +9,43 @@
 
     $user           = $_SESSION['username'];
     $name           = $conn->real_escape_string($_POST['name']);
-	$amount 	    = $conn->real_escape_string($_POST['amount']);
+    $amount         = $conn->real_escape_string($_POST['amount']);
     $date           = $conn->real_escape_string($_POST['date']);
-	$details 	    = $conn->real_escape_string($_POST['details']);
-    $email 	        = $conn->real_escape_string($_POST['email']);
+    $details        = $conn->real_escape_string($_POST['details']);
+    $email          = $conn->real_escape_string($_POST['email']);
+    $req          = $conn->real_escape_string($_POST['requirement']);
 
-    if(!empty($user) && !empty($name)){
+    if (!empty($user) && !empty($name)) {
 
-        $insert  = "INSERT INTO tblpayments (`details`,`amounts`, `date`, `user`, `name`, `email`) VALUES ('$details', $amount, '$date', '$user',' $name','$email')";
-        $result  = $conn->query($insert);
+        $insert = "INSERT INTO tblpayments (`details`,`amounts`, `date`, `user`, `name`, `email`,`status`,`requirement`) VALUES ('$details', $amount, '$date', '$user',' $name','$email','paid','$req')";
+        $result = $conn->query($insert);
 
-        if($result === true){
-            $_SESSION['message'] = 'Payment has been saved!';
-            $_SESSION['success'] = 'success';
+        if ($result === true) {
+            $updateClaimed = "UPDATE tblresident_requested SET `status` = 'claimed' WHERE email='$email' AND certificate_name='$details' AND requirement ='$req' LIMIT 1";
+            $resultUpdate = $conn->query($updateClaimed);
 
-            if (isset($_SERVER["HTTP_REFERER"])) {
-                header("Location: " . $_SERVER["HTTP_REFERER"].'&closeModal');
+            if ($resultUpdate === true) {
+                $_SESSION['message'] = 'Payment has been saved and request status set to claimed!';
+                $_SESSION['success'] = 'success';
+            } else {
+                $_SESSION['message'] = 'Payment has been saved, but there was an issue setting the request status!';
+                $_SESSION['success'] = 'warning';
             }
 
-        }else{
+            if (isset($_SERVER["HTTP_REFERER"])) {
+                header("Location: " . $_SERVER["HTTP_REFERER"] . '&closeModal');
+            }
+
+        } else {
             $_SESSION['message'] = 'Something went wrong!';
             $_SESSION['success'] = 'danger';
-            
+
             if (isset($_SERVER["HTTP_REFERER"])) {
                 header("Location: " . $_SERVER["HTTP_REFERER"]);
             }
         }
 
-    }else{
+    } else {
 
         $_SESSION['message'] = 'Please fill up the form completely!';
         $_SESSION['success'] = 'danger';
@@ -46,6 +55,5 @@
         }
     }
 
-
-
-	$conn->close();
+    $conn->close();
+?>

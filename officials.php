@@ -28,34 +28,32 @@
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
- 
 		<div class="main-panel">
 			<div class="content">
 				<div class="panel-header">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-							<div>
-								<h2 class="text-black fw-bold" style = "font-size: 300%;">Barangay Officials & SK Members</h2>
-							</div>
+							<h2 class="text-black fw-bold" style = "font-size: 300%;">Barangay Officials & SK Members</h2>
 						</div>
 					</div>
 				</div>
 				<div class="page-inner">
-					<?php if(isset($_SESSION['message'])): ?>
-							<div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-								<?php echo $_SESSION['message']; ?>
-							</div>
-						<?php unset($_SESSION['message']); ?>
-						<?php endif ?>
-					<div class="row mt-2">						
+				<?php if(isset($_SESSION['message'])): ?>
+						<div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<?php echo $_SESSION['message']; ?>
+						</div>
+					<?php unset($_SESSION['message']); ?>
+					<?php endif ?>
+					<div class="row">						
 						<div class="col-md-12">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="card">
-										<div class="card-body">
-											<div class="text-center">
-												<img class="img-fluid" src="<?= !empty($db_img) ? 'assets/uploads/'.$db_img : 'assets/img/bg-abstract.png' ?>" />
-											</div>
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-body">
+										<div class="text-center">
+											<img class="img-fluid" src="<?= !empty($db_img) ? 'assets/uploads/'.$db_img : 'assets/img/bg-abstract.png' ?>" />
 										</div>
 									</div>
 								</div>
@@ -74,13 +72,49 @@
 													<i class="fa fa-file"></i>
 													Export CSV
 												</a>
+												<a class="btn btn-info btn-border btn-round btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Filter Options
+                                                </a>
+                                                <div class="dropdown-menu mt-3 mr-3" aria-labelledby="filterDropdown">
+													<div class="dropdown-item">
+                                                        <label>Status:</label>
+                                                        <select class="form-control" id="filterStatus" name="status" onclick="event.stopPropagation();">
+                                                            <option value="">All</option>
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <label>Select types of Position:</label>
+                                                        <select class="form-control" id="filterCert" name="cert_name" onclick="event.stopPropagation();">
+                                                            <option value="">All</option>
+                                                            <option value="Punong Barangay">Punong Barangay</option>
+                                                            <option value="Secretary">Secretary</option>
+                                                            <option value="Treasurer">Treasurer</option>
+                                                            <option value="Kagawad">Kagawad</option>
+                                                            <option value="SK Chairman">SK Chairman</option>
+                                                            <option value="SK Kagawad">SK Kagawad</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <label>From Date:</label>
+                                                        <input type="date" class="form-control datepicker" id="fromDate" placeholder="Select date range">
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <label>To Date:</label>
+                                                        <input type="date" class="form-control datepicker" id="toDate" placeholder="Select date range">
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <button type="button" id="clearFilters" class="form-control btn btn-outline-primary">Clear Filters</button>
+                                                    </div>
+                                                </div>
 											</div>
 										<?php endif?>
 									</div>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table">
+										<table id="residenttable" class="table">
 											<thead>
 												<tr>
 													<th scope="col">Fullname</th>
@@ -122,11 +156,11 @@
 																			data-end="<?= $row['termend'] ?>" data-status="<?= $row['status'] ?>">
 																			<i class="fas fa-edit"></i>
 																		</a>
-																		<?php if ($_SESSION['role'] == 'administrator'): ?>
-																			<a type="button" data-toggle="tooltip" href="model/remove_official.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this official?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																				<i class="fas fa-trash"></i>
-																			</a>
-																		<?php endif ?>
+                                                                    <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'administrator')):?>
+                                                                        <a type="button" class="btn btn-link btn-danger" data-toggle="modal" data-target="#confirmDeleteModal<?= $row['id'] ?>" data-original-title="Remove">
+                                                                            <i class="fa-solid fa-trash"></i>
+                                                                        </a>
+                                                                    <?php endif ?>
 																	</div>
 																</td>
 															<?php endif ?>
@@ -146,6 +180,30 @@
 					</div>
 				</div>
 			</div>
+			<?php foreach ($official as $row) { ?>
+        <div class="modal fade" id="confirmDeleteModal<?= $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmDeleteModalLabel">Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="mt-3 modal-body text-center" style="font-size: 16px;">
+                        Are you certain you want to remove <?= $row['position'] ?> <strong><?= $row['fullname'] ?></strong>?
+                    </div>
+                    <div class="modal-footer mt-2 d-flex justify-content-center">
+                        <form method="post" action="model/remove_official.php">
+                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                            <button type="button" class="btn btn-danger text-center">No</button>
+                            <button type="submit" class="btn btn-primary text-center">Yes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
 			<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -161,16 +219,18 @@
 									<div style="height: 250px;" class="text-center" id="my_camera">
 										<img src="assets/img/person.png" alt="..." class="img img-fluid" width="250">
 									</div>
-									<div class="form-group d-flex justify-content-center">
-										<button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
-										<button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
-									</div>
-									<div id="profileImage">
-										<input type="hidden" name="picture" value="">
-									</div>
-									<div class="form-group">
+									<?php if(isset($_SESSION['username'])):?>
+                                    <div class="form-group d-flex justify-content-center">
+                                        <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
+                                        <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
+                                    </div>
+                                    <div id="profileImage">
+                                        <input type="hidden" name="picture">
+                                    </div>
+                                    <div class="form-group">
 										<input type="file" class="form-control" name="image" accept=".jpeg, .jpg, .png" required>
-									</div>
+                                    </div>
+									<?php endif ?>
 								</div>
                                 <div class="form-group">
                                     <label>Fullname</label>
@@ -204,12 +264,11 @@
                                         <option value="Inactive">Inactive</option>
                                     </select>
                                 </div>
+								<div class="mt-2 d-flex justify-content-center">
+									<input type="hidden" id="pos_id" name="id">
+									<button type="submit" class="btn btn-danger">Submit</button>
+								</div>
                         	</div>
-							<div class="modal-footer">
-								<input type="hidden" id="pos_id" name="id">
-								<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-danger">Create</button>
-							</div>
                         </form>
                     </div>
                 </div>
@@ -274,12 +333,11 @@
                                         <option value="Inactive">Inactive</option>
                                     </select>
                                 </div>
+								<div class="mt-4 d-flex justify-content-center">
+									<input type="hidden" id="off_id" name="id">
+									<button type="submit" class="btn btn-primary">Change</button>
+								</div>
                             </div>
-							<div class="modal-footer">
-								<input type="hidden" id="off_id" name="id">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-primary">Update</button>
-							</div>
                         </form>
                     </div>
                 </div>
@@ -288,6 +346,52 @@
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>
+	<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const filterStatus = document.getElementById("filterStatus");
+  const filterCert = document.getElementById("filterCert");
+  const fromDate = document.getElementById("fromDate");
+  const toDate = document.getElementById("toDate");
+  const clearFiltersBtn = document.getElementById("clearFilters");
+  
+  const tableRows = document.querySelectorAll("#residenttable tbody tr");
+  
+  function rowMatchesFilter(row) {
+    const statusValue = filterStatus.value.toLowerCase();
+    const certValue = filterCert.value.toLowerCase();
+    const rowStatus = row.querySelector("td:nth-child(6)").textContent.toLowerCase();
+    const rowCert = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+    const rowDate = new Date(row.querySelector("td:nth-child(4)").textContent);
+    const from = new Date(fromDate.value);
+    const to = new Date(toDate.value);
+
+    return (statusValue === "" || rowStatus.includes(statusValue)) &&
+           (certValue === "" || rowCert.includes(certValue)) &&
+           (isNaN(from) || rowDate >= from) &&
+           (isNaN(to) || rowDate <= to);
+  }
+  
+  function applyFilter() {
+    tableRows.forEach(row => {
+      const shouldDisplay = rowMatchesFilter(row);
+      row.style.display = shouldDisplay ? "table-row" : "none";
+    });
+  }
+  function clearFilters() {
+    filterStatus.value = "";
+    filterCert.value = "";
+    fromDate.value = "";
+    toDate.value = "";
+    applyFilter();
+  }
+
+  filterStatus.addEventListener("change", applyFilter);
+  filterCert.addEventListener("change", applyFilter);
+  fromDate.addEventListener("change", applyFilter);
+  toDate.addEventListener("change", applyFilter);
+  clearFiltersBtn.addEventListener("click", clearFilters);
+});
+</script>
 	<script>
 	function editOfficial(that){
 			brgyid = $(that).attr('data-brgyid');

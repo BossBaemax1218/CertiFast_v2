@@ -103,12 +103,15 @@ while ($row = $result->fetch_assoc()) {
                 <?php include 'templates/sidebar.php' ?>
                 <div class="main-panel mt-5">
                     <div class="container">
-						<?php if(isset($_SESSION['message'])): ?>
-								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-									<?php echo $_SESSION['message']; ?>
-								</div>
-							<?php unset($_SESSION['message']); ?>
-						<?php endif ?>
+                    <?php if(isset($_SESSION['message'])): ?>
+                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <?php echo $_SESSION['message']; ?>
+                                </div>
+                            <?php unset($_SESSION['message']); ?>
+                            <?php endif ?>
                         <section class="text-center two-column-list mb-sm-5 pr-lg-3 container-fluid" id="two-column-list">
                             <div class="announcement-slider border-r-xs-0 border-r position-relative">
                             <h1 class="text-center fw-bold" style="font-size: 300%;">Announcement</h1>

@@ -18,7 +18,6 @@
     $result = $conn->query($sql);
 
     $resident = array();
-    $approvedResidents = array();
 
     while ($row = $result->fetch_assoc()) {
     $status = $row['status'];
@@ -175,13 +174,57 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="card-head-row">
-                                            <div class="card-title">Certificate Reports</div>
+                                            <div class="card-title"></div>
                                             <?php if(isset($_SESSION['username'])):?>
                                             <div class="card-tools">
                                                 <a id="pdf" class="btn btn-danger btn-border btn-round btn-sm">
                                                     <i class="fas fa-download"></i>
                                                     Export PDF
                                                 </a>
+                                                <a class="btn btn-info btn-border btn-round btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Filter Options
+                                                </a>
+                                                <div class="dropdown-menu mt-3 mr-3" aria-labelledby="filterDropdown">
+                                                    <div class="dropdown-item">
+                                                        <label>Request Status:</label>
+                                                        <select class="form-control" id="filterStatus" name="status" onclick="event.stopPropagation();">
+                                                            <option value="">All</option>
+                                                            <option value="on hold">On Hold</option>
+                                                            <option value="approved">Approved</option>
+                                                            <option value="rejected">Rejected</option>
+                                                            <option value="claimed">Claimed</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <label>Select types of Certificates:</label>
+                                                        <select class="form-control" id="filterCert" name="cert_name" onclick="event.stopPropagation();">
+                                                            <option value="">Show All</option>
+                                                            <option value="Barangay Clearance">Barangay Clearance</option>
+                                                            <option value="Business Permit">Business Permit</option>
+                                                            <option value="Barangay Identification">Barangay Identification (ID)</option>
+                                                            <option value="Certificate of Residency">Certificate of Residency</option>
+                                                            <option value="Certificate of Indigency">Certificate of Indigency</option>
+                                                            <option value="First Time Jobseekers">First Time Jobseekers</option>
+                                                            <option value="Certificate of Oath Taking">Certificate of Oath Taking</option>
+                                                            <option value="Certificate of Death">Certificate of Death</option>
+                                                            <option value="Certificate of Birth">Certificate of Birth</option>
+                                                            <option value="Certificate of Good Moral">Certificate of Good Moral</option>
+                                                            <option value="Certificate of Live In">Certificate of Live In</option>
+                                                            <option value="Family Home Estate">Family Home Estate</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <label>From Date:</label>
+                                                        <input type="date" class="form-control" id="toDate" placeholder="Select date range">
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <label>To Date:</label>
+                                                        <input type="date" class="form-control" id="fromDate" placeholder="Select date range">
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <button type="button" id="clearFilters" class="form-control btn btn-outline-primary">Clear Filters</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <?php endif ?>
                                             </div>
@@ -191,32 +234,48 @@
                                             <table id="residenttable" class="table">
                                                 <thead>
                                                     <tr>
+                                                        <th scope="col">Certificate ID</th>
                                                         <th class="text-center" scope="col">Date</th>
                                                         <th scope="col">Recipient</th>
                                                         <th scope="col">Email</th>
                                                         <th scope="col">Certificate</th>
                                                         <th scope="col">Status</th>
-                                                        <th class="text-center" scope="col">Action</th>
+                                                        <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'administrator')):?>
+                                                        <th scope="col">Action</th>
+                                                        <?php endif ?>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php if(!empty($resident)): ?>
                                                         <?php $no=1; foreach($resident as $row): ?>
                                                         <tr>
+                                                            <td><?= $row['req_cert_id'] ?></td>
                                                             <td class="text-center"><?= $row['date_applied'] ?></td>
                                                             <td><?= $row['resident_name'] ?></td>
                                                             <td><?= $row['email'] ?></td>
                                                             <td><?= ucwords($row['certificate_name']) ?></td>
                                                             <td><?= $row['residency_badge'] ?></td>
+                                                            <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'administrator')):?>
                                                             <td class="text-center">
-                                                                <div class="form-button-action">
-                                                                    <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
-                                                                    <button type="button" class="btn btn-link btn-danger" data-toggle="modal" data-target="#confirmDeleteModal<?= $row['cert_id'] ?>" data-original-title="Remove">
-                                                                        <i class="fas fa-trash"></i>
-                                                                    </button>
-                                                                    <?php endif ?>
+                                                                <div class="input-group">
+                                                                  <div class="input-group-append">
+                                                                    <button class="btn btn-light btn-round" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                                                    <div class="dropdown-menu text-center">
+                                                                        <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'administrator')):?>
+                                                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal<?= $row['cert_id'] ?>" data-original-title="Remove" style="padding: 10px;">
+                                                                                <i class="fa-solid fa-trash"></i> Trash
+                                                                            </button>
+                                                                        <?php endif ?>
+                                                                        <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'administrator')):?>
+                                                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#restoreModal<?= $row['cert_id'] ?>" data-original-title="Restore" style="padding: 10px;">
+                                                                                <i class="fa-solid fa-box-archive"></i> Archive
+                                                                            </button>
+                                                                        <?php endif ?>
+                                                                    </div>
+                                                                  </div>
                                                                 </div>
                                                             </td>
+                                                        <?php endif ?>
                                                         </tr>
                                                         <?php $no++; endforeach ?>
                                                     <?php endif ?>
@@ -233,7 +292,7 @@
 	        </div>
 	    </div>
 	<?php include 'templates/footer.php' ?>
-    <?php foreach ($resident as $row) { ?>
+    	<?php foreach ($resident as $row) { ?>
         <div class="modal fade" id="confirmDeleteModal<?= $row['cert_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -243,21 +302,91 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        Are you sure you want to delete this resident?
+                    <div class="modal-body text-center" style="font-size: 16px;">
+                        Are you certain you want to permanently delete certificate no. <strong><?= $row['req_cert_id'] ?></strong> requested by <strong><?= $row['resident_name'] ?></strong>?
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer mt-2 d-flex justify-content-center">
                         <form method="post" action="model/remove_cert.php">
                             <input type="hidden" name="id" value="<?= $row['cert_id'] ?>">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger text-center">No</button>
+                            <button type="submit" class="btn btn-primary text-center">Yes</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
         <?php } ?>
-<script src="assets/js/min-max-date.js"></script>
+       <?php foreach ($resident as $row) { ?>
+        <div class="modal fade" id="restoreModal<?= $row['cert_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="restoreModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="restoreModalLabel">Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center" style="font-size: 16px;">
+                        Are you certain you want to remove certificate no. <strong><?= $row['req_cert_id'] ?></strong> requested by <strong><?= $row['resident_name'] ?></strong>?
+                    </div>
+                    <div class="modal-footer mt-2 d-flex justify-content-center">
+                        <form method="post" action="model/remove_cert.php">
+                            <input type="hidden" name="id" value="<?= $row['cert_id'] ?>">
+                            <button type="submit" class="btn btn-danger text-center">No</button>
+                            <button type="submit" class="btn btn-primary text-center">Yes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const filterStatus = document.getElementById("filterStatus");
+  const filterCert = document.getElementById("filterCert");
+  const fromDate = document.getElementById("fromDate");
+  const toDate = document.getElementById("toDate");
+  const clearFiltersBtn = document.getElementById("clearFilters");
+  
+  const tableRows = document.querySelectorAll("#residenttable tbody tr");
+  
+  function rowMatchesFilter(row) {
+    const statusValue = filterStatus.value.toLowerCase();
+    const certValue = filterCert.value.toLowerCase();
+    const rowStatus = row.querySelector("td:nth-child(6)").textContent.toLowerCase();
+    const rowCert = row.querySelector("td:nth-child(5)").textContent.toLowerCase();
+    const rowDate = new Date(row.querySelector("td:nth-child(2)").textContent);
+    const from = new Date(fromDate.value);
+    const to = new Date(toDate.value);
+
+    return (statusValue === "" || rowStatus.includes(statusValue)) &&
+           (certValue === "" || rowCert.includes(certValue)) &&
+           (isNaN(from) || rowDate >= from) &&
+           (isNaN(to) || rowDate <= to);
+  }
+  
+  function applyFilter() {
+    tableRows.forEach(row => {
+      const shouldDisplay = rowMatchesFilter(row);
+      row.style.display = shouldDisplay ? "table-row" : "none";
+    });
+  }
+
+  function clearFilters() {
+    filterStatus.value = "";
+    filterCert.value = "";
+    fromDate.value = "";
+    toDate.value = "";
+    applyFilter();
+  }
+
+  filterStatus.addEventListener("change", applyFilter);
+  filterCert.addEventListener("change", applyFilter);
+  fromDate.addEventListener("change", applyFilter);
+  toDate.addEventListener("change", applyFilter);
+  clearFiltersBtn.addEventListener("click", clearFilters);
+});
+</script>
 <script>
         $(document).on("click", "#pdf", function () {
         console.log("Exporting revenue table as PDF...");

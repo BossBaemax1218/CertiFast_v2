@@ -18,12 +18,12 @@
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
 		<div class="main-panel">
-			<div class="content">
+			<div class="container mt-5">
 				<div class="panel-header">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h1 class="text fw-bold" style="font-size: 50px;">Generate Certificate</h1>
+								<h1 class="text fw-bold" style="font-size: 50px;"></h1>
 							</div>
 						</div>
 					</div>
@@ -32,8 +32,11 @@
 					<div class="row mt--2">
 						<div class="col-md-12">
 
-                            <?php if(isset($_SESSION['message'])): ?>
+                        <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <?php echo $_SESSION['message']; ?>
                                 </div>
                             <?php unset($_SESSION['message']); ?>
@@ -147,22 +150,23 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="model/save_pment.php" >
-                                <div class="form-group">
-                                    <label>Amount</label>
-                                    <input type="number" class="form-control" name="amount" placeholder="Enter amount to pay" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Date Issued</label>
-                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label>Payment Details(Optional)</label>
-                                    <textarea class="form-control" placeholder="Enter Payment Details" name="details">Barangay Clearance</textarea>
-                                </div>
+                            <div class="form-group">
+                                <label>Amount</label>
+                                <input type="number" class="form-control" name="amount" placeholder="Enter amount to pay" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Date Issued</label>
+                                <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
+                            </div>
+                            <div class="form-group">
+                                <label>Payment Details(Optional)</label>
+                                <textarea class="form-control" placeholder="Enter Payment Details" name="details">Barangay Clearance</textarea>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" name="name" value="<?= $resident['fullname'] ?>">
                             <input type="hidden" name="email" value="<?= $resident['email'] ?>">
+                            <input type="hidden" name="requirement" value="<?= $resident['requirement'] ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
@@ -170,7 +174,6 @@
                     </div>
                 </div>
             </div>
-
 			<?php include 'templates/main-footer.php' ?>
 			<?php if(!isset($_GET['closeModal'])){ ?>
             

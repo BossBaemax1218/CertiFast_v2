@@ -62,13 +62,17 @@ $totalAnnouncements = $row1['total_announcements'];
                         <ul class="nav">
                             <li>
                                 <a href="" type="button" data-target="#edit_user_profile" data-toggle="modal">
-                                    <span class="link-collapse">Profile Picture</span>
+                                    <span class="link-collapse">Account Information</span>
                                 </a>
                                 <a href="" type="button" data-target="#user_changepass" data-toggle="modal">
-                                    <span class="link-collapse">Account Information</span>
-                                </a><br>
-                                <a type="button" data-toggle="modal" data-target="#deleteConfirmationModal" class="btn btn-danger" style="padding: 4px 50px; text-decoration:none;">
-                                    <span class="link-collapse text-white">Delete Account</span>
+                                    <span class="link-collapse">Change Password</span>
+                                </a>
+                                <a href="" type="button" data-toggle="modal" data-target="#deleteConfirmationModal">
+                                    <span class="link-collapse">Delete Account</span>
+                                </a>
+                                <br>
+                                <a type="button" class="see-all btn btn-danger" href="model/logout.php" style="padding: 4px 5px; text-decoration:none;">
+                                    <span class="link-collapse text-white"> Sign out</span>
                                 </a>
                             </li>
                         </ul>
@@ -88,12 +92,18 @@ $totalAnnouncements = $row1['total_announcements'];
                         <p>Dashboard</p>
                     </a>
                 </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Notification</h4>
+                </li>
                 <li id="announcementbtn" class="nav-item <?= $current_page == 'resident_announcement.php' ? 'active' : null ?>">
-                    <a href="resident_announcement.php" class="notification">
+                    <a type="button" href="resident_announcement.php" class="notification">
                         <i class='far fa-bell'></i>
                         <p>Announcement</p>
                         <?php if ($totalAnnouncements > 0): ?>
-                            <span id="notification-badge" class="notification-badge"><?= $totalAnnouncements ?></span>
+                            <span id="notification-badge" class="badge badge-primary"><?= $totalAnnouncements ?></span>
                         <?php endif; ?>
                     </a>
                 </li>
@@ -105,19 +115,19 @@ $totalAnnouncements = $row1['total_announcements'];
                 </li>
                 <li class="nav-item <?= $current_page=='resident_profiling.php' || $current_page=='resident_profiling.php' ? 'active' : null ?>">
                     <a href="resident_profiling.php">
-                        <i class="far fa-paper-plane"></i>
-                        <p>Personal Data</p>
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <p>Personal Information</p>
                     </a>
                 </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">Certification Form</h4>
+                    <h4 class="text-section">Certification</h4>
                 </li>
                 <li class="nav-item <?= $current_page=='resident_request.php' || $current_page=='resident_request.php' ? 'active' : null ?>">
                     <a href="resident_request.php">
-                        <i class="far fa-paper-plane"></i>
+                        <i class="fa-regular fa-paper-plane"></i>
                         <p>Request Cetificates</p>
                     </a>
                 </li>
@@ -129,14 +139,14 @@ $totalAnnouncements = $row1['total_announcements'];
                 </li>
                 <li class="nav-item <?= $current_page=='resident_certificates.php' || $current_page=='resident_certificates.php' ? 'active' : null ?>">
                     <a href="resident_certificates.php">
-                        <i class="fas fa-stream"></i>
-                        <p>Certificates</p>
+                        <i class="fa-solid fa-list-check"></i>
+                        <p>Certificates Status</p>
                     </a>
                 </li>
                 <li class="nav-item <?= $current_page=='resident_payment.php' || $current_page=='resident_payment.php' ? 'active' : null ?>">
                     <a href="resident_payment.php">
-                        <i class="fas fa-history"></i>
-                        <p>Payments</p>
+                        <i class="fa-solid fa-receipt"></i>
+                        <p>Payments Status</p>
                     </a>
                 </li>
                 <li class="nav-section">
@@ -147,8 +157,8 @@ $totalAnnouncements = $row1['total_announcements'];
                 </li>
                 <li class="nav-item">
                     <a href="" type="button" data-target="#support_user" data-toggle="modal">
-                        <i class="fas fa-edit"></i>
-                        <p>Submit a Concern</p>
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <p>Report a problem</p>
                     </a>
                 </li>
                 <li class="nav-section">
@@ -163,10 +173,6 @@ $totalAnnouncements = $row1['total_announcements'];
                         <p>Services</p>
                     </a>
                 </li>
-                <br>
-                <li class="nav-item active">
-                    <a class="see-all" href="model/logout.php"><i class="fas fa-sign-out-alt"></i><p>Logout</p></a>
-                </li>
             </ul>
         </div>
     </div>
@@ -178,19 +184,45 @@ $totalAnnouncements = $row1['total_announcements'];
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Message</h5>
+                <h5 class="modal-title fw-bold">Delete Account Permanently</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form method="POST" action="model/delete_account.php" enctype="multipart/form-data">
                 <div class="modal-body">
-                    <p style="font-size: 16px;">Are you sure you want to delete your account?</p>
+                    <p style="font-size: 16px;">Are you sure you want to permanently delete your account?</p>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="email" value="<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>" class="input" readonly>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-danger" name="submit">Delete</button>
+                    <a class="btn btn-danger" type="button" data-toggle="modal" data-target="#passwordConfirmationModal" name="submit">Delete</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="passwordConfirmationModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">For your security, please re-enter your password to continue.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="model/delete_account.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Enter Name" name="name" value="" readonly>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="email" value="<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>" class="input" readonly>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirmpasswordModal" name="submit">Delete</a>
                 </div>
             </form>
         </div>
@@ -243,7 +275,7 @@ $totalAnnouncements = $row1['total_announcements'];
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Create System User</h5>
+                <h5 class="modal-title">Personal and Account Information</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -270,11 +302,24 @@ $totalAnnouncements = $row1['total_announcements'];
                             <input type="file" class="form-control" name="img" accept="image/*">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="Complete Name" name="fullname" value="<?= $_SESSION['fullname'] ?>" required >
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Info</label>
+                        <input type="text" class="form-control" placeholder="Email Address" name="email" value="<?= $_SESSION['user_email'] ?>" required >
+                    </div>
+                    <div class="form-group p-1 mb-2 bg-danger">
+                        <a type="button" class="see-all btn-danger" href="model/logout.php">
+                            <span class="link-collapse text-white"> Delete</span>
+                        </a>
+                    </div>
             </div>
             <div class="modal-footer">
                 <input type="hidden" value="<?= $_SESSION['fullname']; ?>" name="fullname">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Change</button>
             </div>
             </form>
         </div>
@@ -292,10 +337,7 @@ $totalAnnouncements = $row1['total_announcements'];
             </div>
             <div class="modal-body">
                 <form method="POST" action="model/change_password_user.php">
-                    <div class="form-group">
-                        <label>Fullname</label>
-                        <input type="text" class="form-control" placeholder="Enter Name" readonly name="fullname" value="<?= $_SESSION['fullname'] ?>" required >
-                    </div>
+                    <input type="hidden" class="form-control" placeholder="Enter Name" name="fullname" value="<?= $_SESSION['fullname'] ?>" required >
                     <div class="form-group form-floating-label">
                         <label>Current Password</label>
                         <input type="password" id="cur_user_pass" class="form-control" placeholder="Enter Current Password" name="cur_pass" required >
@@ -311,11 +353,11 @@ $totalAnnouncements = $row1['total_announcements'];
                         <input type="password" id="con_user_pass" class="form-control" placeholder="Confirm Password" name="con_pass" required >
                         <span toggle="#con_user_pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Change</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Change</button>
+                </div>
             </form>
         </div>
     </div>

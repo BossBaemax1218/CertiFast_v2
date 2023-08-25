@@ -16,14 +16,15 @@
     $cert_name  = $conn->real_escape_string($_POST['certificate_name']);
     $fname = $conn->real_escape_string($_POST['fname']);
     $user_email = $conn->real_escape_string($_POST['req_email']);
+    $req = $conn->real_escape_string($_POST['requirement']);
 
     if(!empty($business_name) && !empty($owner1) && !empty($address) && !empty($email) && !empty($location) && !empty($applied)){
 
-        $insert  = "INSERT INTO tblpermit (`business_name`, `owner1`, `email`, address, location, applied, status, cert_name, requester, req_email) VALUES ('$business_name', '$owner1','$email', '$address', '$location','$applied', 'on hold','$cert_name','$fname','$req_email')";
+        $insert  = "INSERT INTO tblpermit (`business_name`, `owner1`, `email`, address, location, applied, status, cert_name, requester, req_email, requirement) VALUES ('$business_name', '$owner1','$email', '$address', '$location','$applied', 'on hold','$cert_name','$fname','$req_email','$req')";
         $result  = $conn->query($insert);
 
         if ($result === true) {
-            $insert_requested = "INSERT INTO tblresident_requested(`resident_name`, `certificate_name`, `email`, `purok`, `status`) VALUES ('$fname', '$cert_name','$user_email', '$address', 'on hold')";
+            $insert_requested = "INSERT INTO tblresident_requested(`resident_name`, `certificate_name`, `email`, `purok`, `status`, requirement) VALUES ('$fname', '$cert_name','$user_email', '$address', 'on hold', '$req')";
             $result_requested = $conn->query($insert_requested);
 
             $_SESSION['message'] = 'You have requested a business permit has been sent!';

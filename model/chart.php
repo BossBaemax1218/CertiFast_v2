@@ -1,56 +1,6 @@
-<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-<?php if (isset($_SESSION['message'])): ?>
-    <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success'] == 'danger' ? 'bg-danger text-light' : null ?>" role="alert">
-        <?php echo $_SESSION['message']; ?>
-    </div>
-    <?php unset($_SESSION['message']); ?>
-<?php endif ?>
-<div class="row mb-3">
-    <div class="col-sm-12 col-md-4 mb-2">
-        <label for="fromDate">From:</label>
-        <input type="date" class="form-control" id="fromDate" name="fromDate" value="<?php echo isset($_POST['fromDate']) ? htmlspecialchars($_POST['fromDate']) : date('Y-m-d'); ?>">
-    </div>
-    <div class="col-sm-12 col-md-4 mb-2">
-        <label for="toDate">To:</label>
-        <input type="date" class="form-control" id="toDate" name="toDate" value="<?php echo isset($_POST['toDate']) ? htmlspecialchars($_POST['toDate']) : date('Y-m-d'); ?>">
-    </div>
-    <div class="col-sm-12 col-md-4 mb-2">
-        <label for="dateType">Date Type:</label>
-        <select class="form-control" id="dateType" name="dateType">
-            <option value="weekly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'weekly') echo 'selected'; ?>>By Week</option>
-            <option value="monthly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'monthly') echo 'selected'; ?>>By Month</option>
-            <option value="yearly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'yearly') echo 'selected'; ?>>By Year</option>
-        </select>
-    </div>
-</div>
-<div class="row mb-3">
-    <div class="col-sm-12 col-md-4 mb-2">
-        <label for="documentType">Document Type:</label>
-        <select class="form-control" id="documentType" name="documentType">
-            <option value="All" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'All') echo 'selected'; ?>>All</option>
-            <option value="Barangay Clearance" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Barangay Clearance') echo 'selected'; ?>>Barangay Clearance</option>
-            <option value="Certificate of Residency" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Residency') echo 'selected'; ?>>Certificate of Residency</option>
-            <option value="Certificate of Indigency" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Indigency') echo 'selected'; ?>>Certificate of Indigency</option>
-            <option value="Business Permit" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Business Permit') echo 'selected'; ?>>Business Permit</option>
-            <option value="Certificate of Good Moral" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Good Moral') echo 'selected'; ?>>Certificate of Good Moral</option>
-            <option value="Certificate of Birth " <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Birth ') echo 'selected'; ?>>Certificate of Birth</option>
-            <option value="Certificate of Oath Taking" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Oath Taking') echo 'selected'; ?>>Certificate of Oath Taking</option>
-            <option value="First Time Jobseekers" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'First Time Jobseekers') echo 'selected'; ?>>First Time Jobseekers</option>
-            <option value="Certificate of Live In" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Live In') echo 'selected'; ?>>Certificate of Live In</option>
-            <option value="Barangay Identification" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Barangay Identification') echo 'selected'; ?>>Barangay Identification</option>
-            <option value="Certificate of Death" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Certificate of Death') echo 'selected'; ?>>Certificate of Death</option>
-            <option value="Family Home Estate" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'Family Home Estate') echo 'selected'; ?>>Family Home Estate</option>
-        </select>
-    </div>
-    <div class="col-sm-12 col-md-6 mt-3">
-        <button type="submit" class="applyFilterBtn btn-primary" id="" style="padding: 10px 30px; border-radius: 5px;">Apply Filter</button>
-        <button type="button" class="pdfExportBtn btn-danger" id="" style="padding: 10px 30px; border-radius: 5px;">Export</button>
-    </div>
-</div>
-</form>
 <div class="card">
-    <div class="card-header">
-      <strong>REPORTS</strong>
+    <div class="card-header text-right">
+        <a type="button" class="pdfExportBtn btn btn-light btn-border btn-sm ml-2" id="pdfExportBtn"><i class="fa-solid fa-file-export fa-lg"> </i>&nbsp Export </a>
     </div>
     <div id="chartRow">
         <div class="card-footer">
@@ -65,9 +15,6 @@
 include 'server/db_connect.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
-$chartDataJson = "null";
-$totalValuesJson = "null";
 
 $currentDate = date('Y-m-d');
 $lastMonday = date('Y-m-d', strtotime('last Monday'));
@@ -94,7 +41,7 @@ if ($documentType !== 'All') {
 }
 
 $sql .= "GROUP BY date_key, details ";
-$sql .= "ORDER BY FIELD(date_key, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', date_key), FIELD(details,'Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit','Certificate of Good Moral','Certificate of Birth','Certificate of Oath Taking','First Time Jobseekers','Certificate of Live In','Barangay Identification','Certificate of Death','Business Permit','Family Home Estate')";
+$sql .= "ORDER BY FIELD(date_key, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', date_key), FIELD(details,'Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit','Certificate of Good Moral','Certificate of Birth','Certificate of Oath Taking','First Time Jobseekers','Certificate of Live In','Barangay Identification','Certificate of Death','Family Home Estate')";
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(':fromDate', $fromDate);
@@ -115,8 +62,9 @@ if (empty($result)) {
 
 $chartData = [];
 $totalValues = [];
+
 foreach ($result as $row) {
-    $count = $row['count'];
+    $count = round($row['count']);
     $documentType = $row['details'];
 
     $dateKey = $dateType === 'weekly' ? "" . $row['date_key'] : ($dateType === 'monthly' ? date('F', mktime(0, 0, 0, (int)substr($row['date_key'], 5), 1)) : $row['date_key']);
@@ -126,7 +74,7 @@ foreach ($result as $row) {
     }
     if ($documentType === 'All') {
         $documentTypes =['Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit','Certificate of Good Moral','Certificate of Birth','Certificate of Oath Taking','First Time Jobseekers',
-        'Certificate of Live In','Barangay Identification','Certificate of Death','Business Permit','Family Home Estate'];
+        'Certificate of Live In','Barangay Identification','Certificate of Death','Family Home Estate'];
         foreach ($documentTypes as $type) {
             if (!isset($chartData[$dateKey][$type])) {
                 $chartData[$dateKey][$type] = 0;
@@ -147,8 +95,8 @@ $chartDataJson = json_encode($chartData);
 $totalValuesJson = json_encode($totalValues);
 ?>
 
-<script>
-    function displayChart() {
+    <script>
+        function displayChart() {
         var chartData = <?php echo isset($errorMessage) ? 'null' : $chartDataJson; ?>;
         var totalValues = <?php echo isset($errorMessage) ? 'null' : $totalValuesJson; ?>;
 
@@ -163,18 +111,13 @@ $totalValuesJson = json_encode($totalValues);
 
         var days = Object.keys(chartData);
         var documentTypes = Object.keys(chartData[days[0]]);
-
+    
         var datasets = [];
         documentTypes.forEach(function(documentType) {
-            if (documentType === "All") {
-                var data = days.map(function(day) {
-                    return chartData[day]["All"] || 0;
-                });
-            } else {
-                var data = days.map(function(day) {
-                    return chartData[day][documentType] || 0;
-                });
-            }
+            var data = days.map(function(day) {
+                var value = chartData[day][documentType] || 0;
+                return Math.round(value); // Round the value to an integer
+            });
 
             datasets.push({
                 label: documentType,
@@ -194,10 +137,16 @@ $totalValuesJson = json_encode($totalValues);
                 maintainAspectRatio: true,
                 responsive: true,
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        precision: 0
-                    }
+                    y: [{
+                        ticks: {
+                            stepSize: 5, // Set the interval to 5
+                            callback: function(value, index, values) {
+                                if (Math.floor(value) === value) {
+                                    return value;
+                                }
+                            }
+                        }
+                    }]
                 }
             }
         });
@@ -211,7 +160,7 @@ $totalValuesJson = json_encode($totalValues);
                 value = totalValues[documentType] || 0;
             }
 
-            description += "<tr><td>" + documentType +"&nbsp"+  "&nbsp"+  "&nbsp"+ "</td><td><b>" + value + "</b></td></tr>";
+            description += "<tr><td>" + documentType + "</td><td><b>" + value + "</b></td></tr>";
         });
         description += "</table>";
 
@@ -239,4 +188,4 @@ $totalValuesJson = json_encode($totalValues);
         }
         return color;
     }
-</script>
+    </script>

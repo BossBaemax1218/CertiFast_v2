@@ -47,9 +47,9 @@ include 'model/requested_status.php';
 		<?php include 'templates/sidebar-resident.php' ?>
 			<div class="main-panel">
 				<div class="content">
-					<section class="main-content mt-2">
+					<section class="main-content">
 						<div class="container">
-							<h1 class="text-center fw-bold mb-4" style="font-size: 400%;">Resident <strong>Dashboard</strong></h1>
+							<h1 class="text-center fw-bold mb-4" style="font-size: 400%;">Dashboard</h1>
 							<div class="row mt-2">
 								<div class="col-12 col-sm-6 col-md-4">
 									<div class="card card-stats card card-round">
@@ -126,19 +126,22 @@ include 'model/requested_status.php';
 								</div>
 							</div>
 						<div class="container">
-						<?php if (isset($_SESSION['message'])): ?>
-								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success'] == 'danger' ? 'bg-danger text-light' : null ?>" role="alert">
-									<?php echo $_SESSION['message']; ?>
-								</div>
-								<?php unset($_SESSION['message']); ?>
-							<?php endif ?>
-						    <div class="p-2 mb-2 bg-danger text-white container">
-                                <h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i> Kindly proceed to profiling to registered your account by providing the necessary personal data.</h5>
+						<?php if(isset($_SESSION['message'])): ?>
+                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <?php echo $_SESSION['message']; ?>
+                                </div>
+                            <?php unset($_SESSION['message']); ?>
+                            <?php endif ?>
+						    <div class="p-1 mb-2 bg-info text-white">
+                                <h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>   Please proceed in <strong>Profiling</strong> to officially complete your account registration.</h5>
                             </div>
-							<div class="col-md-12">
+							<div class="contaitner">
 								<div class="card">
 									<div class="card-header">
-										<h4 class="card-title">Certificate Request Status</h4>
+										<h4 class="card-title">Certificate Request</h4>
 									</div>
 									<div class="card-body">
 										<div class="table-responsive mt-3">

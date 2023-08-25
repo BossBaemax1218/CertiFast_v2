@@ -142,18 +142,21 @@
                     </div>
                 </div>
 				<div class="page-inner">
-                <?php if(isset($_SESSION['message'])): ?>
-								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-									<?php echo $_SESSION['message']; ?>
-								</div>
-							<?php unset($_SESSION['message']); ?>
-						<?php endif ?>
+				<?php if(isset($_SESSION['message'])): ?>
+						<div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<?php echo $_SESSION['message']; ?>
+						</div>
+					<?php unset($_SESSION['message']); ?>
+					<?php endif ?>
 					<div class="row">
 						<div class="col-md-12">
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Resident Information</div>
+										<div class="card-title"></div>
                                         <?php if(isset($_SESSION['username'])):?>
 										<div class="card-tools">
 											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
@@ -164,6 +167,22 @@
 												<i class="fa fa-file"></i>
 												Export CSV
 											</a>
+                                            <a class="btn btn-info btn-border btn-round btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Filter Options
+                                            </a>
+                                            <div class="dropdown-menu mt-3 mr-3" aria-labelledby="filterDropdown">
+                                                <div class="dropdown-item">
+                                                    <label>From Date:</label>
+                                                    <input type="date" class="form-control" id="fromDate" placeholder="Select date range">
+                                                </div>
+                                                <div class="dropdown-item">
+                                                    <label>To Date:</label>
+                                                    <input type="date" class="form-control" id="toDate" placeholder="Select date range">
+                                                </div>
+                                                <div class="dropdown-item">
+                                                    <button type="button" class="form-control btn btn-outline-primary" id="clearFilters">Clear Filter</button>
+                                                </div>
+                                            </div>
 										</div>
                                         <?php endif ?>
 									</div>
@@ -173,11 +192,13 @@
 										<table id="residenttable" class="table">
 											<thead>
 												<tr>
+												    <th scope="col">Barangay ID</th>
 													<th class="text-center" scope="col">Fullname</th>												
 													<th scope="col">Birthdate</th>
                                                     <th scope="col">Email</th>
 													<th scope="col">Purok</th>
-                                                    <th class="text-center" scope="col">Status</th>
+                                                    <th scope="col">Voters</th>
+                                                    <th class="text-center" scope="col"> Purok Leader Status</th>
                                                     <?php if(isset($_SESSION['username'])):?>
                                                         <?php if($_SESSION['role']=='administrator'):?>
 													
@@ -190,6 +211,7 @@
 												<?php if(!empty($resident)): ?>
 													<?php $no=1; foreach($resident as $row): ?>
 													<tr>
+													    <td><?= $row['national_id'] ?></td>
 														<td>
                                                             <div class="avatar avatar-xs ml-3">
                                                                 <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
@@ -199,6 +221,7 @@
 														<td><?= $row['birthdate'] ?></td>
                                                         <td><?= $row['email'] ?></td>
                                                         <td><?= $row['purok'] ?></td>
+                                                        <td><?= $row['voterstatus'] ?></td>
                                                         <td class="text-center"><?= $row['residency_badge'] ?></td>
                                                         <?php if(isset($_SESSION['username'])):?>
                                                             
@@ -221,9 +244,11 @@
 																<a type="button" data-toggle="tooltip" href="generate_resident.php?id=<?= $row['id'] ?>" class="btn btn-link btn-info" data-original-title="Generate">
                                                                     <i class="fas fa-print"></i>
 																</a>
-                                                                <a type="button" data-toggle="tooltip" href="model/remove_resident.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this resident?');" class="btn btn-link btn-danger" data-original-title="Remove">
-																	<i class="fas fa-trash"></i>
-																</a>
+                                                                <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'administrator')):?>
+                                                                    <a type="button" class="btn btn-link btn-danger" data-toggle="modal" data-target="#confirmDeleteModal<?= $row['id'] ?>" data-original-title="Remove">
+                                                                        <i class="fa-solid fa-trash"></i>
+                                                                    </a>
+                                                                <?php endif ?>
                                                                 <?php endif ?>
 															</div>
 														</td>
@@ -240,6 +265,30 @@
 					</div>
 				</div>
 			</div>
+		<?php foreach ($resident as $row) { ?>
+        <div class="modal fade" id="confirmDeleteModal<?= $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmDeleteModalLabel">Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center" style="font-size: 16px;">
+                        Are you certain you want to remove ID no. <strong><?= $row['national_id'] ?></strong> named <strong><?= ucwords($row['firstname'].' '.$row['middlename'].' '.$row['lastname']) ?></strong>?
+                    </div>
+                    <div class="modal-footer mt-2 d-flex justify-content-center">
+                        <form method="post" action="model/remove_resident.php">
+                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                            <button type="button" class="btn btn-danger text-center mr-2" data-dismiss="modal">No</button>
+                            <button type="submit" class="btn btn-primary text-center">Yes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -283,39 +332,39 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Barangay ID No.</label>
-                                                    <input type="text" class="form-control" name="national" placeholder="Enter Barangay ID No." required>
+                                                    <input type="text" class="form-control" name="national" placeholder="Barangay ID No." required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Citizenship</label>
-                                                    <input type="text" class="form-control" name="citizenship" placeholder="Enter citizenship" required>
+                                                    <input type="text" class="form-control" name="citizenship" placeholder="Citizenship" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>First name</label>
-                                                    <input type="text" class="form-control" placeholder="Enter First name" name="fname" required>
+                                                    <input type="text" class="form-control" placeholder="First name" name="fname" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Middle name</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Middle name" name="mname" required>
+                                                    <input type="text" class="form-control" placeholder="Middle name" name="mname" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Last name</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Last name" name="lname" required>
+                                                    <input type="text" class="form-control" placeholder="Last name" name="lname" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Address</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Address" name="address" required>
+                                                    <input type="text" class="form-control" placeholder="Address" name="address" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Place of Birth</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" required>
+                                                    <input type="text" class="form-control" placeholder="Birthplace" name="bplace" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Birthdate</label>
-                                                    <input type="date" class="form-control" placeholder="Enter Birthdate" name="bdate" required>
+                                                    <input type="date" class="form-control" placeholder="Birthdate" name="bdate" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Age</label>
-                                                    <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
+                                                    <input type="number" class="form-control" placeholder="Age" min="1" name="age" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Civil Status</label>
@@ -353,28 +402,27 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Tax no</label>
-                                                    <input type="number" class="form-control" placeholder="Enter Tax number" min="6" name="taxno" required>
+                                                    <input type="number" class="form-control" placeholder="0000-000-000" min="6" name="taxno" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Email Address" value="no-email@sample.com" name="email" required>
+                                                    <input type="text" class="form-control" placeholder="no-email@sample.com" value="" name="email" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Contact Number</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Contact Number" value="+63 000-000-000-00" name="number" required>
+                                                    <input type="text" class="form-control" placeholder="+63 000-000-000-00" value="" name="number" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Occupation</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" required>
+                                                    <input type="text" class="form-control" placeholder="Occupation" name="occupation" required>
                                                 </div>
-                                                <div class="form-group">
+                                                <!--<div class="form-group">
                                                     <label>Requirements</label>
-                                                    <textarea class="form-control" name="remarks" required placeholder="Sample Requirements (4ps Requirements)"></textarea>
-                                                </div>
+                                                    <textarea class="form-control" name="remarks" required placeholder="Ex: (4ps Requirements)"></textarea>
+                                                </div>-->
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <div class="modal-footer mt-2 d-flex justify-content-center">
                                             <button type="submit" class="btn btn-primary">Save</button>
                                         </div>
                                     </form>
@@ -496,7 +544,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Tax no</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Tax No." name="taxno" id="taxno" required>
+                                                    <input type="text" class="form-control" placeholder="Enter Tax No." name="taxno" id="taxno">
                                                 </div>                        
                                                 <div class="form-group">
                                                     <label>Email</label>
@@ -510,19 +558,18 @@
                                                     <label>Occupation</label>
                                                     <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" id="occupation" required>
                                                 </div>
-                                                <div class="form-group">
+                                                <!--<div class="form-group">
                                                     <label>Requirements</label>
-                                                    <textarea class="form-control" required name="remarks" placeholder="Enter Remarks" id="remarks" required></textarea>
+                                                    <textarea class="form-control" name="remarks" placeholder="Enter Remarks" id="remarks"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Purpose</label>
-                                                    <textarea class="form-control" name="purpose" placeholder="Enter Purpose" id="purpose" required></textarea>
-                                                </div>
+                                                    <textarea class="form-control" name="purpose" placeholder="Enter Purpose" id="purpose"></textarea>
+                                                </div>-->
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
+                                        <div class="modal-footer mt-2 d-flex justify-content-center">
                                             <input type="hidden" name="id" id="res_id">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                             <?php if(isset($_SESSION['username'])): ?>
                                             <button type="submit" class="btn btn-primary">Update</button>
                                             <?php endif ?>
@@ -536,6 +583,41 @@
             </div>	
         </div>
     <?php include 'templates/footer.php' ?>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const fromDate = document.getElementById("fromDate");
+  const toDate = document.getElementById("toDate");
+  const clearFiltersBtn = document.getElementById("clearFilters");
+  
+  const tableRows = document.querySelectorAll("#residenttable tbody tr");
+  
+  function rowMatchesFilter(row) {
+    const rowDate = new Date(row.querySelector("td:nth-child(2)").textContent);
+    const from = new Date(fromDate.value);
+    const to = new Date(toDate.value);
+
+    return (isNaN(from) || rowDate >= from) &&
+           (isNaN(to) || rowDate <= to);
+  }
+  
+  function applyFilter() {
+    tableRows.forEach(row => {
+      const shouldDisplay = rowMatchesFilter(row);
+      row.style.display = shouldDisplay ? "table-row" : "none";
+    });
+  }
+
+  function clearFilters() {
+    fromDate.value = "";
+    toDate.value = "";
+    applyFilter();
+  }
+
+  fromDate.addEventListener("change", applyFilter);
+  toDate.addEventListener("change", applyFilter);
+  clearFiltersBtn.addEventListener("click", clearFilters);
+});
+</script>
     <script>
 function editResident(that){
     id          = $(that).attr('data-id');

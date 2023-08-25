@@ -37,12 +37,17 @@ while ($row = $result->fetch_assoc()) {
     }
 }
 
-$query1 = "SELECT * FROM tblpurok";
-$result1 = $conn->query($query1);
+$user = $_SESSION["user_email"];
 
-$purok = array();
-while($row = $result1->fetch_assoc()){
-    $purok[] = $row; 
+$query1 = "SELECT * FROM tbl_user_resident WHERE tbl_user_resident.user_email=?";
+$stmt = $conn->prepare($query1);
+$stmt->bind_param("s", $user);
+$stmt->execute();
+$result1 = $stmt->get_result();
+
+$res = array();
+while($row2 = $result1->fetch_assoc()){
+	$res[] = $row2; 
 }
 
 $conn->close();
@@ -62,9 +67,18 @@ $conn->close();
 		<?php include 'templates/sidebar-resident.php' ?>
 		<div class="main-panel mt-2">
 			    <div class="content">
-                    <h1 class="text-center fw-bold mt-5" style="font-size: 400%;">Barangay Certificates</h1>
-                    <h3 class="text-center">Please fill out your personal information before submitting any of the requested certifications in Barangay Los Amigos.</h3>
+                    <h1 class="text-center fw-bold mt-4" style="font-size: 300%;">Barangay Certificates</h1>
+                    <h4 class="text-center">Please fill out your personal information before submitting any of the requested certifications in Barangay Los Amigos.</h4>
                     <div class="page-inner">
+                            <?php if(isset($_SESSION['message'])): ?>
+                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <?php echo $_SESSION['message']; ?>
+                                </div>
+                            <?php unset($_SESSION['message']); ?>
+                            <?php endif ?>
                         <div class="container col-sm-12 col-md-12">
                             <form method="GET" class="col-sm-12 col-md-12">
                                 <div class="input-group">
@@ -90,14 +104,8 @@ $conn->close();
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <?php if(isset($_SESSION['message'])): ?>
-                                    <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                                        <?php echo $_SESSION['message']; ?>
-                                    </div>
-                                    <?php unset($_SESSION['message']); ?>
-                                <?php endif ?>
-                                <div class="p-2 mb-2 bg-danger text-white container">
-                                    <h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>  Please be ensure that your personal data has been <b>Approved</b> already by your respected <b><i>Purok Leader</i></b>,
+                                <div class="p-1 bg-info text-white container">
+                                    <h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>  Please be ensure that your Profiling has been <b>Approved</b> already by your respected <b><i>Purok Leader</i></b>,
                                         before you requested any of certifications.</h5>
                                 </div>
                                 <div class="container">
@@ -144,8 +152,8 @@ $conn->close();
                                         </div>
                                         <div class="name_job"><?php echo ucwords($box['name']); ?></div>
                                         <p><?php echo $box['description']; ?></p>
-                                        <div class="btns">
-                                            <a type="button" href="<?php echo $box['link']; ?>" data-toggle="modal" class="p-2 text-center white">Request</a>
+                                        <div class="btns text-center">
+                                            <a type="button" href="<?php echo $box['link']; ?>" data-toggle="modal" class="p-2 text-white">Request</a>
                                         </div>
                                     </div>
                                     <?php endforeach; ?>
@@ -170,28 +178,28 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
-                                                <select class="form-control" required name="purok">
-                                                    <option disabled selected>Select Purok Name</option>
-                                                    <?php foreach($purok as $row):?>
-                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
+                                                <?php foreach($res as $row2):?>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
+                                                <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is your tax no?</label>
                                                 <input type="number" class="form-control" placeholder="Enter your tax number" min="6" name="taxno" required>
                                             </div>
+                                            <div class="form-group">
+                                                <label>What reason you need this certificates?</label>
+                                                <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements"></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer mt-2 d-flex justify-content-center">
                                         <input type="hidden" name="certificate_name" value="certificate of good moral" required>
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </form>
@@ -201,7 +209,7 @@ $conn->close();
                 </div>
         <div class="modal fade" id="adddeath" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
+                <div class="modal-content"> 
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Death Certificate Form</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -227,12 +235,9 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
-                                                <select class="form-control" required name="purok">
-                                                    <option disabled selected>Select Purok Name</option>
-                                                    <?php foreach($purok as $row):?>
-                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
+                                                <?php foreach($res as $row2):?>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
+                                                <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is the date of the person died?</label>
@@ -259,13 +264,16 @@ $conn->close();
                                                         <option value="Sister">Sister</option>
                                                 </select>
                                             </div>
+                                            <div class="form-group">
+                                                <label>What is the cause of death?</label>
+                                                <textarea class="form-control" name="requirement" required placeholder="Ex: High Blood"></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer mt-2 d-flex justify-content-center">
                                         <input type="hidden" name="certificate_name" value="certificate of death" required>
                                         <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </form>
@@ -289,11 +297,11 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Barangay ID No.</label>
-                                                <input type="text" class="form-control" placeholder="" name="id_no" value="<?= 'BLA - ' . date('Yjn') ?>" required>
+                                                <input type="text" class="form-control" placeholder="Ex: BLA-20230812001" name="id_no" value="" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label>When is your birthdate?</label>
@@ -305,12 +313,9 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
-                                                <select class="form-control" required name="purok">
-                                                    <option disabled selected>Select Purok Name</option>
-                                                    <?php foreach($purok as $row):?>
-                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
+                                                <?php foreach($res as $row2):?>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
+                                                <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
                                                 <label>Precint number? (If you are a voters of Barangay Los Amigos)</label>
@@ -341,6 +346,10 @@ $conn->close();
                                                         <option value="Sister">Sister</option>
                                                 </select>
                                             </div>
+                                            <div class="form-group">
+                                                <label>What reasons you need this Barangay ID?</label>
+                                                <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements"></textarea>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -367,16 +376,16 @@ $conn->close();
                         <div class="modal-body">
                             <form method="POST" action="model/save_permit_user.php" >
                                 <div class="form-group">
-                                    <label>Nature of Business Name</label>
-                                    <input type="text" class="form-control" placeholder="Ex: Sari-Sari Store" name="business_name"  required>
-                                </div>
-                                <div class="form-group">
                                     <label>Business Owner Name</label>
-                                    <input type="text" class="form-control mb-2" placeholder="Ex: Juan G. Luna" name="owner1" value="" required>
+                                    <input type="text" class="form-control mb-2 btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="owner1" value="<?= $_SESSION["fullname"] ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Business Email Address</label>
-                                    <input type="text" class="form-control mb-2" placeholder="Ex: sample@gmail.com" name="email" value="" required>
+                                    <input type="text" class="form-control mb-2 btn btn-light btn-info disabled" placeholder="Ex: sample@gmail.com" name="email" value="<?= $_SESSION["user_email"] ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label>Nature of Business Name</label>
+                                    <input type="text" class="form-control" placeholder="Ex: Sari-Sari Store" name="business_name"  required>
                                 </div>
 								<div class="form-group">
                                     <label>Address</label>
@@ -389,6 +398,10 @@ $conn->close();
 								<div class="form-group">
                                     <label>Date Applied</label>
                                     <input type="date" class="form-control" name="applied" value="<?= date('Y-m-d'); ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Reasons for applying</label>
+                                    <input type="text" class="form-control" name="requirement" id="requirement" placeholder="Reason" required>
                                 </div>
                        		</div>
 							<div class="modal-footer">
@@ -418,7 +431,7 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label>What is your current age?</label>
@@ -426,12 +439,13 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
-                                                <select class="form-control" required name="purok">
-                                                    <option disabled selected>Select Purok Name</option>
-                                                    <?php foreach($purok as $row):?>
-                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
+                                                <?php foreach($res as $row2):?>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
+                                                <?php endforeach ?>
+                                            </div>
+                                           <div class="form-group">
+                                                <label>What requirements you need this certificates?</label>
+                                                <textarea class="form-control" name="requirement" required placeholder="Ex: Employment Requirements"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -463,16 +477,13 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
-                                                <select class="form-control" required name="purok">
-                                                    <option disabled selected>Select Purok Name</option>
-                                                    <?php foreach($purok as $row):?>
-                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
+                                                <?php foreach($res as $row2):?>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
+                                                <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is your tax no?</label>
@@ -532,15 +543,12 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
-                                                <select class="form-control" required name="purok">
-                                                    <option disabled selected>Select Purok Name</option>
-                                                    <?php foreach($purok as $row):?>
-                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
+                                                <?php foreach($res as $row2):?>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
+                                                <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
-                                                <label>What requirements you need this certificates?</label>
+                                                <label>What reasons you need this certificates?</label>
                                                 <textarea class="form-control" name="requirements" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
                                         </div>
@@ -583,6 +591,12 @@ $conn->close();
                                                 <input type="text" class="form-control" placeholder="Name" name="fam_2" required>
                                             </div>
                                             <div class="form-group">
+                                                <label>What purok do you live?</label>
+                                                <?php foreach($res as $row2):?>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
+                                                <?php endforeach ?>
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Children Name's</label>
                                                 <input type="text" class="form-control mb-2" placeholder="First child name" name="fam_3" required>
                                                 <input type="text" class="form-control mb-2" placeholder="Second child name" name="fam_4">
@@ -593,9 +607,9 @@ $conn->close();
                                                 <input class="form-control" name="tctno" required placeholder="TCT number"></input>
                                             </div>
                                             <div class="form-group">
-                                                <label>What requirements you need this certificates?</label>
-                                                <input class="form-control" name="requirements" required placeholder="Ex: 4ps Requirements"></input>
-                                            </div>                                           
+                                                <label>What reasons you request certificates?</label>
+                                                <input class="form-control" name="requirements" required placeholder="Ex: Loan Requirements"></input>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -646,12 +660,9 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
-                                                <select class="form-control" required name="purok">
-                                                    <option disabled selected>Select Purok Name</option>
-                                                    <?php foreach($purok as $row):?>
-                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
+                                                <?php foreach($res as $row2):?>
+                                                <input type="text" class="form-control  btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
+                                                <?php endforeach ?>
                                             </div>
                                             <div class="form-group mt-2">
                                                 <h5><b>Fill out also the names of your Parents: </b></h5>
@@ -665,7 +676,7 @@ $conn->close();
                                                 <input type="text" class="form-control" placeholder="Father's name" name="father" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What requirements you need this certificates?</label>
+                                                <label>What reason you requested this certificates?</label>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: School Requirements"></textarea>
                                             </div>
                                         </div>
@@ -698,35 +709,32 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" required>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What purok do you live?</label>
+                                                <?php foreach($res as $row2):?>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
+                                                <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is your current age?</label>
                                                 <input type="number" class="form-control" placeholder="Age" min="6" name="age" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What purok do you live?</label>
-                                                <select class="form-control" required name="purok">
-                                                    <option disabled selected>Select Purok Name</option>
-                                                    <?php foreach($purok as $row):?>
-                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
                                                 <label>What requirements you need this certificates?</label>
-                                                <input class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements">
+                                                <input class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>How many years have you lived in the barangay?</label>
-                                                <input type="number" class="form-control" name="resident_years" required placeholder="Ex: 1 years up to ">
+                                                <label>How many years have you living in the barangay?</label>
+                                                <input type="text" class="form-control" name="resident_years" required placeholder="Ex: 1 year or 2 years" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <input type="hidden" name="certificate_name" value="certificate of residency" required>
-                                        <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
-                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
+                                        <input type="hidden" name="certificate_name" value="certificate of residency">
+                                        <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>">
+                                        <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
@@ -751,19 +759,16 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
-                                                <select class="form-control" required name="purok">
-                                                    <option disabled selected>Select Purok Name</option>
-                                                    <?php foreach($purok as $row):?>
-                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
+                                                <?php foreach($res as $row2):?>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
+                                                <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
-                                                <label>What requirements you need this certificates?</label>
+                                                <label>What reasons you need this certificates?</label>
                                                 <textarea class="form-control" name="requirements" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
                                         </div>
@@ -796,20 +801,21 @@ $conn->close();
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>What is your complete name?</label>
-                                                <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>How old are you?</label>
-                                                <input type="number" class="form-control" placeholder="Age" min="1" name="age" required>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
-                                                <select class="form-control" required name="purok">
-                                                    <option disabled selected>Select Purok Name</option>
-                                                    <?php foreach($purok as $row):?>
-                                                        <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
+                                                <?php foreach($res as $row2):?>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
+                                                <?php endforeach ?>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>How old are you?</label>
+                                                <input type="number" class="form-control" placeholder="Age" min="1" name="age" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>What reasons you need this certificates?</label>
+                                                <textarea class="form-control" name="requirement" required placeholder="Ex: Jobseeking Requirements"></textarea>
                                             </div>
                                         </div>
                                     </div>

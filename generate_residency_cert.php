@@ -18,22 +18,16 @@
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
 		<div class="main-panel">
-			<div class="content">
-				<div class="panel-header">
-					<div class="page-inner">
-						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-							<div>
-                                <h1 class="text fw-bold" style="font-size: 50px;">Generate Certificate</h1>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="container mt-5">
 				<div class="page-inner">
 					<div class="row mt-2">
 						<div class="col-md-12">
 
-                            <?php if(isset($_SESSION['message'])): ?>
+                        <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <?php echo $_SESSION['message']; ?>
                                 </div>
                             <?php unset($_SESSION['message']); ?>
@@ -82,7 +76,7 @@
                                                     <span class="text"><?= ucwords($town) ?></span>, Davao City.
                                                 </h2>
                                                 <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
-                                                    This further certifies that the abovementioned is living in this Barangay for (<?= ucwords($resident['resident_year']) ?>) years.
+                                                    This further certifies that the abovementioned is living in this Barangay for <?= ucwords($resident['resident_year']) ?>.
                                                 </h2>
                                                 <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
                                                     This certification is issued upon the request of the aforementioned for 
@@ -168,6 +162,7 @@
                         <div class="modal-footer">
                             <input type="hidden" name="name" value="<?= $resident['fullname'] ?>">
                             <input type="hidden" name="email" value="<?= $resident['email'] ?>">
+                            <input type="hidden" name="requirement" value="<?= $resident['requirement'] ?>">
                             <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>

@@ -26,8 +26,21 @@
 	$occupation = $conn->real_escape_string($_POST['occupation']);
     $remarks 	= $conn->real_escape_string($_POST['remarks']);
 	$cert_name 	= $conn->real_escape_string($_POST['certificate_name']);
+	$req 	= $conn->real_escape_string($_POST['requester']);
 	$profile 	= $conn->real_escape_string($_POST['profileimg']);
 	$profile2 	= $_FILES['img']['name'];
+
+	$checkQuery = "SELECT COUNT(*) as count FROM tblresident WHERE email = '$email' AND requester = '$req'";
+	$checkResult = $conn->query($checkQuery);
+	$checkData = $checkResult->fetch_assoc();
+
+	if ($checkData['count'] > 0) {
+		$_SESSION['message'] = 'You can no longer register another users information. Only one resident is allowed per one account.';
+		$_SESSION['success'] = 'danger';
+		header("Location: ../resident_profiling.php");
+		exit();
+	}
+
 
 	$newName = date('dmYHis').str_replace(" ", "", $profile2);
 
@@ -37,8 +50,8 @@
 
 		if(!empty($profile) && !empty($profile2)){
 
-			$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`,  `residency_status`,`certificate_name`) 
-						VALUES ('$national_id','$citizen','$profile','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks','on hold', '$cert_name')";
+			$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`,  `residency_status`,`certificate_name`,`requester`) 
+						VALUES ('$national_id','$citizen','$profile','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks','on hold', '$cert_name','$req')";
 
 			if($conn->query($query) === true){
 
@@ -52,8 +65,8 @@
 			}
 		} else if(!empty($profile) && empty($profile2)){
 
-			$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`,`occupation`, `remarks`,  `residency_status`,`certificate_name`) 
-						VALUES ('$national_id','$citizen','$profile','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks','on hold', '$cert_name')";
+			$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`,`occupation`, `remarks`,  `residency_status`,`certificate_name`,`requester`) 
+						VALUES ('$national_id','$citizen','$profile','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks','on hold', '$cert_name','$req')";
 
 			if($conn->query($query) === true){
 
@@ -63,8 +76,8 @@
 
 		} else if(empty($profile) && !empty($profile2)){
 
-			$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`,  `residency_status`,`certificate_name`) 
-						VALUES ('$national_id','$citizen','$newName','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks','on hold', '$cert_name')";
+			$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`,  `residency_status`,`certificate_name`,`requester`) 
+						VALUES ('$national_id','$citizen','$newName','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks','on hold', '$cert_name','$req')";
 
 			if($conn->query($query) === true){
 
@@ -78,8 +91,8 @@
 			}
 
 		} else {
-			$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`,`firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`,  `residency_status`,`certificate_name`) 
-						VALUES ('$national_id','$citizen','person.png','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks','on hold', '$cert_name')";
+			$query = "INSERT INTO tblresident (`national_id`, citizenship, `picture`,`firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, age, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `remarks`,  `residency_status`,`certificate_name`,`requester`) 
+						VALUES ('$national_id','$citizen','person.png','$fname','$mname','$lname','$address','$bplace','$bdate',$age,'$cstatus','$gender','$purok','$vstatus','$taxno','$number','$email','$occupation','$remarks','on hold', '$cert_name','$req')";
 
 			if($conn->query($query) === true){
 

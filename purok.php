@@ -57,7 +57,7 @@
                                     <div class="table-responsive">
                                         <table id="residenttable" class="table">
                                             <thead>
-                                                <tr>
+                                                <tr class="text-center">
                                                     <th scope="col">No.</th>
                                                     <th scope="col">Purok</th>
                                                     <th scope="col">Purok Leader</th>
@@ -83,9 +83,9 @@
                                                                     data-name="<?= $row['purok'] ?>" data-purok_leader="<?= $row['purok_leader'] ?>" data-contact_number="<?= $row['contact_number'] ?>" data-total_residents="<?= $row['total_residents'] ?>" data-total_households="<?= $row['total_households'] ?>" data-id="<?= $row['id'] ?>">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
-                                                                <a type="button" data-toggle="tooltip" href="model/remove_purok.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this purok?');" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                                <!--<a type="button" data-toggle="tooltip" href="model/remove_purok.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this purok?');" class="btn btn-link btn-danger" data-original-title="Remove">
                                                                     <i class="fas fa-trash"></i>
-                                                                </a>
+                                                                </a>-->
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -110,7 +110,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Create Purok</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Create New Information</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -137,8 +137,7 @@
                                     <label>No. of Households</label>
                                     <input type="text" class="form-control" placeholder="Enter No. of Households" name="total_households" required>
                                 </div>                           
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <div class="mt-2 d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary">Create</button>
                                 </div>
                             </form>
@@ -150,7 +149,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Edit Purok</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Change Information</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -177,10 +176,9 @@
                                         <label>No. of Households</label>
                                         <input type="text" class="form-control" id="total_households" placeholder="Enter No. of Households" name="total_households" required>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="mt-2 d-flex justify-content-center">
                                         <input type="hidden" id="purok_id" name="id">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-danger">Update</button>
+                                        <button type="submit" class="btn btn-danger">Change</button>
                                     </div>
                                 </form>
                             </div>

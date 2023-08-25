@@ -101,17 +101,20 @@ while ($row = $result->fetch_assoc()) {
         <div class="wrapper">
             <?php include 'templates/main-header-resident.php' ?>
                 <?php include 'templates/sidebar-resident.php' ?>
-                <div class="main-panel mt-5">
+                <div class="main-panel mt-2">
                     <div class="container">
-						<?php if(isset($_SESSION['message'])): ?>
-								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-									<?php echo $_SESSION['message']; ?>
-								</div>
-							<?php unset($_SESSION['message']); ?>
-						<?php endif ?>
+                        <?php if(isset($_SESSION['message'])): ?>
+                            <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <?php echo $_SESSION['message']; ?>
+                            </div>
+                        <?php unset($_SESSION['message']); ?>
+                        <?php endif ?>
                         <section class="text-center two-column-list mb-sm-5 pr-lg-3 container-fluid" id="two-column-list">
                             <div class="announcement-slider border-r-xs-0 border-r position-relative">
-                        	<h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Announcement</h1>
+                        	<h1 class="text-center fw-bold mt-4 mb-5" style="font-size: 300%;">Announcement</h1>
                                 <table class="announcement-table">
                                     <?php foreach($purok as $row): ?>
                                         <tr>

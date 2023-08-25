@@ -64,23 +64,26 @@ $conn->close();
 			<div class="content">
 				<div class="panel-header">
                     <div class="d-flex align-items-center align-items-md-center flex-column">
-                        <h1 class="text-center fw-bold" style="font-size: 400%;">Resident Profiling History</h1>
-                        <h2 class="text-center">This is the complete list of the requested resident's personal data from Barangay Los Amigos.</h2>
+                        <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Resident Profiling History</h1>
+                        <h4 class="text-center">This is the complete list of the requested resident's personal data from Barangay Los Amigos.</h4>
                     </div>
-                    <?php if(isset($_SESSION['message'])): ?>
-                        <div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                            <?php echo $_SESSION['message']; ?>
-                        </div>
-                    <?php unset($_SESSION['message']); ?>
-                <?php endif ?>
 				</div>
 				<div class="page-inner">
 					<div class="row">
 						<div class="col-md-12">
+                        <?php if(isset($_SESSION['message'])): ?>
+                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <?php echo $_SESSION['message']; ?>
+                                </div>
+                            <?php unset($_SESSION['message']); ?>
+                            <?php endif ?>
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Resident Status</div>
+										<div class="card-title"></div>
 										<div class="card-tools">
 										</div>
 									</div>

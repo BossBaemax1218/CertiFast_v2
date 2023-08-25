@@ -18,7 +18,7 @@ $resident = $result->fetch_assoc();
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
 		<div class="main-panel">
-			<div class="content">
+			<div class="container mt-5">
 				<div class="panel-header">
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
@@ -31,8 +31,11 @@ $resident = $result->fetch_assoc();
 				<div class="page-inner">
 					<div class="row mt--2">
 						<div class="col-md-12">
-                            <?php if(isset($_SESSION['message'])): ?>
+                        <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <?php echo $_SESSION['message']; ?>
                                 </div>
                             <?php unset($_SESSION['message']); ?>
