@@ -54,11 +54,7 @@ while($row2 = $result1->fetch_assoc()){
                                         <div class="card-head-row">
                                             <div class="card-title fw-bold"></div>
                                             <?php if(isset($_SESSION['username'])):?>
-                                                <div class="card-tools">
-                                                    <a href="model/export_purok.php" class="btn btn-light btn-border btn-sm">
-                                                        <i class="fa-solid fa-box-archive"></i>
-                                                        Archive
-                                                    </a>
+                                                <div class="card-tools"></div>
                                                     <a href="model/export_purok.php" class="btn btn-light btn-border btn-sm ml-2">
                                                         <i class="fa-regular fa-trash-can"></i>
                                                         Delete
