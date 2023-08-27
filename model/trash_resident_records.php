@@ -10,12 +10,13 @@ if (isset($_POST['id'])) {
     $selectStmt->execute();
     $residentData = $selectStmt->get_result()->fetch_assoc();
 
-    $insertSql = "INSERT INTO tbl_trash (`national_id`, `citizenship`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, `age`, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`,`resident_type`, `residency_status`) 
+    $insertSql = "INSERT INTO tbl_trash (`national_id`, `citizenship`, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, `age`, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`,`resident_type`, `residency_status`,`requester`) 
                                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $insertStmt = $conn->prepare($insertSql);
     $insertStmt->bind_param("sssssssssssssssssss", 
         $residentData['national_id'], 
         $residentData['citizenship'], 
+        $residentData['picture'], 
         $residentData['firstname'], 
         $residentData['middlename'], 
         $residentData['lastname'], 
@@ -32,7 +33,8 @@ if (isset($_POST['id'])) {
         $residentData['email'], 
         $residentData['occupation'],
         $residentData['resident_type'],
-        $residentData['residency_status']);
+        $residentData['residency_status'],
+        $residentData['requester']);
     $insertStmt->execute();
 
     $deleteSql = "DELETE FROM tblresident WHERE id = ?";
@@ -40,7 +42,7 @@ if (isset($_POST['id'])) {
     $deleteStmt->bind_param("i", $id);
     $deleteStmt->execute();
 
-    $_SESSION['message'] = "Resident records has been moved to trash successfully.";
+    $_SESSION['message'] = "Resident records has been removed successfully.";
     $_SESSION['success'] = "success";
 
     header("Location: ../resident.php");

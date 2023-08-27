@@ -6,24 +6,12 @@ if (!isset($_SESSION["username"])) {
     exit;
 }
 
-$sql = "SELECT * FROM tbl_trash";
+$sql = "SELECT * FROM tbl_trash_trans";
 $result = $conn->query($sql);
 
 $resident = array();
 while ($row = $result->fetch_assoc()) {
     $resident[] = $row;
-}
-
-if (!empty($resident)) {
-    $_SESSION['purok'] = $resident[0]['purok'];
-}
-
-$query1 = "SELECT * FROM tblpurok";
-$result1 = $conn->query($query1); 
-
-$purok = array();
-while($row2 = $result1->fetch_assoc()){
-    $purok[] = $row2; 
 }
 ?>
 <!DOCTYPE html>
@@ -31,6 +19,89 @@ while($row2 = $result1->fetch_assoc()){
 <head>
 	<?php include 'templates/header.php' ?>
 	<title>CertiFast Portal</title>
+    <style>
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .trash-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .trash-table th,
+        .trash-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .trash-table th {
+            background-color: #f0f0f0;
+        }
+        .card {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        .btn-light {
+            background-color: #f0f0f0;
+        }
+        .trash-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        .btn-danger {
+            background-color: #d9534f;
+            color: white;
+        }
+        .btn-primary {
+            background-color: #5bc0de;
+            color: white;
+        }
+        
+        /* Custom trash-themed styles */
+        .trash-header {
+            background-color: #424242;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .trash-header h1 {
+            font-size: 24px;
+        }
+        .trash-table {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .trash-table th {
+            background-color: #E42654;
+            color: white;
+            font-weight: bold;
+        }
+        .trash-table td {
+            vertical-align: middle;
+        }
+        .trash-table td:nth-child(6) {
+            text-align: center;
+        }
+        .trash-icon {
+            color: #d9534f;
+            cursor: pointer;
+        }
+        .restore-icon {
+            color: #5bc0de;
+            cursor: pointer;
+        }
+        .trash-icon:hover,
+        .restore-icon:hover {
+            transform: scale(1.2);
+        }
+    </style>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
@@ -40,7 +111,9 @@ while($row2 = $result1->fetch_assoc()){
 		<div class="main-panel mt-2">
 			<div class="content">
 				<div class="panel-header">
-                    <h1 class="text-center mt-4" style="font-size: 160%;">Items in your trash are only visible to you.</h1>
+                    <div class="trash-header">
+                        <h1>Items in your trash are only visible to you.</h1>
+                    </div>
                     <div class="page-inner">
                         <div class="row">
                             <div class="col-md-12">
@@ -67,30 +140,43 @@ while($row2 = $result1->fetch_assoc()){
                                                         <i class="fa-solid fa-arrow-rotate-left"></i>
                                                         Restore
                                                     </a>-->
+                                                    <a class="btn btn-light btn-border btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Filter Options
+                                                    </a>
                                                     <a id="pdf" class="btn btn-light btn-border btn-sm">
                                                         <i class="fas fa-download"></i>
                                                             Export PDF
                                                     </a>
+                                                    <div class="dropdown-menu mt-3" aria-labelledby="filterDropdown">
+                                                        <div class="dropdown-item">
+                                                            <input type="text" id="searchInput" class="search-input form-control" placeholder="Search...">
+                                                        </div>
+                                                        <div class="dropdown-item">
+                                                            <label>Date:</label>
+                                                            <input type="date" class="form-control" id="fromDate" name="fromDate">
+                                                        </div>
+                                                        <div class="dropdown-item">
+                                                            <button type="button" id="clearFilters" class="form-control btn btn-outline-primary">Clear Filters</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             <?php endif?>
                                         </div>                                    
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id="residenttable" class="table">
+                                            <table id="residenttable" class="trash-table">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Date</th>
-                                                        <th scope="col" class="text-center">ID no.</th>
+                                                        <th scope="col" class="text-center">Transaction ID no.</th>
                                                         <th scope="col">Fullname</th>
-                                                        <th scope="col">Address</th>
-                                                        <th scope="col">Birthdate</th>
-                                                        <th scope="col">Age</th>
-                                                        <th scope="col">Gender</th>
                                                         <th scope="col">Email</th>
-                                                        <th scope="col">Purok</th>
+                                                        <th scope="col">Amount</th>
+                                                        <th scope="col">Cashier</th>
+                                                        <th scope="col">Requirement</th>
                                                         <?php if(isset($_SESSION['username'])):?>
-                                                            <?php if($_SESSION['role']=='purok leader'):?>
+                                                            <?php if($_SESSION['role']=='administrator'):?>
                                                         <?php endif ?>
                                                         <th class="text-center" scope="col">Action</th>
                                                         <?php endif ?>
@@ -101,19 +187,17 @@ while($row2 = $result1->fetch_assoc()){
                                                     <?php $no = 1; foreach ($resident as $row): ?>
                                                     <tr>
                                                         <td><?= $row['date_deleted'] ?></td>
-                                                        <td><?= $row['national_id'] ?></td>
+                                                        <td><?= $row['trans_id'] ?></td>
                                                         <td>
-                                                            <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
+                                                            <?= ucwords($row['name']) ?>
                                                         </td>
-                                                        <td><?= $row['address'] ?></td>
-                                                        <td><?= $row['birthdate'] ?></td>
-                                                        <td><?= $row['age'] ?></td>
-                                                        <td><?= $row['gender'] ?></td>
                                                         <td><?= $row['email'] ?></td>
-                                                        <td><?= $row['purok'] ?></td>
+                                                        <td><?= $row['amounts'] ?></td>
+                                                        <td><?= $row['user'] ?></td>
+                                                        <td><?= $row['requirement'] ?></td>
                                                         <?php if(isset($_SESSION['username'])):?>
                                                         
-                                                        <?php if($_SESSION['role']=='purok leader'):?>                                                           
+                                                        <?php if($_SESSION['role']=='administrator'):?>                                                           
                                                         <?php endif ?>
                                                         <td class="text-center">
                                                             <div class="form-button-action">
@@ -156,7 +240,7 @@ while($row2 = $result1->fetch_assoc()){
                         Are you sure you want to permanently delete this file?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <form method="post" action="model/delete_trash.php">
+                        <form method="post" action="model/delete_records_trans.php">
                             <input type="hidden" name="id" value="<?= $row['id'] ?>">
                             <button type="button" class="btn btn-danger text-center mr-2" data-dismiss="modal">No</button>
                             <button type="submit" class="btn btn-primary text-center">Yes</button>
@@ -180,7 +264,7 @@ while($row2 = $result1->fetch_assoc()){
                         Are you sure you want to restore this file?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <form method="post" action="model/restore_archive.php">
+                        <form method="post" action="model/restore_archive_trans.php">
                             <input type="hidden" name="id" value="<?= $row['id'] ?>">
                             <button type="button" class="btn btn-danger text-center mr-2" data-dismiss="modal">No</button>
                             <button type="submit" class="btn btn-primary text-center">Yes</button>

@@ -17,9 +17,9 @@ $totalAnnouncements = $row1['total_announcements'];
 $query1 = "SELECT * FROM tbl_user_resident WHERE user_type= 'resident' LIMIT 1";
 $result1 = $conn->query($query1); 
 
-$purok = array();
+$supportres = array();
 while($row2 = $result1->fetch_assoc()){
-    $purok[] = $row2; 
+    $supportres[] = $row2; 
 }?>
 <style>
 .notification-badge {
@@ -271,7 +271,7 @@ while($row2 = $result1->fetch_assoc()){
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <?php foreach ($purok as $row2) { ?>
+                    <?php foreach ($supportres as $row2) { ?>
                     <input type="hidden" name="user" value="<?= $row2['user_type'] ?>" required >
                     <?php } ?>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -38,7 +38,7 @@ if (isset($_POST['id'])) {
     $deleteStmt->bind_param("i", $id);
     $deleteStmt->execute();
 
-    $_SESSION['message'] = "Resident records has been moved to trash successfully.";
+    $_SESSION['message'] = "Resident records has been removed successfully.";
     $_SESSION['success'] = "success";
 
     header("Location: ../purok_records.php");

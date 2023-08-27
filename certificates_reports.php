@@ -163,12 +163,15 @@
 						<?php endif ?>
 					</div>
                     <div class="page-inner">
-                        <?php if(isset($_SESSION['message'])): ?>
-								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-									<?php echo $_SESSION['message']; ?>
-								</div>
-							<?php unset($_SESSION['message']); ?>
-						<?php endif ?>
+                    <?php if(isset($_SESSION['message'])): ?>
+                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <?php echo $_SESSION['message']; ?>
+                                </div>
+                            <?php unset($_SESSION['message']); ?>
+                            <?php endif ?>
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <div class="card">
@@ -294,33 +297,9 @@
                         Are you certain you want to permanently delete certificate no. <strong><?= $row['req_cert_id'] ?></strong> requested by <strong><?= $row['resident_name'] ?></strong>?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <form method="post" action="model/remove_cert.php">
+                        <form method="post" action="model/trash_cert_records.php">
                             <input type="hidden" name="id" value="<?= $row['cert_id'] ?>">
                             <button type="button" class="btn btn-danger text-center mr-2" data-dismiss="modal">No</button>
-                            <button type="submit" class="btn btn-primary text-center">Yes</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php } ?>
-       <?php foreach ($resident as $row) { ?>
-        <div class="modal fade" id="restoreModal<?= $row['cert_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="restoreModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="restoreModalLabel">Message</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body text-center" style="font-size: 16px;">
-                        Are you certain you want to remove certificate no. <strong><?= $row['req_cert_id'] ?></strong> requested by <strong><?= $row['resident_name'] ?></strong>?
-                    </div>
-                    <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <form method="post" action="model/remove_cert.php">
-                            <input type="hidden" name="id" value="<?= $row['cert_id'] ?>">
-                            <button type="submit" class="btn btn-danger text-center mr-2" data-dismiss="modal">No</button>
                             <button type="submit" class="btn btn-primary text-center">Yes</button>
                         </form>
                     </div>

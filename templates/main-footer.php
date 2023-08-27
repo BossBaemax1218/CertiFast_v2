@@ -87,12 +87,12 @@
                 $stmt->execute();
                 $result1 = $stmt->get_result();
                 
-                $purok = array();
+                $supportadmin = array();
                 while($row2 = $result1->fetch_assoc()){
-                    $purok[] = $row2; 
+                    $supportadmin[] = $row2; 
                 }
                 ?>
-                <?php foreach ($purok as $row2) { ?>
+                <?php foreach ($supportadmin as $row2) { ?>
                     <input type="hidden" name="user" value="<?= $row2['user_type'] ?>" required >
                     <?php } ?>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
