@@ -347,32 +347,37 @@ $totalAnnouncements = $row1['total_announcements'];
                         </li>
                     <?php endif ?>
                     <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'): ?>
-                        <li class="nav-item <?= $current_page == 'archive_files.php' || $current_page=='backup.php' || $current_page == 'trash_files.php' ? 'active' : null ?>">
+                        <li class="nav-item <?= $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_files.php' || $current_page=='backup.php' ? 'active' : null ?>">
                             <a href="#system" data-toggle="collapse" class="collapsed" aria-expanded="false">
                                 <i class="fa-solid fa-wrench"></i>
                                 <p>System</p>
                                 <span class="caret"></span>
                             </a>
-                            <div class="collapse <?=   $current_page == 'trash_files.php' || $current_page == 'archive_files.php' || $current_page=='backup.php'  ? 'show' : null ?>" id="system">
+                            <div class="collapse <?=   $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_files.php' || $current_page=='backup.php'  ? 'show' : null ?>" id="system">
                                 <ul class="nav nav-collapse">
-                                    <li class="<?= $current_page == 'trash_files.php' || $current_page == 'archive_files.php' || $current_page=='backup.php' ? 'active' : null ?>">
+                                    <li class="<?= $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_files.php' ? 'active' : null ?>">
                                         <a href="#trash" data-toggle="collapse" class="collapsed" aria-expanded="false">
-                                            <i class="fa-regular fa-rectangle-list"></i>
-                                            <p>Activity Log</p>
+                                            <i class="fa fa-trash"></i>
+                                            <p>Trash</p>
                                             <span class="caret"></span>
                                         </a>
-                                        <div class="collapse <?= $current_page == 'archive_files.php' || $current_page == 'trash_files.php'  || $current_page=='backup.php'  ? 'show' : null ?>" id="trash">
+                                        <div class="collapse <?= $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_files.php'  ? 'show' : null ?>" id="trash">
                                             <ul class="nav nav-collapse">
-                                                <li>
-                                                    <a href="trash_files.php ">
-                                                        <i class="fa-solid fa-trash"></i> Trash
+                                                <li class="nav-item <?= $current_page == 'trash_files.php' ? 'active' : null ?>">
+                                                    <a href="trash_files.php">
+                                                        <i class="fa-regular fa-folder-open"></i> Resident Files
                                                     </a>
                                                 </li>
-                                                <!--<li>
-                                                    <a href="archive_files.php">
-                                                        <i class="fa-solid fa-box-archive"></i> Archive
+                                                <li class="nav-item <?= $current_page == 'trash_cert_files.php' ? 'active' : null ?>">
+                                                    <a href="trash_cert_files.php">
+                                                        <i class="fa-regular fa-folder-open"></i>  Certificates Files
                                                     </a>
-                                                </li>-->
+                                                </li>
+                                                <li class="nav-item <?= $current_page == 'trash_trans_files.php' ? 'active' : null ?>">
+                                                    <a href="trash_trans_files.php">
+                                                        <i class="fa-regular fa-folder-open"></i>  Transaction Files
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </li>
