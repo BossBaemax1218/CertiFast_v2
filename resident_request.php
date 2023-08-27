@@ -296,10 +296,6 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Barangay ID No.</label>
-                                                <input type="text" class="form-control" placeholder="Ex: BLA-20230812001" name="id_no" value="" required>
-                                            </div>
-                                            <div class="form-group">
                                                 <label>What is your complete name?</label>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
@@ -321,13 +317,13 @@ $conn->close();
                                                 <label>Precint number? (If you are a voters of Barangay Los Amigos)</label>
                                                 <input type="number" class="form-control" placeholder="Precint number" name="precintno" required>
                                             </div>
+                                            <div class="form-group mt-2">
+                                                <h5><b>In case of emergency (Parents-Family-Guardians): </b></h5>
+                                            </div>          
                                             <div class="form-group">
                                                 <label>What is the contact number?</label>
                                                 <input type="number" class="form-control" placeholder="Contact Number" name="contact_number" required>
-                                            </div>
-                                            <div class="form-group mt-2">
-                                                <h5><b>In case of emergency (Parents-Family-Guardians): </b></h5>
-                                            </div>                                           
+                                            </div>                                 
                                             <div class="form-group">
                                                 <label>What is their name?</label>
                                                 <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="guardian" required>

@@ -44,7 +44,7 @@
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Certificate of Indigency</div>
+										<div class="card-title">Barangay Identification</div>
 										<div class="card-tools">
 											<button class="btn btn-info btn-border btn-round btn-sm" onclick="printDiv('printThis')">
 												<i class="fa fa-print"></i>
@@ -97,13 +97,13 @@
                                             <div class="id-card mb-5 mt-5" style="color: black;">
                                                 <span class="text-left ml-4 mt-5" style="font-size: 16px">In case of emergency, please notify:</span>
                                                 <div class="names">
-                                                    <h3 class="text">Name: <?= ucwords($resident['guardian']) ?></h3>
-                                                    <h3 class="text" style="font-size: 16px">Address: Purok <?= $resident['purok'] ?>, Barangay Los Amigos, Tugbok District, Davao City</h3>
-                                                    <h3 class="text" style="font-size: 16px">Contact Number: <?= $resident['contact_number'] ?></h3>
-                                                    <h3 class="text"> Relationship: <?= $resident['relationship'] ?></h3>
+                                                    <h3 class="text" style="font-size: 16px"> <strong>Name:</strong> &nbsp<?= ucwords($resident['guardian']) ?></h3>
+                                                    <h3 class="text" style="font-size: 16px"> <strong>Address:</strong> &nbsp Purok <?= $resident['purok'] ?>, Barangay Los Amigos, Tugbok District, Davao City</h3>
+                                                    <h3 class="text" style="font-size: 16px"> <strong>Contact Number:</strong> &nbsp <?= $resident['contact_number'] ?></h3>
+                                                    <h3 class="text" style="font-size: 16px"> <strong>Relationship:</strong> &nbsp <?= $resident['relationship'] ?></h3>
                                                 </div>
                                                 <div class="sub-names">
-                                                    <h3 class="text-center"> This is to clarify that the name indicates in this
+                                                    <h3 class="text-center" style="font-size: 18px"> This is to clarify that the name indicates in this
                                                         identification card <br> is a bona fide resident of 
                                                         Barangay Los Amigos, Tugbok District, Davao City.</h3>
                                                     <h3 class="text-center mt-4"> Issued this <?= date('jS \d\a\y \o\f F, Y') ?>.</h3>

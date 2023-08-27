@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var birthId = row.getAttribute("data-birth_id");
         var generateBtn = row.querySelector(".generate-certificate-btn ");
 
-        (function (residencyId, clearanceId, indigencyId, famId, brgyId, firstId, oathId, goodId, liveId, deathId, birthId) {
+        (function (residencyId, clearanceId, indigencyId, famId, birthId, deathId, liveId, goodId, oathId, firstId, indigencyId, brgyId) {
             generateBtn.addEventListener("click", function () {
                 var certificateName = this.getAttribute("data-certificate_name");
                 var status = this.getAttribute("data-status");

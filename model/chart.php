@@ -138,13 +138,9 @@ $totalValuesJson = json_encode($totalValues);
                 responsive: true,
                 scales: {
                     y: [{
-                        ticks: {
-                            stepSize: 5, // Set the interval to 5
-                            callback: function(value, index, values) {
-                                if (Math.floor(value) === value) {
-                                    return value;
-                                }
-                            }
+                        tricks: {
+                            beginAtZero: true,
+                            callback: function(value) {if (value % 1 === 0) {return value;}}
                         }
                     }]
                 }

@@ -38,10 +38,6 @@
                                 <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($brgyresident['fullname']) ?>">
                             </div>
                             <div class="form-group">
-                                <label>Tax no.</label>
-                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($brgyresident['taxno']) ?>">
-                            </div>
-                            <div class="form-group">
                                 <label>Purok</label>
                                 <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($brgyresident['purok']) ?>">
                             </div>
