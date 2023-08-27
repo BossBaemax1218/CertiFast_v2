@@ -96,9 +96,9 @@ while ($row = $result->fetch_assoc()) {
                                         <div class="card-title">
                                         </div>  
                                             <div class="card-tools">
-                                                <a class="btn btn-info btn-border btn-round btn-sm" type="button" data-toggle="modal" data-target="#changeStatus">
+                                                <!--<a class="btn btn-info btn-border btn-round btn-sm" type="button" data-toggle="modal" data-target="#changeStatus">
                                                     Change Status
-                                                </a>
+                                                </a>-->
                                                 <a class="btn btn-info btn-border btn-round btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Filter Options
                                                 </a>

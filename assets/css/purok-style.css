@@ -1,0 +1,60 @@
+.announcement-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.announcement-table th,
+.announcement-table td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.announcement-table th {
+    font-size: 18px;
+    font-weight: bold;
+}
+.announcement-table td.title-header {
+    color: #fff;
+    padding: 15px;
+    background-color: #e42654;
+    font-weight: bold;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.announcement-table h5.date {
+    font-size: 14px;
+    text-align: right;
+    color: #fff;
+}
+
+.announcement-table h3.subject {
+    color: #fff;
+    font-size: 24px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.announcement-table td.message {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.announcement-table p {
+    color: #000;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.announcement-table td.officials {
+    font-size: 15px;
+    color: green;
+    text-align: center;
+    padding: 10px 15px;
+    background-color: #fff;
+    color: green;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 12px 12px;
+}

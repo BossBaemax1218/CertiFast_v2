@@ -100,6 +100,7 @@ $stmt->close();
                                                             <option value="">All</option>
                                                             <option value="on hold">On Hold</option>
                                                             <option value="approved">Approved</option>
+                                                            <option value="claimed">Claimed</option>
 															<option value="rejected">Rejected</option>
                                                         </select>
                                                     </div>

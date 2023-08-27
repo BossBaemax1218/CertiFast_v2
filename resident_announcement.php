@@ -4,7 +4,7 @@
 $query = "SELECT * FROM tbl_announcement ORDER BY `date_posted` DESC";
 $result = $conn->query($query);
 
-$purok = array();
+$announce = array();
 while ($row = $result->fetch_assoc()) {
     $postedTime = strtotime($row['date_posted']);
     $currentTimestamp = time();
@@ -25,7 +25,7 @@ while ($row = $result->fetch_assoc()) {
     }
 
     $row['time_display'] = $timeDisplay;
-    $purok[] = $row;
+    $announce[] = $row;
 }
 ?>
 <!DOCTYPE html>
@@ -33,67 +33,7 @@ while ($row = $result->fetch_assoc()) {
 <head>
 	<?php include 'templates/header.php' ?>                  
 	<title>CertiFast Portal</title>
-    <style>
-    .announcement-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .announcement-table th,
-    .announcement-table td {
-        padding: 10px;
-        text-align: left;
-        vertical-align: top;
-    }
-
-    .announcement-table th {
-        font-size: 18px;
-        font-weight: bold;
-    }
-    .announcement-table td.title-header {
-        color: #fff;
-        padding: 15px;
-        background-color: #e42654;
-        font-weight: bold;
-        border-radius: 12px 12px 0 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .announcement-table h5.date {
-        font-size: 14px;
-        text-align: right;
-        color: #fff;
-    }
-
-    .announcement-table h3.subject {
-        color: #fff;
-        font-size: 24px;
-        text-align: left;
-        font-weight: bold;
-    }
-
-    .announcement-table td.message {
-        padding: 15px;
-        background-color: #fff;
-        border-radius: 1px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    .announcement-table p {
-        color: #000;
-        font-size: 16px;
-        margin-top: 10px;
-    }
-
-    .announcement-table td.officials {
-        font-size: 15px;
-        color: green;
-        text-align: center;
-        padding: 10px 15px;
-        background-color: #fff;
-        color: green;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        border-radius: 0 0 12px 12px;
-    }
+    <link rel="stylesheet" href="assets/css/announce-style.css">
 </style>
 </head>
 <body>
@@ -116,7 +56,7 @@ while ($row = $result->fetch_assoc()) {
                             <div class="announcement-slider border-r-xs-0 border-r position-relative">
                         	<h1 class="text-center fw-bold mt-4 mb-5" style="font-size: 300%;">Announcement</h1>
                                 <table class="announcement-table">
-                                    <?php foreach($purok as $row): ?>
+                                    <?php foreach( $announce as $row): ?>
                                         <tr>
                                             <td class="title-header" colspan="1">
                                                 <h5 class="date">

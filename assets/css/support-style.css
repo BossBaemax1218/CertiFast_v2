@@ -1,0 +1,149 @@
+ /* Mailbox styles */
+ .mailbox {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.mailbox-header {
+    padding: 10px;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.message-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.message-header span {
+    font-size: 14px;
+    color: #666;
+}
+
+.modal-content {
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+background-color: #007bff;
+color: #fff;
+border-top-left-radius: 8px;
+border-top-right-radius: 8px;
+padding: 15px;
+}
+
+.modal-title {
+font-size: 24px;
+margin: 0;
+}
+
+.modal-body {
+padding: 20px;
+}
+
+.message-details p {
+margin-bottom: 15px;
+font-size: 14px;
+}
+
+.message-details strong {
+font-weight: bold;
+}
+
+.message-content {
+font-size: 14px;
+}
+
+.modal-footer {
+border-top: none;
+}
+
+.modal-dialog {
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.message {
+background-color: #fff;
+border: 1px solid #ccc;
+border-radius: 8px;
+margin-bottom: 15px;
+padding: 15px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.message:hover {
+background-color: #f5f5f5;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.message-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 10px;
+font-size: 14px;
+}
+
+.message-header h3 {
+margin: 0;
+}
+.message-actions .view {
+    color: rgb(0, 100, 158);
+}
+.message-actions .delete{
+    color: rgb(179, 12, 12);
+}
+
+
+.message-header span {
+color: #666;
+}
+
+.message-content p {
+margin-top: 10px;
+font-size: 14px;
+}
+
+.message-content strong {
+font-weight: bold;
+}
+
+.message-actions {
+margin-top: 15px;
+text-align: center;
+
+}
+
+.new-icon {
+background-color: #0cc737;
+color: #ffffff;
+font-size: 12px;
+padding: 4px 8px;
+border-radius: 10px;
+margin-left: 10px;
+cursor: pointer;
+}
+
+.message.old-message .new-icon {
+display: none;
+}
+.new-message {
+background-color: #f5f5f5;
+border: 1px solid #0cc036;
+}

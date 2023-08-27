@@ -223,21 +223,9 @@
                                                                     <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'administrator')):?>
                                                                     <td class="text-center">
                                                                         <div class="input-group">
-                                                                          <div class="input-group-append">
-                                                                            <button class="btn btn-light btn-round" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                                                                            <div class="dropdown-menu text-center">
-                                                                                <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'administrator')):?>
-                                                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal<?= $row['id'] ?>" data-original-title="Remove" style="padding: 10px;">
-                                                                                        <i class="fa-solid fa-trash"></i> Trash
-                                                                                    </button>
-                                                                                <?php endif ?>
-                                                                                <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'administrator')):?>
-                                                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#restoreModal<?= $row['id'] ?>" data-original-title="Restore" style="padding: 10px;">
-                                                                                        <i class="fa-solid fa-box-archive"></i> Archive
-                                                                                    </button>
-                                                                                <?php endif ?>
-                                                                            </div>
-                                                                          </div>
+                                                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal<?= $row['id'] ?>" data-original-title="Remove">
+                                                                                <i class="fa-solid fa-trash"></i>   Remove
+                                                                            </button>
                                                                         </div>
                                                                     </td>
                                                                 <?php endif ?>

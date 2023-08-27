@@ -198,7 +198,8 @@
                                                     <th scope="col">Email</th>
 													<th scope="col">Purok</th>
                                                     <th scope="col">Voters</th>
-                                                    <th class="text-center" scope="col"> Purok Leader Status</th>
+                                                    <th class="text-center" scope="col">Status</th>
+                                                    <th class="text-center" scope="col"> Date</th>
                                                     <?php if(isset($_SESSION['username'])):?>
                                                         <?php if($_SESSION['role']=='administrator'):?>
 													
@@ -213,9 +214,6 @@
 													<tr>
 													    <td><?= $row['national_id'] ?></td>
 														<td>
-                                                            <div class="avatar avatar-xs ml-3">
-                                                                <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
-                                                            </div>
                                                             <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
                                                         </td>														
 														<td><?= $row['birthdate'] ?></td>
@@ -223,6 +221,7 @@
                                                         <td><?= $row['purok'] ?></td>
                                                         <td><?= $row['voterstatus'] ?></td>
                                                         <td class="text-center"><?= $row['residency_badge'] ?></td>
+                                                        <td class="text-center" ><?= $row['residency_date'] ?></td>
                                                         <?php if(isset($_SESSION['username'])):?>
                                                             
                                                             <?php if($_SESSION['role']=='administrator'):?>
@@ -232,7 +231,7 @@
 															<div class="form-button-action">
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
                                                                     data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-address="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
-                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-taxno="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
+                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-taxno="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>"
                                                                     data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>">
                                                                     <?php if(isset($_SESSION['username'])): ?>
                                                                         <i class="fas fa-edit"></i>
@@ -279,7 +278,7 @@
                         Are you certain you want to remove ID no. <strong><?= $row['national_id'] ?></strong> named <strong><?= ucwords($row['firstname'].' '.$row['middlename'].' '.$row['lastname']) ?></strong>?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <form method="post" action="model/remove_resident.php">
+                        <form method="post" action="model/trash_resident_records.php">
                             <input type="hidden" name="id" value="<?= $row['id'] ?>">
                             <button type="button" class="btn btn-danger text-center mr-2" data-dismiss="modal">No</button>
                             <button type="submit" class="btn btn-primary text-center">Yes</button>
@@ -592,7 +591,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const tableRows = document.querySelectorAll("#residenttable tbody tr");
   
   function rowMatchesFilter(row) {
-    const rowDate = new Date(row.querySelector("td:nth-child(2)").textContent);
+    const rowDate = new Date(row.querySelector("td:nth-child(8)").textContent);
     const from = new Date(fromDate.value);
     const to = new Date(toDate.value);
 

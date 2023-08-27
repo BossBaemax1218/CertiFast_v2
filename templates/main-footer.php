@@ -78,6 +78,23 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                <?php 
+                $username1 = $_SESSION["username"];
+
+                $sql1= "SELECT * FROM tbl_user_admin WHERE username= ? AND user_type IN ('purok leader','staff') LIMIT 1";
+                $stmt = $conn->prepare($sql1);
+                $stmt->bind_param("s", $username1);
+                $stmt->execute();
+                $result1 = $stmt->get_result();
+                
+                $purok = array();
+                while($row2 = $result1->fetch_assoc()){
+                    $purok[] = $row2; 
+                }
+                ?>
+                <?php foreach ($purok as $row2) { ?>
+                    <input type="hidden" name="user" value="<?= $row2['user_type'] ?>" required >
+                    <?php } ?>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Send</button>
                 </div>

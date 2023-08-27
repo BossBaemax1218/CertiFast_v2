@@ -62,7 +62,7 @@ while($row2 = $result1->fetch_assoc()){
                                 <div class="card">
                                     <div class="card-header md-2">
                                         <div class="card-head-row">
-                                            <div class="card-title fw-bold">Current Barangay Officials</div>
+                                            <div class="card-title fw-bold"></div>
                                             <?php if(isset($_SESSION['username'])):?>
                                                 <div class="card-tools">
                                                     <a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
@@ -82,6 +82,7 @@ while($row2 = $result1->fetch_assoc()){
                                             <table id="residenttable" class="table">
                                                 <thead>
                                                     <tr>
+                                                        <th scope="col">Barangay ID</th>
                                                         <th scope="col">Fullname</th>
                                                         <th scope="col">Address</th>
                                                         <th scope="col">Birthdate</th>
@@ -100,6 +101,7 @@ while($row2 = $result1->fetch_assoc()){
                                                 <?php if (!empty($resident)): ?>
                                                     <?php $no = 1; foreach ($resident as $row): ?>
                                                     <tr>
+                                                        <td><?= $row['national_id'] ?></td>
                                                         <td>
                                                             <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
                                                         </td>
@@ -117,8 +119,8 @@ while($row2 = $result1->fetch_assoc()){
                                                             <div class="form-button-action">
                                                                 <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
                                                                     data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-address="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
-                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-taxno="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" data-remarks="<?= $row['remarks'] ?>" 
-                                                                    data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>" data-purpose="<?= $row['purpose'] ?>">
+                                                                    data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-taxno="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>" 
+                                                                     data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>">
                                                                     <?php if(isset($_SESSION['username'])): ?>
                                                                         <i class="fas fa-edit"></i>
                                                                     <?php else: ?>
@@ -161,7 +163,7 @@ while($row2 = $result1->fetch_assoc()){
                         Are you sure you want to remove this resident?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <form method="post" action="model/remove_purok_records.php">
+                        <form method="post" action="model/restore_purok_records.php">
                             <input type="hidden" name="id" value="<?= $row['id'] ?>">
                             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">No</button>
                             <button type="submit" class="btn btn-primary">Yes</button>

@@ -3,9 +3,9 @@
     $query = "SELECT * FROM tblpurok";
     $result = $conn->query($query);
 
-    $purok = array();
+    $puroklist = array();
 	while($row = $result->fetch_assoc()){
-		$purok[] = $row; 
+		$puroklist[] = $row; 
 	}
 ?>
 
@@ -68,8 +68,8 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if(!empty($purok)): ?>
-                                                    <?php $no=1; foreach($purok as $row): ?>
+                                                <?php if(!empty($puroklist)): ?>
+                                                    <?php $no=1; foreach($puroklist as $row): ?>
                                                     <tr class="text-center">
                                                         <td><?= $no ?></td>
                                                         <td><?= $row['purok'] ?></td>

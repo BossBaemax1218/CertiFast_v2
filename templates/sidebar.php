@@ -159,26 +159,6 @@ $totalAnnouncements = $row1['total_announcements'];
                         </a>
                     </li>
                     <?php endif ?>
-                    <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'): ?>
-                    <li class="nav-section">
-                        <span class="sidebar-mini-icon">
-                            <i class="fa fa-ellipsis-h"></i>
-                        </span>
-                        <h4 class="text-section">Notification</h4>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" data-target="#announcement" data-toggle="modal">
-                            <i class="fa-solid fa-bullhorn"></i> 
-                            <p>Post Announcement</p>
-                        </a>
-                    </li>
-                    <li class="nav-item <?= $current_page == 'support.php' ? 'active' : null ?>">
-                        <a href="support.php">
-                            <i class="fa-regular fa-envelope"></i> 
-                            <p>Support Inbox</p>
-                        </a>
-                    </li>
-                    <?php endif ?>
                     <!-- Files Section -->
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
@@ -230,6 +210,26 @@ $totalAnnouncements = $row1['total_announcements'];
                         </a>
                     </li>
                 <?php endif ?>
+                <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'): ?>
+                    <li class="nav-section">
+                        <span class="sidebar-mini-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <h4 class="text-section">Notification</h4>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" data-target="#announcement" data-toggle="modal">
+                            <i class="fa-solid fa-bullhorn"></i> 
+                            <p>Post Announcement</p>
+                        </a>
+                    </li>
+                    <li class="nav-item <?= $current_page == 'support.php' ? 'active' : null ?>">
+                        <a href="support.php">
+                            <i class="fa-regular fa-envelope"></i> 
+                            <p>Support</p>
+                        </a>
+                    </li>
+                    <?php endif ?>
                 
                 <!-- Settings Section -->
                 <?php if(isset($_SESSION['username'])): ?>
@@ -347,31 +347,36 @@ $totalAnnouncements = $row1['total_announcements'];
                         </li>
                     <?php endif ?>
                     <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'): ?>
-                        <li class="nav-item <?= $current_page == 'archive_purok_records.php' || $current_page=='backup.php' ? 'active' : null ?>">
+                        <li class="nav-item <?= $current_page == 'archive_files.php' || $current_page=='backup.php' || $current_page == 'trash_files.php' ? 'active' : null ?>">
                             <a href="#system" data-toggle="collapse" class="collapsed" aria-expanded="false">
                                 <i class="fa-solid fa-wrench"></i>
-                                <p>Privacy</p>
+                                <p>System</p>
                                 <span class="caret"></span>
                             </a>
-                            <div class="collapse <?= $current_page == 'archive_files.php' || $current_page=='backup.php'? 'show' : null ?>" id="system">
+                            <div class="collapse <?=   $current_page == 'trash_files.php' || $current_page == 'archive_files.php' || $current_page=='backup.php'  ? 'show' : null ?>" id="system">
                                 <ul class="nav nav-collapse">
-                                    <li class="<?= $current_page=='archive_files.php' ? 'active' : null ?>">
+                                    <li class="<?= $current_page == 'trash_files.php' || $current_page == 'archive_files.php' || $current_page=='backup.php' ? 'active' : null ?>">
                                         <a href="#trash" data-toggle="collapse" class="collapsed" aria-expanded="false">
                                             <i class="fa-regular fa-rectangle-list"></i>
                                             <p>Activity Log</p>
                                             <span class="caret"></span>
                                         </a>
-                                        <div class="collapse <?= $current_page == 'archive_files.php' ? 'show' : null ?>" id="trash">
+                                        <div class="collapse <?= $current_page == 'archive_files.php' || $current_page == 'trash_files.php'  || $current_page=='backup.php'  ? 'show' : null ?>" id="trash">
                                             <ul class="nav nav-collapse">
                                                 <li>
-                                                    <a href="archive_files.php">
+                                                    <a href="trash_files.php ">
                                                         <i class="fa-solid fa-trash"></i> Trash
                                                     </a>
                                                 </li>
+                                                <!--<li>
+                                                    <a href="archive_files.php">
+                                                        <i class="fa-solid fa-box-archive"></i> Archive
+                                                    </a>
+                                                </li>-->
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="<?= $current_page=='backup.php' ? 'active' : null ?>">
+                                    <li class="<?= $current_page=='backup/backup.php' ? 'active' : null ?>">
                                         <a href="#backres" data-toggle="collapse" class="collapsed" aria-expanded="false">
                                             <i class="fa-solid fa-circle-exclamation"></i>
                                             <p>Backup & Restore</p>

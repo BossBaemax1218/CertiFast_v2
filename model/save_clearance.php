@@ -16,7 +16,7 @@ $fname      = $conn->real_escape_string($_POST['fname']);
 $user_email = $conn->real_escape_string($_POST['email']);
 
 // Check if email is valid and residency status is approved
-$residencyStatusCheckQuery = "SELECT COUNT(*) AS status_count, residency_status FROM tblresident WHERE email = '$user_email'";
+$residencyStatusCheckQuery = "SELECT COUNT(*) AS status_count, residency_status FROM tblresident WHERE email = '$user_email' LIMIT 1";
 $residencyStatusCheckResult = $conn->query($residencyStatusCheckQuery);
 $residencyStatusCheckData = $residencyStatusCheckResult->fetch_assoc();
 
