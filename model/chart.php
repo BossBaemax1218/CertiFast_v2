@@ -16,12 +16,14 @@ include 'server/db_connect.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$currentDate = date('Y-m-d');
-$lastMonday = date('Y-m-d', strtotime('last Monday'));
+$currentYear = date('Y');
+$currentMonth = date('m');
+$firstDayOfMonth = date('Y-m-d', strtotime("$currentYear-$currentMonth-01"));
+$lastDayOfMonth = date('Y-m-t', strtotime("$currentYear-$currentMonth"));
 
-$dateType = isset($_POST['dateType']) ? $_POST['dateType'] : 'weekly';
-$fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $lastMonday;
-$toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $currentDate;
+$dateType = isset($_POST['dateType']) ? $_POST['dateType'] : 'monthly';
+$fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $firstDayOfMonth;
+$toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $lastDayOfMonth;
 $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
 
 $sql = "SELECT ";

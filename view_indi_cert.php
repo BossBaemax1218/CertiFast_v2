@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Update Status Certificate</label>
-                                <select class="form-control btn btn-outline-light btn-primary" required name="status" id="status">
+                                <select class="form-control text-black btn btn-outline-light" required name="status" id="status">
                                     <option value="on hold">On Hold</option>
                                     <option value="approved">Approved</option>
                                     <option value="rejected">Rejected</option>

@@ -408,7 +408,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         window.location.href = 'view_indi_cert.php?id=' + indId;
                         break;
                     case 'first time jobseekers':
-                        localStorage.setItem('openIndiCertModal', 'true');
+                        localStorage.setItem('openJobModal', 'true');
                         window.location.href = 'view_jobseekers.php?id=' + firstId;
                         break;
                     case 'certificate of oath taking':
@@ -432,7 +432,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         window.location.href = 'view_death.php?id=' + dId;
                         break;
                     case 'certificate of birth':
-                        localStorage.setItem('openIndiCertModal', 'true');
+                        localStorage.setItem('openBirthModal', 'true');
                         window.location.href = 'view_birth.php?id=' +  birthIdAttr;
                         break;
                     default:
