@@ -288,13 +288,13 @@ $totalAnnouncements = $row1['total_announcements'];
                             </span>
                             <h4 class="text-section">Settings</h4>
                         </li>
-                        <li class="nav-item <?= $current_page == 'purok.php' || $current_page == 'position.php' || $current_page == 'user-resident.php' || $current_page == 'users.php' ? 'active' : null ?>">
+                        <li class="nav-item <?= $current_page == 'purok.php' || $current_page == 'position.php' || $current_page == 'announcement.php' || $current_page == 'user-resident.php' || $current_page == 'users.php' ? 'active' : null ?>">
                             <a href="#settings" data-toggle="collapse" class="collapsed" aria-expanded="false">
                                 <i class="fa-solid fa-envelope-open-text"></i>
                                 <p>Preferences</p>
                                 <span class="caret"></span>
                             </a>
-                            <div class="collapse <?= $current_page == 'purok.php' || $current_page == 'position.php' || $current_page == 'users.php' || $current_page == 'user-resident.php' ? 'show' : null ?>" id="settings">
+                            <div class="collapse <?= $current_page == 'purok.php' || $current_page == 'position.php' || $current_page == 'announcement.php'  || $current_page == 'users.php' || $current_page == 'user-resident.php' ? 'show' : null ?>" id="settings">
                                 <ul class="nav nav-collapse">
                                     <li class="<?= $current_page == 'purok.php' ? 'active' : null ?>">
                                         <a href="purok.php">
@@ -334,6 +334,11 @@ $totalAnnouncements = $row1['total_announcements'];
                                         <li class="<?= $current_page == 'user-resident.php' ? 'active' : null ?>">
                                             <a href="user-resident.php">
                                                 <i class="fa-solid fa-list-check"></i> Resident Info
+                                            </a>
+                                        </li>
+                                        <li class="<?= $current_page == 'announcement.php' ? 'active' : null ?>">
+                                            <a href="announcement.php">
+                                                <i class="fa-solid fa-list-check"></i> Announcement Info
                                             </a>
                                         </li>
                                         <li>
