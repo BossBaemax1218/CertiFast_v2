@@ -137,10 +137,10 @@
                         </button>
                     </div>
                     <div class="modal-body text-center" style="font-size: 16px;">
-                        Are you certain you want to remove username <strong><?= $row['name'] ?></strong> where the contact number <strong><?= $row['number'] ?></strong>?
+                        Are you certain you want to remove this file?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <form method="post" action="model/remove_ticket.php">
+                        <form method="post" action="model/trash_support_records.php">
                             <input type="hidden" name="id" value="<?= $row['id'] ?>">
                             <button type="button" class="btn btn-danger text-center mr-2" data-dismiss="modal">No</button>
                             <button type="submit" class="btn btn-primary text-center">Yes</button>

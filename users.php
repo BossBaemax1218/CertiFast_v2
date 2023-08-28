@@ -41,14 +41,15 @@
 				<div class="page-inner">
 					<div class="row mt--2">
 						<div class="col-md-12">
-
-                            <?php if(isset($_SESSION['message'])): ?>
-                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                                    <?php echo $_SESSION['message']; ?>
-                                </div>
-                            <?php unset($_SESSION['message']); ?>
-                            <?php endif ?>
-
+                        <?php if(isset($_SESSION['message'])): ?>
+						<div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<?php echo $_SESSION['message']; ?>
+						</div>
+					<?php unset($_SESSION['message']); ?>
+					<?php endif ?>
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
@@ -156,7 +157,7 @@
                     </div>
                     <div class="modal-footer mt-3 d-flex justify-content-center">
                         <form method="post" action="model/remove_user.php">
-                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                            <input type="text" name="id" value="<?= $row['id'] ?>">
                             <button type="button" class="btn btn-danger text-center mr-2">No</button>
                             <button type="submit" class="btn btn-primary text-center">Yes</button>
                         </form>

@@ -234,7 +234,7 @@ while ($row = $result->fetch_assoc()) {
                         Are you sure you want to permanently delete this file?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <form method="post" action="model/delete_records_cert.php">
+                        <form method="post" action="model/remove_ticket.php">
                             <input type="hidden" name="id" value="<?= $row['id'] ?>">
                             <button type="button" class="btn btn-danger text-center mr-2" data-dismiss="modal">No</button>
                             <button type="submit" class="btn btn-primary text-center">Yes</button>
@@ -258,7 +258,7 @@ while ($row = $result->fetch_assoc()) {
                         Are you sure you want to restore this file?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <form method="post" action="model/restore_archive_cert.php">
+                        <form method="post" action="model/restore_archive_support.php">
                             <input type="hidden" name="id" value="<?= $row['id'] ?>">
                             <button type="button" class="btn btn-danger text-center mr-2" data-dismiss="modal">No</button>
                             <button type="submit" class="btn btn-primary text-center">Yes</button>

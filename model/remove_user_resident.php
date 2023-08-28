@@ -1,33 +1,17 @@
 <?php 
 	include '../server/server.php';
 
-	if(!isset($_SESSION['username']) && $_SESSION['role']!='administrator'){
-		if (isset($_SERVER["HTTP_REFERER"])) {
-			header("Location: " . $_SERVER["HTTP_REFERER"]);
-		}
-	}
+	if (isset($_POST['id'])) {
+		$id = $_POST['id'];
 	
-	$id 	= $conn->real_escape_string($_GET['id']);
-
-	if($id != ''){
-		$query 		= "DELETE FROM tbl_user_resident WHERE id = '$id'";
-		
-		$result 	= $conn->query($query);
-		
-		if($result === true){
-            $_SESSION['message'] = 'User has been removed!';
-            $_SESSION['success'] = 'danger';
-            
-        }else{
-            $_SESSION['message'] = 'Something went wrong!';
-            $_SESSION['success'] = 'danger';
-        }
-	}else{
-
-		$_SESSION['message'] = 'Missing User ID!';
-		$_SESSION['success'] = 'danger';
+		$deleteSql = "DELETE FROM tbl_user_resident WHERE id = ?";
+		$deleteStmt = $conn->prepare($deleteSql);
+		$deleteStmt->bind_param("i", $id);
+		$deleteStmt->execute();
+	
+		$_SESSION['message'] = "User account has been permanently removed successfully.";
+		$_SESSION['success'] = "success";
+	
+		header("Location: ../user-resident.php");
+		exit;
 	}
-
-	header("Location: ../user-resident.php");
-	$conn->close();
-

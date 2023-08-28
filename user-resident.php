@@ -44,12 +44,15 @@ while ($row = $result->fetch_assoc()) {
 				<div class="page-inner">
 					<div class="row mt--2">
 						<div class="col-md-12">
-                            <?php if(isset($_SESSION['message'])): ?>
-                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
-                                    <?php echo $_SESSION['message']; ?>
-                                </div>
-                            <?php unset($_SESSION['message']); ?>
-                            <?php endif ?>
+                        <?php if(isset($_SESSION['message'])): ?>
+						<div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<?php echo $_SESSION['message']; ?>
+						</div>
+					<?php unset($_SESSION['message']); ?>
+					<?php endif ?>
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
@@ -160,7 +163,7 @@ while ($row = $result->fetch_assoc()) {
                         Are you certain you want to remove name <strong><?= $row['fullname'] ?></strong> ?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <form method="post" action="model/remove_user-resident.php">
+                        <form method="post" action="model/remove_user_resident.php">
                             <input type="hidden" name="id" value="<?= $row['id'] ?>">
                             <button type="button" class="btn btn-danger text-center">No</button>
                             <button type="submit" class="btn btn-primary text-center">Yes</button>

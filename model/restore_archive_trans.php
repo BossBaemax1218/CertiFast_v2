@@ -29,7 +29,7 @@ if (isset($_POST['id'])) {
     $deleteStmt->bind_param("i", $id);
     $deleteStmt->execute();
 
-    $_SESSION['message'] = "Payment records have been removed successfully.";
+    $_SESSION['message'] = "Payment records have been restored successfully.";
     $_SESSION['success'] = "success";
 
     header("Location: ../trash_trans_files.php");
