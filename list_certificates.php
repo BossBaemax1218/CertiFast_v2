@@ -140,6 +140,9 @@ while ($row = $result->fetch_assoc()) {
                                                         <button type="button" id="clearFilters" class="form-control btn btn-outline-primary">Clear Filters</button>
                                                     </div>
                                                 </div>
+                                                <a id="pdf" class="btn btn-light btn-border btn-sm">
+                                                    <i class="fas fa-download"></i>
+                                                </a>
                                             </div>                                                                             
                                         </div>
                                     </div>
@@ -441,5 +444,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
+<script>
+        $(document).ready(function() {
+            $('#residenttable').DataTable();
+        });
+    </script>
+        <script>
+        $(document).on("click", "#pdf", function () {
+        console.log("Exporting certificate table as PDF...");
+
+        const currentDate = new Date().toISOString().slice(0, 10);
+
+        const title = "Certificates Files - " + currentDate;
+        const filename = "Certificates_" + currentDate + ".pdf";
+
+        const doc = new jsPDF();
+
+        doc.setFontSize(20);
+        doc.text(title, 15, 15);
+
+        const options = { startY: 25 };
+        doc.autoTable({ html: "#residenttable", startY: 30 });
+
+        doc.save(filename);
+        });
+    </script>
 </body>
 </html>

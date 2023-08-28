@@ -145,15 +145,15 @@ while ($row = $result->fetch_assoc()) {
                                                     </a>
                                                     <a id="pdf" class="btn btn-light btn-border btn-sm">
                                                         <i class="fas fa-download"></i>
-                                                            Export PDF
                                                     </a>
                                                     <div class="dropdown-menu mt-3" aria-labelledby="filterDropdown">
                                                         <div class="dropdown-item">
-                                                            <input type="text" id="searchInput" class="search-input form-control" placeholder="Search...">
+                                                            <label>From Date:</label>
+                                                            <input type="date" class="form-control datepicker" id="fromDate" placeholder="Select date range">
                                                         </div>
                                                         <div class="dropdown-item">
-                                                            <label>Date:</label>
-                                                            <input type="date" class="form-control" id="fromDate" name="fromDate">
+                                                            <label>To Date:</label>
+                                                            <input type="date" class="form-control datepicker" id="toDate" placeholder="Select date range">
                                                         </div>
                                                         <div class="dropdown-item">
                                                             <button type="button" id="clearFilters" class="form-control btn btn-outline-primary">Clear Filters</button>
@@ -277,39 +277,59 @@ while ($row = $result->fetch_assoc()) {
     </div>
 <?php include 'templates/footer.php' ?>
 <script>
-const filterDateInput = document.getElementById('fromDate');
-const searchInput = document.getElementById('searchInput');
-const cards = document.querySelectorAll('.card');
-const clearFiltersBtn = document.getElementById('clearFilters');
+document.addEventListener("DOMContentLoaded", function () {
+  const fromDate = document.getElementById("fromDate");
+  const toDate = document.getElementById("toDate");
+  const clearFiltersBtn = document.getElementById("clearFilters");
+  
+  const tableRows = document.querySelectorAll("#residenttable tbody tr");
+  
+  function rowMatchesFilter(row) {
+    const rowDate = new Date(row.querySelector("td:nth-child(6)").textContent);
+    const from = new Date(fromDate.value);
+    const to = new Date(toDate.value);
 
-function applyFilter() {
-    const selectedDate = filterDateInput.value;
-
-    cards.forEach(card => {
-        const cardDate = card.querySelector('.card-header').textContent;
-        const dateMatch = selectedDate === '' || cardDate === selectedDate;
-
-        card.style.display = dateMatch ? 'block' : 'none';
+    return (isNaN(from) || rowDate >= from) &&
+           (isNaN(to) || rowDate <= to);
+  }
+  
+  function applyFilter() {
+    tableRows.forEach(row => {
+      const shouldDisplay = rowMatchesFilter(row);
+      row.style.display = shouldDisplay ? "table-row" : "none";
     });
-}
+  }
 
-function clearFilters() {
-    searchInput.value = '';
-    filterDateInput.value = '';
+  function clearFilters() {
+    fromDate.value = "";
+    toDate.value = "";
     applyFilter();
-}
-filterDateInput.addEventListener('change', applyFilter);
-filterDateInput.addEventListener('change', applyFilter);
-clearFiltersBtn.addEventListener('click', clearFilters);
+  }
 
-searchInput.addEventListener('input', () => {
-    const searchText = searchInput.value.toLowerCase();
-
-    cards.forEach(card => {
-        const cardText = card.textContent.toLowerCase();
-        card.style.display = cardText.includes(searchText) ? 'block' : 'none';
-    });
+  fromDate.addEventListener("change", applyFilter);
+  toDate.addEventListener("change", applyFilter);
+  clearFiltersBtn.addEventListener("click", clearFilters);
 });
 </script>
+    <script>
+        $(document).on("click", "#pdf", function () {
+        console.log("Exporting resident table as PDF...");
+
+        const currentDate = new Date().toISOString().slice(0, 10);
+
+        const title = "Resident Trash Files - " + currentDate;
+        const filename = "Resident_" + currentDate + ".pdf";
+
+        const doc = new jsPDF();
+
+        doc.setFontSize(20);
+        doc.text(title, 15, 15);
+
+        const options = { startY: 25 };
+        doc.autoTable({ html: "#residenttable", startY: 30 });
+
+        doc.save(filename);
+        });
+    </script>
 </body>
 </html>

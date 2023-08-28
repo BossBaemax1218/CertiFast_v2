@@ -172,7 +172,7 @@
 										<div class="card-title">                                                                                
                                         </div>
 										<?php if(isset($_SESSION['username'])):?>
-											    <div class="card-tools">
+                                                <div class="card-tools">
                                                     <a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
                                                         <i class="fa fa-plus"></i>
                                                         Business Permit
@@ -182,24 +182,20 @@
                                                     </a>
                                                     <div class="dropdown-menu mt-3 mr-3" aria-labelledby="filterDropdown">
                                                         <div class="dropdown-item">
-                                                            <label>Request Status:</label>
-                                                            <select class="form-control" id="filterStatus" name="status" onclick="event.stopPropagation();">
-                                                                <option value="">All</option>
-                                                                <option value="on hold">On Hold</option>
-                                                                <option value="operating">Operating</option>
-                                                                <option value="suspended">Suspended</option>
-                                                                <option value="closed">Closed</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="dropdown-item">
                                                             <label>From Date:</label>
-                                                            <input type="date" class="form-control" id="formDate" placeholder="Select date range" value="<?php echo isset($_POST['fromDate']) ? htmlspecialchars($_POST['fromDate']) : date('Y-m-d'); ?>">
+                                                            <input type="date" class="form-control" id="fromDate" placeholder="Select date range">
                                                         </div>
                                                         <div class="dropdown-item">
                                                             <label>To Date:</label>
-                                                            <input type="date" class="form-control" id="toDate" placeholder="Select date range" value="<?php echo isset($_POST['toDate']) ? htmlspecialchars($_POST['toDate']) : date('Y-m-d'); ?>">
+                                                            <input type="date" class="form-control" id="toDate" placeholder="Select date range">
+                                                        </div>
+                                                        <div class="dropdown-item">
+                                                            <button type="button" class="form-control btn btn-outline-primary" id="clearFilters">Clear Filter</button>
                                                         </div>
                                                     </div>
+                                                    <a id="pdf" class="btn btn-light btn-border btn-sm">
+                                                        <i class="fas fa-download"></i>
+                                                    </a>
                                                 </div>
                                             <?php endif?>
                                         </div>
@@ -462,20 +458,18 @@
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const filterStatus = document.getElementById("filterStatus");
-  const formDate = document.getElementById("formDate");
+  const fromDate = document.getElementById("fromDate");
   const toDate = document.getElementById("toDate");
+  const clearFiltersBtn = document.getElementById("clearFilters");
+  
   const tableRows = document.querySelectorAll("#residenttable tbody tr");
-
+  
   function rowMatchesFilter(row) {
-    const statusValue = filterStatus.value.toLowerCase();
-    const rowStatus = row.querySelector("td:nth-child(7)").textContent.toLowerCase();
-    const rowDate = new Date(row.querySelector("td:nth-child(2)").textContent);
-    const from = new Date(formDate.value);
+    const rowDate = new Date(row.querySelector("td:nth-child(7)").textContent);
+    const from = new Date(fromDate.value);
     const to = new Date(toDate.value);
 
-    return (statusValue === "" || rowStatus.includes(statusValue)) &&
-           (isNaN(from) || rowDate >= from) &&
+    return (isNaN(from) || rowDate >= from) &&
            (isNaN(to) || rowDate <= to);
   }
   
@@ -486,9 +480,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  filterStatus.addEventListener("change", applyFilter);
-  formDate.addEventListener("change", applyFilter);
+  function clearFilters() {
+    fromDate.value = "";
+    toDate.value = "";
+    applyFilter();
+  }
+
+  fromDate.addEventListener("change", applyFilter);
   toDate.addEventListener("change", applyFilter);
+  clearFiltersBtn.addEventListener("click", clearFilters);
 });
 </script>
 	<script>
@@ -512,6 +512,26 @@ document.addEventListener("DOMContentLoaded", function () {
     <script>
         $(document).ready(function() {
             $('#residenttable').DataTable();
+        });
+    </script>
+        <script>
+        $(document).on("click", "#pdf", function () {
+        console.log("Exporting business permit table as PDF...");
+
+        const currentDate = new Date().toISOString().slice(0, 10);
+
+        const title = "Business Permit Files - " + currentDate;
+        const filename = "Business Permit_" + currentDate + ".pdf";
+
+        const doc = new jsPDF();
+
+        doc.setFontSize(20);
+        doc.text(title, 15, 15);
+
+        const options = { startY: 25 };
+        doc.autoTable({ html: "#residenttable", startY: 30 });
+
+        doc.save(filename);
         });
     </script>
 </body>

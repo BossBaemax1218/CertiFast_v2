@@ -145,7 +145,6 @@ while ($row = $result->fetch_assoc()) {
                                                     </a>
                                                     <a id="pdf" class="btn btn-light btn-border btn-sm">
                                                         <i class="fas fa-download"></i>
-                                                            Export
                                                     </a>
                                                     <div class="dropdown-menu mt-3" aria-labelledby="filterDropdown">
                                                         <div class="dropdown-item">
