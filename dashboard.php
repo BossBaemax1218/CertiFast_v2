@@ -52,7 +52,7 @@ include 'model/status.php';
         <?php include 'templates/main-header.php' ?>
         <?php include 'templates/sidebar.php' ?>
         <div class="main-panel">
-            <div class="content">
+            <div class="container mt-5">
                 <div class="page-inner">
                     <div class="row">
                         <div class="col-md-12">
@@ -91,7 +91,7 @@ include 'model/status.php';
                                                         <option value="yearly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'yearly') echo 'selected'; ?>>By Year</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-sm-12 col-md-2">
+                                                <div class="col-sm-12 col-md-3">
                                                     <label for="documentType">Document Type:</label>
                                                     <select class="form-control" id="documentType" name="documentType">
                                                         <option value="All" <?php if (isset($_POST['documentType']) && $_POST['documentType'] === 'All') echo 'selected'; ?>>All</option>

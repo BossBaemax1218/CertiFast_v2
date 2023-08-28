@@ -11,30 +11,31 @@ if (isset($_POST['id'])) {
     $residentData = $selectStmt->get_result()->fetch_assoc();
 
     $insertSql = "INSERT INTO tbl_trash (`national_id`, `citizenship`, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, `age`, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`,`resident_type`, `residency_status`,`requester`) 
-                                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $insertStmt = $conn->prepare($insertSql);
-    $insertStmt->bind_param("sssssssssssssssssss", 
-        $residentData['national_id'], 
-        $residentData['citizenship'], 
-        $residentData['picture'], 
-        $residentData['firstname'], 
-        $residentData['middlename'], 
-        $residentData['lastname'], 
-        $residentData['address'],
-        $residentData['birthplace'], 
-        $residentData['birthdate'], 
-        $residentData['age'], 
-        $residentData['civilstatus'], 
-        $residentData['gender'], 
-        $residentData['purok'], 
-        $residentData['voterstatus'], 
-        $residentData['taxno'], 
-        $residentData['phone'], 
-        $residentData['email'], 
-        $residentData['occupation'],
-        $residentData['resident_type'],
-        $residentData['residency_status'],
-        $residentData['requester']);
+    $insertStmt->bind_param("sssssssssssssssssssss", 
+    $residentData['national_id'], 
+    $residentData['citizenship'], 
+    $residentData['picture'], 
+    $residentData['firstname'], 
+    $residentData['middlename'], 
+    $residentData['lastname'], 
+    $residentData['address'],
+    $residentData['birthplace'], 
+    $residentData['birthdate'], 
+    $residentData['age'], 
+    $residentData['civilstatus'], 
+    $residentData['gender'], 
+    $residentData['purok'], 
+    $residentData['voterstatus'], 
+    $residentData['taxno'], 
+    $residentData['phone'], 
+    $residentData['email'], 
+    $residentData['occupation'],
+    $residentData['resident_type'],
+    $residentData['residency_status'],
+    $residentData['requester']);
+
     $insertStmt->execute();
 
     $deleteSql = "DELETE FROM tblresident WHERE id = ?";

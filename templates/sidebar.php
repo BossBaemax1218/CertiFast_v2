@@ -347,21 +347,21 @@ $totalAnnouncements = $row1['total_announcements'];
                         </li>
                     <?php endif ?>
                     <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'): ?>
-                        <li class="nav-item <?= $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_files.php' || $current_page=='backup.php' ? 'active' : null ?>">
+                        <li class="nav-item <?= $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_support_files.php' || $current_page == 'trash_files.php' || $current_page=='backup.php' ? 'active' : null ?>">
                             <a href="#system" data-toggle="collapse" class="collapsed" aria-expanded="false">
                                 <i class="fa-solid fa-wrench"></i>
                                 <p>System</p>
                                 <span class="caret"></span>
                             </a>
-                            <div class="collapse <?=   $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_files.php' || $current_page=='backup.php'  ? 'show' : null ?>" id="system">
+                            <div class="collapse <?=   $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_support_files.php' || $current_page == 'trash_files.php' || $current_page=='backup.php'  ? 'show' : null ?>" id="system">
                                 <ul class="nav nav-collapse">
-                                    <li class="<?= $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_files.php' ? 'active' : null ?>">
+                                    <li class="<?= $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_support_files.php' || $current_page == 'trash_files.php' ? 'active' : null ?>">
                                         <a href="#trash" data-toggle="collapse" class="collapsed" aria-expanded="false">
                                             <i class="fa fa-trash"></i>
                                             <p>Trash</p>
                                             <span class="caret"></span>
                                         </a>
-                                        <div class="collapse <?= $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_files.php'  ? 'show' : null ?>" id="trash">
+                                        <div class="collapse <?= $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_support_files.php' || $current_page == 'trash_files.php'  ? 'show' : null ?>" id="trash">
                                             <ul class="nav nav-collapse">
                                                 <li class="nav-item <?= $current_page == 'trash_files.php' ? 'active' : null ?>">
                                                     <a href="trash_files.php">
@@ -376,6 +376,11 @@ $totalAnnouncements = $row1['total_announcements'];
                                                 <li class="nav-item <?= $current_page == 'trash_trans_files.php' ? 'active' : null ?>">
                                                     <a href="trash_trans_files.php">
                                                         <i class="fa-regular fa-folder-open"></i>  Transaction Files
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item <?= $current_page == 'trash_support_files.php' ? 'active' : null ?>">
+                                                    <a href="trash_support_files.php">
+                                                        <i class="fa-regular fa-folder-open"></i>  Support Files
                                                     </a>
                                                 </li>
                                             </ul>
