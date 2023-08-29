@@ -2,7 +2,7 @@
 <?php 
    include 'model/footer.php';
    $family_taxid = $_GET['id'];
-   $family_taxquery = "SELECT * FROM tblfamily_tax AS c JOIN tblresident_requested AS r ON c.requirements = r.requirement WHERE c.fam_id='$family_taxid' AND c.cert_name = r.certificate_name AND c.email = r.email";
+   $family_taxquery = "SELECT * FROM tblfamily_tax AS c JOIN tblresident_requested AS r ON c.requirements = r.requirement WHERE c.fam_id='$family_taxid' AND c.cert_name = r.certificate_name AND c.email = r.email AND c.requester = r.resident_name";
    $family_taxresult = $conn->query($family_taxquery);
    $family_taxReq = $family_taxresult->fetch_assoc();
 

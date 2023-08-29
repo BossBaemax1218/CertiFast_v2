@@ -2,7 +2,7 @@
     include 'server/server.php';
     include 'model/footer.php';
     $iid = $_GET['id'];
-    $queries = "SELECT c.* FROM tblindigency AS c JOIN tblresident_requested AS r ON c.requirements = r.requirement WHERE c.indi_id='$iid' AND c.cert_name = r.certificate_name AND c.email = r.email";
+    $queries = "SELECT c.* FROM tblindigency AS c JOIN tblresident_requested AS r ON c.requirements = r.requirement WHERE c.indi_id='$iid' AND c.cert_name = r.certificate_name AND c.email = r.email AND c.requester = r.resident_name";
     $queresult = $conn->query($queries);
     $indiresident = $queresult->fetch_assoc();
 

@@ -2,7 +2,7 @@
 <?php 
    include 'model/footer.php';
    $good_moralid = $_GET['id'];
-   $good_moralquery = "SELECT * FROM tblgood_moral AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.good_id='$good_moralid' AND c.cert_name = r.certificate_name AND c.email = r.email";
+   $good_moralquery = "SELECT * FROM tblgood_moral AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.good_id='$good_moralid' AND c.cert_name = r.certificate_name AND c.email = r.email AND c.requester = r.resident_name";
    $good_moralresult = $conn->query($good_moralquery);
    $good_moralReq = $good_moralresult->fetch_assoc();
 

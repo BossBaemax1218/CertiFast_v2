@@ -2,7 +2,7 @@
 <?php 
    include 'model/footer.php';
    $resid = $_GET['id'];
-   $resquery = "SELECT * FROM tblresidency AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.res_id='$resid' AND c.cert_name = r.certificate_name AND c.email = r.email";
+   $resquery = "SELECT * FROM tblresidency AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.res_id='$resid' AND c.cert_name = r.certificate_name AND c.email = r.email AND c.requester = r.resident_name";
    $resresult = $conn->query($resquery);
    $resresident = $resresult->fetch_assoc();
 

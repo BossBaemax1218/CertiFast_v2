@@ -2,7 +2,7 @@
 <?php 
    include 'model/footer.php';
    $oathid = $_GET['id'];
-   $oathquery = "SELECT * FROM tbloath AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.oath_id='$oathid' AND c.cert_name = r.certificate_name AND c.email = r.email";
+   $oathquery = "SELECT * FROM tbloath AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.oath_id='$oathid' AND c.cert_name = r.certificate_name AND c.email = r.email AND c.requester = r.resident_name";
    $oathresult = $conn->query($oathquery);
    $oathReq = $oathresult->fetch_assoc();
 
