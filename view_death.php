@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <input type="hidden" name="cert_id" id="cert_id" value="<?= $resrequestedCert['cert_id'] ?>">
+                        <input type="hidden" name="cert_id" id="cert_id" value="<?= $deathCert ['cert_id'] ?>">
                         <a href="list_certificates.php" type="submit" class="btn btn-danger" style="text-decoration: none;">Close</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
