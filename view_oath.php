@@ -1,14 +1,14 @@
 <?php include 'server/server.php' ?>
 <?php 
    include 'model/footer.php';
-   $good_moralid = $_GET['id'];
-   $good_moralquery = "SELECT * FROM tblgood_moral AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.good_id='$good_moralid' AND c.cert_name = r.certificate_name";
-   $good_moralresult = $conn->query($good_moralquery);
-   $good_moralReq = $good_moralresult->fetch_assoc();
+   $oathid = $_GET['id'];
+   $oathquery = "SELECT * FROM tbloath AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.oath_id='$oathid' AND c.cert_name = r.certificate_name";
+   $oathresult = $conn->query($oathquery);
+   $oathReq = $oathresult->fetch_assoc();
 
-   $good_moralQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$good_moralReq['requirement']}' AND certificate_name = '{$good_moralReq['cert_name']}'";
-   $good_moralResult = $conn->query($good_moralQuery );
-   $good_moralCert = $good_moralResult->fetch_assoc();
+   $oathQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$oathReq['requirement']}' AND certificate_name = '{$oathReq['cert_name']}'";
+   $oathResult = $conn->query($oathQuery );
+   $oathCert = $oathResult->fetch_assoc();
 ?>
 <?php include 'list_certificates.php' ?>
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
@@ -27,39 +27,39 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Certificate ID no.</label>
-                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($good_moralCert['req_cert_id']) ?>">
+                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($oathCert['req_cert_id']) ?>">
                             </div>
                             <div class="form-group">
                                 <label>FullName</label>
-                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($good_moralReq['fullname']) ?>">
+                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($oathReq['fullname']) ?>">
                             </div>
                             <div class="form-group">
                                 <label>Purok</label>
-                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($good_moralReq['purok']) ?>">
+                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($oathReq['purok']) ?>">
                             </div>
                             <div class="form-group">
-                                <label>Tax no.</label>
-                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($good_moralReq['taxno']) ?>">
+                                <label>Age</label>
+                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($oathReq['age']) ?>">
                             </div>
                             <div class="form-group">
                                 <label>Reason</label>
-                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($good_moralReq['requirement']) ?>">
+                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($oathReq['requirement']) ?>">
                             </div>
                             <div class="form-group">
                                 <label>Certificate Name</label>
-                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($good_moralReq['cert_name']) ?>">
+                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($oathReq['cert_name']) ?>">
                             </div>
                             <div class="form-group">
                                 <label>Requester Name</label>
-                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($good_moralReq['requester']) ?>">
+                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($oathReq['requester']) ?>">
                             </div>
                             <div class="form-group">
                                 <label>Email Address</label>
-                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= $good_moralReq['email'] ?>">
+                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= $oathReq['email'] ?>">
                             </div>
                             <div class="form-group">
                                 <label>Date Issued</label>
-                                <input type="date" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($good_moralReq['date_applied']) ?>">
+                                <input type="date" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($oathReq['date_applied']) ?>">
                             </div>
                             <div class="form-group">
                                 <label>Update Status Certificate</label>
@@ -88,12 +88,12 @@
 <?php } ?>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        if (localStorage.getItem('opengood_moralModal') === 'true') {
+        if (localStorage.getItem('openOathModal') === 'true') {
             var editModal = document.getElementById("editModal");
             if (editModal) {
                 $(editModal).modal('show');
             }
-            localStorage.removeItem('opengood_moralModal');
+            localStorage.removeItem('openOathModal');
         }
     });
 </script>

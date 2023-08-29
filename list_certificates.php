@@ -412,11 +412,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         window.location.href = 'view_jobseekers.php?id=' + firstId;
                         break;
                     case 'certificate of oath taking':
-                        localStorage.setItem('openIndiCertModal', 'true');
+                        localStorage.setItem('openOathModal', 'true');
                         window.location.href = 'view_oath.php?id=' + oathId;
                         break;
                     case 'certificate of good moral':
-                        localStorage.setItem('openIndiCertModal', 'true');
+                        localStorage.setItem('opengood_moralModal', 'true');
                         window.location.href = 'view_good_moral.php?id=' + goodId;
                         break;
                     case 'certificate of live in':
