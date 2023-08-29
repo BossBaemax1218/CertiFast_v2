@@ -52,7 +52,7 @@
     </div>
     <div id="chartRow">
         <div class="card-footer"></div>
-          <label class="description" id="description"></label>
+          <label class="description ml-5" id="description"></label>
         </div>
         <div class="card-body">
           <canvas id="myChart3"></canvas>
