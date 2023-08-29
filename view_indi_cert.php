@@ -6,7 +6,7 @@
     $queresult = $conn->query($queries);
     $indiresident = $queresult->fetch_assoc();
 
-    $indicertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$indiresident['requirements']}' AND certificate_name = '{$indiresident['cert_name']}'";
+    $indicertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$indiresident['requirements']}' AND certificate_name = '{$indiresident['cert_name']}' AND email = '{$indiresident['email']}' AND resident_name = '{$indiresident['requester']}'";
     $indicertIdResult = $conn->query($indicertIdQuery);
     $indirequestedCert = $indicertIdResult->fetch_assoc();
 ?>

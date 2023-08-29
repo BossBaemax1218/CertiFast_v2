@@ -6,7 +6,7 @@
    $family_taxresult = $conn->query($family_taxquery);
    $family_taxReq = $family_taxresult->fetch_assoc();
 
-   $family_taxQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$family_taxReq['requirements']}' AND certificate_name = '{$family_taxReq['cert_name']}'";
+   $family_taxQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$family_taxReq['requirements']}' AND certificate_name = '{$family_taxReq['cert_name']}' AND email = '{$family_taxReq['email']}' AND resident_name = '{$family_taxReq['requester']}'";
    $family_taxResult = $conn->query($family_taxQuery );
    $family_taxCert = $family_taxResult->fetch_assoc();
 ?>

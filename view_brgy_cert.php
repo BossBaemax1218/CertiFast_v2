@@ -6,7 +6,7 @@
    $cleresult = $conn->query($clequery);
    $cleresident = $cleresult->fetch_assoc();
 
-   $clecertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$cleresident['requirement']}' AND certificate_name = '{$cleresident['cert_name']}'";
+   $clecertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$cleresident['requirement']}' AND certificate_name = '{$cleresident['cert_name']}' AND email = '{$cleresident['email']}' AND resident_name = '{$cleresident['requester']}'";
    $clecertIdResult = $conn->query($clecertIdQuery);
    $clerequestedCert = $clecertIdResult->fetch_assoc();
 ?>

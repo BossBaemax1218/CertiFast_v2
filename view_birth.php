@@ -6,7 +6,7 @@
    $birthresult = $conn->query($birthquery);
    $birthReq = $birthresult->fetch_assoc();
 
-   $birthQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$birthReq['requirement']}' AND certificate_name = '{$birthReq['cert_name']}'";
+   $birthQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$birthReq['requirement']}' AND certificate_name = '{$birthReq['cert_name']}' AND email = '{$birthReq['email']}' AND resident_name = '{$birthReq['requester']}'";
    $birthResult = $conn->query($birthQuery );
    $birthCert = $birthResult->fetch_assoc();
 ?>

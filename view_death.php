@@ -6,7 +6,7 @@
    $deathresult = $conn->query($deathquery);
    $deathReq = $deathresult->fetch_assoc();
 
-   $deathQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$deathReq['requirement']}' AND certificate_name = '{$deathReq['cert_name']}'";
+   $deathQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$deathReq['requirement']}' AND certificate_name = '{$deathReq['cert_name']}' AND email = '{$deathReq['email']}' AND resident_name = '{$deathReq['requester']}'";
    $deathResult = $conn->query($deathQuery );
    $deathCert = $deathResult->fetch_assoc();
 ?>

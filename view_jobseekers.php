@@ -6,7 +6,7 @@
    $jobresult = $conn->query($jobquery);
    $jobseek = $jobresult->fetch_assoc();
 
-   $jobcertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$jobseek['requirement']}' AND certificate_name = '{$jobseek['cert_name']}'";
+   $jobcertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$jobseek['requirement']}' AND certificate_name = '{$jobseek['cert_name']}' AND email = '{$jobseek['email']}' AND resident_name = '{$jobseek['requester']}'";
    $jobcertIdResult = $conn->query($jobcertIdQuery );
    $jobrequestedCert = $jobcertIdResult->fetch_assoc();
 ?>

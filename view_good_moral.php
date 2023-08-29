@@ -6,7 +6,7 @@
    $good_moralresult = $conn->query($good_moralquery);
    $good_moralReq = $good_moralresult->fetch_assoc();
 
-   $good_moralQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$good_moralReq['requirement']}' AND certificate_name = '{$good_moralReq['cert_name']}'";
+   $good_moralQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$good_moralReq['requirement']}' AND certificate_name = '{$good_moralReq['cert_name']}' AND email = '{$good_moralReq['email']}' AND resident_name = '{$good_moralReq['requester']}'";
    $good_moralResult = $conn->query($good_moralQuery );
    $GoodCert = $good_moralResult->fetch_assoc();
 ?>

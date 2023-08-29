@@ -6,7 +6,7 @@
    $brgyresult = $conn->query($brgyquery);
    $brgyresident = $brgyresult->fetch_assoc();  
 
-   $brgycertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$brgyresident['requirement']}' AND certificate_name = '{$brgyresident['cert_name']}'";
+   $brgycertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$brgyresident['requirement']}' AND certificate_name = '{$brgyresident['cert_name']}' AND email = '{$brgyresident['email']}' AND resident_name = '{$brgyresident['requester']}'";
    $brgycertIdResult = $conn->query($brgycertIdQuery);
    $brgyrequestedCert = $brgycertIdResult->fetch_assoc();
 ?>

@@ -6,7 +6,7 @@
    $resresult = $conn->query($resquery);
    $resresident = $resresult->fetch_assoc();
 
-   $rescertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$resresident['requirement']}' AND certificate_name = '{$resresident['cert_name']}'";
+   $rescertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$resresident['requirement']}' AND certificate_name = '{$resresident['cert_name']}' AND email = '{$resresident['email']}' AND resident_name = '{$resresident['requester']}'";
    $rescertIdResult = $conn->query($rescertIdQuery);
    $ResidentCert = $rescertIdResult->fetch_assoc();
 ?>

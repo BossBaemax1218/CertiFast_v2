@@ -6,7 +6,7 @@
    $oathresult = $conn->query($oathquery);
    $oathReq = $oathresult->fetch_assoc();
 
-   $oathQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$oathReq['requirement']}' AND certificate_name = '{$oathReq['cert_name']}'";
+   $oathQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$oathReq['requirement']}' AND certificate_name = '{$oathReq['cert_name']}' AND email = '{$oathReq['email']}' AND resident_name = '{$oathReq['requester']}'";
    $oathResult = $conn->query($oathQuery );
    $oathCert = $oathResult->fetch_assoc();
 ?>
