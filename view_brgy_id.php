@@ -2,7 +2,7 @@
 <?php 
    include 'model/footer.php';
    $brgyid = $_GET['id'];
-   $brgyquery = "SELECT * FROM tblbrgy_id AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.brgy_id='$brgyid' AND c.cert_name = r.certificate_name";
+   $brgyquery = "SELECT * FROM tblbrgy_id AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.brgy_id='$brgyid' AND c.cert_name = r.certificate_name AND c.email = r.email";
    $brgyresult = $conn->query($brgyquery);
    $brgyresident = $brgyresult->fetch_assoc();  
 

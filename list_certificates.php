@@ -375,17 +375,17 @@ document.addEventListener("DOMContentLoaded", function () {
         var resId = row.getAttribute("data-res_id");
         var clrId = row.getAttribute("data-c_id");
         var indId = row.getAttribute("data-indi_id");
-        var famId = row.getAttribute("data-fam_id");
+        var familyId = row.getAttribute("data-fam_id");
         var brgyIdAttr = row.getAttribute("data-brgy_id");
-        var firstId = row.getAttribute("data-first_id");
-        var oathId = row.getAttribute("data-oath_id");
-        var goodId = row.getAttribute("data-good_id");
-        var liveId = row.getAttribute("data-live_id");
+        var firstJobId = row.getAttribute("data-first_id");
+        var oathTakingId = row.getAttribute("data-oath_id");
+        var goodMoralId = row.getAttribute("data-good_id");
+        var liveInId = row.getAttribute("data-live_id");
         var dId = row.getAttribute("data-death_id");
         var birthIdAttr = row.getAttribute("data-birth_id");
         var viewBtn = row.querySelector(".view-certificate-btn ");
 
-        (function (resId, clrId, indId, famId, brgyIdAttr, firstId, oathId, goodId, liveId, dId, birthIdAttr) {
+        (function (resId, clrId, indId, familyId, brgyIdAttr, firstJobId, oathTakingId, goodMoralId, liveInId, dId, birthIdAttr) {
             viewBtn.addEventListener("click", function () {
                 var certName = this.getAttribute("data-certificate-name");
                 var editModal = document.getElementById("editModal");
@@ -409,23 +409,23 @@ document.addEventListener("DOMContentLoaded", function () {
                         break;
                     case 'first time jobseekers':
                         localStorage.setItem('openJobModal', 'true');
-                        window.location.href = 'view_jobseekers.php?id=' + firstId;
+                        window.location.href = 'view_jobseekers.php?id=' + firstJobId;
                         break;
                     case 'certificate of oath taking':
                         localStorage.setItem('openOathModal', 'true');
-                        window.location.href = 'view_oath.php?id=' + oathId;
+                        window.location.href = 'view_oath.php?id=' + oathTakingId;
                         break;
                     case 'certificate of good moral':
                         localStorage.setItem('opengood_moralModal', 'true');
-                        window.location.href = 'view_good_moral.php?id=' + goodId;
+                        window.location.href = 'view_good_moral.php?id=' + goodMoralId;
                         break;
                     case 'certificate of live in':
                         localStorage.setItem('openlive_inModal', 'true');
-                        window.location.href = 'view_live_in.php?id=' + liveId;
+                        window.location.href = 'view_live_in.php?id=' + liveInId;
                         break;
                     case 'family home estate':
                         localStorage.setItem('openfamily_taxModal', 'true');
-                        window.location.href = 'view_family_tax.php?id=' + famId;
+                        window.location.href = 'view_family_tax.php?id=' + familyId;
                         break;
                     case 'certificate of death':
                         localStorage.setItem('openDeathModal', 'true');
@@ -440,7 +440,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         break;
                 }
             });
-        })(resId, clrId, indId, famId, brgyIdAttr, firstId, oathId, goodId, liveId, dId, birthIdAttr);
+        })(resId, clrId, indId, familyId, brgyIdAttr, firstJobId, oathTakingId, goodMoralId, liveInId, dId, birthIdAttr);
     }
 });
 </script>

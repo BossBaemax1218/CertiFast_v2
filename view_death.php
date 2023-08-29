@@ -2,7 +2,7 @@
 <?php 
    include 'model/footer.php';
    $deathid = $_GET['id'];
-   $deathquery = "SELECT * FROM tbldeath AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.death_id='$deathid' AND c.cert_name = r.certificate_name";
+   $deathquery = "SELECT * FROM tbldeath AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.death_id='$deathid' AND c.cert_name = r.certificate_name AND c.email = r.email";
    $deathresult = $conn->query($deathquery);
    $deathReq = $deathresult->fetch_assoc();
 

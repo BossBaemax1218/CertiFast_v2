@@ -2,13 +2,13 @@
 <?php 
    include 'model/footer.php';
    $resid = $_GET['id'];
-   $resquery = "SELECT * FROM tblresidency AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.res_id='$resid' AND c.cert_name = r.certificate_name";
+   $resquery = "SELECT * FROM tblresidency AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.res_id='$resid' AND c.cert_name = r.certificate_name AND c.email = r.email";
    $resresult = $conn->query($resquery);
    $resresident = $resresult->fetch_assoc();
 
    $rescertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$resresident['requirement']}' AND certificate_name = '{$resresident['cert_name']}'";
    $rescertIdResult = $conn->query($rescertIdQuery);
-   $resrequestedCert = $rescertIdResult->fetch_assoc();
+   $ResidentCert = $rescertIdResult->fetch_assoc();
 ?>
 <?php include 'list_certificates.php' ?>
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
@@ -27,7 +27,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Certificate ID no.</label>
-                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($resrequestedCert['req_cert_id']) ?>">
+                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($ResidentCert['req_cert_id']) ?>">
                             </div>
                             <div class="form-group">
                                 <label>Certificate Name</label>
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <input type="hidden" name="cert_id" id="cert_id" value="<?= $resrequestedCert['cert_id'] ?>">
+                        <input type="hidden" name="cert_id" id="cert_id" value="<?= $ResidentCert['cert_id'] ?>">
                         <a href="list_certificates.php" type="submit" class="btn btn-danger" style="text-decoration: none;">Close</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>

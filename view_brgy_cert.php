@@ -2,7 +2,7 @@
 <?php 
    include 'model/footer.php';
    $cleid = $_GET['id'];
-   $clequery = "SELECT c.* FROM tblclearance AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.c_id='$cleid' AND c.cert_name = r.certificate_name";
+   $clequery = "SELECT c.* FROM tblclearance AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.c_id='$cleid' AND c.cert_name = r.certificate_name AND c.email = r.email";
    $cleresult = $conn->query($clequery);
    $cleresident = $cleresult->fetch_assoc();
 

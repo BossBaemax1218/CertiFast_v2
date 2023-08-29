@@ -2,7 +2,7 @@
 <?php 
    include 'model/footer.php';
    $jobid = $_GET['id'];
-   $jobquery = "SELECT * FROM tblfirstjob AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.job_id='$jobid' AND c.cert_name = r.certificate_name";
+   $jobquery = "SELECT * FROM tblfirstjob AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.job_id='$jobid' AND c.cert_name = r.certificate_name AND c.email = r.email";
    $jobresult = $conn->query($jobquery);
    $jobseek = $jobresult->fetch_assoc();
 

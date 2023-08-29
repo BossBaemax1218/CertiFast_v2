@@ -2,13 +2,13 @@
 <?php 
    include 'model/footer.php';
    $good_moralid = $_GET['id'];
-   $good_moralquery = "SELECT * FROM tblgood_moral AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.good_id='$good_moralid' AND c.cert_name = r.certificate_name";
+   $good_moralquery = "SELECT * FROM tblgood_moral AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.good_id='$good_moralid' AND c.cert_name = r.certificate_name AND c.email = r.email";
    $good_moralresult = $conn->query($good_moralquery);
    $good_moralReq = $good_moralresult->fetch_assoc();
 
    $good_moralQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$good_moralReq['requirement']}' AND certificate_name = '{$good_moralReq['cert_name']}'";
    $good_moralResult = $conn->query($good_moralQuery );
-   $good_moralCert = $good_moralResult->fetch_assoc();
+   $GoodCert = $good_moralResult->fetch_assoc();
 ?>
 <?php include 'list_certificates.php' ?>
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
@@ -27,7 +27,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Certificate ID no.</label>
-                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($good_moralCert['req_cert_id']) ?>">
+                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($GoodCert['req_cert_id']) ?>">
                             </div>
                             <div class="form-group">
                                 <label>FullName</label>
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <input type="hidden" name="cert_id" id="cert_id" value="<?= $good_moralCert['cert_id'] ?>">
+                        <input type="hidden" name="cert_id" id="cert_id" value="<?= $GoodCert['cert_id'] ?>">
                         <a href="list_certificates.php" type="submit" class="btn btn-danger" style="text-decoration: none;">Close</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
