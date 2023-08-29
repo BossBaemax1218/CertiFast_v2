@@ -420,15 +420,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         window.location.href = 'view_good_moral.php?id=' + goodId;
                         break;
                     case 'certificate of live in':
-                        localStorage.setItem('openIndiCertModal', 'true');
+                        localStorage.setItem('openlive_inModal', 'true');
                         window.location.href = 'view_live_in.php?id=' + liveId;
                         break;
                     case 'family home estate':
-                        localStorage.setItem('openIndiCertModal', 'true');
+                        localStorage.setItem('openfamily_taxModal', 'true');
                         window.location.href = 'view_family_tax.php?id=' + famId;
                         break;
                     case 'certificate of death':
-                        localStorage.setItem('openIndiCertModal', 'true');
+                        localStorage.setItem('openDeathModal', 'true');
                         window.location.href = 'view_death.php?id=' + dId;
                         break;
                     case 'certificate of birth':

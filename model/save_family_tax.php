@@ -13,6 +13,7 @@ $fam2 = $conn->real_escape_string($_POST['fam_2']);
 $fam3 = $conn->real_escape_string($_POST['fam_3']);
 $fam4 = $conn->real_escape_string($_POST['fam_4']);
 $fam5 = $conn->real_escape_string($_POST['fam_5']);
+$purok = $conn->real_escape_string($_POST['purok']);
 $tct = $conn->real_escape_string($_POST['tctno']);
 $req = $conn->real_escape_string($_POST['requirements']);
 $cert_name = $conn->real_escape_string($_POST['certificate_name']);
@@ -84,8 +85,8 @@ if (!empty($fam1) && !empty($fam2) && !empty($fam3) && !empty($fam4) && !empty($
                 $checkDuplicateData = $checkDuplicateResult->fetch_assoc();
 
                 if ($checkDuplicateData['count'] < 1) {
-                    $insert_query = "INSERT INTO tblfamily_tax(`fam_1`, `fam_2`, `fam_3`, `fam_4`, `fam_5`, `tctno`, `cert_name`, `requirements`, `fullname`, `email`)
-                                     VALUES ('$fam1', '$fam2', '$fam3', '$fam4', '$fam5', '$tct', '$cert_name', '$req', '$fullname', '$user_email')";
+                    $insert_query = "INSERT INTO tblfamily_tax(`fam_1`, `fam_2`, `fam_3`, `fam_4`, `fam_5`,`purok`, `tctno`, `cert_name`, `requirements`, `requester`, `email`)
+                                        VALUES ('$fam1', '$fam2', '$fam3', '$fam4', '$fam5', '$purok', '$tct', '$cert_name', '$req', '$fullname', '$user_email','$requester')";
                     $result_resident = $conn->query($insert_query);
 
                     if ($result_resident === true) {
@@ -179,8 +180,8 @@ if (!empty($fam1) && !empty($fam2) && !empty($fam3) && !empty($fam4) && !empty($
             exit();
         }
 
-        $insert_query = "INSERT INTO tblfamily_tax(`fam_1`, `fam_2`, `fam_3`, `fam_4`, `fam_5`, `tctno`, `cert_name`, `requirements`, `fullname`, `email`)
-                         VALUES ('$fam1', '$fam2', '$fam3', '$fam4', '$fam5', '$tct', '$cert_name', '$req', '$fullname', '$user_email')";
+        $insert_query = "INSERT INTO tblfamily_tax(`fam_1`, `fam_2`, `fam_3`, `fam_4`, `fam_5`,`purok`, `tctno`, `cert_name`, `requirements`, `requester`, `email`)
+                VALUES ('$fam1', '$fam2', '$fam3', '$fam4', '$fam5', '$purok', '$tct', '$cert_name', '$req', '$fullname', '$user_email','$requester')";
         $result_resident = $conn->query($insert_query);
 
         if ($result_resident === true) {
