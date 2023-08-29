@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $taxno = $conn->real_escape_string($row['taxno']);
                     $number = $conn->real_escape_string($row['phone']);
                     $occupation = $conn->real_escape_string($row['occupation']);
-                    $remarks = $conn->real_escape_string($row['remarks']);
                     $res_status = $conn->real_escape_string($row['residency_status']);
                     $profile = $conn->real_escape_string($row['profileimg']);
                     $profile2 = $_FILES['img']['name'];
@@ -45,8 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $newName = date('dmYHis') . str_replace(" ", "", $profile2);
                     $target = "../assets/uploads/resident_profile/" . basename($newName);
                     $insertQuery = "UPDATE tblpurok_records SET national_id='$national_id',citizenship='$citi',`firstname`='$fname', `middlename`='$mname', `lastname`='$lname', `address`='$address', `birthplace`='$bplace', `birthdate`='$bdate', 
-                    age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `taxno`='$taxno', `phone`='$number', `email`='$email',`occupation`='$occu', `remarks`='$remarks',
-                    `resident_type`='$deceased', `purpose`='$purpose'
+                    age=$age, `civilstatus`='$cstatus', `gender`='$gender', `purok`='$purok', `voterstatus`='$vstatus', `taxno`='$taxno', `phone`='$number', `email`='$email',`occupation`='$occu', `resident_type`='$deceased'
                     WHERE id=$id;";
 
                     if ($conn->query($insertQuery) === TRUE) {
