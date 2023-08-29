@@ -20,7 +20,7 @@ $cert_name = $conn->real_escape_string($_POST['certificate_name']);
 $user_email = $conn->real_escape_string($_POST['email']);
 $fullname = $conn->real_escape_string($_POST['fullname']);
 
-if (!empty($fam1) && !empty($fam2) && !empty($fam3) && !empty($fam4) && !empty($fam5) && !empty($tct) && !empty($req)) {
+if (!empty($fam1) && !empty($fam2) && !empty($fam3) && !empty($fam4) && !empty($tct) && !empty($req)) {
 
     $residencyStatusCheckQuery = "SELECT COUNT(*) AS status_count, residency_status FROM tblresident WHERE email = '$user_email' LIMIT 1";
     $residencyStatusCheckResult = $conn->query($residencyStatusCheckQuery);
