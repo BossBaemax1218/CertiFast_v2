@@ -594,11 +594,12 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>Children Name's</label>
+                                                <p>If you had three children complete the form, if not please put <strong>N/A</strong>.</p>
                                                 <input type="text" class="form-control mb-2" placeholder="First child name" name="fam_3" required>
-                                                <input type="text" class="form-control mb-2" placeholder="Second child name" name="fam_4">
-                                                <input type="text" class="form-control mb-2" placeholder="Third child name (Optional)" name="fam_5">
+                                                <input type="text" class="form-control mb-2" placeholder="Second child name" name="fam_4" required>
+                                                <input type="text" class="form-control mb-2" placeholder="Third child name" name="fam_5" required>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group"></div>
                                                 <label>Transfer Certificate of Title (TCT) number?</label>
                                                 <input class="form-control" name="tctno" required placeholder="TCT number"></input>
                                             </div>
