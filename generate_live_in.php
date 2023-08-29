@@ -83,7 +83,7 @@
                                                 </h2>
                                                 <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
                                                     This further certifies that the abovementioned names are living together for
-                                                    <span class="text"><?= ucwords($resident['living_year']) ?></span> years.
+                                                    <span class="text"><?= $resident['living_year'] ?></span>.
                                                 </h2>
                                                 <h2 class="mt-3" style="text-align: justify; text-indent: 40px;">
                                                     This certification is issued upon the request of the aforementioned for 

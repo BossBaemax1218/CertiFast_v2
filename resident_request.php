@@ -534,8 +534,8 @@ $conn->close();
                                                 <input type="number" class="form-control" placeholder="Wife's age" min="1" name="wife_age" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>How many years do you live together?</label>
-                                                <input type="number" class="form-control" placeholder="" name="living_year" required>
+                                                <label>How many year's do you live together?</label>
+                                                <input type="text" class="form-control" placeholder="Ex: 1 year or 2 years" min="1" name="living_year" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -723,7 +723,7 @@ $conn->close();
                                                 <input class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>How many years have you living in the barangay?</label>
+                                                <label>How many year's have you living in the barangay?</label>
                                                 <input type="text" class="form-control" name="resident_years" required placeholder="Ex: 1 year or 2 years" required>
                                             </div>
                                         </div>

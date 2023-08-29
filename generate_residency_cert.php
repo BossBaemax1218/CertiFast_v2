@@ -76,7 +76,7 @@
                                                     <span class="text"><?= ucwords($town) ?></span>, Davao City.
                                                 </h2>
                                                 <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
-                                                    This further certifies that the abovementioned is living in this Barangay for <?= ucwords($resident['resident_year']) ?>.
+                                                    This further certifies that the abovementioned is living in this Barangay for <?= $resident['resident_year'] ?>.
                                                 </h2>
                                                 <h2 class="mt-4" style="text-align: justify; text-indent: 40px;">
                                                     This certification is issued upon the request of the aforementioned for 
