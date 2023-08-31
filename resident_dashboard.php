@@ -145,7 +145,7 @@ include 'model/requested_status.php';
 									</div>
 									<div class="card-body">
 										<div class="table-responsive mt-3">
-											<table id="residenttable" class="table">
+											<table class="residenttable table">
 												<thead>
 													<tr>
 														<th scope="col">Date Applied</th>

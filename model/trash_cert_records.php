@@ -13,7 +13,7 @@ if (isset($_POST['id'])) {
     $insertSql = "INSERT INTO tbl_trash_reqcert (`req_cert_id`, `resident_name`, `certificate_name`, `purok`, `email`, `requirement`, `status`) 
                   VALUES (?, ?, ?, ?, ?, ?, ?)";
     $insertStmt = $conn->prepare($insertSql);
-    $insertStmt->bind_param("issssss",  
+    $insertStmt->bind_param("sssssss",  
         $residentData['req_cert_id'], 
         $residentData['resident_name'], 
         $residentData['certificate_name'], 

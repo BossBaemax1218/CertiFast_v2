@@ -51,14 +51,14 @@
         </div>                                 
     </div>
     <div id="chartRow">
-        <div class="card-footer"></div>
-          <label class="description ml-5" id="description"></label>
+        <div class="card-footer" style="font-size: 16px;">
+            <label class="description ml-5 mt-3" id="description"></label>
         </div>
-        <div class="card-body">
-          <canvas id="myChart3"></canvas>
+        <div class="card-body" style="font-size: 16px;">
+            <canvas id="myChart3"></canvas>
         </div>
     </div>
-  </div>
+</div>
 <?php
 include 'server/db_connect.php';
 
@@ -186,7 +186,7 @@ include 'server/db_connect.php';
         }
     });
 
-    var description = "<table><tr><th> This is all the data of the certifications that has been requested. </th><th></th></tr>";
+    var description = "<table><tr><th style='text-align: center; font-size: 24px;'> This is all the data of the certifications that has been requested. </th><th></th></tr>";
     documentTypes.forEach(function(documentType) {
         var value;
         if (documentType === "All") {
@@ -195,7 +195,7 @@ include 'server/db_connect.php';
             value = totalValues[documentType] || 0;
         }
 
-        description += "<tr><td>" + documentType + "</td><td><b>" + value + "</b></td></tr>";
+        description += "<tr><td style='font-size: 20px;'>" + documentType + "</td><td style='font-size: 20px;'><b>" + value + "</b></td></tr>";
     });
     description += "</table>";
 
@@ -226,3 +226,32 @@ function getRandomColor() {
     return color;
 }
 </script>
+<script>
+    document.getElementById("pdfExportBtn").addEventListener("click", function () {
+      var doc = new jsPDF();
+      var chartRow = document.getElementById("chartRow");
+      var fromDate = document.getElementById("fromDate").value;
+      var toDate = document.getElementById("toDate").value;
+      var documentType = document.getElementById("documentType").value;
+
+      var title = "Overview Bar Chart Visualization Reports";
+      doc.setFontSize(18);
+      doc.text(title, 10, 10);
+
+      var currentDate = new Date().toLocaleDateString();
+      doc.setFontSize(14);
+      doc.text("Today Date: " + currentDate, 10, 20);
+      doc.text("Date: " + fromDate + " to " + toDate, 10, 30);
+      doc.text("Document Type: " + documentType, 10, 40);
+
+      var width = 200;
+      var height = 150;
+
+      html2canvas(chartRow, { scale: 1 }).then(function (canvas) {
+        var imgData = canvas.toDataURL("image/png");
+        doc.addImage(imgData, "PNG", 5, 60, width, height);
+
+        doc.save("Dashboard-Chart.pdf");
+      });
+    });
+</script>   

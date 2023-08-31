@@ -68,11 +68,9 @@ include 'model/status.php';
                                     </div>
                                 <?php unset($_SESSION['message']); ?>
                                 <?php endif ?>
-                                <div class="d-flex align-items-left align-items-md-center flex-column">
-                                    <div class="col-md-10">
-                                        <div class="chart-wrapper">
-                                            <?php include 'model/chart.php'; ?>
-                                        </div>
+                                <div class="col-md-12">
+                                    <div class="chart-wrapper">
+                                        <?php include 'model/chart.php'; ?>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +150,7 @@ include 'model/status.php';
                                                 </div>
                                             </div>
                                         </div>
-                                    <div class="content">
+                                    <div class="container">
                                         <?php if(isset($_SESSION['message'])): ?>
                                             <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -204,43 +202,13 @@ include 'model/status.php';
                                     </div>
                                 </div>
                             </div>
-
-                    </div>
-                <?php endif ?>
+                        </div>
+                    <?php endif ?>
+                </div>
             </div>
+            <?php include 'templates/main-footer.php' ?>
         </div>
-        <?php include 'templates/main-footer.php' ?>
     </div>
-</div>
-<?php include 'templates/footer.php' ?>
-	<script>
-    document.getElementById("pdfExportBtn").addEventListener("click", function () {
-      var doc = new jsPDF();
-      var chartRow = document.getElementById("chartRow");
-      var fromDate = document.getElementById("fromDate").value;
-      var toDate = document.getElementById("toDate").value;
-      var documentType = document.getElementById("documentType").value;
-
-      var title = "Overview Bar Chart Visualization Reports";
-      doc.setFontSize(18);
-      doc.text(title, 10, 10);
-
-      var currentDate = new Date().toLocaleDateString();
-      doc.setFontSize(12);
-      doc.text("Today Date: " + currentDate, 10, 20);
-      doc.text("Date: " + fromDate + " to " + toDate, 10, 30);
-      doc.text("Document Type: " + documentType, 10, 40);
-
-      var width = 180;
-      var height = 150;
-
-      html2canvas(chartRow, { scale: 2 }).then(function (canvas) {
-        var imgData = canvas.toDataURL("image/png");
-        doc.addImage(imgData, "PNG", 10, 50, width, height);
-
-        doc.save("Dashboard-Chart.pdf");
-      });
-    });
-</script>
+    <?php include 'templates/footer.php' ?>
 </body>
 </html>

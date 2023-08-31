@@ -13,7 +13,7 @@ if (isset($_POST['id'])) {
     $insertSql = "INSERT INTO tbl_trash_trans (`trans_id`, `details`, `amounts`, `user`, `name`, `email`, `status`, `requirement`) 
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $insertStmt = $conn->prepare($insertSql);
-    $insertStmt->bind_param("isssssss",  
+    $insertStmt->bind_param("ssssssss",  
         $paymentData['trans_id'], 
         $paymentData['details'], 
         $paymentData['amounts'], 
