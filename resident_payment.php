@@ -94,7 +94,7 @@ include 'server/db_connection.php';
                                                 ?>
                                                 
                                                 <?php if ($paymentHistoryResult->num_rows > 0): ?>
-                                                    <table id="residenttable" class="table">
+                                                    <table id="" class="residenttable table">
                                                         <thead>
                                                             <tr>
                                                                 <th scope="col">Transaction ID</th>

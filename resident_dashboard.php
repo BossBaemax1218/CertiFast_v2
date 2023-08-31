@@ -138,10 +138,10 @@ include 'model/requested_status.php';
 						    <div class="p-1 mb-2 bg-info text-white">
                                 <h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>   Please proceed in <strong>Profiling</strong> to officially complete your account registration.</h5>
                             </div>
-							<div class="contaitner">
+							<div class="content">
 								<div class="card">
 									<div class="card-header">
-										<h4 class="card-title">Certificate Request</h4>
+										<h4 class="card-title"></h4>
 									</div>
 									<div class="card-body">
 										<div class="table-responsive mt-3">

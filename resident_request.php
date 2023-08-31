@@ -348,7 +348,7 @@ $conn->close();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer mt-2 d-flex justify-content-center">
                                         <input type="hidden" name="certificate_name" value="barangay identification" required>
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
@@ -400,7 +400,7 @@ $conn->close();
                                     <input type="text" class="form-control" name="requirement" id="requirement" placeholder="Reason" required>
                                 </div>
                        		</div>
-							<div class="modal-footer">
+							<div class="modal-footer mt-2 d-flex justify-content-center">
                                 <input type="hidden" name="certificate_name" value="business permit" required>
                                 <input type="hidden" name="req_email" value="<?= $_SESSION["user_email"]; ?>" required>
                                 <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
@@ -445,7 +445,7 @@ $conn->close();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer mt-2 d-flex justify-content-center">
                                         <input type="hidden" name="certificate_name" value="certificate of oath taking" required>
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
@@ -491,7 +491,7 @@ $conn->close();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer mt-2 d-flex justify-content-center">
                                         <input type="hidden" name="certificate_name" value="barangay clearance" required>
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
@@ -549,7 +549,7 @@ $conn->close();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer mt-2 d-flex justify-content-center">
                                         <input type="hidden" name="certificate_name" value="certificate of live in" required>
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
@@ -609,7 +609,7 @@ $conn->close();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer mt-2 d-flex justify-content-center">
                                         <input type="hidden" name="certificate_name" value="family home estate" required>
                                         <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
@@ -678,7 +678,7 @@ $conn->close();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer mt-2 d-flex justify-content-center">
                                         <input type="hidden" name="certificate_name" value="certificate of birth" required>
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
@@ -728,7 +728,7 @@ $conn->close();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer mt-2 d-flex justify-content-center">
                                         <input type="hidden" name="certificate_name" value="certificate of residency">
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>">
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>">
@@ -770,7 +770,7 @@ $conn->close();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer mt-2 d-flex justify-content-center">
                                         <input type="hidden" name="certificate_name" value="certificate of indigency" required>
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
@@ -816,7 +816,7 @@ $conn->close();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer mt-2 d-flex justify-content-center">
                                         <input type="hidden" name="certificate_name" value="first time jobseekers" required>
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>

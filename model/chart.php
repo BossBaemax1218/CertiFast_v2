@@ -9,9 +9,9 @@
                     <div class="dropdown-item">
                         <label for="dateType">Date Type:</label>
                         <select class="form-control" id="dateType" name="dateType" onclick="event.stopPropagation();">
-                            <option value="weekly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'weekly') echo 'selected'; ?>>By Week</option>
-                            <option value="monthly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'monthly') echo 'selected'; ?>>By Month</option>
-                            <option value="yearly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'yearly') echo 'selected'; ?>>By Year</option>
+                            <option value="weekly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'weekly') echo 'selected'; ?>>Show By Week</option>
+                            <option value="monthly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'monthly') echo 'selected'; ?>>Show By Month</option>
+                            <option value="yearly" <?php if (isset($_POST['dateType']) && $_POST['dateType'] === 'yearly') echo 'selected'; ?>>Show By Year</option>
                         </select>
                     </div>
                     <div class="dropdown-item">

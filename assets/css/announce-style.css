@@ -15,9 +15,9 @@
     font-weight: bold;
 }
 .announcement-table td.title-header {
-    color: #fff;
+    color: #fcfcfc;
     padding: 15px;
-    background-color: #e42654;
+    background-color: #008cff;
     font-weight: bold;
     border-radius: 12px 12px 0 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -57,4 +57,12 @@
     color: green;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 0 0 12px 12px;
+}
+.new-icon {
+    background-color: #f44336;
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
 }

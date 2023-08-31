@@ -321,3 +321,208 @@ $conn->close();
       });
     });
 </script>
+
+<div id="DeactivateDeleteModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">Deactivate or delete your account.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="model/delete_account.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <span class="mt-4 mb-5">Temporarily deactivate or pemanently delete your account.</span><br>
+                            <form method="POST" action="model/delete_account.php" enctype="multipart/form-data">
+                                <a href="" class="form-control mt-3 mb-2 btn btn-danger" type="button" data-toggle="modal" data-target="#deleteConfirmationModal" style="text-decoration: none;">
+                                    <span class="link-collapse">Delete Account</span>
+                                </a>
+                            </form>
+                            <form method="POST" action="model/deactivate_account.php" enctype="multipart/form-data">
+                                <a href="" class="form-control btn btn-primary" type="button" data-toggle="modal" data-target="#deactivationConfirmationModal" style="text-decoration: none;">
+                                    <span class="link-collapse">Deactivate Account</span>
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="deleteConfirmationModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">Delete Account Permanently</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="model/delete_account.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <p class="fw-bold" style="font-size: 16px;">Delete Account</p>
+                    <label><strong>Deleting your account is permanently.</strong> When you delete your account, you've won't be able to retrieve the information and the transaction you shared
+                    in the CertiFast Portal.</label>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="email" value="<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>" class="input" readonly>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a class="text-white btn btn-danger" type="submit" data-toggle="modal" value="Delete" data-target="#passwordConfirmationModal" name="submit">Delete</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="deactivationConfirmationModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">Delete Account Permanently</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="model/deactivate_account.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <p class="fw-bold" style="font-size: 16px;">Deactive Account</p>
+                    <label><strong>Deactivating your account is temporary.</strong> Your account will disabled and your name, photos and your transactions will be removed.</label>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="email" value="<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>" class="input" readonly>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a class="text-white btn btn-danger" type="submit" data-toggle="modal" value="Deactivate" data-target="#passwordConfirmationModal" name="submit">Deactivate</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="passwordConfirmationModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">For your security, please re-enter your password to continue.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="model/delete_account.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter your password" name="password" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a class="text-white btn btn-danger" type="button" data-toggle="modal" value="Confirm" data-target="#confirmpasswordModal" name="submit">Confirm</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<a href="" class="form-control mt-3 mb-2 btn btn-danger" type="submit" data-target="#deleteConfirmationModal" data-toggle="modal" style="text-decoration: none;">
+                    <span class="link-collapse">Delete Account</span>
+                </a>
+                <a href="" class="form-control btn btn-primary" type="submit" data-target="#deactivationConfirmationModal" data-toggle="modal" style="text-decoration: none;">
+                    <span class="link-collapse">Deactivate Account</span>
+                </a>
+
+                <div id="DeactivateDeleteModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">Deactivate or delete your account.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="form-group text-left">
+                        <span class="mt-4 mb-5">Deactivating or deleting your CertiFast account. If you want to take a break from CertiFast, you can deactivate your account. Please let us know if you want to permanently delete your CertiFast account.</span>
+                        <div class="form-control mt-2">
+                            <input type="radio" name="action" value="deactivation" class="radio-input"> 
+                            <strong>Deactivation Account</strong>
+                            <div class="text-muted mt-2">
+                                <p>This will temporarily deactivate your account. Your account will be disabled, and your name, photos, and transactions will be removed.</p>
+                            </div>
+                        </div>
+                        <div class="form-control mt-2">
+                            <input type="radio" name="action" value="delete" class="radio-input"> 
+                            <strong>Delete Account</strong>
+                            <div class="text-muted mt-2">
+                                <p>This will permanently delete your account. When you delete your account, you won't be able to retrieve the information and transactions you shared in the CertiFast Portal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer mt-2 d-flex justify-content-center">
+                <a href="" class="btn btn-primary mr-2" type="button" data-target="#passwordConfirmationModal" data-toggle="modal" style="text-decoration: none;">
+                    <span class="link-collapse">Confirm</span>
+                </a>
+                <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">
+                    <span class="link-collapse">Cancel</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="deleteConfirmationModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">Delete Account Permanently</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="model/delete_account.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <p class="fw-bold" style="font-size: 16px;">Delete Account</p>
+                    <label><strong>Deleting your account is permanently.</strong> When you delete your account, you've won't be able to retrieve the information and the transaction you shared
+                    in the CertiFast Portal.</label>
+                    <a href="" class="form-control mt-3 mb-2 btn btn-danger" value="Delete" type="submit" data-toggle="modal" style="text-decoration: none;">
+                        <span class="link-collapse">Delete Account</span>
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="email" value="<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>" class="input" readonly>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="deactivationConfirmationModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">Deactivation Account Temporary</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="model/deactivate_account.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <p class="fw-bold" style="font-size: 16px;">Deactivation Account</p>
+                    <label><strong>Deactivating your account is temporary.</strong> Your account will disabled and your name, photos and your transactions will be removed.</label>
+                    <a href="" class="form-control mt-3 mb-2 btn btn-primary" value="Deactivate" type="submit" data-toggle="modal" style="text-decoration: none;">
+                        <span class="link-collapse">Deactivate Account</span>
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="email" value="<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>" class="input" readonly>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

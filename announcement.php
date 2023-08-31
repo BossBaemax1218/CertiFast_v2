@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php
-    $query = "SELECT * FROM tbl_announcement ORDER BY id ASC";
+    $query = "SELECT * FROM tbl_announcement ORDER BY date_posted ASC";
     $result = $conn->query($query);
 
     $announce = array();
@@ -25,7 +25,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-black fw-bold" style="font-size: 300%">Position Management</h2>
+								<h2 class="text-black fw-bold" style="font-size: 300%">Announcement</h2>
 							</div>
 						</div>
 					</div>
@@ -92,7 +92,7 @@
                                                                     data-username="<?= $row['username'] ?>" data-date_posted="<?= $row['date_posted'] ?>" data-id="<?= $row['id'] ?>">
                                                                     <i class="fas fa-eye"></i>
                                                                 </a>
-                                                                <a type="button" data-toggle="tooltip" href="model/remove_announcement.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this position?');" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                                <a type="button" data-toggle="tooltip" href="model/remove_announcement.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-link btn-danger" data-original-title="Remove">
                                                                     <i class="fas fa-trash"></i>
                                                                 </a>
                                                             </div>

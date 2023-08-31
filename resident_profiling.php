@@ -63,7 +63,7 @@ $conn->close();
 </head>
 <body>
     <?php include 'templates/loading_screen.php' ?>
-    <div class="wrapper">
+<div class="wrapper">
         <?php include 'templates/main-header-resident.php' ?>
         <?php include 'templates/sidebar-resident.php' ?>
         <div class="main-panel">
@@ -135,8 +135,8 @@ $conn->close();
                     </div>
                 </div>
             </div>
+        </div>
     <?php include 'templates/main-footer.php' ?>
-    </div>
 </div>
 <?php include 'templates/footer.php' ?>
 

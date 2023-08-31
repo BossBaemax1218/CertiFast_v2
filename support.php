@@ -64,7 +64,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="messages <?= $isNewMessage ? ' new-message' : '' ?>">
+                                        <div class="mt-2 messages <?= $isNewMessage ? ' new-message' : '' ?>">
                                             <?php foreach ($ticket as $row): ?>
                                                 <div class="message">
                                                     <div class="message-header">

@@ -138,7 +138,7 @@ $stmt->close();
                                     </div>
 								<div class="card-body">
 									<div class="table-responsive">
-                                    <table id="residenttable" class="table">
+                                    <table id="" class="residenttable table">
 											<thead>
 												<tr class="text-center">
 												    <th scope="col">Certificate ID</th>
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const toDate = document.getElementById("toDate");
   const clearFiltersBtn = document.getElementById("clearFilters");
   
-  const tableRows = document.querySelectorAll("#residenttable tbody tr");
+  const tableRows = document.querySelectorAll(".residenttable tbody tr");
   
   function rowMatchesFilter(row) {
     const statusValue = filterStatus.value.toLowerCase();
