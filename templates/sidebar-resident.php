@@ -75,7 +75,7 @@ while($row2 = $result1->fetch_assoc()){
                                 <a href="" type="button" data-target="#user_changepass" data-toggle="modal">
                                     <span class="link-collapse">Change Password</span>
                                 </a>
-                                <a href="" type="button" data-toggle="modal" data-target="#deleteConfirmationModal">
+                                <a href="" type="button" data-target="#DeactivateDeleteModal" data-toggle="modal">
                                     <span class="link-collapse">Delete Account</span>
                                 </a>
                                 <br>
@@ -147,14 +147,14 @@ while($row2 = $result1->fetch_assoc()){
                 </li>
                 <li class="nav-item <?= $current_page=='resident_certificates.php' || $current_page=='resident_certificates.php' ? 'active' : null ?>">
                     <a href="resident_certificates.php">
-                        <i class="fa-solid fa-list-check"></i>
-                        <p>Certificates Status</p>
+                        <i class="fa-solid fa-certificate"></i>
+                        <p>Certificates History</p>
                     </a>
                 </li>
                 <li class="nav-item <?= $current_page=='resident_payment.php' || $current_page=='resident_payment.php' ? 'active' : null ?>">
                     <a href="resident_payment.php">
-                        <i class="fa-solid fa-receipt"></i>
-                        <p>Payments Status</p>
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <p>Payments History</p>
                     </a>
                 </li>
                 <li class="nav-section">
@@ -185,58 +185,46 @@ while($row2 = $result1->fetch_assoc()){
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<div id="deleteConfirmationModal" class="modal">
+<div id="DeactivateDeleteModal" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title fw-bold">Delete Account Permanently</h5>
+                <h5 class="modal-title fw-bold">Deleting your CertiFast account.</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST" action="model/delete_account.php" enctype="multipart/form-data">
-                <div class="modal-body">
-                    <p style="font-size: 16px;">Are you sure you want to permanently delete your account?</p>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <span>If you want to take a break from CertiFast, please let us know if you want to permanently delete your CertiFast account.</span>
+                        <input type="text" class="form-control mt-2 text-left btn btn-outline-dark disabled" placeholder="Enter your email address" name="email" value="<?= $_SESSION['user_email'] ?>"> 
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" name="reason" required>
+                            <option value="" disabled selected>Select a reason</option>
+                            <option value="break">Take a break</option>
+                            <option value="personal">Personal reasons</option>
+                            <option value="privacy">Privacy concerns</option>>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea type="text" class="form-control" rows="5" placeholder="Additional comments" name="message"></textarea>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <input type="hidden" name="email" value="<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>" class="input" readonly>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" type="button" data-toggle="modal" data-target="#passwordConfirmationModal" name="submit">Delete</a>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<div id="passwordConfirmationModal" class="modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title fw-bold">For your security, please re-enter your password to continue.</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">
+                    <span class="link-collapse">Cancel</span>
+                </button>
+                <button class="btn btn-primary mr-2" type="button">
+                    <span class="link-collapse">Continue</span>
                 </button>
             </div>
-            <form method="POST" action="model/delete_account.php" enctype="multipart/form-data">
-                <div class="modal-body">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter Name" name="name" value="" readonly>
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" name="email" value="<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>" class="input" readonly>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirmpasswordModal" name="submit">Delete</a>
-                </div>
-            </form>
         </div>
     </div>
 </div>
-<!-- Modal -->
+
 <div class="modal" id="support_user">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -248,17 +236,11 @@ while($row2 = $result1->fetch_assoc()){
             </div>
             <div class="modal-body">
                 <form method="POST" action="model/save_support.php">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter Name" name="name" value="<?= $_SESSION['fullname'] ?>" readonly>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="samplename@gmail.com" name="email" required >
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control text-left btn btn-outline-dark disabled" placeholder="Enter Name" name="name" value="<?= $_SESSION['fullname'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control text-left btn btn-outline-dark disabled" placeholder="samplename@gmail.com" name="email" value="<?= $_SESSION['user_email'] ?>" >
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Contact Number(optional)" name="number" required>
@@ -270,11 +252,11 @@ while($row2 = $result1->fetch_assoc()){
                         <textarea type="text" class="form-control" rows="5" placeholder="Message" name="message" required ></textarea>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer d-flex justify-content-center">
                     <?php foreach ($supportres as $row2) { ?>
                     <input type="hidden" name="user" value="<?= $row2['user_type'] ?>" required >
                     <?php } ?>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Send</button>
                 </div>
             </form>
@@ -294,42 +276,37 @@ while($row2 = $result1->fetch_assoc()){
             <div class="modal-body">
                 <form method="POST" action="model/edit_profile_user.php" enctype="multipart/form-data">
                 <input type="hidden" name="size" value="1000000">
-                    <div class="text-center">
-                        <div id="my_camera" style="height: 250;" class="text-center">
-                            <?php if(empty($_SESSION['photo'])): ?>
-                                <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
-                            <?php else: ?>
-                                <img src="<?= preg_match('/data:image/i', $_SESSION['photo']) ? $_SESSION['photo'] : 'assets/uploads/avatar/'.$_SESSION['photo'] ?>" alt="..." class="img img-fluid" width="250" >
-                            <?php endif ?>
-                        </div>
-                        <div class="form-group d-flex justify-content-center">
-                            <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
-                            <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
-                        </div>
-                        <div id="profileImage">
-                            <input type="hidden" name="profileimg">
-                        </div>
-                        <div class="form-group">
-                            <input type="file" class="form-control" name="img" accept="image/*">
-                        </div>
+                <div class="text-center">
+                    <div id="my_camera" style="height: 250;" class="text-center">
+                        <?php if(empty($_SESSION['photo'])): ?>
+                            <img src="assets/img/person.png" alt="..." class="img img-fluid" width="250" >
+                        <?php else: ?>
+                            <img src="<?= preg_match('/data:image/i', $_SESSION['photo']) ? $_SESSION['photo'] : 'assets/uploads/avatar/'.$_SESSION['photo'] ?>" alt="..." class="img img-fluid" width="250" >
+                        <?php endif ?>
+                    </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <button type="button" class="btn btn-danger btn-sm mr-2" id="open_cam">Open Camera</button>
+                        <button type="button" class="btn btn-secondary btn-sm ml-2" onclick="save_photo()">Capture</button>   
+                    </div>
+                    <div id="profileImage">
+                        <input type="hidden" name="profileimg">
                     </div>
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" placeholder="Complete Name" name="fullname" value="<?= $_SESSION['fullname'] ?>" required >
+                        <input type="file" class="form-control" name="img" accept="image/*">
                     </div>
-                    <div class="form-group">
-                        <label>Contact Info</label>
-                        <input type="text" class="form-control" placeholder="Email Address" name="email" value="<?= $_SESSION['user_email'] ?>" required >
-                    </div>
-                    <div class="form-group p-1 mb-2 bg-danger">
-                        <a type="button" class="see-all btn-danger" href="model/logout.php">
-                            <span class="link-collapse text-white"> Delete</span>
-                        </a>
-                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" placeholder="Complete Name" name="fullname" value="<?= $_SESSION['fullname'] ?>" required >
+                </div>
+                <div class="form-group">
+                    <label>Contact Info</label>
+                    <input type="text" class="form-control" placeholder="Email Address" name="email" value="<?= $_SESSION['user_email'] ?>" required >
+                </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer d-flex justify-content-center">
                 <input type="hidden" value="<?= $_SESSION['fullname']; ?>" name="fullname">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Change</button>
             </div>
             </form>
@@ -365,11 +342,17 @@ while($row2 = $result1->fetch_assoc()){
                         <span toggle="#con_user_pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary">Change</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+
+
+
+
+
