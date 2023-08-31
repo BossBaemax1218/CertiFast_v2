@@ -160,7 +160,7 @@ while($row2 = $result1->fetch_assoc()){
                         </button>
                     </div>
                     <div class="modal-body text-center" style="font-size: 16px">
-                        Are you sure you want to remove this resident?
+                        Are you sure you want to removed this resident?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
                         <form method="post" action="model/restore_purok_records.php">

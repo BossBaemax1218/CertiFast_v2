@@ -257,7 +257,7 @@
                         </button>
                     </div>
                     <div class="modal-body text-center" style="font-size: 16px;">
-                        Are you certain you want to permanently delete transaction no. <strong><?= $row['trans_id'] ?></strong>?
+                        Are you certain you want to removed transaction no. <strong><?= $row['trans_id'] ?></strong>?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
                         <form method="post" action="model/trash_trans_records.php">

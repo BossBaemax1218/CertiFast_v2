@@ -1,0 +1,5 @@
+INSERT INTO `tblresident` (`id`, `national_id`, `citizenship`, `picture`, `firstname`, `middlename`, `lastname`, `address`, `birthplace`, `birthdate`, `age`, `civilstatus`, `gender`, `purok`, `voterstatus`, `taxno`, `phone`, `email`, `occupation`, `resident_type`, `residency_status`, `requester`, `residency_date`) VALUES
+(1, '', 'Filipino', '30082023234853Screenshot_2023-08-30-23-41-17-013_com.android.chrome.jpg', 'Zoey', 'A.', 'Mabagsik', 'Los Amigos', 'Salvador, LDN', '1998-08-30', 25, 'Single', 'Female', '1-A', 'Yes', '', '09450420068', 'zoeymabagsik@gmail.com', 'none', 1, 'on hold', 'Zoey', '2023-08-30'),
+(2, '', 'FILIPINO', '29082023003619UMdavao.png', 'ASNIDA', 'ALULONG', 'PANGCATAN', 'Los Amigos', 'LOS AMIGOS', '1997-06-07', 26, 'Single', 'Female', '1-A', 'Yes', '', '+639460420068', 'a.pangcatan.441914@umindanao.edu.ph', 'NONE', 1, 'approved', 'ASNIDA PANGCATAN', '2023-08-28'),
+(3, '', 'Filipino', '290820231801141.jpg', 'Aira', 'Gorre', 'Uy', '1-A Los Amigos', 'Tugbok, Los Amigos', '2000-09-18', 22, 'Single', 'Female', '1-A', 'Yes', '', '09272938801', 'iraauy12345@gmail.com', 'Teacher', 1, 'approved', 'Aira Gorre Uy', '2023-08-29');
+

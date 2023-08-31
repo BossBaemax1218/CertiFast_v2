@@ -293,8 +293,8 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body text-center" style="font-size: 16px;">
-                        Are you certain you want to permanently delete certificate no. <strong><?= $row['req_cert_id'] ?></strong> requested by <strong><?= $row['resident_name'] ?></strong>?
+                    <div class="modal-body text-center" style="font-size: 15px;">
+                        Are you certain you want to removed certificate no. <strong><?= $row['req_cert_id'] ?></strong>?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
                         <form method="post" action="model/trash_cert_records.php">

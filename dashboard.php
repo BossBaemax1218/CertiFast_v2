@@ -238,7 +238,7 @@ include 'model/status.php';
         var imgData = canvas.toDataURL("image/png");
         doc.addImage(imgData, "PNG", 10, 50, width, height);
 
-        doc.save("Dashboard-Bar-Chart.pdf");
+        doc.save("Dashboard-Chart.pdf");
       });
     });
 </script>

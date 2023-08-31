@@ -274,8 +274,8 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body text-center" style="font-size: 16px;">
-                        Are you certain you want to remove ID no. <strong><?= $row['national_id'] ?></strong> named <strong><?= ucwords($row['firstname'].' '.$row['middlename'].' '.$row['lastname']) ?></strong>?
+                    <div class="modal-body text-center" style="font-size: 15px;">
+                        Are you certain you want to removed Barangay ID no. <strong><?= $row['national_id'] ?></strong>?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
                         <form method="post" action="model/trash_resident_records.php">
