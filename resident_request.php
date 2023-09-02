@@ -305,7 +305,7 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>What is your contact number?</label>
-                                                <input type="number" class="form-control" placeholder="Contact Number" name="phone" required>
+                                                <input type="number" class="form-control" placeholder="Contact Number (e.g., +63)" maxlength="13" name="phone" id="phone" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What purok do you live?</label>
@@ -319,11 +319,7 @@ $conn->close();
                                             </div>
                                             <div class="form-group mt-2">
                                                 <h5><b>In case of emergency (Parents-Family-Guardians): </b></h5>
-                                            </div>          
-                                            <div class="form-group">
-                                                <label>What is the contact number?</label>
-                                                <input type="number" class="form-control" placeholder="Contact Number" name="contact_number" required>
-                                            </div>                                 
+                                            </div>                                        
                                             <div class="form-group">
                                                 <label>What is their name?</label>
                                                 <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="guardian" required>
@@ -343,6 +339,10 @@ $conn->close();
                                                 </select>
                                             </div>
                                             <div class="form-group">
+                                                <label>What is the contact number?</label>
+                                                <input type="number" class="form-control" placeholder="Contact Number (e.g., +63)" maxlength="13" name="contact_number" id="contact_number" required>
+                                            </div>   
+                                            <div class="form-group">
                                                 <label>What reasons you need this Barangay ID?</label>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
@@ -360,6 +360,44 @@ $conn->close();
                         </div>
                     </div>
                 </div>
+                <script>
+                    var phoneWarningShown = false;
+                    var contactNumberWarningShown = false;
+
+                    document.getElementById("phone").addEventListener("input", function () {
+                        var phoneNumber = this.value.trim();
+
+                        if (/^\+63\d{10}$/.test(phoneNumber) && phoneNumber.length === 13) {
+                            this.maxLength = 13;
+                            if (phoneWarningShown) {
+                                phoneWarningShown = false;
+                            }
+                        } else {
+                            this.maxLength = 13;
+                            if (!phoneWarningShown) {
+                                alert("Invalid contact number format. Please enter number that start +639.");
+                                phoneWarningShown = true; 
+                            }
+                        }
+                    });
+
+                    document.getElementById("contact_number").addEventListener("input", function () {
+                        var contactNumber = this.value.trim();
+
+                        if (/^\+63\d{10}$/.test(contactNumber) && contactNumber.length === 13) {
+                            this.maxLength = 13;
+                            if (contactNumberWarningShown) {
+                                contactNumberWarningShown = false;
+                            }
+                        } else {
+                            this.maxLength = 13;
+                            if (!contactNumberWarningShown) {
+                                alert("Invalid contact number format. Please enter number that start +639.");
+                                contactNumberWarningShown = true;
+                            }
+                        }
+                    });
+                </script>
             <div class="modal fade" id="addpermit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -598,14 +636,15 @@ $conn->close();
                                                 <input type="text" class="form-control mb-2" placeholder="First child name" name="fam_3" required>
                                                 <input type="text" class="form-control mb-2" placeholder="Second child name" name="fam_4" required>
                                                 <input type="text" class="form-control mb-2" placeholder="Third child name" name="fam_5" required>
+                                                <h6 class="text-danger"><b>In case you had a lot of children's, we advise you to proceed to Barangay Los Amigos Office. </b></h6>
                                             </div>
-                                            <div class="form-group"></div>
+                                            <div class="form-group">
                                                 <label>Transfer Certificate of Title (TCT) number?</label>
-                                                <input class="form-control" name="tctno" required placeholder="TCT number"></input>
+                                                <input class="form-control" name="tctno" required placeholder="TCT number">
                                             </div>
                                             <div class="form-group">
                                                 <label>What reasons you request certificates?</label>
-                                                <input class="form-control" name="requirements" required placeholder="Ex: Loan Requirements"></input>
+                                                <input class="form-control" name="requirements" required placeholder="Ex: Loan Requirements">
                                             </div>
                                         </div>
                                     </div>

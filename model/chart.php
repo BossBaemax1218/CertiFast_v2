@@ -64,7 +64,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 $currentYear = date('Y');
-$currentMonth = date('m',strtotime('last Month'));
+$currentMonth = date('m', strtotime('last Month'));
 $firstDayOfMonth = date('Y-m-d', strtotime("$currentYear-$currentMonth-01"));
 $currentDate = date('Y-m-d');
 
@@ -76,11 +76,24 @@ $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
 $sql = "SELECT ";
 if ($dateType === 'weekly') {
     $sql .= "CONCAT(' ', DATE_FORMAT(date, '%W')) AS date_key, ";
+    $orderExpression = "CASE DATE_FORMAT(date, '%W') 
+                          WHEN 'Monday' THEN 1
+                          WHEN 'Tuesday' THEN 2
+                          WHEN 'Wednesday' THEN 3
+                          WHEN 'Thursday' THEN 4
+                          WHEN 'Friday' THEN 5
+                          WHEN 'Saturday' THEN 6
+                          WHEN 'Sunday' THEN 7
+                          ELSE 8
+                      END";
 } elseif ($dateType === 'monthly') {
     $sql .= "DATE_FORMAT(date, '%Y-%m') AS date_key, ";
+    $orderExpression = "DATE_FORMAT(date, '%Y-%m')";
 } elseif ($dateType === 'yearly') {
     $sql .= "DATE_FORMAT(date, '%Y') AS date_key, ";
+    $orderExpression = "DATE_FORMAT(date, '%Y')";
 }
+
 $sql .= "details, COUNT(*) AS count
         FROM tblpayments
         WHERE DATE(date) BETWEEN :fromDate AND :toDate ";
@@ -90,7 +103,7 @@ if ($documentType !== 'All') {
 }
 
 $sql .= "GROUP BY date_key, details ";
-$sql .= "ORDER BY FIELD(date_key, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', date_key), FIELD(details,'Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit','Certificate of Good Moral','Certificate of Birth','Certificate of Oath Taking','First Time Jobseekers','Certificate of Live In','Barangay Identification','Certificate of Death','Family Home Estate')";
+$sql .= "ORDER BY $orderExpression, FIELD(details,'Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit','Certificate of Good Moral','Certificate of Birth','Certificate of Oath Taking','First Time Jobseekers','Certificate of Live In','Barangay Identification','Certificate of Death','Family Home Estate')";
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(':fromDate', $fromDate);
@@ -122,8 +135,7 @@ foreach ($result as $row) {
         $chartData[$dateKey] = [];
     }
     if ($documentType === 'All') {
-        $documentTypes =['Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit','Certificate of Good Moral','Certificate of Birth','Certificate of Oath Taking','First Time Jobseekers',
-        'Certificate of Live In','Barangay Identification','Certificate of Death','Family Home Estate'];
+        $documentTypes = ['Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit', 'Certificate of Good Moral', 'Certificate of Birth', 'Certificate of Oath Taking', 'First Time Jobseekers', 'Certificate of Live In', 'Barangay Identification', 'Certificate of Death', 'Family Home Estate'];
         foreach ($documentTypes as $type) {
             if (!isset($chartData[$dateKey][$type])) {
                 $chartData[$dateKey][$type] = 0;
@@ -143,6 +155,7 @@ foreach ($result as $row) {
 $chartDataJson = json_encode($chartData);
 $totalValuesJson = json_encode($totalValues);
 ?>
+
 <script>
 function displayChart() {
     var chartData = <?php echo isset($errorMessage) ? 'null' : $chartDataJson; ?>;
