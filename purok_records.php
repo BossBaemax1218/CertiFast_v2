@@ -30,6 +30,42 @@ $purok = array();
 while($row2 = $result1->fetch_assoc()){
     $purok[] = $row2; 
 }
+
+$purokrecords = $_SESSION["username"];
+$purokquery = "SELECT COUNT(*) AS resident FROM tblpurok_records AS r
+          JOIN tbl_user_admin AS a ON r.purok = a.purok
+          WHERE a.username = ?";
+$stmt = $conn->prepare($purokquery);
+$stmt->bind_param("s", $purokrecords);
+$stmt->execute();
+$purokresult = $stmt->get_result();
+
+$purokrow = $purokresult->fetch_assoc();
+$purokcount = $purokrow["resident"];
+
+$voterusername = $_SESSION["username"];
+$voterquery = "SELECT COUNT(*) AS voter FROM tblpurok_records AS r
+          JOIN tbl_user_admin AS a ON r.purok = a.purok
+          WHERE a.username = ? AND r.voterstatus = 'Yes'";
+$stmt = $conn->prepare($voterquery);
+$stmt->bind_param("s", $voterusername);
+$stmt->execute();
+$voterresult = $stmt->get_result();
+
+$voterrow = $voterresult->fetch_assoc();
+$votercount = $voterrow["voter"];
+
+$purokusername = $_SESSION["username"];
+$reqquery = "SELECT COUNT(*) AS id FROM tblresident AS r
+          JOIN tbl_user_admin AS a ON r.purok = a.purok
+          WHERE a.username = ? AND r.residency_status = 'on hold'";
+$stmt = $conn->prepare($reqquery);
+$stmt->bind_param("s", $purokusername);
+$stmt->execute();
+$reqresult = $stmt->get_result();
+
+$reqrow = $reqresult->fetch_assoc();
+$reqcount = $reqrow["id"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,6 +85,82 @@ while($row2 = $result1->fetch_assoc()){
                     <h3 class="text-center mt-2" style="font-size: 150%;">The records of Purok <?php echo isset($_SESSION['purok']) ? ucwords($_SESSION['purok']) : ''; ?> that have been confirmed are mentioned below.</h3>
                     <div class="page-inner mt-4">
                         <div class="row">
+                            <div class="page-inner mt-2">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card card-stats card card-round">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <div class="icon-big text-center">
+                                                            <i class="fas fa-user fa-2x" style="color: gray;"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 col-stats">
+                                                    </div>
+                                                    <div class="col-2 col-stats">
+                                                        <div class="numbers mt-2">
+                                                            <h2 class="text-uppercase" style="font-size: 16px;">Resident</h2>
+                                                            <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($purokcount) ?></h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="text-uppercase" style="font-size: 14px;">Total Purok Resident</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card card-stats card card-round">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <div class="icon-big text-center">
+                                                            <i class="fas fa-user-check fa-2x" style="color: gray;"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 col-stats">
+                                                    </div>
+                                                    <div class="col-2 col-stats">
+                                                        <div class="numbers mt-2">
+                                                            <h2 class="text-uppercase" style="font-size: 16px;">Voters</h2>
+                                                            <h3 class="fw-bold" style="font-size: 30px; color: #C77C8D;"><?= number_format($votercount) ?></h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="text-uppercase" style="font-size: 14px;">Total Purok Voters</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card card-stats card card-round">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <div class="icon-big text-center">
+                                                            <i class="fas fa-user-times fa-2x" style="color: gray;"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 col-stats">
+                                                    </div>
+                                                    <div class="col-2 col-stats">
+                                                        <div class="numbers mt-2">
+                                                            <h2 class="text-uppercase" style="font-size: 16px;">Request</h2>
+                                                            <h3 class="fw-bold text-uppercase" style="font-size: 30px; color: #C77C8D;"><?= number_format($reqcount) ?></h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">          
+                                                    <h5 class="text-uppercase" style="font-size: 14px;">Total Request</h5>                          
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-12">
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">

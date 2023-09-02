@@ -135,13 +135,21 @@ include 'model/requested_status.php';
                                 </div>
                             <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
-						    <div class="p-1 mb-2 bg-info text-white">
-                                <h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>   Please proceed in <strong>Profiling</strong> to officially complete your account registration.</h5>
-                            </div>
 							<div class="content">
 								<div class="card">
 									<div class="card-header">
 										<h4 class="card-title"></h4>
+										<div class="card-head-row">
+                                            <div class="card-title fw-bold"></div>
+                                            <?php if(isset($_SESSION['fullname'])):?>
+                                                <div class="card-tools">
+                                                    <a href="resident_certificates.php" class="btn btn-danger btn-sm">
+                                                        <i class="fa fa-eye"></i>
+                                                        View All
+                                                    </a>
+                                                </div>
+                                            <?php endif?>
+                                        </div> 
 									</div>
 									<div class="card-body">
 										<div class="table-responsive mt-3">

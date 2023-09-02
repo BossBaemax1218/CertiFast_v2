@@ -1,46 +1,35 @@
 <?php
-include '../server/server.php';
+session_start();
 
-if (isset($_POST['submit'])) {
-    if ($_POST['submit'] === 'Delete') {
-        $userEmail = isset($_POST['email']) ? $_POST['email'] : '';
-        $userPurok = isset($_POST['purok']) ? $_POST['purok'] : '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once('../server/db_connection.php');
 
-        if (deleteUserAndData($userEmail, $userPurok)) {
-            echo "User account and associated data have been deleted.";
-        } else {
-            echo "Failed to delete user account and associated data.";
-        }
-    }
-}
-
-function deleteUserAndData($email, $purok) {
-    global $connection;
-
-    $connection->begin_transaction();
+    $email = $_POST['email'];
+    $reason = $_POST['reason'];
+    $message = $_POST['message'];
 
     try {
-        $tablesToDeleteFrom = [
-            'tblbirthcert', 'tblbrgy_id', 'tblclearance', 'tbldeath', 'tblfamily_tax',
-            'tblfirstjob', 'tblgood_moral', 'tblindigency', 'tbllive_in', 'tbloath',
-            'tblofficials', 'tblpayments', 'tblpermit', 'tblresidency', 'tblresident',
-            'tblresident_requested', 'tbl_trash', 'tbl_trash_reqcert', 'tbl_trash_support',
-            'tbl_trash_trans', 'tbl_user_resident'
-        ];
-        
-        foreach ($tablesToDeleteFrom as $table) {
-            $sql = "DELETE FROM $table WHERE email = ? AND purok = ?";
-            $stmt = $connection->prepare($sql);
-            $stmt->bind_param("ss", $email, $purok);
-            $stmt->execute();
-            $stmt->close();
-        }
-        $connection->commit();
-        return true;
+        $sql = "UPDATE tbl_user_resident SET is_active = 'inactive', reason = ?, message = ? WHERE user_email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('sss', $reason, $message, $email);
+        $stmt->execute();
+
+        $stmt->close();
+        $conn->close();
+
+        session_destroy();
+
+        // Set a success message
+        $_SESSION['message'] = 'You successfully submitted a deletion request. Please allow us to 2-3 days for a confirmation. Also, you can go to the Barangay Los Amigos Office for this matter.';
+        $_SESSION['success'] = 'success';
+
+        header('Location: ../login.php');
+        exit();
     } catch (Exception $e) {
-        $connection->rollback();
-        return false;
+        $_SESSION['message'] = 'Error: ' . $e->getMessage();
+        $_SESSION['success'] = 'danger';
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
+        exit();
     }
 }
-
 ?>

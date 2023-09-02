@@ -1,6 +1,6 @@
 <div class="card">
-    <div class="card-header text-right">
-        <div class="card-tools ml-5">
+      <div class="card-header text-right">
+        <div class="card-tools mb-3">
             <form method="POST" action="">
                 <a class="btn btn-light btn-border btn-sm" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-filter" aria-hidden="true"></i> Filter
@@ -48,106 +48,106 @@
                     <i class="fas fa-download"></i>
                 </a>
             </form>
-        </div>                                 
-    </div>
-    <div id="chartRow">
-        <div class="card-footer" style="font-size: 16px;">
-            <label class="description ml-5 mt-3" id="description"></label>
         </div>
-        <div class="card-body" style="font-size: 16px;">
-            <canvas id="myChart3"></canvas>
+    <div id="chartRow">
+        <div class="card-footer">
+            <p class="description" id="description"></p>
+        </div>
+        <div class="card-body">
+            <canvas id="myChart3" width="250" height="150"></canvas>
         </div>
     </div>
 </div>
 <?php
 include 'server/db_connect.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    $currentYear = date('Y');
-    $currentMonth = date('m');
-    $firstDayOfMonth = date('Y-m-d', strtotime("$currentYear-$currentMonth-01"));
-    $lastDayOfMonth = date('Y-m-t', strtotime("$currentYear-$currentMonth"));
+$currentYear = date('Y');
+$currentMonth = date('m',strtotime('last Month'));
+$firstDayOfMonth = date('Y-m-d', strtotime("$currentYear-$currentMonth-01"));
+$currentDate = date('Y-m-d');
 
-    $dateType = isset($_POST['dateType']) ? $_POST['dateType'] : 'weekly';
-    $fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $firstDayOfMonth;
-    $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $lastDayOfMonth;
-    $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
+$dateType = isset($_POST['dateType']) ? $_POST['dateType'] : 'weekly';
+$fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $firstDayOfMonth;
+$toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $currentDate;
+$documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
 
-    $sql = "SELECT ";
-    if ($dateType === 'weekly') {
-        $sql .= "CONCAT(' ', DATE_FORMAT(date, '%W')) AS date_key, ";
-    } elseif ($dateType === 'monthly') {
-        $sql .= "DATE_FORMAT(date, '%Y-%m') AS date_key, ";
-    } elseif ($dateType === 'yearly') {
-        $sql .= "DATE_FORMAT(date, '%Y') AS date_key, ";
+$sql = "SELECT ";
+if ($dateType === 'weekly') {
+    $sql .= "CONCAT(' ', DATE_FORMAT(date, '%W')) AS date_key, ";
+} elseif ($dateType === 'monthly') {
+    $sql .= "DATE_FORMAT(date, '%Y-%m') AS date_key, ";
+} elseif ($dateType === 'yearly') {
+    $sql .= "DATE_FORMAT(date, '%Y') AS date_key, ";
+}
+$sql .= "details, COUNT(*) AS count
+        FROM tblpayments
+        WHERE DATE(date) BETWEEN :fromDate AND :toDate ";
+
+if ($documentType !== 'All') {
+    $sql .= "AND (details = :documentType) ";
+}
+
+$sql .= "GROUP BY date_key, details ";
+$sql .= "ORDER BY FIELD(date_key, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', date_key), FIELD(details,'Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit','Certificate of Good Moral','Certificate of Birth','Certificate of Oath Taking','First Time Jobseekers','Certificate of Live In','Barangay Identification','Certificate of Death','Family Home Estate')";
+
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':fromDate', $fromDate);
+$stmt->bindParam(':toDate', $toDate);
+
+if ($documentType !== 'All') {
+    $stmt->bindParam(':documentType', $documentType);
+}
+
+$stmt->execute();
+
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if (empty($result)) {
+    echo "No data available for the selected period.";
+    exit();
+}
+
+$chartData = [];
+$totalValues = [];
+
+foreach ($result as $row) {
+    $count = (int)$row['count'];
+    $documentType = $row['details'];
+
+    $dateKey = $dateType === 'weekly' ? "" . $row['date_key'] : ($dateType === 'monthly' ? date('F', mktime(0, 0, 0, (int)substr($row['date_key'], 5), 1)) : $row['date_key']);
+
+    if (!isset($chartData[$dateKey])) {
+        $chartData[$dateKey] = [];
     }
-    $sql .= "details, COUNT(*) AS count
-            FROM tblpayments
-            WHERE DATE(date) BETWEEN :fromDate AND :toDate ";
-
-    if ($documentType !== 'All') {
-        $sql .= "AND (details = :documentType) ";
-    }
-
-    $sql .= "GROUP BY date_key, details ";
-    $sql .= "ORDER BY FIELD(date_key, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', date_key), FIELD(details,'Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit','Certificate of Good Moral','Certificate of Birth','Certificate of Oath Taking','First Time Jobseekers','Certificate of Live In','Barangay Identification','Certificate of Death','Family Home Estate')";
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':fromDate', $fromDate);
-    $stmt->bindParam(':toDate', $toDate);
-
-    if ($documentType !== 'All') {
-        $stmt->bindParam(':documentType', $documentType);
-    }
-
-    $stmt->execute();
-
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    if (empty($result)) {
-        echo "No data available for the selected period.";
-        exit();
-    }
-
-    $chartData = [];
-    $totalValues = [];
-
-    foreach ($result as $row) {
-        $count = round($row['count']);
-        $documentType = $row['details'];
-
-        $dateKey = $dateType === 'weekly' ? "" . $row['date_key'] : ($dateType === 'monthly' ? date('F', mktime(0, 0, 0, (int)substr($row['date_key'], 5), 1)) : $row['date_key']);
-
-        if (!isset($chartData[$dateKey])) {
-            $chartData[$dateKey] = [];
-        }
-        if ($documentType === 'All') {
-            $documentTypes =['Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit','Certificate of Good Moral','Certificate of Birth','Certificate of Oath Taking','First Time Jobseekers',
-            'Certificate of Live In','Barangay Identification','Certificate of Death','Family Home Estate'];
-            foreach ($documentTypes as $type) {
-                if (!isset($chartData[$dateKey][$type])) {
-                    $chartData[$dateKey][$type] = 0;
-                }
+    if ($documentType === 'All') {
+        $documentTypes =['Barangay Clearance', 'Certificate of Residency', 'Certificate of Indigency', 'Business Permit','Certificate of Good Moral','Certificate of Birth','Certificate of Oath Taking','First Time Jobseekers',
+        'Certificate of Live In','Barangay Identification','Certificate of Death','Family Home Estate'];
+        foreach ($documentTypes as $type) {
+            if (!isset($chartData[$dateKey][$type])) {
+                $chartData[$dateKey][$type] = 0;
             }
-        } else {
-            $chartData[$dateKey][$documentType] = $count;
         }
-
-        if (!isset($totalValues[$documentType])) {
-            $totalValues[$documentType] = 0;
-        }
-
-        $totalValues[$documentType] += $count;
+    } else {
+        $chartData[$dateKey][$documentType] = $count;
     }
 
-    $chartDataJson = json_encode($chartData);
-    $totalValuesJson = json_encode($totalValues);
-?>
+    if (!isset($totalValues[$documentType])) {
+        $totalValues[$documentType] = 0;
+    }
 
+    $totalValues[$documentType] += $count;
+}
+
+$chartDataJson = json_encode($chartData);
+$totalValuesJson = json_encode($totalValues);
+?>
 <script>
-    function displayChart() {
+function displayChart() {
     var chartData = <?php echo isset($errorMessage) ? 'null' : $chartDataJson; ?>;
     var totalValues = <?php echo isset($errorMessage) ? 'null' : $totalValuesJson; ?>;
-    
+
     var days = Object.keys(chartData);
     var documentTypes = Object.keys(chartData[days[0]]);
 
@@ -177,16 +177,23 @@ include 'server/db_connect.php';
             responsive: true,
             scales: {
                 y: [{
-                    tricks: {
+                    ticks: {
                         beginAtZero: true,
-                        callback: function(value) {if (value % 1 === 0) {return value;}}
+                        stepSize: 1,
+                        callback: function(value) {
+                            if (value === 1 || value === 2) {
+                                return value.toFixed(0);
+                            } else {
+                                return Math.round(value);
+                            }
+                        }
                     }
                 }]
             }
         }
     });
-
-    var description = "<table><tr><th style='text-align: center; font-size: 24px;'> This is all the data of the certifications that has been requested. </th><th></th></tr>";
+    
+    var description = "<table><tr><th style=' font-size: 18px;'> This is all the data of the certifications that has been requested. </th><th></th></tr>";
     documentTypes.forEach(function(documentType) {
         var value;
         if (documentType === "All") {
@@ -195,7 +202,7 @@ include 'server/db_connect.php';
             value = totalValues[documentType] || 0;
         }
 
-        description += "<tr><td style='font-size: 20px;'>" + documentType + "</td><td style='font-size: 20px;'><b>" + value + "</b></td></tr>";
+        description += "<tr><td style='text-align: left; font-size: 14px;'>" + documentType + "</td><td style='text-align: left; font-size: 14px;'><b>" + value + "</b></td></tr>";
     });
     description += "</table>";
 
@@ -207,15 +214,13 @@ window.addEventListener('load', function() {
     displayChart();
 });
 
-var applyFilterBtn = document.getElementById('.applyFilterBtn');
+var applyFilterBtn = document.getElementById('applyFilterBtn');
 applyFilterBtn.addEventListener('click', function(event) {
     event.preventDefault();
 
     var form = document.querySelector('form');
     form.submit();
 });
-
-
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
@@ -226,7 +231,8 @@ function getRandomColor() {
     return color;
 }
 </script>
-<script>
+
+    <script>
     document.getElementById("pdfExportBtn").addEventListener("click", function () {
       var doc = new jsPDF();
       var chartRow = document.getElementById("chartRow");
@@ -254,4 +260,4 @@ function getRandomColor() {
         doc.save("Dashboard-Chart.pdf");
       });
     });
-</script>   
+</script>

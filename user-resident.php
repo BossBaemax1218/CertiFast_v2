@@ -4,7 +4,7 @@ if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] == 'staff') {
         $off_q = "SELECT * FROM tbl_user_resident WHERE `account_status`='verified'";
     } else {
-        $off_q = "SELECT * FROM tbl_user_resident ORDER BY `created_at` DESC";
+        $off_q = "SELECT * FROM tbl_user_resident ORDER BY `created_at` ASC";
     }
 } else {
     $off_q = "SELECT * FROM tbl_user_resident WHERE `account_status`='verified'";
@@ -14,7 +14,8 @@ $result = $conn->query($off_q);
 
 $users = array();
 while ($row = $result->fetch_assoc()) {
-    $row['account_badge'] = $row['account_status'] == 'verified' ? '<span class="badge badge-primary">verified</span>' : '<span class="badge badge-danger">unverified</span>';
+    $row['account_badge'] = $row['account_status'] == 'verified' ? '<span class="badge badge-info">verified</span>' : '<span class="badge badge-warning">unverified</span>';
+    $row['active_badge'] = $row['is_active'] == 'active' ? '<span class="badge badge-primary">active</span>' : '<span class="badge badge-danger">inactive</span>';
     $users[] = $row;
 }
 
@@ -92,17 +93,18 @@ while ($row = $result->fetch_assoc()) {
 											<table id="residenttable" class="table">
 												<thead>
 													<tr>
-														<th scope="col">No.</th>
+                                                        <th scope="col">Date</th>
 														<th scope="col">Name</th>
 														<th scope="col">Email</th>
                                                         <th scope="col">Purok</th>
                                                         <th scope="col">Address</th>
 														<?php if(isset($_SESSION['username'])):?>
 															<?php if($_SESSION['role']=='administrator'):?>
-															<th class="text-center" scope="col">Account Status</th>
+															<th class="text-center" scope="col">Account</th>
+                                                            <th class="text-center" scope="col">Status</th>
 															<?php endif ?>
 														<?php endif?>
-														<th scope="col">Created</th>
+                                                        <th scope="col">Reasons</th>
 														<?php if(isset($_SESSION['username'])):?>
 															<?php if($_SESSION['role']=='administrator'):?>
 															<?php endif ?>
@@ -114,13 +116,14 @@ while ($row = $result->fetch_assoc()) {
 													<?php if(!empty($users)): ?>
 														<?php $no=1; foreach($users as $row): ?>
 															<tr>
-																<td><?= $no ?></td>
+                                                                <td><?= $row['created_at'] ?></td>
 																<td><?= $row['fullname'] ?></td>
 																<td><?= $row['user_email'] ?></td>
                                                                 <td><?= $row['purok'] ?></td>
                                                                 <td><?= $row['address'] ?></td>
-																<td class="text-center"><?= $row['account_badge'] ?></td>	                                                               														
-																<td><?= $row['created_at'] ?></td>
+																<td class="text-center"><?= $row['account_badge'] ?></td>	
+                                                                <td class="text-center"><?= $row['active_badge'] ?></td>
+                                                                <td><?= $row['reason'] ?></td>                                                               														
 																<td class="text-center">
 																	<div class="form-button-action">
 																		<a type="button" class="btn btn-link btn-danger" data-toggle="modal" data-target="#confirmDeleteModal<?= $row['id'] ?>" data-original-title="Remove">
@@ -129,7 +132,7 @@ while ($row = $result->fetch_assoc()) {
 																	</div>
 																</td>													
 															</tr>
-														<?php $no++; endforeach ?>
+														<?php endforeach ?>
 													<?php else: ?>
 														<tr>
 															<td colspan="8" class="text-center">No Available Data</td>
@@ -160,7 +163,7 @@ while ($row = $result->fetch_assoc()) {
                         </button>
                     </div>
                     <div class="modal-body text-center" style="font-size: 16px;">
-                        Are you certain you want to remove name <strong><?= $row['fullname'] ?></strong> ?
+                        Are you certain you want to removed name <strong><?= $row['fullname'] ?></strong> ?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
                         <form method="post" action="model/remove_user_resident.php">

@@ -75,9 +75,9 @@ while($row2 = $result1->fetch_assoc()){
                                 <a href="" type="button" data-target="#user_changepass" data-toggle="modal">
                                     <span class="link-collapse">Change Password</span>
                                 </a>
-                                <a href="" type="button" data-target="#DeactivateDeleteModal" data-toggle="modal">
+                                <!--<a href="" type="button" data-target="#DeactivateDeleteModal" data-toggle="modal">
                                     <span class="link-collapse">Delete Account</span>
-                                </a>
+                                </a>-->
                                 <br>
                                 <a type="button" class="see-all btn btn-danger" href="model/logout.php" style="padding: 4px 5px; text-decoration:none;">
                                     <span class="link-collapse text-white"> Sign out</span>
@@ -194,37 +194,39 @@ while($row2 = $result1->fetch_assoc()){
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <span>If you want to take a break from CertiFast, please let us know if you want to permanently delete your CertiFast account.</span>
-                        <input type="text" class="form-control mt-2 text-left btn btn-outline-dark disabled" placeholder="Enter your email address" name="email" value="<?= $_SESSION['user_email'] ?>"> 
+                <div class="modal-body">
+                <form method="POST" action="model/delete_account.php">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span>If you want to take a break from CertiFast, please let us know if you want to permanently delete your CertiFast account.</span>
+                                <input type="text" class="form-control mt-2 text-left btn btn-outline-dark disabled" id="email" name="email" value="<?= $_SESSION['user_email'] ?>"> 
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="reason" id="reason" required>
+                                    <option value="" disabled selected>Select a reason</option>
+                                    <option value="take a break">Take a break</option>
+                                    <option value="personal reasons">Personal reasons</option>
+                                    <option value="privacy concern">Privacy concerns</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" placeholder="Additional comments" name="message" required></textarea>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <select class="form-control" name="reason" required>
-                            <option value="" disabled selected>Select a reason</option>
-                            <option value="break">Take a break</option>
-                            <option value="personal">Personal reasons</option>
-                            <option value="privacy">Privacy concerns</option>>
-                        </select>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <input type="hidden" name="active" value="inactive">
+                        <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">
+                            <span class="link-collapse">Cancel</span>
+                        </button>
+                        <button class="btn btn-primary mr-2" type="submit" name="submit">
+                            <span class="link-collapse">Continue</span>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <textarea type="text" class="form-control" rows="5" placeholder="Additional comments" name="message"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">
-                    <span class="link-collapse">Cancel</span>
-                </button>
-                <button class="btn btn-primary mr-2" type="button">
-                    <span class="link-collapse">Continue</span>
-                </button>
+                </form>
             </div>
         </div>
     </div>
-</div>
-
 <div class="modal" id="support_user">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -294,14 +296,6 @@ while($row2 = $result1->fetch_assoc()){
                     <div class="form-group">
                         <input type="file" class="form-control" name="img" accept="image/*">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" placeholder="Complete Name" name="fullname" value="<?= $_SESSION['fullname'] ?>" required >
-                </div>
-                <div class="form-group">
-                    <label>Contact Info</label>
-                    <input type="text" class="form-control" placeholder="Email Address" name="email" value="<?= $_SESSION['user_email'] ?>" required >
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">

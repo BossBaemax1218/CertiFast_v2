@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['success'] = 'success';
                     $_SESSION['form'] = 'login';
 
-                    header('location: ../resident_dashboard.php');
+                    header('location: ../resident_profiling.php');
                     exit();
                 } else {
                     $_SESSION['message'] = 'Your account has not yet been verified. Please check your email for last verification code.';

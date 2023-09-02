@@ -88,10 +88,10 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                                             <table id="residenttable" class="table">
                                                 <thead>
                                                     <tr>
+                                                        <th scope="col">ID Request</th>
                                                         <th scope="col">Fullname</th>
                                                         <th scope="col">Address</th>
                                                         <th scope="col">Birthdate</th>
-                                                        <th scope="col">Gender</th>
                                                         <th scope="col">Email</th>
                                                         <th scope="col">Purok</th>
                                                         <th scope="col">Status</th>
@@ -107,6 +107,7 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                                                 <?php if (!empty($resident)): ?>
                                                     <?php $no = 1; foreach ($resident as $row): ?>
                                                         <tr>
+                                                            <td><?= $row['national_id'] ?></td>
                                                             <td>
                                                                 <div class="avatar avatar-xs ml-3">
                                                                     <img src="<?= preg_match('/data:image/i', $row['picture']) ? $row['picture'] : 'assets/uploads/resident_profile/'.$row['picture'] ?>" alt="Resident Profile" class="avatar-img rounded-circle">
@@ -115,7 +116,6 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                                                             </td>
                                                             <td><?= $row['address'] ?></td>
                                                             <td><?= $row['birthdate'] ?></td>
-                                                            <td><?= $row['gender'] ?></td>
                                                             <td><?= $row['email'] ?></td>
                                                             <td><?= $row['purok'] ?></td>
                                                             <td class="text-center"><?= $row['residency_badge'] ?></td>
