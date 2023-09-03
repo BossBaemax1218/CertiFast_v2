@@ -182,6 +182,16 @@
                                                     </a>
                                                     <div class="dropdown-menu mt-3 mr-3" aria-labelledby="filterDropdown">
                                                         <div class="dropdown-item">
+                                                            <label>Status:</label>
+                                                            <select class="form-control" id="filterStatus" name="status" onclick="event.stopPropagation();">
+                                                                <option value="">All</option>
+                                                                <option value="on hold">On Hold</option>
+                                                                <option value="operating">Operating</option>
+                                                                <option value="suspended">Suspended</option>
+                                                                <option value="closed">Closed</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="dropdown-item">
                                                             <label>From Date:</label>
                                                             <input type="date" class="form-control" id="fromDate" placeholder="Select date range">
                                                         </div>
@@ -458,6 +468,7 @@
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+  const filterStatus = document.getElementById("filterStatus");
   const fromDate = document.getElementById("fromDate");
   const toDate = document.getElementById("toDate");
   const clearFiltersBtn = document.getElementById("clearFilters");
@@ -465,11 +476,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const tableRows = document.querySelectorAll("#residenttable tbody tr");
   
   function rowMatchesFilter(row) {
-    const rowDate = new Date(row.querySelector("td:nth-child(7)").textContent);
+    const statusValue = filterStatus.value.toLowerCase();
+    const rowStatus = row.querySelector("td:nth-child(7)").textContent.toLowerCase();
+    const rowDate = new Date(row.querySelector("td:nth-child(2)").textContent);
     const from = new Date(fromDate.value);
     const to = new Date(toDate.value);
 
-    return (isNaN(from) || rowDate >= from) &&
+    return (statusValue === "" || rowStatus.includes(statusValue)) &&
+            (isNaN(from) || rowDate >= from) &&
            (isNaN(to) || rowDate <= to);
   }
   
@@ -481,11 +495,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function clearFilters() {
+    filterStatus.value = "";
     fromDate.value = "";
     toDate.value = "";
     applyFilter();
   }
 
+  filterStatus.addEventListener("change", applyFilter);
   fromDate.addEventListener("change", applyFilter);
   toDate.addEventListener("change", applyFilter);
   clearFiltersBtn.addEventListener("click", clearFilters);
