@@ -207,6 +207,7 @@ while($row2 = $result1->fetch_assoc()){
                                     <option value="take a break">Take a break</option>
                                     <option value="personal reasons">Personal reasons</option>
                                     <option value="privacy concern">Privacy concerns</option>
+                                    <option value="transfer residency">Transfer Residency</option>
                                 </select>
                             </div>
                             <div class="form-group">
