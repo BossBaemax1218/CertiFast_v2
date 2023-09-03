@@ -290,7 +290,7 @@
                         Are you sure you want to remove this request?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
-                        <form method="post" action="model/remove_official.php">
+                        <form method="post" action="model/trash_permit_records.php">
                             <input type="hidden" name="id" value="<?= $row['id'] ?>">
                             <button type="button" class="btn btn-danger text-center mr-2">No</button>
                             <button type="submit" class="btn btn-primary text-center">Yes</button>

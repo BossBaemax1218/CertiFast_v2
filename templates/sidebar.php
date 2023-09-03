@@ -355,7 +355,7 @@ $totalAnnouncements = $row1['total_announcements'];
                         <li class="nav-item <?= $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_support_files.php' || $current_page == 'trash_files.php' || $current_page=='backup.php' ? 'active' : null ?>">
                             <a href="#system" data-toggle="collapse" class="collapsed" aria-expanded="false">
                                 <i class="fa-solid fa-wrench"></i>
-                                <p>System</p>
+                                <p>Setting</p>
                                 <span class="caret"></span>
                             </a>
                             <div class="collapse <?=   $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_support_files.php' || $current_page == 'trash_files.php' || $current_page=='backup.php'  ? 'show' : null ?>" id="system">
@@ -371,6 +371,11 @@ $totalAnnouncements = $row1['total_announcements'];
                                                 <li class="nav-item <?= $current_page == 'trash_files.php' ? 'active' : null ?>">
                                                     <a href="trash_files.php">
                                                         <i class="fa-regular fa-folder-open"></i> Resident Files
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item <?= $current_page == 'trash_permit_files.php' ? 'active' : null ?>">
+                                                    <a href="trash_permit_files.php">
+                                                        <i class="fa-regular fa-folder-open"></i>  Permit Files
                                                     </a>
                                                 </li>
                                                 <li class="nav-item <?= $current_page == 'trash_cert_files.php' ? 'active' : null ?>">
