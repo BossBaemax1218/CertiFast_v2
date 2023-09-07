@@ -26,7 +26,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Certificate ID no.</label>
+                                <label>Request ID no.</label>
                                 <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($deathCert['req_cert_id']) ?>">
                             </div>
                             <div class="form-group">
@@ -78,7 +78,7 @@
                                 <input type="date" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($deathReq['date_applied']) ?>">
                             </div>
                             <div class="form-group">
-                                <label>Update Status Certificate</label>
+                                <label>Update Status Request</label>
                                 <select class="form-control text-black btn btn-outline-light" required name="status" id="status">
                                     <option value="on hold">On Hold</option>
                                     <option value="approved">Approved</option>
