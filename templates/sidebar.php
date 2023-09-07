@@ -226,7 +226,7 @@ $totalAnnouncements = $row1['total_announcements'];
                     <li class="nav-item <?= $current_page == 'support.php' ? 'active' : null ?>">
                         <a href="support.php">
                             <i class="fa-regular fa-envelope"></i> 
-                            <p>Support</p>
+                            <p>Reports</p>
                         </a>
                     </li>
                     <?php endif ?>

@@ -54,7 +54,7 @@
             <p class="description" id="description"></p>
         </div>
         <div class="card-body">
-            <canvas id="myChart3" width="250" height="150"></canvas>
+            <canvas id="myChart3" width="350" height="150"></canvas>
         </div>
     </div>
 </div>
@@ -73,21 +73,27 @@ $fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $firstDayOfMonth;
 $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $currentDate;
 $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
 
+// Add variables to store selected week and year
+$selectedWeek = '';
+$selectedMonth = '';
+$selectedYear = '';
+
 $sql = "SELECT ";
+
 if ($dateType === 'weekly') {
-    $sql .= "CONCAT(' ', DATE_FORMAT(date, '%W')) AS date_key, ";
-    $orderExpression = "CASE DATE_FORMAT(date, '%W') 
-                          WHEN 'Monday' THEN 1
-                          WHEN 'Tuesday' THEN 2
-                          WHEN 'Wednesday' THEN 3
-                          WHEN 'Thursday' THEN 4
-                          WHEN 'Friday' THEN 5
-                          WHEN 'Saturday' THEN 6
-                          WHEN 'Sunday' THEN 7
-                          ELSE 8
-                      END";
+    $sql .= "CONCAT(DATE_FORMAT(date, '%M '), ";
+    $sql .= "CASE 
+                WHEN DAY(date) BETWEEN 1 AND 7 THEN '1st week'
+                WHEN DAY(date) BETWEEN 8 AND 14 THEN '2nd week'
+                WHEN DAY(date) BETWEEN 15 AND 21 THEN '3rd week'
+                WHEN DAY(date) BETWEEN 22 AND 28 THEN '4th week'
+                ELSE '5th week'
+            END) AS date_key, ";
+    $sql .= "DATE_FORMAT(date, '%U') AS week, "; // Added to select week
+    $orderExpression = "DATE_FORMAT(date, '%Y-%m-%d')";
 } elseif ($dateType === 'monthly') {
-    $sql .= "DATE_FORMAT(date, '%Y-%m') AS date_key, ";
+    $sql .= "DATE_FORMAT(date, '%M %Y') AS date_key, ";
+    $sql .= "DATE_FORMAT(date, '%Y') AS year, "; // Added to select year
     $orderExpression = "DATE_FORMAT(date, '%Y-%m')";
 } elseif ($dateType === 'yearly') {
     $sql .= "DATE_FORMAT(date, '%Y') AS date_key, ";
@@ -129,7 +135,12 @@ foreach ($result as $row) {
     $count = (int)$row['count'];
     $documentType = $row['details'];
 
-    $dateKey = $dateType === 'weekly' ? "" . $row['date_key'] : ($dateType === 'monthly' ? date('F', mktime(0, 0, 0, (int)substr($row['date_key'], 5), 1)) : $row['date_key']);
+    $dateKey = $row['date_key'];
+
+    // Update selected month, week, and year based on the row data
+    $selectedMonth = isset($row['month']) ? $row['month'] : '';
+    $selectedWeek = isset($row['week']) ? $row['week'] : '';
+    $selectedYear = isset($row['year']) ? $row['year'] : '';
 
     if (!isset($chartData[$dateKey])) {
         $chartData[$dateKey] = [];

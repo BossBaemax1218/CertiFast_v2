@@ -150,8 +150,8 @@ while ($row = $result->fetch_assoc()) {
                                         <div class="table-responsive">                                          
                                             <table id="residenttable" class="table">
                                                 <thead>
-                                                    <tr>
-                                                        <th scope="col">Certificate ID</th>
+                                                    <tr class="text-center">
+                                                        <th scope="col">Request ID</th>
                                                         <th scope="col">Date</th>
                                                         <th class="text-center" scope="col">Fullname</th>
                                                         <th scope="col">Certificates Name</th>
@@ -168,7 +168,7 @@ while ($row = $result->fetch_assoc()) {
                                                 <tbody>
                                                 <?php if (!empty($resident)) : ?>
                                                     <?php foreach ($resident as $row) : ?>
-                                                        <tr data-res_id="<?= $row['res_id'] ?>"
+                                                        <tr class="text-center" data-res_id="<?= $row['res_id'] ?>"
                                                             data-c_id="<?= $row['c_id'] ?>"
                                                             data-indi_id="<?= $row['indi_id'] ?>"
                                                             data-fam_id="<?= $row['fam_id'] ?>"

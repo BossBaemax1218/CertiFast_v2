@@ -75,9 +75,9 @@ while($row2 = $result1->fetch_assoc()){
                                 <a href="" type="button" data-target="#user_changepass" data-toggle="modal">
                                     <span class="link-collapse">Change Password</span>
                                 </a>
-                                <!--<a href="" type="button" data-target="#DeactivateDeleteModal" data-toggle="modal">
+                                <a href="" type="button" data-target="#DeactivateDeleteModal" data-toggle="modal">
                                     <span class="link-collapse">Delete Account</span>
-                                </a>-->
+                                </a>
                                 <br>
                                 <a type="button" class="see-all btn btn-danger" href="model/logout.php" style="padding: 4px 5px; text-decoration:none;">
                                     <span class="link-collapse text-white"> Sign out</span>
