@@ -149,12 +149,11 @@
                                             <div class="card-title"></div>
                                             <?php if(isset($_SESSION['username'])):?>
                                             <div class="card-tools">
-                                                <a id="pdf" class="btn btn-danger btn-border btn-round btn-sm">
+                                                <a id="pdf" class="btn btn-light btn-border btn-sm ">
                                                     <i class="fas fa-download"></i>
-                                                     Export PDF
                                                 </a>
-                                                <a class="btn btn-info btn-border btn-round btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Filter Options
+                                                <a class="btn btn-light btn-border btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Filter
                                                 </a>
                                                 <div class="dropdown-menu mt-3 mr-3" aria-labelledby="filterDropdown">
                                                     <div class="dropdown-item">

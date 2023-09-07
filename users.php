@@ -55,12 +55,12 @@
 									<div class="card-head-row">
 										<div class="card-title"></div>
 										<div class="card-tools">
-											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
+											<a href="#add" data-toggle="modal" class="btn btn-light btn-border btn-sm">
 												<i class="fa fa-plus"></i>
 												Add User
 											</a>
-											<a class="btn btn-info btn-border btn-round btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Filter Options
+											<a class="btn btn-light btn-border btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Filter
 											</a>
 											<div class="dropdown-menu mt-3 mr-3" aria-labelledby="filterDropdown">
 												<div class="dropdown-item">

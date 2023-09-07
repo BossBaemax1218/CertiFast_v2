@@ -159,18 +159,22 @@
 										<div class="card-title"></div>
                                         <?php if(isset($_SESSION['username'])):?>
 										<div class="card-tools">
-											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
+											<a href="#add" data-toggle="modal" class="btn btn-light btn-border btn-sm">
 												<i class="fa fa-plus"></i>
 												Resident
 											</a>
-                                            <a href="model/export_resident_csv.php" class="btn btn-danger btn-border btn-round btn-sm">
-												<i class="fa fa-file"></i>
-												Export CSV
-											</a>
-                                            <a class="btn btn-info btn-border btn-round btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Filter Options
+                                            <a class="btn btn-light btn-border btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Filter
                                             </a>
                                             <div class="dropdown-menu mt-3 mr-3" aria-labelledby="filterDropdown">
+                                                <div class="dropdown-item">
+                                                    <label>Status:</label>
+                                                    <select class="form-control" id="filterStatus" name="status" onclick="event.stopPropagation();">
+                                                        <option value="">All</option>
+                                                        <option value="approved">Approved</option>
+                                                        <option value="rejected">Rejected</option>
+                                                    </select>
+                                                </div>
                                                 <div class="dropdown-item">
                                                     <label>From Date:</label>
                                                     <input type="date" class="form-control" id="fromDate" placeholder="Select date range">
@@ -183,6 +187,9 @@
                                                     <button type="button" class="form-control btn btn-outline-primary" id="clearFilters">Clear Filter</button>
                                                 </div>
                                             </div>
+                                            <a href="model/export_resident_csv.php" class="btn btn-light btn-border btn-sm">
+												<i class="fa fa-download"></i>
+											</a>
 										</div>
                                         <?php endif ?>
 									</div>
@@ -191,11 +198,11 @@
 									<div class="table-responsive">
 										<table id="residenttable" class="table">
 											<thead>
-												<tr>
+												<tr class="text-center">
 												    <th scope="col">Barangay ID</th>
-													<th class="text-center" scope="col">Fullname</th>												
+													<th scope="col">Fullname</th>												
 													<th scope="col">Birthdate</th>
-                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Age</th>
 													<th scope="col">Purok</th>
                                                     <th scope="col">Voters</th>
                                                     <th class="text-center" scope="col">Status</th>
@@ -211,13 +218,13 @@
 											<tbody>
 												<?php if(!empty($resident)): ?>
 													<?php $no=1; foreach($resident as $row): ?>
-													<tr>
+													<tr class="text-center">
 													    <td><?= $row['national_id'] ?></td>
 														<td>
                                                             <?= ucwords($row['lastname'].', '.$row['firstname'].' '.$row['middlename']) ?>
                                                         </td>														
 														<td><?= $row['birthdate'] ?></td>
-                                                        <td><?= $row['email'] ?></td>
+                                                        <td><?= $row['age'] ?></td>
                                                         <td><?= $row['purok'] ?></td>
                                                         <td><?= $row['voterstatus'] ?></td>
                                                         <td class="text-center"><?= $row['residency_badge'] ?></td>
@@ -229,7 +236,7 @@
                                                         <?php endif ?>
 														<td class="text-center">
 															<div class="form-button-action">
-                                                                <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" title="View Resident" onclick="editResident(this)" 
+                                                                <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-secondary" title="View Resident" onclick="editResident(this)" 
                                                                     data-id="<?= $row['id'] ?>" data-national="<?= $row['national_id'] ?>" data-fname="<?= $row['firstname'] ?>" data-mname="<?= $row['middlename'] ?>" data-lname="<?= $row['lastname'] ?>" data-address="<?= $row['address'] ?>" data-bplace="<?= $row['birthplace'] ?>" data-bdate="<?= $row['birthdate'] ?>" data-age="<?= $row['age'] ?>"
                                                                     data-cstatus="<?= $row['civilstatus'] ?>" data-gender="<?= $row['gender'] ?>"data-purok="<?= $row['purok'] ?>" data-vstatus="<?= $row['voterstatus'] ?>" data-taxno="<?= $row['taxno'] ?>" data-number="<?= $row['phone'] ?>" data-email="<?= $row['email'] ?>" data-occu="<?= $row['occupation'] ?>"
                                                                     data-img="<?= $row['picture'] ?>" data-citi="<?= $row['citizenship'];?>" data-dead="<?= $row['resident_type'];?>">
@@ -240,7 +247,7 @@
                                                                     <?php endif ?>
                                                                 </a>
                                                                 <?php if(isset($_SESSION['username']) && $_SESSION['role']=='administrator'):?>
-																<a type="button" data-toggle="tooltip" href="generate_resident.php?id=<?= $row['id'] ?>" class="btn btn-link btn-info" data-original-title="Generate">
+																<a type="button" data-toggle="tooltip" href="generate_resident.php?id=<?= $row['id'] ?>" class="btn btn-link btn-info" data-original-title="Generate Info">
                                                                     <i class="fas fa-print"></i>
 																</a>
                                                                 <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'administrator')):?>
@@ -399,10 +406,10 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
+                                                <!--<div class="form-group">
                                                     <label>Tax no</label>
                                                     <input type="number" class="form-control" placeholder="0000-000-000" min="6" name="taxno" required>
-                                                </div>
+                                                </div>-->
                                                 <div class="form-group">
                                                     <label>Email</label>
                                                     <input type="text" class="form-control" placeholder="no-email@sample.com" value="" name="email" required>
@@ -422,6 +429,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer mt-2 d-flex justify-content-center">
+                                            <input type="hidden" name="is_active" value="on hold" required>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-primary">Save</button>
                                         </div>
                                     </form>
@@ -473,43 +482,43 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Barangay ID</label>
-                                                    <input type="text" class="form-control" name="national" id="nat_id" placeholder="Enter Barangay ID" readonly>
+                                                    <input type="text" class="form-control btn btn-light btn-info disabled" name="national" id="nat_id" placeholder="Enter Barangay ID">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Citizenship</label>
-                                                    <input type="text" class="form-control" name="citizenship" id="citizenship" placeholder="Enter citizenship" required>
+                                                    <input type="text" class="form-control btn btn-outline-danger text-black" name="citizenship" id="citizenship" placeholder="Enter citizenship" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>First name</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Firstname" name="fname" id="fname" required>
+                                                    <input type="text" class="form-control btn btn-outline-danger text-black" placeholder="Enter Firstname" name="fname" id="fname" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Middle name</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Middlename" name="mname" id="mname" required>
+                                                    <input type="text" class="form-control btn btn-outline-danger text-black" placeholder="Enter Middlename" name="mname" id="mname" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Last name</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Lastname" name="lname" id="lname" required>
+                                                    <input type="text" class="form-control btn btn-outline-danger text-black" placeholder="Enter Lastname" name="lname" id="lname" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Address</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Address" id="address" name="address" required>
+                                                    <input type="text" class="form-control btn btn-outline-danger text-black" placeholder="Enter Address" id="address" name="address" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Place of Birth</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Birthplace" name="bplace" id="bplace" required>
+                                                    <input type="text" class="form-control btn btn-outline-danger text-black" placeholder="Enter Birthplace" name="bplace" id="bplace" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Birthdate</label>
-                                                    <input type="date" class="form-control" placeholder="Enter Birthdate" name="bdate" id="bdate" required>
+                                                    <input type="date" class="form-control btn btn-outline-danger text-black" placeholder="Enter Birthdate" name="bdate" id="bdate" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Age</label>
-                                                    <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" id="age" required>
+                                                    <input type="number" class="form-control btn btn-outline-danger text-black" placeholder="Enter Age" min="1" name="age" id="age" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Civil Status</label>
-                                                    <select class="form-control" required name="cstatus" id="cstatus">
+                                                    <select class="form-control btn btn-outline-danger text-black" required name="cstatus" id="cstatus">
                                                         <option disabled selected>Select Civil Status</option>
                                                         <option value="Single">Single</option>
                                                         <option value="Married">Married</option>
@@ -518,7 +527,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Sex</label>
-                                                    <select class="form-control" required name="gender" id="gender">
+                                                    <select class="form-control btn btn-outline-danger text-black" required name="gender" id="gender">
                                                         <option disabled selected value="">Select Sex</option>
                                                         <option value="Male">Male</option>
                                                         <option value="Female">Female</option>
@@ -526,7 +535,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Purok</label>
-                                                    <select class="form-control" required name="purok" id="purok">
+                                                    <select class="form-control btn btn-outline-danger text-black" required name="purok" id="purok">
                                                         <option disabled selected>Select Purok Name</option>
                                                         <?php foreach($purok as $row):?>
                                                             <option value="<?= ucwords($row['purok']) ?>"><?= $row['purok'] ?></option>
@@ -535,27 +544,27 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Voters Status</label>
-                                                    <select class="form-control vstatus" required name="vstatus" id="vstatus">
+                                                    <select class="form-control vstatus btn btn-outline-danger text-black" required name="vstatus" id="vstatus">
                                                         <option disabled selected>Select Voters Status</option>
                                                         <option value="Yes">Yes</option>
                                                         <option value="No">No</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
+                                                <!--<div class="form-group">
                                                     <label>Tax no</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Tax No." name="taxno" id="taxno">
-                                                </div>                        
+                                                    <input type="text" class="form-control btn btn-outline-danger text-black" placeholder="Enter Tax No." name="taxno" id="taxno">
+                                                </div>-->                        
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Email Address" name="email" id="email" required>
+                                                    <input type="text" class="form-control btn btn-outline-danger text-black" placeholder="Enter Email Address" name="email" id="email" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Contact Number</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Contact Number" name="number" id="number" required>
+                                                    <input type="text" class="form-control btn btn-outline-danger text-black" placeholder="Enter Contact Number" name="number" id="number" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Occupation</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Occupation" name="occupation" id="occupation" required>
+                                                    <input type="text" class="form-control btn btn-outline-danger text-black" placeholder="Enter Occupation" name="occupation" id="occupation" required>
                                                 </div>
                                                 <!--<div class="form-group">
                                                     <label>Requirements</label>
@@ -565,12 +574,21 @@
                                                     <label>Purpose</label>
                                                     <textarea class="form-control" name="purpose" placeholder="Enter Purpose" id="purpose"></textarea>
                                                 </div>-->
+                                                <!--<div class="form-group">
+                                                    <label>Status Porfile</label>
+                                                    <select class="form-control btn btn-outline-light btn-dark text-black" name="is_active" id="is_active" required>
+                                                        <option value="" disabled selected>Select Status Account</option>
+                                                        <option value="active">Active</option>
+                                                        <option value="inactive">Inactive</option>
+                                                    </select>
+                                                </div>-->
                                             </div>
                                         </div>
                                         <div class="modal-footer mt-2 d-flex justify-content-center">
                                             <input type="hidden" name="id" id="res_id">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                             <?php if(isset($_SESSION['username'])): ?>
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="submit" class="btn btn-primary">Change</button>
                                             <?php endif ?>
                                         </div>
                                     </form>
@@ -583,7 +601,34 @@
         </div>
     <?php include 'templates/footer.php' ?>
     <script>
+    // Function to calculate age based on birthdate
+    function calculateAge() {
+        const birthdateInput = document.getElementsByName("bdate")[0];
+        const ageInput = document.getElementsByName("age")[0];
+        
+        // Get the selected birthdate
+        const birthdate = new Date(birthdateInput.value);
+        
+        // Calculate age
+        const currentDate = new Date();
+        const age = currentDate.getFullYear() - birthdate.getFullYear();
+        
+        // Check if the birthdate for this year has occurred or not
+        if (currentDate.getMonth() < birthdate.getMonth() || (currentDate.getMonth() === birthdate.getMonth() && currentDate.getDate() < birthdate.getDate())) {
+            age--;
+        }
+        
+        // Update the age input field
+        ageInput.value = age;
+    }
+    
+    // Attach the calculateAge function to the change event of the birthdate input
+    const birthdateInput = document.getElementsByName("bdate")[0];
+    birthdateInput.addEventListener("change", calculateAge);
+</script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
+  const filterStatus = document.getElementById("filterStatus");
   const fromDate = document.getElementById("fromDate");
   const toDate = document.getElementById("toDate");
   const clearFiltersBtn = document.getElementById("clearFilters");
@@ -591,11 +636,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const tableRows = document.querySelectorAll("#residenttable tbody tr");
   
   function rowMatchesFilter(row) {
+    const statusValue = filterStatus.value.toLowerCase();
+    const rowStatus = row.querySelector("td:nth-child(7)").textContent.toLowerCase();
     const rowDate = new Date(row.querySelector("td:nth-child(8)").textContent);
     const from = new Date(fromDate.value);
     const to = new Date(toDate.value);
 
-    return (isNaN(from) || rowDate >= from) &&
+    return (statusValue === "" || rowStatus.includes(statusValue)) &&
+            (isNaN(from) || rowDate >= from) &&
            (isNaN(to) || rowDate <= to);
   }
   
@@ -607,11 +655,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function clearFilters() {
+    filterStatus.value = "";
     fromDate.value = "";
     toDate.value = "";
     applyFilter();
   }
 
+  filterStatus.addEventListener("change", applyFilter);
   fromDate.addEventListener("change", applyFilter);
   toDate.addEventListener("change", applyFilter);
   clearFiltersBtn.addEventListener("click", clearFilters);

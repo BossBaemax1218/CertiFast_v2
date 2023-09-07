@@ -48,7 +48,7 @@
 									<div class="card-head-row">
 										<div class="card-title"></div>
 										<div class="card-tools">
-											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
+											<a href="#add" data-toggle="modal" class="btn btn-light btn-border btn-sm">
 												<i class="fa fa-plus"></i>   
 												Add Position
 											</a>

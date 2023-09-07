@@ -64,16 +64,15 @@
 										<div class="card-title fw-bold">Current Barangay Officials</div>
 										<?php if(isset($_SESSION['username'])):?>
 											<div class="card-tools">
-												<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
+												<a href="#add" data-toggle="modal" class="btn btn-light btn-border btn-sm">
 													<i class="fa fa-plus"></i>
 													Add Official
 												</a>
-												<a href="model/export_officials_staff_csv.php" class="btn btn-danger btn-border btn-round btn-sm">
-													<i class="fa fa-file"></i>
-													Export CSV
+												<a href="model/export_officials_staff_csv.php" class="btn btn-light btn-border btn-sm">
+													<i class="fa fa-download"></i>
 												</a>
-												<a class="btn btn-info btn-border btn-round btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Filter Options
+												<a class="btn btn-light btn-border btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Filter
                                                 </a>
                                                 <div class="dropdown-menu mt-3 mr-3" aria-labelledby="filterDropdown">
 													<div class="dropdown-item">

@@ -60,12 +60,20 @@ while ($row = $result->fetch_assoc()) {
                                         <div class="card-title"></div>
                                             <?php if(isset($_SESSION['username'])):?>
                                             <div class="card-tools">
-                                                <a class="btn btn-info btn-border btn-round btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Filter Options
+                                                <a class="btn btn-light btn-border btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Filter
                                                 </a>
                                                 <div class="dropdown-menu mt-3 mr-3" aria-labelledby="filterDropdown">
                                                     <div class="dropdown-item">
-                                                        <label>Status:</label>
+                                                        <label>Status</label>
+                                                        <select class="form-control" id="filterStatus" name="status_name" onclick="event.stopPropagation();">
+                                                            <option value="">All</option>
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <label>Account</label>
                                                         <select class="form-control" id="filterCert" name="cert_name" onclick="event.stopPropagation();">
                                                             <option value="">All</option>
                                                             <option value="verified">Verified</option>
@@ -92,7 +100,7 @@ while ($row = $result->fetch_assoc()) {
 										<div class="table-responsive">
 											<table id="residenttable" class="table">
 												<thead>
-													<tr>
+													<tr class="text-center"></tr>
                                                         <th scope="col">Date</th>
 														<th scope="col">Name</th>
 														<th scope="col">Email</th>
@@ -115,7 +123,7 @@ while ($row = $result->fetch_assoc()) {
 												<tbody>
 													<?php if(!empty($users)): ?>
 														<?php $no=1; foreach($users as $row): ?>
-															<tr>
+															<tr class="text-center">
                                                                 <td><?= $row['created_at'] ?></td>
 																<td><?= $row['fullname'] ?></td>
 																<td><?= $row['user_email'] ?></td>
@@ -184,7 +192,7 @@ while ($row = $result->fetch_assoc()) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title fw-bold">Deleting your CertiFast account.</h5>
+                <h5 class="modal-title fw-bold">Deactivating user's account.</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -196,6 +204,7 @@ while ($row = $result->fetch_assoc()) {
                                 <span>Select a reason to deactivate this user account.</span>
                             </div>
                             <div class="form-group">
+                                <label>Reason's</label>
                                 <select class="form-control" name="reason" id="reason" required>
                                     <option value="" disabled selected>Select a reason</option>
                                     <option value="problem solved">Problem Solved</option>
@@ -210,6 +219,7 @@ while ($row = $result->fetch_assoc()) {
                                 <textarea class="form-control" rows="5" placeholder="Additional comments" name="message" required></textarea>
                             </div>
                             <div class="form-group">
+                                <label>Account Status</label>
                                 <select class="form-control" name="is_active" id="is_active" required>
                                     <option value="" disabled selected>Select status account</option>
                                     <option value="active">Active</option>
@@ -234,6 +244,7 @@ while ($row = $result->fetch_assoc()) {
 <?php } ?>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+  const filterStatus = document.getElementById("filterStatus");
   const filterCert = document.getElementById("filterCert");
   const fromDate = document.getElementById("fromDate");
   const toDate = document.getElementById("toDate");
@@ -243,12 +254,15 @@ document.addEventListener("DOMContentLoaded", function () {
   
   function rowMatchesFilter(row) {
     const certValue = filterCert.value.toLowerCase();
+    const statusValue = filterStatus.value.toLowerCase();
+    const rowStatus = row.querySelector("td:nth-child(7)").textContent.toLowerCase();
     const rowCert = row.querySelector("td:nth-child(6)").textContent.toLowerCase();
-    const rowDate = new Date(row.querySelector("td:nth-child(7)").textContent);
+    const rowDate = new Date(row.querySelector("td:nth-child(1)").textContent);
     const from = new Date(fromDate.value);
     const to = new Date(toDate.value);
 
     return (certValue === "" || rowCert.includes(certValue)) &&
+            (statusValue === "" || rowStatus.includes(statusValue)) &&
            (isNaN(from) || rowDate >= from) &&
            (isNaN(to) || rowDate <= to);
   }
@@ -262,11 +276,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function clearFilters() {
     filterCert.value = "";
+    filterStatus.value = "";
     fromDate.value = "";
     toDate.value = "";
     applyFilter();
   }
-
+  filterStatus.addEventListener("change", applyFilter);
   filterCert.addEventListener("change", applyFilter);
   fromDate.addEventListener("change", applyFilter);
   toDate.addEventListener("change", applyFilter);
