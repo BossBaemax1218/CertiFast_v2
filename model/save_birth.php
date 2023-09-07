@@ -15,6 +15,7 @@ $purok = $conn->real_escape_string($_POST['purok']);
 $gender = $conn->real_escape_string($_POST['gender']);
 $mother = $conn->real_escape_string($_POST['mother']);
 $father = $conn->real_escape_string($_POST['father']);
+$bplace = $conn->real_escape_string($_POST['birthplace']);
 $req = $conn->real_escape_string($_POST['requirement']);
 $cert_name = $conn->real_escape_string($_POST['certificate_name']);
 $user_email = $conn->real_escape_string($_POST['email']);
@@ -85,8 +86,8 @@ if (!empty($fullname) && !empty($age) && !empty($bdate) && !empty($purok) && !em
                 $checkDuplicateData = $checkDuplicateResult->fetch_assoc();
 
                 if ($checkDuplicateData['count'] < 1) {
-                    $insert_query = "INSERT INTO tblbirthcert(`fullname`, `age`, `bdate`, `purok`, `gender`, `mother`, `father`, `cert_name`, `requirement`, `requester`, `email`)
-                                    VALUES ('$fullname', '$age', '$bdate', '$purok', '$gender', '$mother', '$father', '$cert_name', '$req', '$fname', '$user_email')";
+                    $insert_query = "INSERT INTO tblbirthcert(`fullname`, `age`, `bdate`, `purok`, `gender`, `mother`, `father`, `cert_name`, `requirement`, `requester`, `email`,`birthplace`)
+                                    VALUES ('$fullname', '$age', '$bdate', '$purok', '$gender', '$mother', '$father', '$cert_name', '$req', '$fname', '$user_email','$bplace')";
                     $result_resident = $conn->query($insert_query);
 
                     if ($result_resident === true) {
@@ -173,8 +174,8 @@ if (!empty($fullname) && !empty($age) && !empty($bdate) && !empty($purok) && !em
             exit();
         }
 
-        $insert_query = "INSERT INTO tblbirthcert(`fullname`, `age`, `bdate`, `purok`, `gender`, `mother`, `father`, `cert_name`, `requirement`, `requester`, `email`)
-                        VALUES ('$fullname', '$age', '$bdate', '$purok', '$gender', '$mother', '$father', '$cert_name', '$req', '$fname', '$user_email')";
+        $insert_query = "INSERT INTO tblbirthcert(`fullname`, `age`, `bdate`, `purok`, `gender`, `mother`, `father`, `cert_name`, `requirement`, `requester`, `email`,`birthplace`)
+                            VALUES ('$fullname', '$age', '$bdate', '$purok', '$gender', '$mother', '$father', '$cert_name', '$req', '$fname', '$user_email','$bplace')";
         $result_resident = $conn->query($insert_query);
 
         if ($result_resident === true) {

@@ -68,7 +68,8 @@ $conn->close();
 		<div class="main-panel mt-2">
 			    <div class="content">
                     <h1 class="text-center fw-bold mt-4" style="font-size: 300%;">Barangay Certificates</h1>
-                    <h4 class="text-center">Please fill out your personal information before submitting any of the requested certifications in Barangay Los Amigos.</h4>
+                    <h3 class="text-center">Please fill out your personal information before submitting any of the requested certifications in Barangay Los Amigos.</h3>
+                    <h4 class="text-center">("Ito ang listahan ng mga hiniling na transaksyon sa sertipikasyon sa Certifast.")</h4>
                     <div class="page-inner">
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
@@ -104,9 +105,10 @@ $conn->close();
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="p-1 bg-info text-white container">
+                                <div class="p-1 bg-danger text-white container">
                                     <h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>  Please be ensure that your Profiling has been <b>Approved</b> already by your respected <b><i>Purok Leader</i></b>,
-                                        before you requested any of certifications.</h5>
+                                        before you requested any of certifications. <br>
+                                        <span>(Palihug siguruha nga ang imong Profiling naaprobahan na sa imong respetado nga Purok Leader, sa wala ka pa mangayo ug bisan unsang mga sertipikasyon.)</span></h5>
                                 </div>
                                 <div class="container">
                                     <?php
@@ -177,21 +179,24 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>What is your complete name?</label>
+                                                <label>Fullname </label>
+                                                <span>(Boung Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>What purok do you live?</label>
+                                                <label>Purok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is your tax no?</label>
+                                                <label>Tax no. </label>
+                                                <span>(Tax ID number)</span>
                                                 <input type="number" class="form-control" placeholder="Enter your tax number" min="6" name="taxno" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What reason you need this certificates?</label>
+                                                <label>Reason for requesting </label>
+                                                <span>(Rason sa paghanyo)</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
                                         </div>
@@ -200,7 +205,7 @@ $conn->close();
                                         <input type="hidden" name="certificate_name" value="certificate of good moral" required>
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -222,50 +227,60 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Who died and what was their name?</label>
+                                                <label>Full name of the deceased</label>
+                                                <span>(Buong pangalan ng namatay)</span>
                                                 <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="dead_person" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is the birthdate of the person died?</label>
+                                                <label>Date of Birth</label>
+                                                <span>(Araw ng Kapanganakan)</span>
                                                 <input type="date" class="form-control" name="death_bdate" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is their current age before she/he died?</label>
+                                                <label>Age</label>
+                                                <span>(Edad bago namatay)</span>
                                                 <input type="number" class="form-control" placeholder="Age" min="1" name="age" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What purok do you live?</label>
+                                                <label>Purok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is the date of the person died?</label>
+                                                <label>Date of Death</label>
+                                                <span>(Araw ng Kamatayan)</span>
                                                 <input type="date" class="form-control" name="death_date" required>
                                             </div>
                                             <div class="form-group mt-2">
-                                                <h5><b>Fill out also the names of you're (Parents-Family-Guardians): </b></h5>
+                                                <h5><b>Personal Information of the Families/Relatives: </b></h5>
+                                                <span>(Personal na Impormasyon ng pamilya/kamag-anak)</span>
                                             </div>                                           
                                             <div class="form-group">
-                                                <label>What is their name?</label>
-                                                <input type="text" class="form-control" placeholder="Guardian Name" name="guardian" required>
+                                                <label>Name of the informant</label>
+                                                <span>(Buong pangalan ng taong nagbibigay ng impormasyon tungkol sa namatay)</span>
+                                                <input type="text" class="form-control" placeholder="Name" name="guardian" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What kind of relationship do you have with the person?</label>
+                                                <label>Relationship to the deceased</label>
+                                                <span>(Relasyon sa namatay)</span>
                                                 <select class="form-control" required name="relationship">
                                                     <option disabled selected>Select Relationship</option>
-                                                        <option value="Mother">Mother</option>
-                                                        <option value="Father">Father</option>
-                                                        <option value="Uncle">Uncle</option>
-                                                        <option value="Antie">Antie</option>
-                                                        <option value="Grandfather">Grandmother</option>
-                                                        <option value="Grandfather">Grandfather</option>
-                                                        <option value="Brother">Brother</option>
-                                                        <option value="Sister">Sister</option>
+                                                        <option value="Wife">Wife (Asawa)</option>
+                                                        <option value="Husband">Husband (Bana)</option>
+                                                        <option value="Mother">Mother (Inahan)</option>
+                                                        <option value="Father">Father (Amahan)</option>
+                                                        <option value="Uncle">Uncle (Uyoan)</option>
+                                                        <option value="Antie">Antie (Iyaan)</option>
+                                                        <option value="Grandfather">Grandmother (Lola)</option>
+                                                        <option value="Grandfather">Grandfather (Lolo)</option>
+                                                        <option value="Brother">Brother (Igsoon)</option>
+                                                        <option value="Sister">Sister (Igsoon)</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is the cause of death?</label>
+                                                <label>Cause of Death</label>
+                                                <span>(Dahilan ng kamatayan)</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: High Blood"></textarea>
                                             </div>
                                         </div>
@@ -274,7 +289,7 @@ $conn->close();
                                         <input type="hidden" name="certificate_name" value="certificate of death" required>
                                         <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -296,54 +311,67 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>What is your complete name?</label>
+                                                <h5><b>Fill out the Given Information. Put N/A if not applicable.</b></h5>
+                                                <span>(Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.)</span>
+                                            </div> 
+                                            <div class="form-group">
+                                                <label>Full Name</label>
+                                                <span>(Buong Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>When is your birthdate?</label>
+                                                <label>Birthdate</label>
+                                                <span>(Araw ng kapanganakan)</span>
                                                 <input type="date" class="form-control" name="birthdate" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is your contact number?</label>
-                                                <input type="number" class="form-control" placeholder="Contact Number (e.g., +63)" maxlength="13" name="phone" id="phone" required>
+                                                <label>Contact Number</label>
+                                                <input type="number" class="form-control" placeholder="Contact Number (e.g., 09)" maxlength="11" name="phone" id="phone" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What purok do you live?</label>
+                                                <label>Purok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
-                                                <label>Precint number? (If you are a voters of Barangay Los Amigos)</label>
+                                                <label>Precint Number</label>
+                                                <span>(Numero ng Presinto)</span>
                                                 <input type="number" class="form-control" placeholder="Precint number" name="precintno" required>
                                             </div>
                                             <div class="form-group mt-2">
-                                                <h5><b>In case of emergency (Parents-Family-Guardians): </b></h5>
+                                                <h5><b>In case of emergency </b></h5>
+                                                <span>(Taong kinukuntak pag may importanteng kailangan)</span>
                                             </div>                                        
                                             <div class="form-group">
-                                                <label>What is their name?</label>
+                                                <label>Full Name</label>
+                                                <span>(Buong Pangalan)</span>
                                                 <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="guardian" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What kind of relationship do you have with the person?</label>
+                                                <label>Relationship to the person</label>
+                                                <span>(Relasyon sa tao)</span>
                                                 <select class="form-control" required name="relationship">
                                                     <option disabled selected>Select Relationship</option>
-                                                        <option value="Mother">Mother</option>
-                                                        <option value="Father">Father</option>
-                                                        <option value="Uncle">Uncle</option>
-                                                        <option value="Antie">Antie</option>
-                                                        <option value="Grandfather">Grandmother</option>
-                                                        <option value="Grandfather">Grandfather</option>
-                                                        <option value="Brother">Brother</option>
-                                                        <option value="Sister">Sister</option>
+                                                        <option value="Wife">Wife (Asawa)</option>
+                                                        <option value="Husband">Husband (Bana)</option>
+                                                        <option value="Mother">Mother (Inahan)</option>
+                                                        <option value="Father">Father (Amahan)</option>
+                                                        <option value="Uncle">Uncle (Uyoan)</option>
+                                                        <option value="Antie">Antie (Iyaan)</option>
+                                                        <option value="Grandfather">Grandmother (Lola)</option>
+                                                        <option value="Grandfather">Grandfather (Lolo)</option>
+                                                        <option value="Brother">Brother (Igsoon)</option>
+                                                        <option value="Sister">Sister (Igsoon)</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is the contact number?</label>
-                                                <input type="number" class="form-control" placeholder="Contact Number (e.g., +63)" maxlength="13" name="contact_number" id="contact_number" required>
+                                                <label>Contact Number</label>
+                                                <input type="number" class="form-control" placeholder="Contact Number (e.g., 09)" maxlength="11" name="contact_number" id="contact_number" required>
                                             </div>   
                                             <div class="form-group">
-                                                <label>What reasons you need this Barangay ID?</label>
+                                                <label>Reason for requesting</label>
+                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo )</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
                                         </div>
@@ -353,7 +381,7 @@ $conn->close();
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -375,7 +403,7 @@ $conn->close();
                         } else {
                             this.maxLength = 13;
                             if (!phoneWarningShown) {
-                                alert("Invalid contact number format. Please enter number that start +639.");
+                                alert("Invalid contact number format. Please enter number that start 09-000-000-000.");
                                 phoneWarningShown = true; 
                             }
                         }
@@ -392,7 +420,7 @@ $conn->close();
                         } else {
                             this.maxLength = 13;
                             if (!contactNumberWarningShown) {
-                                alert("Invalid contact number format. Please enter number that start +639.");
+                                alert("Invalid contact number format. Please enter number that start 09-000-000-000.");
                                 contactNumberWarningShown = true;
                             }
                         }
@@ -443,7 +471,7 @@ $conn->close();
                                 <input type="hidden" name="req_email" value="<?= $_SESSION["user_email"]; ?>" required>
                                 <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
 								<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-danger">Create</button>
+								<button type="submit" class="btn btn-danger">Submit</button>
 							</div>
                         </form>
                     </div>
@@ -464,21 +492,24 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>What is your complete name?</label>
+                                                <label>Full Name</label>
+                                                <span>(Buong Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>What is your current age?</label>
+                                                <label>Age</label>
+                                                <span>(Edad)</span>
                                                 <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What purok do you live?</label>
+                                                <label>Purok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>
                                             </div>
                                            <div class="form-group">
-                                                <label>What requirements you need this certificates?</label>
+                                                <label>Reason for requesting</label>
+                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo)</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: Employment Requirements"></textarea>
                                             </div>
                                         </div>
@@ -488,7 +519,7 @@ $conn->close();
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -510,21 +541,24 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>What is your complete name?</label>
+                                                <label>Full Name</label>
+                                                <span>(Buong Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>What purok do you live?</label>
+                                                <label>Purok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is your tax no?</label>
+                                                <label>Tax No</label>
+                                                <span>(Tax ID number)</span>
                                                 <input type="number" class="form-control" placeholder="Tax No." min="6" name="taxno" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What requirements you need this certificates?</label>
+                                                <label>Reason for requesting</label>
+                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo )</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements "></textarea>
                                             </div>
                                         </div>
@@ -534,7 +568,7 @@ $conn->close();
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -556,33 +590,39 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>What the name of your Husband?</label>
+                                                <label>Husband Full Name</label>
+                                                <span>(Bana Kompleto nga Pangalan)</span>
                                                 <input type="text" class="form-control" placeholder="Husband's Name" name="husband" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is the current age of the Husband?</label>
+                                                <label>Age</label>
+                                                <span>(Edad)</span>
                                                 <input type="number" class="form-control" placeholder="Husband's Age" min="1" name="husband_age" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What the name your Wife?</label>
+                                                <label>Wife Full Name</label>
+                                                <span>(Asawa Kompleto nga Pangalan)</span>
                                                 <input type="text" class="form-control" placeholder="Wife's Name" name="wife" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is the current age of the Wife?</label>
+                                                <label>Age</label>
+                                                <span>(Edad)</span>
                                                 <input type="number" class="form-control" placeholder="Wife's age" min="1" name="wife_age" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>How many year's do you live together?</label>
+                                                <label>Duration of Cohabitation</label>
+                                                <span>(Tagal ng pagsasama)</span>
                                                 <input type="text" class="form-control" placeholder="Ex: 1 year or 2 years" min="1" name="living_year" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What purok do you live?</label>
+                                                <label>Purok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
-                                                <label>What reasons you need this certificates?</label>
+                                                <label>Reason for requesting</label>
+                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo )</span>
                                                 <textarea class="form-control" name="requirements" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
                                         </div>
@@ -592,7 +632,7 @@ $conn->close();
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -614,36 +654,42 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <h5><b>Fill out all the credentials of your family: </b></h5>
+                                                <h5><b>Fill out the Given Information. Put N/A if not applicable. </b></h5>
+                                                <span>(Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.)</span>
                                             </div>                                        
                                             <div class="form-group">
                                                 <label>Wife Name</label>
+                                                <span>(Asawa Boung Pangalan)</span>
                                                 <input type="text" class="form-control" placeholder="Name" name="fam_1" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Husband Name</label>
+                                                <span>(Bana Boung Pangalan)</span>
                                                 <input type="text" class="form-control" placeholder="Name" name="fam_2" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What purok do you live?</label>
+                                                <label>Purok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
                                                 <label>Children Name's</label>
-                                                <p>If you had three children complete the form, if not please put <strong>N/A</strong>.</p>
+                                                <span></span>
                                                 <input type="text" class="form-control mb-2" placeholder="First child name" name="fam_3" required>
                                                 <input type="text" class="form-control mb-2" placeholder="Second child name" name="fam_4" required>
                                                 <input type="text" class="form-control mb-2" placeholder="Third child name" name="fam_5" required>
                                                 <h6 class="text-danger"><b>In case you had a lot of children's, we advise you to proceed to Barangay Los Amigos Office. </b></h6>
+                                                <span> (Kung higit sa (3) ang inyong anak, maaaring pumunta na lamang sa Barangay Los Amigos Office para sa dagdag na impormasyon)</span>
                                             </div>
                                             <div class="form-group">
-                                                <label>Transfer Certificate of Title (TCT) number?</label>
+                                                <label>Transfer Certificate of Title (TCT) number</label>
+                                                <span>(Sertipiko ng paglilipat ng titulo)</span>
                                                 <input class="form-control" name="tctno" required placeholder="TCT number">
                                             </div>
                                             <div class="form-group">
-                                                <label>What reasons you request certificates?</label>
+                                                <label>Reason for requesting</label>
+                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo)</span>
                                                 <input class="form-control" name="requirements" required placeholder="Ex: Loan Requirements">
                                             </div>
                                         </div>
@@ -653,7 +699,7 @@ $conn->close();
                                         <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -675,19 +721,23 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>What is the name of the child?</label>
+                                                <label>Full Name</label>
+                                                <span>(Buong Pangalan ng bata)</span>
                                                 <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="fullname" value="" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>What is the birthday?</label>
+                                                <span>(Kailan pinangak / petsa ng kapanganakan)</span>
                                                 <input type="date" class="form-control" placeholder="Birthdate" name="bdate" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is your current age?</label>
+                                                <label>Age</label>
+                                                <span>(Edad)</span>
                                                 <input type="number" class="form-control" placeholder="Age" min="1" name="age" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is your gender?</label>
+                                                <label>Sex</label>
+                                                <span>(Kasarian)</span>
                                                 <select class="form-control" required name="gender">
                                                     <option disabled selected value="">Select Gender</option>
                                                     <option value="Male">Male</option>
@@ -695,24 +745,32 @@ $conn->close();
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>What purok do you live?</label>
+                                                <label>Birthplace</label>
+                                                <span>(Saan pinanganak)</span>
+                                                <input type="text" class="form-control" placeholder="Ex: Tugbok, Los Amigos" name="birthplace" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Purok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control  btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>
                                             </div>
                                             <div class="form-group mt-2">
-                                                <h5><b>Fill out also the names of your Parents: </b></h5>
+                                                <h5><b>Parents Information’s: </b></h5>
                                             </div>                                           
                                             <div class="form-group">
-                                                <label>Mother Name</label>
+                                                <label>Mother’s Full Name</label>
+                                                <span>(Buong Pangalan ng Ina)</span>
                                                 <input type="text" class="form-control" placeholder="Mother's name" name="mother" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>Father Name</label>
+                                                <label>Father’s Full Name</label>
+                                                <span>(Buong Pangalan ng Ama)</span>
                                                 <input type="text" class="form-control" placeholder="Father's name" name="father" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What reason you requested this certificates?</label>
+                                                <label>Reason for requesting</label>
+                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo)</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: School Requirements"></textarea>
                                             </div>
                                         </div>
@@ -722,7 +780,7 @@ $conn->close();
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -744,25 +802,29 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>What is your complete name?</label>
+                                                <label>Full Name</label>
+                                                <span>(Buong Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>What purok do you live?</label>
+                                                <label>WPurok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
-                                                <label>What is your current age?</label>
+                                                <label>Age</label>
+                                                <span>(Edad)</span>
                                                 <input type="number" class="form-control" placeholder="Age" min="6" name="age" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What requirements you need this certificates?</label>
+                                                <label>Reason for requesting</label>
+                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo)</span>
                                                 <input class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>How many year's have you living in the barangay?</label>
+                                                <label>Years of resident of Los Amigos</label>
+                                                <span>(Ilan taon nakatira sa Barangay/ Pila ka tuig nagpuyo sa Barangay)</span>
                                                 <input type="text" class="form-control" name="resident_years" required placeholder="Ex: 1 year or 2 years" required>
                                             </div>
                                         </div>
@@ -772,7 +834,7 @@ $conn->close();
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>">
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -794,17 +856,19 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>What is your complete name?</label>
+                                                <label>Full Name</label>
+                                                <span>(Buong Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>What purok do you live?</label>
+                                                <label>Purok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
-                                                <label>What reasons you need this certificates?</label>
+                                                <label>Reason for requesting</label>
+                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo)</span>
                                                 <textarea class="form-control" name="requirements" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
                                         </div>
@@ -814,7 +878,7 @@ $conn->close();
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -836,21 +900,24 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>What is your complete name?</label>
+                                                <label>Full Name</label>
+                                                <span>(Buong Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>What purok do you live?</label>
+                                                <label>Purok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
-                                                <label>How old are you?</label>
+                                                <label>Age</label>
+                                                <span>(Edad)</span>
                                                 <input type="number" class="form-control" placeholder="Age" min="1" name="age" value="" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>What reasons you need this certificates?</label>
+                                                <label>Reason for requesting</label>
+                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo)</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: Jobseeking Requirements"></textarea>
                                             </div>
                                         </div>
@@ -860,7 +927,7 @@ $conn->close();
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>

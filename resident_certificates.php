@@ -67,7 +67,8 @@ $stmt->close();
 				<div class="panel-header">
                     <div class="text-center mb-3">
                         <h1 class="text-center fw-bold mt-3" style="font-size: 300%;">Certification Requested</h1>
-                        <h3 class="text-center mt-2"> This is the list of the requested certifications transaction with CertiFast Portal. </h3>
+                        <h3 class="text-center mt-2"> This is the list of the requested certifications transaction with CertiFast Portal.</h3>
+                        <h4 class="text-center">("Ito ang listahan ng mga hiniling na transaksyon sa sertipikasyon sa Certifast.")</h4>
                     </div>
 				</div>
 				<div class="page-inner">
@@ -83,7 +84,8 @@ $stmt->close();
                             <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
 							<div class="p-2 mb-2 bg-info text-white">
-								<h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>  If you've ever wondered why a certain certificate you requested did not appear, it's probably because you haven't registered your personal data and haven't received your <strong>Purok Leader's</strong> prior approval. </h5>
+								<h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>  If you've ever wondered why a certain certificate you requested did not appear, it's probably because you haven't registered your personal data and haven't received your <strong>Purok Leader's</strong> prior approval. 
+                            <span>Kung nagtataka ka kung bakit hindi nagpakita ang isang partikular na certificate na iyong hiniling, malamang dahil hindi mo pa nairehistro ang iyong personal na impormasyon at hindi ka pa nakakakuha ng pag-apruba mula sa iyong pinuno ng Purok.</span></h5>
 							</div>
                             <div class="card">
 									<div class="card-header">
