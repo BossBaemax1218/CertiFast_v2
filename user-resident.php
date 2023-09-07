@@ -100,7 +100,7 @@ while ($row = $result->fetch_assoc()) {
 										<div class="table-responsive">
 											<table id="residenttable" class="table">
 												<thead>
-													<tr class="text-center"></tr>
+													<tr class="text-center">
                                                         <th scope="col">Date</th>
 														<th scope="col">Name</th>
 														<th scope="col">Email</th>
@@ -174,7 +174,7 @@ while ($row = $result->fetch_assoc()) {
                         </button>
                     </div>
                     <div class="modal-body text-center" style="font-size: 16px;">
-                        Are you certain you want to removed name <strong><?= $row['fullname'] ?></strong> ?
+                        Are you certain you want to permanently delete this user account ?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
                         <form method="post" action="model/remove_user_resident.php">
@@ -226,6 +226,14 @@ while ($row = $result->fetch_assoc()) {
                                     <option value="inactive">Inactive</option>
                                 </select>
                             </div>
+                            <!--<div class="form-group">
+                                <label>Profiling Status</label>
+                                <select class="form-control" name="status" id="status" required>
+                                    <option value="" disabled selected>Select Status Profiling</option>
+                                    <option value="approved">Approved</option>
+                                    <option value="rejected">Rejected</option>
+                                </select>
+                            </div>-->
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">

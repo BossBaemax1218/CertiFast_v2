@@ -9,9 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $reason = $_POST['reason'];
     $message = $_POST['message'];
 
+    $residency_status = ($active === 'active') ? 'approved' : 'rejected';
+
     try {
-        $sql = "UPDATE tbl_user_resident SET is_active = ?, reason = ?, message = ? WHERE user_email = ?";
-        $stmt = $conn->prepare($sql);
+        $conn->begin_transaction();
+
+        $updateUserResidentSQL = "UPDATE tbl_user_resident SET is_active = ?, reason = ?, message = ? WHERE user_email = ?";
+        $stmt = $conn->prepare($updateUserResidentSQL);
         if (!$stmt) {
             throw new Exception("Database Error: " . $conn->error);
         }
@@ -19,16 +23,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$stmt->execute()) {
             throw new Exception("Update failed: " . $stmt->error);
         }
+        $stmt->close();
 
-        $_SESSION['message'] = 'You successfully submitted a deactivation request.';
+        $updateResidentSQL = "UPDATE tblresident SET residency_status = ? WHERE email = ?";
+        $stmt = $conn->prepare($updateResidentSQL);
+        if (!$stmt) {
+            throw new Exception("Database Error: " . $conn->error);
+        }
+        $stmt->bind_param('ss', $residency_status, $email);
+        if (!$stmt->execute()) {
+            throw new Exception("Update failed: " . $stmt->error);
+        }
+        $stmt->close();
+
+        $conn->commit();
+
+        $_SESSION['message'] = 'You successfully submitted a request.';
         $_SESSION['success'] = 'success';
 
-        $stmt->close();
         $conn->close();
 
         header('Location: ../user-resident.php');
         exit();
     } catch (Exception $e) {
+        $conn->rollback();
         $_SESSION['message'] = 'Error: ' . $e->getMessage();
         $_SESSION['success'] = 'danger';
         header("Location: " . $_SERVER["HTTP_REFERER"]);

@@ -1,3 +1,8 @@
+<?php
+    if (isset($_SESSION['fullname'])) {
+      header('Location: login.php');
+  }
+?>
 <head>
     <title>404 Error</title>
     <link rel="icon" href="../assets/img/CFLogo2.ico" type="image/x-icon"/>
@@ -19,7 +24,7 @@
     background-position: center;
  }
  .four_zero_four_bg h1{
- font-size:100px;
+ font-size:90px;
  }
 .four_zero_four_bg h3{
     font-size:100px;
@@ -42,12 +47,12 @@
     <div class="col-sm-12 ">
     <div class="col-sm-10 col-sm-offset-1  text-center">
     <div class="four_zero_four_bg">
-      <h1 class="text-center">404</h1>
+      <h1 class="text-center">Oops!</h1>
     </div>
         <div class="contant_box_404">
-            <h3 class="h2">Look like you're lost!</h3>
-            <p>We know it’s sad, but the page you’re trying to reach is under maintenance.</p>
-            <a href="../index.php" class="link_404">Go to Home</a>
+            <h3 class="h2">Look like you're account has been deactivate!</h3>
+            <p style="font-size: 14px;">We apologize for the inconvenience, but please visit Barangay Los Amigos Office for this matter, in order to clarify and confirm your account status. Thank you!</p>
+            <a href="index.php" class="link_404">Go to Home</a>
         </div>
     </div>
     </div>

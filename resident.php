@@ -1,7 +1,7 @@
 <?php include 'server/server.php' ?>
 <?php 
     
-	$query = "SELECT * FROM `tblresident` WHERE residency_status='approved' ORDER BY `id` DESC";
+	$query = "SELECT * FROM `tblresident` WHERE residency_status IN('approved','rejected') ORDER BY `id` DESC";
     $result = $conn->query($query);
 
     $resident = array();
@@ -12,6 +12,8 @@
             $statusBadge = '<span class="badge badge-warning">On Hold</span>';
         } elseif ($status == 'approved') {
             $statusBadge = '<span class="badge badge-primary">Approved</span>';
+        } elseif ($status == 'rejected') {
+            $statusBadge = '<span class="badge badge-danger">Rejected</span>';
         }
 
     
