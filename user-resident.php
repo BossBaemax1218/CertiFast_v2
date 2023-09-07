@@ -126,6 +126,9 @@ while ($row = $result->fetch_assoc()) {
                                                                 <td><?= $row['reason'] ?></td>                                                               														
 																<td class="text-center">
 																	<div class="form-button-action">
+                                                                        <a type="button" class="btn btn-link btn-primary" data-toggle="modal" href="" data-target="#DeactivateDeleteModal<?= $row['id'] ?>" data-original-title="Edit">
+																			<i class="fa-solid fa-edit"></i>
+																		</a>
 																		<a type="button" class="btn btn-link btn-danger" data-toggle="modal" data-target="#confirmDeleteModal<?= $row['id'] ?>" data-original-title="Remove">
 																			<i class="fa-solid fa-trash"></i>
 																		</a>
@@ -152,7 +155,7 @@ while ($row = $result->fetch_assoc()) {
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>
-				<?php foreach ($users as $row) { ?>
+	<?php foreach ($users as $row) { ?>
         <div class="modal fade" id="confirmDeleteModal<?= $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -176,7 +179,60 @@ while ($row = $result->fetch_assoc()) {
             </div>
         </div>
         <?php } ?>
-		<script>
+<?php foreach ($users as $row) { ?>
+<div id="DeactivateDeleteModal<?= $row['id'] ?>" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">Deleting your CertiFast account.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                <div class="modal-body">
+                <form method="POST" action="model/deactivate_account.php">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span>Select a reason to deactivate this user account.</span>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="reason" id="reason" required>
+                                    <option value="" disabled selected>Select a reason</option>
+                                    <option value="problem solved">Problem Solved</option>
+                                    <option value="take a break">Take a break</option>
+                                    <option value="personal reasons">Personal reasons</option>
+                                    <option value="privacy concern">Privacy concerns</option>
+                                    <option value="transfer residency">Transfer Residency</option>
+                                    <option value="someone has a case">This user has a file case</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" placeholder="Additional comments" name="message" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="is_active" id="is_active" required>
+                                    <option value="" disabled selected>Select status account</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <input type="hidden" name="email" value="<?= $row["user_email"] ?>">
+                        <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">
+                            <span class="link-collapse">Cancel</span>
+                        </button>
+                        <button class="btn btn-primary mr-2" type="submit" name="submit">
+                            <span class="link-collapse">Submit</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
   const filterCert = document.getElementById("filterCert");
   const fromDate = document.getElementById("fromDate");
