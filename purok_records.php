@@ -177,13 +177,12 @@ $reqcount = $reqrow["id"];
                                             <div class="card-title fw-bold"></div>
                                             <?php if(isset($_SESSION['username'])):?>
                                                 <div class="card-tools">
-                                                    <a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
+                                                    <a href="#add" data-toggle="modal" class="btn btn-light btn-border btn-sm">
                                                         <i class="fa fa-plus"></i>
-                                                        Add Profiling
+                                                         Profiling
                                                     </a>
-                                                    <a href="model/export_purok.php" class="btn btn-danger btn-border btn-round btn-sm">
+                                                    <a href="model/export_purok.php" class="btn btn-light btn-border btn-sm">
                                                         <i class="fas fa-download"></i>
-                                                        Export CSV
                                                     </a>
                                                 </div>
                                             <?php endif?>

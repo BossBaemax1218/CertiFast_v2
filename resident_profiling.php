@@ -100,7 +100,7 @@ $conn->close();
                     <div class="row justify-content-center">
                         <?php if(!empty($resident)): ?>
                             <?php foreach($resident as $row): ?>
-                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
                                     <div class="card card-profile">                                       
                                         <div class="card-body">
                                             <div class="text-center">

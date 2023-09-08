@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($mail->send()) {
         $hashedPassword = md5($password);
 
-        $insertQuery = "INSERT INTO tbl_user_resident (`purok`, `fullname`, `user_email`, `address`, `password`,`user_type`, `verification_code`, `verification_send`, `account_status`) VALUES (?, ?, ?, ?, ?,'resident', ?, ?, 'unverified')";
+        $insertQuery = "INSERT INTO tbl_user_resident (`purok`, `fullname`, `user_email`, `address`, `password`,`user_type`, `verification_code`, `verification_send`, `account_status`,`is_active`) VALUES (?, ?, ?, ?, ?,'resident', ?, ?, 'unverified','active')";
         $stmt = $conn->prepare($insertQuery);
         $stmt->bind_param("sssssss", $purok, $fullname, $email, $address, $hashedPassword, $verificationCode, $verificationSend);
 
