@@ -87,8 +87,8 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                                         <div class="table-responsive">
                                             <table id="residenttable" class="table">
                                                 <thead>
-                                                    <tr>
-                                                        <th scope="col">ID Request</th>
+                                                    <tr class="text-center">
+                                                        <th scope="col">Request ID</th>
                                                         <th scope="col">Fullname</th>
                                                         <th scope="col">Address</th>
                                                         <th scope="col">Birthdate</th>
@@ -106,7 +106,7 @@ $purokNumber = !empty($purok) ? $purok[0]['purok'] : '';
                                                 <tbody>                                           
                                                 <?php if (!empty($resident)): ?>
                                                     <?php $no = 1; foreach ($resident as $row): ?>
-                                                        <tr>
+                                                        <tr class="text-center"></tr>
                                                             <td><?= $row['national_id'] ?></td>
                                                             <td>
                                                                 <div class="avatar avatar-xs ml-3">

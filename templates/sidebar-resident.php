@@ -104,15 +104,12 @@ while($row2 = $result1->fetch_assoc()){
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">Notification</h4>
+                    <h4 class="text-section">Certification</h4>
                 </li>
-                <li id="announcementbtn" class="nav-item <?= $current_page == 'resident_announcement.php' ? 'active' : null ?>">
-                    <a type="button" href="resident_announcement.php" class="notification">
-                        <i class='far fa-bell'></i>
-                        <p>Announcement</p>
-                        <?php if ($totalAnnouncements > 0): ?>
-                            <span id="notification-badge" class="badge badge-primary"><?= $totalAnnouncements ?></span>
-                        <?php endif; ?>
+                <li class="nav-item <?= $current_page=='resident_request.php' || $current_page=='resident_request.php' ? 'active' : null ?>">
+                    <a href="resident_request.php">
+                        <i class="fa-regular fa-paper-plane"></i>
+                        <p>Request Cetificates</p>
                     </a>
                 </li>
                 <li class="nav-section">
@@ -131,12 +128,15 @@ while($row2 = $result1->fetch_assoc()){
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">Certification</h4>
+                    <h4 class="text-section">Notification</h4>
                 </li>
-                <li class="nav-item <?= $current_page=='resident_request.php' || $current_page=='resident_request.php' ? 'active' : null ?>">
-                    <a href="resident_request.php">
-                        <i class="fa-regular fa-paper-plane"></i>
-                        <p>Request Cetificates</p>
+                <li id="announcementbtn" class="nav-item <?= $current_page == 'resident_announcement.php' ? 'active' : null ?>">
+                    <a type="button" href="resident_announcement.php" class="notification">
+                        <i class='far fa-bell'></i>
+                        <p>Announcement</p>
+                        <?php if ($totalAnnouncements > 0): ?>
+                            <span id="notification-badge" class="badge badge-primary"><?= $totalAnnouncements ?></span>
+                        <?php endif; ?>
                     </a>
                 </li>
                 <li class="nav-section">
@@ -169,7 +169,7 @@ while($row2 = $result1->fetch_assoc()){
                         <p>Report a problem</p>
                     </a>
                 </li>
-                <li class="nav-section">
+               <!-- <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
@@ -180,7 +180,7 @@ while($row2 = $result1->fetch_assoc()){
                         <i class="far fa-lightbulb"></i>
                         <p>Services</p>
                     </a>
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>

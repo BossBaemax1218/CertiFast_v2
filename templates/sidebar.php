@@ -87,6 +87,31 @@ $totalAnnouncements = $row1['total_announcements'];
                             <p>Dashboard</p>
                         </a>
                     </li>
+                    <!-- Records -->
+                    <li class="nav-section">
+                        <span class="sidebar-mini-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <h4 class="text-section">Resident Request</h4>
+                    </li>
+                    <li class="nav-item <?= $current_page=='purok_request.php' ? 'active' : null ?>">
+                        <a href="purok_request.php">
+                            <i class='bx bxs-file'></i>
+                            <p>List of Request</p>
+                        </a>
+                    </li>
+                    <li class="nav-section">
+                        <span class="sidebar-mini-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <h4 class="text-section">Records</h4>
+                    </li>
+                    <li class="nav-item <?= $current_page=='purok_records.php' ? 'active' : null ?>">
+                        <a href="purok_records.php">
+                            <i class='bx bx-file-find'></i>
+                            <p>Purok Records</p>
+                        </a>
+                    </li>
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>
@@ -101,25 +126,6 @@ $totalAnnouncements = $row1['total_announcements'];
                             <?php if ($totalAnnouncements > 0): ?>
                                 <span id="notification-badge" class="badge badge-primary"><?= $totalAnnouncements ?></span>
                             <?php endif; ?>
-                        </a>
-                    </li>
-                    <!-- Records -->
-                    <li class="nav-section">
-                        <span class="sidebar-mini-icon">
-                            <i class="fa fa-ellipsis-h"></i>
-                        </span>
-                        <h4 class="text-section">Records</h4>
-                    </li>
-                    <li class="nav-item <?= $current_page=='purok_request.php' ? 'active' : null ?>">
-                        <a href="purok_request.php">
-                            <i class='bx bxs-file'></i>
-                            <p>Resident Request</p>
-                        </a>
-                    </li>
-                    <li class="nav-item <?= $current_page=='purok_records.php' ? 'active' : null ?>">
-                        <a href="purok_records.php">
-                            <i class='bx bx-file-find'></i>
-                            <p>Purok Records</p>
                         </a>
                     </li>
                     <li class="nav-section">

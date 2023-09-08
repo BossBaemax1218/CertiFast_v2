@@ -179,7 +179,7 @@ $reqcount = $reqrow["id"];
                                                 <div class="card-tools">
                                                     <a href="#add" data-toggle="modal" class="btn btn-light btn-border btn-sm">
                                                         <i class="fa fa-plus"></i>
-                                                         Profiling
+                                                        Profiling
                                                     </a>
                                                     <a href="model/export_purok.php" class="btn btn-light btn-border btn-sm">
                                                         <i class="fas fa-download"></i>
