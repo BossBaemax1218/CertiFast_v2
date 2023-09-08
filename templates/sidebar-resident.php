@@ -88,12 +88,12 @@ while($row2 = $result1->fetch_assoc()){
                 </div>
             </div>
             <ul class="nav nav-danger">
-                <li class="nav-item <?= $current_page=='resident_intro.php' || $current_page=='resident_intro.php' ? 'active' : null ?>">
+                <!--<li class="nav-item <?= $current_page=='resident_intro.php' || $current_page=='resident_intro.php' ? 'active' : null ?>">
                     <a href="resident_intro.php">
                         <i class="far fa-bookmark"></i>
                         <p>Introduction</p>
                     </a>
-                </li>
+                </li>-->
                 <li class="nav-item <?= $current_page=='resident_dashboard.php' || $current_page=='resident_dashboard.php'  ? 'active' : null ?>">
                     <a href="resident_dashboard.php" >
                         <i class='bx bxs-dashboard'></i>

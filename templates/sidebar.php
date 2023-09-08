@@ -74,12 +74,12 @@ $totalAnnouncements = $row1['total_announcements'];
                 <!-- Purok Leader Specific Menu Items -->
                 <?php if(isset($_SESSION['username']) && ($_SESSION['role'] == 'purok leader')): ?>
                     <!-- Introduction -->
-                    <li class="nav-item <?= $current_page=='purok_intro.php' ? 'active' : null ?>">
+                    <!--<li class="nav-item <?= $current_page=='purok_intro.php' ? 'active' : null ?>">
                         <a href="purok_intro.php">
                             <i class="far fa-bookmark"></i>
                             <p>Introduction</p>
                         </a>
-                    </li>
+                    </li>-->
                     <!-- Dashboard -->
                     <li class="nav-item <?= $current_page=='dashboard.php' ? 'active' : null ?>">
                         <a href="dashboard.php">

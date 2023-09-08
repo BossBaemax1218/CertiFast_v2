@@ -3,7 +3,7 @@
     $query1 = "SELECT * FROM tblbrgy_info WHERE id='1'";
     $result1 = $conn->query($query1)->fetch_assoc();
 
-    $query = "SELECT tblofficials.fullname, tblofficials.picture, tblposition.position FROM tblofficials JOIN tblposition ON tblofficials.position = tblposition.id WHERE tblposition.position IN ('Kapitan','Secretary','Treasurer','Kagawad') AND `status`='Active'";
+    $query = "SELECT tblofficials.fullname, tblofficials.picture, tblposition.position FROM tblofficials JOIN tblposition ON tblofficials.position = tblposition.id WHERE tblposition.position IN ('Punong Barangay','Secretary','Treasurer','Kagawad') AND `status`='Active'";
     $result = $conn->query($query);
 
     $rows = array();
