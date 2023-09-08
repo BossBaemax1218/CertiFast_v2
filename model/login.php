@@ -71,24 +71,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("s", $user_email);
         $stmt->execute();
         $result = $stmt->get_result();
-
+        
         if ($result->num_rows) {
             $row = $result->fetch_assoc();
             $hashedPassword = $row['password'];
             $role = $row['user_type'];
-
-            if (md5($password) === $hashedPassword) { 
+        
+            if (md5($password) === $hashedPassword) {
                 if ($row['account_status'] === 'verified' && $row['is_active'] === 'active') {
                     $_SESSION['user_email'] = $row['user_email'];
                     $_SESSION['fullname'] = $row['fullname'];
                     $_SESSION['role'] = $role;
                     $_SESSION['photo'] = $row['photo'];
-
-                    $_SESSION['message'] = 'You have successfully logged in as a resident!';
-                    $_SESSION['success'] = 'success';
-                    $_SESSION['form'] = 'login';
-
-                    header('location: ../resident_profiling.php');
+        
+                    // Fetch residency_status from tblresident
+                    $queryResidency = "SELECT residency_status FROM tblresident WHERE email = ?";
+                    $stmtResidency = $conn->prepare($queryResidency);
+                    $stmtResidency->bind_param("s", $user_email);
+                    $stmtResidency->execute();
+                    $resultResidency = $stmtResidency->get_result();
+        
+                    if ($resultResidency->num_rows) {
+                        $rowResidency = $resultResidency->fetch_assoc();
+                        if ($rowResidency['residency_status'] === 'approved') {
+                            header('location: ../dashboard.php');
+                        } elseif ($rowResidency['residency_status'] === 'on hold') {
+                            header('location: ../resident_profiling.php');
+                        } else {
+                            echo "Unknown residency status.";
+                        }
+                    } else {
+                        echo "No residency status found for this user.";
+                    }
                     exit();
                 } elseif ($row['is_active'] === 'inactive') {
                     $_SESSION['message'] = 'Your account has been deactivated. Please visit Barangay Los Amigos Office for further information.';
@@ -96,23 +110,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['fullname'] = $row['fullname'];
                     $_SESSION['role'] = $role;
                     $_SESSION['photo'] = $row['photo'];
-
+        
                     session_destroy();
-
+        
                     header('location: ../error.php');
                     exit();
                 } elseif ($row['account_status'] !== 'verified') {
                     $_SESSION['message'] = 'Your account has not yet been verified. Please check your email for the last verification code.';
                     $_SESSION['success'] = 'danger';
                     $_SESSION['form'] = 'login';
-
+        
                     header('location: ../email-verify-code.php');
                     exit();
                 }
             } else {
                 echo "Password verification failed for resident.";
             }
-        }
+        }        
 
         echo "Username or password is incorrect!";
         incrementLoginAttempts();
