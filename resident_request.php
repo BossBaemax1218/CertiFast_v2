@@ -69,7 +69,7 @@ $conn->close();
 			    <div class="content">
                     <h1 class="text-center fw-bold mt-4" style="font-size: 300%;">Barangay Certificates</h1>
                     <h3 class="text-center">Please fill out your personal information before submitting any of the requested certifications in Barangay Los Amigos.</h3>
-                    <h4 class="text-center">("Ito ang listahan ng mga hiniling na transaksyon sa sertipikasyon sa Certifast.")</h4>
+                    <h4 class="text-center">(Ito ang listahan ng mga hiniling na transaksyon sa sertipikasyon sa Certifast.)</h4>
                     <div class="page-inner">
                             <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
@@ -106,9 +106,7 @@ $conn->close();
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="p-1 bg-danger text-white container">
-                                    <h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>  Please be ensure that your Profiling has been <b>Approved</b> already by your respected <b><i>Purok Leader</i></b>,
-                                        before you requested any of certifications. <br>
-                                        <span>(Palihug siguruha nga ang imong Profiling naaprobahan na sa imong respetado nga Purok Leader, sa wala ka pa mangayo ug bisan unsang mga sertipikasyon.)</span></h5>
+                                    <h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>  Palihug siguruha nga ang imong Profiling naaprobahan na sa imong respetado nga Purok Leader, sa wala ka pa mangayo ug bisan unsang mga sertipikasyon.</h5>
                                 </div>
                                 <div class="container">
                                     <?php
@@ -205,6 +203,7 @@ $conn->close();
                                         <input type="hidden" name="certificate_name" value="certificate of good moral" required>
                                         <input type="hidden" name="fname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
@@ -289,6 +288,7 @@ $conn->close();
                                         <input type="hidden" name="certificate_name" value="certificate of death" required>
                                         <input type="hidden" name="fullname" value="<?= $_SESSION["fullname"]; ?>" required>
                                         <input type="hidden" name="email" value="<?= $_SESSION["user_email"]; ?>" required>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
@@ -807,7 +807,7 @@ $conn->close();
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>WPurok</label>
+                                                <label>Purok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>

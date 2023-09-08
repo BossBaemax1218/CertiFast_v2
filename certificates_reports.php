@@ -236,7 +236,7 @@
                                             <table id="residenttable" class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">Certificate ID</th>
+                                                        <th scope="col">Request ID</th>
                                                         <th class="text-center" scope="col">Date</th>
                                                         <th scope="col">Recipient</th>
                                                         <th scope="col">Email</th>

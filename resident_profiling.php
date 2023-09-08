@@ -94,14 +94,13 @@ $conn->close();
                         </div>
                         <?php unset($_SESSION['message']); ?>
                     <?php endif ?>
-                    <div class="p-1 mb-4 bg-info text-white">
-                        <h5 class="text-left"> <i class="fas fa-exclamation-circle"></i> To avoid confusion during registration, please double-check that all of your information is accurate.
-                        <br><span>(Upang maiwasan ang pagkalito sa panahon ng pagpaparehistro, mangyaring suriing muli kung ang lahat ng iyong impormasyon ay tumpak.)</span></h5>
+                    <div class="p-1 mb-4 bg-danger text-white">
+                        <h5 class="text-left"> <i class="fas fa-exclamation-circle"></i> Upang maiwasan ang pagkalito sa panahon ng pagpaparehistro, mangyaring suriing muli kung ang lahat ng iyong impormasyon ay tumpak.</h5>
                     </div>
                     <div class="row justify-content-center">
                         <?php if(!empty($resident)): ?>
                             <?php foreach($resident as $row): ?>
-                                <div class="col-md-6">
+                                <div class="col-md-6"></div>
                                     <div class="card card-profile">                                       
                                         <div class="card-body">
                                             <div class="text-center">
@@ -356,7 +355,7 @@ $conn->close();
                                 </div>                      
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" class="form-control btn btn-light btn-dark disabled text-black" placeholder="no-sample@gmail.com" name="email" id="email" required>
+                                    <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= $row["user_email"] ?>" name="email" id="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Contact Number</label>

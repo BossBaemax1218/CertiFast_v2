@@ -50,10 +50,10 @@
       <h1 class="text-center">Oops!</h1>
     </div>
         <div class="contant_box_404">
-            <h3 class="h2">Look's like you're account has been deactivate!</h3>
+            <h3 class="h2">Look's like you're account has been delete!</h3>
             <p style="font-size: 16px;">We apologize for the inconvenience, but please visit Barangay Los Amigos Office for this matter, in order to clarify and confirm your account status. Thank you!</p>
 
-            <h5 class="fw-bold h3">Mukhang na-deactivate na ang iyong account!</h5>
+            <h5 class="fw-bold h3">Mukhang na-delete na ang iyong account!</h5>
             <p style="font-size: 16px;">( Nangayo kami og pasaylo sa kahasol, apan palihug bisitaha ang Opisina sa Barangay Los Amigos alang niining butanga, aron maklaro ug makumpirma ang status sa imong account. Salamat!)</p>
             <a href="index.php" class="link_404">Go to Home</a>
         </div>
