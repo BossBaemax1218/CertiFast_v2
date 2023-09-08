@@ -15,6 +15,7 @@ $req        = $conn->real_escape_string($_POST['requirement']);
 $cert_name  = $conn->real_escape_string($_POST['certificate_name']);
 $user_email = $conn->real_escape_string($_POST['email']);
 $fname      = $conn->real_escape_string($_POST['fname']);
+$qty      = $conn->real_escape_string($_POST['quantity']);
 
 // Check if email is valid and residency status is approved
 $residencyStatusCheckQuery = "SELECT COUNT(*) AS status_count, residency_status FROM tblresident WHERE email = '$user_email' LIMIT 1";
@@ -82,7 +83,7 @@ if ($statusCheckResult->num_rows > 0) {
             $checkDuplicateData = $checkDuplicateResult->fetch_assoc();
 
             if ($checkDuplicateData['count'] < 1) {
-                $insert_query = "INSERT INTO tblresidency(`fullname`,`cert_name`,`age`, `purok`, `resident_year`, `requirement`,`requester`, `email`) VALUES ('$fullname', '$cert_name',  '$age', '$purok', '$res_years', '$req', '$fname','$user_email')";
+                $insert_query = "INSERT INTO tblresidency(`fullname`,`cert_name`,`age`, `purok`, `resident_year`, `requirement`,`requester`, `email`, `quantity`) VALUES ('$fullname', '$cert_name',  '$age', '$purok', '$res_years', '$req', '$fname','$user_email','$qty')";
                 $result_resident = $conn->query($insert_query);
 
                 if ($result_resident === true) {
@@ -178,7 +179,7 @@ if ($matchCheckData['match_count'] === 0) {
 }
 
 // Insert data into tblresidency
-$insert_query = "INSERT INTO tblresidency(`fullname`,`cert_name`,`age`, `purok`, `resident_year`, `requirement`,`requester`, `email`) VALUES ('$fullname', '$cert_name',  '$age', '$purok', '$res_years', '$req', '$fname','$user_email')";
+$insert_query = "INSERT INTO tblresidency(`fullname`,`cert_name`,`age`, `purok`, `resident_year`, `requirement`,`requester`, `email`, `quantity`) VALUES ('$fullname', '$cert_name',  '$age', '$purok', '$res_years', '$req', '$fname','$user_email','$qty')";
 $result_resident = $conn->query($insert_query);
 
 if ($result_resident === true) {

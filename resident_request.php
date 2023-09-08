@@ -195,6 +195,18 @@ $conn->close();
                                                 <span>(Rason sa paghanyo)</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity:</label>
+                                                <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
+                                                <select class=" w-25 p-2" id="quantity" name="quantity">
+                                                <option value disabled>Please select a number</option>
+                                                <?php
+                                                    for ($i = 1; $i <= 10; $i++) {
+                                                        echo "<option value='$i'>$i</option>";
+                                                    }
+                                                ?>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer mt-2 d-flex justify-content-center">
@@ -279,6 +291,18 @@ $conn->close();
                                                 <label>Cause of Death</label>
                                                 <span>(Dahilan ng kamatayan)</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: High Blood"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity:</label>
+                                                <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
+                                                <select class=" w-25 p-2" id="quantity" name="quantity">
+                                                <option value disabled>Please select a number</option>
+                                                <?php
+                                                    for ($i = 1; $i <= 10; $i++) {
+                                                        echo "<option value='$i'>$i</option>";
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -369,8 +393,20 @@ $conn->close();
                                             </div>   
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>
-                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo )</span>
+                                                <span>(Rason sa Paghangyo)</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity:</label>
+                                                <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
+                                                <select class=" w-25 p-2" id="quantity" name="quantity">
+                                                <option value disabled>Please select a number</option>
+                                                <?php
+                                                    for ($i = 1; $i <= 10; $i++) {
+                                                        echo "<option value='$i'>$i</option>";
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -463,6 +499,18 @@ $conn->close();
                                     <label>Reasons for applying</label>
                                     <input type="text" class="form-control" name="requirement" id="requirement" placeholder="Reason" required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="quantity">Quantity:</label>
+                                    <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
+                                    <select class=" w-25 p-2" id="quantity" name="quantity">
+                                    <option value disabled>Please select a number</option>
+                                    <?php
+                                        for ($i = 1; $i <= 10; $i++) {
+                                            echo "<option value='$i'>$i</option>";
+                                        }
+                                    ?>
+                                    </select>
+                                </div>
                        		</div>
 							<div class="modal-footer mt-2 d-flex justify-content-center">
                                 <input type="hidden" name="certificate_name" value="business permit" required>
@@ -507,8 +555,20 @@ $conn->close();
                                             </div>
                                            <div class="form-group">
                                                 <label>Reason for requesting</label>
-                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo)</span>
+                                                <span>(Rason sa Paghangyo)</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: Employment Requirements"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity:</label>
+                                                <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
+                                                <select class=" w-25 p-2" id="quantity" name="quantity">
+                                                <option value disabled>Please select a number</option>
+                                                <?php
+                                                    for ($i = 1; $i <= 10; $i++) {
+                                                        echo "<option value='$i'>$i</option>";
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -556,8 +616,20 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>
-                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo )</span>
+                                                <span>(Rason sa Paghangyo )</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements "></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity:</label>
+                                                <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
+                                                <select class=" w-25 p-2" id="quantity" name="quantity">
+                                                <option value disabled>Please select a number</option>
+                                                <?php
+                                                    for ($i = 1; $i <= 10; $i++) {
+                                                        echo "<option value='$i'>$i</option>";
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -620,8 +692,20 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>
-                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo )</span>
+                                                <span>(Rason sa Paghangyo)</span>
                                                 <textarea class="form-control" name="requirements" required placeholder="Ex: 4ps Requirements"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity:</label>
+                                                <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
+                                                <select class=" w-25 p-2" id="quantity" name="quantity">
+                                                <option value disabled>Please select a number</option>
+                                                <?php
+                                                    for ($i = 1; $i <= 10; $i++) {
+                                                        echo "<option value='$i'>$i</option>";
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -687,8 +771,20 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>
-                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo)</span>
+                                                <span>(Rason sa Paghangyo)</span>
                                                 <input class="form-control" name="requirements" required placeholder="Ex: Loan Requirements">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity:</label>
+                                                <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
+                                                <select class="w-25 p-2" id="quantity" name="quantity">
+                                                <option value disabled>Please select a number</option>
+                                                <?php
+                                                    for ($i = 1; $i <= 10; $i++) {
+                                                        echo "<option value='$i'>$i</option>";
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -768,8 +864,20 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>
-                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo)</span>
+                                                <span>(Rason sa Paghangyo)</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: School Requirements"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity:</label>
+                                                <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
+                                                <select class=" w-25 p-2" id="quantity" name="quantity">
+                                                <option value disabled>Please select a number</option>
+                                                <?php
+                                                    for ($i = 1; $i <= 10; $i++) {
+                                                        echo "<option value='$i'>$i</option>";
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -817,13 +925,25 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>
-                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo)</span>
-                                                <input class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements" required>
+                                                <span>(Rason sa Paghangyo)</span>
+                                                <input class="form-control" name="requirement" placeholder="Ex: 4ps Requirements" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Years of resident of Los Amigos</label>
                                                 <span>(Ilan taon nakatira sa Barangay/ Pila ka tuig nagpuyo sa Barangay)</span>
-                                                <input type="text" class="form-control" name="resident_years" required placeholder="Ex: 1 year or 2 years" required>
+                                                <input type="text" class="form-control" name="resident_years" placeholder="Ex: 1 year or 2 years" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity:</label>
+                                                <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
+                                                <select class=" w-25 p-2" id="quantity" name="quantity">
+                                                <option value disabled>Please select a number</option>
+                                                <?php
+                                                    for ($i = 1; $i <= 10; $i++) {
+                                                        echo "<option value='$i'>$i</option>";
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -866,8 +986,20 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>
-                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo)</span>
+                                                <span>(Rason sa Paghangyo)</span>
                                                 <textarea class="form-control" name="requirements" required placeholder="Ex: 4ps Requirements"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity:</label>
+                                                <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
+                                                <select class=" w-25 p-2" id="quantity" name="quantity">
+                                                <option value disabled>Please select a number</option>
+                                                <?php
+                                                    for ($i = 1; $i <= 10; $i++) {
+                                                        echo "<option value='$i'>$i</option>";
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -915,8 +1047,20 @@ $conn->close();
                                             </div>
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>
-                                                <span>(Dahilan sa kahilingan/ Rason sa Paghangyo)</span>
+                                                <span>(Rason sa Paghangyo)</span>
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: Jobseeking Requirements"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity:</label>
+                                                <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
+                                                <select class=" w-25 p-2" id="quantity" name="quantity">
+                                                <option value disabled>Please select a number</option>
+                                                <?php
+                                                    for ($i = 1; $i <= 10; $i++) {
+                                                        echo "<option value='$i'>$i</option>";
+                                                    }
+                                                ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

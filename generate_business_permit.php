@@ -11,6 +11,7 @@ $result = $conn->query($sql)->fetch_assoc();
 <head>
 	<?php include 'templates/header.php' ?>
 	<title>CertiFast Portal</title>
+    <link rel="stylesheet" href="assets/css/payment-style.css">
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

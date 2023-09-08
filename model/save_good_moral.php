@@ -16,6 +16,7 @@ $taxno      = $conn->real_escape_string($_POST['taxno']);
 $user_email = $conn->real_escape_string($_POST['email']);
 $fname      = $conn->real_escape_string($_POST['fname']);
 $req        = $conn->real_escape_string($_POST['requirement']);
+$qty      = $conn->real_escape_string($_POST['quantity']);
 
 // Check residency status of the user
 $residencyStatusCheckQuery = "SELECT COUNT(*) AS status_count, residency_status FROM tblresident WHERE email = '$user_email' LIMIT 1";
@@ -76,8 +77,8 @@ if ($statusCheckResult->num_rows > 0) {
             // If no duplicate requests
             if ($checkDuplicateData['count'] < 1) {
                 // Insert into tblgood_moral table
-                $insert_query = "INSERT INTO tblgood_moral(`fullname`,`purok`, `cert_name`, `requester`, `email`, `requirement`, `taxno`) 
-                                VALUES ('$fullname', '$purok', '$cert_name', '$fname', '$user_email', '$req', '$taxno')";
+                $insert_query = "INSERT INTO tblgood_moral(`fullname`,`purok`, `cert_name`, `requester`, `email`, `requirement`, `taxno`, `quantity`) 
+                                VALUES ('$fullname', '$purok', '$cert_name', '$fname', '$user_email', '$req', '$taxno', '$qty')";
                 $result_resident = $conn->query($insert_query);
 
                 if ($result_resident === true) {
@@ -178,8 +179,8 @@ if ($statusCheckResult->num_rows > 0) {
     }
 
     // Insert into tblgood_moral table
-    $insert_query = "INSERT INTO tblgood_moral(`fullname`,`purok`, `cert_name`, `requester`, `email`, `requirement`, `taxno`) 
-        VALUES ('$fullname', '$purok', '$cert_name', '$fname', '$user_email', '$req', '$taxno')";
+    $insert_query = "INSERT INTO tblgood_moral(`fullname`,`purok`, `cert_name`, `requester`, `email`, `requirement`, `taxno`, `quantity`) 
+                    VALUES ('$fullname', '$purok', '$cert_name', '$fname', '$user_email', '$req', '$taxno', '$qty')";
     $result_resident = $conn->query($insert_query);
 
     if ($result_resident === true) {

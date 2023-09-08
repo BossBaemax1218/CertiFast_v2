@@ -12,6 +12,7 @@
 	<?php include 'templates/header.php' ?>
     <link rel="stylesheet" href="assets/css/brgy-id.css">
 	<title>CertiFast Portal</title>
+    <link rel="stylesheet" href="assets/css/payment-style.css">
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>
