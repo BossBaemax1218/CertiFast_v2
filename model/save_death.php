@@ -119,25 +119,25 @@ if (!empty($dead_person) && !empty($death_bdate) && !empty($age) && !empty($puro
                     $checkExistingClaimedRequestData = $checkExistingClaimedRequestResult->fetch_assoc();
 
                     if ($checkExistingClaimedRequestData['ClaimedCount'] > 0) {
-                        $_SESSION['message'] = 'You have already requested a certificate with the same requirement. Please wait until your previous request is processed.';
+                        $_SESSION['message'] = 'Ikaw ay nakapag-request na ng isang sertipikado na may parehong dahilan o layunin. Mangyaring kunin ang mga na-aprubahang sertipikado sa Opisina ng Barangay Los Amigos.';
                         $_SESSION['success'] = 'info';
                         header("Location: " . $_SERVER["HTTP_REFERER"]);
                         exit();
                     } else {
-                        $_SESSION['message'] = 'You have already requested a certificate with the same requirement. Please wait until your previous request is processed.';
+                        $_SESSION['message'] = 'Ikaw ay nakapag-request na ng isang sertipikado na may parehong dahilan o layunin. Mangyaring maghintay hanggang maiproseso ang iyong naunang kahilingan o bumisita sa Opisina ng Barangay Los Amigos para sa kumpirmasyon.';
                         $_SESSION['success'] = 'info';
                         header("Location: " . $_SERVER["HTTP_REFERER"]);
                         exit();
                     }
                 }
             } else {
-                $_SESSION['message'] = 'You have already claimed a certificate with the same type. Please visit the Barangay Office for further assistance.';
+                $_SESSION['message'] = 'Ikaw ay nakakuha na ng isang sertipikado na parehong uri. Mangyaring magtungo sa Opisina ng Barangay para sa karagdagang tulong.';
                 $_SESSION['success'] = 'info';
                 header("Location: " . $_SERVER["HTTP_REFERER"]);
                 exit();
             }
         } else {
-            $_SESSION['message'] = 'You have already requested a certificate with the same requirement. Please wait until your previous request is processed.';
+            $_SESSION['message'] = 'Ikaw ay nakapag-request na ng isang sertipikado na may parehong dahilan o layunin. Mangyaring maghintay hanggang maiproseso ang iyong naunang kahilingan o bumisita sa Opisina ng Barangay Los Amigos para sa kumpirmasyon.';
             $_SESSION['success'] = 'info';
             header("Location: " . $_SERVER["HTTP_REFERER"]);
             exit();

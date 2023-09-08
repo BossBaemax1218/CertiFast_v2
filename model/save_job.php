@@ -115,7 +115,7 @@ if (!empty($fullname) && !empty($purok) && !empty($age)) {
                     $checkExistingClaimedRequestData = $checkExistingClaimedRequestResult->fetch_assoc();
 
                     if ($checkExistingClaimedRequestData['ClaimedCount'] > 0) {
-                        $_SESSION['message'] = 'You have already requested a certificate with the same requirement. Please wait until your previous request is processed.';
+                        $_SESSION['message'] = 'Ikaw ay nakapag-request na ng isang sertipikado na may parehong dahilan o layunin. Mangyaring kunin ang mga na-aprubahang sertipikado sa Opisina ng Barangay Los Amigos.';
                         $_SESSION['success'] = 'info';
                         header("Location: " . $_SERVER["HTTP_REFERER"]);
                         exit();
@@ -126,7 +126,7 @@ if (!empty($fullname) && !empty($purok) && !empty($age)) {
                     $result_requested = $conn->query($insert_requested);
 
                     if ($result_requested === true) {
-                        $_SESSION['message'] = 'You have requested a certificate of first-time jobseekers with the same requirement successfully!';
+                        $_SESSION['message'] = 'You have requested a certificate of first-time jobseekers successfully!';
                         $_SESSION['success'] = 'success';
                     } else {
                         $_SESSION['message'] = 'Something went wrong while inserting into tblresident_requested: ' . $conn->error;
@@ -140,7 +140,7 @@ if (!empty($fullname) && !empty($purok) && !empty($age)) {
                 exit();
             }
         } else {
-            $_SESSION['message'] = 'You cannot request a certificate again when you have already previously requested with the same requirement. Please check your Certificates Status or visit the Barangay Office for clarifications.';
+            $_SESSION['message'] = 'Hindi ka maaaring mag-request ng sertipikado ulit kung ikaw ay nakapag-request na ng parehong uri dati. Mangyaring suriin ang Status ng iyong mga Sertipikado o bumisita sa Opisina ng Barangay para sa mga klaripikasyon.';
             $_SESSION['success'] = 'info';
             header("Location: " . $_SERVER["HTTP_REFERER"]);
             exit();

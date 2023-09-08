@@ -119,7 +119,7 @@ if (!empty($fam1) && !empty($fam2) && !empty($fam3) && !empty($fam4) && !empty($
                     $checkExistingClaimedRequestData = $checkExistingClaimedRequestResult->fetch_assoc();
 
                     if ($checkExistingClaimedRequestData['ClaimedCount'] > 0) {
-                        $_SESSION['message'] = 'You have already requested a certificate with the same requirement. Please wait until your previous request is processed.';
+                        $_SESSION['message'] = 'Ikaw ay nakapag-request na ng isang sertipikado na may parehong dahilan o layunin. Mangyaring kunin ang mga na-aprubahang sertipikado sa Opisina ng Barangay Los Amigos.';
                         $_SESSION['success'] = 'info';
                         header("Location: " . $_SERVER["HTTP_REFERER"]);
                         exit();
@@ -144,7 +144,7 @@ if (!empty($fam1) && !empty($fam2) && !empty($fam3) && !empty($fam4) && !empty($
                 exit();
             }
         } else {
-            $_SESSION['message'] = 'You cannot request a certificate again when you have already previously requested with the same requirement. Please check your Certificates Status or visit the Barangay Office for clarifications.';
+            $_SESSION['message'] = 'Hindi ka maaaring mag-request ng sertipikado ulit kung ikaw ay nakapag-request na ng parehong uri dati. Mangyaring suriin ang Status ng iyong mga Sertipikado o bumisita sa Opisina ng Barangay para sa mga klaripikasyon.';
             $_SESSION['success'] = 'info';
             header("Location: " . $_SERVER["HTTP_REFERER"]);
             exit();

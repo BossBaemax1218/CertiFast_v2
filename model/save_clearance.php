@@ -121,7 +121,7 @@ if ($statusCheckResult->num_rows > 0) {
                 $result_requested = $conn->query($insert_requested);
 
                 if ($result_requested === true) {
-                    $_SESSION['message'] = 'You have requested a certificate of clearance with the same requirement!';
+                    $_SESSION['message'] = 'You have requested a certificate of clearance successfully!';
                     $_SESSION['success'] = 'success';
                 } else {
                     $_SESSION['message'] = 'Something went wrong while inserting into tblresident_requested: ' . $conn->error;
@@ -135,7 +135,7 @@ if ($statusCheckResult->num_rows > 0) {
             exit();
         }
     } else {
-        $_SESSION['message'] = 'You cannot request certificates again when you have already previously requested with the same requirement. Please check your Certificates Status or visit Barangay Office for clarifications.';
+        $_SESSION['message'] = 'Hindi ka maaaring mag-request ng sertipikado ulit kung ikaw ay nakapag-request na ng parehong uri dati. Mangyaring suriin ang Status ng iyong mga Sertipikado o bumisita sa Opisina ng Barangay para sa mga klaripikasyon.';
         $_SESSION['success'] = 'info';
         header("Location: " . $_SERVER["HTTP_REFERER"]);
         exit();
