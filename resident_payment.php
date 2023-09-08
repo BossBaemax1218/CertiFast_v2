@@ -15,8 +15,9 @@ include 'server/db_connection.php';
 		    <div class="main-panel">
 			    <div class="content">
                     <div>
-                        <h1 class="text-center fw-bold mt-4" style="font-size: 300%;">Payments History</h1>
-                        <h4 class="text-center">This is the list of all of your payments in Barangay Los Amigos CertiFast Portal.</h4>
+                        <h1 class="text-center fw-bold mt-5" style="font-size: 300%;">Payments History</h1>
+                        <h2 class="text-center">This is the list of all of your payments in Barangay Los Amigos CertiFast Portal.</h2>
+                        <h3 class="text-center">(Ito ang listahan ng mga hiniling na transaksyon sa sertipikasyon sa Certifast.)</h3>
                     </div>
                     <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">

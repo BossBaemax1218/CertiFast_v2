@@ -72,8 +72,8 @@ $conn->close();
                     <div class="page-inner mt-5">
                         <div class="text-center align-items-center align-items-md-center flex-column">
                             <h1 class="fw-bold mt-5" style="font-size: 2.5rem;">Resident Profiling</h1>
-                            <h3 class="text-center">Please register your personal information first before requesting any certifications in Barangay Los Amigos.</h3>
-                            <h5 class="text-center">(Mangyaring irehistro muna ang iyong personal na impormasyon bago humiling ng anumang sertipikasyon sa Barangay Los Amigos.)</h5>
+                            <h2 class="text-center">Please register your personal information first before requesting any certifications in Barangay Los Amigos.</h2>
+                            <h4 class="text-center">(Mangyaring irehistro muna ang iyong personal na impormasyon bago humiling ng anumang sertipikasyon sa Barangay Los Amigos.)</h4>
                         </div>
                         <?php if(isset($_SESSION['fullname'])):?>
                             <div class="text-center fw-bold mt-5">
@@ -95,7 +95,7 @@ $conn->close();
                         <?php unset($_SESSION['message']); ?>
                     <?php endif ?>
                     <div class="p-1 mb-4 bg-danger text-white">
-                        <h5 class="text-left"> <i class="fas fa-exclamation-circle"></i> Upang maiwasan ang pagkalito sa panahon ng pagpaparehistro, mangyaring suriing muli kung ang lahat ng iyong impormasyon ay tumpak.</h5>
+                        <h4 class="text-left"> <i class="fas fa-exclamation-circle"></i> Upang maiwasan ang pagkalito sa panahon ng pagpaparehistro, mangyaring suriing muli kung ang lahat ng iyong impormasyon ay tumpak.</h4>
                     </div>
                     <div class="row justify-content-center">
                         <?php if(!empty($resident)): ?>

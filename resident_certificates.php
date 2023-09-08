@@ -74,7 +74,7 @@ $stmt->close();
 				<div class="page-inner">
 					<div class="row mt-2">
 						<div class="col-md-12">
-						<?php if(isset($_SESSION['message'])): ?>
+						    <?php if(isset($_SESSION['message'])): ?>
                                 <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -84,7 +84,7 @@ $stmt->close();
                             <?php unset($_SESSION['message']); ?>
                             <?php endif ?>
 							<div class="p-2 mb-2 bg-danger text-white">
-								<h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i> Kung nagtataka ka kung bakit hindi nagpakita ang isang partikular na certificate na iyong hiniling, malamang dahil hindi mo pa nairehistro ang iyong personal na impormasyon at hindi ka pa nakakakuha ng pag-apruba mula sa iyong pinuno ng Purok. </h5>
+								<h4 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i> Kung nagtataka ka kung bakit hindi nagpakita ang isang partikular na certificate na iyong hiniling, malamang dahil hindi mo pa nairehistro ang iyong personal na impormasyon at hindi ka pa nakakakuha ng pag-apruba mula sa iyong pinuno ng Purok. </h4>
 							</div>
                             <div class="card">
 									<div class="card-header">

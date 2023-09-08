@@ -15,7 +15,6 @@ $cert_name  = $conn->real_escape_string($_POST['certificate_name']);
 $fname      = $conn->real_escape_string($_POST['fname']);
 $user_email = $conn->real_escape_string($_POST['email']);
 
-// Check if email is valid and residency status is approved
 $residencyStatusCheckQuery = "SELECT COUNT(*) AS status_count, residency_status FROM tblresident WHERE email = '$user_email' LIMIT 1";
 $residencyStatusCheckResult = $conn->query($residencyStatusCheckQuery);
 $residencyStatusCheckData = $residencyStatusCheckResult->fetch_assoc();
@@ -39,7 +38,6 @@ if ($residencyStatusCheckData['residency_status'] === 'on hold') {
     exit();
 }
 
-// Check if the user's status is "on hold"
 $statusCheckQuery = "SELECT status FROM tblresident_requested WHERE email = '$user_email' LIMIT 1";
 $statusCheckResult = $conn->query($statusCheckQuery);
 
@@ -113,18 +111,17 @@ if ($statusCheckResult->num_rows > 0) {
                 $checkExistingClaimedRequestData = $checkExistingClaimedRequestResult->fetch_assoc();
 
                 if ($checkExistingClaimedRequestData['ClaimedCount'] > 0) {
-                    $_SESSION['message'] = 'You have already requested a certificate with the same requirement. Please wait until your previous request is processed.';
+                    $_SESSION['message'] = 'Ikaw ay nakapag-request na ng isang sertipikado na may parehong dahilan o layunin. Mangyaring kunin ang mga na-aprubahang sertipikado sa Opisina ng Barangay Los Amigos.';
                     $_SESSION['success'] = 'info';
                     header("Location: " . $_SERVER["HTTP_REFERER"]);
                     exit();
                 }
 
-                // Allow the user to add another request with the same requirement
                 $insert_requested = "INSERT INTO tblresident_requested(`resident_name`, `certificate_name`, `email`, `purok`, `requirement`, `status`) VALUES ('$fname', '$cert_name','$user_email', '$purok','$req', 'on hold')";
                 $result_requested = $conn->query($insert_requested);
 
                 if ($result_requested === true) {
-                    $_SESSION['message'] = 'You have requested a certificate of clearance with the same requirement successfully!';
+                    $_SESSION['message'] = 'You have requested a certificate of clearance with the same requirement!';
                     $_SESSION['success'] = 'success';
                 } else {
                     $_SESSION['message'] = 'Something went wrong while inserting into tblresident_requested: ' . $conn->error;

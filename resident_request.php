@@ -57,11 +57,9 @@ $conn->close();
 <head>
 	<?php include 'templates/header.php' ?>
     <link rel="stylesheet" href="assets/css/menu-style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	<title>CertiFast Portal</title>
 </head>
 <body>
-
 	<div class="wrapper">
 		<?php include 'templates/main-header-resident.php' ?>
 		<?php include 'templates/sidebar-resident.php' ?>
@@ -69,10 +67,10 @@ $conn->close();
 			    <div class="content">
                     <h1 class="text-center fw-bold mt-4" style="font-size: 300%;">Barangay Certificates</h1>
                     <h3 class="text-center">Please fill out your personal information before submitting any of the requested certifications in Barangay Los Amigos.</h3>
-                    <h4 class="text-center">(Ito ang listahan ng mga hiniling na transaksyon sa sertipikasyon sa Certifast.)</h4>
+                    <h4 class="text-center">(Palihog pun-a ang inyong personal nga impormasyon sa wala pa magpasa sa mga gikinahanglang sertipikasyon sa Barangay Los Amigos.)</h4>
                     <div class="page-inner">
                             <?php if(isset($_SESSION['message'])): ?>
-                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
+                                <div class="alert alert-<?php echo $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert" style="font-size: 21px;">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -84,7 +82,7 @@ $conn->close();
                             <form method="GET" class="col-sm-12 col-md-12">
                                 <div class="input-group">
                                     <select class="form-control" id="certType" name="search">
-                                        <option value="Default" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Default') echo 'selected'; ?>>Select Types of Certificates</option>
+                                        <option value="" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Default') echo 'selected'; ?> disabled>Select Types of Certificates</option>
                                         <option value="Show All" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Show All') echo 'selected'; ?>><b>Show All</b></option>
                                         <option value="Barangay Clearance" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Barangay Clearance') echo 'selected'; ?>>Barangay Clearance</option>
                                         <option value="Business Permit" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Business Permit') echo 'selected'; ?>>Business Permit</option>
@@ -99,14 +97,14 @@ $conn->close();
                                         <option value="Certificate of Live In" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Certificate of Live In') echo 'selected'; ?>>Certificate of Live In</option>
                                         <option value="Family Home Estate" <?php if (isset($_POST['certType']) && $_POST['certType'] === 'Family Home Estate') echo 'selected'; ?>>Family Home Estate</option>
                                     </select>  
-                                    <button type="submit" class="btn btn-danger">Apply Filter</button>                           
+                                    <button type="submit" class="btn btn-danger">Confirm</button>                           
                                 </div>
                             </form>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="p-1 bg-danger text-white container">
-                                    <h5 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>  Palihug siguruha nga ang imong Profiling naaprobahan na sa imong respetado nga Purok Leader, sa wala ka pa mangayo ug bisan unsang mga sertipikasyon.</h5>
+                                    <h4 class="text-left mt-2"><i class="fas fa-exclamation-circle"></i>  Palihug siguruha nga ang imong Profiling naaprobahan na sa imong respetado nga Purok Leader, sa wala ka pa mangayo ug bisan unsang mga sertipikasyon.</h4>
                                 </div>
                                 <div class="container">
                                     <?php

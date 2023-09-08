@@ -110,7 +110,7 @@ if ($statusCheckResult->num_rows > 0) {
                 $checkExistingClaimedRequestData = $checkExistingClaimedRequestResult->fetch_assoc();
 
                 if ($checkExistingClaimedRequestData['ClaimedCount'] > 0) {
-                    $_SESSION['message'] = 'You have already requested a barangay ID with the same certificate name. Please wait until your previous request is processed.';
+                    $_SESSION['message'] = 'Ikaw ay nakapag-request na ng isang sertipikado na may parehong dahilan o layunin. Mangyaring kunin ang mga na-aprubahang sertipikado sa Opisina ng Barangay Los Amigos.';
                     $_SESSION['success'] = 'info';
                     header("Location: " . $_SERVER["HTTP_REFERER"]);
                     exit();
@@ -121,7 +121,7 @@ if ($statusCheckResult->num_rows > 0) {
                 $result_requested = $conn->query($insert_requested);
 
                 if ($result_requested === true) {
-                    $_SESSION['message'] = 'You have requested a barangay ID with the same certificate name successfully!';
+                    $_SESSION['message'] = 'You have requested a barangay ID successfully!';
                     $_SESSION['success'] = 'success';
                 } else {
                     $_SESSION['message'] = 'Something went wrong while inserting into tblresident_requested: ' . $conn->error;
@@ -129,13 +129,13 @@ if ($statusCheckResult->num_rows > 0) {
                 }
             }
         } else {
-            $_SESSION['message'] = 'You have reached the maximum request for barangay ID. Please check your certificates status or visit the Barangay Office for clarification.';
+            $_SESSION['message'] = 'Nakab-ot na nimo ang maximum nga pangayo para sa Barangay ID. Palihog tan-awa ang status sa imong mga sertipikado o bisita sa Opisina sa Barangay alang sa klaripikasyon.';
             $_SESSION['success'] = 'info';
             header("Location: " . $_SERVER["HTTP_REFERER"]);
             exit();
         }
     } else {
-        $_SESSION['message'] = 'You cannot request a barangay ID with the same certificate name again.';
+        $_SESSION['message'] = 'Hindi ka makapag-request ng Barangay ID nang walang pahintulot ng opisyal ng Barangay Los Amigos. Mangyaring magtungo sa kanilang opisina para sa kanilang tulong.';
         $_SESSION['success'] = 'info';
         header("Location: " . $_SERVER["HTTP_REFERER"]);
         exit();
@@ -155,7 +155,7 @@ if ($statusCheckResult->num_rows > 0) {
     $checkResidentData = $checkResidentResult->fetch_assoc();
 
     if ($checkResidentData['residency_status'] === 'on hold') {
-        $_SESSION['message'] = 'Your account is on hold status and cannot proceed to request certifications. Please wait until your purok leader has permitted your resident identification. Thank you!';
+        $_SESSION['message'] = 'Ang iyong account ay nasa hold status at hindi maaaring magpatuloy sa paghiling ng mga sertipikasyon. Mangyaring maghintay hanggang ma-aprubahan ng iyong lider sa purok ang iyong resident identification. Salamat!';
         $_SESSION['success'] = 'info';
         header("Location: ../resident_profiling.php");
         exit();
@@ -167,7 +167,7 @@ if ($statusCheckResult->num_rows > 0) {
     $matchCheckData = $matchCheckResult->fetch_assoc();
 
     if ($matchCheckData['match_count'] === 0) {
-        $_SESSION['message'] = 'Your account has not been fully registered. Please register your account first.';
+        $_SESSION['message'] = 'Hindi pa lubos na narehistro ang iyong account. Mangyaring i-rehistro muna ang iyong account.';
         $_SESSION['success'] = 'danger';
         header("Location: ../resident_profiling.php");
         exit();
