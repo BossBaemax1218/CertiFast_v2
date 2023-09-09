@@ -160,7 +160,7 @@
                                     <input type="datetime" id="date-issued" name="date" value="<?= date('Y-m-d') ?>" class="form-control payment-control btn btn-light btn-info">
                                 </div>
                                 <div class="form-group">
-                                    <label for="quantity">Quantity</label>
+                                    <label for="quantity">Copies</label>
                                     <input type="number" id="quantity" name="quantity" value="<?= $resident['quantity'] ?>" class="form-control payment-control btn btn-light btn-info">
                                 </div>
                                 <div class="form-group">
@@ -175,7 +175,7 @@
                             <div class="modal-footer">
                                 <input type="hidden" name="email" value="<?= $resident['email'] ?>">
                                 <input type="hidden" name="requirement" value="<?= $resident['requirement'] ?>">
-                                <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
+                                <button type="button" class="btn btn-danger" onclick="goBack()" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Confirm and Pay</button>
                             </div>
                         </form>

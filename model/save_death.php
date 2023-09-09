@@ -19,6 +19,7 @@ $cert_name = $conn->real_escape_string($_POST['certificate_name']);
 $user_email = $conn->real_escape_string($_POST['email']);
 $fullname = $conn->real_escape_string($_POST['fullname']);
 $req = $conn->real_escape_string($_POST['requirement']);
+$qty = $conn->real_escape_string($_POST['quantity']);
 
 if (!empty($dead_person) && !empty($death_bdate) && !empty($age) && !empty($purok) && !empty($death_date) && !empty($guardian) && !empty($rship)) {
 
@@ -85,8 +86,8 @@ if (!empty($dead_person) && !empty($death_bdate) && !empty($age) && !empty($puro
                 $checkDuplicateData = $checkDuplicateResult->fetch_assoc();
 
                 if ($checkDuplicateData['count'] < 1) {
-                    $insert_query = "INSERT INTO tbldeath(`death_person`, `death_bdate`, `age`, `purok`, `death_date`, `guardian`, `relationship`, `cert_name`, `requester`, `email`, `requirement`)
-                                    VALUES ('$dead_person', '$death_bdate', '$age', '$purok', '$death_date', '$guardian', '$rship', '$cert_name', '$fullname', '$user_email', '$req')";
+                    $insert_query = "INSERT INTO tbldeath(`death_person`, `death_bdate`, `age`, `purok`, `death_date`, `guardian`, `relationship`, `cert_name`, `requester`, `email`, `requirement`, `quantity`)
+                                    VALUES ('$dead_person', '$death_bdate', '$age', '$purok', '$death_date', '$guardian', '$rship', '$cert_name', '$fullname', '$user_email', '$req', '$qty')";
                     $result_resident = $conn->query($insert_query);
 
                     if ($result_resident === true) {
@@ -173,8 +174,8 @@ if (!empty($dead_person) && !empty($death_bdate) && !empty($age) && !empty($puro
             exit();
         }
 
-        $insert_query = "INSERT INTO tbldeath(`death_person`, `death_bdate`, `age`, `purok`, `death_date`, `guardian`, `relationship`, `cert_name`, `requester`, `email`, `requirement`)
-                        VALUES ('$dead_person', '$death_bdate', '$age', '$purok', '$death_date', '$guardian', '$rship', '$cert_name', '$fullname', '$user_email', '$req')";
+        $insert_query = "INSERT INTO tbldeath(`death_person`, `death_bdate`, `age`, `purok`, `death_date`, `guardian`, `relationship`, `cert_name`, `requester`, `email`, `requirement`, `quantity`)
+        VALUES ('$dead_person', '$death_bdate', '$age', '$purok', '$death_date', '$guardian', '$rship', '$cert_name', '$fullname', '$user_email', '$req', '$qty')";
         $result_resident = $conn->query($insert_query);
 
         if ($result_resident === true) {

@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $result = $conn->query($insert);
 
         if ($result === true) {
-            $updateClaimed = "UPDATE tblresident_requested SET `status` = 'claimed' WHERE email='$email' AND requirement ='$req' LIMIT 1";
+            $updateClaimed = "UPDATE tblresident_requested SET `status` = 'claimed' WHERE email='$email' AND requirement ='$req' AND resident_name ='$name' AND certificate_name='$details' LIMIT 1";
             $resultUpdate = $conn->query($updateClaimed);
 
             if ($resultUpdate === true) {

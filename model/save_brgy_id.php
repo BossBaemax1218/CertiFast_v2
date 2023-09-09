@@ -21,6 +21,7 @@ $cert_name = $conn->real_escape_string($_POST['certificate_name']);
 $fname = $conn->real_escape_string($_POST['fname']);
 $user_email = $conn->real_escape_string($_POST['email']);
 $req = $conn->real_escape_string($_POST['requirement']);
+$qty = $conn->real_escape_string($_POST['quantity']);
 
 // Check residency status
 $residencyStatusCheckQuery = "SELECT COUNT(*) AS status_count, residency_status FROM tblresident WHERE email = '$user_email' LIMIT 1";
@@ -76,8 +77,8 @@ if ($statusCheckResult->num_rows > 0) {
             $checkDuplicateData = $checkDuplicateResult->fetch_assoc();
 
             if ($checkDuplicateData['count'] < 1) {
-                $insert_query = "INSERT INTO tblbrgy_id(`id_no`, `fullname`, `birthdate`, `purok`, `precintno`, `phone`, `contact_number`, `guardian`, `relationship`, `cert_name`, `requirement`, `requester`, `email`) 
-                                VALUES ('$id', '$owner', '$bdate', '$purok', '$precint', '$phone', '$contact', '$guardian', '$rship', '$cert_name', '$req', '$fname', '$user_email')";
+                $insert_query = "INSERT INTO tblbrgy_id(`id_no`, `fullname`, `birthdate`, `purok`, `precintno`, `phone`, `contact_number`, `guardian`, `relationship`, `cert_name`, `requirement`, `requester`, `email`, `quantity`) 
+                VALUES ('$id', '$owner', '$bdate', '$purok', '$precint', '$phone', '$contact', '$guardian', '$rship', '$cert_name', '$req', '$fname', '$user_email', '$qty')";
                 $result_resident = $conn->query($insert_query);
 
                 if ($result_resident === true) {
@@ -174,8 +175,8 @@ if ($statusCheckResult->num_rows > 0) {
     }
 
     // Insert new request
-    $insert_query = "INSERT INTO tblbrgy_id(`id_no`, `fullname`, `birthdate`, `purok`, `precintno`, `phone`, `contact_number`, `guardian`, `relationship`, `cert_name`, `requirement`, `requester`, `email`) 
-                    VALUES ('$id', '$owner', '$bdate', '$purok', '$precint', '$phone', '$contact', '$guardian', '$rship', '$cert_name', '$req', '$fname', '$user_email')";
+    $insert_query = "INSERT INTO tblbrgy_id(`id_no`, `fullname`, `birthdate`, `purok`, `precintno`, `phone`, `contact_number`, `guardian`, `relationship`, `cert_name`, `requirement`, `requester`, `email`, `quantity`) 
+                    VALUES ('$id', '$owner', '$bdate', '$purok', '$precint', '$phone', '$contact', '$guardian', '$rship', '$cert_name', '$req', '$fname', '$user_email', '$qty')";
     $result_resident = $conn->query($insert_query);
 
     if ($result_resident === true) {

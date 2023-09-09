@@ -196,7 +196,7 @@ $conn->close();
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="quantity">Quantity:</label>
+                                                <label for="quantity">Copies:</label>
                                                 <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
                                                 <select class=" w-25 p-2" id="quantity" name="quantity">
                                                 <option value disabled>Please select a number</option>
@@ -293,7 +293,7 @@ $conn->close();
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: High Blood"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="quantity">Quantity:</label>
+                                                <label for="quantity">Copies:</label>
                                                 <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
                                                 <select class=" w-25 p-2" id="quantity" name="quantity">
                                                 <option value disabled>Please select a number</option>
@@ -397,7 +397,7 @@ $conn->close();
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="quantity">Quantity:</label>
+                                                <label for="quantity">Copies:</label>
                                                 <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
                                                 <select class=" w-25 p-2" id="quantity" name="quantity">
                                                 <option value disabled>Please select a number</option>
@@ -500,7 +500,7 @@ $conn->close();
                                     <input type="text" class="form-control" name="requirement" id="requirement" placeholder="Reason" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="quantity">Quantity:</label>
+                                    <label for="quantity">Copies:</label>
                                     <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
                                     <select class=" w-25 p-2" id="quantity" name="quantity">
                                     <option value disabled>Please select a number</option>
@@ -559,7 +559,7 @@ $conn->close();
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: Employment Requirements"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="quantity">Quantity:</label>
+                                                <label for="quantity">Copies:</label>
                                                 <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
                                                 <select class=" w-25 p-2" id="quantity" name="quantity">
                                                 <option value disabled>Please select a number</option>
@@ -620,7 +620,7 @@ $conn->close();
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: 4ps Requirements "></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="quantity">Quantity:</label>
+                                                <label for="quantity">Copies:</label>
                                                 <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
                                                 <select class=" w-25 p-2" id="quantity" name="quantity">
                                                 <option value disabled>Please select a number</option>
@@ -696,7 +696,7 @@ $conn->close();
                                                 <textarea class="form-control" name="requirements" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="quantity">Quantity:</label>
+                                                <label for="quantity">Copies:</label>
                                                 <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
                                                 <select class=" w-25 p-2" id="quantity" name="quantity">
                                                 <option value disabled>Please select a number</option>
@@ -775,7 +775,7 @@ $conn->close();
                                                 <input class="form-control" name="requirements" required placeholder="Ex: Loan Requirements">
                                             </div>
                                             <div class="form-group">
-                                                <label for="quantity">Quantity:</label>
+                                                <label for="quantity">Copies:</label>
                                                 <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
                                                 <select class="w-25 p-2" id="quantity" name="quantity">
                                                 <option value disabled>Please select a number</option>
@@ -868,7 +868,7 @@ $conn->close();
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: School Requirements"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="quantity">Quantity:</label>
+                                                <label for="quantity">Copies:</label>
                                                 <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
                                                 <select class=" w-25 p-2" id="quantity" name="quantity">
                                                 <option value disabled>Please select a number</option>
@@ -934,7 +934,7 @@ $conn->close();
                                                 <input type="text" class="form-control" name="resident_years" placeholder="Ex: 1 year or 2 years" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="quantity">Quantity:</label>
+                                                <label for="quantity">Copies:</label>
                                                 <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
                                                 <select class=" w-25 p-2" id="quantity" name="quantity">
                                                 <option value disabled>Please select a number</option>
@@ -990,7 +990,7 @@ $conn->close();
                                                 <textarea class="form-control" name="requirements" required placeholder="Ex: 4ps Requirements"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="quantity">Quantity:</label>
+                                                <label for="quantity">Copies:</label>
                                                 <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
                                                 <select class=" w-25 p-2" id="quantity" name="quantity">
                                                 <option value disabled>Please select a number</option>
@@ -1051,7 +1051,7 @@ $conn->close();
                                                 <textarea class="form-control" name="requirement" required placeholder="Ex: Jobseeking Requirements"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="quantity">Quantity:</label>
+                                                <label for="quantity">Copies:</label>
                                                 <span>(Pila ka kopya ang kinahanglan nimo?)</span> &nbsp
                                                 <select class=" w-25 p-2" id="quantity" name="quantity">
                                                 <option value disabled>Please select a number</option>
