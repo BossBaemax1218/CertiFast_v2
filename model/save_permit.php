@@ -17,10 +17,11 @@
     $fname = $conn->real_escape_string($_POST['fname']);
     $user_email = $conn->real_escape_string($_POST['req_email']);
     $req = $conn->real_escape_string($_POST['requirement']);
+    $qty = $conn->real_escape_string($_POST['quantity']);
 
     if(!empty($business_name) && !empty($owner1) && !empty($address) && !empty($email) && !empty($location) && !empty($applied)){
 
-        $insert  = "INSERT INTO tblpermit (`business_name`, `owner1`, `email`, address, location, applied, status, cert_name, requester, req_email, requirement) VALUES ('$business_name', '$owner1','$email', '$address', '$location','$applied', 'on hold','$cert_name','$fname','$req_email','$req')";
+        $insert  = "INSERT INTO tblpermit (`business_name`, `owner1`, `email`, address, location, applied, status, cert_name, requester, req_email, requirement, quantity) VALUES ('$business_name', '$owner1','$email', '$address', '$location','$applied', 'on hold','$cert_name','$fname','$req_email','$req','$qty')";
         $result  = $conn->query($insert);
 
         if ($result === true) {

@@ -15,6 +15,7 @@ $cert_name = $conn->real_escape_string($_POST['certificate_name']);
 $fname = $conn->real_escape_string($_POST['fname']);
 $user_email = $conn->real_escape_string($_POST['email']);
 $req = $conn->real_escape_string($_POST['requirement']);
+$qty = $conn->real_escape_string($_POST['quantity']);
 
 if (!empty($fullname) && !empty($purok) && !empty($age)) {
 
@@ -81,8 +82,8 @@ if (!empty($fullname) && !empty($purok) && !empty($age)) {
                 $checkDuplicateData = $checkDuplicateResult->fetch_assoc();
 
                 if ($checkDuplicateData['count'] < 1) {
-                    $insert_query = "INSERT INTO tbloath(`fullname`, `purok`, `age`, `cert_name`, `requester`, `email`,`requirement`)
-                                    VALUES ('$fullname', '$purok', '$age', '$cert_name', '$fname', '$user_email', '$req')";
+                    $insert_query = "INSERT INTO tbloath(`fullname`, `purok`, `age`, `cert_name`, `requester`, `email`,`requirement`,`quantity`)
+                                    VALUES ('$fullname', '$purok', '$age', '$cert_name', '$fname', '$user_email', '$req', '$qty')";
                     $result_resident = $conn->query($insert_query);
 
                     if ($result_resident === true) {
@@ -175,8 +176,8 @@ if (!empty($fullname) && !empty($purok) && !empty($age)) {
             header("Location: ../resident_profiling.php");
             exit();
         }
-        $insert_query = "INSERT INTO tbloath(`fullname`, `purok`, `age`, `cert_name`, `requester`, `email`,`requirement`)
-                VALUES ('$fullname', '$purok', '$age', '$cert_name', '$fname', '$user_email', '$req')";
+        $insert_query = "INSERT INTO tbloath(`fullname`, `purok`, `age`, `cert_name`, `requester`, `email`,`requirement`,`quantity`)
+        VALUES ('$fullname', '$purok', '$age', '$cert_name', '$fname', '$user_email', '$req', '$qty')";
         $result_resident = $conn->query($insert_query);
 
 

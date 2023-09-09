@@ -142,37 +142,48 @@
 				</div>
 			</div>
             <!-- Modal -->
-           <div class="modal fade" id="pment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+            <div class="modal fade" id="pment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Create Payment</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Payment</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="model/save_pment.php" >
+                            <form method="POST" action="model/save_pment.php">
                                 <div class="form-group">
-                                    <label>Amount</label>
-                                    <input type="number" class="form-control" name="amount" placeholder="Enter amount to pay" required>
+                                    <label for="name">Payeer Name</label>
+                                    <input type="text" id="name" name="name" value="<?= $resident['requester'] ?>" class="form-control payment-control btn btn-light btn-info">
                                 </div>
                                 <div class="form-group">
-                                    <label>Date Issued</label>
-                                    <input type="datetime" class="form-control" name="date" value="<?= date('Y-m-d') ?>">
+                                    <label for="payment-details">Payment Details</label>
+                                    <textarea id="details" name="details" placeholder="Enter Payment Details" class="form-control payment-control btn btn-light btn-info">Certificate of Indigency</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Payment Details(Optional)</label>
-                                    <textarea class="form-control" placeholder="Enter Payment Details" name="details">Certificate of Indigency</textarea>
+                                    <label for="date-issued">Date Issued</label>
+                                    <input type="datetime" id="date-issued" name="date" value="<?= date('Y-m-d') ?>" class="form-control payment-control btn btn-light btn-info">
                                 </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="hidden" class="form-control" name="name" value="<?= $resident['fullname'] ?>">
-                            <input type="hidden" name="email" value="<?= $resident['email'] ?>">
-                            <input type="hidden" name="requirement" value="<?= $resident['requirements'] ?>">
-                            <button type="button" class="btn btn-danger" onclick="goBack()">Close</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
+                                <div class="form-group">
+                                    <label for="quantity">Copies</label>
+                                    <input type="number" id="quantity" name="quantity" value="<?= $resident['quantity'] ?>" class="form-control payment-control btn btn-light btn-info">
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="number" id="price" name="price" placeholder="0.00" class="form-control payment-control btn btn-light btn-info" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="fw-bold total-amount-label">Total Amount:</label>
+                                    <input id="amount" name="amount" class="total-amount-value" value="₱ 0.00" style="border: none; background-color: transparent;">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="hidden" name="email" value="<?= $resident['email'] ?>">
+                                <input type="hidden" name="requirement" value="<?= $resident['requirements'] ?>">
+                                <button type="button" class="btn btn-danger" onclick="goBack()" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Confirm and Pay</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -187,6 +198,23 @@
 		</div>
 	</div>
 	<?php include 'templates/footer.php' ?>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var quantityInput = document.getElementById("quantity");
+        var amountInput = document.getElementById("price");
+        var totalAmountInput = document.getElementById("amount");
+
+        function updateTotal() {
+            var quantity = parseFloat(quantityInput.value) || 0;
+            var amount = parseFloat(amountInput.value) || 0;
+            var total = quantity * amount;
+            totalAmountInput.value = "₱ " + total.toFixed(2);
+        }
+
+        quantityInput.addEventListener("input", updateTotal);
+        amountInput.addEventListener("input", updateTotal);
+    });
+</script>
     <script>
             function openModal(){
                 $('#pment').modal('show');

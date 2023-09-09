@@ -13,6 +13,7 @@ $req        = $conn->real_escape_string($_POST['requirements']);
 $cert_name  = $conn->real_escape_string($_POST['certificate_name']);
 $user_email = $conn->real_escape_string($_POST['email']);
 $fname      = $conn->real_escape_string($_POST['fname']);
+$qty = $conn->real_escape_string($_POST['quantity']);
 
 // Check if email is valid and residency status is approved
 $residencyStatusCheckQuery = "SELECT COUNT(*) AS status_count, residency_status FROM tblresident WHERE email = '$user_email' LIMIT 1";
@@ -80,7 +81,7 @@ if ($statusCheckResult->num_rows > 0) {
             $checkDuplicateData = $checkDuplicateResult->fetch_assoc();
 
             if ($checkDuplicateData['count'] < 1) {
-                $insert_query = "INSERT INTO tblindigency(`fullname`,`cert_name`, `purok`, `requirements`,`requester`, `email`) VALUES ('$fullname', '$cert_name','$purok', '$req','$fname', '$user_email')";
+                $insert_query = "INSERT INTO tblindigency(`fullname`,`cert_name`, `purok`, `requirements`,`requester`, `email`,`quantity`) VALUES ('$fullname', '$cert_name','$purok', '$req','$fname', '$user_email', '$qty')";
                 $result_resident = $conn->query($insert_query);
 
                 if ($result_resident === true) {
@@ -176,7 +177,7 @@ if ($statusCheckResult->num_rows > 0) {
     }
 
     // Insert data into tblindigency
-    $insert_query = "INSERT INTO tblindigency(`fullname`,`cert_name`, `purok`, `requirements`,`requester`, `email`) VALUES ('$fullname', '$cert_name','$purok', '$req','$fname', '$user_email')";
+    $insert_query = "INSERT INTO tblindigency(`fullname`,`cert_name`, `purok`, `requirements`,`requester`, `email`,`quantity`) VALUES ('$fullname', '$cert_name','$purok', '$req','$fname', '$user_email', '$qty')";
     $result_resident = $conn->query($insert_query);
 
     if ($result_resident === true) {

@@ -18,6 +18,7 @@ $req = $conn->real_escape_string($_POST['requirements']);
 $cert_name = $conn->real_escape_string($_POST['certificate_name']);
 $fname = $conn->real_escape_string($_POST['fname']);
 $user_email = $conn->real_escape_string($_POST['email']);
+$qty = $conn->real_escape_string($_POST['quantity']);
 
 if (!empty($husband) && !empty($wife) && !empty($h_age) && !empty($w_age) && !empty($purok) && !empty($living_year) && !empty($req)) {
 
@@ -84,8 +85,8 @@ if (!empty($husband) && !empty($wife) && !empty($h_age) && !empty($w_age) && !em
                 $checkDuplicateData = $checkDuplicateResult->fetch_assoc();
 
                 if ($checkDuplicateData['count'] < 1) {
-                    $insert_query = "INSERT INTO tbllive_in(`husband`, `wife`, `husband_age`, `wife_age`, `purok`, `living_year`, `requirements`, `cert_name`, `requester`, `email`)
-                                    VALUES ('$husband', '$wife', '$h_age', '$w_age', '$purok', '$living_year', '$req', '$cert_name', '$fname', '$user_email')";
+                    $insert_query = "INSERT INTO tbllive_in(`husband`, `wife`, `husband_age`, `wife_age`, `purok`, `living_year`, `requirements`, `cert_name`, `requester`, `email`,`quantity`)
+                                    VALUES ('$husband', '$wife', '$h_age', '$w_age', '$purok', '$living_year', '$req', '$cert_name', '$fname', '$user_email','$qty')";
                     $result_resident = $conn->query($insert_query);
 
                     if ($result_resident === true) {
@@ -179,8 +180,8 @@ if (!empty($husband) && !empty($wife) && !empty($h_age) && !empty($w_age) && !em
             exit();
         }
 
-        $insert_query = "INSERT INTO tbllive_in(`husband`, `wife`, `husband_age`, `wife_age`, `purok`, `living_year`, `requirements`, `cert_name`, `requester`, `email`)
-                        VALUES ('$husband', '$wife', '$h_age', '$w_age', '$purok', '$living_year', '$req', '$cert_name', '$fname', '$user_email')";
+        $insert_query = "INSERT INTO tbllive_in(`husband`, `wife`, `husband_age`, `wife_age`, `purok`, `living_year`, `requirements`, `cert_name`, `requester`, `email`,`quantity`)
+                        VALUES ('$husband', '$wife', '$h_age', '$w_age', '$purok', '$living_year', '$req', '$cert_name', '$fname', '$user_email','$qty')";
         $result_resident = $conn->query($insert_query);
 
         if ($result_resident === true) {
