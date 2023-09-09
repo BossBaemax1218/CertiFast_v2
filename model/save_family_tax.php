@@ -19,6 +19,7 @@ $req = $conn->real_escape_string($_POST['requirements']);
 $cert_name = $conn->real_escape_string($_POST['certificate_name']);
 $user_email = $conn->real_escape_string($_POST['email']);
 $fullname = $conn->real_escape_string($_POST['fullname']);
+$qty = $conn->real_escape_string($_POST['quantity']);
 
 if (!empty($fam1) && !empty($fam2) && !empty($fam3) && !empty($fam4) && !empty($fam5) && !empty($tct) && !empty($req)) {
 
@@ -85,8 +86,8 @@ if (!empty($fam1) && !empty($fam2) && !empty($fam3) && !empty($fam4) && !empty($
                 $checkDuplicateData = $checkDuplicateResult->fetch_assoc();
 
                 if ($checkDuplicateData['count'] < 1) {
-                    $insert_query = "INSERT INTO tblfamily_tax(`fam_1`, `fam_2`, `fam_3`, `fam_4`, `fam_5`,`purok`, `tctno`, `cert_name`, `requirements`, `requester`, `email`)
-                                        VALUES ('$fam1', '$fam2', '$fam3', '$fam4', '$fam5', '$purok', '$tct', '$cert_name', '$req','$fullname', '$user_email')";
+                    $insert_query = "INSERT INTO tblfamily_tax(`fam_1`, `fam_2`, `fam_3`, `fam_4`, `fam_5`,`purok`, `tctno`, `cert_name`, `requirements`, `requester`, `email`, `quantity`)
+                                        VALUES ('$fam1', '$fam2', '$fam3', '$fam4', '$fam5', '$purok', '$tct', '$cert_name', '$req','$fullname', '$user_email', '$qty')";
                     $result_resident = $conn->query($insert_query);
 
                     if ($result_resident === true) {
@@ -180,8 +181,8 @@ if (!empty($fam1) && !empty($fam2) && !empty($fam3) && !empty($fam4) && !empty($
             exit();
         }
 
-        $insert_query = "INSERT INTO tblfamily_tax(`fam_1`, `fam_2`, `fam_3`, `fam_4`, `fam_5`,`purok`, `tctno`, `cert_name`, `requirements`, `requester`, `email`)
-                VALUES ('$fam1', '$fam2', '$fam3', '$fam4', '$fam5', '$purok', '$tct', '$cert_name', '$req','$fullname', '$user_email')";
+        $insert_query = "INSERT INTO tblfamily_tax(`fam_1`, `fam_2`, `fam_3`, `fam_4`, `fam_5`,`purok`, `tctno`, `cert_name`, `requirements`, `requester`, `email`, `quantity`)
+        VALUES ('$fam1', '$fam2', '$fam3', '$fam4', '$fam5', '$purok', '$tct', '$cert_name', '$req','$fullname', '$user_email', '$qty')";
         $result_resident = $conn->query($insert_query);
 
         if ($result_resident === true) {
