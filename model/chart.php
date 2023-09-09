@@ -54,7 +54,7 @@
             <p class="description" id="description"></p>
         </div>
         <div class="card-body">
-            <canvas id="myChart3" width="350" height="150"></canvas>
+            <canvas id="myChart3" width="450" height="200"></canvas>
         </div>
     </div>
 </div>
@@ -63,17 +63,14 @@ include 'server/db_connect.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$currentYear = date('Y');
-$currentMonth = date('m', strtotime('last Month'));
-$firstDayOfMonth = date('Y-m-d', strtotime("$currentYear-$currentMonth-01"));
 $currentDate = date('Y-m-d');
+$lastMonday = date('Y-m-d', strtotime('last Monday'));
 
 $dateType = isset($_POST['dateType']) ? $_POST['dateType'] : 'weekly';
-$fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $firstDayOfMonth;
+$fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $lastMonday;
 $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $currentDate;
 $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
 
-// Add variables to store selected week and year
 $selectedWeek = '';
 $selectedMonth = '';
 $selectedYear = '';
@@ -89,11 +86,11 @@ if ($dateType === 'weekly') {
                 WHEN DAY(date) BETWEEN 22 AND 28 THEN '4th week'
                 ELSE '5th week'
             END) AS date_key, ";
-    $sql .= "DATE_FORMAT(date, '%U') AS week, "; // Added to select week
+    $sql .= "DATE_FORMAT(date, '%U') AS week, "; 
     $orderExpression = "DATE_FORMAT(date, '%Y-%m-%d')";
 } elseif ($dateType === 'monthly') {
     $sql .= "DATE_FORMAT(date, '%M %Y') AS date_key, ";
-    $sql .= "DATE_FORMAT(date, '%Y') AS year, "; // Added to select year
+    $sql .= "DATE_FORMAT(date, '%Y') AS year, "; 
     $orderExpression = "DATE_FORMAT(date, '%Y-%m')";
 } elseif ($dateType === 'yearly') {
     $sql .= "DATE_FORMAT(date, '%Y') AS date_key, ";
@@ -137,7 +134,6 @@ foreach ($result as $row) {
 
     $dateKey = $row['date_key'];
 
-    // Update selected month, week, and year based on the row data
     $selectedMonth = isset($row['month']) ? $row['month'] : '';
     $selectedWeek = isset($row['week']) ? $row['week'] : '';
     $selectedYear = isset($row['year']) ? $row['year'] : '';
@@ -217,7 +213,7 @@ function displayChart() {
         }
     });
     
-    var description = "<table><tr><th style=' font-size: 18px;'> This is all the data of the certifications that has been requested. </th><th></th></tr>";
+    var description = "<table><tr><th style=' font-size: 16px;'> Total number of certifications that residents requested. </th><th></th></tr>";
     documentTypes.forEach(function(documentType) {
         var value;
         if (documentType === "All") {
@@ -226,7 +222,7 @@ function displayChart() {
             value = totalValues[documentType] || 0;
         }
 
-        description += "<tr><td style='text-align: left; font-size: 14px;'>" + documentType + "</td><td style='text-align: left; font-size: 14px;'><b>" + value + "</b></td></tr>";
+        description += "<tr><td style='text-align: left; font-size: 14px;'>" + documentType + "</td><td font-size: 16px;'><b>" + value + "</b></td></tr>";
     });
     description += "</table>";
 

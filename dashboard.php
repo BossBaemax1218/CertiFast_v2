@@ -48,8 +48,8 @@ include 'model/status.php';
     <div class="wrapper">
         <?php include 'templates/main-header.php' ?>
         <?php include 'templates/sidebar.php' ?>
-            <div class="main-panel">
-                <div class="content">
+            <div class="main-panel mt-5">
+                <div class="container mt-5">
                     <div class="panel-header mt-2">
                         <div class="d-flex justify-content-center align-items-center">
                             <div class="container">
