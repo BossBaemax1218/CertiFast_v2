@@ -37,28 +37,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("sss", $user_email, $user_email, $user_email);
         $stmt->execute();
         $result = $stmt->get_result();
-
+        
         if ($result->num_rows) {
             $row = $result->fetch_assoc();
             $hashedPassword = $row['password'];
             $role = $row['user_type'];
-
+            $is_active = $row['is_active'];
+        
             if (password_verify($password, $hashedPassword)) {
-                $roleMessages = [
-                    'administrator' => 'You have successfully logged in as an administrator!',
-                    'staff' => 'You have successfully logged in as a staff employee!',
-                    'purok leader' => 'You have successfully logged in as a purok leader!'
-                ];
-
-                if (isset($roleMessages[$role])) {
-                    $_SESSION['message'] = $roleMessages[$role];
-                    $_SESSION['success'] = 'success';
-                    $_SESSION['role'] = $role;
-                    $_SESSION['id'] = $row['id'];
-                    $_SESSION['username'] = $row['username'];
-                    $_SESSION['avatar'] = $row['avatar'];
-
-                    header('location: ../dashboard.php');
+                if ($is_active === 'active') {
+                    $roleMessages = [
+                        'administrator' => 'You have successfully logged in as an administrator!',
+                        'staff' => 'You have successfully logged in as a staff employee!',
+                        'purok leader' => 'You have successfully logged in as a purok leader!'
+                    ];
+        
+                    if (isset($roleMessages[$role])) {
+                        $_SESSION['message'] = $roleMessages[$role];
+                        $_SESSION['success'] = 'success';
+                        $_SESSION['role'] = $role;
+                        $_SESSION['id'] = $row['id'];
+                        $_SESSION['username'] = $row['username'];
+                        $_SESSION['avatar'] = $row['avatar'];
+        
+                        header('location: ../dashboard.php');
+                        exit();
+                    }
+                } else {
+                    session_destroy();
+                    header('location: ../error.php');
                     exit();
                 }
             } else {
