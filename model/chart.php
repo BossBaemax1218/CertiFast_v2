@@ -64,10 +64,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 $currentDate = date('Y-m-d');
-$lastMonday = date('Y-m-d', strtotime('last Monday'));
+$firstDayOfLastMonth = date('Y-m-d', strtotime('first day of last month'));
 
-$dateType = isset($_POST['dateType']) ? $_POST['dateType'] : 'weekly';
-$fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $lastMonday;
+$dateType = isset($_POST['dateType']) ? $_POST['dateType'] : 'monthly';
+$fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : $firstDayOfLastMonth;
 $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : $currentDate;
 $documentType = isset($_POST['documentType']) ? $_POST['documentType'] : 'All';
 
