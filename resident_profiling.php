@@ -185,7 +185,7 @@ $conn->close();
                                     </div>
                                     <?php foreach($res as $row2):?>
                                     <div class="form-group">
-                                        <label>Email</label>
+                                        <label>E-mail Address</label>
                                         <input type="text" class="text-black form-control btn btn-light btn-info disabled" value="<?= $row2["user_email"] ?>" name="email">
                                     </div>
                                     <div class="form-group">
@@ -193,41 +193,43 @@ $conn->close();
                                         <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label>What is your current address?</label>
+                                        <label>Kasalukuyang Address</label>
                                         <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Tugbok, Los Amigos" name="address" value="<?= $row2["address"] ?>">
                                     </div>
                                     <?php endforeach ?>
                                     <div class="form-group">
                                         <label>Barangay ID No.</label>
-                                        <input type="text" class="form-control btn btn-light btn-info" name="national" placeholder="Ex: BLA - 0000-000" value="">
+                                        <input type="text" class="form-control" name="national" placeholder="Ex: BLA - 0000-000" value="">
+                                        <span style="color: red;">Kon aduna ka nay Barangay ID No., palihug itype kini pero pagnaa na biyai rag blangko.</span>
                                     </div>
                                     <div class="form-group">
-                                        <label>What is your first name?</label>
+                                        <label>Unsa imong first nga ngalan?(First name)</label>
                                         <input type="text" class="form-control" placeholder="Ex: Joe Anne" name="fname" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>What is your middle initial?</label>
+                                        <label>Unsa ang imong middle initial?(Middle initial)</label>
                                         <input type="text" class="form-control" placeholder="Ex: G." name="mname" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>What is your last name?</label>
+                                        <label>Unsa imong apelyido?(Surname)</label>
                                         <input type="text" class="form-control" placeholder="Ex: Aldoe" name="lname" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Are you a Filipino or Half Filipino?</label>
+                                        <label>Citizenship</label>
                                         <input type="text" class="form-control" name="citizenship" placeholder="Ex: Filipino" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>What is your birthdate?</label>
+                                        <label>Unsa ang imong petsa sa pagkatawo?(Birthdate)</label>
                                         <input type="date" class="form-control" placeholder="Enter your birthdate" name="bdate" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Where did you born?</label>
+                                        <label>Asa ka gipanganak?(Birthplace)</label>
                                         <input type="text" class="form-control" placeholder="Ex: Tugbok, Los Amigos, Davao City" name="bplace" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>What is your current age?</label>
+                                        <label>Pila imong kasamtangang edad?(Age)</label>
                                         <input type="number" class="form-control" placeholder="Enter your age" min="1" name="age" required>
+                                        <span style="color: red;">Ang imong edad kinahanglan nga sa legal nga edad, 18 pataas.</span>
                                     </div>
                                     <div class="form-group">
                                         <label>Civil Status</label>
@@ -247,7 +249,7 @@ $conn->close();
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>Are you already a voters?</label>
+                                        <label>Narehistro na ba ka nga botante?(Voters)</label>
                                         <select class="form-control" required name="vstatus">
                                             <option disabled selected>Select Voters Status</option>
                                             <option value="Yes">Yes</option>
@@ -259,7 +261,7 @@ $conn->close();
                                         <input type="text" class="form-control" placeholder="+63 000-000-000-00" value="" name="number" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Occupation</label>
+                                        <label>Trabaho(Occupation)</label>
                                         <input type="text" class="form-control" placeholder="Ex: Teacher" name="occupation" required>
                                     </div>
                                 </div>
