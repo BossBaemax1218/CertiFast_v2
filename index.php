@@ -388,7 +388,7 @@
           <h2>F.A.Q</h2>
           <h3><span>Frequently Asked Question</span></h3>
           <br>
-          <h6>Welcome to the Certifast Portal of Barangay Los Amigos! Here are some frequently asked questions to help you get started:</h6>
+          <h5>Welcome to the Certifast Portal of Barangay Los Amigos! Here are some frequently asked questions to help you get started:</h5>
         </div>
         <br>
         <div class="row justify-content-center">
@@ -399,7 +399,7 @@
                 <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">What is Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq1" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                    Certifast Portal of Barangay Los Amigos is a certificate management system designed to provide fast and efficient processing of certificates to community members of Barangay Los Amigos.
+                  The Certifast Portal of Barangay Los Amigos is a modern certificate management system aimed at expediting the issuance of various certificates and documents to the community members of Barangay Los Amigos. This digital platform replaces time-consuming manual processes with an efficient online solution. It offers residents the convenience of applying for certificates online, eliminating the need for in-person visits to the barangay office. The system likely includes features such as online document verification, payment processing, real-time status tracking, and a user-friendly interface. By digitizing the certificate issuance process, it enhances efficiency and transparency in barangay operations while ensuring data security. Ultimately, this portal serves as a valuable resource, making government services more accessible and efficient for the residents of Barangay Los Amigos, improving the overall quality of public service delivery in the community.
                   </p>
                 </div>
               </li>
@@ -408,8 +408,16 @@
                 <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">How does CertiFast Portal works? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq2" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                  The system allows community members to request for different certificates online, such as Barangay Registration, Barangay Residency, Barangay Clearances, Barangay Indigency, Business Permit, Barangay ID and more.
-                   Once the certificate is processed and approved, community members may proceed to the barangay office to claimed their requested certifications.
+                  The CertiFast Portal operates by providing a streamlined online platform for community members to request various certificates, including but not limited to Barangay Online Registration, Barangay Residency, Barangay Clearances, Barangay Indigency, Business Permit, Barangay ID and more Barangay certifications. Users can initiate their certificate requests through the portal, after which the system facilitates the processing and approval of these requests. Once approved, community members are then required to visit the barangay office in person to claim their requested certifications. This process not only digitizes and expedites the application procedure but also ensures that the final step, certificate retrieval, maintains the necessary physical verification and interaction with barangay authorities.
+                  </p>
+                </div>
+              </li>
+              
+              <li>
+                <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Can resident apply for certificates online? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+                  <p>
+                    Residents can apply for certificates online through the CertiFast Certificate Management System. This online application process offers several significant advantages for both the community members and the barangay authorities. By enabling residents to apply for certificates electronically, it streamlines and modernizes the entire certification process. This approach reduces the reliance on cumbersome paperwork, minimizes the chances of errors, and significantly accelerates processing times. Additionally, the system allows for easy tracking and management of certificate records, enhancing administrative efficiency and transparency. For residents, it translates into greater convenience, as they can submit requests from the comfort of their homes, eliminating the need for physical visits to the barangay office and simplifying their interactions with the local government.
                   </p>
                 </div>
               </li>
@@ -418,21 +426,28 @@
                 <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">What certificates are available for request through Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq3" class="collapse" data-bs-parent=".faq-list">
                   <p>Certifast Portal of Barangay Los Amigos processes different types of certificates including, but not limited to: 
-                    Barangay Registration,
+                    Barangay Online Registration,
                     Barangay Residency,
                     Barangay Clearances,
                     Barangay Indigency,
                     Business Permit,
-                    Barangay ID.
+                    Barangay ID,
+                    Certificate of Good Moral,
+                    Birth Certificate,
+                    Family Home Estate Tax,
+                    Certificate of Oath Taking,
+                    Certificate of First Jobseekers,
+                    Certificate of Live In,
+                    Death Certificate. 
                   </p>
                 </div>
               </li>
 
               <li>
-                <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Can resident apply for certificates online? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+                <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Does the CertiFast Portal of Barangay Los Amigos include a Blotter System? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq5" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                  Using a CertiFast Certificate Management System brings several advantages, including improved efficiency, reduced paperwork, faster processing times, enhanced accuracy, easier tracking of certificate records, and increased convenience for both administrators and applicants.
+                    Barangay Los Amigos may wonder why the CertiFast Portal does not include a Blotter System. While based on information available up until September 2021, the absence of a Blotter System within the CertiFast Portal could be due to various factors. The decision not to integrate such a system might be based on the specific needs and priorities of the barangay authorities or the developers of the portal. It's important to note that Blotter Systems are primarily designed for law enforcement agencies to record and manage incident reports and complaints. If residents have concerns or questions about the absence of a Blotter System, they may consider reaching out to the barangay authorities or administrators responsible for the CertiFast Portal for a more detailed explanation of their decision and to provide feedback on potential enhancements or features that residents believe would be beneficial for the community.
                   </p>
                 </div>
               </li>
@@ -441,7 +456,7 @@
                 <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">How much does it cost to request a certificate through Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq5" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                    The cost of each certificate varies depending on the type of certificate requested. Please refer to the portal for the updated pricing of certificates.
+                  The cost of requesting a certificate through the CertiFast Portal of Barangay Los Amigos may vary depending on the specific type of certificate you need. The pricing structure is designed to reflect the administrative expenses associated with processing and issuing each type of certificate accurately. To obtain the most up-to-date and accurate pricing information for the certificates you require, it is advisable to visit the CertiFast Portal. However, it's worth noting that in some cases, certificates may be available at a relatively low cost, such as 20 pesos per copy, as a part of the barangay's commitment to providing affordable and accessible services to its residents. Be sure to check the portal for the precise details relevant to your certificate request.
                   </p>
                 </div>
               </li>
@@ -450,7 +465,7 @@
                 <div data-bs-toggle="collapse" href="#faq7" class="collapsed question">Are there any known issues with the system? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq7" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                  We strive to provide our users with the best possible experience while using our system. However, like any other system, there may be occasional issues. Please contact our customer support team if you experience any problems while using the system.
+                    We are committed to delivering the best possible user experience through the CertiFast Portal of Barangay Los Amigos, it's essential to acknowledge that, like any technological system, occasional issues may arise. Our team is dedicated to resolving these issues promptly and efficiently to ensure a smooth and seamless experience for all users. If you encounter any problems or have concerns while using the system, we encourage you to reach out to Barangay Los Amigos Office. They are here to assist you, address your inquiries, and provide solutions to any issues you may encounter, thereby enhancing your overall experience with the CertiFast Portal. Your feedback and input are highly valued as they contribute to ongoing improvements and the continued success of our service.
                   </p>
                 </div>
               </li>
@@ -459,7 +474,7 @@
                 <div data-bs-toggle="collapse" href="#faq8" class="collapsed question">Are there any compatibility limitations for using Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq8" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                  The system can be accessed through any device with an internet connection and web browser. However, it is recommended to use the latest version of your preferred web browser for optimal performance.
+                  The CertiFast Portal of Barangay Los Amigos is designed to be accessible and user-friendly, with relatively few compatibility limitations. Users can access the system from any device equipped with an internet connection and a web browser. However, for the best possible experience and optimal performance, it is advisable to use the latest version of your preferred web browser. Keeping your browser up-to-date ensures that you can fully leverage the portal's features and functionalities without encountering compatibility issues. This approach allows us to cater to a broader range of users, making the process of requesting certificates and accessing our services as smooth and hassle-free as possible.
                   </p>
                 </div>
               </li>
@@ -468,20 +483,7 @@
                 <div data-bs-toggle="collapse" href="#faq9" class="collapsed question">What are the key features and benefits of using Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq9" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                  The key features and benefits of using Certifast Portal of Barangay Los Amigos include:
-                   Secure and convenient way of requesting certificates,
-                   Fast processing of certificates,
-                   Easy online access to certificates,
-                   User-friendly portal with 24/7 availability.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq10" class="collapsed question">What should I do if I am experiencing a problem while using Certifast Portal of Barangay Los Amigos? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq10" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    If you are experiencing a problem while using Certifast Portal of Barangay Los Amigos, you can contact the support team and raise the issue.
+                  The CertiFast Portal of Barangay Los Amigos offers a range of key features and benefits that enhance the overall user experience. Residents can securely request certificates through the portal, reducing the risk of document loss or mishandling, ensuring the confidentiality and integrity of personal information. Moreover, the portal streamlines certificate processing, resulting in faster turnaround times, which in turn expedites the delivery of essential documents and reduces waiting times. Once processed, certificates are readily accessible online, allowing residents to conveniently download and print their documents from their homes or offices. The user-friendly interface of the CertiFast Portal ensures that residents of all technological backgrounds can easily navigate the system, submit requests, and track the status of their applications. Additionally, the portal's 24/7 availability accommodates diverse schedules, making it even more convenient for users. Collectively, these features and benefits contribute to a more efficient, convenient, and accessible certificate management system, significantly improving the experience for both the residents of Barangay Los Amigos and the barangay authorities responsible for administering these essential documents.
                   </p>
                 </div>
               </li>
