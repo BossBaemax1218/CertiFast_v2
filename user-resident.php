@@ -173,7 +173,7 @@ while ($row = $result->fetch_assoc()) {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body text-center" style="font-size: 16px;">
+                    <div class="modal-body text-center" style="font-size: 15px;">
                         Are you certain you want to permanently delete this user account ?
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">

@@ -164,7 +164,7 @@
                     </div>
                     <div class="modal-footer mt-3 d-flex justify-content-center">
                         <form method="post" action="model/remove_user.php">
-                            <input type="text" name="id" value="<?= $row['id'] ?>">
+                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
                             <button type="button" class="btn btn-danger text-center mr-2">No</button>
                             <button type="submit" class="btn btn-primary text-center">Yes</button>
                         </form>
