@@ -91,7 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['role'] = $role;
                     $_SESSION['photo'] = $row['photo'];
         
-                    // Fetch residency_status from tblresident
                     $queryResidency = "SELECT residency_status FROM tblresident WHERE email = ?";
                     $stmtResidency = $conn->prepare($queryResidency);
                     $stmtResidency->bind_param("s", $user_email);
@@ -145,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('location: ../login.php');
     exit();
 } else {
-    redirectToLoginPage('Invalid request method.', 'danger', 'login');
+    redirectToLoginPage('Invalid input credentials.', 'danger', 'login');
 }
 
 $conn->close();

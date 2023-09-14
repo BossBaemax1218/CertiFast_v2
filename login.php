@@ -27,19 +27,17 @@
                     <form method="POST" action="model/login.php">
                     <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
                         <div class="modal-wrapper">
-                            <div class="modal" id="loginModal">
+                            <div class="text-center modal" id="loginModal">
                                 <?php if ($_SESSION['success'] == 'danger'): ?>
-                                    <h5 class="modal-title text-center">
+                                    <h5 class="modal-title text-center mb-3">
                                         <i class="fas fa-exclamation-triangle fa-3x mt-5" style="color: #d64242"></i>
                                     </h5>
                                 <?php elseif ($_SESSION['success'] == 'success'): ?>
-                                    <h5 class="modal-title text-center">
+                                    <h5 class="modal-title text-center mb-3">
                                         <i class="fas fa-check-circle fa-3x mt-5" style="color: #34c240"></i>
                                     </h5>
                                 <?php endif; ?>
-                                <div class="text-center mt-3 mb-3">
-                                    <span class="message text-center"><?php echo $_SESSION['message']; ?></span>                                 
-                                </div>
+                                <label class="message text-center mt-1"><?php echo $_SESSION['message']; ?></label>                                 
                                 <button type="button" class="button mt-3" id="closeModalButton">Dismiss</button>
                             </div>
                         </div>

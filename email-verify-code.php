@@ -29,23 +29,23 @@
                             <span class="text-center">We sent you a code, please type the code to verified your account.</span>
                         </div>
                         <?php if (isset($_SESSION['message']) && isset($_SESSION['success']) && isset($_SESSION['form']) && $_SESSION['form'] == 'login'): ?>
-                            <div class="modal" id="loginModal">
+                        <div class="modal-wrapper">
+                            <div class="text-center modal" id="loginModal">
                                 <?php if ($_SESSION['success'] == 'danger'): ?>
-                                    <h5 class="modal-title text-center w-100 mt-5 mb-3">
-                                        <i class="fas fa-exclamation-triangle fa-3x d-block mx-auto" style="color: #d64242"></i>
+                                    <h5 class="modal-title text-center mb-3">
+                                        <i class="fas fa-exclamation-triangle fa-3x mt-5" style="color: #d64242"></i>
                                     </h5>
                                 <?php elseif ($_SESSION['success'] == 'success'): ?>
-                                    <h5 class="modal-title text-center w-100 mt-5 mb-3">
-                                        <i class="fas fa-check-circle fa-3x d-block mx-auto" style="color: #34c240"></i>
+                                    <h5 class="modal-title text-center mb-3">
+                                        <i class="fas fa-check-circle fa-3x mt-5" style="color: #34c240"></i>
                                     </h5>
                                 <?php endif; ?>
-                                <div class="text-center mt-3 mb-3">
-                                    <span class="message text-center mb-3 ml-3"><?php echo $_SESSION['message']; ?></span>                                 
-                                </div>
+                                <label class="message text-center mt-1"><?php echo $_SESSION['message']; ?></label>                                 
                                 <button type="button" class="button mt-3" id="closeModalButton">Dismiss</button>
-                            </div>                                       
-                            <?php unset($_SESSION['message']); ?>
-                        <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php unset($_SESSION['message']); ?>
+                    <?php endif; ?>
                         <input type="hidden" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>" class="input" readonly>
                         <div class="field input-field mt-2">
                             <input type="text" name="verification_code" autocomplete="off" placeholder="Verification Code" class="input">

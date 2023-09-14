@@ -35,12 +35,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = $conn->real_escape_string($_POST['address']);
     $password = $conn->real_escape_string($_POST['password']);
 
+    $min_password_length = 8;
+    $has_symbol = preg_match('/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-=\']/', $password);
+    $has_capital_letter = preg_match('/[A-Z]/', $password);
+
     if (empty($purok) || empty($fullname) || empty($email) || empty($address) || empty($password)) {
         redirectToSignupPage('Please fill in all the required fields.', 'danger');
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         redirectToSignupPage('Invalid email address format.', 'danger');
+    }
+
+    if (strlen($password) < $min_password_length || !$has_symbol || !$has_capital_letter) {
+        redirectToSignupPage('Password must be unique and strong.', 'danger');
     }
 
     $checkQueryResident = "SELECT * FROM tbl_user_resident WHERE user_email = ?";
