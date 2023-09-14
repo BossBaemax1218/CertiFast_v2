@@ -1,10 +1,11 @@
 <?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT * FROM tbl_user_admin WHERE user_type IN ('staff','administrator','purok leader')";
+	$query = "SELECT * FROM tbl_user_admin WHERE user_type IN ('staff','purok leader')";
     $result = $conn->query($query);
 
     $users = array();
 	while($row = $result->fetch_assoc()){
+		$row['active_badge'] = $row['is_active'] == 'active' ? '<span class="badge badge-primary">active</span>' : '<span class="badge badge-danger">inactive</span>';
 		$users[] = $row; 
 	}
 
@@ -16,16 +17,6 @@
 		$purok[] = $row; 
 	}
 	
-
-	$users_admin = "SELECT * FROM tbl_user_admin WHERE `is_active` IN ('active','inactive')";
-
-	$result = $conn->query($users_admin);
-
-	$users = array();
-	while ($row = $result->fetch_assoc()) {
-		$row['active_badge'] = $row['is_active'] == 'active' ? '<span class="badge badge-primary">active</span>' : '<span class="badge badge-danger">inactive</span>';
-		$users[] = $row;
-	}
 
 ?>
 <!DOCTYPE html>
@@ -45,7 +36,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-black fw-bold" style = "font-size: 300%;">Staff Account</h2>
+								<h2 class="text-black fw-bold" style = "font-size: 300%;">Staff & Purok Leader's Account</h2>
 							</div>
 						</div>
 					</div>
@@ -69,7 +60,7 @@
 										<div class="card-tools">
 											<a href="#add" data-toggle="modal" class="btn btn-light btn-border btn-sm">
 												<i class="fa fa-plus"></i>
-												Add User
+												User
 											</a>
 											<a class="btn btn-light btn-border btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Filter
@@ -103,7 +94,7 @@
 									<div class="table-responsive">
 										<table id="residenttable" class="table">
 											<thead>
-												<tr>
+												<tr class="text-center">
 													<th scope="col">No.</th>
 													<th scope="col">Fullname</th>
 													<th scope="col">Username</th>
@@ -117,7 +108,7 @@
 											<tbody>
 												<?php if(!empty($users)): ?>
 													<?php $no=1; foreach($users as $row): ?>
-													<tr>
+													<tr class="text-center">
 														<td><?= $no ?></td>
 														<td>
 															<div class="avatar avatar-xs">

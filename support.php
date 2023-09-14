@@ -44,7 +44,7 @@
 								<div class="card-body">
                                     <div class="mailbox">
                                         <div class="mailbox-header">
-                                            <h1>Support</h1>
+                                            <h1>Reports</h1>
                                             <div class="card-tools mt-3">
                                                 <a class="dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Filter Options

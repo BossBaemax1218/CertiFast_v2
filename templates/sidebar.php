@@ -304,12 +304,12 @@ $totalAnnouncements = $row1['total_announcements'];
                                 <ul class="nav nav-collapse">
                                     <li class="<?= $current_page == 'purok.php' ? 'active' : null ?>">
                                         <a href="purok.php">
-                                            <i class="fa-solid fa-list-check"></i> Purok Info
+                                            <i class="fa-solid fa-list-check"></i> Purok
                                         </a>
                                     </li>
                                     <li class="<?= $current_page == 'position.php' ? 'active' : null ?>">
                                         <a href="position.php">
-                                            <i class="fa-solid fa-list-check"></i> Position Info
+                                            <i class="fa-solid fa-list-check"></i> Position
                                         </a>
                                     </li>
                                     <?php if ($_SESSION['role'] == 'staff'): ?>
@@ -334,17 +334,17 @@ $totalAnnouncements = $row1['total_announcements'];
                                     <?php else: ?>
                                         <li class="<?= $current_page == 'users.php' ? 'active' : null ?>">
                                             <a href="users.php">
-                                                <i class="fa-solid fa-list-check"></i> Staff Info
+                                                <i class="fa-solid fa-list-check"></i> Staff & Purok Leader
                                             </a>
                                         </li>
                                         <li class="<?= $current_page == 'user-resident.php' ? 'active' : null ?>">
                                             <a href="user-resident.php">
-                                                <i class="fa-solid fa-list-check"></i> Resident Info
+                                                <i class="fa-solid fa-list-check"></i> Resident
                                             </a>
                                         </li>
                                         <li class="<?= $current_page == 'announcement.php' ? 'active' : null ?>">
                                             <a href="announcement.php">
-                                                <i class="fa-solid fa-list-check"></i> Announcement Info
+                                                <i class="fa-solid fa-list-check"></i> Announcement
                                             </a>
                                         </li>
                                         <li>
@@ -369,7 +369,7 @@ $totalAnnouncements = $row1['total_announcements'];
                                     <li class="<?= $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_support_files.php' || $current_page == 'trash_files.php' ? 'active' : null ?>">
                                         <a href="#trash" data-toggle="collapse" class="collapsed" aria-expanded="false">
                                             <i class="fa fa-trash"></i>
-                                            <p>Trash</p>
+                                            <p>Trash Bin</p>
                                             <span class="caret"></span>
                                         </a>
                                         <div class="collapse <?= $current_page == 'trash_cert_files.php' || $current_page == 'trash_trans_files.php' || $current_page == 'trash_support_files.php' || $current_page == 'trash_files.php'  ? 'show' : null ?>" id="trash">

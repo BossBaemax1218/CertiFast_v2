@@ -46,7 +46,7 @@
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Barangay Purok</div>
+										<div class="card-title"></div>
 										<div class="card-tools">
 											<a href="#add" data-toggle="modal" class="btn btn-light btn-border btn-sm">
 												<i class="fa fa-plus"> </i>   
