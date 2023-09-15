@@ -85,9 +85,9 @@
                                                                     data-name="<?= $row['purok'] ?>" data-purok_leader="<?= $row['purok_leader'] ?>" data-contact_number="<?= $row['contact_number'] ?>" data-total_residents="<?= $row['total_residents'] ?>" data-total_households="<?= $row['total_households'] ?>" data-id="<?= $row['id'] ?>">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
-                                                                <!--<a type="button" data-toggle="tooltip" href="model/remove_purok.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this purok?');" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                                <a type="button" data-toggle="tooltip" href="model/remove_purok.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to permanently delete this item?');" class="btn btn-link btn-danger" data-original-title="Remove">
                                                                     <i class="fas fa-trash"></i>
-                                                                </a>-->
+                                                                </a>
                                                             </div>
                                                         </td>
                                                     </tr>
