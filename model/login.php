@@ -73,8 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        $query = "SELECT * FROM tbl_user_resident WHERE user_email = ?";
-        $stmt = $conn->prepare($query);
+
+        $residentQuery = "SELECT * FROM tbl_user_resident WHERE user_email = ?";
+        $stmt = $conn->prepare($residentQuery);
         $stmt->bind_param("s", $user_email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -83,9 +84,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $row = $result->fetch_assoc();
             $hashedPassword = $row['password'];
             $role = $row['user_type'];
+            $accountStatus = $row['account_status'];
+            $isActive = $row['is_active'];
         
             if (md5($password) === $hashedPassword) {
-                if ($row['account_status'] === 'verified' && $row['is_active'] === 'active') {
+                if ($accountStatus === 'verified' && $isActive === 'active') {
                     $_SESSION['user_email'] = $row['user_email'];
                     $_SESSION['fullname'] = $row['fullname'];
                     $_SESSION['role'] = $role;
@@ -104,13 +107,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         } elseif ($rowResidency['residency_status'] === 'on hold') {
                             header('location: ../resident_profiling.php');
                         } else {
-                            echo "Unknown residency status.";
+                            echo "Unknown verified status.";
                         }
                     } else {
-                        echo "No residency status found for this user.";
+                        echo "No verified status found for this user.";
                     }
                     exit();
-                } elseif ($row['is_active'] === 'inactive') {
+                } elseif ($accountStatus === 'unverified' && $isActive === 'inactive') {
                     $_SESSION['message'] = 'Your account has been deactivated. Please visit Barangay Los Amigos Office for further information.';
                     $_SESSION['user_email'] = $row['user_email'];
                     $_SESSION['fullname'] = $row['fullname'];
@@ -121,19 +124,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
                     header('location: ../error.php');
                     exit();
-                } elseif ($row['account_status'] !== 'verified') {
-                    $_SESSION['message'] = 'Your account has not yet been verified. Please check your email for the last verification code.';
+                } elseif ($accountStatus !== 'verified' && $isActive === 'active') {
+                    $_SESSION['message'] = 'Your account has not yet been verified. Please enter your email again.';
                     $_SESSION['success'] = 'danger';
                     $_SESSION['form'] = 'login';
         
-                    header('location: ../email-verify-code.php');
+                    header('location: ../email_confirmation.php');
                     exit();
                 }
             } else {
                 echo "Password verification failed for resident.";
             }
-        }        
-
+        }
+        
         echo "Username or password is incorrect!";
         incrementLoginAttempts();
         redirectToLoginPage('Username or password is incorrect!', 'danger', 'login');

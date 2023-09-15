@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $conn->begin_transaction();
 
-        $updateUserResidentSQL = "UPDATE tbl_user_resident SET is_active = ?, reason = ?, message = ? WHERE user_email = ?";
+        $updateUserResidentSQL = "UPDATE tbl_user_resident SET account_status = 'unverified', is_active = ?, reason = ?, message = ? WHERE user_email = ?";
         $stmt = $conn->prepare($updateUserResidentSQL);
         if (!$stmt) {
             throw new Exception("Database Error: " . $conn->error);

@@ -175,6 +175,10 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <h5><b>Fill out the given information and follow the example correctly. Put N/A if not applicable.</b></h5>
+                                                <span>Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.</span>
+                                            </div> 
+                                            <div class="form-group">
                                                 <label>Fullname </label>
                                                 <span>(Boung Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
@@ -188,7 +192,7 @@ $conn->close();
                                             <div class="form-group">
                                                 <label>Tax no. </label>
                                                 <span>(Tax ID number)</span>
-                                                <input type="number" class="form-control" placeholder="Enter your tax number" min="6" name="taxno" required>
+                                                <input type="number" class="form-control" placeholder="Ex: 000-000-000-000" min="6" name="taxno" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Reason for requesting </label>
@@ -236,6 +240,10 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <h5><b>Fill out the given information and follow the example correctly. Put N/A if not applicable.</b></h5>
+                                                <span>Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.</span>
+                                            </div> 
+                                            <div class="form-group">
                                                 <label>Full name of the deceased</label>
                                                 <span>(Buong pangalan ng namatay)</span>
                                                 <input type="text" class="form-control" placeholder="Ex: Juan G. Luna" name="dead_person" required>
@@ -268,7 +276,7 @@ $conn->close();
                                             <div class="form-group">
                                                 <label>Name of the informant</label>
                                                 <span>(Buong pangalan ng taong nagbibigay ng impormasyon tungkol sa namatay)</span>
-                                                <input type="text" class="form-control" placeholder="Name" name="guardian" required>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Name" name="guardian" value="<?= $_SESSION["fullname"]; ?>" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Relationship to the deceased</label>
@@ -333,13 +341,19 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <h5><b>Fill out the Given Information. Put N/A if not applicable.</b></h5>
-                                                <span>(Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.)</span>
+                                                <h5><b>Fill out the given information and follow the example correctly. Put N/A if not applicable.</b></h5>
+                                                <span>Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.</span>
                                             </div> 
                                             <div class="form-group">
                                                 <label>Full Name</label>
                                                 <span>(Buong Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Purok</label>
+                                                <?php foreach($res as $row2):?>
+                                                <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
+                                                <?php endforeach ?>
                                             </div>
                                             <div class="form-group">
                                                 <label>Birthdate</label>
@@ -351,19 +365,13 @@ $conn->close();
                                                 <input type="number" class="form-control" placeholder="Contact Number (e.g., 09)" maxlength="11" name="phone" id="phone" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>Purok</label>
-                                                <?php foreach($res as $row2):?>
-                                                <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
-                                                <?php endforeach ?>
-                                            </div>
-                                            <div class="form-group">
                                                 <label>Precint Number</label>
                                                 <span>(Numero ng Presinto)</span>
                                                 <input type="number" class="form-control" placeholder="Precint number" name="precintno" required>
                                             </div>
                                             <div class="form-group mt-2">
                                                 <h5><b>In case of emergency </b></h5>
-                                                <span>(Taong kinukuntak pag may importanteng kailangan)</span>
+                                                <span>Taong kinukuntak pag may importanteng kailangan</span>
                                             </div>                                        
                                             <div class="form-group">
                                                 <label>Full Name</label>
@@ -538,20 +546,25 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <h5><b>Fill out the given information and follow the example correctly. Put N/A if not applicable.</b></h5>
+                                                <span>Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.</span>
+                                            </div> 
+                                            <div class="form-group">
                                                 <label>Full Name</label>
                                                 <span>(Buong Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Age</label>
-                                                <span>(Edad)</span>
-                                                <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Purok</label>
                                                 <?php foreach($res as $row2):?>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" name="purok" value="<?= $row2["purok"] ?>">
                                                 <?php endforeach ?>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Age</label>
+                                                <span>(Edad)</span>
+                                                <input type="number" class="form-control" placeholder="Enter Age" min="1" name="age" required>
+                                                <span style="color: red;">Note: Ang imong edad kinahanglan nga sa legal, 18 pataas ang allowed mo register.</span>
                                             </div>
                                            <div class="form-group">
                                                 <label>Reason for requesting</label>
@@ -599,6 +612,10 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <h5><b>Fill out the given information and follow the example correctly. Put N/A if not applicable.</b></h5>
+                                                <span>Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.</span>
+                                            </div> 
+                                            <div class="form-group">
                                                 <label>Full Name</label>
                                                 <span>(Buong Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
@@ -612,7 +629,7 @@ $conn->close();
                                             <div class="form-group">
                                                 <label>Tax No</label>
                                                 <span>(Tax ID number)</span>
-                                                <input type="number" class="form-control" placeholder="Tax No." min="6" name="taxno" required>
+                                                <input type="number" class="form-control" placeholder="Ex: 000-000-000-000" min="6" name="taxno" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>
@@ -660,6 +677,10 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <h5><b>Fill out the given information and follow the example correctly. Put N/A if not applicable.</b></h5>
+                                                <span>Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.</span>
+                                            </div> 
+                                            <div class="form-group">
                                                 <label>Husband Full Name</label>
                                                 <span>(Bana Kompleto nga Pangalan)</span>
                                                 <input type="text" class="form-control" placeholder="Husband's Name" name="husband" required>
@@ -682,7 +703,7 @@ $conn->close();
                                             <div class="form-group">
                                                 <label>Duration of Cohabitation</label>
                                                 <span>(Tagal ng pagsasama)</span>
-                                                <input type="text" class="form-control" placeholder="Ex: 1 year or 2 years" min="1" name="living_year" required>
+                                                <input type="text" class="form-control" placeholder="Ex: 2 years" min="1" name="living_year" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Purok</label>
@@ -736,8 +757,8 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <h5><b>Fill out the Given Information. Put N/A if not applicable. </b></h5>
-                                                <span>(Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.)</span>
+                                                <h5><b>Fill out the given information and follow the example correctly. Put N/A if not applicable.</b></h5>
+                                                <span>Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.</span>
                                             </div>                                        
                                             <div class="form-group">
                                                 <label>Wife Name</label>
@@ -761,8 +782,8 @@ $conn->close();
                                                 <input type="text" class="form-control mb-2" placeholder="First child name" name="fam_3" required>
                                                 <input type="text" class="form-control mb-2" placeholder="Second child name" name="fam_4" required>
                                                 <input type="text" class="form-control mb-2" placeholder="Third child name" name="fam_5" required>
-                                                <h6 class="text-danger"><b>In case you had a lot of children's, we advise you to proceed to Barangay Los Amigos Office. </b></h6>
-                                                <span> (Kung higit sa (3) ang inyong anak, maaaring pumunta na lamang sa Barangay Los Amigos Office para sa dagdag na impormasyon)</span>
+                                                <h6 class="text-danger"><b>Note: In case you had a lot of children's, we advise you to proceed to Barangay Los Amigos Office. </b></h6>
+                                                <span>Kung higit sa (3) ang inyong anak, maaaring pumunta na lamang sa Barangay Los Amigos Office para sa dagdag na impormasyon</span>
                                             </div>
                                             <div class="form-group">
                                                 <label>Transfer Certificate of Title (TCT) number</label>
@@ -772,7 +793,7 @@ $conn->close();
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>
                                                 <span>(Rason sa Paghangyo)</span>
-                                                <input class="form-control" name="requirements" required placeholder="Ex: Loan Requirements">
+                                                <textarea class="form-control" name="requirements" required placeholder="Ex: Loan Requirements"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label for="quantity">Copies:</label>
@@ -814,6 +835,10 @@ $conn->close();
                                 <input type="hidden" name="size" value="1000000">
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h5><b>Fill out the given information and follow the example correctly. Put N/A if not applicable.</b></h5>
+                                                <span>Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.</span>
+                                            </div> 
                                             <div class="form-group">
                                                 <label>Full Name</label>
                                                 <span>(Buong Pangalan ng bata)</span>
@@ -908,6 +933,10 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <h5><b>Fill out the given information and follow the example correctly. Put N/A if not applicable.</b></h5>
+                                                <span>Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.</span>
+                                            </div> 
+                                            <div class="form-group">
                                                 <label>Full Name</label>
                                                 <span>(Buong Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
@@ -922,11 +951,12 @@ $conn->close();
                                                 <label>Age</label>
                                                 <span>(Edad)</span>
                                                 <input type="number" class="form-control" placeholder="Age" min="6" name="age" required>
+                                                <span style="color: red;">Note: Ang imong edad kinahanglan nga sa legal, 18 pataas ang allowed mo register.</span>
                                             </div>
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>
                                                 <span>(Rason sa Paghangyo)</span>
-                                                <input class="form-control" name="requirement" placeholder="Ex: 4ps Requirements" required>
+                                                <textarea class="form-control" name="requirements" required placeholder="Ex: Loan Requirements"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>Years of resident of Los Amigos</label>
@@ -973,6 +1003,10 @@ $conn->close();
                                 <input type="hidden" name="size" value="1000000">
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h5><b>Fill out the given information and follow the example correctly. Put N/A if not applicable.</b></h5>
+                                                <span>Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.</span>
+                                            </div> 
                                             <div class="form-group">
                                                 <label>Full Name</label>
                                                 <span>(Buong Pangalan)</span>
@@ -1030,6 +1064,10 @@ $conn->close();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <h5><b>Fill out the given information and follow the example correctly. Put N/A if not applicable.</b></h5>
+                                                <span>Punan ang Ibinigay na Impormasyon. Lagyan ng N/A kung hindi naaangkop.</span>
+                                            </div> 
+                                            <div class="form-group">
                                                 <label>Full Name</label>
                                                 <span>(Buong Pangalan)</span>
                                                 <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Juan G. Luna" name="fullname" value="<?= $_SESSION["fullname"] ?>">
@@ -1044,6 +1082,7 @@ $conn->close();
                                                 <label>Age</label>
                                                 <span>(Edad)</span>
                                                 <input type="number" class="form-control" placeholder="Age" min="1" name="age" value="" required>
+                                                <span style="color: red;">Note: Ang imong edad kinahanglan nga sa legal, 18 pataas ang allowed mo register.</span>
                                             </div>
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>

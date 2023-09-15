@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $conn->begin_transaction();
 
-        $updateUserResidentSQL = "UPDATE tbl_user_resident SET is_active = 'inactive', reason = ?, message = ? WHERE user_email = ?";
+        $updateUserResidentSQL = "UPDATE tbl_user_resident SET account_status='unverified', is_active = 'inactive', reason = ?, message = ? WHERE user_email = ?";
         $stmt = $conn->prepare($updateUserResidentSQL);
         $stmt->bind_param('sss', $reason, $message, $email);
         $stmt->execute();
@@ -24,14 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
 
         $conn->commit();
-
-        session_destroy();
-
-        $_SESSION['message'] = 'You successfully submitted a deletion request. Please allow us 2-3 days for confirmation. You can also visit the Barangay Los Amigos Office for further assistance.';
+        
+        $_SESSION['message'] = 'You successfully deleted your account. You can also visit the Barangay Los Amigos Office for further assistance.';
         $_SESSION['success'] = 'success';
         $_SESSION['form'] = 'login';
 
-        header('Location: ../login.php');
+        session_destroy();
+
+        header('Location: ../index.php');
         exit();
     } catch (Exception $e) {
         $conn->rollback();

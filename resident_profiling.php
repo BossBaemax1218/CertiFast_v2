@@ -197,11 +197,11 @@ $conn->close();
                                         <input type="text" class="form-control btn btn-light btn-info disabled" placeholder="Ex: Tugbok, Los Amigos" name="address" value="<?= $row2["address"] ?>">
                                     </div>
                                     <?php endforeach ?>
-                                    <div class="form-group">
+                                    <!--<div class="form-group">
                                         <label>Barangay ID No.</label>
                                         <input type="text" class="form-control" name="national" placeholder="Ex: BLA - 0000-000" value="">
-                                        <span style="color: red;">Kon aduna ka nay Barangay ID No., palihug itype kini pero pagnaa na biyai rag blangko.</span>
-                                    </div>
+                                        <span style="color: red;">Note: Kon aduna ka nay Barangay ID No. palihug itype kini, pero pagwala na biyai rag blangko.</span>
+                                    </div>-->
                                     <div class="form-group">
                                         <label>Unsa imong first nga ngalan?(First name)</label>
                                         <input type="text" class="form-control" placeholder="Ex: Joe Anne" name="fname" required>
@@ -229,7 +229,7 @@ $conn->close();
                                     <div class="form-group">
                                         <label>Pila imong kasamtangang edad?(Age)</label>
                                         <input type="number" class="form-control" placeholder="Enter your age" min="1" name="age" required>
-                                        <span style="color: red;">Ang imong edad kinahanglan nga sa legal nga edad, 18 pataas.</span>
+                                        <span style="color: red;">Note: Ang imong edad kinahanglan nga sa legal, 18 pataas ang allowed mo register.</span>
                                     </div>
                                     <div class="form-group">
                                         <label>Civil Status</label>
