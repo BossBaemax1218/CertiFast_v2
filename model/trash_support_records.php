@@ -27,7 +27,7 @@ if (isset($_POST['id'])) {
     $deleteStmt->bind_param("i", $id);
     $deleteStmt->execute();
 
-    $_SESSION['message'] = "Support record has been restored successfully.";
+    $_SESSION['message'] = "Support record has been removed successfully.";
     $_SESSION['success'] = "success";
 
     header("Location: ../support.php");
