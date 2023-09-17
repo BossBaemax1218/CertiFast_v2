@@ -6,7 +6,7 @@
    $good_moralresult = $conn->query($good_moralquery);
    $good_moralReq = $good_moralresult->fetch_assoc();
 
-   $good_moralQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$good_moralReq['requirement']}' AND certificate_name = '{$good_moralReq['cert_name']}' AND email = '{$good_moralReq['email']}' AND resident_name = '{$good_moralReq['requester']}'";
+   $good_moralQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$good_moralReq['requirement']}' AND certificate_name = '{$good_moralReq['cert_name']}' AND email = '{$good_moralReq['email']}' AND resident_name = '{$good_moralReq['requester']}' AND status IN('on hold','approved')";
    $good_moralResult = $conn->query($good_moralQuery );
    $GoodCert = $good_moralResult->fetch_assoc();
 ?>
@@ -73,6 +73,7 @@
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
                         <input type="hidden" name="cert_id" id="cert_id" value="<?= $GoodCert['cert_id'] ?>">
+                        <input type="hidden" name="req_cert_id" id="req_cert_id" value="<?= $GoodCert['req_cert_id'] ?>">
                         <a href="list_certificates.php" type="submit" class="btn btn-danger" style="text-decoration: none;">Close</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>

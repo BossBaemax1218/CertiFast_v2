@@ -6,7 +6,7 @@
    $family_taxresult = $conn->query($family_taxquery);
    $family_taxReq = $family_taxresult->fetch_assoc();
 
-   $family_taxQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$family_taxReq['requirements']}' AND certificate_name = '{$family_taxReq['cert_name']}' AND email = '{$family_taxReq['email']}' AND resident_name = '{$family_taxReq['requester']}'";
+   $family_taxQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$family_taxReq['requirements']}' AND certificate_name = '{$family_taxReq['cert_name']}' AND email = '{$family_taxReq['email']}' AND resident_name = '{$family_taxReq['requester']}' AND status IN('on hold','approved')";
    $family_taxResult = $conn->query($family_taxQuery );
    $family_taxCert = $family_taxResult->fetch_assoc();
 ?>
@@ -89,6 +89,7 @@
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
                         <input type="hidden" name="cert_id" id="cert_id" value="<?= $family_taxCert['cert_id'] ?>">
+                        <input type="hidden" name="req_cert_id" id="req_cert_id" value="<?= $family_taxCert['req_cert_id'] ?>">
                         <a href="list_certificates.php" type="submit" class="btn btn-danger" style="text-decoration: none;">Close</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>

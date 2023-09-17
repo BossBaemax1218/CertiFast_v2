@@ -6,7 +6,7 @@
    $birthresult = $conn->query($birthquery);
    $birthReq = $birthresult->fetch_assoc();
 
-   $birthQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$birthReq['requirement']}' AND certificate_name = '{$birthReq['cert_name']}' AND email = '{$birthReq['email']}' AND resident_name = '{$birthReq['requester']}'";
+   $birthQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$birthReq['requirement']}' AND certificate_name = '{$birthReq['cert_name']}' AND email = '{$birthReq['email']}' AND resident_name = '{$birthReq['requester']}' AND status IN('on hold','approved')";
    $birthResult = $conn->query($birthQuery );
    $birthCert = $birthResult->fetch_assoc();
 ?>
@@ -89,6 +89,7 @@
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
                         <input type="hidden" name="cert_id" id="cert_id" value="<?= $birthCert['cert_id'] ?>">
+                        <input type="hidden" name="req_cert_id" id="req_cert_id" value="<?= $birthCert['req_cert_id'] ?>">
                         <a href="list_certificates.php" type="submit" class="btn btn-danger" style="text-decoration: none;">Close</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>

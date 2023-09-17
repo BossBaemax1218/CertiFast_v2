@@ -6,7 +6,7 @@
    $jobresult = $conn->query($jobquery);
    $jobseek = $jobresult->fetch_assoc();
 
-   $jobcertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$jobseek['requirement']}' AND certificate_name = '{$jobseek['cert_name']}' AND email = '{$jobseek['email']}' AND resident_name = '{$jobseek['requester']}'";
+   $jobcertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$jobseek['requirement']}' AND certificate_name = '{$jobseek['cert_name']}' AND email = '{$jobseek['email']}' AND resident_name = '{$jobseek['requester']}' AND status IN('on hold','approved')";
    $jobcertIdResult = $conn->query($jobcertIdQuery );
    $jobrequestedCert = $jobcertIdResult->fetch_assoc();
 ?>
@@ -65,6 +65,7 @@
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
                         <input type="hidden" name="cert_id" id="cert_id" value="<?= $jobrequestedCert['cert_id'] ?>">
+                        <input type="hidden" name="req_cert_id" id="req_cert_id" value="<?= $jobrequestedCert['req_cert_id'] ?>">
                         <a href="list_certificates.php" type="submit" class="btn btn-danger" style="text-decoration: none;">Close</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>

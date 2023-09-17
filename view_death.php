@@ -6,7 +6,7 @@
    $deathresult = $conn->query($deathquery);
    $deathReq = $deathresult->fetch_assoc();
 
-   $deathQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$deathReq['requirement']}' AND certificate_name = '{$deathReq['cert_name']}' AND email = '{$deathReq['email']}' AND resident_name = '{$deathReq['requester']}'";
+   $deathQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$deathReq['requirement']}' AND certificate_name = '{$deathReq['cert_name']}' AND email = '{$deathReq['email']}' AND resident_name = '{$deathReq['requester']}' AND status IN('on hold','approved')";
    $deathResult = $conn->query($deathQuery );
    $deathCert = $deathResult->fetch_assoc();
 ?>
@@ -89,6 +89,7 @@
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
                         <input type="hidden" name="cert_id" id="cert_id" value="<?= $deathCert ['cert_id'] ?>">
+                        <input type="hidden" name="req_cert_id" id="req_cert_id" value="<?= $deathCert['req_cert_id'] ?>">
                         <a href="list_certificates.php" type="submit" class="btn btn-danger" style="text-decoration: none;">Close</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>

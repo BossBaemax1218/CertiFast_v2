@@ -6,7 +6,7 @@
    $oathresult = $conn->query($oathquery);
    $oathReq = $oathresult->fetch_assoc();
 
-   $oathQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$oathReq['requirement']}' AND certificate_name = '{$oathReq['cert_name']}' AND email = '{$oathReq['email']}' AND resident_name = '{$oathReq['requester']}'";
+   $oathQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$oathReq['requirement']}' AND certificate_name = '{$oathReq['cert_name']}' AND email = '{$oathReq['email']}' AND resident_name = '{$oathReq['requester']}' AND status IN('on hold','approved')";
    $oathResult = $conn->query($oathQuery );
    $oathCert = $oathResult->fetch_assoc();
 ?>
@@ -73,6 +73,7 @@
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
                         <input type="hidden" name="cert_id" id="cert_id" value="<?= $oathCert ['cert_id'] ?>">
+                        <input type="hidden" name="req_cert_id" id="req_cert_id" value="<?= $oathCert['req_cert_id'] ?>">
                         <a href="list_certificates.php" type="submit" class="btn btn-danger" style="text-decoration: none;">Close</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>

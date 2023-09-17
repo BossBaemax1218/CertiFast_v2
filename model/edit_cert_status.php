@@ -18,14 +18,15 @@ if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'administrator' && $_SES
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $conn->real_escape_string($_POST['cert_id']);
+    $reqid = $conn->real_escape_string($_POST['req_cert_id']);
     $status = $conn->real_escape_string($_POST['status']);
 
-    if (!empty($id) && !empty($status)) {
-        $validStatuses = array('approved', 'rejected', 'on hold','claimed');
+    if (!empty($id) && !empty($status) && !empty($reqid)) {
+        $validStatuses = array('approved', 'rejected', 'on hold');
         if (in_array($status, $validStatuses)) {
-            $query = "UPDATE tblresident_requested SET status=? WHERE cert_id=?";
+            $query = "UPDATE tblresident_requested SET status = ? WHERE cert_id = ? AND req_cert_id = ? LIMIT 1";
             $stmt = $conn->prepare($query);
-            $stmt->bind_param("si", $status, $id);
+            $stmt->bind_param("sss", $status, $id, $reqid);
 
             if ($stmt->execute()) {
                 $_SESSION['message'] = 'Status has been updated!';
@@ -47,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['success'] = 'danger';
         }
     } else {
-        $_SESSION['message'] = 'Please provide the resident ID and residency status.';
+        $_SESSION['message'] = 'Please provide the exact ID request.';
         $_SESSION['success'] = 'danger';
     }
 }

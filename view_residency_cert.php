@@ -6,7 +6,7 @@
    $resresult = $conn->query($resquery);
    $resresident = $resresult->fetch_assoc();
 
-   $rescertIdQuery = "SELECT *, cert_id FROM tblresident_requested WHERE requirement = '{$resresident['requirement']}' AND certificate_name = '{$resresident['cert_name']}' AND email = '{$resresident['email']}' AND resident_name = '{$resresident['requester']}'";
+   $rescertIdQuery = "SELECT * FROM tblresident_requested WHERE requirement = '{$resresident['requirement']}' AND certificate_name = '{$resresident['cert_name']}' AND email = '{$resresident['email']}' AND resident_name = '{$resresident['requester']}' AND status IN('on hold','approved')";
    $rescertIdResult = $conn->query($rescertIdQuery);
    $ResidentCert = $rescertIdResult->fetch_assoc();
 ?>
@@ -27,7 +27,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Request ID no.</label>
-                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($ResidentCert['req_cert_id']) ?>">
+                                <input type="text" class="form-control btn btn-light btn-dark disabled text-black" value="<?= ucwords($resresident['req_cert_id']) ?>">
                             </div>
                             <div class="form-group">
                                 <label>Certificate Name</label>
@@ -72,6 +72,7 @@
                         </div>
                     </div>
                     <div class="modal-footer mt-2 d-flex justify-content-center">
+                        <input type="hidden" name="req_cert_id" id="req_cert_id" value="<?= $ResidentCert['req_cert_id'] ?>">
                         <input type="hidden" name="cert_id" id="cert_id" value="<?= $ResidentCert['cert_id'] ?>">
                         <a href="list_certificates.php" type="submit" class="btn btn-danger" style="text-decoration: none;">Close</a>
                         <button type="submit" class="btn btn-primary">Save</button>

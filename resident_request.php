@@ -956,7 +956,7 @@ $conn->close();
                                             <div class="form-group">
                                                 <label>Reason for requesting</label>
                                                 <span>(Rason sa Paghangyo)</span>
-                                                <textarea class="form-control" name="requirements" required placeholder="Ex: Loan Requirements"></textarea>
+                                                <textarea class="form-control" name="requirement" required placeholder="Ex: Loan Requirements"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>Years of resident of Los Amigos</label>
