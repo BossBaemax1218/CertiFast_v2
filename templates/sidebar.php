@@ -415,7 +415,7 @@ $totalAnnouncements = $row1['total_announcements'];
                                                         <i class="fa-solid fa-file-arrow-down"></i> Backup
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li></li>
                                                     <a href="#restore" data-toggle="modal">
                                                         <i class="fa-solid fa-file-arrow-up"></i> Restore
                                                     </a>
