@@ -2,7 +2,7 @@
 <?php 
    include 'model/footer.php';
    $birthid = $_GET['id'];
-   $birthquery = "SELECT * FROM tblbirthcert AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.birth_id='$birthid' AND c.cert_name = r.certificate_name AND c.email = r.email AND c.requester = r.resident_name";
+   $birthquery = "SELECT * FROM tblbirthcert AS c JOIN tblresident_requested AS r ON c.requirement = r.requirement WHERE c.birth_id='$birthid' AND c.cert_name = r.certificate_name AND c.email = r.email AND c.requester = r.resident_name AND r.status IN ('on hold','approved')";
    $birthresult = $conn->query($birthquery);
    $birthReq = $birthresult->fetch_assoc();
 

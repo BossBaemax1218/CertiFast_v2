@@ -2,7 +2,7 @@
 <?php 
    include 'model/footer.php';
    $live_inid = $_GET['id'];
-   $live_inquery = "SELECT * FROM tbllive_in AS c JOIN tblresident_requested AS r ON c.requirements = r.requirement WHERE c.live_id='$live_inid' AND c.cert_name = r.certificate_name AND c.email = r.email AND c.requester = r.resident_name";
+   $live_inquery = "SELECT * FROM tbllive_in AS c JOIN tblresident_requested AS r ON c.requirements = r.requirement WHERE c.live_id='$live_inid' AND c.cert_name = r.certificate_name AND c.email = r.email AND c.requester = r.resident_name AND r.status IN ('on hold','approved')";
    $live_inresult = $conn->query($live_inquery);
    $live_inReq = $live_inresult->fetch_assoc();
 
