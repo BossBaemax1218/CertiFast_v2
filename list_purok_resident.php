@@ -7,7 +7,7 @@
 
 $fullname = $_SESSION["username"];
 
-$sql = "SELECT *, r.id, r.purok,r.residency_date FROM tblresident AS r JOIN tbl_user_admin AS a ON r.purok = a.purok WHERE a.username = ? AND r.residency_status IN ('on hold', 'approved','rejected')";
+$sql = "SELECT *, r.id, r.purok,r.residency_date,r.email FROM tblresident AS r JOIN tbl_user_admin AS a ON r.purok = a.purok WHERE a.username = ? AND r.residency_status IN ('approved','rejected')";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $fullname);
 $stmt->execute();
